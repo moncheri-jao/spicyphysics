@@ -3,6 +3,9 @@ So here we are bois, this is the final publication of my work. I hope you'll lik
 
 If you really liked them and want to thank me with a coffee or a physical print of my works, you can send some cents here [in my paypal](https://www.paypal.me/birrabenzina)
 
+# In Production
+* Advanced Classical Mechanics and Special Relativity. (First publication with at least a chapter TBD)
+
 # Future Works
 * Completing the Quantum Mechanics notes (qm.pdf)
 * Classical Thermodynamics notes
