@@ -9,6 +9,7 @@ If you really liked them and want to thank me with a coffee or a physical print 
 * astronomia.pdf -> Astronomia in Italiano, prof. O.Straniero
 * mqmstmat.pdf -> Meccanica Quantistica/Statistica (Statistica incompleta, prof. Presilla), Struttura (prof. Postorino), in Italiano
 * astrofisica.pdf -> Astrofisica in Italiano, prof. P. de Bernardis
+* ifa.pdf -> Istituzioni di Fisica dell'Atmosfera in Italiano, prof. M. Cacciani
 
 # In Production
 * Advanced Classical Mechanics and Special Relativity. (First publication with at least a chapter TBD)
