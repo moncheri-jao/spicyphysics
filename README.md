@@ -6,6 +6,9 @@ If you really liked them and want to thank me with a coffee or a physical print 
 # Ready to be Downloaded
 * complete.pdf -> An Essential Mathematical Analysis Handbook
 * qm-pdf -> Quantum Mechanics (QM, Atomic Physics, Quantum Chemistry, StatMech, Condensed Matter and some QFT coming in the near future)
+* astronomia.pdf -> Astronomia in Italiano, prof. O.Straniero
+* mqmstmat.pdf -> Meccanica Quantistica/Statistica (Statistica incompleta, prof. Presilla), Struttura (prof. Postorino), in Italiano
+* astrofisica.pdf -> Astrofisica in Italiano, prof. P. de Bernardis
 
 # In Production
 * Advanced Classical Mechanics and Special Relativity. (First publication with at least a chapter TBD)
