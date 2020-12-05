@@ -12,7 +12,7 @@ If you really liked them and want to thank me with a coffee or a physical print 
 * ifa.pdf -> Istituzioni di Fisica dell'Atmosfera in Italiano, prof. M. Cacciani
 
 # In Production
-* Advanced Classical Mechanics and Special Relativity. (First publication with at least a chapter TBD)
+* Advanced Classical Mechanics and Special Relativity
 
 # Future Works
 * Completing the Quantum Mechanics notes (qm.pdf)
