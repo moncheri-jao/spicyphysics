@@ -11,14 +11,13 @@ If you really liked them and want to thank me with a coffee or a physical print 
 * astrofisica.pdf -> Astrofisica in Italiano, prof. P. de Bernardis
 * ifa.pdf -> Istituzioni di Fisica dell'Atmosfera in Italiano, prof. M. Cacciani
 
-# In Production
+# JUST PUBLISHED
 * Advanced Classical Mechanics and Special Relativity
 
 # Future Works
 * Completing the Quantum Mechanics notes (qm.pdf)
 * Classical Thermodynamics notes
 * Classical Electromagnetism notes
-* Advanced Classical Mechanics (Lagrangian, Hamiltonian Mechanics) + SR
 * They're not in list for now (ehem, I need EM before) Optics
 
 ## REMARK
