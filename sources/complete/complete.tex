@@ -1,0 +1,190 @@
+\documentclass{book}
+\usepackage{physics}
+\usepackage{subfiles}
+\usepackage[]{csquotes}
+\usepackage{fontspec}
+\usepackage{mathtools}
+\usepackage{amsthm, amsmath, amssymb, amsfonts}
+\usepackage{esint}
+\usepackage{xcolor}
+\usepackage[]{geometry}
+\usepackage[]{graphicx}
+\graphicspath{{./images/}}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{stmaryrd}
+\usepackage{dsfont}
+\usepackage{lipsum}
+\usepackage{etoolbox}
+\usepackage[style=alphabetic]{biblatex}
+\definecolor{sapienza}{cmyk}{.10,1.00,.61,.50}
+\addbibresource{~/Dropbox/appunti/bibliografia/bib.bib}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=red,citecolor=blue]{hyperref}
+%
+\setmainfont[
+	Ligatures=TeX,
+	UprightFont=*_45_light,
+	ItalicFont=SALFrutiger-Italic,
+	BoldFont=*_bold,
+	BoldItalicFont=SALFrutiger-BoldItal,
+]{frutiger}
+\setlength{\headheight}{13.6pt}
+\fancyhf{}
+\fancyhead[R]{\textbf{\textsf{\thepage}}}
+\fancyhead[LE]{\textbf{\textsf{\leftmark}}}
+\fancyhead[LO]{\textbf{\textsf{\rightmark}}}
+\pagestyle{fancy}
+\titleformat{\chapter}[block]{\bfseries}{\fontsize{40}{30}\selectfont\color{gray}\textsf\thechapter}{1.5em}{\fontsize{25}{25}\selectfont\scshape}[\vspace{-1ex}\hfill\rule{\textwidth}{0.5pt}]
+\titleformat{\section}[block]{}{\fontsize{14}{12}\textsf{\S\ \bfseries\thesection}}{0.5em}{\fontsize{14}{12}\bfseries\textsf}[\vspace{-1ex}\hfill\rule{\textwidth}{0.1pt}]
+\titleformat{\subsection}[block]{}{\textsf{\S\S\ \bfseries\thesubsection}}{0.5em}{\bfseries\textsf}
+%
+\newtheorem{thm}{Theorem}[chapter]
+\theoremstyle{definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{dfn}{Definition}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{hyp}{Hypothesis}
+\newtheorem{exe}{Exercise}[section]
+\newtheorem{mtd}{Method}
+\newtheorem*{ntn}{Notation}
+\theoremstyle{remark}
+\newtheorem{eg}{Example}[section]
+\newtheorem*{rmk}{Remark}
+%
+\AtBeginEnvironment{equation}{\color{sapienza}}
+\AtBeginEnvironment{equation*}{\color{sapienza}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\Cf}{\ensuremath{\mathbb{C}}}
+\newcommand{\V}{\ensuremath{\mathcal{V}}}
+\newcommand{\W}{\ensuremath{\mathcal{W}}}
+%\newcommand{\Us}{\ensuremath{\mathcal{U}}}
+\DeclareMathOperator{\Us}{\mathcal{U}}
+\DeclareMathOperator{\Ls}{\mathcal{L}}
+%\newcommand{\Ls}{\ensuremath{\mathcal{L}}}
+\newcommand{\K}{\ensuremath{\mathcal{K}}}
+\newcommand{\tpwr}{\ensuremath{\mathcal{T}}}
+\newcommand{\st}{\ensuremath{\, :\, }}
+\newcommand{\fto}[1][]{\ensuremath{\overset{#1}{\longrightarrow}}}
+\newcommand{\cc}[1]{\ensuremath{\overline{#1}}}
+\newcommand{\derin}[2][]{\ensuremath{\left.#2\right|_{#1}}}
+\newcommand{\comp}[1]{\ensuremath{#1^{\mathrm{c}}}}
+\newcommand{\intr}[1]{\ensuremath{#1^{\circ}}}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\diff}{d\! }
+%\DeclareMathOperator{\diff}{d}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\acc}{acc}
+\DeclareMathOperator{\extr}{extr}
+\newcommand{\tto}{\rightrightarrows}
+%\newcommand{\tto}{\overset{\longrightarrow}{\longrightarrow}}
+\newcommand{\ato}{\overset{\mathrm{A}}{\longrightarrow}}
+\newcommand{\Tto}{\overset{\mathrm{T}}{\longrightarrow}}
+%\renewcommand{\to}{\longrightarrow}
+\newcommand{\seqseq}[3]{\ensuremath{\left(\left(#1\right)_{#2}\right)_{#3}}}
+\newcommand{\inorm}[1]{\ensuremath{\norm{#1}_\infty}}
+\newcommand{\unorm}[1]{\ensuremath{\norm{#1}_u}}
+\newcommand{\pnorm}[2][p]{\ensuremath{\norm{#2}_{#1}}}
+\DeclareMathOperator{\supp}{supp}
+\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\spr}[2]{ \langle #1, #2 \rangle }
+\newcommand{\dbar}{\overline{\partial}}
+\DeclareMathOperator{\img}{Im}
+\newcommand{\hess}[1]{\mathbf{H}_{#1}}
+\DeclareMathOperator{\rot}{rot}
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\trans}[1]{ {#1}^{\mathrm{T}} }
+\newcommand{\1}{\ensuremath{\mathds{1}}}
+\DeclareMathOperator*{\argmax}{Arg\ max}
+\DeclareMathOperator*{\argmin}{Arg\ min}
+\DeclareMathOperator{\alt}{Alt}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\del}{\partial}
+\newcommand{\opr}[1]{\ensuremath{\hat{#1}}}
+\DeclareMathOperator{\foraall}{\forall^\dagger}
+\newcommand{\ointcw}{\varointclockwise}
+\newcommand{\ointccw}{\varointctrclockwise}
+\DeclareMathOperator*{\res}{\mathrm{Res}}
+\DeclareMathOperator{\Arg}{\mathrm{Arg}}
+\DeclareMathOperator{\Log}{\mathrm{Log}}
+\DeclareMathOperator{\arcsinh}{\mathrm{asinh}}
+\DeclareMathOperator{\arccosh}{\mathrm{acosh}}
+\DeclareMathOperator{\arctanh}{\mathrm{atanh}}
+\DeclareMathOperator{\cpv}{\mathrm{PV}}
+\renewcommand{\span}{\mathrm{span}}
+\newcommand{\dnorm}[1]{\norm{#1}_{\star}}
+\DeclareMathOperator{\sprd}{\ensuremath{\langle\cdot,\cdot\rangle}}
+\DeclareMathOperator{\wto}{\ensuremath{\rightharpoonup_{\! w}}}
+%\DeclareMathOperator{\kto}{\ensuremath{\overset{\mathcal{K}}{\longrightarrow}}}
+\DeclareMathOperator{\kto}{\ensuremath{\rightharpoonup_{\mathcal{K}}}}
+\newcommand{\floor}[1]{\lfloor #1\rfloor}
+\newcommand{\ceiling}[1]{\lceil #1\rceil}
+\newcommand{\cpvdist}[1][n]{\mathrm{PV}\left( \frac{1}{x^{#1}} \right)}
+\newcommand{\cpvdistl}[1][n]{\mathrm{PV}(x^{-#1})}
+\DeclareMathOperator{\sto}{\ensuremath{\rightharpoonup_{\!\star}}}
+\DeclareMathOperator{\Do}{\ensuremath{D_{\circ}}}
+\DeclareMathOperator{\D}{\ensuremath{\mathrm{D}}}
+\DeclareMathOperator{\knto}{\ensuremath{\rightharpoonup_{\mathcal{K}_n}}}
+\newcommand{\fou}{\hat{\mathcal{F}}}
+\renewcommand{\real}{\mathfrak{Re}}
+\renewcommand{\imaginary}{\mathfrak{Im}}
+\DeclareMathOperator{\sinc}{\mathrm{sinc}}
+\DeclareMathOperator{\rect}{\mathrm{rect}}
+\DeclareMathOperator{\tri}{\mathrm{tri}}
+\newcommand{\Sp}{\mathcal{S}}
+\begin{document}
+\subfile{./title/title}
+\tableofcontents
+\chapter*{Introduction}
+The idea of writing this came from a mix of pure laziness and despair in preparing two exams, Analisi Vettoriale (Vector Analysis) and Metodi e Modelli Matematici per la Fisica (Mathematical Models and Methods for Physics, basically just pure Complex Analysis and Functional Analysis), that I have to sustain in my BSc course in Physics here at Sapienza University of Rome.\\
+These two courses are deeply intertwined and it's really difficult to study them apart due to the sheer volume of things that either are done for half in one course and half in the other one, or they simply get generalized in the second, breaking up the logical flow one might get from studying these two seemingly completely different subjects.\\
+There will surely be errors in grammar, typing and probably some mathematical inaccuracies so for any question, inquiry or you just want to say hi to me, don't wait in sending me an email here \href{mailto:cheri.1686219@studenti.uniroma1.it}{\texttt{cheri.1686219@studenti.uniroma1.it}}.\\
+A huge thanks to anyone of you that'll read this, I hope it will be useful for you as it is to me.
+\chapter*{Notation}
+\subfile{./chapters/not}
+\chapter{Complex Numbers and Functions}
+\subfile{./chapters/cnf}
+\chapter{Abstract Spaces}
+\subfile{./chapters/spaces}
+%\chapter{Sequences and Series of Functions}
+%\subfile{./chapters/seqser}
+%\chapter{Infinite Dimensional Spaces}
+%\subfile{./chapters/inf}
+\chapter{Differential Analysis}
+\subfile{./chapters/diffn}
+\chapter{Tensors and Differential Forms}
+\subfile{./chapters/dftema}
+\chapter{Integral Analysis} %%tbc
+\subfile{./chapters/int}
+\chapter{Sequences, Series and Residues}
+\subfile{./chapters/series}
+\chapter{Hilbert and Banach Spaces} %%check position
+\subfile{./chapters/hilbert}
+\chapter{Distributions}
+\subfile{./chapters/dist}
+\chapter{Ordinary Differential Equations}
+\subfile{./chapters/ode}
+\chapter{Fourier Calculus}
+\subfile{./chapters/fourier}
+\part*{Appendices}
+\appendix
+\chapter{Useful Concepts}
+\subfile{./chapters/multiindex}
+\chapter{Common Fourier Transforms}
+\subfile{./chapters/transforms}
+%\chapter{More on Holomorphic Functions}
+%\subfile{./chapters/holom}
+%\chapter{Linear Operators}
+%\subfile{./chapters/linop}
+%\chapter{Tensors and Differential Forms}
+%\subfile{./chapters/dftema}
+\nocite{manifoldcalc,lanzara,complessa,funzionalecesi}
+\printbibliography
+\end{document}

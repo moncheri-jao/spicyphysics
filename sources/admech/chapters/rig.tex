@@ -1,0 +1,240 @@
+\documentclass[../admech.tex]{subfiles}
+\begin{document}
+\section{Angular Velocity}
+\begin{dfn}[Rigid Body]
+	In mechanics, a rigid body can be seen as a system of points for which the mutual distance between two points is fixed.\\
+	For describing such system there can be defined two coordinate systems. A fixed system $XYZ$ and a mobile $xyz$ system constrained to the body. Calling $R^\mu$ the radius vector from the system $XYZ$ to the system $xyz$ we have that the motion of a rigid body can be described via the 3 components of $R^\mu$ and the angles $\theta_1,\theta_2,\theta_3$ between the $xyz$ axes and the $XYZ$ axes, making the rigid body a system with 6 degrees of freedom.
+\end{dfn}
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw[->] (0,0) -- (0,1.5) node[left] {$Z$};
+		\draw[->] (0,0) -- (1.5,0) node[below right] {$X$};
+		\draw[->] (0,0) -- (-1.06,-1.06) node[below right] {$Y$};
+		\draw[->] (0,0) -- (3,1);
+		\node[above] at (1.5,0.5) {$R^\mu$};
+		\draw[->] (3,1) -- (3.71,1.71) node[right] {$x$};
+		\draw[->] (3,1) -- (2.29,1.71) node[right] {$z$};
+		\draw[->] (3,1) -- (3,0) node[right] {$y$};
+		\draw[dotted,->] (3,1) -- (3,2);
+		\draw[dotted,->] (3,1) -- (4,1);
+		\draw[dotted,->] (3,1) -- (2.29,0.29);
+	\end{tikzpicture}
+	\caption{An example of the two reference systems of a rigid bodies, the angles $\theta_i$, not drawn, are the angles between the dotted arrows and the axes of the mobile system $xyz$}
+	\label{fig:rigidbodyaxes}
+\end{figure}
+Consider now an infinitesimal movement of the rigid body, this amounts to a translation of the center of mass of such and an infinitesimal rotation of the axes $xyz$ (which we choose fixed at the center of mass). Calling $r^\mu$ the radius vector of some point $P$ of the body with respect to the moving frame and with $\tilde{r}^\mu$ the radius vector of the same point with respect to the fixed frame $XYZ$ we have, if $\dd R^\mu$ is the infinitesimal displacement of the center of mass
+\begin{equation}
+	\dd\tilde{r}^\mu=\dd R^\mu+\epsilon^{\mu\nu\gamma}\dd\varphi_\nu r_\gamma
+	\label{eq:infdispmov}
+\end{equation}
+Dividing this by $\dd t$ we get three velocities
+\begin{equation}
+	\begin{aligned}
+		\dv{\tilde{r}^\mu}{t}&=\tilde{v}^\mu\\
+		\dv{R^\mu}{t}&=V^\mu\\
+		\dv{\varphi_\nu}{t}&=\Omega_\nu
+	\end{aligned}
+	\label{eq:rigidbodyvel}
+\end{equation}
+Which are respectively the translation velocity of the point, the translation velocity of the rigid body and the <<rotation velocity>> also known as \emph{angular velocity} of the whole body (the points are fixed).\\
+This gives
+\begin{equation*}
+	\tilde{v}^\mu=V^\mu+\epsilon^{\mu\nu\gamma}\Omega_\nu r^\gamma
+\end{equation*}
+Therefore with these two velocities that we have defined we can determine the state of every point in the solid
+\section{Inertia Tensor}
+Let the moving frame coincide with the center of mass of the body. The kinetic energy of the full body will therefore be
+\begin{equation}
+	T=\sum_{k=1}^n\frac{1}{2}m_iv^2
+	\label{eq:kinensolid}
+\end{equation}
+We develop it using the definition of $v^\mu$, and we get
+\begin{equation*}
+	v^2=V^2+\epsilon_{\mu\nu\sigma}\epsilon^{\mu\delta\gamma}\Omega_\delta r_\gamma\Omega^\nu r^\sigma+V^\mu\epsilon_{\mu\nu\sigma}\Omega^\nu r^\sigma
+\end{equation*}
+Applying the properties of the epsilon symbol, we have
+\begin{equation*}
+	v^2=V^2+V^\mu\epsilon_{\mu\nu\sigma}\Omega^\nu r^\sigma+\left( \delta^\delta_\nu\delta^\gamma_\sigma-\delta^\gamma_\nu\delta^\delta_\sigma \right)\Omega_\delta r_\gamma\Omega^\nu r^\sigma
+\end{equation*}
+Using the permutation properties of the second term and contracting the indices, we finally get
+\begin{equation}
+	T=T_d+T_{rot}=\frac{1}{2}MV^2+\sum_{k=1}^nm_i\left[ \Omega^2r^2-(\Omega_\mu r^\mu)^2 \right]
+	\label{eq:Tsolid}
+\end{equation}
+Where we used $\sum m=M$ and $\sum mr^\mu=0$.\\
+The second term, called \emph{rotational kinetic energy} can be simplified even more rewriting it as follows
+\begin{equation*}
+	T_{rot}=\frac{1}{2}\sum m\left( r^2\Omega_\mu\Omega^\nu\delta^\mu_\nu-\Omega_\mu r^\mu\Omega^\nu r_\nu \right)
+\end{equation*}
+Bringing outside the parenthesis the dyadic $\Omega_\mu\Omega^\nu$ we have
+\begin{equation}
+	T_{rot}=\frac{1}{2}\Omega_\mu\Omega^\nu\sum m\left( r^2\delta^\mu_\nu-r^\mu r_\nu \right)=\frac{1}{2}I^\mu_\nu\Omega_\mu\Omega^\nu
+	\label{eq:inertiatensor}
+\end{equation}
+Where the last part of the multiplication is called the \emph{inertia tensor}, where
+\begin{equation}
+	I^\mu_\nu=\sum m \left( r^2\delta^\mu_\nu-r^\mu r_\nu \right)
+	\label{eq:inertiatensorcomp}
+\end{equation}
+The most compact way of writing a Lagrangian of a rigid body then becomes the usual $T-\pot$, giving
+\begin{equation}
+	\lag=\frac{MV^2}{2}+\frac{1}{2}I^\mu_\nu\Omega_\mu\Omega^\nu-\pot
+	\label{eq:rigidlag}
+\end{equation}
+Doing all calculations, the matrix representation of this tensor, is
+\begin{equation}
+	I^\mu_\nu=\begin{pmatrix}\sum m(y^2+z^2)&-\sum mxy&-\sum mxz\\-\sum myx&\sum m(x^2+z^2)&-\sum mxz\\-\sum mzx&-\sum mzy&\sum m(x^2+y^2)\end{pmatrix}^\mu_\nu
+	\label{eq:matrepinertia}
+\end{equation}
+In case the body is continuous, we apply the limit $\sum m\to\int_V\rho\dd V$ where $V$ is the volume of the continuous solid and $\rho$ its density, obtaining the following formula
+\begin{equation}
+	I^\mu_\nu=\int_{V}^{}\rho(x,y,z)\left( r^2\delta^\mu_\nu-r^\mu r_\nu \right)\dd^3x
+	\label{eq:continertia}
+\end{equation}
+Since the tensor is symmetric of rank 2 it's possible to find a diagonal representation of such, where
+\begin{equation}
+	I^\mu_\nu\Omega^\mu\Omega_\nu=I_1\Omega_1+I_2\Omega_2+I_3\Omega_3
+	\label{eq:diaginertia}
+\end{equation}
+Where, by definition, we must have
+\begin{equation*}
+	I_1+I_2\ge I_3
+\end{equation*}
+The eigenvalues $I_i$ are known as the \emph{principal moments} of inertia, which let us distinguish between 3 different kinds of rigid bodies
+\begin{itemize}
+\item If $I_1\ne I_2\ne I_3$ the body is known as an asymmetric top
+\item If $I_1=I_2\ne I_3$ the body is known as a symmetric top
+\item If $I_1=I_2=I_3$ the body is known as a spherical top
+\end{itemize}
+The properties of the body also help finding the principal axes of inertia (the eigenvectors) by using the symmetries of the body itself, as an example take a body with a plane of symmetry. The center of mass will lay on such plane as will two of the principal axes of inertia, while the third will be orthogonal to the plane.\\
+An idea of this can be given by a system of particles lying on the $x^1x^2$ plane. Using $x^3=0$ we have immediately
+\begin{equation*}
+	I_1=\sum mx^2_2,\ I_2=\sum mx^1_2,\ I_3=\sum m(x^2_1+x^2_2)=I_1+I_2
+\end{equation*}
+If instead the body has an axis of symmetry of whatever order, the center of mass and one principal axis must lay on this axis, and due to the indistinguishability of the other two axes we must have
+\begin{equation*}
+	I_1=I_2=\sum mx^2_3,\ I_3=0
+\end{equation*}
+This system is a symmetric top and is also known as a \emph{rotator}. Note that $I_3=0$ since the rotation around this axis has no physical meaning and can't be expressed.\\
+Another property of the inertia tensor is that it's dependent on the choice of origin of the coordinates.\\
+Take a new origin $\tilde{O}$ distant $a^\mu$ from $O$. The new radius vector will be
+\begin{equation*}
+	\tilde{r}^\mu=r^\mu-a^\mu
+\end{equation*}
+Inserting this into the definition of the inertia tensor and expanding $\tilde{r}^\mu$ we have
+\begin{equation}
+	\tilde{I}^\mu_\nu=I^\mu_\nu+2\sum m\left( r^\gamma a_\gamma\delta^\mu_\nu-r^\mu a_\nu \right)+\sum m\left( a^2\delta^\mu_\nu-a^\mu a_\nu \right)
+	\label{eq:newinertia}
+\end{equation}
+Using $\sum mr^\mu=0$ we have that the second addend is zero, therefore, if $\sum m=M$
+\begin{equation}
+	\tilde{I}^\mu_\nu=I^\mu_\nu+M\left( a^2\delta^\mu_\nu-a^\mu a_\nu \right)
+	\label{eq:newinertia1}
+\end{equation}
+Note that if we take $a^\mu$ as a parameter, $\min\left( \tilde{I}^\mu_\nu(a^\gamma) \right)=I^\mu_\nu(0)$, i.e. when $a^\mu=0$ and $\tilde{O}=O$, with $O$ as our center of mass
+\subsection{Angular Momentum of a Rigid Body}
+The angular momentum of a rigid body has a straightforward definition, with a simple generalization
+\begin{equation}
+	L_\mu=\sum m\epsilon_{\mu\nu\sigma}r^\nu v^\sigma
+	\label{eq:angmomsolid}
+\end{equation}
+Substituting $v^\mu=\epsilon^{\mu\nu\sigma}\Omega_\nu r_\sigma$ we have
+\begin{equation*}
+	L_\mu=\sum m\epsilon_{\mu\nu\sigma}\epsilon^{\sigma\delta\gamma}r^\nu\Omega_\gamma r_\delta
+\end{equation*}
+Imposing the properties of the epsilon, we have
+\begin{equation*}
+	L_\mu=\sum m\left( r^2\Omega_\mu-r_\mu\left( r^\nu\Omega_\nu \right) \right)
+\end{equation*}
+Using the same trick we did for $I^\mu_\nu$ we can insert a Kronecker delta and bring outside $\Omega_\nu$, giving us
+\begin{equation}
+	L_\mu=\sum m\left( r^2\delta^\nu_\mu-r^\nu r_\mu \right)\Omega_\nu=I^\mu_\nu\Omega_\nu
+	\label{eq:angmominertia}
+\end{equation}
+Note that if the tensor is diagonal, the components of the angular momentum will be proportional to the same component of the angular velocity, and in case that the body is a spherical top we have $I_1=I_2=I_3$ i.e.
+\begin{equation}
+	L_\mu=I\Omega_\mu
+	\label{eq:sphericaltopangmom}
+\end{equation}
+This symmetry simplifies everything, since the plain conservation of angular momentum imposes that $\Omega_\mu$ is constant, and everything reduces to the study of an uniformly rotating body around an axis defined by $L_\mu$.\\
+For a rotator, taking the rotation axis as $x^3$ we still have $L_\mu=I\Omega_\mu$ and everything again reduces, via the conservation of $L_\mu$ to an uniform rotation on the plane orthogonal to the rotation axis.\\
+For a symmetric top, we can again use the conservation of angular momentum to simplify the problem. Using the arbitrariness of the choice of the $x^1,x^2$ axes ($I_1=I_2$) we can take $x_2$ be orthogonal to the plane defined by $L_\mu x^3$, and therefore we must have $L_2=\Omega_2=0$, implying that both vectors are coplanar.\\
+Calling this plane $\pi$ we have that $v^\mu\perp\pi$ for all points situated in the axis of symmetry, or in other words, the axis $x^3$ precedes around $L_\mu$ in a regular manner, describing a spherical cone.\\
+Calling $\theta$ the angle of such cone, we have using the definitions, that
+\begin{equation}
+	\begin{aligned}
+		\Omega_3&=\frac{L_3}{I_3}=\frac{L}{I_3}\cos\theta\\
+		\Omega_1&=\frac{L_1}{I_1}=\frac{L}{I_1}\sin\theta
+	\end{aligned}
+	\label{eq:sphericaltop}
+\end{equation}
+Writing $\Omega_p$ as the module of the precession velocity, we have $\Omega_1=\Omega_p\sin\theta$, and therefore we can also write
+\begin{equation}
+	\Omega_p=\frac{L}{I_1}
+	\label{eq:precessionvel}
+\end{equation}
+\section{Equations of Motion}
+The determination of the equations of motion of a rigid body are strictly tied to its nature. Since it has $6$ degrees of freedom, 3 linear and 3 rotational, we expect to have 3 differential equations for the total momentum $P^\mu$ and another 3 for the total angular momentum $L_\mu$. For a system of particles, we have by definition
+\begin{equation}
+	P^\mu=\sum p^\mu
+	\label{eq:totmomrigin}
+\end{equation}
+Which, implies, via linearity of the derivative, that
+\begin{equation}
+	\dv{P^\mu}{t}=\sum\dv{p^\mu}{t}=\sum f^\mu=F^\mu
+	\label{eq:eqmrbody}
+\end{equation}
+Where $F^\mu$ is the sum of the external forces applied on the body.\\
+Note that if $f_{ij}^\mu$ is the force between the $i-$th and $j-$th particle of the body, $f^\mu_{ij}=-f^\mu_{ji}$ as for Newton's third law, making it irrelevant in the previous equation. Note that if that wouldn't be true, then the body can't be a rigid body.\\
+As usual, if the forces $F^\mu$ are conservative, we can write a potential $\pot(R^\mu)$, where $R^\mu$ is the radius vector to the center of mass of the body, for which
+\begin{equation*}
+	\dv{P^\mu}{t}=F^\mu=-g^{\mu\nu}\pdv{\pot}{R^\mu}
+\end{equation*}
+Or, rewriting a Lagrangian $\lag(R^\mu,V^\mu)$, with $V^\mu=\dot{R}^\mu$
+\begin{equation}
+	\dv{t}\pdv{\lag}{V^\mu}=\dv{P_\mu}{t}=F_\mu=\pdv{\lag}{R^\mu}
+	\label{eq:elrigbody}
+\end{equation}
+Which are the first Euler Lagrange equations for a rigid body in the coordinate system of its center of mass. The other equations can be derived using Galilean invariance and finding an inertial frame such that the center of mass is at rest for some $t$, where, by definition
+\begin{equation*}
+	\dv{L_\mu}{t}=\dv{t}\sum\epsilon_{\mu\nu\sigma}r^\nu p^\sigma=\sum\epsilon_{\mu\nu\sigma}r^\nu\dot{p}^\sigma
+\end{equation*}
+Having used this ``rest frame'' we have that $\dot{r}^\mu=v^\mu=0$, and substituting $\dot{p}^\mu=f^\mu$ we have
+\begin{equation}
+	\dv{L_\mu}{t}=\sum\epsilon_{\mu\nu\sigma}r^\nu f^\sigma=\tau_\mu
+	\label{eq:torquerig}
+\end{equation}
+Where $\tau_\mu$ is the already known \emph{torque} of the body, also known as the \emph{momentum of forces}.\\
+Note that the torque is frame-independent. Taking a new origin distant $a^\mu$ from the previous one we have
+\begin{equation}
+	\tau_\mu=\tilde{\tau}_\mu+\epsilon_{\mu\nu\sigma}a^\nu F^\sigma
+	\label{eq:newtau}
+\end{equation}
+Supposing that $F^\sigma=F_1^\sigma+F_2^\sigma$ and it's a force couple ($F_1^\sigma=-F_2^\sigma$) then the second part is zero and $\tau_\mu=\tilde{\tau}_\mu$.\\
+Imposing ``rotational coordinates'' $\varphi_\mu,\dot{\varphi}_\mu$ to our Lagrangian, with the constraint $\dot{\varphi}_\mu=\Omega_\mu$, we can write EL equations for the rotational degrees of freedom as follows
+\begin{equation}
+	\dv{t}\pdv{\lag}{\Omega^\mu}=\pdv{\lag}{\varphi^\mu}
+	\label{eq:rotelrig}
+\end{equation}
+Writing the general Lagrangian for a rigid body we have
+\begin{equation}
+	\pdv{\lag}{\Omega^\mu}=I^\nu_\mu\Omega_\nu=L_\mu
+\end{equation}
+Whereas, for evaluating the other derivative, we have that for an infinitesimal displacement $\delta R^\mu$ given by some rotation $\delta\varphi^\mu$, we must have
+\begin{equation*}
+	\delta\pot=\pdv{\pot}{R^\mu}\delta R^\mu=-\sum f_\mu\delta R^\mu=-\sum f^\mu\epsilon_{\mu\nu\sigma}\delta\varphi^\nu r^\sigma=-\sum\delta\varphi^\mu\epsilon_{\mu\nu\sigma}f^\nu r^\sigma
+\end{equation*}
+Or, inserting the definition of torque
+\begin{equation*}
+	\delta\pot=-\tau_\mu\delta\varphi^\mu
+\end{equation*}
+Which implies $\del_{\varphi^\mu}\pot=-\tau_\mu$, and therefore
+\begin{equation}
+	\dv{t}\pdv{\lag}{\Omega^\mu}=\dv{L_\mu}{t}=\tau_\mu=\pdv{\lag}{\varphi^\mu}
+	\label{eq:rotelrig1}
+\end{equation}
+Which complete the two sets of differential equation for a rigid body, in complete accordance with the usual Newtonian counterpart.
+%\section{Euler Angles}
+%\subsection{Euler Equations}
+\end{document}

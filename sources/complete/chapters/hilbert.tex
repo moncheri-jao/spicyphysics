@@ -1,0 +1,813 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Banach Spaces}
+\subsection{Sequence Spaces}
+\begin{dfn}[Banach Space]
+	Given a space and a norm $(X,\norm{\cdot})$, the space is said to be a \textit{Banach space} if it's complete with respect to the norm $\norm{\cdot}$.\\
+	I.e. remembering the definition of completeness, we have that $\forall(x)_k\in X$ Cauchy sequence, $x_k\to x\in X$
+\end{dfn}
+%\begin{eg}
+%	Example of Banach spaces are the following
+%	\begin{enumerate}
+%	\item $(\ell^\infty,\inorm{\cdot})$
+%	\item $(\ell^p,\pnorm{\cdot}),\ p\ge1$
+%	\item $(\ell_0,\inorm{\cdot})$
+%	\item $(C_b(\R),\unorm{\cdot})$
+%	\end{enumerate}
+%	All the not listed spaces are not complete with respect to $p-$norms or uniform norms
+%\end{eg}
+\begin{ntn}[The Field $\F$]
+	Here in this section, the field $\F$ should be intended as either the field of real numbers $\R$ or the field of complex numbers $\Cf$
+\end{ntn}
+\begin{dfn}[Sequence Space]
+	As a $n$-tuple in the field $\F^n$ can be seen as a sequence, as follows
+	\begin{equation*}
+		x\in\F^n,\ x=(x_1,x_2,\cdots,x_n)=(x_k)_{k=1}^n
+	\end{equation*}
+	We can imagine a sequence as a point in a space. We will call this space $\F^\N$, and an element of this space will be indicated as follows
+	\begin{equation*}
+		x\in\F^\N,\ x=(x)_n=(x_1,x_2,\cdots,x_n,\cdots)=(x_k)_{k=1}^\infty
+	\end{equation*}
+	Therefore, every point in $\F^\N$ is a sequence. Note that the infinite sequence of $0$s and $1$s will be indicated as $0=(0)_n,\ 1=(1)_n$
+\end{dfn}
+\begin{dfn}[Sequence of Sequences]
+	We can see a sequence of sequences as a mapping from $\N$ to the space $\F^\N$, as follows
+	\begin{equation*}
+		\begin{aligned}
+			x:&\N\fto\F^\N\\
+			&n\to((x)_k)_n
+		\end{aligned}
+	\end{equation*}
+	It's important to note how there are two indexes, since every element of the sequence is a sequence in itself (i.e. $((x)_k)_n\in\F^\N$ for any fixed $n\in\N$)
+\end{dfn}
+\begin{dfn}[Convergence of a Sequence of Sequences]
+	A sequence of sequences is said to converge to a sequence in $\F^\N$ if and only if
+	\begin{equation}
+		\lim_{n\to\infty}\norm{(x)_k-((x)_k)_n}=0
+		\label{eq:seqseqconv}
+	\end{equation}
+	For some norm $\norm{\cdot}$
+\end{dfn}
+\begin{dfn}[Pointwise Convergence]
+	A sequence of sequence is said to converge \textit{pointwise} to a sequence in $\F^\N$ if and only if
+	\begin{equation}
+		\forall k\in\N\ \lim_{n\to\infty}((x)_k)_n=(x)_k
+		\label{eq:pointwiseconvseqseq}
+	\end{equation}
+	And it's indicated as $((x)_k)_n\to(x)_k$
+\end{dfn}
+\begin{eg}
+	Take the following sequence of sequences in $\F^\N$
+	\begin{equation*}
+		\seqseq{x}{k}{n}=\frac{k}{n}
+	\end{equation*}
+	This sequence converges pointwise to the null sequence, since
+	\begin{equation*}
+		\lim_{n\to\infty}\seqseq{x}{k}{n}=\lim_{n\to\infty}\frac{k}{n}=(0)_k
+	\end{equation*}
+\end{eg}
+\subsubsection{Space of Bounded Sequences}
+\begin{dfn}[Limited Sequence Space]
+	Let $(x)_k\in\F^\N$. Calling the space of bounded sequences as $\ell^\infty(\F)$, we have that $(x)_k\in\ell^\infty(\F)$ if and only if
+	\begin{equation}
+		\sup_{n\in\N}\abs{(x)_n}=M\in\F
+		\label{eq:boundedseq}
+	\end{equation}
+	Therefore, this space is defined as follows
+	\begin{equation}
+		\ell^\infty(\F):=\{\derin{(x)_n\in\F^\N}\sup_{n\in\N}\abs{(x)_n}<M,\ M\in\F\}
+		\label{eq:ellinf}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	The application $\norm{\cdot}_{\infty}=\sup_{n\in\N}\abs{\cdot}$ is a norm in $\ell^\infty(\F)$
+\end{thm}
+\begin{proof}
+	1) $\norm{(x)_n}\ge0\ \forall(x)_n\in\F^\N,\ \norm{(x)_n}_{\infty}=0\iff(x)_n=(0)_n$, by definition of $\sup$ the first statement is obvious, meanwhile for the second
+	\begin{equation*}
+		0\le\abs{(x)_n}\le\sup_{n\in\N}\abs{(x)_n}=0\implies\abs{(x)_n}=0\ \therefore(x)_n=(0)_n
+	\end{equation*}
+	2) $\norm{c(x)_n}_{\infty}=\abs{c}\norm{(x)_n}_{\infty}$
+	\begin{equation*}
+		\norm{c(x)_n}_{\infty}=\sup_{n\in\N}\abs{c(x)_n}=\sup_{n\in\N}\abs{c}\abs{(x)_n}=\abs{c}\sup_{n\in\N}\abs{(x)_n}=\abs{c}\norm{(x)_n}_{\infty}
+	\end{equation*}
+	3) $\norm{(x)_n+(y)_n}_{\infty}\le\norm{(x)_n}_\infty+\norm{(y)_n}_\infty$
+	\begin{equation*}
+		\sup_{n\in\N}\abs{(x)_n+(y)_n}\le\sup_{n\in\N}\left( \abs{(x)_n}+\abs{(y)_n} \right)=\sup_{n\in\N}\abs{(x)_n}+\sup_{n\in\N}\abs{(y)_n}=\norm{(x)_n}_\infty+\norm{(y)_n}_\infty
+	\end{equation*}
+	Since $\ell^\infty(\F)$ is a vector space, the couple $(\ell^\infty(\F),\norm{\cdot}_{\infty})$ is a normed vector space
+\end{proof}
+\begin{rmk}
+	Let $\mathcal{V}$ be a vector space over some field $\F$. If $\dim(\mathcal{V})=\infty$, a closed and bounded subset $\mathcal{W}\subset\mathcal{V}$ isn't necessarily compact, whereas, a compact subset $\mathcal{Z}\subset\mathcal{V}$ is necessarily closed and bounded.
+\end{rmk}
+\begin{eg}
+	Take $\mathcal{V}=\ell^\infty(\F)$ and $\mathcal{W}=\cc{B_1( (0)_n )}$, where $$\cc{B_1( (0)_n )}:=\{\derin{(x)_n\in\F^\infty}\norm{(x)_n}_\infty\le1\}$$
+	We have that $\diam(\cc{B_1})=2$, therefore this set is bounded and closed by definition.\\
+	Take the \textit{canonical sequence of sequences} $\seqseq{e}{k}{n}$, defined as follows:
+	\begin{equation*}
+		\seqseq{e}{k}{n}=((0)_k,(0)_k,\cdots,(0)_k,(1)_k,(0)_k,\cdots),\ \text{for some}\ k\in\N
+	\end{equation*}
+	Therefore, $\forall n\ne m$
+	\begin{equation*}
+		\norm{\seqseq{e}{k}{n}-\seqseq{e}{k}{m}}_{\infty}=\norm{(1)_k}_\infty=1
+	\end{equation*}
+	Therefore there aren't converging subsequences, and therefore $\cc{B_1}$ can't be compact.
+\end{eg}
+\subsubsection{Space of Sequences Converging to 0}
+\begin{dfn}[Space of Sequences Converging to $0$]
+	The space of sequences converging to $0$ is indicated as $\ell_0(\F)$ and is defined as follows
+	\begin{equation}
+		\ell_0(\F):=\{\derin{(x)_n\in\F^\N}(x)_n\to0\}
+		\label{eq:ellnot}
+	\end{equation}
+\end{dfn}
+\begin{prop}
+	$\ell_0(\F)\subset\ell^\infty(\F)$, and the couple $(\ell_0(\F),\inorm{\cdot})$ is a normed vector space, where the norm $\inorm{\cdot}$ gets induced from the space $\ell^\infty(\F)$
+\end{prop}
+\begin{proof}
+	\begin{equation*}
+		\begin{aligned}
+			&\lim_{k\to\infty}(x)_k=0\implies\forall\epsilon>0\ \exists N\in\N\st\abs{(x)_n}<\epsilon\ \forall n\ge N\\
+			&\therefore\sup_{n\in\N}\abs{(x)_n}=\epsilon\le M\in\F\implies(x)_n\in\ell^\infty(\F),\ \therefore\ell_0(\F)\subset\ell^\infty(\F)
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\subsubsection{$\ell^p(\F)$ Spaces}
+\begin{dfn}
+	The sequence space $\ell^p(\F)$ is defined as follows
+	\begin{equation}
+		\ell^p(\F):=\{\derin{(x)_n\in\F^\N}\pnorm{(x)_n}^p=M\in\F\}
+		\label{eq:ellpspace}
+	\end{equation}
+	Where $\pnorm{\cdot}$ is the usual $p-$norm
+\end{dfn}
+\begin{prop}
+	The application $\pnorm{\cdot}:\ell^p(\F)\fto\F$ is a norm in $\ell^p(\F)$, and the couple $(\ell^p(\F),\pnorm{\cdot})$ is a normed vector space
+\end{prop}
+\begin{proof}
+	We begin by proving that $\ell^p(\F)$ is actually a vector space, therefore
+	1) $\forall(x)_n,(y)_n\in\ell^p(\F),\ (x)_n+(y)_n=(x+y)_n\in\ell^p(\F)$
+	\begin{equation*}
+		\begin{aligned}
+			&(x+y)_n\in\ell^p(\F)\implies\sum_{n=0}^\infty\abs{(x)_n+(y)_n}^p=\pnorm{(x)_n+(y)_n}^p<M\in\F\\
+			&\pnorm{(x)_n+(y)_n}^p\le\pnorm{(x)_n}^p+\pnorm{(y)_n}^p<M\in\F
+		\end{aligned}
+	\end{equation*}
+	2) $\forall(x)_n\in\ell^p(\F),\ c\in\F,\ c(x)_n\in\ell^p(\F)$
+	\begin{equation*}
+		\begin{aligned}
+			&c(x)_n\in\ell^p(\F)\implies\pnorm{c(x)_n}^p<M\in\F\\
+			&\pnorm{c(x)_n}^p=\sum_{n=0}^\infty\abs{c(x)_n}^p=\abs{c}^p\sum_{n=0}^\infty\abs{(x)_n}^p=\abs{c}^p\pnorm{(x)_n}^p<M\in\F
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{rmk}
+	$(x)_n\in\ell^p(\F)\implies(x)_n\in\ell_0(\F)$.
+\end{rmk}
+\begin{proof}
+	The proof is simple, taking $(y)_n=\abs{(x)_n}^p$, we can see that $(y)_n\to0$, therefore $(x)_n\to0$ and $(x)_n\in\ell_0(\F)$
+\end{proof}
+\subsubsection{Space of Finite Sequences}
+\begin{dfn}[Space of Finite Sequences]
+	The space of finite sequences is indicated as $\ell_f(\F)$ and it's defined as follows
+	\begin{equation}
+		\ell_f(\F):=\{\derin{(x)_n\in\F^\N}(x)_n=0\ \forall n>N\in\N\}
+		\label{eq:ellf}
+	\end{equation}
+	It's already obvious that $\ell_f(\F)\subset\ell^p(\F)\subset\ell^q(\F)\subset\ell_0(\F)\subset\ell^\infty(\F)$, where $p<q\in\R^+\setminus\{0\}$ where $p<q\in\R^+\setminus\{0\}$
+\end{dfn}
+\subsection{Function Spaces}
+\begin{ntn}
+	In this case, when there will be written the field $\F$, we might either mean $\R$ only, i.e. functions $\R\fto\R$, or $\R;\Cf$, i.e. functions $\R\fto\Cf$.
+\end{ntn}
+\begin{dfn}[Some Function Spaces]
+	We are already familiar from the basic courses in one dimensional real analysis, about the space of continuous functions $C(A)$, where $A\subset\R$. We can define three other spaces directly, adding some restrictions.
+	\begin{enumerate}
+	\item $C_b(\F):=\{\derin{f\in C(\F)}\sup_{x\in\F}(f(x))\le M\in\F\}$
+	\item $C_0(\F):=\{\derin{f\in C(\F)}\lim_{x\to\infty}(f(x))=0\}$
+	\item $C_c(\F):=\{\derin{f\in C(\F)}f(x)=0\quad\forall x\in\comp{A}\subset\F\}$ i.e. $C_c(\F):=\{\derin{f\in C(\F)}\supp{(f)}\text{ is compact }\}$, where with $\supp$ we indicate the following set $\supp_{\F}(f):=\cc{\{\derin{x\in\F}f(x)\ne 0\}}$
+	\end{enumerate}
+\end{dfn}
+Due to the properties of continuous functions, these spaces are obviously vector spaces.
+\begin{prop}
+	We have $C_c(\F)\subset C_0(\F)\subset C_b(\F)\subset C(\F)$, the application
+	\begin{equation}
+		\unorm{f}=\inorm{f}=\sup_{x\in A}\abs{f(x)}
+		\label{eq:unormf}
+	\end{equation}
+	Is a norm in $C(A)$, whereas
+	\begin{equation}
+		\unorm{f}=\inorm{f}=\sup_{x\in\F}\abs{f(x)}
+		\label{eq:unormf2}
+	\end{equation}
+	Is a norm in the other three spaces
+\end{prop}
+\begin{proof}
+	The inclusion of these spaces is obvious, due to the definition of these. For the proof that the application $\unorm{\cdot}$ is a norm, it's immediately given from the proof that the application $\inorm{\cdot}$ is a norm in $\ell^\infty(\F)$, and that $\unorm{\cdot}=\inorm{\cdot}$
+\end{proof}
+\begin{rmk}
+	Take $f_n\in C_b(\F)$ a sequence of functions. The uniform convergence of this sequence means that $f_n\to f$ in the norm $\unorm{\cdot}=\inorm{\cdot}$
+\end{rmk}
+\begin{prop}
+	If $f\in C_0(\F)$, then $f$ is uniformly continuous
+\end{prop}
+\begin{proof}
+	Let $f\in C_0(\F)$, then
+	\begin{equation*}
+		\forall\epsilon>0\ \exists l\st \abs{x}\ge l\implies\abs{f(x)}<\frac{\epsilon}{2}
+	\end{equation*}
+	Since every continuous function is uniformly continuous in a closed set, then
+	\begin{equation*}
+		\forall\epsilon>0\ \exists\delta\st\forall x,y\in[-L-1,L+1]\wedge\abs{x-y}<\delta\implies\abs{f(x)-f(y)}<\epsilon
+	\end{equation*}
+	Hence we can have two cases. We either have $\abs{x-y}<\delta$ or $x,y\in[-L-1,L+1]$. Hence we have, in the first case
+	\begin{equation*}
+		\abs{f(x)-f(y)}\le\abs{f(x)}+\abs{f(y)}<\epsilon
+	\end{equation*}
+	Or, in the second case
+	\begin{equation*}
+		\forall\epsilon>0\ \exists\delta>0\st\abs{x-y}<\delta\implies\abs{f(x)-f(y)}<\epsilon
+	\end{equation*}
+	Demonstrating our assumption
+\end{proof}
+\subsubsection{$C_p(\F)$ spaces}
+\begin{dfn}
+	We can define a set of function spaces analogous to the $\ell^p(\F)$ spaces. These spaces are the $C_p(\F)$ spaces. We define analogously the $p-$norm for functions as follows
+	\begin{equation}
+		\pnorm{f}:=\sqrt[p]{\int_{\F}\abs{f(x)}^p\diff{x}}
+		\label{eq:funpnorm}
+	\end{equation}
+	Thanks to what said about $\ell^p(\F)$ spaces and $p-$norms, it's already obvious that these spaces are normed vector spaces
+\end{dfn}
+\begin{rmk}
+	Watch out! $C_p(\F)\not\subset C_0(\F)$, and $C_p(\F)\not\subset C_q(\F)$ for $1\le p\le q$. It's easy to find counterexamples
+\end{rmk}
+\begin{prop}
+	If $1\le p\le q$, then
+	\begin{equation*}
+		C_p(\F)\cap C_b(\F)\subset C_q(\F)
+	\end{equation*}
+\end{prop}
+\begin{proof}
+	Let $f\in C_p(\F)\cap C_b(\F)$. Therefore $\sup_{x\in\F}\abs{f(x)}<M\in\F$, then
+	\begin{equation*}
+		\int_{\F}\abs{f(x)}^q\diff{x}=\int_{\F}^{}\abs{f(x)}^p\abs{f(x)}^{q-p}\diff{x}\le M^{q-p}\int_{\F}\abs{f(x)}^p\diff{x}\le\infty
+	\end{equation*}
+	Therefore $f\in C_p(\F)\cap C_b(\F)\implies f\in C_q(\F)$
+\end{proof}
+\subsection{Function Spaces in $\R^n$}
+\begin{dfn}[Seminorm]
+	A \textit{seminorm} is an application $\norm{\cdot}_{\alpha,\beta}:A\fto\F$ with $A$ a function space and $\alpha,\beta$ multiindices, where
+	\begin{equation}
+		\norm{f}_{\alpha,\beta}:=\inorm{x^\alpha\del^\beta f}=\sup_{x\in\F}\abs{x^\alpha\del^\beta f(x)}
+		\label{eq:seminorm}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Schwartz Space]
+	The space $\mathcal{S}(\R^n)$ is called the \textit{Schwartz space}, and it's defined as follows
+	\begin{equation}
+		\mathcal{S}(\R^n):=\left\{ \derin{f\in C^\infty(\R^n)}\norm{f}_{\alpha,\beta}<\infty, \alpha,\beta\text{ multiindices} \right\}
+		\label{eq:schwartzspace}
+	\end{equation}
+\end{dfn}
+\begin{eg}
+	Taken $p(x)\in\R[x]$ a polynomial, a common example of functions $f(x)\in\mathcal{S}(\R)$ is the following.
+	\begin{equation}
+		f(x)=p(x)e^{-a\abs{x}^{2n}}
+		\label{eq:schwartzfunc}
+	\end{equation}
+	With $a>0,\ n\in\N$
+\end{eg}
+\begin{thm}
+	A function $f\in C^\infty(\R^n)$ is in $\mathcal{S}(\R^n)$ if $\forall\beta$ multiindex, $\forall a>0\ \exists C_{\alpha,\beta}$ such that
+	\begin{equation}
+		\norm{\del^\beta f(x)}\le\frac{C_{\alpha,\beta}}{\left( 1+\norm{x}^2 \right)^{\frac{a}{2}}}\quad\forall x\in\R^n
+		\label{eq:schwartzfunc2}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $n=1$ and $f\in C^\infty(\R)$, then
+	\begin{equation*}
+		\abs{x^j\del^kf(x)}=\abs{x}^j\abs{\del^kf(x)}\le\frac{C_{j,k}\abs{x}^j}{(1+x^2)^{\frac{j}{2}}}\le C_{j,k}\quad\forall x\in\R
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\norm{f}_{j,k}\le C_{j,k}<\infty\implies f\in\mathcal{S}(\R)
+	\end{equation*}
+	Taken $f\in{S}(\R)$ we have that, if $\abs{x}\ge1$
+	\begin{equation*}
+		(1+x^2)^{\frac{a}{2}}\le 2^{\frac{a}{2}}\abs{x}^a
+	\end{equation*}
+	Taken $j=\lceil a\rceil$
+	\begin{equation*}
+		\abs{\del^kf(x)}=\frac{\abs{x^j\del^kf(x)}}{\abs{x}^j}\le\frac{\norm{f}_{j,k}}{\abs{x}^a}\le\frac{2^{\frac{a}{2}}\norm{f}_{j,k}}{(1+x^2)^{\frac{a}{2}}}\le\frac{2^{\frac{a}{2}}\norm{f}_{0,k}}{(1+x^2)^{\frac{a}{2}}}\quad\abs{x}<1
+	\end{equation*}
+	Taken $C_{j,k}=2^{\frac{a}{2}}\max{\norm{f}_{\lceil a\rceil,k},\norm{f}_{0,k}}$ the assertion is demonstrated
+\end{proof}
+\begin{dfn}[Space of Compact Support Function]
+	Given a function with compact support $f$, we define the space of compact functions $C_c^{\infty}(\R^n)$ as the space of all such functions.\\
+	We have obviously that $C_c^\infty(\R^n)\subset\mathcal{S}(\R^n)$
+\end{dfn}
+\begin{thm}
+	Both $C_c^\infty(\R^n)$ and $\mathcal{S}(\R^n)$ are dense in $(C_p(\R^n),\pnorm{\cdot})$
+\end{thm}
+\begin{thm}[Other Function Spaces]
+	\begin{enumerate}
+	\item $C(\R)$ Space of continuous functions
+	\item $\R[x]$ Space of real polynomials
+	\item $C^k(\R)$ Space of continuous $k-$derivable functions
+	\item $C^k_c(\R)$ Space of functions $f\in C^k(\R)$ with compact support
+	\item $C^\infty(\R)$ Space of infinitely differentiable (smooth) functions
+	\item $C_0(\R)$ Space of smooth functions with $\lim_{x\to\pm\infty}f(x)=0$
+	\item $C_c^\infty(\R)$ Space of smooth functions with compact support
+	\end{enumerate}
+	We have the obvious inclusions
+	\begin{equation*}
+		\begin{aligned}
+			\ell_f&\subset\ell^p\subset\cdots\subset\ell_0\subset\R^\N\\
+			C_c(\R)&\subset C_0(\R)\subset\cdots\subset C_p(\R)\subset C(\R)\\
+			\R[x]&\subset C^\infty(\R)\subset\cdots\subset C(\R)\\
+			C_c^\infty(\R)&\subset C_0^\infty(\R)\subset C^\infty(\R)
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\section{Hilbert Spaces}
+\begin{dfn}[Hermitian Product]
+	Given $\V$ a complex vector space, and an application $\spr{\cdot}{\cdot}:\V\fto\Cf$ such that $\forall u,v,z\in\V,\ c,d\in\Cf$
+	\begin{enumerate}
+	\item $\spr{v}{v}\ge0$
+	\item $\spr{v}{v}=0\iff v=0$
+	\item $\spr{u}{v}=\cc{\spr{v}{u}}$
+	\item $\spr{u+v}{z}=\spr{u}{z}+\spr{v}{z}$
+	\item $\spr{cu}{dv}=c\cc{d}\spr{u}{v}$
+	\end{enumerate}
+	The application $\spr{\cdot}{\cdot}$ is called an \textit{Hermitian product} in $\V$, and the couple $(\V,\spr{\cdot}{\cdot})$ is called an \textit{Euclidean space}
+\end{dfn}
+\begin{rmk}
+	It's usual in physics that for a Hermitian product, we have that
+	\begin{equation}
+		\spr{cu}{v}=\cc{c}\spr{u}{v}
+		\label{eq:physicshermprod}
+	\end{equation}
+\end{rmk}
+\begin{dfn}[Hilbert Space]
+	Given $(\V,\spr{\cdot}{\cdot})$ an euclidean space. It's said to be a \textit{Hilbert space} if it's complete
+\end{dfn}
+\begin{thm}[Cauchy-Schwartz Inequality]
+	Given $(\V,\spr{\cdot}{\cdot})$ a complex euclidean space, then $\forall u,v\in\V$
+	\begin{equation}
+		\norm{\spr{u}{v}}^2\le\spr{u}{u}\spr{v}{v}
+		\label{eq:cauchyschwartzineq}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $t\in\Cf$, we define $p(t)=\spr{tu+v}{tu+v}$. Then by definition of the Hermitian product, we have
+	\begin{equation*}
+		p(t)=\norm{t}^2\spr{u}{u}+t\spr{u}{v}+\cc{t}\spr{v}{u}+\spr{v}{v}
+	\end{equation*}
+	Writing $\spr{u}{v}=\rho e^{i\theta},\ t=se^{-i\theta}$ we have
+	\begin{equation*}
+		p(se^{-i\theta})=s^2\spr{u}{u}+2s\rho+\spr{v}{v}\ge0\quad\forall s\in\R
+	\end{equation*}
+	Then, by definition, we have
+	\begin{equation*}
+		\rho^2=\norm{\spr{u}{v}}^2\le\spr{u}{u}\spr{v}{v}
+	\end{equation*}
+\end{proof}
+\begin{thm}[Induced Norm]
+	Given a Hermitian product $\spr{\cdot}{\cdot}$ we can define an induced norm $\norm{\cdot}$ by the definition
+	\begin{equation}
+		\norm{\cdot}=\sqrt{\spr{\cdot}{\cdot}}
+		\label{eq:indnorm}
+	\end{equation}
+\end{thm}
+\begin{thm}
+	Addition, multiplication by a scalar and the scalar product are continuous in an euclidean space $\V$, then, given two sequences $u_n\fto u\in\V,\ v_n\to v\in\V$ and
+	\begin{equation*}
+		\begin{aligned}
+			u_n+v_n&\fto u+v\\
+			c\in\Cf\implies cu_n&\fto u\\
+			\spr{u_n}{v_n}&\fto\spr{u}{v}
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Thanks to Cauchy-Schwartz we have
+	\begin{equation*}
+		\begin{aligned}
+			\abs{\spr{u}{v}-\spr{u_n}{v_n}}&=\abs{\spr{u}{v}-\spr{u}{v_n}+\spr{u}{v_n}-\spr{u_n}{v_n}}\le\abs{\spr{u}{v}-\spr{u}{v_n}}+\abs{\spr{u}{v_n}-\spr{u_n}{v_n}}=\\
+			&=\norm{u}\norm{v-v_n}+\norm{v_n}\norm{u-u_n}
+		\end{aligned}
+	\end{equation*}
+	Since the successions are convergent, we have that $\exists M>0\st\norm{v_n}\le M\ \forall n\in\N$, therefore
+	\begin{equation*}
+		\abs{\spr{u}{v}-\spr{u_n}{v_n}}\le\max\{\norm{u},M\}\left( \norm{v-v_n}+\norm{u-u_n} \right)\to0
+	\end{equation*}
+\end{proof}
+\begin{eg}[Some Euclidean Spaces]
+	1) $\ell^2(\Cf)$\\
+	Given $x,y\in\ell^2(\Cf)$ we define the scalar product as
+	\begin{equation*}
+		\spr{x}{y}=\sum_{i=1}^\infty x_i\cc{y_i}
+	\end{equation*}
+	2) $\ell^2(\mu)$, a weighted sequence space, where
+	\begin{equation*}
+		\ell^2(\mu):=\left\{ \derin{x\in\Cf^\N}\sum_{i=1}^\infty\mu_i\abs{x_i}^2<\infty,\ \mu_i\in\R,\ \mu_i>0\ \forall i \right\}
+	\end{equation*}
+	Given $x,y\in\ell^2(\mu)$ we define
+	\begin{equation*}
+		\spr{x}{y}=\sum_{i=1}^\infty\mu_ix_i\cc{y_i}
+	\end{equation*}
+	3) $C_2(\Cf)$
+	Given $f,g\in C_2(\Cf)$ we define
+	\begin{equation*}
+		\spr{f}{g}=\int_\R f(x)\cc{g(x)}\diff x
+	\end{equation*}
+	4) $C_2(\Cf,p(x)\diff x)$, weighted function spaces, where
+	\begin{equation*}
+		C_2(\Cf,p(x)\diff x):=\left\{ \derin{f\in C(\Cf)}\int_\R f(x)\cc{f(x)}p(x)\diff x<\infty,\ p(x)\in C(\R;\R^+) \right\}
+	\end{equation*}
+	Given $f,g\in C_2(\Cf,p(x)\diff x)$ we define
+	\begin{equation*}
+		\spr{f}{g}=\int_\R f(x)\cc{g(x)}p(x)\diff x
+	\end{equation*}
+	The spaces $C_2$ \emph{aren't complete} therefore they're not Hilbert spaces. The spaces $L^2(\Cf)$ and the weighted alternative are the completion of such spaces and are therefore Hilbert spaces
+\end{eg}
+\begin{thm}[Polarization Identity]
+	Given a complex euclidean space $(\V,\spr{\cdot}{\cdot})$ we have, $\forall u,v\in\V$
+	\begin{equation}
+		\spr{u}{v}=\frac{1}{4}\left( \norm{u+v}^2-\norm{u-v}^2+i\left( \norm{u+iv}^2\norm{u-iv}^2 \right) \right)
+		\label{eq:polarizationid}
+	\end{equation}
+\end{thm}
+\begin{thm}[Parallelogram Rule]
+	Let $(\V,\norm{\cdot})$ be a normed vector space. A necessary and sufficient condition that the norm is induced by a scalar product is that
+	\begin{equation}
+		\norm{u+v}^2+\norm{u-v}^2=2\left( \norm{u}^2+\norm{v}^2 \right)\quad\forall u,v\in\V
+		\label{eq:parallelogramrule}
+	\end{equation}
+\end{thm}
+\section{Projections}
+\subsection{Orthogonality}
+\begin{dfn}[Angle]
+	Given a real euclidean space $(\V,\spr{\cdot}{\cdot})$ we define the angle $\theta=u\angle v$ as follows
+	\begin{equation}
+		\theta=\arccos\left( \frac{\spr{u}{v}}{\norm{u}\norm{v}} \right)
+		\label{eq:anglebwvec}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Orthogonal Complement]
+	Given an euclidean vector space $\V$ and two vectors $u,v$, we say that the two vectors are orthogonal $u\perp v$ if
+	\begin{equation}
+		\spr{u}{v}=0
+		\label{eq:orthvec}
+	\end{equation}
+	If $X\subset\V$ and $\forall x\in X$ we have that
+	\begin{equation*}
+		\spr{u}{x}=0
+	\end{equation*}
+	We say that $u\in X^{\perp}$ where this space is called the \textit{Orthogonal Complement} of $X$, i.e.
+	\begin{equation}
+		X^\perp:=\left\{ \derin{v\in\V}\spr{v}{w}=0\ \forall w\in X \right\}
+		\label{eq:xbot}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Given $X\subset\V$ with $\V$ an euclidean space, the set $X^\perp$ is a closed subspace of $\V$
+\end{thm}
+\begin{proof}
+	$X^\perp$ is a subspace, hence $\forall v_1,v_2\in X^\perp$ and $c_1,c_2\in\Cf$ we have
+	\begin{equation*}
+		\spr{c_1v_1+c_2v_2}{w}=c_1\spr{v_1}{w}+c_2\spr{v_2}{w}\quad\forall w\in X
+	\end{equation*}
+	Hence $c_1v_1+c_2v_2\in X^\perp$.\\
+	Given a sequence $(v)_n\in X^{\perp}\st(v)_n\fto v\in\V$ we have, given $w\in X$
+	\begin{equation*}
+		\spr{v_n}{w}=0\quad\forall n\in\N
+	\end{equation*}
+	Due to the continuity of the scalar product we have that
+	\begin{equation*}
+		\lim_{n\to\infty}\spr{v_n}{w}=0=\spr{v}{w}
+	\end{equation*}
+	Therefore $v\in X^\perp$ and the subspace $X^\perp$ is closed in $\V$
+\end{proof}
+\begin{thm}
+	Given $X,Y\subset\V$ with $\V$ an euclidean space, we have
+	\begin{equation*}
+		\begin{aligned}
+			X\subset Y&\implies Y^\perp\subset X^\perp\\
+			X^\perp&=(\cc{X})^\perp=\left( \cc{\span(X)} \right)^\perp
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken $v\in Y^\perp$ we have by definition
+	\begin{equation*}
+		\spr{v}{y}=0\quad\forall y\in Y
+	\end{equation*}
+	Since $X\subset Y$ we have then
+	\begin{equation*}
+		\spr{v}{x}=0\quad\forall x\in X
+	\end{equation*}
+	Therefore $Y^\perp\subset X^\perp$.\\
+	By definition we have that $X\subset\cc{X}\subset\cc{\span(X)}$, and thanks to the previous proof
+	\begin{equation*}
+		X^\perp\supset (\cc{X})^\perp\supset(\cc{\span(X)})^\perp
+	\end{equation*}
+	Taken $w\in\span(X)$ we have
+	\begin{equation*}
+		w=\sum_ic_iw_i\quad w_i\in X
+	\end{equation*}
+	And given $v\in X^\perp$, we get
+	\begin{equation*}
+		\spr{v}{w}=\sum_ic_i\spr{v}{w_i}=0
+	\end{equation*}
+	Now take $w\in\cc{\span(X)}$. Take a sequence $(w)_n\in\cc{\span(X)}$ such that $(w)_n\fto w$. Thanks to the continuity of the scalar product we have
+	\begin{equation*}
+		\spr{v}{w}=\spr{v}{\lim_{n\to\infty}w_n}=\lim_{n\to\infty}\spr{v}{w_n}=0
+	\end{equation*}
+	Demonstrating that $X^\perp=(\cc{\span(X)})^\perp$
+\end{proof}
+\begin{lem}
+	Let $\V$ be a Hilbert space. Given $\W\subset\V$ a closed subspace. Given $v\in\V$
+	\begin{equation*}
+		\exists!w_0\in\W\st\forall w\in\W\ d=\norm{v-w_0}\le\norm{v-w}
+	\end{equation*}
+\end{lem}
+\begin{proof}
+	Take $d=\inf_{w\in\W}\norm{v-w}$. By definition of infimum we have that $\exists(w)_n\in\W$ such that
+	\begin{equation*}
+		\lim_{n\to\infty}\norm{v-w_n}=d
+	\end{equation*}
+	Using the parallelogram rule, we have that
+	\begin{equation*}
+		\norm{w_n-w_k}^2=\norm{(w_n-v)+(v-w_k)}^2=2\norm{v-w_n}^2+2\norm{v-w_k}^2-4\norm{\frac{1}{2}(w_n+w_k)-v}^2
+	\end{equation*}
+	Since $1/2(w_n+w_k)\in\W$ we have by definition of $d$
+	\begin{equation*}
+		\norm{\frac{1}{2}\left( w_n+w_k \right)-v}\ge d
+	\end{equation*}
+	Therefore, we can rewrite
+	\begin{equation*}
+		\norm{w_n-w_k}^2\le2\norm{v-w_n}^2+2\norm{v-w_k}^2-4d^2
+	\end{equation*}
+	Therefore, we have
+	\begin{equation*}
+		\forall\epsilon>0\ \exists N\in\N\st\forall n,k\ge N\ \norm{w_n-w_k}^2\le4(d+\epsilon)^2-4d^2
+	\end{equation*}
+	Hence $(w)_n$ is a Cauchy sequence. Since by definition $\V$ is complete and $\W\subset\V$ is closed, we have that $\W$ is also complete, therefore $(w)_n\to w_0\in\W$ and we have
+	\begin{equation*}
+		\norm{v-w_0}=d
+	\end{equation*}
+	Now suppose that $\exists w_1,w_2\in\W$ such that the previous is true, i.e.
+	\begin{equation*}
+		\norm{v-w_1}=\norm{v-w_2}\le\norm{v-w}\quad\forall w\in\W
+	\end{equation*}
+	Taken $w_3=1/2(w_1+w_2)$ we have
+	\begin{equation*}
+		\norm{v-w_3}^2=\norm{v-w_1}^2-\frac{1}{4}\norm{w_2-w_1}^2
+	\end{equation*}
+	Taken $d=\norm{v-w_1}=\norm{v-w_2}$, $z_1=v-w_3$ and $z_2=1/2(w_1-w_2)$ we get
+	\begin{equation*}
+		\norm{z_1+z_2}^2+\norm{z_1-z_2}^2=2\left( \norm{z_1}^2+\norm{z_2}^2 \right)
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		d^2=\frac{1}{2}\left( \norm{v-w_1}^2+\norm{v-w_2}^2 \right)=\norm{v-w_3}^2+\frac{1}{4}\norm{w_1-w_2}^2
+	\end{equation*}
+	I.e. if $w_1\ne w_2$, $w_3$ is the infimum between $v\in\V$ and $\W$ $\lightning$
+\end{proof}
+\subsection{Projections and Orthogonal Projections}
+\begin{thm}[Projection]
+	Given $\W\subset\V$ closed subspace of a Hilbert space, we have
+	\begin{equation*}
+		v=w+z\quad\forall v\in\V,\ w\in\W,\ z\in\W^\perp
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Given $v\in\V$, due to the previous lemma we have that $\exists!w\in\W$ such that
+	\begin{equation*}
+		d=\norm{v-w}\le\norm{v-w'}\quad\forall w'\in\W
+	\end{equation*}
+	Taken $z=v-w$, and an element $x\in\W$, define the vector $w+tx$ with $t\in\Cf$. Since $\W$ is a subspace $w+tx\in\W$ and $\forall t\in\Cf$ we have
+	\begin{equation*}
+		d^2\le\norm{v-(w+tx)}^2=\norm{v-w}^2-\cc{t}\spr{v-w,x}-t\spr{x}{v-w}+\norm{t}^2\norm{x}^2
+	\end{equation*}
+	Writing $\spr{x}{v-w}=\norm{\spr{x}{v-w}}e^{i\theta}$ and $t=se^{-i\theta}$ with $s\in\R$ we have
+	\begin{equation*}
+		-2s\norm{\spr{v-w}{x}}+s^2\norm{x}^2\ge0\quad\forall s\in\R
+	\end{equation*}
+	Which implies
+	\begin{equation*}
+		\spr{v-w}{x}=0\implies z=v-w\in\W^\perp
+	\end{equation*}
+	Therefore there exists a representation $v=w+z$ with $w\in\W,\ z\in\W^\perp$
+	Now, we suppose that $v=w'+z'$, then
+	\begin{equation*}
+		0=(w-w')+(z-z')
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		0=\norm{(w-w')+(z-z')}^2=\norm{w-w'}+\norm{z-z'}^2
+	\end{equation*}
+	Therefore the representation is unique.
+\end{proof}
+\begin{thm}
+	If $\W\subset\V$ with $\V$ a Hilbert space, we have
+	\begin{equation*}
+		\left( \W^\perp \right)^\perp=\cc{\W}
+	\end{equation*}
+	If $\W$ is closed
+	\begin{equation*}
+		\left( \W^\perp \right)^\perp=\W
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken $w\in\W$ we have that $w\perp v$ with $v\in\W^\perp$, therefore $w\in(\W^\perp)^\perp$. Therefore
+	\begin{equation*}
+		\W\subset\left( \W^\perp \right)^\perp
+	\end{equation*}
+	Since the space on the right is closed, we have
+	\begin{equation*}
+		\cc{\W}=\cc{\left( \W^\perp \right)^\perp}=\left( \W^\perp \right)^\perp
+	\end{equation*}
+	Now taken $w\in\left( \W^\perp \right)^\perp$, since $\cc{\W}$ is a closed subspace by definition, we can write
+	\begin{equation*}
+		w=v+z\quad v\in\cc{\W},\ z\in\cc{\W}^\perp=\W^\perp
+	\end{equation*}
+	We have $w\perp z$, and therefore
+	\begin{equation*}
+		\norm{z}^2=\spr{z}{w-v}=0\implies w=v\in\cc{\W}
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Orthogonal Projection]
+	Given a closed subspace $\W\subset\V$ we can define an operator $\opr{\pi}_\W:\V\fto\W$ such that
+	\begin{equation}
+		\opr{\pi}_\W v=w\iff w\in\W,\ v-w\in\W^\perp
+		\label{eq:orthprojection}
+	\end{equation}
+	$\opr{\pi}_\W$ is linear and called a \textit{orthogonal projection}
+\end{dfn}
+\begin{thm}
+	Given $\W\subset\V$ a closed subspace of the Hilbert space $\V$, then given an orthogonal projection $\opr{\pi}_\W:\V\fto\W$ we have, $\forall v,z\in\V$ and another closed subspace $\mathcal{Z}\subset\V$
+	\begin{enumerate}
+	\item $\opr{\pi}_\W^2=\opr{\pi}_\W$
+	\item $\spr{\opr{\pi}_\W v}{z}=\spr{v}{\opr{\pi}_\W z}\ge0$
+	\item If $\mathcal{Z}\subseteq\W^\perp\quad\opr{\pi}_\W\circ\opr{\pi}_{\mathcal{Z}}=\opr{\pi}_{\mathcal{Z}}\circ\opr{\pi}_\W=0$
+	\item If $\mathcal{Z}\subset\W\quad\opr{\pi}_\W\circ\opr{\pi}_{\mathcal{Z}}=\opr{\pi}_{\mathcal{Z}}\circ\opr{\pi}_\W=\opr{\pi}_\W$
+	\end{enumerate}
+\end{thm}
+\begin{dfn}[Direct Sum]
+	An euclidean space $\V$ is called the \textit{direct sum} of closed subspaces $\V_i\subset\V$ and it's indicated as follows
+	\begin{equation}
+		\V=\V_1\oplus\V_2\oplus\cdots=\bigoplus_{k=1}^\infty\V_k
+		\label{eq:directsum}
+	\end{equation}
+	If
+	\begin{enumerate}
+	\item The spaces $\V_k$ are orthogonal in couples
+	\item $\forall v\in\V\ v=\sum_{k=1}^\infty v_k$ with $v_k\in\V_k$
+	\end{enumerate}
+\end{dfn}
+\begin{cor}
+	Given a Hilbert space $\V$ and a closed subspace $\W$, then
+	\begin{equation}
+		\V=\W\oplus\W^\perp
+		\label{eq:closedirectsum}
+	\end{equation}
+\end{cor}
+\subsection{Orthogonal Systems and Bases}
+\begin{dfn}[Orthogonal System]
+	A set of vectors $X\subset\V\quad X\ne\{\}$ is said to be an \textit{orthogonal system} if $\forall u,v\in X,\ u\ne v\quad u\perp v$.\\
+\end{dfn}
+\begin{dfn}[Orthonormal System]
+	Given an orthogonal system $X\subset\V$ such that $\forall u\in X$ we have $\norm{u}=1$, the system $X$ is called an \textit{orthonormal system}
+\end{dfn}
+\begin{thm}
+	Given an orthogonal system $X\subset\V$ with $(\V,\spr{\cdot}{\cdot})$ an euclidean space, then we have that $X$ is a system of linearly independent vectors
+\end{thm}
+\begin{dfn}[Basis]
+	Given an orthogonal and complete set of vectors $(v)_\alpha$ in an euclidean space $\V$ it's said to be an \textit{orthogonal basis} of $\V$. If it's an orthonormal and complete set of vectors it's said to be an \textit{orthonormal basis} of $\V$
+\end{dfn}
+\begin{lem}
+	Given an orthogonal system $(v)_{k=1}^n\in\V$ and let $u\in\V$ an arbitrary vector. Then given $z\in\V$ as follows
+	\begin{equation*}
+		z:=u-\sum_{k=1}^n\frac{\spr{u}{v_k}}{\norm{v_k}^2}v_k
+	\end{equation*}
+	We have that $z\perp v_i\ \forall 1\le i\le n$ and therefore $z\perp\span\left\{ v_1,\cdots,v_n \right\}$
+\end{lem}
+\begin{proof}
+	$\forall i=1,\cdots,n$ it's obvious that $\spr{z}{v_i}=0$, therefore
+	\begin{equation*}
+		z\in\left\{ v_1,\cdots,v_n \right\}^\perp
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		z\in\left\{ v_1,\cdots,v_n \right\}^\perp=\cc{\span\left\{v_1,\cdots,v_n\right\}}^\perp=\span\left\{ v_1,\cdots,v_n \right\}^\perp
+	\end{equation*}
+\end{proof}
+\begin{thm}[Gram-Schmidt Orthonormalization]
+	Given $\V$ an euclidean space and $(v)_{n\in\N}\in\V$ a set of linearly independent vectors. Then $\exists(u)_{n\in\N}\in\V$ orthonormal system such that
+	\begin{enumerate}
+	\item $u_n$ is a linear combination of $v_i\ \forall0\le i\le n$, i.e.
+		\begin{equation*}
+			u_n=\sum_{k=1}^n a_{nk}v_k\quad a_{nn}\ne0
+		\end{equation*}
+	\item $v_n$ can be written as follows
+		\begin{equation*}
+			v_n=\sum_{k=1}^nb_{nk}u_k\quad b_{nn}\ne0
+		\end{equation*}
+	\end{enumerate}
+	Therefore, $\forall n\in\N$ we have that
+	\begin{equation*}
+		\span\left\{ v_1,\cdots,v_n \right\}=\span\left\{ u_1,\cdots,u_n \right\}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Defining
+	\begin{equation*}
+		w_n=v_n-\sum_{k=1}^{n-1}\frac{\spr{v_n}{v_k}}{\norm{w_k}^2}w_k\quad u_n=\frac{w_n}{\norm{w_n}}
+	\end{equation*}
+	We can say immediately that $\forall n\ge1$ $w_n\in\left\{ w_1,\cdots,w_{n-1} \right\}^\perp$. By induction we can say that it holds $\forall(w)_{n\in\N}$, therefore $(w)_n$ is an orthogonal system and $(u)_{n\in\N}$ is an orthonormal system\\
+	We can also say that
+	\begin{equation*}
+		v_n=w_n+\sum_{j=1}^{k-1}\beta_{nj}w_{j}
+	\end{equation*}
+	I.e. $\forall n\ge1$ $w_n$ is a linear combination of $\left\{ v_1,\cdots,v_n \right\}$, therefore, by definition
+	\begin{equation*}
+		\span\left\{ v_1,\cdots,v_n \right\}=\span\left\{ w_1,\cdots,w_n \right\}=\span\left\{ u_1,\cdots,u_n \right\}
+	\end{equation*}
+\end{proof}
+\begin{eg}
+	1) Legendre Polynomials\\
+	Using the Gram-Schmidt orthonormalization procedure, we can find an orthonormal system $\left\{ p_0,\cdots,p_n \right\}\subset C_2[-1,1]$ starting from the following system
+	\begin{equation*}
+		(v)_n:=\left\{ 1,x,x^2,x^3,x^4,\cdots,x^n \right\}
+	\end{equation*}
+	The final result will be called the \textit{Legendre Polynomials}
+	We begin by taking the canonical scalar product in $C_2[-1,1]$ as follows
+	\begin{equation*}
+		\spr{f}{g}=\int_{-1}^{1}f(x)g(x)\diff x
+	\end{equation*}
+	And using that
+	\begin{equation*}
+		\int_{-1}^{1}x^n\diff x=\begin{dcases}\frac{2}{n+1}&n=2k\in\N\\0&n=2k\in\N\end{dcases}
+	\end{equation*}
+	Therefore, we have that
+	\begin{equation*}
+		\begin{aligned}
+			w_0&=1\quad\norm{w_0}^2=\int_{-1}^{1}\diff x=2\\
+			w_1&=x-\frac{1}{2}\int_{-1}^{1}x\diff x=x\quad\norm{w_1}^2=\frac{-1}{1}x^2\diff x=\frac{2}{3}\\
+			w_2&=x^2-\frac{1}{3}\quad\norm{w_2}^2=\int_{-1}^{1}\left( x^2\frac{1}{3} \right)^2\diff x=\frac{8}{45}\\
+			\vdots&
+		\end{aligned}
+	\end{equation*}
+	Normalizing, we find
+	\begin{equation*}
+		\begin{aligned}
+			p_0&=\frac{1}{\sqrt{2}}\\
+			p_1(x)&=\sqrt{\frac{3}{2}}x\\
+			p_2(x)&=\sqrt{\frac{45}{8}}\left( x^2-\frac{1}{3} \right)=\frac{1}{2}\sqrt{\frac{5}{2}}\left( 3x^2-1 \right)\\
+			\vdots&
+		\end{aligned}
+	\end{equation*}
+	And so on. The set $(p)_n$ is called the set of \textit{Legendre polynomials}
+	2) Hermite Polynomials\\
+	Using the same procedure, we can find the \textit{Hermite polynomials} $H_n(x)$ in the space $C_2(\R,e^{-x^2}\diff x)$. The first $5$ are the following
+	\begin{equation*}
+		\begin{aligned}
+			H_1&=1\\
+			H_2(x)&=x\\
+			H_3(x)&=x^2-\frac{1}{2}\\
+			H_4(x)&=x^3-\frac{3}{2}x\\
+			H_5(x)&=x^4-3x^2+\frac{3}{4}
+		\end{aligned}
+	\end{equation*}
+\end{eg}
+\begin{thm}[Existence of an Orthonormal Basis]
+	Given a separable or complete euclidean space $\V$, there always exists an orthonormal basis
+\end{thm}
+\begin{proof}
+	Taken $\V$ a separable euclidean space and $(v)_{n\in\N}$ a dense subset of $\V$.\\
+	Removing the linearly independent elements of this subset, we can call the new linearly independent set $(w)_{n\in\N}$. We have obviously
+	\begin{equation*}
+		\begin{aligned}
+			\span\left\{ (w)_{n=1}^\infty \right\}&=\span\left\{ (v)_{n=1}^\infty \right\}\\
+			\cc{\span\left\{ (w)_{n=1}^\infty \right\}}&=\cc{\span\left\{ (v)_{n=1}^\infty \right\}}=\V
+		\end{aligned}
+	\end{equation*}
+	Orthonormalizing the system $(w)_{n\in\N}$ with the Gram-Schmidt procedure I obtain then a new set $(u)_{n\in\N}$ such that
+	\begin{equation*}
+		\cc{\span\left\{ (u)_{n\in\N} \right\}}=\cc{\span\left\{ (w)_{n\in\N} \right\}}=\V
+	\end{equation*}
+	$(u)_{n\in\N}$ is complete and therefore a basis.
+\end{proof}
+\begin{rmk}
+	If $\V$ is a complete euclidean space but not separable, we can find thanks to Zorn's lemma a maximal orthonormal basis, but
+	\begin{enumerate}
+	\item There isn't a standard procedure for finding this basis
+	\item Taken the basis $(u)_{\alpha\in I}$ it can't be numerable. If it was then $\V=\cc{\span\left\{ (u)_{\alpha} \right\}}$. Taken $X=\span_\Q\left\{ (u)_k \right\}$ as the set of finite linear combinations with rational coefficients, we have that $\cc{X}=\span\left\{ (u)_k \right\}$ and therefore $\cc{X}=\V$ contradicting the fact that $\V$ is not separable
+	\end{enumerate}
+\end{rmk}
+%%Bessel Inequality to Fourier Calculus Chapter%%
+\end{document}

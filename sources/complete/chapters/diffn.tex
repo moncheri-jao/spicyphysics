@@ -1,0 +1,1063 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Digression on the Notation Used}
+In this chapter (and from now on, mostly), we will use a notation which is called \textit{abstract index notation} with the \textit{Einstein summation convention}. This is usually abbreviated in common literature as the \textit{Einstein index notation}. We will give here a brief explanation of how this notation actually works, and why it's so useful in shortening mathematical expressions. Let $\V$ be a vector space and $\V^\star$ be the dual space associated with $\V$. Then we can write the elements $v\in\V$, $\varphi\in\V^\star$ with respect to some basis as follows
+\begin{equation}
+	\begin{aligned}
+		v&=(v_1,v_2,\cdots,v_n)=\begin{pmatrix}v_1\\\vdots\\v_n\end{pmatrix}\\
+		\varphi&=(\varphi_1,\varphi_2,\cdots,\varphi_n)=\begin{pmatrix}\varphi_1&\varphi_2&\cdots&\varphi_n\end{pmatrix}
+	\end{aligned}
+	\label{eq:contrcovvector}
+\end{equation}
+The first notation is the \textit{ordered tuple} notation, meanwhile the second notation is the usual column/row notation for vectors utilized in linear algebra. In Einstein notation we will have that
+\begin{equation}
+	\begin{aligned}
+		v&\fto v^i\\
+		\varphi&\fto \varphi_i
+	\end{aligned}
+	\label{eq:einsteinnot1}
+\end{equation}
+Where the vector in the space will be indicated with a raised index (\emph{index, not power!}) and the covector with a lower index, where the index will span all the values $i=1,\cdots,\dim(\V)$.\\
+Let's represent the scalar product in Einstein notation. Let's say that we want to write the scalar product $\spr{v}{v}$
+\begin{equation}
+	\spr{v}{v}=\sum_{i=1}^{\dim(\V)}v_iv_i\fto v_iv^i
+	\label{eq:spreinstein2}
+\end{equation}
+Note how we have omitted the sum over the repeated index. Now one might ask why it's not written as $v_iv_i$ (or $v^iv^i$, since $v\in\V$), and this is easily explained introducing the matrix $g_{ij}$, which is the matrix of the scalar product.\\
+Applying this matrix to $v^i$ we have $g_{ij}v^i$. Note how the low index $j$ is free and $i$ is being summed over, hence is a dummy index, this means that the result must have a lower index $j$ for consistency. So we can write $v_j=g_{ij}v^i$, and due to the lower index we already know that this is a covector, i.e. a linear functional $\V\fto\F$, hence it will ``eat'' a vector and ``spew'' a scalar (with no indices!). Feeding to this covector the vector $v^j$ we have finally
+\begin{equation}
+	\spr{v}{v}=v_jv^j=g_{ij}v^iv^j
+	\label{eq:dotproducteinsteinnot}
+\end{equation}
+Where, algebraically we have ``omitted'' the definition of $\iota(\cdot)=\spr{v}{\cdot}$, which is the canonical isomorphism between $\V$ and $\V^\star$.\\
+With this definition we have defined what mathematically are called \textit{musical isomorphisms}, applications which raise and lower indexes. Ironically, this operation is called \textit{index gymnastics}, since we're raising and lowering indices.
+Thanks to these conventions operations with matrices (and tensors) become much much easier. Let $a^i_j$ and $b^i_j$ be two $n\times n$ matrices over the ordered field $\F$. The multiplication of these two matrices will simply be
+\begin{equation}
+	c^i_j=a^i_kb^k_j
+	\label{eq:matrixprodein}
+\end{equation}
+Note how the $k$ index gets ``eaten''. This mathematical cannibalism is called \textit{contraction of the index} $k$. So, the trace for a matrix $a^i_j$ will be
+\begin{equation}
+	\trace(a)=a^i_i
+	\label{eq:traceeinnot}
+\end{equation}
+And now comes the tricky part. In order to write determinants we need to define a symbol, the so called \textit{Levi-Civita symbol}, $\epsilon_{i_1\ldots i_n}$. In three dimensions it's $\epsilon_{ijk}$, and follows the following rules
+\begin{equation}
+	\epsilon_{ijk}=\begin{dcases}1&\text{even permutation of the indices}\\-1&\text{uneven permutation of the indices}\\0&i=j\vee j=k\vee k=i\end{dcases}
+	\label{eq:3dlc}
+\end{equation}
+In $n$ dimensions, it becomes
+\begin{equation}
+	\epsilon_{i_1\ldots i_k}=\begin{dcases}1&\text{even permutation of indices}\\-1&\text{uneven permutation of indices}\\0&i_i=i_j\text{ for some }i,j\end{dcases}
+	\label{eq:ndlc}
+\end{equation}
+It's obvious by definition that this weird entity is completely antysimmetrical and unitary, and therefore it's perfect for representing permutations (it's also known as permutation symbol for a reason). Therefore, remembering the definition of the determinant we can write, for an $n\times n$ matrix $a^i_j$
+\begin{equation}
+	\det(a)=\epsilon_{i_1\ldots i_n}a^{1i_1}a^{2i_2}\cdots a^{ni_n}=\epsilon_{i_1\ldots i_n}g^{ji_1}a^1_{j}g^{ki_2}a^2_{k}\cdots g^{li_n}a^n_{i_n}
+	\label{eq:determinanteinnot}
+\end{equation}
+If $\dim(\V)=3$, we can therefore immediately define the cross product of two vectors as follows
+\begin{equation}
+	\vec{c}=\vec{v}\times\vec{w}\longrightarrow c^i=g^{ij}\epsilon_{jkl}v^kw^l
+	\label{eq:crossproducteinst}
+\end{equation}
+(Note how we had to raise the index $i$).\\
+From now on, we will start to use Greek letters for indices and Latin letters for labels, in order to avoid confusions, simply look again at the formula for the determinant, it's much clearer this way. In fact, letting $\mu,\nu,\cdots$ be our indices and $i,j,k,\cdots$ our labels, we can write, for a matrix $A^\mu_\nu$
+\begin{equation}
+	\det(A)=A=\epsilon_{\mu_1\ldots \mu_n}g^{\nu\mu_1}g^{\sigma\mu_2}\cdots g^{\zeta\mu_{n}}A^1_{\nu}A^2_\sigma\cdots A^n_\zeta
+	\label{eq:greekdeterminant}
+\end{equation}
+See? Much clearer, at least in my opinion.\\
+Now we might want to understand how to write norms with this notation. For the usual Euclidean norm it's quite easy. So we can easily write
+\begin{equation}
+	\norm{\vec{v}}=\sqrt{\spr{\vec{v}}{\vec{v}}}\fto\sqrt{v_\mu v^\mu}
+	\label{eq:2normein}
+\end{equation}
+In case we have a vector function $f^\mu(x^\nu)$, the following notation will be used
+\begin{equation}
+	\norm{\vec{f}(\vec{x})}\fto \sqrt{f_\mu f^\mu(x^\nu)}
+	\label{eq:fnormein}
+\end{equation}
+Or, for the sum of two functions $g^\mu(x^\nu)\pm f^\mu(y^\nu)$
+\begin{equation}
+	\norm{\vec{g}(\vec{x})\pm\vec{f}(\vec{y})}\longrightarrow\sqrt{g_\mu g^\mu(x^\nu)+f_\mu f^\mu(y^\nu)\pm2g_\mu(x^\nu)f^\mu(y^\nu)}	\label{eq:funcsumein}
+\end{equation}
+Or
+\begin{equation*}
+	\norm{\vec{g}(\vec{x})\pm\vec{f}(\vec{y})}\longrightarrow=\sqrt{g_{\mu\nu}(g^\mu(x^\gamma)\pm f^\mu(y^\gamma))(g^\nu(x^\gamma)\pm f^\nu(y^\gamma))}
+\end{equation*}
+A shorthand notation can be created by directly using the norm symbol, but with the contracted index in the upper or lower position as follows
+\begin{equation}
+	\norm{\vec{g}(\vec{x})\pm\vec{f}(\vec{y})}\longrightarrow\norm{g^\mu(x^\nu)\pm f^\mu(y^\nu)}_\mu
+	\label{eq:normindex}
+\end{equation}
+For $p$-norms we have to watch out for a little detail. We have to add a square root in order to ``fix'' the squaring of every element. So we get
+\begin{equation}
+	\pnorm{\vec{v}}\fto\sqrt[p]{(v_\mu)^{\frac{p}{2}} (v^\mu)^{\frac{p}{2}}}=\left( (v_\mu)^{\frac{p}{2}}(v^\mu)^{\frac{p}{2}} \right)^{\frac{1}{p}}
+	\label{eq:pnormein}
+\end{equation}
+\begin{thm}
+	$\left( (v_\mu v^\mu)^{p/2} \right)^{1/p}$ is wrong
+\end{thm}
+\begin{proof}
+	It's easy to see why it doesn't work by expanding the sum on $\mu$
+	\begin{equation}
+		\begin{aligned}
+			(v_\mu v^\mu)^p&=\left( v_1v^1+v_2v^2+\cdots+v_nv^n \right)^p\\
+			(v_\mu)^{\frac{p}{2}}(v^\mu)^{\frac{p}{2}}&=\left( (v_1v^1)^{p}+(v_2v^2)^p+\cdots+(v_nv^n)^p \right)
+		\end{aligned}
+		\label{eq:pnormproof}
+	\end{equation}
+\end{proof}
+Moreover, it's time to bring down some formal rules for the usage of this notation
+\begin{thm}[Rules for Index Calculus in Einstein Notation]
+	\begin{enumerate}
+	\item Free indices must be consistent in both sides of the equation. I.e. $a^\mu_\nu b_{\mu\gamma\delta}=c_{\nu\gamma\delta}$. $a^\mu_\nu b_{\mu\gamma\delta}\ne c^\gamma_{\nu\delta}$, $a^\mu_\nu b_{\mu\gamma\delta}\ne c_{\nu\gamma\sigma}$
+	\item An index can be repeated \emph{only two times per factor and must be contracted diagonally}. I.e. $a^\mu b_\mu f^\delta_\gamma=c^\delta_\gamma$ is defined correctly, $a_\mu b_\mu$, $a^\mu b^\mu$ or $a^\mu b_\mu f^\mu_\gamma$ are ill defined
+	\item Dummy indices can be replaced at will, since they don't contribute to the ``index equation''
+	\end{enumerate}
+\end{thm}
+\subsection{Differential Operators}
+Differential operators will be defined formally in the next sections, but for now we will simply explain how they actually work with this notation (and what are the advantages of such), alongside the usual boldface notation.\\
+We will begin by defining the derivative along the coordinate vectors (usually indicated with $x^\mu$). We will use the differential operator \textit{del} ($\del$).\\
+This operator will be used as follows
+\begin{enumerate}
+\item If there is no ambiguity for the coordinate system, the derivative alongside the coordinates $x^\mu$ will be indicated as $\del_\mu$
+\item In case of ambiguity, something will be added in order to distinguish the operators. I.e. let $(x^\mu,y^\nu)$ be our coordinate system, then we will have $\del_{x^\mu}$ or $\del_{y^\nu}$
+\item In every single case, even the differential operator \emph{must follow the index calculus rules}
+\end{enumerate}
+Now let $f(x^\mu)$ be some (scalar, there are no free indices) function of the coordinates. The derivative (or gradient, it will soon be defined properly) can be written in various ways. In boldface notation it's usual to indicate this as $\nabla f$, which can be translated as follows
+\begin{equation}
+	\nabla f\longrightarrow\del_\mu f=\pdv{f}{x^\mu}=f_{,\mu}
+	\label{eq:derivationenot}
+\end{equation}
+Note how in the RHS it's obvious that this quantity must be a vector due to the free index. The last one is the \textit{comma notation} for derivation, used for compacting (even more) the notation (Also check how in the second notation, even if the index is raised, it behaves as a lower index, we will check deeply this part in the section on differential forms).\\
+Now comes the fun part. Higher order derivatives.\\
+For the same function, we can define the \textit{Hessian matrix} (the matrix of second derivatives) $\vec{Hf}$, simply applying two times the $\del$ operator
+\begin{equation}
+	\vec{Hf}\fto\del_\nu\del_\mu f=\del^2_{\mu\nu}f=\del_{\mu\nu}f=\pdv[2]{f}{x^\mu}{x^\nu}=f_{,\mu\nu}
+	\label{eq:hessianenot}
+\end{equation}
+Derivatives of order $>2$ can then be defined recursively.\\
+Now we might ask, what if we have a vector field $F^\mu$? Nothing changes. We simply have to remember to not repeat indices in order not to represent scalar products.\\
+We have $\vec{JF}$ as the \textit{Jacobian matrix} of $F^\mu$, basically the derivative matrix which in Einstein notation, as before, has a quite obvious nature
+\begin{equation}
+	\vec{JF}\fto\del_\nu F^\mu=\pdv{F^\mu}{x^\nu}=F^\mu_{,\nu}
+	\label{eq:jacobianenot}
+\end{equation}
+\textit{And so on, and so on\ldots}\footnote{It's quite fun to dive into the dumpster of Einstein notation, isn't it?}\\
+Let's now define the divergence and curl operators. Take now a vector field $g^\mu$. We then have
+\begin{equation}
+	\begin{aligned}
+		\nabla\cdot\vec{g}&\fto g_{\mu\nu}g^{\mu\delta}\del_\delta g^\nu=\del_\mu g^\mu=\pdv{g^\mu}{x^\mu}=g^{\mu}_{,\mu}\\
+		\nabla\times\vec{g}&\fto \epsilon_{\mu\nu\sigma}g^{\nu\delta}\del_\delta g^\sigma=\epsilon_{\mu\nu\sigma}\del^\nu g^\sigma=\epsilon_{\mu\nu\sigma}\pdv{g^\sigma}{x_\mu}=\epsilon_{\mu\nu\sigma}g^{\sigma,\nu}
+	\end{aligned}
+	\label{eq:divroten}
+\end{equation}
+And therefore, defining the Laplacian as $\nabla^2=\nabla\cdot\nabla$, we will simply have, for whatever function $h$
+\begin{equation}
+	\nabla^2 h\fto g^{\mu\nu}\del_\nu\del_\mu h=\del^\mu\del_\mu h=\pdv[2]{h}{x^\mu}{x_\mu}=h^{,\mu}_{\ ,\mu}
+	\label{eq:laplacianen}
+\end{equation}
+Note how the operator $\del^\mu$ appears. This can be seen as a derivation along the covector basis ($x_\mu=g_{\mu\nu}x^\nu$).\\
+Now, we can go back to our mathematical rigor.\newpage
+\section{Curves in $\R^n$}
+\begin{dfn}[Scalar Field]
+	A \textit{scalar field} is a function $f:A\subseteq\R^n\fto\R$ where $A$ is an open set
+\end{dfn}
+\begin{dfn}[Vector Field]
+	A \textit{vector field} is a function $f^\mu:A\subset\R^n\fto\R^m$ where $A$ is an open set
+\end{dfn}
+\begin{dfn}[Continuity]
+	A scalar field $f:A\fto\R$ is said to be continuous in a point $p^\mu\in A$ if
+	\begin{equation}
+		\forall\epsilon>0\ \exists\delta_p\st\norm{x^\mu-p^\mu}<\delta\implies\abs{f(x^\mu)-f(p^\mu)}<\epsilon
+		\label{eq:scalarfieldcont}
+	\end{equation}
+	A vector field $f^\mu:A\to\R^m$ is said to be continuous instead if
+	\begin{equation}
+		\forall\epsilon>0\ \exists\delta_{p}\st\norm{x^\nu-p^\nu}_\nu<\delta\implies\norm{f^\mu(x^\nu)-f^\mu(p^\nu)}_\mu<\epsilon
+		\label{eq:vecfieldcont}
+	\end{equation}
+	If this function is continuous $\forall p^\mu\in A$, then the vector field is said to be part of the space $C(A)$, with $A\subseteq\R^n$
+\end{dfn}
+\begin{dfn}[Canonical Scalar Product]
+	Let $x^\mu,y^\mu\in\R^n$, the \textit{canonical scalar product} is a bilinear application $\spr{\cdot}{\cdot}:\R^n\times\R^n\fto\R$ where, if the components of the two vectors are defined as $x^\mu,y^\mu$, is defined as
+	\begin{equation}
+		\spr{\vec{x}}{\vec{y}}=\sum_{i=1}^nx^iy^i\fto x_\mu y^\mu
+		\label{eq:scalarprod}
+	\end{equation}
+	It's easy to see that the canonical scalar product induces the euclidean norm as follows
+	\begin{equation}
+		\norm{\vec{v}}=\pnorm[2]{\vec{v}}=\sqrt{\spr{\vec{v}}{\vec{v}}}=\sqrt{v_\mu v^\mu}
+		\label{eq:euclideannorm}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Curves in $\R^n$]
+	A \textit{curve} is an application $\varphi\st[a,b]\subset\R\to\R^n$.\\
+	The function $\varphi^\mu(t)=p^\mu$, with $t\in[a,b]$ is called the \textit{parametric representation} of the curve.\\
+	Remembering how indexes work in this notation, we already know that this application can be represented with an ordered $n-$tuple or a vector in $\R^n$
+\end{dfn}
+\begin{dfn}[Regular Curves]
+	A curve $\varphi^\mu(t)$ is said to be continuous if all its components are continuous. A curve is said to be regular iff
+	\begin{equation}
+		\begin{aligned}
+			\varphi^\mu(t)&\in C^1([a,b])\\
+			\sqrt{\varphi_\mu(t)\varphi^\mu(t)}&\ne0\quad t\in(a,b)
+		\end{aligned}
+		\label{eq:regularity}
+	\end{equation}
+	A curve is said to be \textit{piecewise regular} if it's not regular in $[a,b]$ but it's regular in a finite number of subsets $[a_n,b_n]\subset[a,b]$
+\end{dfn}
+\begin{dfn}[Homotopy of Curves]
+	Let $\gamma^\mu,\eta^\mu$ be two curves from a set $[a,b],\ [c,d]$ respectively. These two curves are said to be \textit{homotopic} to one another, and it's indicated as $\gamma^\mu\sim\eta^\mu$ iff
+	\begin{equation}
+		\exists h:[c,d]\fto[\sim][a,b],\ h\in C([c,d]),h^{-1}\in C([a,b]),\ h(s)>h(t)\text{ for }s>t\st\eta^\mu=\gamma^\mu\circ h
+		\label{eq:homotopy}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Tangent Vector]
+	The tangent vector of a regular curve is defined as the following vector.
+	\begin{equation}
+		T^\mu(t)=\frac{\dot{\gamma}^\mu}{\sqrt{(\dot{\gamma_\mu}\dot{\gamma}^\mu)}}
+		\label{eq:tangentvector}
+	\end{equation}
+	Where with $\dot{\gamma}^\mu(t)$ we indicate the derivative of $\gamma^\mu$ with respect to the only variable $t$.
+\end{dfn}
+\begin{dfn}[Tangent Line]
+	A curve $\gamma^\mu:[a,b]\fto\R^n$ is said to have \textit{tangent line} at a point $t_0\in[a,b]$ if it's regular, therefore the line will have parametric equations
+	\begin{equation}
+		p^\mu(t)=\gamma^\mu(t_0)+\dot{\gamma}^\mu(t_0)(t-t_0)
+		\label{eq:curvetanline}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Length of a Curve]
+	The \textit{length} of a curve $\gamma:[a,b]\fto\R^n$ is defined as follows
+	\begin{equation}
+		L_\gamma:=\int_{a}^{b}\sqrt{\dot{\gamma}_\mu(t)\dot{\gamma}^\mu(t)}\diff{t}
+		\label{eq:lengthcurve}
+	\end{equation}
+\end{dfn}
+\begin{rmk}
+	In $\R^2$, if a curve is defined in polar coordinates, it will appear as follows
+	\begin{equation}
+		\rho=\rho(\theta),\quad\theta\in[\theta_0,\theta_1]
+		\label{eq:polarcurve}
+	\end{equation}
+	Its length will be given from the following integral
+	\begin{equation}
+		L_\rho:=\int_{\theta_0}^{\theta_1}\sqrt{(\rho'(\theta))^2+(\rho(\theta))^2}\diff{\theta}
+		\label{eq:polarcurvelength}
+	\end{equation}
+	The graph of a function $f:[a,b]\fto\R,\ f\in C^1(a,b)$ can also be parametrized from a curve $\varphi^\mu(t)$, where
+	\begin{equation}
+		\varphi^\mu(t)\to(t,f(t))
+		\label{eq:1dfgraph}
+	\end{equation}
+	Its length will be then calculated with the following integral
+	\begin{equation}
+		L_\varphi:=\int_{a}^{b}\sqrt{1+(\dot{f}(x))^2}\diff{x}
+		\label{eq:1dfgraphlength}
+	\end{equation}
+\end{rmk}
+\begin{dfn}[Curviline Coordinate]
+	Let $\varphi:[a,b]\fto\R^n$, we can define a function $s(t)$ as follows
+	\begin{equation}
+		s(t)=\int_{a}^{t}\sqrt{\dot{\varphi}_\mu(\tau)\dot{\varphi}_\mu(\tau)}\diff{\tau}
+		\label{eq:curvcoord}
+	\end{equation}
+	Then
+	\begin{equation}
+		\diff{s}=\sqrt{\dot{\varphi}_\mu(t)\dot{\varphi}^\mu(t)}\diff{t}
+		\label{eq:diffcurvcoord}
+	\end{equation}
+	And the length of a curve can also be indicated as follows
+	\begin{equation}
+		L_\varphi=\int_\varphi\diff{s}
+		\label{eq:curvelength2}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Curvature, Normal Vector]
+	The \textit{curvature} of a curve is defined as follows
+	\begin{equation}
+		\kappa(s)=\sqrt{T_\mu(s)T^\mu(s)}=\sqrt{\ddot{\varphi}_\mu(s)\ddot{\varphi}^\mu(s)}
+		\label{eq:curvature}
+	\end{equation}
+	(Note that $\norm{\varphi'(s)}=1$)
+	The \textit{normal vector} is similarly defined as
+	\begin{equation}
+		N^\mu(s)=\frac{\dot{T}^\mu(s)}{\kappa(s)}
+		\label{eq:normalcurve}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Simple Curve, Closed Curve]
+	A \textit{simple curve} is an injective application $\gamma:[a,b]\fto\R^n$. A curve is said to be closed iff $\gamma^\mu(a)=\gamma^\mu(b)$
+\end{dfn}
+\begin{thm}[Jordan Curve]
+	Let $\gamma^\mu$ be a simple and closed curve in $\R^2$ or $\Cf$ (note that $\Cf\simeq\R^2$), then the set $\comp{\{\gamma\}}$ is defined as follows
+	\begin{equation}
+		\comp{\{\gamma\}}=\intr{\{\gamma\}}\cup\extr{(\{\gamma\})}
+		\label{eq:jordanthm}
+	\end{equation}
+	Note that $\{\gamma\}\subset\R^2$ is the image of the application $\gamma$ and $\extr{(\{\gamma\})}$ is the set of points that lay outside of the closed curve.
+\end{thm}
+In $\Cf$ everything that was said about curves holds, however one must watch out for the definition of modulus, for a curve $\gamma^\mu\in\Cf$ we will have
+\begin{equation}
+	\abs{\dot{\gamma}(t)}=\sqrt{(\real'(\gamma))^2+(\imaginary'(\gamma))^2}=\sqrt{\cc{\gamma}(t)\gamma(t)}
+	\label{eq:abscfgamma}
+\end{equation}
+\section{Differentiability in $\R^n$}
+\begin{dfn}[Directional Derivative]
+	Let $A\subseteq\R^n$ be an open set, and $f:A\fto\R$. The function is said to be \textit{derivable} with respect to the direction $v^\mu\in A$ at a point $p^\mu\in A$, if the following limit is finite
+	\begin{equation}
+		\partial_{v^\mu}f(p^\nu)=\lim_{h\to0}\frac{f(p^\mu+hv^\mu)-f(p^\mu)}{h}
+		\label{eq:directionalder}
+	\end{equation}
+	If $v^\mu=x^\mu$ then this is called a \textit{partial derivative}, and it will be indicated in the following ways
+	\begin{equation}
+		\pdv{f}{x^\mu}=\partial_\mu f=\partial_{x^\mu}f
+		\label{eq:partialdernot}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Differentiability]
+	A scalar field $f:A\subseteq\R^n\fto\R$, with $A$ open, is said to be \textit{differentiable} in a point $p^\mu\in A$ if and only if there exists a linear application $a_\mu(p^\nu)=a_\mu$, such that the following limit is finite
+	\begin{equation}
+		\lim_{\sqrt{h_\mu h^\mu}\to0}\frac{R(p^\mu+h^\mu)}{\sqrt{h_\mu h^\mu}}=0
+		\label{eq:limitrest}
+	\end{equation}
+	Where we define the function $R$ as follows
+	\begin{equation}
+		R(p^\mu+h^\mu)=f(p^\mu+h^\mu)-\left( f(p^\mu)+a_\mu h^\mu \right)
+		\label{eq:restfunc}
+	\end{equation}
+	This means that
+	\begin{equation}
+		f(p^\mu+h^\mu)=f(p^\mu)+a_\mu h^\mu+\order{\sqrt{h_\mu h^\mu}}
+		\label{eq:diff}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Consequences of Differentiability]
+	Let $f:A\subseteq\R^n\fto\R$ be a differentiable scalar field in every point of $A$, then
+	\begin{enumerate}
+	\item $f\in C(A)$
+	\item $f$ is differentiable in $A$, and $a_\mu=\del_\mu$, where is the vector differential operator, composed by the partial derivatives
+	\item $f$ has directional derivatives in $A$ and the following equation holds
+		\begin{equation*}
+			\del_{v^\mu}f(p^\nu)=\del_\mu f(p^\nu)v^\mu
+		\end{equation*}
+	\item $\del_\mu{f}$ indicates the maximum and minimum growth of the function $f$
+	\item There exist a tangent hyperplane to the graphic of the function at the point $(p^\mu,f(p^\mu))\in\R^{n+1}$ and has the following equation
+		\begin{equation*}
+			x^{n+1}=f(p^\mu)+\del_\mu f(p^\nu)(x^\mu-p^\mu)
+		\end{equation*}
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	\begin{enumerate}
+	\item $f$ differentiable in $A$ implies $f\in C(A)$
+		\begin{equation*}
+			\lim_{\sqrt{h_\mu h^\mu}\to0}f(p^\mu+h^\mu)=\lim_{\sqrt{h_\mu h^\mu}\to0}(f(p^\mu)+a_\mu h^\mu+\order{\sqrt{h_\mu h^\mu}})=f(p^\mu)
+		\end{equation*}
+	\item $f$ differentiable in $A$ implies $f$ derivable in $A$
+		\begin{equation*}
+			\partial_i f(p^\mu)=\lim_{h\to0}\frac{f(p^\mu+he^i)-f(p^\mu)}{h}=\lim_{h\to0}\frac{a^ih+\order{h}}{h}=a^i\in\R
+		\end{equation*}
+		Then
+		\begin{equation*}
+			R(p^\mu+h^\mu)=f(p^\mu+h^\mu)-f(p^\mu)+\del_\mu f(p^\nu)h^\mu=\order{\sqrt{h_\mu h^\mu}}
+		\end{equation*}
+	\item $\partial_{v^\mu}f=\del_\mu fv^\mu$
+		\begin{equation*}
+			\del_{v^\mu}f(p^\nu)=\lim_{h\to0}\frac{f(p^\mu+hw^\mu)-f(p^\mu)}{h}=\lim_{h\to0}\frac{h\del_\mu f(p^\nu)v^\mu+\order{h}}{h}=\del_\mu f(p^\nu)v^\mu
+		\end{equation*}
+	\item $\del_\mu f$ indicates the direction of maximum growth.\\
+		For Cauchy-Schwartz, we have
+		\begin{equation*}
+			\sqrt{\del_{v^\mu}{f}\del^{v_\mu}f}=\sqrt{\del_\mu fv^\mu \del_\nu fv^\nu}\le\sqrt{\del_\mu f\del^\mu f}\sqrt{v_\nu v^\nu}
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+\begin{thm}[Continuous Differentiation]
+	Let $f:A\subset\R^n\fto\R$, with $A$ open. If $f\in C^1(A)$ (i.e. the derivatives of $f$ are continuous), then $f$ is differentiable in $A$, the vice versa is also true
+\end{thm}
+\begin{proof}
+	We can write the following equation
+	\begin{equation}
+		f(p^\mu+h^\mu)=f(p^1+h^1,\cdots,p^n)-f(p^1,\cdots,p^n)+\cdots+f(p^1,\cdots,p^n+h^n)-f(p^1,\cdots,p^n)
+		\label{eq:prepcontdiff}
+	\end{equation}
+	For Lagrange, we will have
+	\begin{equation}
+		f(p^i+h^i)=h^i\partial_i{f}(p^1,\cdots,q^i,\cdots,p^n)=h^i\partial_if(c_i)
+		\label{eq:lagrange}
+	\end{equation}
+	Therefore
+	\begin{equation}
+		\lim_{\sqrt{h_\mu h^\mu}\to0}\frac{\abs{f(p^\mu+h^\mu)-f(a^\mu)-\partial_\mu fh^\mu}}{\sqrt{h_\mu h^\mu}}\le\lim_{h\to0}\sum_{i=1}^n\abs{\partial_if(c_i)-\partial_if(p^\mu)}\frac{\abs{h^i}}{\sqrt{h_\mu h^\mu}}=0
+		\label{eq:continuousdiff}
+	\end{equation}
+	Therefore $\partial_i f(p^\mu)$ is continuous and the function is differentiable.
+\end{proof}
+\begin{thm}[Differentiability of Vector Fields, Jacobian Matrix]
+	Let $f^\mu:A\subseteq\R^n\fto\R^m$ be a vector field and $A$ an open set, then the function $f^\mu$ is differentiable iff exists a matrix $J^\mu_\nu\in M_{nm}(\R)$ such that
+	\begin{equation}
+		\lim_{\sqrt{h_\mu h^\mu}\to0}\frac{\norm{f^\mu(p^\nu+h^\nu)-f^\mu(p^\nu)-J^\mu_\nu h^\nu}_{\mu}}{\sqrt{h_\mu h^\mu}}
+		\label{eq:jacmatrix}
+	\end{equation}
+	Or, equivalently
+	\begin{equation}
+		f_\mu(p^\nu+h^\nu)=f^\mu(p^\nu)+J^\mu_\nu h^\nu+\order{\sqrt{h_\mu h^\mu}}
+		\label{eq:diffvf}
+	\end{equation}
+	The then $J^\mu_\nu$ is the matrix of partial derivatives of the vector field, called the \textit{Jacobian matrix} of the vector field $f^\mu$, and can be calculated as follows
+	\begin{equation}
+		J^\mu_\nu(p^\sigma)=\del_\nu f^\mu(p^\sigma)
+		\label{eq:jacobian}
+	\end{equation}
+\end{thm}
+\begin{thm}[Composite Derivation]
+	Let $f^\mu:A\subseteq\R^n\fto\R^k$ and $g^\nu:B\subseteq\R^k\fto\R^p$ be two differentiable functions in $p^\sigma\in A$, $f^\mu(p^\sigma)\in B$ and $A,B$ open sets, then $h^\nu=g^\nu\circ f^\mu$ is differentiable, and
+	\begin{equation}
+		\del_\sigma h^\nu=\del_\mu g^\nu(f^{\tilde{\mu}})\del_\sigma f^\mu
+		\label{eq:compdervf}
+	\end{equation}% MANNAGGIA A CRISTO HAI PERSO UN GIORNO PER UNA CAZZATA SIMILE DIO CANCARO LERCIO
+	Since $\mu=1,\cdots,k,\ \nu=1,\cdots,p,\ \sigma=1,\cdots,n$ it's obvious that $\del_\sigma h^\nu\in M_{p,n}(\R),\ \del_\mu g^\nu\in M_{p,k}(\R),\ \del_\sigma f^\mu\in M_{k,n}(\R)$.
+\end{thm}
+\begin{proof}
+	We have that $\left(g^\nu\circ f^\mu\right)=g^\nu(f^\mu(p^\sigma))$. Then $g^\nu$ is differentiable at $f^\mu(p^\sigma)$ if
+	\begin{equation*}
+			g^\nu(f^\mu(p^\sigma+s^\sigma))=g^\nu(f^\mu(p^\sigma))+\del_\sigma\left( g^\nu\circ f^{\tilde{\mu}}\right)\left( f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma) \right)+\order{\norm{f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma)}_\mu}
+	\end{equation*}
+	Since $f^\mu$ is differentiable, we have
+	\begin{equation*}% Reached fake mu, REMEMBER MULTIPLICATION AND FIX THAT TERRIBLE SHIT STAIN ON THAT EQUATION
+		\begin{aligned}
+			g^\nu(f^\mu(p^\sigma+s^\sigma))&=g^\nu(f^\mu(p^\sigma))+\del_\sigma\left(g^\nu\circ f^{\tilde{\mu}}\right)\del_\sigma f^\mu+\\
+			&+\del_\sigma\left(g^\nu\circ f^\mu\right)\order{\sqrt{s_\mu s^\mu}}+\order{\norm{f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma)}_\mu}
+		\end{aligned}
+	\end{equation*}
+	Then, we must prove that
+	\begin{equation*}
+		\lim_{\sqrt{s_\mu s^\mu}\to0}\frac{\del_\sigma\left(g^\nu\circ f^\mu\right)\order{\norm{f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma)}_\mu}}{\sqrt{s_\mu s^\mu}}=0
+	\end{equation*}
+	But
+	\begin{equation*}
+		\frac{\del_\sigma\left( g^\nu\circ f^\mu \right)\order{\sqrt{s_\mu s^\mu}}}{\sqrt{s_\mu s^\mu}}\to0	\end{equation*}
+	And
+	\begin{equation*}
+		\norm{f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma)}_\mu\le\sqrt{\del^\sigma f_\mu\del_\sigma f^\mu}\sqrt{s_\mu s^\mu}+\order{\sqrt{s_\mu s^\mu}}\le C\sqrt{s_\mu s^\mu}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\frac{\order{\norm{f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma)}_\mu}}{\sqrt{s_\mu s^\mu}}=\frac{\order{\norm{f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma)}_\mu}}{\norm{f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma)}_\mu}\frac{\norm{f^\mu(p^\sigma+s^\sigma)-f^\mu(p^\sigma)}_\mu}{\sqrt{s_\mu s^\mu}}\to0
+	\end{equation*}
+\end{proof}
+\section{Differentiability in $\Cf$}
+\begin{dfn}[Differentiability]
+	A function $f:G\subset\Cf\fto\Cf$ with $G$ open, is said to be \textit{differentiable} or \textit{derivable} at a point $a\in G$ if exists finite the following limit
+	\begin{equation}
+		\derin[a]{\derivative{f}{z}}=f'(a)=\lim_{z\to a}\frac{f(z)-f(a)}{z-a}
+		\label{eq:dercf}
+	\end{equation}
+	As usual, if this holds $\forall a\in G$, the function is derivable in $G$
+\end{dfn}
+\begin{thm}
+	If $f:G\subset\Cf\fto\Cf$ is derivable in $a\in G$, then $f$ is continuous in $a$
+\end{thm}
+\begin{proof}
+	\begin{equation*}
+		\lim_{z\to a}(f(z)-f(a))=\lim_{z\to a}(z-a)\lim_{z\to a}\frac{f(z)-f(a)}{z-a}=0
+	\end{equation*}
+\end{proof}
+\begin{thm}[Some Simple Rules]
+	Let $f,g:G\subset\Cf\fto\Cf$
+	\begin{enumerate}
+	\item $(f\pm g)'(z)=f'(z)\pm g'(z)$
+	\item $(fg)'(z)=f'(z)g(z)+f(z)g'(z)$
+	\item $(f/g)'(z)=f'(z)/g(z)-f(z)g'(z)/g^2(z)\quad\forall z\in G\st g(z)\ne0$
+	\item $f(z)=c\implies f'(z)=0$
+	\item $f(z)=z^{n}\implies f'(z)=nz^{n-1}$
+	\end{enumerate}
+\end{thm}
+\begin{thm}[Composite Function Derivation]
+	Let $f:G\subset\Cf\fto\Cf$ and $g:F\subset\Cf\fto\Cf$, where $f(G)\subset F$. If $f$ is derivable in $a\in G$ and $g$ is derivable in $f(a)\in F$, then $g\circ f$ is derivable, and its derivative is calculated as follows
+	\begin{equation}
+		\derin[a]{\derivative{z}(g\circ f)}=\derin[f(a)]{\derivative{g}{z}}\derin[a]{\derivative{f}{z}}=g'(f(a))f'(a)
+		\label{eq:compositedercf}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Since $G$ is open, $\exists B_r(a)\subset G$. Therefore, taking a sequence $(z)_n\in B_r(a)\st\lim_{n\to\infty}(z)_n=a$.\\
+	Letting $f(z_n)\ne a$, we can directly write in the definition of derivative
+	\begin{equation*}
+		\lim_{n\to\infty}\frac{(g\circ f)(z_n)-(g\circ f)(a)}{z_n-a}=(g\circ f)'(a)=g'(f(a))f'(a)
+	\end{equation*}
+	Thus, rewriting the function inside the limit
+	\begin{equation*}
+		\frac{(g\circ f)(z_n)-(g\circ f)(a)}{z_n-a}=\frac{(g\circ f)(z_n)-(g\circ f)(a)}{f(z_n)-f(a)}\frac{f(z_n)-f(a)}{z_n-a}\to0
+	\end{equation*}
+	Since $f$ is continuous in $a\in G$
+\end{proof}
+\begin{thm}[Inverse Function Derivation]
+	Let $f:G\subset\Cf\fto[\sim]\Cf$ be a bijective continuous map, with $f^{-1}(w)=z$. If $f(a)\ne0$ and it's derivable at that same point, we have
+	\begin{equation}
+		\derin[f(a)]{\derivative{f^{-1}}{w}}=\frac{1}{f'(a)}
+		\label{eq:inversedercf}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Since $f$ is bijective and continuous we can write
+	\begin{equation*}
+		\derin[f(a)]{\derivative{f^{-1}}{w}}=\lim_{w\to f(a)}\frac{f^{-1}(w)-f^{-1}(f(a))}{w-f(a)}=\lim_{z\to a}\frac{z-a}{f(z)-f(a)}=\frac{1}{f'(a)}
+	\end{equation*}
+\end{proof}
+\subsection{Holomorphic Functions}
+\begin{dfn}[Holomorphic Function]
+	A function $f:G\subset\Cf\fto\Cf$ is said to be \textit{holomorphic} in its domain $G$ if $G$ is open, and
+	\begin{equation}
+		\forall{z}\in G\ \exists\derivative{f}{z}=f'(z)
+		\label{eq:holomorphicfc}
+	\end{equation}
+	It is indicated as $f\in H(G)$. It's easy to demonstrate that this set is a vector space.
+\end{dfn}
+\begin{thm}[Cauchy-Riemann Equation]
+	Let $f:G\subset\Cf\fto\Cf$, where $G$ is open and $f\in H(G)$. Then, if we write $z=x+iy$
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\real{(f(z))}&=u(x,y)\\
+				\imaginary{(f(z))}&=v(x,y)
+		\end{aligned}\right.
+		\label{eq:defnrealimf}
+	\end{equation}
+	We have that the function is holomorphic if and only if
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\pdv{u}{x}-\pdv{v}{y}&=0\\
+				\pdv{v}{x}+\pdv{u}{y}&=0
+		\end{aligned}\right.
+		\label{eq:cauchyriemann}
+	\end{equation}
+	Alternatively, it can be written as follows
+	\begin{equation}
+		\pdv{f}{x}+i\pdv{f}{y}=0
+		\label{eq:wirtingercr}
+	\end{equation}
+\end{thm}
+\begin{dfn}[Wirtinger Derivatives]
+	Before demonstrating the previous theorem, we define the \textit{Wirtinger derivatives} as follows.\\
+	Let $z\in\Cf$, $z=x+iy$ and $f:G\subset\Cf\fto\Cf$.
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\pdv{f}{z}=\partial f(z)&=\frac{1}{2}\left( \pdv{x}-i\pdv{y} \right)f(z)\\
+				\pdv{f}{\cc{z}}=\dbar f(z)&=\frac{1}{2}\left( \pdv{x}+i\pdv{y} \right)f(z)
+		\end{aligned}\right.
+		\label{eq:wirtingerder}
+	\end{equation}
+	Then, the Cauchy-Riemann equations will be equivalent to the following equation
+	\begin{equation}
+		\pdv{f}{\cc{z}}=\dbar{f(z)}=0
+		\label{eq:crwirtinger}
+	\end{equation}
+\end{dfn}
+\begin{proof}
+	Let $f(z)=u(x,y)+iv(x,y):G\subset\Cf\fto\Cf$ be a differentiable function in a point $z_0$, then as we defined, we have that $f\in H(B_\epsilon(z_0))$, and therefore
+	\begin{equation*}
+		\derin[z_0]{\derivative{f}{z}}=\lim_{h\to0}\frac{f(z_0+h)-f(z_0)}{h}
+	\end{equation*}
+	And, therefore, along the imaginary axis and the real axis, we have
+	\begin{equation*}
+		\begin{aligned}
+			\lim_{\real(h)\to0}\frac{f\left( z_0+\real(h) \right)-f(z_0)}{\real(h)}&=\derin[z_0]{\pdv{f}{x}}\\
+			\lim_{\imaginary(h)\to0}\frac{f\left( z_0+i\imaginary(h) \right)-f(z_0)}{i\imaginary(h)}&=\frac{1}{i}\derin[z_0]{\pdv{f}{y}}=-i\derin[z_0]{\pdv{f}{y}}
+		\end{aligned}
+	\end{equation*}
+	Due to the continuity of the derivative $\left( f\in H(B_\epsilon(z_0)) \right)$ we must have an equality between these limits
+	\begin{equation*}
+		\pdv{f}{x}+i\pdv{f}{y}=2\pdv{f}{\cc{z}}=0,\ \therefore f\in H(B_\epsilon(z_0))\implies\pdv{f}{\cc{z}}=0
+	\end{equation*}
+	But, since $f(z)=u(x,y)+iv(x,y)$, we will have that
+	\begin{equation*}
+		\begin{aligned}
+			\pdv{f}{\cc{z}}&=\pdv{\cc{z}}\left( u(x,y)+iv(x,y) \right)=\frac{1}{2}\left( \pdv{x}+i\pdv{y} \right)\left( u(x,y)+iv(x,y) \right)\\
+			&=\frac{1}{2}\left( \pdv{u}{x}+i\pdv{u}{y}+i\pdv{v}{x}-\pdv{v}{y} \right)=0\\
+			&\therefore\pdv{u}{x}-\pdv{v}{y}=i\pdv{v}{x}+i\pdv{u}{y}
+		\end{aligned}
+	\end{equation*}
+	Rewriting the previous equation in a system, we immediately get back the Cauchy-Riemann equations
+	\begin{equation*}
+		\begin{aligned}
+			\pdv{u}{x}-\pdv{v}{x}&=0\\
+			\pdv{v}{x}+\pdv{u}{y}&=0
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Whole Function]
+	A function $f:\Cf\fto\Cf$ is said to be \textit{whole} iff $f\in H(\Cf)$
+\end{dfn}
+\begin{dfn}[Singular Point]
+	Let $f:G\subset\Cf\fto\Cf$ be function such that if $D=B_\epsilon(z_0)\setminus\{z_0\}$ and $f\in H(D)$, then $z_0$ is said to be a \textit{singular point} of $f$
+\end{dfn}
+%\begin{thm}
+%
+%\end{thm}
+For functions $f:[a,b]\subset\R\fto\Cf$ every theorem already stated for curves in $\R^n$ with $n=2$ holds, since $\Cf\simeq\R^2$. The only thing that should be checked thoroughly is that
+\begin{equation*}
+	f(t)=\begin{pmatrix}\real(f(t))\\\imaginary(f(t))\end{pmatrix}\in\derin[\R]{\Cf}
+\end{equation*}
+Is written as
+\begin{equation*}
+	f(t)=\real(f(t))+i\imaginary(f(t))\in\Cf
+\end{equation*}
+\section{Surfaces}
+\begin{dfn}[Regular Surface]
+	Let $K\subset\R^{2}$, $K=\cc{E}$ where $E$ is an open and connected subset. A \textit{regular surface} in $\R^3$ is an application
+	\begin{equation*}
+		r^\mu:K\fto\R^3
+	\end{equation*}
+	Such that
+	\begin{enumerate}
+	\item $r^\mu\in C^1(K)$, i.e. $\exists\del_\nu r^\mu\in C(K)$
+	\item $r^\mu$ is injective in $K$
+	\item $\rank\left(\del_\nu r^\mu\right)=2$
+	\end{enumerate}
+	The image $\img(r^\mu)=\Sigma\subset\R^2$ is then defined by the following parametric equations
+	\begin{equation}
+		r^\mu(u,v)=\left\{\begin{aligned}x(u,v)&=r^1(u,v)\\y(u,v)&=r^2(u,v)\\z(u,v)&=r^3(u,v)\end{aligned}\right.
+		\label{eq:parametricsurf}
+	\end{equation}
+	The third condition can be rewritten as follows
+	\begin{equation}
+		\epsilon^\mu_{\ \nu\sigma}\del_1r^\nu\del_2r^\sigma=\epsilon^\mu_{\ \nu\sigma}\del_1r^\nu\del_2r^\sigma\ne0\quad\forall(u,v)\in\intr{K}
+		\label{eq:surfregcond}
+	\end{equation}
+\end{dfn}
+\begin{rmk}
+	A function $f\in C^1(K)$ defines automatically a surface with parametric equations $r^\mu(u,v)=(u,v,f(u,v))$. This surface is always regular since $\epsilon_{\mu\nu\sigma}\del_1r^\nu\del_2r^\sigma=(-2u,-2v,1)\ne0\quad\forall(u,v)\in K$
+\end{rmk}
+\begin{dfn}[Coordinate Lines]
+	The curves obtained fixing one of the two variables are called \textit{coordinate lines} in the surface $\Sigma$. We have therefore, for a parametric surface $r^\mu(u,v)$ and two fixed values $\tilde{u},\tilde{v}\in I\subset\R$
+	\begin{equation}
+		\begin{aligned}
+			x_1^\mu(t)&=r^\mu(t,\tilde{v})\\
+			x_2^\mu(t)&=r^\mu(\tilde{u},t)
+		\end{aligned}
+		\label{eq:coordinatelines}
+	\end{equation}
+\end{dfn}
+\begin{eg}
+	The sphere centered in a point $p^\mu_0\in\R^3$, $p^\mu_0=(x_0,y_0,z_0)$ with radius $R\ge0$ has the following parametric equations
+	\begin{equation}
+		\begin{aligned}
+			x&=x_0+R\sin(u)\cos(v)\\
+			y&=y_0+R\sin(u)\sin(v)\\
+			z&=z_0+R\cos(v)
+		\end{aligned}
+		\label{eq:sphereradiusR}
+	\end{equation}
+	With $(u,v)\in[0,\pi]\times[0,2\pi]$. It's a regular surface, since
+	\begin{equation*}
+		\norm{\epsilon^\mu_{\ \nu\sigma}\del_1r^\nu\del_2r^\sigma}_\mu=R^2\sin(u)>0\quad\forall(u,v)\in[0,\pi]\times[0,2\pi]
+	\end{equation*}
+\end{eg}
+\begin{dfn}[Curve on a Surface]
+	Let $\gamma:[a,b]\subset\R\fto K\subset\R^3$ be a regular curve, and $\vec{r}:K\fto\Sigma$, with the following parametric equations
+	\begin{equation}
+		\gamma^\mu(t)=\left\{\begin{aligned}u&=u(t)\\v&=v(t)\end{aligned}\right.
+		\label{eq:parametricsurfgam}
+	\end{equation}
+	The regular curve $p^\mu(t)=r^\mu(u(t),v(t))$ has $\img{p^\mu}\subset\Sigma$. If it passes for a point $p^\mu_0=(u_0,v_0)$ it has tangent line
+	\begin{equation}
+		p^\mu(t)=p^\mu_0+\dot{r}^{\mu}(t)(t-t_0)=p^\mu_0+\partial_ur^\mu(u(t),v(t))\dot{u}(t)+\partial_vr^\mu(u(t),v(t))\dot{v}(t)
+		\label{eq:tangline}
+	\end{equation}
+	The line is contained inside the following plane
+	\begin{equation}
+		\det\begin{pmatrix}(x-x_0)&(y-y_0)&(z-z_0)\\\partial_1r^1&\partial_1r^2&\partial_3r^1\\\partial_2r^1&\partial_2r^2&\partial_3r^3\end{pmatrix}
+		\label{eq:surftanlineplane}
+	\end{equation}
+	For a \textit{cartesian surface}, i.e. the surface generated from the graph of a function $f(x,y)$, the tangent plane will be
+	\begin{equation}
+		z=f(x^\mu_0)+\del_\mu f(x^\nu_0)(x^\mu-x^\mu_0)
+		\label{eq:cartsurftanplan}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Normal Vector]
+	The \textit{normal vector} to a surface $\Sigma$, $n^\mu(u,v)$ is the vector
+	\begin{equation}
+		n^\mu(u,v)=\frac{1}{\sqrt{\epsilon^\mu_{\ \nu\sigma}\epsilon_\mu^{\ \delta\gamma}\del_1r^\nu\del_2r^\sigma\del_1r_\delta\del_vr_\gamma}}\epsilon^\mu_{\ \nu\sigma}\partial_ur^\nu\partial_vr^\sigma
+		\label{eq:normalsurf}
+	\end{equation}
+	For a cartesian surface we have
+	\begin{equation}
+		n^\mu(x,y)=\frac{1}{\sqrt{1+\del_\mu f\del^\mu f}}\begin{pmatrix}-\del_1f\\-\del_2f\\1\end{pmatrix}^\mu
+		\label{eq:cartsurfnorm}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Implicit Surface]
+	Let $F:A\subset\R^3\fto\R$ be a function such that $F\in C^1(A)$, letting $\Sigma:=\{\derin{x^\mu\in\R^3}F(x^\mu)=0\}$. If $x^\nu_0\in\Sigma$ and $\del_\mu F(x^\nu_0)\ne0$, $\Sigma$ coincides locally to a cartesian surface, and the equation of the tangent plane at the point $x^\nu_0$ is the following
+	\begin{equation}
+		\del_\mu F(x^\nu_0)(x^\mu-x_0^\mu)=0
+		\label{eq:tangentimplicitplan}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Metric Tensor]
+	Let $\diff{s}$ be the curviline coordinate of some curve $\gamma^\mu$ inside a regular surface $\Sigma$. Then we have that
+	\begin{equation}
+		s^\mu(t)=r^\mu(u(t),v(t))
+		\label{eq:softsurf}
+	\end{equation}
+	And therefore
+	\begin{equation}
+		\diff{s}^2=\diff{r_\mu}\diff{r^\mu}=\del_1r^\mu\del_1r_\mu\left(\diff{x^1}\right)^2+2\del_1r^\mu\del_2r_\mu\diff{x^1}\diff{x^2}+\del_2r^\mu\del_2r_\mu\left( \diff{x^2} \right)^2
+		\label{eq:diffssurf}
+	\end{equation}
+	In compact form, we can write
+	\begin{equation}
+		\diff{s}^2=g_{\mu\nu}\diff{x^\mu}\diff{x^\nu}
+		\label{eq:metrictensorphys}
+	\end{equation}
+	And, the \textit{metric tensor} $g_{\mu\nu}$ can defined as follows
+	\begin{equation}
+		g_{\mu\nu}=\del_\mu r^\sigma\del_\nu r_\sigma
+		\label{eq:metrictensor}
+	\end{equation}
+	Or, in matrix notation
+	\begin{equation}
+		g_{\mu\nu}=\begin{pmatrix}\del_1r^\mu\del_1r_\mu&\del_1r^\mu\del_2r_\mu\\\del_2r^\mu\del_1r_\mu&\del_2r^\mu\del_2r_\mu\end{pmatrix}_{\mu\nu}
+		\label{eq:delmetrictensor}
+	\end{equation}
+	In usual mathematical notation we have
+	\begin{equation}
+		g_{\mu\nu}=\begin{pmatrix}E&F\\F&G\end{pmatrix}_{\mu\nu}
+		\label{eq:metrictensro}
+	\end{equation}
+	And it's called the \textit{first fundamental quadratic form} in the language of differential geometry. Then, we can write
+	\begin{equation}
+		\diff{s}^2=E\left(\diff{x^1}\right)^2+2F\diff{x^1}\diff{x^2}+G\left(\diff{x^2}\right)^2
+		\label{eq:diffsfff}
+	\end{equation}
+\end{dfn}
+\section{Optimization}
+\subsection{Critical Points}
+\begin{thm}[Fermat]
+	Let $p^\nu\in A$ be a point of local minimal or maximal for the function $f:A\subseteq\R^n\fto\R$ with $f\in C^1(A)$. If $f$ is differentiable in $p^\nu$ we have
+	\begin{equation}
+		\del_\mu f(p^\nu)=0
+		\label{eq:fermthm}
+	\end{equation}
+	The point $p^\nu$ satisfying this condition is then called a \textit{stationary point} or a \textit{critical point} for the function $f$
+\end{thm}
+\begin{proof}
+	Let $v^\mu\in A$ be a direction. The function $g(t)=f(p^\mu+tv^\mu)$ has a point of local maximal or minimal for $t=0$. Then
+	\begin{equation}
+		F'(0)=\del_{v^\mu}f(p^\nu)=\del_\mu f(p^\nu)v^\mu=0\implies\del_\mu f(p^\nu)=0
+		\label{eq:frmthmproof}
+	\end{equation}
+\end{proof}
+\begin{dfn}[Hessian Matrix]
+	Let $f:A\subseteq\R^n\fto\R$, and let $f\in C^1(A)$, then we define the \textit{Hessian matrix} as the matrix of the second partial derivatives of the function $f$
+	\begin{equation}
+		\del_\mu\del_\nu f(x^\gamma)=\del_{\mu\nu}f(x^\gamma)\begin{pmatrix}\del_{11}f&\cdots&\del_{1n}f\\\vdots&\ddots&\vdots\\\del_{n1}f&\cdots&\del_{nn}f\end{pmatrix}_{\mu\nu}(x^\gamma)
+		\label{eq:hessianmatrix}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Schwarz]
+	Let $f:A\subseteq\R^n\fto\R$, $f\in C^2(A)$, then
+	\begin{equation}
+		\del_{\mu\nu}f=\del_{\nu\mu}f
+		\label{eq:simmhess}
+	\end{equation}
+\end{thm}
+\begin{dfn}[Nature of Critical Points]
+	Let $p^\gamma$ be a critical point for a function $f\in C^1(A)$.\\
+	Then
+	\begin{enumerate}
+	\item $\del_{\mu\nu}f(p^\gamma)$ is definite positive, then $p^\gamma$ is a local minimum
+	\item $\del_{\mu\nu}f(p^\gamma)$ is definite negative, then $p^\gamma$ is a local maximum
+	\item $\del_{\mu\nu}f(p^\gamma)$ is indefinite, then $p^\gamma$ is a saddle point
+	\end{enumerate}
+\end{dfn}
+\begin{thm}
+	Here is a list of some rules in order to determine the definition of the matrix $\del_{\mu\nu}f$.\\
+	Let $v^\mu\in A$ be a direction, and $p^\gamma\in A$ a critial point of the function $f:A\subset\R^n\fto\R$ then
+	\begin{enumerate}
+	\item If $\del_{\mu\nu}f(p^\gamma)v^\mu v^\nu>0\quad\forall v^\mu\in A\implies\del_{\mu\nu}f(p^\gamma)$ positive definite
+	\item If $\del_{\mu\nu}f(p^\gamma)v^\mu v^\nu<0\quad\forall v^\mu\in A\implies\del_{\mu\nu}f(p^\gamma)$ negative definite
+	\item If $\del_{\mu\nu}f(p^\gamma)v^\mu v^\nu\ge0\quad\forall v^\mu\in A\implies\del_{\mu\nu}f(p^\gamma)$ semi-positive definite
+	\item If $\del_{\mu\nu}f(p^\gamma)v^\mu v^\nu\le0\quad\forall v^\mu\in A\implies\del_{\mu\nu}f(p^\gamma)$ semi-negative definite
+	\item If $v^\mu\ne w^\mu$ are two directions, and $\del_{\mu\nu}f(p^\gamma)v^\mu v^\nu>0\wedge\del_{\mu\nu}f(p^\gamma)w^\mu w^\nu<0\implies\del_{\mu\nu}f(p^\gamma)$ indefinite
+	\end{enumerate}
+\end{thm}
+\begin{thm}[Sylvester's Criteria]
+	Let $A^\mu_\nu\in M_{nn}(\R)$, and $(A_k)^\mu_\nu$ be the reduced matrix with order $k\le n$, then
+	\begin{enumerate}
+	\item $\det_{\mu\nu}\left( (A_k)^\mu_\nu \right)>0\implies A^\mu_\nu$ positive definite
+	\item $(-1)^k\det_{\mu\nu}\left( (A_k)^\mu_\nu \right)>0\implies A^\mu_\nu$ negative definite
+	\item If $\det_{\mu\nu}\left( (A_{2k})^\mu_\nu \right)<0$ or if $\det_{\mu\nu}\left( (A_{2k+1})^\mu_\nu \right)<0\wedge\det_{\mu\nu}\left( (A_{2n+1})^\mu_\nu \right)>0$ for $k\ne n$, then $A^\mu_\nu$ is indefinite
+	\end{enumerate}
+\end{thm}
+\begin{thm}[Compact Weierstrass]
+	Let $f:K\subseteq\R^n\fto\R$, $f\in C(K)$, with $K$ a compact set, then
+	\begin{equation}
+		\exists p^\mu,q^\mu\in K\st\min_K(f)=f(p^\mu)\le f(x^\mu)\le\max_K(f)=f(q^\mu)\ \forall x^\mu\in K
+		\label{eq:weierstrass}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Being $K$ a compact set, we have that every sequence $(p^\mu)_n$ converges inside the set, therefore, letting $(p^\mu)_n$ being a minimizing sequence for $f$. Then there exist a converging subsequence $(p^\mu)_{n_k}$ such that
+	\begin{equation*}
+		f(p^\mu_{n_k})\to f(p^\mu)
+	\end{equation*}
+	But, since $(p^\mu)_n$ is a minimizing sequence, we have
+	\begin{equation*}
+		f(p^\mu)=\min_{K}(f)
+	\end{equation*}
+	By definition of minimizing sequence. Analogously, one can define a maximizing sequence and obtain the same result for the maximum of the function in $K$
+\end{proof}
+\begin{thm}[Closed Weierstrass]
+	Let $f:L\subseteq\R^n\fto\R$. If $L=\cc{L}$ and $f\in C(L)$ is a \textit{coercitive} function, i.e.
+	\begin{equation}
+		\lim_{\sqrt{x_\mu x^\mu}\to\infty}f(x^\mu)=+\infty
+		\label{eq:coercitivef}
+	\end{equation}
+	Then
+	\begin{equation}
+		\exists x^\mu\in L\st\min_L(f)=f(x^\mu)
+		\label{eq:closedweierstrass}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let $(p^\mu)_n$ be a minimizing sequence for $f$ in $L$. If this sequence wasn't limited, we would have that $\sqrt{(p_\mu)_n(p^\mu)_n}\to\infty$, and therefore
+	\begin{equation*}
+		\inf_L(f)=\lim_{n\to\infty}f(p^\mu_n)=+\infty\quad\lightning
+	\end{equation*}
+	Therefore $(p^\mu)_n$ must be limited, and the proof is the same as in the case of a compact set.
+\end{proof}
+\begin{thm}[Topology and Functions]
+	Let $f:\R^n\fto\R$, $f\in C(\R^n)$. Then
+	\begin{equation}
+		\begin{aligned}
+			&\{\derin{x^\mu\in\R^n}f(x^\mu)<a\in\R\}\\
+			&\{\derin{x^\mu\in\R^n}f(x^\mu)>b\in\R\}
+		\end{aligned}
+		\label{eq:opensetsfc}
+	\end{equation}
+	Are open sets in $\R^n$ with the standard topology, and
+	\begin{equation}
+		\begin{aligned}
+			&\{\derin{x^\mu\in\R^n}f(x^\mu)\le a\in\R\}\\
+			&\{\derin{x^\mu\in\R^n}f(x^\mu)\ge b\in\R\}
+		\end{aligned}
+		\label{eq:closedsetsfc}
+	\end{equation}
+	Are closed sets
+\end{thm}
+\subsection{Convexity and Implicit Functions}
+\begin{dfn}[Convex Set]
+	A set $A\subset\R^n$ is said to be \textit{convex} if
+	\begin{equation}
+		\lambda x^\mu+(1-\lambda)y^\mu\in A\quad\forall x^\mu,y^\mu\in A,\ \forall\lambda\in[0,1]
+		\label{eq:convexityset}
+	\end{equation}
+	Analogously, a function $f:A\subset\R^n\fto\R$ is said to be convex, if
+	\begin{equation}
+		f\left( \lambda x^\mu+(1-\lambda)y^\mu \right)\le\lambda f(x^\mu)+(1-\lambda)f(y^\mu)\quad\forall x^\mu,y^\mu\in A,\ \forall\lambda\in[0,1]
+		\label{eq:convexfx}
+	\end{equation}
+	The function $f$ is also known as a \textit{sublinear} function\\
+	Also, the set
+	\begin{equation}
+		E_f=\{\derin{(x^\mu,\lambda)\in A\times\R}f(x^\mu)\le y\}
+		\label{eq:convexset}
+	\end{equation}
+	Is convex
+\end{dfn}
+\begin{thm}[Convexity]
+	Let $f:A\subset\R^n\fto\R$.
+	\begin{enumerate}
+	\item $f$ convex in $A\implies f\in C(A)$
+	\item $f$ differentiable in $A\implies f$ convex $\iff f(x^\mu)\ge f(p^\mu)+\spr{\nabla f(p^\mu)}{x^\mu-p^\mu}$
+	\item $f\in C^2(A)\implies f$ convex $\iff \del_{\mu\nu}f(x^\gamma)$ is positive semidefinite
+	\end{enumerate}
+\end{thm}
+\begin{dfn}[Matrix Infinite Norm]
+	Let $A^\mu_\nu(x^\gamma)\in\V\fto M_{mn}(\F)$, where $\dim(\V)=n$. We can define a norm for this space as follows
+	\begin{equation}
+		\inorm{A^\mu_\nu}=\sqrt{m}\sqrt{\max_{\mu}\sup_{x^\gamma\in\V}A^{(\mu)}_\nu A^\nu_{(\mu)}(x^\gamma)}
+		\label{eq:matrixinorm}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Average Value]
+	Let $f^\mu:A\subseteq\R^n\fto\R^m$, with $f\in C^1(A)$, $A$ an open set and $K\subset A$ a compact convex subset, then
+	\begin{equation}
+		\norm{f^\mu(x^\nu)-f^\mu(y^\nu)}_\mu\le\inorm{\del_\nu f^\mu}\norm{x^\nu-y^\nu}_\nu
+		\label{eq:averageval}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let $r^\nu(t)=(1-t)y^\nu+tx^\nu$ be a smooth parametrization of a segment connecting the two points $x^\nu,y^\nu$, then
+	\begin{equation*}
+		\begin{aligned}
+			\norm{f^\mu(r^\nu(1)-f^\mu(r^\nu(0)}^2_\mu&\le\del^\nu f_\mu\del_\nu f^\mu(r^\nu(t))\le\sup_{r^\gamma}(\del^\nu f_\mu\del_\nu f^\mu(r^\gamma))\norm{x^\nu-y^\nu}_\nu^2\\
+			&\le m\max_\mu\sup_\gamma\left(\del^\nu f_{(\mu)}\del_\nu f^{(\mu)}(x^\gamma)\right)\norm{x^\nu-y^\nu}_\nu^2
+		\end{aligned}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\begin{aligned}
+			&\norm{f^\mu(x^\nu)-f^\mu(y^\nu)}_\mu\le\sqrt{m}\sqrt{\max_\mu\sup_\gamma\left(\del^\nu f_{(\mu)}\del_\nu f^{(\mu)}\right)}\norm{x^\nu-y^\nu}_\nu=\\
+			&=\inorm{\del_\nu f^\mu}\norm{x^\nu-y^\nu}_\nu\quad\forall x^\nu,y^\nu\in K
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{thm}[Implicit Functions, Dini]
+	Let $f^\mu:A\subseteq\R^m\times\R^n\fto\R^n$, where $f^\mu\in C^1(A)$. Also let $(x^\nu_0,y^\gamma_0)\in A$ such that
+	\begin{equation*}
+		\begin{aligned}
+			f^\mu(x^\nu_0,y^\gamma_0)&=0\\
+			\det_{\mu\nu}\left(\pdv{f^\mu}{y^\gamma}\right)&\ne0
+		\end{aligned}
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\exists B_\epsilon(x^\nu_0)=I\subset\R^m,\ B_\epsilon(y^\gamma_0)=J\subset\R^n\st f^\mu(x^\nu,y^\gamma)=0\ \forall(x^\nu,y^\gamma)\in I\times J
+	\end{equation*}
+	Has a \emph{unique} solution $y^\gamma=g^\gamma(x^\nu)\in J$, with $g^\gamma\in C^1(I)$, and
+	\begin{equation}
+		\pdv{g^\gamma}{x^\nu}=-\left( \pdv{f^\mu}{y^\gamma} \right)^{-1}\pdv{f^\mu}{x^\nu}
+		\label{eq:dinider}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let $B^\gamma_\mu=\left(\del_{y_0^\gamma}f^\mu\right)^{-1}$, then we know that
+	\begin{equation*}
+		f^\mu(x^\nu,y^\gamma)=0\iff B^\gamma_\mu f^\mu(x^\nu,y^\sigma)=0\iff G^\gamma(x^\nu,y^\sigma)=y^\gamma-B^\gamma_\mu f^\mu(x^\nu,y^\sigma)=0
+	\end{equation*}
+	We have therefore
+	\begin{equation*}
+		\begin{aligned}
+			G^\gamma(x^\nu,g^\sigma(x^\nu))&=g^\gamma(x^\nu)-B^\gamma_\mu f^\mu(x^\nu,g^\sigma(x^\nu))=g^\gamma(x^\nu)\ \forall x^\nu\in\cc{B}_r(x^\nu_0)=I\\
+			\pdv{G^\gamma}{y^\sigma}&=\delta^\gamma_\sigma-B^\gamma_\mu\pdv{f^\mu}{y^\sigma}\\
+			\pdv{G^\gamma}{y^\sigma_0}&=\delta^\gamma_\sigma-B^\gamma_\mu\pdv{f^\mu}{y^\sigma}=\delta^\gamma_\sigma-\delta^\gamma_\sigma=0\\
+		\end{aligned}
+	\end{equation*}
+	Now take $(X,d)=(C(I,J),\inorm{\cdot})$, with $J=\cc{B}_\epsilon(y^\gamma_0)$, and define an application $H:X\fto X$ such that
+	\begin{equation*}
+		H^\gamma(w^\sigma(x^\nu))=G^\gamma(x^\nu,w^\sigma(x^\nu))
+	\end{equation*}
+	We need to demonstrate that this application is a contraction, i.e. that $\exists!g^\gamma(x^\nu)\st f^\mu(x^\nu,g^\gamma(x^\nu))=0\ \forall(x^\nu,y^\gamma)\in I\times J$\\
+	\begin{equation*} %%MANNAGGIA AL CRISTO%%
+		\begin{aligned}
+			\norm{H^\gamma(w^\sigma(x^\nu))-y^\gamma_0}_\gamma&=\norm{G^\gamma(x^\nu,w^\sigma(x^\nu))-y_0^\gamma}_\gamma\le\\
+			&\le\norm{G^\gamma(x^\nu,w^\sigma(x^\nu))-G^\gamma(x^\nu,y^\sigma_0)}_\gamma+\norm{G^\gamma(x^\nu,y_0^\sigma)-G^\gamma(x_0^\nu,y_0^\nu)}_\gamma\le\\
+			&\le\inorm{\pdv{G^\gamma}{y^\sigma}}\norm{w^\sigma(x^\nu)+y^\sigma_0}_\sigma+\norm{G^\gamma(x^\nu,y^\sigma_0)-G^\gamma(x^\nu_0,y^\sigma_0)}_\gamma\le\epsilon
+		\end{aligned}
+	\end{equation*} %%MANNAGGIA AL CRISTO%%
+	Since $\norm{G^\gamma(x^\nu,y^\gamma_0)-G^\gamma(x^\nu_0,y^\gamma_0)}_\gamma\le\epsilon/2$ and $\norm{w^\sigma(x^\nu)-y^\sigma_0}_\sigma\le\epsilon$, $\forall(x^\nu,y^\gamma)\in I\times J$, we have %%MANNAGGIA A DIO%%
+	\begin{equation*}
+		\inorm{\pdv{G^\gamma}{y^\sigma}}\le\frac{1}{2}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\norm{H^\gamma(w^\gamma(x^\nu))-H^\gamma(v^\sigma(x^\nu))}_\gamma\le\frac{1}{2}\norm{w^\gamma(x^\nu)-v^\gamma(x^\nu)}_\gamma
+	\end{equation*}
+	I.e. $H$ is a contraction in $C(I,J)$.\\
+	Due to the differentiability of $f^\mu$ we can write
+	\begin{equation*}
+		\begin{aligned}
+			\forall\epsilon>0\ \exists\eta_\epsilon\st\norm{h^\nu}_\nu,\norm{k^\gamma}_\gamma\le\eta_\epsilon&\implies\norm{f^\mu(x^\nu,g^\gamma(x^\nu)+k^\gamma)-f^\mu(x^\nu,g^\gamma(x^\nu))-\partial_{x^\nu}f^\mu h^\nu-\partial_{y^\gamma}f^\mu k^\gamma}_\mu\le\\
+			&\le\epsilon(\norm{h^\nu}_\nu+\norm{k^\gamma}_\gamma)
+		\end{aligned}
+	\end{equation*}
+	Letting $k^\gamma=g^\gamma(x^\nu+h^\nu)-g^\gamma(x^\nu)$ we have by definition
+	\begin{equation*}
+		f^\mu(x^\nu+h^\nu,g^\gamma(x^\nu)+k^\gamma)-f^\mu(x^\nu,g^\gamma(x^\nu))=0
+	\end{equation*}
+	And therefore, putting $\partial_{y^\gamma}f^\mu=\delta^\mu_\gamma$
+	\begin{equation*}
+		\norm{g^\gamma(x^\nu+h^\nu)+\partial_{x^\nu}f^\mu h^\nu}_\mu\le\epsilon\left( \norm{h^\nu}_\nu+\norm{g^\gamma(x^\nu+h^\nu)-g^\gamma(x^\nu)}_\gamma \right)
+	\end{equation*}
+	Letting $\epsilon=1/2$ we have $\norm{g^\gamma(x^\nu+h^\nu)-g^\gamma(x^\nu)}\le\eta_{1/2}$, and we have
+	\begin{equation*}
+		\begin{aligned}
+			&\norm{g^\gamma(x^\nu+h^\nu)-g^\gamma(x^\nu)}_\gamma\le\norm{g^\gamma(x^\nu+h^\nu)-g^\gamma(x^\nu)-\partial_{x^\nu}f^\gamma h^\nu}_\gamma\norm{\partial_{x^\nu}f^\mu h^\nu}_\gamma\\
+			&\le\frac{1}{2}\left( \norm{h^\nu}_\nu+\norm{g^\gamma(x^\nu+h^\nu)-g^\gamma(x^\nu)}_\gamma \right)+\inorm{\partial_{x^\nu}f^\mu}\norm{h^\nu}
+		\end{aligned}
+	\end{equation*}
+	Which implies
+	\begin{equation*}
+		\norm{g^\gamma(x^\nu+h^\nu)-g^\gamma(x^\nu)}_\gamma\le\norm{h^\nu}_\nu\left( 1+2\inorm{\partial_{x^\nu}f^\mu} \right)
+	\end{equation*}
+	Which implies that $g^\gamma(x^\nu)$ is continuously differentiable in $I$. Whenever $\partial_{y^\gamma}f^\mu\ne\delta^\mu_\gamma$ we can find a transformed function $\tilde{f^\mu}$ such that $\partial_{y^\gamma}\tilde{f^\mu}=\delta^\mu_\gamma$
+\end{proof}
+\subsection{Lagrange Multipliers}
+\begin{dfn}[Vinculated Critical Points]
+	Let $f:K\subset A\subseteq\R^2\fto\R$ with $A$ open and $f\in C^1(A)$. Let $\partial{K}=\bigcup_{k\le n}\gamma_k$ with $\gamma_k:[a_k,b_k]\fto\R^2$. The critical points of $\derin[\partial{K}]{f}$ are found in $P_{ik}=\gamma_k(t_i)\in\partial{K}$, for which
+	\begin{equation*}
+		\derivative{t}f(P_{ik})=0
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Argmax, Argmin]
+	Let $f^\mu:A\fto\R^n$ a function which reach its maximum in $x^\nu_i\in A\ i=1,\cdots,m$ and its minimum at $y^\nu_j\in A\ j=1,\cdots,k$ Then we can define
+	\begin{equation}
+		\begin{aligned}
+			\argmax_A(f):&=\{x^\nu_1,\cdots,x^\nu_m\}\\
+			\argmin_A(f):&=\{y^\nu_1,\cdots,y^\nu_k\}
+		\end{aligned}
+		\label{eq:argminmax}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Lagrange Multipliers]
+	Let $f,g:A\fto\R$, $f,g\in C^1(A)$, $A\subseteq\R^n$ open, and $\mathcal{M}=\{\derin{x^\mu\in A}g(x^\mu)=0\}$ and let $x^\mu_0\in\mathcal{M}\st\del_mu g(x^\mu_0)\ne0$, then $x^\mu_0\in\argmax_{\mathcal{M}}f\vee\argmin_{\mathcal{M}}f$ if it's a free critical point of the \textit{Lagrangian}
+	\begin{equation}
+		\mathcal{L}(x^\mu,\lambda)=f(x^\mu)-\lambda g(x^\mu)\quad(x^\mu,\lambda)\in A\times\R
+		\label{eq:lagrangian}
+	\end{equation}
+	I.e. $\exists\lambda_0\in\R\st(x^\mu_0,\lambda_0)$ solves
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\del_\mu f(x^\nu)&=\lambda\del_\mu g(x^\nu)\\
+				g(x^\mu)&=0
+		\end{aligned} \right.
+		\label{eq:lagrangesystem}
+	\end{equation}
+	Or, that
+	\begin{equation*}
+		\rank\begin{pmatrix}\del_\mu f(x^\nu_0)\\\del_\mu g(x^\nu_0)\end{pmatrix}=1
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Let $\partial_ng\ne0$, then we can see $\mathcal{M}$ as a graph of a regular implicit function of $g$, $h:\R^{n-1}\fto\R$, where
+	\begin{equation*}
+		g(x^\mu,h(x^\mu))=0\quad\forall x^\mu\in B_r(\tilde{x^\mu}_0)\subset\R^{n-1}
+	\end{equation*}
+	Letting $\varphi:(-\epsilon,\epsilon)\fto B_r(x^\mu_0)$ a smooth curve, such that $\varphi^\mu(0)=x^\mu_0$, we have that $\psi^\nu(t)=(\varphi^\mu(t),h(t))\in\mathcal{M}$ is the parameterization of a smooth curve that passes through $x^\mu_0\in\mathcal{M}$. We have
+	\begin{equation*}
+		\begin{aligned}
+			\derivative{t}f(\psi^\nu(0))&=\del_\mu f\dot{\phi}^\mu(0)+\del_nf\dot{h}(\phi^\mu(0))=\del_\nu f(x^\mu_0)s^\nu\\
+			\derivative{t}g(\psi^\nu(0))&=\del_\nu g(x^\mu_0)s^\nu
+		\end{aligned}
+	\end{equation*}
+	With $s^\nu=\dot{\psi^\nu}(0)$, therefore $\del_\nu f\|_{\psi^\nu(0)}\del_\nu g$
+\end{proof}
+\begin{thm}[Generalized Lagrange Multiplier Method]
+	Let $f,g_i:A\subseteq\R^n\fto\R$, $0<i<n$, $f,g_i\in C^1(A)$ with $A$ an open set, let $\mathcal{M}:=\{\derin{x^\nu\in A}g(x^\nu)=0\}$. Take $x^\nu_0\in\mathcal{M}$ such that
+	\begin{equation*}
+		\rank\del_\nu g^\mu(x^\gamma_0)=k
+	\end{equation*}
+	Then $x^\nu_0$ is a critical point for $\derin[\mathcal{M}]{f}$, and it's a free critical point for the Lagrangian $\mathcal{L}$
+	\begin{equation*}
+		\mathcal{L}(x^\gamma,\lambda^\mu)=f(x^\gamma)-\lambda_\nu g^\nu(x^\gamma)
+	\end{equation*}
+	I.e. $\exists(x^\gamma_0,\lambda^\nu_0)\in A\times\R$ solution of the system
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				\del_\nu f(x^\gamma)&=\del_\nu g^\mu(x^\gamma)\lambda^\nu\\
+				g^\nu(x^\gamma)&=0
+		\end{aligned}\right.
+	\end{equation*}
+	Alternatively, one can check that
+	\begin{equation*}
+		\rank(A)=\begin{pmatrix}\del_\mu f(x^\gamma_0)\\\del_\nu g^\mu(x^\gamma)\end{pmatrix}=k
+	\end{equation*}
+\end{thm}
+\end{document}

@@ -1,0 +1,255 @@
+\documentclass[../admech.tex]{subfiles}
+\begin{document}
+\section{Canonical Variables}
+The idea behind the reformulation of mechanics comes directly from the theory of differential equations.\\
+Take a second order ODE as the one following
+\begin{equation*}
+	\dv[2]{y}{t}=f(y,y',t)
+\end{equation*}
+This equation can be reduced of order by imposing the transformation $u(t)=\dot{y}(t)$, which reduces the previous problem to a system of 2 ODEs of the first order
+\begin{equation*}
+	\left\{ \begin{aligned}
+			\dot{u}(t)&=f(y,u,t)\\
+			\dot{y}(t)&=u(t)
+	\end{aligned}\right.
+\end{equation*}
+This process can also be applied to Euler-Lagrange equations, where the $N$ differential equations of the second order can be reduced to a system of $2N$ differential equations of the first order.\\
+Since $\det\dot{\del}_{\mu\nu}\lag\ne0$ we know for sure that the following differential equation can be solved
+\begin{equation}
+	\dot{q}^\mu=f^\mu(q^\nu,\dot{q}^\nu,t)
+	\label{eq:lagred}
+\end{equation}
+The space of dinamical configurations of the system can be described by the couple $(q^\mu,\dot{q}^\mu)$, or using $\dot{\del}_\mu\lag=p_\mu$ and its independece with respect to $q^\mu$, we can define a new space, called the \emph{phase space}, spanned by the couple $(q^\mu,p_\mu)$. This space is of dimension $2n$, and it's denoted here as $\Gamma^{2n}$.\\
+The two variables $q^\mu,p_\mu$ are known as the \emph{canonical variables} of the system, and will describe a motion in this phase space via a curve $\gamma^\mu(t)$ which will be determined by the solution of the appropriate equations of motion.
+\section{Canonical Equations of Motion}
+In order to solve the previous problem and actually reduce the Euler-Lagrange equations to a lower order, we begin by differentiating the Lagrangian
+\begin{equation}
+	\dd\lag=\pdv{\lag}{\dot{q}^\mu}\dd\dot{q}^\mu+\pdv{\lag}{q^\mu}\dd q^\mu=\dot{p}_\mu\dd q^\mu+p_\mu\dd\dot{q}^\mu
+	\label{eq:lagdiff}
+\end{equation}
+Rewriting $p_\mu\dd\dot{q}^\mu=\dd\left( p_\mu\dot{q}^\mu \right)-\dot{q}^\mu\dd p_\mu$, where we treat $p_\mu$ as an independent variable, we have
+\begin{equation}
+	\dd\left( p_\mu\dot{q}^\mu-\lag \right)=\dot{q}^\mu\dd p_\mu-\dot{p}_\mu\dd q^\mu
+	\label{eq:hamdiff1}
+\end{equation}
+The function on the left is known as \emph{Hamiltonian} of the system, and corresponds to the generalized energy in canonical coordinates. It's indicated as $\ham$, and differentiating we get \textit{Hamilton's equations of motion} also known as the \textit{canonical equations of motion}
+\begin{equation}
+	\left\{ \begin{aligned}
+			\pdv{\ham}{p_\mu}&=\dot{q}^\mu\\
+			\pdv{\ham}{q^\mu}&=-\dot{p}_\mu
+	\end{aligned}\right.
+	\label{eq:canonicaleom}
+\end{equation}
+Integrating the differential on the left we can write
+\begin{equation}
+	\ham(p_\mu,q^\mu,t)=p_\mu\dot{q}^\mu-\lag(q^\mu,q^\mu,t)
+	\label{eq:hamiltoniandef}
+\end{equation}
+Where $\dot{q}^\mu=f^\mu(p_\mu,q^\mu,t)$. This process is called the \emph{Legendre transformation} of the Lagrangian with respect to $\dot{q}^\mu$.\\
+The previous equations \eqref{eq:canonicaleom} define the motion of the system in the phase space and are the searched reduction of the Euler-Lagrange equation from $n$ ODEs of the second order to $2n$ ODEs of the first order.\\
+Note that since in the phase space the Hamiltonian corresponds to the mechanical energy of the system, we can rewrite some theorems in a different way
+\begin{thm}[Conservation of Energy]
+	The mechanical energy of the system $E$ is conserved if the Hamiltonian function is independent from time, i.e.
+	\begin{equation*}
+		\pdv{\ham}{t}=0\implies\dv{E}{t}=0
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	By definition, the Hamiltonian function of the system corresponds to the energy in the phase space, so we can immediately write its total derivative with respect to time
+	\begin{equation}
+		\dv{\ham}{t}=\pdv{\ham}{t}+\pdv{\ham}{p_\mu}\dot{p}_\mu+\pdv{\ham}{q^\mu}\dot{q}^\mu
+		\label{eq:derham}
+	\end{equation}
+	Substituting the canonical equations inside the expression we get
+	\begin{equation*}
+		\dv{E}{t}=\dv{\ham}{t}=\pdv{\ham}{t}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\pdv{\ham}{t}=0=\dv{E}{t}
+	\end{equation*}
+\end{proof}
+\begin{exe}[Hamiltonians]
+	Find the Hamiltonian of a particle in
+	\begin{enumerate}
+	\item Cartesian coordinates
+	\item Cylindrical coordinates
+	\item Spherical coordinates
+	\end{enumerate}
+1) We begin by writing explicitly the Lagrangian for a particle in Cartesian coordinates.
+\begin{equation}
+	\lag(x^\mu,\dot{x}^\mu,t)=\frac{1}{2}m(\dot{x}^2+\dot{y}^2+\dot{z}^2)-\pot(x,y,z)
+	\label{eq:xyzlag}
+\end{equation}
+The canonical coordinates will be defined by taking the derivative with respect to the dotted coordinates, giving
+\begin{equation}
+	\dot{\del}_\mu\lag=m\dot{x}_\mu\implies\dot{x}_\mu(p_\mu)=\frac{p_\mu}{m}
+	\label{eq:cancoordxyzham}
+\end{equation}
+The kinetic counterpart transforms as $\dot{x}^\mu(p_\mu)\dot{x}_\mu(p_\mu)$, getting
+\begin{equation*}
+	\dot{x}^\mu\dot{x}_\mu=\frac{1}{m^2}p^\mu p_\mu
+\end{equation*}
+And the Hamiltonian will be
+\begin{equation}
+	\ham(p_\mu,q^\mu,t)=p_\mu\frac{p^\mu}{m}-\frac{m}{2}\frac{1}{m^2}p^\mu p_\mu+\pot(x^\mu)
+	\label{eq:hamxyz1}
+\end{equation}
+Which, simplified becomes the searched Hamiltonian
+\begin{equation}
+	\ham(p_\mu,q^\mu,t)=\frac{1}{2m}p^\mu p_\mu+\pot(x^\mu)=\frac{1}{2m}(p_x^2+p_y^2+p_z^2)+\pot(x,y,z)
+	\label{eq:xyzham}
+\end{equation}
+2) Analogously, for cylindrical coordinates we have
+\begin{equation}
+	\lag=\frac{1}{2}m\left( \dot{r}^2+r^2\dot{\theta}^2+\dot{z}^2 \right)-\pot(r,\theta,z)
+	\label{eq:cyllag}
+\end{equation}
+The conjugated coordinates will therefore be
+\begin{equation}
+	\dot{\del}_\mu\lag=\begin{pmatrix}
+		m\dot{r}&mr^2\dot{\theta}&m\dot{z}
+	\end{pmatrix}\implies\dot{x}_\mu=\frac{1}{m}\begin{pmatrix}
+		p_r&\frac{p_\theta}{r^2}&p_z
+	\end{pmatrix}
+	\label{eq:conjmom}
+\end{equation}
+The Hamiltonian will be
+\begin{equation*}
+	\ham=\frac{1}{m}\left( p_r^2+\frac{p_\theta^2}{r^2}+p_z^2 \right)-\frac{m}{2}\left( \frac{p_r^2}{m^2}+\frac{r^2p_\theta^2}{m^2r^4}+\frac{p_z^2}{m^2} \right)+\pot(r,\theta,z)
+\end{equation*}
+I.e.
+\begin{equation}
+	\ham=\frac{1}{2m}\left( p_r^2+\frac{p_\theta^2}{r^2}+p_z^2 \right)+\pot(r,\theta,z)
+	\label{eq:cylham}
+\end{equation}
+3) The Lagrangian is
+\begin{equation}
+	\lag=\frac{1}{2}m\left( \dot{r}^2+r^2\dot{\theta}^2+r^2\sin^2\theta\dot{\varphi}^2 \right)-\pot(r,\theta,\varphi)
+	\label{eq:sphlag}
+\end{equation}
+The canonical coordinates are
+\begin{equation}
+	p_\mu=\begin{pmatrix}
+		m\dot{r}&mr^2\dot{\theta}&mr^2\sin^2\theta\dot{\varphi}
+	\end{pmatrix},\implies\dot{x}_\mu=\frac{1}{m}\begin{pmatrix}
+		p_r&\frac{p_\theta}{r^2}&\frac{p_\varphi}{r^2\sin^2\theta}
+	\end{pmatrix}
+	\label{eq:cancoord}
+\end{equation}
+Substituting into the Legendre transform we have
+\begin{equation}
+	\frac{1}{m}\left( p_r^2+\frac{p_\theta^2}{r^2}+\frac{p_\varphi^2}{r^2\sin^2\theta} \right)-\frac{1}{2}m\left( \frac{p_r^2}{m^2}+\frac{r^2p_\theta^2}{m^2r^4}+\frac{r^2\sin^2\theta p_\varphi^2}{m^2r^4\sin^4\theta} \right)+\pot(r,\theta,\varphi)
+	\label{eq:hamsph1}
+\end{equation}
+And therefore the Hamiltonian is
+\begin{equation}
+	\ham=\frac{1}{2m}\left( p_r^2+\frac{p_\theta^2}{r^2}+\frac{p_\varphi^2}{r^2\sin^2\theta} \right)+\pot(r,\theta,\varphi)
+	\label{eq:sphham}
+\end{equation}
+\end{exe}
+\section{Hamilton-Jacobi Equation and Hamilton's Principle in $\Gamma^{2n}$}
+The principle of least action can be reformulated in Hamiltonian mechanics in a particular manner changing the boundary conditions for the variational principle, and considering the action as a function of coordinates.\\
+Begin by considering that the path $q^\mu(t)$ will start from a fixed point $q^\mu(t_1)=q^\mu_1$ and ends in some unknown point $q^\mu(t_2)$. The boundary conditions for the variational principle will therefore be
+\begin{equation*}
+	\left\{ \begin{aligned}
+			\delta q^\mu(t_1)&=0\\
+			\delta q^\mu(t_2)&=\delta q^\mu
+	\end{aligned}\right.
+\end{equation*}
+Where $\delta q^\mu(t_1)=0$ since $q^\mu_1$ is a constant vector.\\
+The variation of the action integral will be, as usual
+\begin{equation*}
+	\delta\act=\left[ \pdv{\lag}{\dot{q}^\mu}\delta q^\mu \right]^{t_1}_{t_2}+\int_{t_1}^{t_2}\left( \pdv{\lag}{q^\mu}-\dv{t}\pdv{\lag}{\dot{q}^\mu} \right)\delta q^\mu\dd t
+\end{equation*}
+Imposing the obvious condition that $q^\mu(t)$ must represent a physical motion, the integral must be 0, since the Euler-Lagrange equations are automatically solved. Evaluating the term on the left we obtain the variation of the action as
+\begin{equation}
+	\delta\act=\pdv{\lag}{\dot{q}^\mu}\delta q^\mu=p_\mu\delta q^\mu
+	\label{eq:actcoord1}
+\end{equation}
+This implies immediately that
+\begin{equation*}
+	\pdv{\act}{q^\mu}=p_\mu
+\end{equation*}
+Now, considering $\act=\act(q^\mu,t)$ we also must have
+\begin{equation*}
+	\dd\act=\pdv{\act}{q^\mu}\dd q^\mu+\pdv{\act}{t}\dd t=\lag\dd t
+\end{equation*}
+Or, substituting, we have
+\begin{equation*}
+	\dd\act=p_\mu\dd q^\mu+\pdv{\act}{t}=\lag\dd t
+	\label{eq:difact}
+\end{equation*}
+Dividing by $\dd t$, we have
+\begin{equation*}
+	\dv{\act}{t}=p_\mu\dot{q}^\mu+\pdv{\act}{t}=\lag
+\end{equation*}
+And rearranging in terms of $\del_t\act$
+\begin{equation*}
+	\pdv{\act}{t}=\lag-p_\mu\dot{q}^\mu
+\end{equation*}
+Substituting inside the definition of the Hamiltonian function, we have
+\begin{equation}
+	\pdv{\act}{t}=-\ham
+	\label{eq:hj1}
+\end{equation}
+This equation is called the \textit{Hamilton-Jacobi equation}. Rewriting the differential of the action, we have
+\begin{equation*}
+	\dd\act(q^\mu,t)=p_\mu\dd q^\mu-\ham\dd t
+\end{equation*}
+The previous Hamilton-Jacobi equation, if solved, imposes that the action as a function of $(q^\mu,t)$ must be a total differential. With this consideration, one can reformulate the principle of least action in Hamiltonian mechanics in a new and elegant way, where now the variation is made on a path in $\Gamma^{2n}$, the phase space.\\
+\begin{equation}
+	\act[q^\mu(t)]=\int_{t_1}^{t_2}\left( p_\mu\dd q^\mu-\ham(p_\mu,q^\mu,t)\dd t \right)
+	\label{eq:hamiltonaction}
+\end{equation}
+Imposing the usual conditions on the variation of the coordinates $q^\mu$ that were used already in the chapter on Lagrangian mechanics, we have
+\begin{equation*}
+	\begin{aligned}
+		\delta\act&=\int_{t_1}^{t_2}\left( \delta p_\mu\dd q^\mu+p_\mu\dd\delta q^\mu-\delta\ham\dd t \right)\\
+		\delta\act&=\left[ p_\mu\delta q^\mu \right]^{t_2}_{t_1}+\int_{t_1}^{t_2}\left( \delta p_\mu\dd q^\mu+\delta q^\mu\dd p_\mu-\pdv{\ham}{p_\mu}\delta p_\mu-\pdv{\ham}{q^\mu}\delta q^\mu \right)
+	\end{aligned}
+\end{equation*}
+Rearranging the terms and noting that the first term goes to zero we have
+\begin{equation}
+	\delta\act=\int_{t_1}^{t_2}\delta p_\mu\left( \dd q^\mu-\pdv{\ham}{p_\mu}\dd t \right)-\int_{t_1}^{t_2}\delta q^\mu\left( \dd p_\mu+\pdv{\ham}{q^\mu} \right)
+	\label{eq:variationhamcomp}
+\end{equation}
+The condition $\delta\act=0$ imposes that both the integrals must be zero simultaneously, and since $\delta p_\mu, \delta q^\mu\ne0$ in general, we must have
+\begin{equation}
+	\left\{ \begin{aligned}
+			\dd q^\mu-\pdv{\ham}{p_\mu}\dd t&=0\\
+			\dd p_\mu+\pdv{\ham}{q^\mu}\dd t&=0
+	\end{aligned}\right.
+	\label{eq:hameq}
+\end{equation}
+Which are Hamilton's equations of motion. Note that dividing by $\dd t$ and rearranging, we obtain the usual form of the equations
+\begin{equation*}
+	\left\{ \begin{aligned}
+			\pdv{\ham}{p_\mu}&=\dot{q}^\mu\\
+			\pdv{\ham}{q^\mu}&=-\dot{p}_\mu
+	\end{aligned}\right.
+\end{equation*}
+\subsection{Maupertuis' Principle}
+A particular case of the previous variation was given by Maupertuis, where he stated the following theorem
+\begin{thm}[Maupertuis Principle]
+	Defined the \emph{abbreviated action} of a system $\act_0$ as
+	\begin{equation*}
+		\act_0=\int_{t_1}^{t_2}p_\mu\dd q^\mu
+	\end{equation*}
+	Then, the equations of motion can be derived by finding an extremal of $\act_0$ if and only if energy is conserved.
+\end{thm}
+\begin{proof}
+	The proof is similar to the previous derivation and quick. Since energy is conserved we have $\del_t\ham=0$ and $\ham=E$. Integrating directly the action $\act$ we have
+	\begin{equation*}
+		\act=\int_{t_1}^{t_2}p_\mu\dd q^\mu-E(t_2-t_1)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\act=\act_0+E(t_2-t_1)
+	\end{equation*}
+	Variating and imposing the least action principle, we have Maupertuis' principle
+	\begin{equation*}
+		\delta\act=\delta\act_0=0
+	\end{equation*}
+\end{proof}
+\end{document}

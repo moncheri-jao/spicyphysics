@@ -1,0 +1,143 @@
+\documentclass[../admech.tex]{subfiles}
+\begin{document}
+\section{Stability and Free Oscillations}
+One of the most important topics of mechanics is the idea of stability and small oscillations around these ``stable points''. The idea of stable and unstable points stems from the main idea of equilibrium.
+\begin{dfn}[Mechanical Equilibrium, Stability and Instability]
+	Given a system interacting with a certain potential $\pot$, equilibrium points of such are defined as the \emph{critical points} of the potential $\pot$. The stability of such points is then defined by their nature, where minimums of the potential function are said to be \emph{stable equilibrium points} and maximums as \emph{unstable equilibrium points} of the system.
+\end{dfn}
+In order to evaluate the stability of equilibrium points, given the definition, immediately uses optimization theory applied on the potential function.\\
+With this, for a system with $n$ degrees of freedom, given a critical point $q^\mu_0$ of $\pot(q^\mu)$, and having defined the Hessian matrix of $\pot$ as $\del^2_{\mu\nu}\pot=\pot_{\mu\nu}$ one has two main results.
+\begin{enumerate}
+\item If $\pot_{\mu\nu}(q^\mu_0)$ is positive definite, the critical point is a minimal and therefore a stable equilibrium point
+\item If $\pot_{\mu\nu}(q^\mu_0)$ is negative definite, then it's a maximal and therefore an unstable equilibrium point
+\end{enumerate}
+In case that the Hessian matrix is undefined, nothing can be derived through this criterion.\\
+Note that using Sylvester's criterion for determining the signature of the eigenvalues of a matrix, in two dimensions this reduces to evaluating sign of the determinant of $\pot_{\mu\nu}$ and the sign of the first entry of the matrix, $\pot_{11}$, where
+\begin{enumerate}
+\item $\abs{\pot_{\mu\nu}}>0$ and $\pot_{11}>0$ imply a stable equilibrium point
+\item $\abs{\pot_{\mu\nu}}>0$ and $\pot_{11}<0$ imply an unstable equilibrium point
+\item $\abs{\pot_{\mu\nu}}<0$ imply a saddle (unstable) point of equilibrium
+\item $\abs{\pot_{\mu\nu}}=0$ implies that $\pot_{\mu\nu}$ is indefinite and therefore no clear conclusion can be given on the type of equilibrium at the considered point
+\end{enumerate}
+\subsection{Free Oscillations in 1 Dimension}
+Suppose having some system with one degree of freedom interacting in a field with potential $\pot(q)$, which has $q_0$ as a local minimum point. Therefore we have
+\begin{equation}
+	\left( \dv{\pot}{q} \right)_{q_0}=0
+	\label{eq:critpoint}
+\end{equation}
+For evaluating small oscillations we expand with a power series to the second order this potential around $q_0$
+\begin{equation}
+	\pot(q)\simeq\pot(q_0)+\frac{1}{2}\left( \dv[2]{\pot}{q} \right)_{q_0}(q-q_0)^2+\order{(q-q_0)^3}
+	\label{eq:potapprox}
+\end{equation}
+Imposing $\pot(q_0)=0$ and writing $\pot''(q_0)=k$ we have that our potential can be approximated to a harmonic oscillator potential up to second order, yielding
+\begin{equation}
+	\pot(q)\approx\frac{1}{2}k(q-q_0)^2
+	\label{eq:approxharmpot}
+\end{equation}
+Substituting $q-q_0=x$ we can then write the approximate harmonic Lagrangian as the usual harmonic oscillator Lagrangian
+\begin{equation}
+	\lag(x,\dot{x})=\frac{1}{2}m\dot{x}^2-\frac{1}{2}kx^2
+	\label{eq:osclag1}
+\end{equation}
+Deriving the Lagrangian we get the usual Euler-Lagrange equations for the harmonic oscillator, and substituting $\omega^2=k/m$ we get
+\begin{equation}
+	\dv{t}\pdv{\lag}{\dot{q}}-\pdv{\lag}{q}=\ddot{x}+\omega^2x=0
+	\label{eq:osceleq1}
+\end{equation}
+This differential equation has two possible solutions
+\begin{equation}
+	\begin{aligned}
+		x(t)&=c_1\cos(\omega t)+c_2\sin(\omega t)\\
+		x(t)&=A\cos(\omega t+\phi)
+	\end{aligned}
+	\label{eq:oscsol1}
+\end{equation}
+Where $c_1,c_2,A,\phi\in\R$. The second solution can be obtained using the formula
+\begin{equation*}
+	\cos(\omega t+\phi)=\cos(\omega t)\cos\phi-\sin(\omega t)\sin\phi
+\end{equation*}
+Which gives us the expression of $A$ and $\phi$ in terms of the two constants $c_1,c_2$ as follows
+\begin{equation}
+	A=\sqrt{c_1^2+c_2^2}\qquad\tan\phi=-\frac{c_2}{c_1}
+	\label{eq:Aphic1c2}
+\end{equation}
+$A$ is known as teh \emph{amplitude} of the motion, while $\phi$ is the initial value of the phase with frequency $\omega$.\\
+Writing the mechanical energy of an oscillatory system and substituting the solution $x(t)$ we have
+\begin{equation}
+	E=\frac{1}{2}m\omega^2A^2
+	\label{eq:energypropamp}
+\end{equation}
+Which gives us $E\propto A^2$. Noting also how $x(t)$ is shaped, we can also write it using Euler's identity as the real part of a complex function, as
+\begin{equation}
+	x(t)=\real\left\{ ae^{i\omega t} \right\}
+	\label{eq:complexoscsol}
+\end{equation}
+Where we set $a=Ae^{i\phi}$ as the complex amplitude, which has the amplitude as modulus and the phase as argument.
+\section{Free Oscillations in $n$ Degrees of Freedom}
+Working analogously in $n$ dimensions, for studying these oscillations we choose a certain critical point $q_0^\mu$ of the potential, using $x^\mu=q^\mu-q_0^\mu$ we approximate the potential as
+\begin{equation}
+	\pot(x^\mu)\approx\frac{1}{2}\del^2_{\mu\nu}\pot(0)x^\mu x^\nu=\frac{1}{2}k_{\mu\nu}x^\mu x^\nu
+	\label{eq:approxpotndeg}
+\end{equation}
+The matrix $k_{\mu\nu}$ is the Hessian matrix of $\pot$, and therefore, since $\pot\in C^2(\R^n)$, $k_{\mu\nu}=k_{\nu\mu}$.\\
+Analogously, for the kinetic energy we have
+\begin{equation}
+	T=\frac{1}{2}a_{\mu\nu}(q_0^\gamma)\dot{q}^\mu\dot{q}^\nu
+	\label{eq:osckinndeg}
+\end{equation}
+Writing $a_{\mu\nu}(q_0^\gamma)$ as $m_{\mu\nu}$ and using the fact that $T\in C^2(\R^n)$ we have the linearized Lagrangian for a system with $n$ degrees of freedom
+\begin{equation}
+	\lag(\dot{x}^\mu,x^\mu)=\frac{1}{2}\left( m_{\mu\nu}\dot{x}^\mu\dot{x}^\nu-k_{\mu\nu}x^\mu x^\nu \right)
+	\label{eq:linlagnosc}
+\end{equation}
+For finding the equations of motion of this system we write the total differential of the Lagrangian, getting
+\begin{equation}
+	\dd\lag=m_{\mu\nu}\dot{x}^\mu\dd\dot{x}^\nu-k_{\mu\nu}x^\mu\dd x^\nu=\pdv{\lag}{\dot{x}^\nu}\dd\dot{x}^\nu+\pdv{\lag}{x^\nu}\dd x^\nu
+	\label{eq:linlagdif}
+\end{equation}
+Therefore, the searched equations of motion will be a system of ODEs, which will be
+\begin{equation}
+	m_{\mu\nu}\ddot{x}^\mu+k_{\mu\nu}x^\mu=0
+	\label{eq:odeoscndeg}
+\end{equation}
+Keeping in mind what we found before for oscillating system we suppose the solution as a complex vector where
+\begin{equation*}
+	x^\mu(t)=A^\mu e^{i\omega t}\quad A^\mu\in\Cf^n
+\end{equation*}
+Deriving and substituting back this function we get a linear system with $A^\mu$ as our unknown vector
+\begin{equation}
+	\left( -\omega^2m_{\mu\nu}+k_{\mu\nu} \right)A^\mu=0
+	\label{eq:oscsystem}
+\end{equation}
+The solution of this system boils down to searching simultaneous eigenvectors and eigenvalues for the two matrices, and therefore this is possible if and only if
+\begin{equation}
+	\det\abs{-\omega^2m_{\mu\nu}+k_{\mu\nu}}=0
+	\label{eq:oscsistsolcond}
+\end{equation}
+Since both $m_{\mu\nu},k_{\mu\nu}$ are symmetric matrices we must have that $\omega^2\in\R$, i.e. that all the eigenvalues of the combined system are real. This also implies that, if $\Delta_a^\mu$ is the $a-$th minor of the composite matrix $d_{\mu\nu}=-\omega^2m_{\mu\nu}+k_{\mu\nu}$, then $A^\mu\propto\Delta^\mu_a$, which implies that the general solution therefore is
+\begin{equation}
+	x_a^\mu(t)=\Delta^\mu_aC_ae^{i\omega_at}
+	\label{eq:athsol}
+\end{equation}
+Where $x_a^\mu$ is the solution associated with the $a-$th eigenvalue $\omega_a$. The complete solution will therefore be a real superposition of the previous one, which boils down to the following function
+\begin{equation}
+	x^\mu(t)=\sum_{a=1}^n\Delta^\mu_a\real\left\{ C_ae^{i\omega_at} \right\}=\sum_{a=1}^n\Delta^\mu_a\Theta_a(t)
+	\label{eq:completesol}
+\end{equation}
+Where with $\Theta_a(t)$ we have indicated a simple periodic oscillation with frequency $\omega_a$. These simple oscillations are called the \emph{normal oscillations} of the system and they are linearly independent from one another, forming an orthogonal basis in which the matrix $d_{\mu\nu}$ is diagonal. Obviously they also solve the ODE
+\begin{equation}
+	\ddot{\Theta}_a+\omega^2_a\Theta_a=0
+	\label{eq:normODE}
+\end{equation}
+With a basis transformation, the linearized Lagrangian \eqref{eq:linlagnosc} becomes as follows
+\begin{equation}
+	\lag\left( \dot{\Theta},\Theta \right)=\sum_a\frac{1}{2}m_a\left( \dot{\Theta}_a^2-\omega^2\Theta_a^2 \right)
+	\label{eq:diaglagosc}
+\end{equation}
+These basis vectors can be immediately normalized to a new basis, where $Q_a=\sqrt{m_a\Theta_a}$, which changes slightly our Lagrangian to the new version
+\begin{equation}
+	\lag(\dot{Q},Q)=\frac{1}{2}\sum_{a=1}^n\left( \dot{Q}_a^2-\omega^2_aQ_a^2 \right)
+	\label{eq:normosclag}
+\end{equation}
+\end{document}

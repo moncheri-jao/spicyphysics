@@ -1,0 +1,719 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Existence of Solutions}
+\textit{\scalebox{0.7}{\bfseries You might test that assumption at your convenience}\footnote{\textit{Captain Picard, Star Trek: The Next Generation}}}
+\vskip2\baselineskip
+\begin{dfn}[Differential Equation]
+	Given $y\in C^m(I),\quad I\subseteq\R$ we define a \textit{differential equation of order} $m$ the following
+	\begin{equation*}
+		F(x,y,y',\cdots,y^{(m)})=0
+	\end{equation*}
+	If the equation can be rewritten as follows
+	\begin{equation*}
+		\derivative[m]{y}{x}=f(x,y,\cdots,y^{(m-1)})
+	\end{equation*}
+	It's called in \textit{normal form}.\\
+	If only total derivatives appear, the differential equation is called \textit{ordinary}, whereas if also partial derivatives appear, the differential equation is called \textit{partial}.\\
+\end{dfn}
+\begin{thm}[Reduction of Order]
+	Given an ODE (ordinary differential equation) of order $m$, one can reduce the order of the equation through a mapping to $\R^m$, where
+	\begin{equation*}
+		(y,y',\cdots,y^{(m)})\mapsto y^\mu(x)=\begin{pmatrix}y(x)\\y'(x)\\\vdots\\y^{(m)}(x)\end{pmatrix}
+	\end{equation*}
+	And $f(x,y,\cdots,y^{(m)})\mapsto f^\mu(x,y^\mu)$.\\
+	The equation becomes a first order differential equation
+	\begin{equation*}
+		\derivative{y^\mu}{x}=f^\mu(x,y^\mu)
+	\end{equation*}
+	If $f$ is linear, this system can be expressed in matrix form, where
+	\begin{equation*}
+		\derivative{y^\mu}{x}=A^\mu_\nu y^\mu
+	\end{equation*}
+\end{thm}
+\begin{dfn}[Cauchy Problem]
+	A \textit{Cauchy} or \textit{initial value problem} is defined as the following system
+	\begin{equation}
+		\left\{ \begin{aligned}
+				y'(x)&=f(x,y(x))\\
+				y(x_0)&=y_0
+		\end{aligned}\right.
+		\label{eq:cauchyprob}
+	\end{equation}
+	Where $y_0,t_0\in\R$ are known values
+\end{dfn}
+\begin{thm}
+	Given the Cauchy problem \eqref{eq:cauchyprob} we say that $y(x)\in C^1$ is a solution of the system if and only if is a continuous solution of the following integral equation
+	\begin{equation}
+		y(x)=y_0+\int_{x_0}^{x}f(s,y(s))\diff s
+		\label{eq:cauchyprobsol}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Supposing $y\in C^1$ we have that for the fundamental theorem of integral calculus
+	\begin{equation*}
+		y(x)=y(x_0)+\int_{x_0}^{x}y'(s)\diff s=y_0+\int_{x_0}^{x}f(s,y(s))\diff s
+	\end{equation*}
+	Instead, considering $f\circ y$ we have that the new composed function must be continuous, therefore we have for the fundamental theorem of integral calculus that $y(x)\in C^1$ and that
+	\begin{equation*}
+		y(x_0)=y_0+\int_{x_0}^{x_0}f(s,y(s))\diff s=y_0
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\derivative{y}{x}=\derivative{x}\int_{x_0}^{x}f(s,y(s))\diff s=f(x,y(x))
+	\end{equation*}
+	Which gives back the thesis
+\end{proof}
+\begin{thm}[Picard-Lindelöf-Cauchy Existence]
+	Let $A\subset\R^2$ with $f:A\fto\R$ a continuous function which defines an ODE $\eqref{eq:cauchyprob}$ where
+	\begin{equation*}
+		y(x)=y_0+\int_{x_0}^{x}f(s,y(s))\diff s
+	\end{equation*}
+	Let $a,b>0$ and take $R=[x_0-a,x_0+a]\times[y_0-b,y_0+b]=I_a\times J_b\subset A$. Supposing $f$ Lipschitz continuous on the second variable, i.e.
+	\begin{equation*}
+		\exists L>0\st\abs{f(x,u)-f(x,w)}\le L\abs{u-w}\quad \forall (x,u),(x,w)\in R
+	\end{equation*}
+	Then, if $M=\max_R\abs{f(x,y)}$
+	\begin{equation*}
+		\exists\epsilon>0\st\exists!y(x)\in C^1(B_\epsilon(y_0))
+	\end{equation*}
+	Where $\epsilon=\min\left\{ a,b/M,1/L \right\}$\\
+	Therefore, there is an unique local solution $\cc{y}(x)$ to the ODE
+\end{thm}
+\begin{proof}
+	We firstly define a Banach space $(X,\unorm{\cdot})$ where $X:=\left\{ \derin{y\in C\left( I_\epsilon \right)}\unorm{y(x)-y_0}\le b \right\}$.\\
+	Define the \textit{Picard operator} as follows
+	\begin{equation*}
+		\opr{T}:X\fto X
+	\end{equation*}
+	Where
+	\begin{equation*}
+		\opr{T}(w)=y_0+\int_{x_0}^{x}f(s,w(s))\diff s=z(x)
+	\end{equation*}
+	We have
+	\begin{equation*}
+		\unorm{\opr{T}(y)-\opr{T}(z)}=\unorm{\opr{T}(y-z)}=\unorm{\int_{x_0}^{x}f(s,u(s))-f(s,v(s))\diff s}\le L\epsilon\unorm{u-v}\quad\forall u,v,y,z\in X
+	\end{equation*}
+	Since $x\in I_\epsilon$ is completely arbitrary we have therefore, putting $d(x,y)=\unorm{x-y}$
+	\begin{equation*}
+		d(y,z)=d(\opr{T}(y),\opr{T}(z))\le L\epsilon d(u,v)
+	\end{equation*}
+	Since $L\epsilon\in(0,1),\quad\opr{T}$ is a contractor and it has a single fixed point in $X$.\\
+	Taking this fixed point as $\cc{y}(x)$ we have
+	\begin{equation*}
+		\opr{T}(\cc{y})=y_0+\int_{x_0}^{x}f(s,\cc{y}(s))\diff s=\cc{y}(x)
+	\end{equation*}
+	Which is our searched solution, and it's unique
+\end{proof}
+\begin{dfn}[Maximal and Global Solutions]
+	Given $y(x)$ a solution to the Cauchy problem \eqref{eq:cauchyprob} we define a \textit{maximal solution} $y_m(x)$ a solution for which $y_m(x)=y(x)\quad\forall x\in I_\epsilon$ and which still solves the problem in a set $(a,b)\supset I_\epsilon$, and $(a,b)$ is the biggest set for which $y_m(x)$ solves the ODE.\\
+	If $y_m$ is defined $\forall x\in\R$, the solution is called \textit{global}
+\end{dfn}
+\begin{thm}[Prolungability of Solutions]
+	Given the ODE \eqref{eq:cauchyprob} and let $f:(a,b)\times\R\fto\R$. Let $c_1,c_2\in K\subset(a,b)$ with $K$ a compact set, such that
+	\begin{equation*}
+		\abs{f(x,y)}\le c_1+c_2\abs{y(x)}\quad x\in K,\ \forall y\in\R
+	\end{equation*}
+	Then the solution can be extended in the whole set $(a,b)$. The previous statement means that $f$ is \textit{sublinear} in the second variable
+\end{thm}
+\begin{thm}
+	Let $y_m(x)$ be a maximal solution to \eqref{eq:cauchyprob} defined on $(a,b)$. Then $\forall K\subset A\quad\exists\delta>0\st\forall x\not\in(a+\delta,b-\delta),\ (x,y_m(x))\not\in K$
+\end{thm}
+\begin{thm}
+	Taken $y(x)$ a solution to the ODE \eqref{eq:cauchyprob}. If $\exists c>0$ such that
+	\begin{equation*}
+		\abs{y(x)}\le c\quad\forall t\in A
+	\end{equation*}
+	Then $\exists y_m(x):(a,b)\fto\R$
+\end{thm}
+\begin{lem}[Peano-Gronwall Inequality]
+	Let $\varphi:I\subset\R\fto\R$ be a function $\varphi\in C(I)$, if
+	\begin{equation*}
+		\abs{\varphi(t)}\le c+L\abs{\int_{t_0}^{t}\abs{\varphi(s)}\diff s}
+	\end{equation*}
+	Then the following inequality holds
+	\begin{equation*}
+		\abs{\varphi(t)}\le ce^{L\abs{t-t_0}}
+	\end{equation*}
+	Therefore, if $y'(t)=f(t,y)$ is an ODE, taken $f(t,y)$ Lipschitz continuous on the second variable and chosen $\varphi(t)=u(t)-v(t)$ where $u,v$ are two solutions, we have that
+	\begin{equation*}
+		\abs{f(t,u)-f(t,v)}\le ce^{L\abs{t-t_0}}
+	\end{equation*}
+\end{lem}
+\section{Common Solving Methods}
+%\begin{mtd}[Matrix Exponential]
+%	Given the following two ODEs
+%	\begin{equation}
+%		\left\{ \begin{aligned}
+%				y''(x)-y(x)&=0\\
+%				y'(0)&=0\\
+%				y(0)&=1
+%		\end{aligned}\right.
+%		\label{eq:mode1}
+%	\end{equation}
+%	And
+%	\begin{equation}
+%		\left\{ \begin{aligned}
+%				w''(x)+2w'(x)+2w(x)&=0\\
+%				w'(0)&=0\\
+%				w(0)&=1
+%		\end{aligned}\right.
+%		\label{eq:mode2}
+%	\end{equation}
+%	We can write the following two in normal form
+%	\begin{equation*}
+%		\left\{ \begin{aligned}
+%				y''(x)&=y(x)\\
+%				y'(0)&=0\\
+%				y(0)&=1
+%	\end{aligned}\right.
+%	\end{equation*}
+%	And
+%	\begin{equation*}
+%		\left\{ \begin{aligned}
+%				w''(x)&=-2\left( w'(x)+w(x) \right)\\
+%				w'(0)&=0\\
+%				w(0)&=1
+%		\end{aligned}\right.
+%	\end{equation*}
+%	Since $f(x,y(x))$ is linear, transforming everything in matrix form we have
+%	\begin{equation}
+%		\derivative{y^\mu}{x}=\begin{pmatrix}0&1\\1&0\end{pmatrix}^\mu_\nu y^\nu(x)\quad\derivative{w^\mu}{x}=\begin{pmatrix}0&1\\-2&-2\end{pmatrix}^\mu_\nu w^\nu(x)
+%		\label{eq:matrixformmode12}
+%	\end{equation}
+%\end{mtd}
+\begin{dfn}[Separable ODE]
+	Given $y'(t)=f(t,y(t))$ an ODE we define a \textit{separable ODE} a differential equation such that
+	\begin{equation*}
+		y'(t)=f(t,y(t))=g(t)h(y)
+	\end{equation*}
+\end{dfn}
+\begin{mtd}[Separation of Variables]
+	Suppose that we have the previous ODE, then, thanks to the Picard-Lindelöf-Cauchy theorem we can immediately say that
+	\begin{enumerate}
+	\item There is at least one local solution in $B_\epsilon(t_0)$ if $f\in C$, i.e. if $g,h\in C$
+	\item There is a unique local solution in $B_\epsilon(t_0)$ if $\del_y f\in C$, i.e. if $h\in C^1$
+	\end{enumerate}
+	The first thing to do is finding all constant solution to the ODE, called the \textit{equilibrium solutions}.\\
+	Then, a general solution can be found by direct integration, where we're integrating the following differential form
+	\begin{equation*}
+		\frac{1}{h(y)}\diff y=g(t)\diff t
+	\end{equation*}
+	Integrating, and putting $H(t), G(t)$ as the two primitives, we can say that
+	\begin{equation*}
+		H(y)=G(t)+H(y_0)-G(t_0)
+	\end{equation*}
+	Where $c=H(y_0)-G(t_0)$ is the integration constant in terms of the initial values, if given
+\end{mtd}
+\begin{eg}
+	Take the following initial value problem
+	\begin{equation*}
+		\left\{\begin{aligned}
+				w'(x)&=w^2(x)\\
+				w(0)&=1
+		\end{aligned}\right.
+	\end{equation*}
+	We have $f(x,w)=w^2(x)$ i.e. the equation is separable, therefore
+	\begin{equation*}
+		\int\frac{w'(x)}{w^2(x)}\diff x=\int_{}^{}\diff x-1
+	\end{equation*}
+	Therefore, integrating the LHS
+	\begin{equation*}
+		-\frac{1}{w(x)}=x-1
+	\end{equation*}
+	And
+	\begin{equation*}
+		w(x)=\frac{1}{1-x}
+	\end{equation*}
+\end{eg}
+\begin{dfn}[Autonomous Differential Equation]
+	Given a differential equation in normal form $y'(x)=f(x,y(x))$, it's said to be an \textit{autonomous differential equation} if
+	\begin{equation*}
+		f(x,y(x))=g(y(x))
+	\end{equation*}
+	Therefore
+	\begin{equation}
+		y'(x)=g(y(x))
+		\label{eq:autonomousode}
+	\end{equation}
+	Note that it's a separable equation, and therefore, writing the primitive of $1/g(y)=G(y)$ we have that the general solution of this problem would be
+	\begin{equation*}
+		G(y)=x+c
+	\end{equation*}
+	Where $c\in\R$ is a constant
+\end{dfn}
+%\begin{eg}[Logistical Equation]
+%	Taken the logistical differential equation
+%	\begin{equation*}
+%		\left\{ \begin{aligned}
+%				y'(x)&=y(1-y)\\
+%				y(t_0)=y_0
+%		\end{aligned}\right.
+%	\end{equation*}
+%	We see that's it's an autonomous differential equation, since $\del_1f(x,y(x))=0$.\\
+%	We find immediately that if $y_0=0$ there are already two stable solutions $y_1=0$ and $y_2=1$. In the other cases we have that if $y_0\in[0,1)\implies y(t)\in(0,1)$
+%	The solution then will be
+%	\begin{equation*}
+%		\int_{}^{}\frac{1}{y(1-y)}\diff y=t+c
+%	\end{equation*}
+%	We use the partial fraction decomposition for the denominator, and we get
+%	\begin{equation*}
+%		\frac{1}{y(1-y)}=\frac{a}{y}+\frac{b}{(1-y)}\implies a-y(b-a)=1\quad\therefore\begin{dcases}a=-b\\a=1\end{dcases}
+%	\end{equation*}
+%\end{eg}
+\begin{eg}
+	Take the following initial value problem
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				y'(x)&=t\abs{y}\\
+				y(0)&=y_0
+		\end{aligned}\right.
+	\end{equation*}
+	This is obviously a separable ODE, and we have $f(t,y(t))=t\abs{y}$.\\
+	We have that $f\in C(\R^2)$ therefore there exists at least one solution for this equation.\\
+	Now, applying Picard-Lindelöf-Cauchy we can see that, $\forall [\alpha,\beta]\subset\R$ compact set
+	\begin{equation*}
+		\abs{f(t,y)-f(t,z)}=\abs{t\abs{y}-t\abs{z}}=\abs{t}\abs{\abs{y}-\abs{z}}\le\max\left\{ \abs{\alpha},\abs{\beta} \right\}\abs{y-z}
+	\end{equation*}
+	Taken $L=\max\left\{ \abs{\alpha},\abs{\beta} \right\}$ we have that $f$ is Lipschitz continuous in the second variable in every compact set $K\subset\R$ and therefore there exists a unique solution $y:K\fto\R$.\\
+	Successively we move on to integrate directly the differential equation. We have
+	\begin{equation*}
+		\int_{y_0}^{y}\frac{\diff y}{\abs{y}}=\int_{t_0}^{t}t\diff t
+	\end{equation*}
+	I.e.
+	\begin{equation*}
+		\begin{aligned}
+			\log\abs{\frac{y}{y_0}}&=\frac{1}{2}\left( t^2-t_0^2 \right)\\
+			\abs{\frac{y}{y_0}}&=e^{\frac{1}{2}t_0^2}e^{\frac{1}{2}t^2}
+		\end{aligned}
+	\end{equation*}
+	Since $t_0=0$ we get
+	\begin{equation*}
+		\abs{y}(t)=\abs{y_0}e^{\frac{1}{2}t^2}
+	\end{equation*}
+	The solutions depend on the sign of $y_0$ and we finally get
+	\begin{equation*}
+		y(t)=\begin{dcases}y_0e^{\frac{1}{2}t^2}&y_0>0\\y_0e^{-\frac{1}{2}t^2}&y_0<0\end{dcases}
+	\end{equation*}
+\end{eg}
+\subsection{First Order Linear ODEs}
+\begin{dfn}[Integrating Factor]
+	An example of linear ODE is the following kind of equation
+	\begin{equation}
+		y'(t)=p(t)y(t)+q(t)\qquad p,q\in C(I),\ I\subseteq\R
+		\label{eq:integratingfactor}
+	\end{equation}
+	This equation has a unique solution in all of $\R$, since $f(t,y)$ is Lipschitz continuous and sublinear in $\R$.\\
+	We immediately know that the solution $y\in C^1$ exists since $f\in C(\R^2)$ and by Cauchy-Picard-Lindelöf we have
+	\begin{equation*}
+		\abs{f(t,y)-f(t,z)}=\abs{p(t)y(t)-p(t)z(t)}=\abs{p(t)}\abs{y-z}\le\unorm{p}\abs{y-z}
+	\end{equation*}
+	Taken $L=\unorm{p}$ we see immediately that $f$ satisfies the theorem and the solution is uniquely defined in every compact set $K\subset\R$.\\
+	We also see that $f$ is sublinear, since
+	\begin{equation*}
+		\abs{f(t,y)}=\abs{p(t)y(t)+q(t)}\le\unorm{p}\abs{y(t)}+\unorm{q}
+	\end{equation*}
+	Which means that the solution can be extended in $\R$, and $\exists!y:\R\fto\R$ solution to the ODE.\\
+	We now proceed to integrate the ODE, for which we will proceed with a different method than usual.\\
+	Let $\mu(t)$ be what we will call the \textit{integrating factor}, defined as follows
+	\begin{equation*}
+		\mu(t)=e^{-\int p(t)\diff t}
+	\end{equation*}
+	Which has the property that $p(t)\mu(t)=\mu'(t)$
+\end{dfn}
+\begin{mtd}[Integrating Factor]
+	Let $y'(t)=p(t)y(t)+q(t)$ be a linear ODE, we solve by finding the integrating factor $\mu(t)$ and then multiplying both sides of the equayion by the integrating factor and moving the $p(t)y(t)$ term from the RHS to the LHS
+	\begin{equation*}
+		\mu(t)y'(t)-p(t)\mu(t)y(t)=q(t)\mu(t)
+	\end{equation*}
+	By definition of the integrating factor we have that $p(t)\mu(t)=-\mu'(t)$ and therefore
+	\begin{equation*}
+		\mu(t)y'(t)+\mu'(t)y(t)=q(t)\mu(t)
+	\end{equation*}
+	Using the chain rule we get
+	\begin{equation*}
+		\derivative{t}\left( \mu(t)y(t) \right)=\mu(t)q(t)
+	\end{equation*}
+	Integrating
+	\begin{equation*}
+		\mu(t)y(t)=\int_{}^{}\mu(t)q(t)\diff t+c
+	\end{equation*}
+	And therefore, the final general solution will be the following
+	\begin{equation*}
+		y(t)=\frac{1}{\mu(t)}\int_{}^{}\mu(t)q(t)\diff t+\frac{c}{\mu(t)}
+	\end{equation*}
+\end{mtd}
+\begin{eg}
+	Take the following initial value problem
+	\begin{equation*}
+		\left\{\begin{aligned}
+			y'(t)&=\frac{1}{t}y(t)+3t^3\\
+			y(-1)&=2
+		\end{aligned}\right.
+	\end{equation*}
+	We immediately see the previous definition, therefore we can immediately say that since $f$ is Lipschitz continuous and sublinear the solution to the problem will be uniquely defined on all of $\R$.\\
+	For integrating this ODE we use the integrating factor method, taking $p(t)=t^{-1}$ and $q(t)=3t^3$.\\
+	By definition, we have $\mu(t)=\abs{t}$, and therefore, since $t<0$, $\mu(t)=-t^{-1}$, which gives
+	\begin{equation*}
+		-\frac{1}{t}y(t)=-3\int_{}^{}t^2\diff t+c
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		y(t)=t^4-ct
+	\end{equation*}
+	Applying the initial condition
+	\begin{equation*}
+		y(-1)=1+c=2\implies c=1
+	\end{equation*}
+	And therefore the final, unique solution of the initial value problem is the following
+	\begin{equation*}
+		y(t)=t^4-t
+	\end{equation*}
+\end{eg}
+\begin{thm}[General Solutions]
+	Taken $y'(x)+p(x)y(x)=q(x)$ a linear non homogeneous ODE, we define the \textit{associated homogeneous ODE} as the equation
+	\begin{equation*}
+		z'(x)+p(x)z(x)=0
+	\end{equation*}
+	The solution of the complete ODE will be given by the sum of the particular solution $\cc{y}(x)$ and the homogeneous solution $z(x)$
+\end{thm}
+\begin{proof}
+	Take $y(x)$ a solution of the equation and $\cc{y}(x)$ the particular solution of the ODE, we then have, since both are solutions
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				y'(x)+p(x)y(x)&=q(x)\\
+				\cc{y}'(x)+p(x)\cc{y}(x)&=q(x)
+		\end{aligned}\right.
+	\end{equation*}
+	Subtracting term a term we have
+	\begin{equation*}
+		(y'(x)-\cc{y}(x))+p(x)(y(x)-\cc{y}(x))=0
+	\end{equation*}
+	Chosen $y'(x)-\cc{y}(x)=z(x)$ we have that
+	\begin{equation*}
+		z'(x)+p(x)z(x)=0
+	\end{equation*}
+	Therefore $z(x)$ is a solution, but it's also the solution to the associated homogeneous ODE, and therefore, inverting for the general solution $y(x)$, we have
+	\begin{equation*}
+		y(x)=\cc{y}(x)+z(x)
+	\end{equation*}
+\end{proof}
+\begin{eg}
+	Taken the following initial value problem
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				y'(x)+\frac{2}{x}y(x)&=\frac{1}{x^2}\\
+				y(-1)&=2
+		\end{aligned}\right.
+	\end{equation*}
+	We want to find the general integral of the equation, $y(x)$. We begin by solving the associated homogeneous equation
+	\begin{equation*}
+		z'(x)+\frac{2}{x}z(x)=0
+	\end{equation*}
+	In order to integrate this we use the integrating factor $\mu(x)$, where
+	\begin{equation*}
+		\mu(x)=\exp\left( 2\int_{-1}^{x}\frac{1}{x}\diff x \right)=\exp\left( 2\log(\abs{x}) \right)=\exp\left( \log\left( x^2 \right) \right)=x^2
+	\end{equation*}
+	We multiply by the integrating factor, and get
+	\begin{equation*}
+		\derivative{x}(x^2z(x))=0
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		x^2z(x)=c\implies z(x)=\frac{c}{x^2}
+	\end{equation*}
+	The particular solution $\cc{y}(x)$ will be
+	\begin{equation*}
+		\cc{y}(x)=\frac{1}{\mu(x)}\int_{x_0}^{x}\frac{1}{x^2}\mu(x)\diff x
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\cc{y}(x)=\frac{1}{x^2}\int_{-1}^{x}\diff x=\frac{1}{x}
+	\end{equation*}
+	The general solution will be $y(x)=\cc{y}(x)+z(x)$, and we finally get
+	\begin{equation*}
+		y(x)=\frac{c}{x^2}+\frac{1}{x}
+	\end{equation*}
+	Imposing the initial condition we have
+	\begin{equation*}
+		y(-1)=c-1=2\implies c=3
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		y(x)=\frac{3}{x^2}+\frac{1}{x}
+	\end{equation*}
+	Note how we could have found the general integral directly using the formula
+	\begin{equation*}
+		y(x)=\frac{c}{x^2}+\frac{1}{x^2}\int_{-1}^{x}\diff x=\frac{3}{x^2}+\frac{1}{x^2}\int_{-1}^{x}\diff x
+	\end{equation*}
+\end{eg}
+\begin{mtd}[Variation of Constants]
+	Given a linear ODE $y'(t)+a(t)y=f(t)$, with $a,f\in C(I),\ I\subseteq\R$ suppose that $z(t)$ is the solution of the homogeneous equation, we have therefore
+	\begin{equation*}
+		z(t)=\frac{c}{\mu(t)}=c\exp\left( \int a(t)\diff t \right)
+	\end{equation*}
+	We can find a particular solution through \textit{variation of constants}, i.e. we suppose $c=c(t)$, and we have
+	\begin{equation*}
+		\cc{y}(t)=c(t)\exp\left( \int_{}^{}a(t)\diff t \right)
+	\end{equation*}
+	Imposing this on the differential equation, we have
+	\begin{equation*}
+		\cc{y}'(t)=c'(t)\exp\left( -\int_{}^{}a(t)\diff t \right)-a(t)c(t)\exp\left( -\int_{}^{}a(t) \right)\diff t
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\frac{1}{\mu(t)}\left( c'(t)-a(t)c(t) \right)+\frac{a(t)c(t)}{\mu(t)}=f(t)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\frac{c'(t)}{\mu(t)}=f(t)\implies c(t)=\int_{}^{}f(t)\mu(t)\diff t
+	\end{equation*}
+	Which implies
+	\begin{equation*}
+		\cc{y}(t)=\frac{1}{\mu(t)}\int_{}^{}f(t)\mu(t)\diff t
+	\end{equation*}
+	We then recover the previous formula by adding the particular and homogeneous solutions
+	\begin{equation*}
+		y(t)=\frac{c}{\mu(t)}+\frac{1}{\mu(t)}\int_{}^{}f(t)\mu(t)\diff t
+	\end{equation*}
+\end{mtd}
+\subsection{Second Order Linear ODEs}
+\begin{dfn}[Initial Value Problem for 2nd Order Linear ODEs]
+	Given a second order linear differential equation $y''(x)+a(x)y'(x)+b(x)y(x)=f(x)$ we define the \textit{initial value problem} for such differential equation as follows
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				y''(x)+a(x)y'(x)+b(x)y(x)&=f(x)\\
+				y'(x_0)&=y'_0\\
+				y(x_0)&=y_0
+		\end{aligned}\right.
+	\end{equation*}
+	This kind of problem, if $a,b,f\in C(I)\ I\subseteq\R$ is said to be \textit{well defined}
+\end{dfn}
+\begin{thm}[Space of Solutions]
+	Given a second order linear ODE, the solutions of the homogeneous equation span a vector space of dimension 2 $\mathcal{S}$, and the general solution of the homogeneous equation has the following form
+	\begin{equation*}
+		z_g(x)=c_1z_1(x)+c_2z_2(x)\in\mathcal{S}
+	\end{equation*}
+	I.e., if we define a matrix $W_{\mu\nu}(t)$ as follows
+	\begin{equation*}
+		W_{\mu\nu}(t)=\begin{pmatrix}z_1(t)&z_2(t)\\z_1'(t)&z_2'(t)\end{pmatrix}
+	\end{equation*}
+	If $z_1,z_2$ solve the differential equation, the matrix $W_{\mu\nu}(t)$ is non-singular
+\end{thm}
+\begin{proof}
+	Suppose $z_1,z_2\in C^2(I)$ are two solutions. If they're linearly inddependent we have that they solve the following system with $c_1,c_2\in\R\setminus\{0\}$
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				c_1z_1(x)+c_2z_2(x)&=0\\
+				c_1z'_1(x)+c_2z'_2(x)&=0
+		\end{aligned}\right.
+	\end{equation*}
+	This system is solvable only if the determinant of the matrix $W_{\mu\nu}$ is non zero, and therefore the two functions must be linearly independent and span the vector space of solutions $\mathcal{S}$
+\end{proof}
+\begin{mtd}[Characteristic Polynomial]
+	Take the following linear homogeneous ODE of order 2
+	\begin{equation*}
+		z''(x)+az'(x)+bz(x)=0\qquad a,b\in\R
+	\end{equation*}
+	We begin by ``guessing'' a solution in exponential form $z(x)=e^{\lambda x}$, where $\lambda\in\Cf$. Therefore, reinserting into the ODE, we have
+	\begin{equation*}
+		e^{\lambda x}\left( \lambda^2+a\lambda+b \right)=0
+	\end{equation*}
+	Since the exponential is never zero $\forall x\in\R,\ \forall\lambda\in\Cf$ we have that the polynomial must be zero, and therefore we get two roots
+	\begin{equation*}
+		\lambda_{1,2}=-\frac{a}{2}\pm\frac{1}{2}\sqrt{a^2-4b}
+	\end{equation*}
+	We can now discern 3 cases.\\
+	Case 1), $a^2-4b>0$\\
+	There are two real roots $\lambda_1,\ \lambda_2$, and therefore we have
+	\begin{equation*}
+		z(x)=c_1e^{\lambda_1x}+c_2e^{\lambda_2x}
+	\end{equation*}
+	Case 2), $a^2-4b<0$\\
+	There are two complex conjugate roots $\lambda,\ \cc{\lambda}$, and the solution will be
+	\begin{equation*}
+		z(x)=\real\left( c_1e^{\lambda x}+c_2e^{\cc{\lambda}x} \right)=c_1e^{\real(\lambda)x}\cos(\imaginary(\lambda)x)+c_2e^{\real(\lambda)x}\sin(\imaginary(\lambda)x)
+	\end{equation*}
+	Or
+	\begin{equation*}
+		z(x)=Ae^{\real(\lambda)x}\cos(\imaginary(\lambda)+\varphi)
+	\end{equation*}
+	With $A,\varphi\in\R$
+	Case 3) $a^2-4b=0$\\
+	There is only one root $\lambda=a/2$ with multiplicity $2$. In order to find the general integral $z(x)$ we impose the variation of constants, and we have
+	\begin{equation*}
+		z(x)=c(x)e^{\lambda x}
+	\end{equation*}
+	And
+	\begin{equation*}
+		\begin{aligned}
+			z'(x)&=c'(x)e^{\lambda x}+\lambda c(x)e^{\lambda x}=e^{\lambda x}(c'(x)+\lambda c(x))\\
+			z''(x)&=c''(x)e^{\lambda x}+\lambda c'(x)e^{\lambda x}+\lambda^2 c(x)e^{\lambda x}=e^{\lambda x}(c''(x)+\lambda c'(x)+\lambda^2c(x))
+		\end{aligned}
+	\end{equation*}
+	Since $\lambda$ is a root of the characteristic polynomial, we end up with
+	\begin{equation*}
+		c''(x)=0\implies c(x)=c_2+c_1t
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		z(x)=e^{\lambda t}(c_1+c_2t)=e^{-\frac{a}{2}t}(c_1+c_2t)
+	\end{equation*}
+\end{mtd}
+\begin{mtd}[Similarity Method]
+	Another method for finding a particular solution is the similarity method. Given the following linear ODE
+	\begin{equation*}
+		y''(x)+ay'(x)+by(x)=f(x)
+	\end{equation*}
+	The particular solution of this problem can be found using the shape of $f(x)$.\\
+	Case 1) $f(x)\in\R_n[x]$\\
+	In this case we will suppose that the solution will be a polynomial, and we can discern 3 cases
+	\begin{equation*}
+		\cc{y}(x)=\begin{dcases}
+			q(x)&b\ne0\\
+			xq(x)&b=0,\ a\ne0\\
+			x^2q(x)&b=0,\ a=0
+		\end{dcases}
+	\end{equation*}
+	Where $q(x)\in\R_n[x]$\\
+	Case 2) $f(x)=Ae^{\lambda x}$, $\lambda\in\Cf$\\
+	In this case we will suppose the particular solution as the real part of a complex exponential, where
+	\begin{equation*}
+		\cc{y}(x)=\real\left( \tilde{y}(x) \right)=\gamma(x)\real\left( e^{\lambda x} \right)
+	\end{equation*}
+	Where $\gamma(x)\in C^2(I),\ I\subset\R$ is some unknown function. From this we will have, deriving twice
+	\begin{equation*}
+		\begin{aligned}
+			\tilde{y}'(x)&=e^{\lambda x}\left( \gamma'(x)+\lambda\gamma(x) \right)\\
+			\tilde{y}''(x)&=e^{\lambda x}\left( \lambda^2\gamma(x)+2\lambda\gamma'(x)+\gamma''(x) \right)
+		\end{aligned}
+	\end{equation*}
+	Substituting into the differential equation we obtain
+	\begin{equation*}
+		\gamma''(x)+(2\lambda+a)\gamma'(x)+(\lambda^2+b\lambda+a)\gamma(x)=A
+	\end{equation*}
+	We get again 3 different cases\\
+	a) $\lambda^2+a\lambda+b=0$\\
+	In this case we have
+	\begin{equation*}
+		\gamma(x)=\frac{A}{\lambda^2+a\lambda+b}\implies \tilde{y}(x)=\frac{A}{\lambda^2+a\lambda+b}e^{\lambda x}
+	\end{equation*}
+	b) $\lambda^2+a\lambda+b=0,\ 2\lambda+a\ne0$\\
+	In this gase instead we have
+	\begin{equation*}
+		\gamma'(x)=\frac{A}{2\lambda+a}\implies \tilde{y}(x)=\frac{A}{2\lambda+a}xe^{\lambda x}
+	\end{equation*}
+	c) $\lambda^2+a\lambda+b=0,\ 2\lambda+a=0$\\
+	Lastly we have
+	\begin{equation*}
+		\gamma''(x)=A\implies \tilde{y}(x)=\frac{A}{2}x^2e^{\lambda x}
+	\end{equation*}
+	The solution for the differential equation will lastly be either the real (or imaginary, if there is a sine in the RHS) part of the function we found.
+\end{mtd}
+\begin{eg}
+	We will use the similarity method to solve the following differential equation
+	\begin{equation*}
+		y''(x)+2y'(x)+3y(x)=2e^{3x}
+	\end{equation*}
+	We see immediately that $f(x)=2e^{3x}$ so we choose a particular solution $\cc{y}(x)$ with the following form
+	\begin{equation*}
+		\cc{y}(x)=ke^{3x}
+	\end{equation*}
+	We therefore have
+	\begin{equation*}
+		\begin{aligned}
+			\cc{y}'(x)&=3ke^{3x}\\
+			\cc{y}''(x)&=9ke^{3x}
+		\end{aligned}
+	\end{equation*}
+	Substituting
+	\begin{equation*}
+		18k=2\implies k=\frac{1}{9}
+	\end{equation*}
+	Therefore our searched solution will be the following
+	\begin{equation*}
+		\cc{y}(x)=\frac{1}{9}e^{3x}
+	\end{equation*}
+\end{eg}
+\begin{eg}
+	Let's now solve the following differential equation
+	\begin{equation*}
+		y''(x)+2y'(x)-3y(x)=2e^{-3x}
+	\end{equation*}
+	Following the same approach, we see that the characteristic polynomial is null, and we end up with a contradiction, therefore we find a solution of the following kind
+	\begin{equation*}
+		\cc{y}(x)=kxe^{-3x}
+	\end{equation*}
+	Deriving the particular solution, we have
+	\begin{equation*}
+		\begin{aligned}
+			\cc{y}'(x)&=ke^{-3x}\left( 1-3x \right)\\
+			\cc{y}''(x)&=3ke^{-3x}\left( 3x-2 \right)
+		\end{aligned}
+	\end{equation*}
+	Substituting
+	\begin{equation*}
+		\begin{aligned}
+			3k(3x-2)&+2k(1-3x)-3kx=2\\
+			-4k&=2\\
+			k&=-\frac{1}{2}
+		\end{aligned}
+	\end{equation*}
+	Therefore the particular solution we're searching for is, finally
+	\begin{equation*}
+		\cc{y}(x)=-\frac{x}{2}e^{-3x}
+	\end{equation*}
+\end{eg}
+\begin{mtd}[Variation of Constants]
+	Another method that might be used to solve a second order linear differential equation is the method of variation of constants.\\
+	Given the following differential equation and the associated homogeneous equation
+	\begin{equation*}
+		\begin{aligned}
+			y''(x)+ay'(x)+by(x)&=f(x)\\
+			z''(x)+az'(x)+bz(x)&=0
+		\end{aligned}
+	\end{equation*}
+	Suppose that $z_1(x),z_2(x)$ are two linearly independent homogeneous solutions, and
+	\begin{equation*}
+		z(x)=c_1z_1(x)+c_2z_2(x)
+	\end{equation*}
+	We search for a particular solution supposing that the two constants are actually functions, and we have
+	\begin{equation*}
+		\cc{y}(x)=c_1(x)z_1(x)+c_2(x)z_2(x)
+	\end{equation*}
+	Due to the necessity of a non-singular Wronskian determinant, we impose the following condition
+	\begin{equation*}
+		c_1'(x)z_1(x)+c_2'(x)z_2(x)=0
+	\end{equation*}
+	Deriving two times the particular solution and then substituting in the original equation we end up with the following system
+	\begin{equation*}
+		\left\{\begin{aligned}
+			c_1'(x)z_1(x)+c_2'(x)z_2(x)&=0\\
+			c_1'(x)z_1'(x)+c_2'(x)z_2'(x)&=f(x)
+		\end{aligned}\right.
+	\end{equation*}
+	The necessity for the linear independence of the solutions is clear here, since the system is solvable if and only if the Wronskian determinant is zero.\\
+	We solve the system by substitution, and we have
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				c_1'(x)&=-c_2'(x)\frac{z_2(x)}{z_1(x)}\\
+				c_2'(x)&=\frac{f(x)-c_1'(x)z_1'(x)}{z_2'(x)}
+		\end{aligned}\right.
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				c_1'(x)&=-\frac{z_1(x)}{z_1(x)z_2'(x)-z_2(x)z_1'(x)}f(x)\\
+				c_2'(x)&=\frac{z_2(x)}{z_1(x)z_2'(x)-z_2(x)z_1'(x)}f(x)
+		\end{aligned}\right.
+	\end{equation*}
+	Written in terms of the Wronskian determinant $\det_{\mu\nu}W_{\mu\nu}(x)$ we finally have as particular solution
+	\begin{equation*}
+		\cc{y}(x)=z_2(x)\int_{}^{}\frac{z_2(x)}{\det_{\mu\nu}W_{\mu\nu}(x)}f(x)\diff x-z_1(x)\int_{}^{}\frac{z_1(x)}{\det_{\mu\nu}W_{\mu\nu}(x)}f(x)\diff x+c
+	\end{equation*}
+	And the general solution of the differential equation will be the following
+	\begin{equation*}
+		y(x)=z_2(x)\int_{x_0}^{x}\frac{z_2(x)}{\det_{\mu\nu}W_{\mu\nu}(x)}f(x)\diff x-z_1(x)\int_{x_0}^{x}\frac{z_1(x)}{\det_{\mu\nu}W_{\mu\nu}(x)}f(x)\diff x+c_1z_1(x)+c_2z_2(x)
+	\end{equation*}
+\end{mtd}
+%\section{Green Identities and Kelvin Transform}
+\end{document}

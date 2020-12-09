@@ -1,0 +1,405 @@
+\documentclass[../admech.tex]{subfiles}
+\begin{document}
+\section{Laboratory and Center of Mass Reference Frames}
+We have already proven that in special relativity there are no preferred reference frames, therefore we might already choose the ones that ease our calculations.\\
+In the field of relativistic particle collisions (like particle physics) we have two main choices of reference frames
+\begin{enumerate}
+\item The laboratory reference frame
+\item The center of mass reference frame
+\end{enumerate}
+The first one is defined as the reference frame of the resting observer of the event, while the second is the reference frame of the center of mass of the system of particles interacting.\footnote{I will use a star indicating the center of mass r.f. the rest will be intended as being in the laboratory reference frame}\\
+For understanding properly consider the collision of two particles $m_1,m_2$ where the second is a target particle at rest in the lab frame. We have, before the collision
+\begin{equation}
+	\begin{aligned}
+		p^{\mu}_1&=\left( \frac{E_1}{c},p^i_1 \right)\\
+		p^{\mu}_2&=\left( m_2c,0 \right)
+	\end{aligned}
+	\label{eq:2partcolltarget0}
+\end{equation}
+And after the collision
+\begin{equation}
+	P^\mu=p^\mu_1+p^\mu_2=\left( \frac{E_1}{c}+m_2c,p^i_1 \right)
+	\label{eq:aftercollision1partcolltarget}
+\end{equation}
+By definition of center of mass, we have that this reference frame will be the one for which $P^i=0$, i.e., going back to our two particles pre-collision
+\begin{equation}
+	p^{\mu^\star}_1=\left( \frac{E_1^\star}{c},p^{i^\star} \right),\qquad p^{\mu^\star}_2=\left( \frac{E_2^\star}{c},-p^{i^\star} \right)
+	\label{eq:precolcm2prt}
+\end{equation}
+I.e.
+\begin{equation}
+	P^{\mu^\star}=\left( \frac{1}{c}\left( E^\star_1+E_2^\star \right),0 \right)
+	\label{eq:cmtotmom2partcolltarget}
+\end{equation}
+\section{Invariant Mass}
+Consider a system of $n$ particles with momentum $p^\mu_{(k)}=(E_k,p^i_{(k)})$ and let the sum of all 4-momentums be $P^\mu$\footnote{From now on we will work in God-given units, where $c=1$}.
+\begin{dfn}[Invariant Mass]
+	Given the previous system of particles, the relativistic invariant of the total 4-momentum is defined as \emph{invariant mass} $\sqrt{s}$ of the system, so
+	\begin{equation}
+		\sqrt{s}=\sqrt{P^\mu P_\mu}=\sqrt{\left( \sum_kE_k \right)^2-\left( \sum_kp_k \right)^2}=\sum_kE_k^\star=E^\star=M^\star
+		\label{eq:roots}
+	\end{equation}
+	Where we used that $\sum_kp_{(k)}^i=0$ in the $\star-$system, also known before as the center of mass system
+\end{dfn}
+Consider now the case of a particle colliding into a target particle. We have
+%\begin{equation*}
+%	\sqrt{s}=\sqrt{\left( E_1+E_2 \right)^2-\norm{p_1^2+p_2^2}^2}=\sqrt{\left( E_1+m_2 \right)^2-\norm{p_{1}^i}^2}=\sqrt{m_1^2+m_2^2+2E_1m_2}
+%\end{equation*}
+%Where
+\begin{equation}
+	p^\mu_1=\left( E_1,p_1^i \right),\quad p^\mu_2=\left( m_2,0 \right),\quad P^\mu=\left( E_1+m_2,p_1^i \right)
+	\label{eq:4momtarcol}
+\end{equation}
+And
+\begin{equation}
+	P^\mu P_\mu=\left( E_1+m_2 \right)^2-p_1^2=E_1^2+m_2^2+2E_1m_2-p_1^2=P^{\mu^\star}P_{\mu^\star}
+	\label{eq:s4tarcol}
+\end{equation}
+Note that $E_1^2=m_1^2$.
+Therefore, putting it all together, for a particle colliding into a target, the invariant mass will be
+\begin{equation}
+	\sqrt{s}=\sqrt{P^\mu P_\mu}=\sqrt{m_1^2+m_2^2+2E_1m_2}=E^\star=M^\star
+	\label{eq:invmasstarcol}
+\end{equation}
+Note that if we have $m_1,m_2<<E_1$, ie $\beta\approx1$ and the particles are ultrarelativistic, then the invariant mass formula can be approximated as follows
+\begin{equation}
+	\sqrt{s}\approx\sqrt{2E_1m_2} %haha le squiggly equal sign
+	\label{eq:invmasstarcolapprox}
+\end{equation}
+In case that both particle have $p^i_{(k)}\ne0$ in the lab system, we have
+\begin{equation}
+	p^\mu_1=\left( E_1,p_1^i \right),\quad p^\mu_2=\left( E_2,p_2^i \right),\quad P^{\mu^\star}=\left( E_1^\star+E_2^\star,0 \right)
+	\label{eq:frontalcollisionrel}
+\end{equation}
+Therefore
+\begin{equation*}
+	\begin{aligned}
+		P^\mu P_\mu&=E_1^2+E_2^2+2E_1E_2-\left( p_1^2+p_2^2+2p_1p_2\cos\theta \right)\\
+		P^{\mu^\star}P_{\mu^\star}&=\left( E_1^\star+E_2^\star \right)^2=P^\mu P_\mu
+	\end{aligned}
+\end{equation*}
+Or in simpler terms
+\begin{equation}
+	\sqrt{s}=\sqrt{m_1^2+m_2^2+2\left( E_1E_2-p_1p_2\cos\theta \right)}=E_1^\star+E_2^\star
+	\label{eq:invmassfrontalcollision}
+\end{equation}
+If $m_1,m_2<<E_1$, so in the ultrarelativistic case, we have
+\begin{equation}
+	\sqrt{s}\approx\sqrt{2E_1E_2\left( 1-\cos\theta \right)}
+	\label{eq:invmassfrontalcollisionatalmostc}
+\end{equation}
+Note that in cases like particle colliders, like the LHC, SuperKamiokande or Fermilab, we have that the collision is frontal, i.e. $\theta=\pi$ and therefore the invariant mass formula becomes extremely easier to remember, especially if the particles are of the same kind ($E_1=E_2$)
+\begin{equation}
+	\sqrt{s}\approx2\sqrt{E_1E_2}=2E
+	\label{eq:invmassLHC}
+\end{equation}
+\subsection{Transformations of the Invariant Mass}
+Let's go back to what we had defined before for the invariant mass. We have that $\sqrt{s}=E^\star$, therefore, considering the total 4-momentum in the $\star-$system, we can write without problems
+\begin{equation}
+	P^{\mu^\star}=\left( \sqrt{s},0 \right)
+	\label{eq:totalstarmom}
+\end{equation}
+This, as every 4-momentum, transforms with Lorentz transformations. Consider the boost along the x-axis without loss of generality, and transform towards the lab system.
+\begin{equation}
+	\begin{pmatrix}
+		\sqrt{s}\\0\\0\\0
+	\end{pmatrix}=\begin{pmatrix}
+		\gamma&-\beta\gamma&0&0\\
+		-\beta\gamma&\gamma&0&0\\
+		0&0&1&0\\
+		0&0&0&1
+	\end{pmatrix}\begin{pmatrix}
+		\sum_kE_k\\
+		\sum_kp_k\\
+		0\\
+		0
+	\end{pmatrix}
+	\label{eq:rootslorentz}
+\end{equation}
+Expanding the system and keeping only the two nonzero lines we have
+\begin{equation}
+	\left\{ \begin{aligned}
+			\gamma\sum_kE_k-\beta\gamma\sum_kp_k&=\sqrt{s}\\
+			\gamma\sum_kp_k-\beta\gamma\sum_kE_k&=0
+	\end{aligned}\right.
+	\label{eq:rootslor}
+\end{equation}
+From the second row we have
+\begin{equation}
+	\sum_kp_k=\beta\sum_kE_k\implies\beta=\frac{\sum_kp_k}{\sum_kE_k}=\frac{P}{E}
+	\label{eq:betanewform}
+\end{equation}
+And, therefore
+\begin{equation}
+	\gamma=\frac{1}{\sqrt{1-\beta^2}}=\frac{1}{\sqrt{1-\left( \frac{P}{E} \right)^2}}=\sqrt{\frac{E^2}{E^2-P^2}}=\frac{E}{\sqrt{s}}
+	\label{eq:gammaroots}
+\end{equation}
+Which, wrapped up, gives a different way to interpret the Lorentz boost and Lorentz factor
+\begin{equation}
+	\left\{ \begin{aligned}
+			\gamma&=\frac{E}{\sqrt{s}}\\
+			\beta&=\frac{P}{E}
+	\end{aligned}\right.
+	\label{eq:gammabetaroots}
+\end{equation}
+\section{Transverse Momentum and Transformation of Angles}
+Consider now a particle moving along the z axis. Transforming from the lab system to the $\star-$system we have, considering spherical polar coordinates
+\begin{equation}
+	\begin{pmatrix}
+		E\\
+		p\sin\theta\cos\varphi\\
+		p\sin\theta\sin\varphi\\
+		p\cos\theta
+	\end{pmatrix}=
+	\begin{pmatrix}
+		\gamma&0&0&\beta\gamma\\
+		0&1&0&0\\
+		0&0&1&0\\
+		\beta\gamma&0&0&\gamma
+	\end{pmatrix}
+	\begin{pmatrix}
+		E^\star\\
+		p^\star\cos\theta^\star\cos\varphi^\star\\
+		p^\star\sin\theta^\star\sin\varphi^\star\\
+		p\cos\theta^\star
+	\end{pmatrix}
+	\label{eq:transversemomtrans}
+\end{equation}
+Where $\gamma,\beta$ are the Lorentz factors of the lab system..\\
+\begin{dfn}[Transverse Momentum]
+	We define the \emph{transverse momentum} $p_\perp$ as the 3-momentum orthogonal to the z axis.\\
+	In general it's defined as the 2-vector $p_\perp=(p_x,p_y)$, i.e.
+	\begin{equation}
+		p_\perp=\begin{pmatrix}
+			p_x\\
+			p_y
+		\end{pmatrix}=\begin{pmatrix}
+			p\sin\theta\cos\varphi\\
+			p\sin\theta\sin\varphi
+		\end{pmatrix}
+		\label{eq:perpmom}
+	\end{equation}
+	Applying the transformation it's obvious that $p_\perp=p_\perp^\star$, therefore $p_\perp$ is a relativistic invariant.\\
+\end{dfn}
+From this last relativistic invariant, taking the square we therefore must have
+\begin{equation}
+	p_\perp^2=\left(p_\perp^\star\right)^2\implies p^2\sin\theta=(p^\star)^2\sin^2\theta^\star
+	\label{eq:equalitypmomstar}
+\end{equation}
+Note how $\varphi$ disappears from the calculations, giving $\varphi=\varphi^\star$, this means that the azimuthal angle is another relativistic invariant of motion.\\
+Applying now the transformation on $p_z$ we have
+\begin{equation}
+	p_z=p\cos\theta=\gamma\left(\beta E^\star+p^\star\cos\theta^\star\right)
+	\label{eq:pztransmom}
+\end{equation}
+Using that $p_y,\varphi$ are relativistic invariants we can write the following system
+\begin{equation}
+	\begin{aligned}
+		p_y&=p\sin\theta\sin\varphi=p^\star\sin\theta^\star\cos\varphi^\star\\
+		p_z&=p\cos\theta=\gamma\left( \beta E^\star+p^\star\cos\theta^\star \right)
+	\end{aligned}
+	\label{eq:pypztransmomsys}
+\end{equation}
+Which, solving for $\theta$ gives
+\begin{equation}
+	\frac{p_y}{p_z}=\tan\theta=\frac{\sin\theta^\star}{\gamma\left( \beta E^\star+p^\star\cos\theta^\star \right)}
+	\label{eq:tanthetatrans}
+\end{equation}
+Rewriting the denominator we get
+\begin{equation}
+	\tan\theta=\frac{\sin\theta^\star}{\gamma_0\left( \beta_0\frac{E^\star}{p^\star}-\cos\theta^\star \right)}=\frac{\sin\theta^\star}{\gamma_0\left( \frac{\beta_0}{\beta^\star}-\cos\theta^\star \right)}=
+	\label{eq:betastar}
+\end{equation}
+Where we defined the boost of the center of mass with respect to the $\star$ energy-momentum as follows
+\begin{equation}
+	\beta^\star=\frac{p^\star}{E^\star}
+	\label{eq:betastardef}
+\end{equation}
+From this it's possible to define 3 major cases for the transformation of angles between the lab and the $\star$ system after a collision.\\
+1) $\beta>\beta^\star$\\
+If $\beta>\beta^\star$ we have
+\begin{equation*}
+	\frac{\beta}{\beta^\star}-\cos\theta^\star>0
+\end{equation*}
+Which implies that $\forall\theta^\star\in[0,\pi]$, $\theta\in[0,\pi/2]$.\\
+This means that the particle after the collision, in the lab system will be observed as moving forwards with a flight angle $\theta$ between $0,\pi/2$ with respect to the initial motion.\\
+Since also $\theta=0$ for $\theta^\star=0,\pi$, we have that there must exist a maximum flight angle $\theta_{max}<\pi/2$.\\
+Deriving the previous equation with respect to $\theta^\star$ we get
+\begin{equation*}
+	\dv{\tan\theta}{\theta^\star}=\frac{1+\frac{\beta}{\beta^\star}\cos\theta^\star}{\left( \frac{\beta}{\beta^\star}-\cos\theta^\star \right)^2}=0
+\end{equation*}
+Which gives
+\begin{equation}
+	\cos\theta_{max}^\star=-\frac{\beta^\star}{\beta}
+	\label{eq:maxflightangle}
+\end{equation}
+Shoving it back into the equation for the tangent, we have
+\begin{equation}
+	\tan\theta_{max}=\frac{\beta^\star}{\gamma\sqrt{\beta^2-\left(\beta^\star\right)^2}}
+	\label{eq:tanthetamaxrel}
+\end{equation}
+Using $\gamma E^\star+\beta\gamma p^\star\cos\theta^\star=E$ we also have
+\begin{equation}
+	E(\theta_{max})=\gamma\left( E^\star-\beta^\star p^\star \right)=\gamma\left( \frac{m^2-\left(p^\star\right)^2}{E^\star} \right)=\gamma\frac{m^2}{E^\star}=m\frac{\gamma}{\gamma^\star}
+	\label{eq:gammaongammastarthetamax}
+\end{equation}
+Where we defined
+\begin{equation}
+	\gamma^\star=\frac{1}{\sqrt{1-\left( \beta^\star \right)^2}}=\frac{m}{E^\star}
+	\label{eq:gammastar}
+\end{equation}
+2) $\beta<\beta^\star$\\
+In this case the velocity of the particle in the lab system can stop the center of mass, giving $\theta\ge\pi/2$. Note that there is no maximum angle since the derivative of the tangent is always positive.\\
+3) $\beta=\beta^\star$\\
+In this case $\cos\theta^\star=-1$ and it corresponds to a single possible angle $\theta=\pi/2$. Here the particle moves opposite to the center of mass ($\theta^\star=\pi$), while in the lab it's at rest.
+\section{N-body Decays and Threshold Energy}
+Consider now a particle colliding with a target at rest, such that after the collision $n$ particles are produced.
+\begin{dfn}[Threshold Energy]
+	The \emph{threshold energy} of the reaction is defined as the minimal kinetic energy $T_{th}$ that the projectile needs in order to produce all the $n$ particles at rest in the $\star$ system.
+\end{dfn}
+In order to find this $T_{th}$ we have that the invariant mass in the final state is
+\begin{equation}
+	\sqrt{s}=\sum_{f=1}^n\left( T_f^\star+m_f \right)
+	\label{eq:invmassnbodyprod}
+\end{equation}
+Whereas in the initial state
+\begin{equation}
+	s=\left( E_i+m_T \right)^2-p^ip_i=2m_TE_i+E_i^2+m_p^2
+	\label{eq:invmassnbodyprodpre}
+\end{equation}
+Where $m_T$ is the mass of the target and $m_p$ is the mass of the projectile.\\
+Writing $T_i=(\gamma-1)E_i=E_i-m_i$ We can rewrite the invariant mass before the collision as follows
+\begin{equation*}
+	s=2m_TT_i+2m_Tm_i+(m_i^2+m_T^2)
+\end{equation*}
+Which gives
+\begin{equation}
+	\sqrt{s}=\sqrt{2m_TT_i+(m_i+m_T)^2}
+	\label{eq:sqrtspreT}
+\end{equation}
+Equating $\sqrt{s}$ before and after the collision (it's a relativistic invariant) we have the following equality
+\begin{equation}
+	\left( \sum_{f=1}^n\left( T_f^\star+m_f \right) \right)^2=2m_TT_i+(m_i+m_T)^2
+	\label{eq:Tisqrtspreaf}
+\end{equation}
+Solving for $T_i$ we get
+\begin{equation}
+	T_i=\frac{\left( \sum_{f=1}^n(T_f^\star+m_f) \right)^2-(m_i+m_T)^2}{2m_T}
+	\label{eq:kinnecessarysqrts}
+\end{equation}
+Setting $T_f^\star=0$ we find the value of $T_i$ such that the particles are produced at rest in the center of mass, i.e. the threshold energy for the reaction.
+\begin{equation}
+	T_{th}=\frac{\left( \sum_{f=1}^nm_f \right)^2-(m_i+m_T)^2}{2m_T}
+	\label{eq:thresholdenergygeneral}
+\end{equation}
+Note that if $T_i<T_{th}$ the reaction is \textit{kinematically impossible}.
+\section{Elastic Scattering}
+In the event of elastic scattering between particles, the classical conservation of energy and momentum in special relativity translattes into the conservation of the 4-momentum, i.e.
+\begin{equation}
+	p^\mu_1+p^\mu_2=p^{\mu'}_1+p^{\mu'}_2
+	\label{eq:4momcons}
+\end{equation}
+Consider now the scattering between an electron $e^-$ and the nucleus of an atom $A$. We have that if in the lab $A$ is at rest, we can write
+\begin{equation}
+	p^\mu_{e^-}=\left( E_{e^-},p^i_{e^-} \right),\quad p^\mu_A=(M,0)
+	\label{eq:electronatomscattering4mom}
+\end{equation}
+After the collision we get
+\begin{equation}
+	p^{\mu'}_{e^-}=\left( E_{e^-}',p^{i'}_{e^-} \right),\quad p^{\mu'}_A=\left( E_A,p_A^{i'} \right)
+	\label{eq:e-ascatt}
+\end{equation}
+We must have $P^\mu=P^{\mu'}$, therefore, using $P^\mu P_\mu=P^{\mu^\star}P_{\mu^\star}$ we have
+\begin{equation}
+	P^\mu P_\mu=p^{\mu}_{e^-}p^{e^-}_{\mu}+p^\mu_Ap^A_\mu+2p_A^\mu p_\mu^{e^-}=m_{e^-}^2+M^2+2p_{e^-}^{\mu'}p_{\mu'}^{e^-}
+	\label{eq:tot4momcons}
+\end{equation}
+Note that experimentally only the electron gets measured after the scattering, therefore it's convenient to write the following
+\begin{equation*}
+	p^{\mu'}_A=p_{e^-}^\mu+p_A^\mu-p^{\mu'}_{e^-}
+\end{equation*}
+Therefore
+\begin{equation*}
+	p^\mu_{e^-}p_\mu^A=p^{\mu'}_{e^-}\left( p^{e^-}_\mu+p_\mu^A-p^{e^-}_{\mu'} \right)=p^{\mu'}_{e^-}p^{e^-}_{\mu}+p^{\mu'}_{e^-}p^A_\mu-m_{e^-}^2
+\end{equation*}
+In the lab system we have that the previous equation becomes
+\begin{equation*}
+	E_{e^-}M=E'_{e^-}E_{e^-}+E'_{e^-}M-m^2_{e^-}-p^{i'}_{e^-}p_{i}^{e^-}
+\end{equation*}
+If the electron is ultrarelativistic we have
+\begin{equation}
+	EM=E'E+E'M-pp'\cos\theta\implies E'=\frac{E}{1+\frac{E}{M}\left( 1-\cos\theta \right)}
+	\label{eq:ultrarelativisticemscattera}
+\end{equation}
+Where $\theta$ is the final scattering angle
+\section{N-body Decays}
+Consider a particle of mass $M$ decaying in $n$ particles with masses $m_i$. Considering the reference system where $M$ is at rest, we can say using the conservation of energy, that
+\begin{equation}
+	M=\sqrt{s}\sum_{i=1}^nE_i^\star=\sum_{i=1}^n\sqrt{(p_i^\star)^2+m^2_i}\ge\sum_{i=1}^nm_i
+	\label{eq:consendecay}
+\end{equation}
+Note that this defines also a threshold energy for the decay
+\begin{equation*}
+	M\ge\sum_{i=1}^nm_i
+\end{equation*}
+Consider now, without loss of generality, a 2 particle decay $a\to b+c$. We have
+\begin{equation}
+	\begin{aligned}
+		M&=\sqrt{s}=E_b^\star+E_c^\star\\
+		p_c^\star&=p_b^\star
+	\end{aligned}
+	\label{eq:rootsmomdec}
+\end{equation}
+Using \eqref{eq:consendecay} we have that
+\begin{equation*}
+	M=\sqrt{p^2+m_a^2}+\sqrt{p^2+m_b^2}\\
+\end{equation*}
+Therefore, juggling a bit with the equation, we end up with
+\begin{equation*}
+	\begin{aligned}
+		M^2+m_b^2-m_c^2&=2M\sqrt{(p^\star)^2+m_b^2}\\
+		M^4+(m_b^2-m_c^2)+2M^2(m_b^2-m_c^2)&=4M^2\left( (p^\star)^2+m_b^2 \right)\\
+	\end{aligned}
+\end{equation*}
+Solving for $p^\star$ we get
+\begin{equation}
+	p^\star=\frac{1}{2M}\sqrt{M^4+(m_b^2-m_c^2)^2-2M^2(m_b^2+m_c^2)}
+	\label{eq:pstardecay}
+\end{equation}
+Using the dispersion relation for $E^\star$ we get
+\begin{equation}
+	E_b^\star=\frac{M^2+(m_b^2-m_c^2)}{2M}
+	\label{eq:disreldec}
+\end{equation}
+And using $\sqrt{s}=M$, we have
+\begin{equation}
+	E_b^\star=\frac{s+m_b^2-m_c^2}{2\sqrt{s}}
+	\label{eq:disrel2decroots}
+\end{equation}
+The calculation is completely analogous for $E_c^\star$, and we get
+\begin{equation}
+	E_c^\star=\frac{s-m_b^2-m_c^2}{2\sqrt{s}}
+	\label{eq:disrel2decrootscpart}
+\end{equation}
+It's obvious that this decay has only one possible decay energy, and hence it's called \emph{monoenergetic}. This is not true for decays with $n\ge2$.\\
+In the $\star$ system the decay is isotropic due to the conservation of 3-momentum, but the direction of one particle with respect to the other is fixed, where
+\begin{equation*}
+	p^\star_b=-p^\star_c\implies\theta_{bc}^\star=\pi
+\end{equation*}
+In this case $\star$ coincides with the lab system, therefore $\theta_{bc}=\pi$.\\
+Consider now another case, where the particle decays in flight, with $\beta\ne0$. In this case the angle measured in the lab system will be obviously different from the one in the $\star$ system.\\
+Using what we got before for defining $\beta,\beta^\star,\gamma$ using momentum and energy, we have our usual transformation of angles for the first particle at $\theta^\star$ and the second at $\pi-\theta^\star$
+\begin{equation}
+	\tan\theta_{bc}=\frac{\sin\theta^\star}{\gamma_a\left( \beta_a\beta^\star_{bc}\pm\cos\theta^\star \right)}
+	\label{eq:angletrflightdecay}
+\end{equation}
+In general, with $n$ particles, we have three cases\\
+1) $\beta_a>\beta_{i}$\\
+In the lab system the $i$-th child particle is emitted forwards, with a maximum angle $\theta_{max}<\pi/2$, corresponding to the angle $\theta^\star_i=\arccos\left( -\beta/\beta_i^\star \right)$\\
+2) $\beta_a<\beta_i$\\
+The $i$-th child particle is emitted forwards in the lab system if and only if $\cos\theta^\star_i>-\beta_a/\beta^\star_i$. At that value the particle gets emitted at $\theta_i=\pi/2$, while if $\cos(\theta_i^\star)<-\beta_a/\beta_i^\star$ it gets emitted backwards.
+%\subsection{Photon Energy Distribution}
+%Am I going to do this one here? Move to QM prob
+%\section{Exercises}
+%ehhh not ready
+\end{document}

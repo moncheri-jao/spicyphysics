@@ -1,0 +1,41 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Multi-Index Notation}
+In order to ease various calculations one can utilize more abstract index constructions. One of these is the \textit{multi-index} notation, where instead of having an index $i\in\N$ or $j\in\Z$, one constructs a ``vector'' of indices, like $\alpha=(a_1,\cdots,a_n)\in\N^n$ or $\beta=(b_1,\cdots,b_n)\in\Z^n$.\\
+This notation includes a set of operations on such multi-indexes, defined as follows
+\begin{thm}[Operations on Multi-indexes]
+	Given a multi-index $\alpha\in\N^n$, one can define the following operations on them
+	\begin{equation}
+		\begin{aligned}
+			\abs{\alpha}&=\sum_{i=1}^na_i\\
+			\alpha!&=\prod_{i=1}^na_i!
+		\end{aligned}
+		\label{eq:multiindexop}
+	\end{equation}
+	Given $x\in\R^n$ and the del operator $\del$ one can also write
+	\begin{equation}
+		\begin{aligned}
+			x^\alpha&=\prod_{i=1}^nx_i^{a_i}\\
+			\del^\alpha&=\prod_{i=1}^n\del_i^{a_i}=\frac{\del^{\abs{\alpha}}}{\del x_1^{a_1}\cdots\del x_n^{a_n}}=\frac{\del^{\abs{\alpha}}}{\del x^\alpha}
+		\end{aligned}
+		\label{eq:vecsandmultiindex}
+	\end{equation}
+\end{thm}
+\section{Properties of the Fourier Transform}
+Here's a list of the properties of the Fourier transform, useful for dealing with calculations in operatorial form
+\begin{equation}
+	\begin{aligned}
+		\fou\opr{P}&=\opr{P}\fou\\
+		\fou\opr{T}_a&=e^{-i\lambda a}\fou\\
+		\opr{T}_a\fou&=\fou\left[ e^{-iax}f(x) \right]\qquad a\in\R,\ f\in L^1(\R)\\
+		\fou\opr{\Phi}_a&=\frac{1}{\abs{a}}\opr{\Phi}_{\frac{1}{a}}\fou\qquad a\in\R\setminus\{0\}\\
+		\fou\opr{\Phi}_a\opr{T}_b&=\frac{e^{-i\lambda b}}{\abs{a}}\opr{\Phi}_{\frac{1}{a}}\fou\qquad a\in\R\setminus\{0\},\ b\in\R\\
+		\fou\opr{T}_b\opr{\Phi}_a&=\frac{e^{-i\lambda\frac{b}{a}}}{\abs{a}}\opr{\Phi}_{\frac{1}{a}}\fou\qquad a\in\R\setminus\{0\},\ b\in\R\\
+		\fou\opr{\del}&=i\lambda\fou\\
+		\opr{\del}\fou&=\fou\left[ -ixf(x) \right]\qquad f\in L^1(\R)\\
+		\fou^{-1}&=\frac{1}{2\pi}\fou\opr{P}=\frac{1}{2\pi}\opr{P}\fou\\
+		\fou^{-1}\fou&=\fou\fou^{-1}=2\pi\opr{\1}
+	\end{aligned}
+	\label{eq:fouriertranspropcomp}
+\end{equation}
+\end{document}

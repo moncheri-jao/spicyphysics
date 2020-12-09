@@ -1,0 +1,340 @@
+\documentclass[../admech.tex]{subfiles}
+\begin{document}
+\section{Particle Mechanics}
+Before dwelving into Lagrangian mechanics it's always a good thing to check up again on Newtonian mechanics.\\
+In this section we will suppose of working with a \emph{single} particle of mass $m$ with radius vector $x^\mu$, with $\mu=1,2,3$. We immediately define the following
+\begin{dfn}[Velocity and Momentum]
+	Given a particle of mass $m$ and radius vector $x^\mu(t)$, we define the \emph{velocity} as follows
+	\begin{equation}
+		v^\mu(t)=\derivative{x^\mu}{t}=\dot{r}^\mu(t)
+		\label{eq:velocity}
+	\end{equation}
+	From this we define the \emph{momentum} as follows
+	\begin{equation}
+		p^\mu(t)=mv^\mu(t)
+		\label{eq:momentum}
+	\end{equation}
+	The \emph{units} of both quantities are, since $[x^\mu]=L$, $[\dd{t}]=T$, $[m]=M$ where $L,\ T,\ $ stand respectively for \emph{length}, \emph{time} and \emph{mass} are
+	\begin{equation*}
+		\begin{aligned}
+			[v^\mu]&=\frac{L}{T}\\
+			[p^\mu]&=\frac{ML}{T}
+		\end{aligned}
+	\end{equation*}
+	In the International System of units, therefore
+	\begin{equation*}
+		\begin{aligned}
+			[v^\mu]&=\left[\frac{m}{s}\right]\\
+			[p^\mu]&=\left[\frac{Kg\cdot m}{s}\right]
+		\end{aligned}
+	\end{equation*}
+\end{dfn}
+If the particle is subject to $n$ forces $f_{(i)}^\mu$, and therefore a total force $F^\mu$ where
+\begin{equation*}
+	F^\mu=\sum_{i=1}^n f^\mu_{(i)}
+\end{equation*}
+We have, from Newton's second law of motion, that the motion of the particle is described as follows
+\begin{equation}
+	F^\mu=\derivative{p^\mu}{t}=\dot{p}^\mu
+	\label{eq:newton2law}
+\end{equation}
+Where, the units of force are
+\begin{equation*}
+	[F^\mu]=\left[ \dv{p^\mu}{t} \right]=\frac{ML}{T^2}=\left[\frac{Kg\cdot m}{s^2}\right]=[N]
+\end{equation*}
+Where $N$ stands for \emph{Newtons}.\\
+Or, if $m$ is constant
+\begin{equation}
+	F^\mu=m\derivative{v^\mu}{t}=ma^\mu
+	\label{eq:newton2lawcoma}
+\end{equation}
+Where $a^\mu$ is the \emph{acceleration} and is defined as
+\begin{equation*}
+	a^\mu=\derivative[2]{x^\mu}{t}=\ddot{r}^\mu
+\end{equation*}
+With units
+\begin{equation*}
+	[a^\mu]=\frac{L}{T^2}=\left[\frac{m}{s^2}\right]
+\end{equation*}
+From Newton's second law \eqref{eq:newton2law}, we can define immediately a \emph{conservation law}, which eases the solution of the differential equation
+\begin{thm}[Conservation of Momentum]
+	If the sum of forces acting on a particle $F^\mu=0$, then the momentum $p^\mu$ is constant
+\end{thm}
+\begin{proof}
+	The proof is immediate. Since we have $F^\mu=0$, we insert it into Newton's second law and we get
+	\begin{equation*}
+		\derivative{p^\mu}{t}=0
+	\end{equation*}
+	Which implies that $p^\mu$ is constant.
+\end{proof}
+Having defined these quantities, we can define two new quantities
+\begin{dfn}[Angular Momentum and Torque]
+	Given a particle with mass $m$ and radius vector $x^\mu(t)$ we define the \emph{angular momentum} as follows
+	\begin{equation}
+		L_\mu=\epsilon_{\mu\nu\gamma}x^\nu p^\gamma
+		\label{eq:angularmom}
+	\end{equation}
+	Where $\epsilon_{\mu\nu\gamma}x^\nu p^\gamma\to\mathbf{x}\wedge\mathbf{p}$.
+	Analoguously, we define the \emph{torque} or \emph{momentum of a force} as
+	\begin{equation*}
+		\tau_\mu=\epsilon_{\mu\nu\gamma}x^\nu F^\gamma
+	\end{equation*}
+	The units of these quantities are
+	\begin{equation*}
+		\begin{aligned}
+			[L_\mu]&=\frac{ML^2}{T}=[N\cdot m\cdot s]=[J\cdot s]\\
+			[\tau_\mu]&=\frac{ML^2}{T^2}=[N\cdot m]=[J]
+		\end{aligned}
+	\end{equation*}
+	Where $J$ stands for \emph{Joules}
+\end{dfn}
+It's immediate then to demonstrate the following theorem
+\begin{thm}[Conservation of Angular Momentum]
+	If the sum of torques acting on a particle $\tau_\mu=0$, then $L_\mu$ is constant
+\end{thm}
+\begin{proof}
+	The proof isn't as straightforward as for the conservation of momentum, but we begin from the definition of torque and applying the chain rule for wedge products
+	\begin{equation*}
+		\tau_\mu=\epsilon_{\mu\nu\gamma}x^\nu\derivative{p^\gamma}{t}=\derivative{t}\epsilon_{\mu\nu\gamma}x^\nu p^\gamma-\epsilon_{\mu\nu\gamma}v^\nu p^\gamma
+	\end{equation*}
+	Since $v^\mu\parallel p^\mu$ the second term is null and therefore
+	\begin{equation*}
+		\tau_{\mu}=\derivative{t}\epsilon_{\mu\nu\gamma}x^\nu p^\gamma=\derivative{L_\mu}{t}
+	\end{equation*}
+	Then, we have that if $\tau_\mu=0$
+	\begin{equation*}
+		\derivative{L_\mu}{t}=0
+	\end{equation*}
+	Which implies that $L_\mu$ is constant.
+\end{proof}
+After this, let's consider the work done by some external force $F^\mu$ in a path $\gamma$ between two points $a,b$. By definition of Work, this is equal to the following equation
+\begin{equation}
+	W_{ab}=\int_{\gamma}^{}F^\mu\dd{x_\mu}=\int_{a}^{b}F^\mu v_\mu\dd{t}
+	\label{eq:workab}
+\end{equation}
+For a constant mass, we have then
+\begin{equation}
+	W_{ab}=m\int_{a}^{b}\derivative{v^\mu}{t}v_\mu\dd{t}=\frac{m}{2}\int_{a}^{b}\dd{v^2}=\frac{m}{2}(v^2_b-v^2_a)
+	\label{eq:workabcomp}
+\end{equation}
+We define the following scalar quantity
+\begin{dfn}[Kinetic Energy]
+	The \emph{kinetic energy} of a particle is defined as the following scalar quantity
+	\begin{equation}
+		T=\frac{1}{2}mv^2(t)=\frac{1}{2}mv^\mu v_\mu
+		\label{eq:kinen}
+	\end{equation}
+	This, therefore gives that
+	\begin{equation}
+		W_{ab}=\Delta T=T_b-T_a
+		\label{eq:workkinen}
+	\end{equation}
+	The units of kinetic energy, and therefore work, are
+	\begin{equation*}
+		[T]=[W]=\frac{ML^2}{T^2}=[J]
+	\end{equation*}
+\end{dfn}
+If the work $W_{ab}$ is independent of the path $\gamma$, the force field $F^\mu$ is said to be \emph{conservative}. This implies that, for any path $\eta$, we have
+\begin{equation}
+	\oint_\eta F^\mu\dd{x_\mu}=0
+	\label{eq:consfiled}
+\end{equation}
+Recalling how differential forms work, this implies that the differential form $\omega=F^\mu\dd{x_\mu}$ is \emph{exact}, and therefore, we can say that (noting that $g_{\mu\nu}=g^{\mu\nu}=\delta^\mu_\nu$ in cartesian coordinates)
+\begin{equation}
+	F^\mu=-\del^\nu\pot(x^1,x^2,x^3)
+	\label{eq:poten1}
+\end{equation}
+The function $\pot$ is called \emph{potential energy}, and in terms of differential forms holds as from Stokes' theorem
+\begin{equation}
+	\dd{\pot}=\omega=F^\mu\dd{x_\mu}
+	\label{eq:potstokes}
+\end{equation}
+Note the following assertion:
+\begin{equation}
+	W_{ab}=\pot_a-\pot_b
+	\label{eq:workpot}
+\end{equation}
+This is immediate, since
+\begin{equation}
+	W_{ab}=-\int_{a}^{b}\dd{\pot}=\pot_a-\pot_b
+	\label{eq:workpot2}
+\end{equation}
+We define one last quantity, the \emph{total energy}
+\begin{dfn}[Total Energy]
+	Given a particle in a force field with potential $\pot$, we define the total energy $E$ of a system as follows
+	\begin{equation}
+		E=T+\pot
+		\label{eq:totmen}
+	\end{equation}
+	Due to the previous definition of potential energy and kinetic energy, the units of total energy are therefore
+	\begin{equation*}
+		[E]=\frac{ML^2}{T^2}=[J]
+	\end{equation*}
+	Where we will write directly, when convenient
+	\begin{equation*}
+		\frac{ML^2}{T^2}=E
+	\end{equation*}
+\end{dfn}
+From the definition of the total energy, we have a new conservation law
+\begin{thm}[Conservation of Energy]
+	Given a particle subject to a conservative force field, we have that in every path between  two points $a,b$ we have
+	\begin{equation*}
+		E_a=T_a+\pot_a=T_b+\pot_b=E_b
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	From the definition of work, we have
+	\begin{equation*}
+		\left\{\begin{aligned}
+			T_b-T_a&=W_{ab}\\
+			\pot_b-\pot_a&=W_{ab}
+		\end{aligned}\right.
+	\end{equation*}
+	This gives rise to the following equation
+	\begin{equation*}
+		T_b-T_a=\pot_a-\pot_b
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		(T_b+\pot_b)-(T_a+\pot_a)=0
+	\end{equation*}
+	From the definition $E=T+\pot$, we therefore have
+	\begin{equation*}
+		E_b=E_a
+	\end{equation*}
+	Demonstrating the theorem.
+\end{proof}
+\section{System Mechanics}
+\subsection{Momentum and Angular Momentum of a System of Particles}
+Now, in order to generalize everything to a system of $n$ particles with masses $m_i$ we need to make a distinction between the forces in play in this problem:
+\begin{enumerate}
+\item \emph{Internal forces} $f^\mu_{(ij)}$, which are the interaction forces between the particles
+\item \emph{External forces} $F^\mu_{(i)}$, which are the forces that act on the system
+\end{enumerate}
+The Newton equation for the $i-$th particle then becomes
+\begin{equation}
+	\derivative{p^\mu_{(i)}}{t}=\sum_{j}^{}f_{(ji)}^\mu+F^\mu_{(i)}
+	\label{eq:newtonsystem}
+\end{equation}
+For Newton's third law we have $f^\mu_{(ij)}=-f^\mu_{(ji)}$ and $f^\mu_{(ii)}=0$ (the second comes from the fact that the particle doesn't exert force on itself). Finally, summing the effects for all particles, we have Newton's second law for a system of $n$ particles
+\begin{equation}
+	\dv[2]{t}\sum_{i=1}^nm_ix^\mu_{(i)}=\sum_{i}^{}F^\mu_{(i)}+\sum_{i\ne j}^{}f^\mu_{(ij)}
+	\label{eq:newton2system}
+\end{equation}
+In order to reduce the right hand side (RHS) of the equation, we define a new quantity
+\begin{dfn}[Center of Mass]
+	Given a system of $n$ particles with masses $m_i$, we can define a new ``weighted'' radius vector $X^\mu$ with the following equation
+	\begin{equation}
+		X^\mu-\frac{\sum_{}^{}m_ix^\mu_{(i)}}{\sum m_i}=\frac{1}{M}\sum_{i}^{}m_ix^\mu_{(i)}
+		\label{eq:cmradius}
+	\end{equation}
+	The end point of this vector is called \emph{center of mass}
+\end{dfn}
+With the last definition, we have $f^\mu_{(ij)}=0$ automatically, and the second Newton's law for a system of particles becomes, if $\dv{M}{t}=0$
+\begin{equation}
+	M\dv{X^\mu}{t}=\sum_iF^\mu_{(i)}
+	\label{eq:new2sys}
+\end{equation}
+The momentum of the whole system is therefore
+\begin{equation}
+	P^\mu=\sum_im_i\dv{x^\mu_{(i)}}{t}=M\dv{X^\mu}{t}=\sum_ip^\mu_{(i)}
+	\label{eq:momsys}
+\end{equation}
+The total angular momentum, is analogously
+\begin{equation}
+	L_\mu=\sum_il_\mu^{(i)}=\sum_i\epsilon_{\mu\nu\gamma}x^\nu_{(i)}p^\gamma_{(i)}
+	\label{eq:totangmom}
+\end{equation}
+Deriving it with respect to time we see also that
+\begin{equation}
+	\dv{L_\mu}{t}=\dv{t}\sum_i\epsilon_{\mu\nu\gamma}x^\nu_{(i)}p^\gamma_{(i)}=\sum_i\epsilon_{\mu\nu\gamma}x_{(i)}^\nu F^\gamma_{(i)}+\sum_{i\ne j}\epsilon_{\mu\nu\gamma}x^\nu_{(i)}f^\gamma_{(ij)}
+	\label{eq:torque}
+\end{equation}
+Where the last term on the RHS is intended as follows
+\begin{equation*}
+	\epsilon_{\mu\nu\gamma}x^\nu_{(i)}f^\gamma_{(ij)}=\epsilon_{\mu\nu\gamma}(x^\nu_{(i)}-x^\nu_{(j)})f^\gamma_{(ij)}=\epsilon_{\mu\nu\gamma}x^\nu_{(ij)}f^\gamma_{(ij)}
+\end{equation*}
+For Newton's third law we have therefore that the last product is null, and therefore we end up with the following equation
+\begin{equation}
+	\dv{L_\mu}{t}=\sum_i\epsilon_{\mu\nu\gamma}x^\nu_{(i)}F_{(i)}^\gamma=T_\mu
+	\label{eq:totaltorque}
+\end{equation}
+With $T_\mu$ being the total torque applied on the system.\\
+With these definitions we can now write two conservation theorems
+\begin{thm}[Conservation of Linear and Angular Momentum]
+	Given a system of particles with masses $m_i$, vector radius $x_{(i)}^\mu$ and center of mass $X^\mu$, if
+	\begin{enumerate}
+	\item The sum of the total external forces $F^\mu=\sum_iF^\mu_{(i)}=0$ then $P^\mu$ is conserved
+	\item The total torque $T_\mu=0$ then $L_\mu$ is conserved
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	For the first statement we have that
+	\begin{equation*}
+		P^\mu=\sum_im_iv^\mu_{(i)}=\sum_ip_{(i)}^\mu
+	\end{equation*}
+	And
+	\begin{equation*}
+		\dv{P^\mu}{t}=\sum_{i}\dv{p^\mu_{(i)}}{t}=\sum_{i}F^\mu_{(i)}=0
+	\end{equation*}
+	And the first statement is demonstrated.\\
+	For the second, it's already obvious by the definition of total torque, since
+	\begin{equation*}
+		\dv{L_\mu}{t}=\sum_{i}\dv{l_\mu^{(i)}}{t}=T_\mu=0
+	\end{equation*}
+\end{proof}
+Suppose now that the body is rotating and we choose a point $\mathcal{O}$ as a reference.\\
+Let $\tilde{r}^\mu_{(i)}$ be the vector from the center of mass to the $i-$th particle, then, we can write, with $x^\mu$ the coordinates of the center of mass with respect to $\mathcal{O}$ and $x^\mu_{(i)}$ the new coordinates of the $i-$th particle
+\begin{equation*}
+	x^\mu_{(i)}=\tilde{r}^\mu{(i)}+x^\mu_{(i)}\qquad v^\mu_{(i)}=\tilde{v}^\mu_{(i)}+v^\mu
+\end{equation*}
+Therefore, the angular momentum of this system of particles with respect to $\mathcal{O}$ is
+\begin{equation*}
+	L_\mu=\sum_i\epsilon_{\mu\nu\gamma}x^\nu(m_iv^\gamma)+\sum_{i}^{}\epsilon_{\mu\nu\gamma}\tilde{x}^\nu_{(i)}(m_i\tilde{v}^\gamma_{(i)})+\epsilon_{\mu\nu\gamma}\left( \sum_{i}^{}m_i\tilde{x}_{(i)}^\nu \right)v^\gamma+\epsilon_{\mu\nu\gamma}x^\nu\dv{t}\sum_{i}^{}m_i\tilde{x}^\gamma_{(i)}
+\end{equation*}
+Rearranging the terms and removing the null terms, we end up with this equation
+\begin{equation}
+	L_\mu=\epsilon_{\mu\nu\gamma}X^\nu(Mv^\gamma)+\sum_i\epsilon_{m\nu\gamma}\tilde{x}_{(i)}^\nu\tilde{p}_{(i)}^\gamma=L_\mu^{(cm)}+\tilde{l}_\mu
+	\label{eq:angmompointo}
+\end{equation}
+This equation tells us that the angular momentum of a system considered around a new axis passing through point $\mathcal{O}$ is given by the sum of the angular momentum of the center of mass, and the sum of the angular momentum given by the motion with respect to the center of mass of the single points
+\subsection{Energy of a System of Particles}
+In order to define the energy of a system of particles, we begin like we did for the case with a single particle defining the work of the system.\\
+Letting $F^\mu$ being the following
+\begin{equation*}
+	F^\mu=\sum_iF^\mu_{(i)}+\sum_{i\ne j}f^\mu_{ij}
+\end{equation*}
+We have that the work for a system of particles is immediately defined using the properties of integrals.\\
+Given a path $\gamma$ therefore
+\begin{equation}
+	W_\gamma=\int_{\gamma}^{}F^\mu\dd{x_\mu}=\sum_i\int_{\gamma}^{}F^\mu_{(i)}\dd{x_\mu}+\sum_{i\ne j}\int_{\gamma}^{}f^\mu_{(ij)}\dd{x_\mu}
+	\label{eq:worksystem}
+\end{equation}
+The calculations are identical to the single particle case, and we therefore have $W_{\gamma}=T_b-T_a$ where $T$ is the \emph{total} kinetic energy of the system
+\begin{equation}
+	T=\frac{1}{2}\sum_im_iv_i^2
+	\label{eq:totalkinen}
+\end{equation}
+Expressing everything in the coordinates of the center of mass we have
+\begin{equation}
+	T=\frac{1}{2}Mv^2+\frac{1}{2}\sum_{i}^{}m_iv^2_i
+	\label{eq:cmtotkin}
+\end{equation}
+The construction of a potential energy for the external forces is also obvious.\\
+Now consider the case that the forces $f^\mu_{(ij)}$ are also conservative. Therefore we can write
+\begin{equation}
+	f_{(ij)}^\mu=-g^{\mu\nu}\del_{\nu}^{(i)}V_{ij}=g^{\mu\nu}\del_\nu^{(j)}V_{ij}=-f^\mu_{(ji)}
+	\label{eq:potintfor}
+\end{equation}
+Where the labels in the parenthesis indicate whether we're considering the coordinates of the $i-$th or $j-$th particles when differentiating.\\
+Integrating and using this ``antisymmetry'' property we see immediately that the internal forces' potential reduces to the following
+\begin{equation}
+	-\int_{\gamma}^{}\del_\mu^{(ij)}V_{(ij)}\dd{x^\mu_{(ij)}}
+	\label{eq:internalpotint}
+\end{equation}
+We can finally write a total potential $\pot$ as follows
+\begin{equation}
+	\pot(x^1,x^2,x^3)=\sum_iu_i(x^1,x^2,x^3)+\frac{1}{2}\sum_{j\ne i}V_{(ij)}(x^1,x^2,x^3)
+	\label{eq:totalpot}
+\end{equation}
+\end{document}
