@@ -2,6 +2,7 @@
 So here we are bois, this is the final publication of my work. I hope you'll like it.
 
 If you really liked them and want to thank me with a coffee or a physical print of my works, you can send some cents here [in my paypal](https://www.paypal.me/birrabenzina)
+Now it's possible to check unfinished works or unfinished updates of the notes in the tbc branch of the repository
 
 # Ready to be Downloaded
 * complete.pdf -> An Essential Mathematical Analysis Handbook
