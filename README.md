@@ -6,7 +6,7 @@ Now it's possible to check unfinished works or unfinished updates of the notes i
 
 # Ready to be Downloaded
 * complete.pdf -> An Essential Mathematical Analysis Handbook
-* qm-pdf -> Quantum Mechanics (QM, Atomic Physics, Quantum Chemistry, StatMech, Condensed Matter and some QFT coming in the near future)
+* qm-pdf -> Quantum Mechanics (QM, Atomic Physics, Quantum Chemistry, StatMech, Condensed Matter and some QFT) [QFT needs to be fixed]
 * astronomia.pdf -> Astronomia in Italiano, prof. O.Straniero
 * mqmstmat.pdf -> Meccanica Quantistica/Statistica (Statistica incompleta, prof. Presilla), Struttura (prof. Postorino), in Italiano
 * astrofisica.pdf -> Astrofisica in Italiano, prof. P. de Bernardis
@@ -14,13 +14,12 @@ Now it's possible to check unfinished works or unfinished updates of the notes i
 * admech.pdf -> Advanced Mechanics and Special Relativity
 
 # JUST PUBLISHED
-* Advanced Classical Mechanics and Special Relativity
+* electromagnetism.pdf, beta version, still misses the part on Optics and relativistic EM
 
 # Future Works
-* Completing the Quantum Mechanics notes (qm.pdf)
+* Completing the Quantum Mechanics notes (qm.pdf) [almost there]
 * Classical Thermodynamics notes
-* Classical Electromagnetism notes
-* They're not in list for now (ehem, I need EM before) Optics
+* Classical Electromagnetism notes [published in beta]
 
 ## REMARK
 This and all future works will be FREE OF CHARGE. You can download them whenever you want and how many times you want without ever worrying about them costing actual real money.
