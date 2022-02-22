@@ -1,6 +1,6 @@
-PWD /home/birrabenzina/Dropbox/appunti/electromagnetism
+PWD /home/birrabenzina/Dropbox/spicyphysics/sources/electromagnetism
 INPUT /var/lib/texmf/web2c/luahbtex/lualatex.fmt
-INPUT /home/birrabenzina/Dropbox/appunti/electromagnetism/electromagnetism.tex
+INPUT /home/birrabenzina/Dropbox/spicyphysics/sources/electromagnetism/electromagnetism.tex
 OUTPUT electromagnetism.log
 INPUT /usr/share/texmf-dist/tex/latex/latexconfig/lualatexquotejobname.lua
 INPUT /usr/share/texmf-dist/tex/latex/base/ltluatex.lua
@@ -284,9 +284,6 @@ INPUT /usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
 INPUT /usr/share/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
 INPUT /usr/share/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
 INPUT /usr/share/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
-INPUT /usr/share/texmf-dist/tex/latex/doublestroke/dsfont.sty
-INPUT /usr/share/texmf-dist/tex/latex/doublestroke/dsfont.sty
-INPUT /usr/share/texmf-dist/tex/latex/doublestroke/dsfont.sty
 INPUT /usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
 INPUT /usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty
 INPUT /usr/share/texmf-dist/tex/latex/lipsum/lipsum.sty

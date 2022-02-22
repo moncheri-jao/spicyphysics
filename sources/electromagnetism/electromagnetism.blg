@@ -1,17 +1,17 @@
-[0] Config.pm:312> INFO - This is Biber 2.15
-[0] Config.pm:315> INFO - Logfile is 'electromagnetism.blg'
-[104] biber:330> INFO - === dom dic 19, 2021, 20:59:48
-[123] Biber.pm:415> INFO - Reading 'electromagnetism.bcf'
-[228] Biber.pm:952> INFO - Found 4 citekeys in bib section 0
-[248] Biber.pm:4334> INFO - Processing section 0
-[264] Biber.pm:4523> INFO - Looking for bibtex format file '~/Dropbox/appunti/bibliografia/bib.bib' for section 0
-[374] bibtex.pm:1682> INFO - LaTeX decoding ...
-[418] bibtex.pm:1494> INFO - Found BibTeX data source '/home/birrabenzina/Dropbox/appunti/bibliografia/bib.bib'
-[498] Utils.pm:395> WARN - BibTeX subsystem: /tmp/biber_tmp_qZAZ/283e1cb250985c2debc501124f55eeff_15743.utf8, line 288, warning: 80 characters of junk seen at toplevel
-[516] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[516] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[517] Biber.pm:4162> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[517] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
-[523] bbl.pm:651> INFO - Writing 'electromagnetism.bbl' with encoding 'UTF-8'
-[525] bbl.pm:754> INFO - Output to electromagnetism.bbl
-[525] Biber.pm:128> INFO - WARNINGS: 1
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'electromagnetism.blg'
+[74] biber:340> INFO - === mar feb 22, 2022, 22:28:48
+[93] Biber.pm:415> INFO - Reading 'electromagnetism.bcf'
+[167] Biber.pm:952> INFO - Found 4 citekeys in bib section 0
+[182] Biber.pm:4340> INFO - Processing section 0
+[194] Biber.pm:4531> INFO - Looking for bibtex format file '~/Dropbox/appunti/bibliografia/bib.bib' for section 0
+[228] bibtex.pm:1689> INFO - LaTeX decoding ...
+[258] bibtex.pm:1494> INFO - Found BibTeX data source '/home/birrabenzina/Dropbox/appunti/bibliografia/bib.bib'
+[320] Utils.pm:395> WARN - BibTeX subsystem: /tmp/biber_tmp_SS_L/283e1cb250985c2debc501124f55eeff_15339.utf8, line 288, warning: 80 characters of junk seen at toplevel
+[334] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[334] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[334] Biber.pm:4168> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[334] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[338] bbl.pm:654> INFO - Writing 'electromagnetism.bbl' with encoding 'UTF-8'
+[340] bbl.pm:757> INFO - Output to electromagnetism.bbl
+[340] Biber.pm:128> INFO - WARNINGS: 1

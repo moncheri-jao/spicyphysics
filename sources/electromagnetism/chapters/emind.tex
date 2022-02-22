@@ -117,8 +117,43 @@ Using the previous considerations, we have then, in index form, that
 	\Phi_i=M_{ij}I_j(t)
 	\label{eq:mutualind}
 \end{equation}
-The coefficients $M_{ij}$ are known as the \textit{mutual induction coefficients}. Obviously $M_{ij}=M_{ji}$
+The coefficients $M_{ij}$ are known as the \textit{mutual induction coefficients}. Obviously $M_{ij}=M_{ji}$.
 \section{Magnetic Energy}
+With what we wrote before, we might consider a circuit with a given self-induction coefficient $L$ and some time-dependent current $I(t)$ flowing through it. We can evaluate the work of that the magnetic force exerts on these charges as follows. Per unit time
+\begin{equation}
+	\dv{w}{t}=-f_{em}I(t)
+	\label{eq:work/timemag}
+\end{equation}
+Using faraday's law we know that
+\begin{equation*}
+	\dv{\Phi}{t}=-f_{em}=-L\dv{I}{t}
+\end{equation*}
+Therefore 
+\begin{equation}
+	\dv{w}{t}=L\left( \dv{I}{t} \right)^2=\frac{1}{2}LI^2(t)
+	\label{eq:mfenfaraday1}
+\end{equation}
+We can go forward with this calculus, noting that then, since $\Phi=LI$, and 
+\begin{equation*}
+	\Phi=\iint\cpr{i}{j}{k}\del^jA^k\hat{n}_i\dd s
+\end{equation*}
+Then, using Stokes' theorem
+\begin{equation*}
+	\oint A^i\hat{t}_i\dd l=LI
+\end{equation*}
+And therefore, vectorizing the current as $I^i=I\hat{t}^i$
+\begin{equation*}
+	w=\frac{1}{2}\oint A^iI_i\dd l
+\end{equation*}
+Or in general
+\begin{equation}
+	w=\frac{1}{2}\iiint A^iJ_i\dd^3x=\frac{1}{2\mu_0}\iiint\cpr{i}{j}{k}A_i\del^jB^k\dd^3x
+	\label{eq:workmagnetic}
+\end{equation}
+Where we used Ampere's law to get the last integral. Playing around with the last curl, using vector notation, we have
+\begin{equation*}
+	\nabla\cdot(\vec{A}\times\vec{B})=\vec{B}\cdot\nabla\times\vec{A}-\vec{A}\cdot\nabla\times\vec{B}=B^2-\vec{A}\cdot\nabla\times\vec{B}
+\end{equation*}
 <++>
 \section{Maxwell's Equations}
 <++>
