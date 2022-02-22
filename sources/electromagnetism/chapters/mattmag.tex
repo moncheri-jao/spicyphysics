@@ -1,0 +1,358 @@
+\documentclass[../electromagnetism.tex]{subfiles}
+\begin{document}
+If we insert some material in a region where there is a $B$ field there are three observed effects
+\begin{enumerate}
+\item Mechanical forces on the body are observed
+\item The field around the bodies is modified by their presence
+\item The bodies can be \textit{magnetized}, i.e. they behave like a magnet
+\end{enumerate}
+If we take as our experimental test field the one produced by a solenoid (a conductive spring where charges move in a closed loop) it can be verified immediately that all substances are distinguishable in three categories
+\begin{enumerate}
+\item Ferromagnets, which get attracted by the $B$ field of the solenoid
+\item Paramagnets, which get \textit{weakly} attracted by the field
+\item Diamagnets, which get \textit{weakly} repulsed by the field
+\end{enumerate}
+All these different behaviors are directly correlated from macroscopic proprieties.\\
+Atoms themselves can be thought as small loop circuits (imagine electrons ``going around'' the nucleus), and therefore generate some magnetic dipole $m^i$. These dipoles interact with the field and tend to orient themselves in the same direction as $B$, i.e. the bodies get \textit{magnetized}.\\
+\section{Magnetization}
+The discussion of magnetism in matter is similar to the one on electricity in matter, and therefore it's good practice to begin with a microscopic approach to the problem.\\
+Consider a small Hydrogen atom, one proton and one electron. Since $m_p\approx2000m_e$ we can consider the nucleus as locked in place, while electrons move around in a circular orbit with radius $r_0$.\\
+The electron experiences the following centripetal coulomb force
+\begin{equation*}
+	F_c=m_ea_c=\frac{1}{4\pi\epsilon_0}\frac{e^2}{r_0^2}
+\end{equation*}
+I.e., using $a_c=v^2_0/r_0=\omega_0^2r_0$ we get
+\begin{equation*}
+	m_e\omega_0^2r_0=\frac{1}{4\pi\epsilon_0}\frac{e^2}{r_0^2}
+\end{equation*}
+Since $\omega_0=2\pi T_0^{-1}$ with $T_0$ being the period of the orbit we get
+\begin{equation*}
+	T_0=\frac{4\pi}{e}\sqrt{\pi\epsilon_0m_er_0^3}
+\end{equation*}
+All these calculations are needed to find the magnetic dipole momentum of the electron, $m^i$. Using a bit of quantum mechanics and remembering that the electron is in a bound state ($E<0$) we can find $r_0$ using the ionization energy (i.e. the energy needed to bring the electron to $r=\infty$ with $v=0$) we have that
+\begin{equation*}
+	E=-I_e\implies r_0=\frac{1}{8\pi\epsilon_0}\frac{e^2}{I}\approx0.5\unit{\AA}
+\end{equation*}
+Note that we used \textit{experimental data} (for now). In the setup we made we basically made a toy hydrogen atom, for which $I=13.6\unit{eV}$, where $1\unit{eV}=1.6\times10^{-19}\unit{C\cdot V}=1.6\times10^{-19}\unit{J}$.\\
+With this we get $T_0\approx1.5\times10^{-16}\unit{s}$ as our orbit period, and the current associated with a single electron moving around a proton (a simple toy atom, hydrogen in this case) is
+\begin{equation*}
+	I=\frac{e}{T_0}\approx 1\unit{mA}
+\end{equation*}
+Using $m^i=IS\hat{n}^i$ we have that the magnetic momentum of this system is
+\begin{equation*}
+	m=I\pi r_0^2=\frac{e\pi r_0^2}{T_0}=9.35\times10^{24}\unit{A\cdot m}
+\end{equation*}
+And the angular momentum is
+\begin{equation*}
+	L=m_ev_0r_0=m_e\frac{2\pi r_0^2}{T_0}\implies\frac{m}{L}=\frac{e}{2m_e}
+\end{equation*}
+The last constant is known as the \textit{gyromagnetic factor} $g$ of the electron and is a general result also valid in quantum mechanics.\\
+Writing $L=\hbar l$ in a semiclassical fashion (you'll understand later, probably, or you already know) we get a new fundamental constant tied to the gyromagnetic factor $g$
+\begin{equation*}
+	m=gL=\hbar gl=\frac{\hbar e}{2m_e}l=\mu_Bl
+\end{equation*}
+Where $\mu_B$ is known as \textit{Bohr's magneton}, for which $\mu_B\approx 9.27\cdot10^{-24}\unit{A\cdot m^2}$
+\subsection{The Magnetization Field}
+After the small ``quantum'' digression, we can get back to our classical treatment of Electrodynamics. We've seen that all atoms must have a magnetic dipole moment $m^i$ tied to the ``orbital'' nature of bound electrons in nuclear fields. Analogously to dipole moments in dielectrics this must determine the magnetic properties in matter.\\
+We define the \textit{Magnetization intensity} $M^i$ as follows
+\begin{equation}
+	M^i=\lim_{\Delta V\to 0}\frac{\Delta N}{\Delta V}\expval{m^i}
+	\label{eq:magintdef}
+\end{equation}
+Where $\Delta N$ is the numerical density of atoms.\\
+In SI units we have
+\begin{equation*}
+	\left[ M \right]=\mathrm{\frac{A}{m}}
+\end{equation*}
+And rearranging a bit the previous terms, and using $\Delta V\to \dd V$
+\begin{equation}
+	\dd m^i=M^i\dd V
+	\label{eq:magvsmagdip}
+\end{equation}
+We begin by considering an uniform magnetization $M^i$ inside a magnetized medium. It's clear that indide the body all the currents will cancel out and we'll be left only with surface effects, which will be magnetization-induced currents that will follow the right hand rule since there's no compensation outside the magnet.\\
+Obviously, if $M^i$ is not uniform, we will also have volumetric currents. Surface currents will be indicated with $J_{ms}$ and volumetric currents with $J_{mv}$.\\
+Using equation \eqref{eq:dipolepotmag} we can see the relations between $M^i$ and these currents. remembering equation \eqref{eq:mavsmagdip} we can write for a magnetized body $V$
+\begin{equation}
+	A^i=\frac{\mu_0}{4\pi}\int_V\frac{1}{r^3}\cpr{i}{j}{k}M^jr^k\dd^3x'
+	\label{eq:magpotmagnet}
+\end{equation}
+Bringing $1/r^3$ inside the cross product and remembering that $r^i/r^3=-\del_i(r^{-1})$ and then applying a simple vector analysis identity $(\vec{v}\times\nabla f=f\nabla\times\vec{v}-\nabla\times(f\vec{v}))$ we get two integrals
+\begin{equation}
+	A^i=\frac{\mu_0}{4\pi}\left( \int_V\frac{\cpr{i}{j}{k}\del^jM^k}{r}\dd^3x'-\int_V\cpr{i}{j}{k}\del^j\left( \frac{M^k}{r} \right)\dd^3x' \right)
+	\label{eq:vecpotvsmagint}
+\end{equation}
+Using $\int_V \nabla\times\vec{v}\dd V=-\int_{\del V}\vec{v}\times\hat{n}\dd s$ on the second one we get
+\begin{equation}
+	A^i=\frac{\mu_0}{4\pi}\int_V\frac{\cpr{i}{j}{k}\del^jM^k}{r}\dd^3x'+\frac{\mu_0}{4\pi}\int_{\del V}\frac{\cpr{i}{j}{k}M^jn^k}{r}\dd s'
+	\label{eq:vecpotfinM}
+\end{equation}
+Since the vector potential has an unique solution (it's defined from a Poisson equation with well defined conditions) We can interpret the first curl as our volumetric current density and the second cross product as our surface current densities, giving us the relations between the magnetization currents and the magnetization vector $M^i$
+\begin{equation}
+	\begin{aligned}
+		J^i_{mv}&=\cpr{i}{j}{k}\del^jM^k\\
+		J^i_{ms}&=\cpr{i}{j}{k}M^j\hat{n}^k
+	\end{aligned}
+	\label{eq:magcurrentsvsM}
+\end{equation}
+\section{Maxwell Equations for Magnetostatics in Magnetic Media}
+Taking back what we found for the $B^i$ field we can try to build up again the Maxwell equation for magnetostatics in magnetized media.\\
+As we already have found we have
+\begin{equation*}
+	\begin{aligned}
+		\del_iB^i&=0\\
+		\cpr{i}{j}{k}\del^jB^k&=\mu_0J^i
+	\end{aligned}
+\end{equation*}
+We now must consider that $J^i$ indicates the total current, so we will consider it as the sum of ``free'' extra currents $J^i_f$ and the previously found magnetization currents $J^i_m$.\\
+Inside the magnetized volume $V$ we can replace $J^i_m$ with the curl of $M^i$ and, bringing it to the left we can write
+guardando il forno e una \begin{equation*}
+	\cpr{i}{j}{k}\del^j\left( \frac{B^k}{\mu_0}-M^k \right)=J^i
+\end{equation*}
+We can define an auxiliary field inside this curl, which we will call the ``magnetic field'' $H^i$
+\begin{equation}
+	H^i=\frac{B^i}{\mu_0}-M^i
+	\label{eq:magfieldH}
+\end{equation}
+Rewriting everything, we get Maxwell's equation for magnetostatics in media
+\begin{equation}
+	\left\{ \begin{aligned}
+		\del_iB^i&=0\\
+		\cpr{i}{j}{k}\del^jH^k&=J^i_f
+\end{aligned}\right.
+	\label{eq:mwmstaticH}
+\end{equation}
+These equations can be solved only if we know the functional relations between $B$ and $H$ or $M$ and $B$, or if we manage to find some conditions that can help us
+\subsection{Boundary Conditions}
+In order to solve these equations tho we need to consider what happens at the surface $\del V$ of the body.\\
+Suppose that we have two magnetized bodies separated by a surface $S_s$. Taken a small loop $l$ on this separation surface, which encompasses a surface $S$, we can use the second equation of \eqref{eq:mwstaticH} we get
+\begin{equation}
+	\oint_lH^it_i\dd l=\iint_S\cpr{i}{j}{k}\del^jH^k\hat{n}_i\dd s=\iint_SJ^i\hat{n}_i\dd s=\sum_iI_i
+	\label{eq:sumofcurrents}
+\end{equation}
+Therefore, the closed line integral of $H^i$ is the sum of the (free) currents enclosed by the loop.\\
+Considering the same loop in the case where there are no free currents, equations \eqref{eq:mwmstaticH} give the boundary conditions for $B$ and $H$ in matter.\\
+\begin{equation}
+	\left\{ \begin{aligned}
+			B_{n_1}&=B_{n_2}\\
+			H_{t_1}&=H_{t_2}
+	\end{aligned}\right.
+	\label{eq:boundcbh}
+\end{equation}
+Where $n_i,t_i$ are the normal and tangent components of the field between substance $1$ and $2$.\\
+By definition of $H^i$ we can see already that in vacuum $B_0^i=\mu_0H^i_0$ since $M^i=0$. As for dielectrics in isotropic and homogeneous substances we can write $B^i=\mu H^i$ with $\mu_0=\mu_0\mu_r$ where $\mu_r$ is the relative magnetic permeability.\\
+For anisotropic substances $\mu$ can be described as a rank 2 tensor. Contrary to dielectrics, $\mu$ in general depends from the $B$ field intensity, and is constant only for diamagnetic or paramagnetic substances.\\
+For ferromagnets $\mu=\mu(B)$.\\
+With this definition, we can calculate the magnetization field of the body. We have $B=\mu H$ therefore
+\begin{equation}
+	H^i=\mu_rH^i-M^i\implies M^i=(\mu_r-1)H^i=\chi_mH^i\implies\mu M^i=\chi_mB^i
+	\label{eq:magneticsus}
+\end{equation}
+Where $\mu_r-1=\chi_m$ is the magnetic susceptibility.\\
+Inserting that back to the definition of $H^i$ we have
+\begin{equation}
+	B^i=\mu_0\left( 1+\chi_m \right)H^i
+	\label{eq:magsusbh}
+\end{equation}
+By definition, the value of $\chi_m$ defines the alignment of the magnetization with respect to the magnetic field. In general for values of $\chi_m$ between $10^{-5}$ to $10^{-3}$ we have an orientation of atomic magnetic dipoles and therefore paramagnetism.\\
+For negative values we get diamagnetic effects and for very big positive effects we get ferromagnetic effects
+\section{Ferromagnets and Hysteresis Cycles}
+In ferromagnets ($\chi_m>>1$) the dependence $B(H)$ or $M(H)$ is really complex and the relations aren't unique and can change a lot for small changes on composition of the material.\\
+For analyzing it we start with the unmagnetized material ($H=B=M=0$) and place it inside a solenoid, for which we know already that, thanks to the Maxwell equations that $H=nI$, with $n$ being the number of loops of the solenoid and $I$ being the total current of the solenoid.\\
+Changing $I$ we have that $B$ changes way quicker than $H$, with a strong contribution from the magnetization of the element through the relation
+\begin{equation*}
+	B=\mu_0H+\mu_0M
+\end{equation*}
+The growth is exponential until a saturation $H_s$ value is reached. This growth is known as the ``first magnetization curve''. After this value the growth of $B$ is linear in $H$ till a maximum $H_m$ due to a saturation in $M$, which reaches a saturation maximum $M_s$.\\
+Shutting the current off ($I=0$) we get to $H=0$ and a residue magnetic induction field $B_r$ can be measured.\\
+Inverting the current's direction $B$ goes down till $0$, for $\mu_0H=-\mu_0M$, i.e. the magnetic field $H$ reaches the coercive magnetic field value where $H_c=-M_c$. From here on, the fields quickly reaches a negative minimum at $H=-H_m$.\\
+Making $H$ grow again from the minimum the field $B$ will reach $-B_r$ at $H=0$ and will reconnect to the first cycle maximum at $H_m$.\\
+\begin{figure}[H]
+	\centering
+		\begin{tikzpicture}
+  			\draw[] (-3,-3) .. controls (2.5,-3) and (-0.5,3) .. (3,3) .. controls (-2.5,3) and (0.5,-3) ..(-3,-3);
+			\draw[-latex] (-4,0) -- (4,0) node[below] {$H$};
+			\draw[-latex] (0,-4) -- (0,4) node[left] {$B$};
+			\draw[dashed] (-4,3) -- (4,3);
+			\draw[dashed] (-4,-3) -- (4,-3);
+			\draw[dashed] (3,3) -- (3,0) node[below] {$H_m$};
+			\node[left] at (0,1.8) {$B_r$};
+			\node[right] at (0,-1.8) {$-B_r$};
+			\draw[dashed] (-3,-3) -- (-3,0) node[above] {$-H_m$};
+			\node[below right] at (0.7,0) {$H_c$};
+			\node[above left] at (-0.7,0) {$-H_c$};
+		\end{tikzpicture}
+		\caption{Example of an hysteresis cycle, without the first magnetization curve.}
+	\label{fig:hysteresis}
+\end{figure}
+This full cycle is known as the magnetic hysteresis cycle and if it's drawn it's clear that $B(H)$ is not a function in the proper sense of it, since the value depends on what happened before to the material, and in general we have that
+\begin{equation}
+	\mu(H)=\frac{B}{H}
+	\label{eq:mudeponH}
+\end{equation}
+It's also possible to draw a demagnetization cycle on the $B-H$ plane from any point making smaller and smaller hysteresis cycles, and with a simple analogy to $p-V$ planes in thermodynamics, one can calculate the work made per unit volume of the material with the relation $\dd W=B\dd H$ (remember that in thermodynamics $\dd W=p\dd V$ when there is no external work acting on the system).\\
+From the relationship we found before for $B$ one can write the differential magnetic permeability of a body as
+\begin{equation*}
+	\mu_d=\dv{B}{H}
+\end{equation*}
+Or its relative counterpart
+\begin{equation*}
+	\mu_{d_r}=\frac{\mu_d}{\mu_0}=\frac{1}{\mu_0}\dv{B}{H}
+\end{equation*}
+Another experimental result on ferromagnets is the \textit{law of Curie-Weiss}, which states that for temperatures over a critical value $T_c$, a ferromagnet becomes a paramagnet, and its susceptibility goes as
+\begin{equation}
+	\chi_m=\frac{k\rho}{T-T_c}
+	\label{eq:curieweiss}
+\end{equation}
+Where $k$ is a constant and $\rho$ is the material's density
+\section{Local Magnetic Field}
+For evaluating the local counterpart of the magnetic field, since we can consider ourselves in vacuum, we're free to choose between using $B$ and $H=B/\mu_0$. For notational ease $H$ is ``better''.\\
+Using the same exact path taken to find the Lorentz local field in dielectrics \eqref{eq:lorentzfield} we can say that the magnetic field around some atom, at its center is
+\begin{equation}
+	H^i_{loc}=H^i+\frac{1}{3}M^i
+	\label{eq:localmagneticfield}
+\end{equation}
+This local field considers that the contribute of all the small dipoles inside the sphere around the atom sum to zero.\\
+Since for paramagnetic and diamagnetic substances $M<<H$ we could even write $H_{loc}\approx H$.\\
+This doesn't hold for ferromagnets, and thanks to Weiss we get a reformulation of the local field
+\begin{equation}
+	H^i_{loc,fm}=H^i+\gamma M^i
+	\label{eq:weisslawfmag}
+\end{equation}
+The constant $\gamma$ is known as Weiss' constant, and $10^3<\gamma<10^4$. It has been justified by considering the ferromagnet as divided in multiple sectors where atomic dipoles have zones of common orientations, where the biggest zone is the one oriented with the magnetic field $H$. The zone engulfs the whole magnet then slowly.\\
+\subsection{Larmor Precession}
+Consider now a single atom, completely unaligned with the field. We have already found that its magnetic moment is
+\begin{equation*}
+	m^i_0=-\frac{e}{2m_e}L^i
+\end{equation*}
+And its torque is
+\begin{equation*}
+	\tau^i=\cpr{i}{j}{k}m^j_0B^k_{loc}
+\end{equation*}
+With $B_{loc}$ being our local $B$ field.\\
+By definition of torque $\tau$ we have
+\begin{equation}
+	\dv{L^i}{t}=\cpr{i}{j}{k}m^j_0B^k_{loc}=\frac{e}{2m_e}\cpr{i}{j}{k}B_{loc}^jL^k=\cpr{i}{j}{k}\omega^i_{L}L^k
+	\label{eq:larmorprec}
+\end{equation}
+The last result gives us the Poisson formula for $L$, which indicates that it completes a precession motion with angular velocity $\omega_L$, known commonly as Larmor precession. This speed is by definition parallel to the local field, and it's associated to a current given by this precession and the charged nature of the electron
+\begin{equation}
+	I_L=-\frac{e}{T_L}=-\frac{e\omega_L}{2\pi}
+	\label{eq:larmorcurrent}
+\end{equation}
+This current is therefore tied to a magnetic moment, for which $m_L=I_L\tilde{S}$ where $\tilde{S}$ is the area of the orbit of the electron projected onto the same direction of the local field. Inserting a bit of numbers in the previous statement we have
+\begin{equation*}
+	m_L^i=-\frac{e}{2\pi}\tilde{S}\omega_L^i=-\frac{e^2}{4\pi m_e}\tilde{S}B^i_{loc}
+\end{equation*}
+Averaging the coordinates of the position of the electron we know already that
+\begin{equation*}
+	\begin{aligned}
+		\expval{x}^2&=\expval{y}^2=\expval{z}^2\\
+		\expval{x}^2+\expval{y}^2+\expval{z}^2=\expval{r}^2
+	\end{aligned}
+\end{equation*}
+Therefore
+\begin{equation*}
+	\tilde{S}=\pi\left( \expval{x}^2+\expval{y}^2 \right)=\frac{2\pi}{3}\expval{r}^2
+\end{equation*}
+Therefore
+\begin{equation}
+	m^i_L=-\frac{e^2}{6m_e}\expval{r}^2B^i_{loc}
+	\label{eq:larmormoment}
+\end{equation}
+Summing for all $Z$ electrons in an atom, and remembering that the average radius of an electron is $a_B$, the Bohr radius
+\begin{equation}
+	m^i_L=-\frac{Ze^2a^2}{6m_e}B^i_{loc}
+	\label{eq:larmormomentatom}
+\end{equation}
+Note that we used $\omega_0<<\omega_L$ as an approximation, together with $B_l<<4\pi m_eT_0^{-1}e^{-1}$ ($B_{loc}<<5\cdot10^{5}\unit{T}$), which is almost always verified.\\
+This intrinsic atomic moment is always present by definition, and it always opposes the local field
+\subsubsection{Microscopic Interpretation of Diamagnets}
+Considering atoms where there is no atomic magnetic moment we have only Larmor effects, and by definition therefore the magnetization will be
+\begin{equation}
+	M^i=nm^i_L=-\frac{n\mu_0Ze^2a^2}{6m_e}H^i_{loc}=\alpha_dH^i_{loc}
+	\label{eq:magnetizationdiamagnets}
+\end{equation}
+By definition $\alpha_d<<1$ and therefore, using \eqref{eq:localmagneticfield} we write
+\begin{equation}
+	M^i=\frac{3\alpha_d}{3-\alpha_d}H^i\approx\alpha_dH^i
+	\label{eq:magvshdiam}
+\end{equation}
+By definition $M^i=\chi_mH^i$, i.e. $\chi_m\approx\alpha_d<0$. This susceptibility doesn't depend on the temperature, is negative and for reasonable values of $a,Z,n$ $\chi_m\approx-10^{-5}$ as we said before for diamagnets
+\subsection{Langevin Function}
+Going back to substances where its composing atoms have their own atomic magnetic moment $m_0^i$, we have that thermal agitation tends to bring them to a disorder in their orientation.\\
+In order to evaluate this Langevin proposed to utilize a function which could be used to evaluate the average magnetic momentum. Called $L$ this Langevin function we have
+\begin{equation}
+	\expval{m^i}=\expval{m^i_0}L(y)
+	\label{eq:avgmomlangevin}
+\end{equation}
+Where
+\begin{equation}
+	L(y)=\coth\left( y \right)-\frac{1}{y}=\coth\left( \frac{m_0^iB_{i}^{loc}}{kT} \right)-\frac{kT}{m_0^iB_i^{loc}}
+	\label{eq:Langevinfunc}
+\end{equation}
+By definition we have that this function is limited at $\pm\infty$ by $\pm1$ and it's uneven ($L(y)=-L(-y)$)
+\subsubsection{Paramagnets}
+For paramagnets we have atoms (or molecules, as always) with proper magnetic moment $m_0$, but in general $m_0B_{loc}<<kT$, i.e. $y<<1$ and we can use a power series approximation on Langevin's function at the first order, which implies the following statements
+\begin{equation}
+	\expval{m}\approx m_0\frac{y}{3}=\frac{m_0^2\mu_0}{3kT}H_{loc}\implies M=\frac{nm_0^2\mu_0}{3kT}H_l=\alpha_pH_{loc}
+	\label{eq:langevinmagpara}
+\end{equation}
+Using $\chi_m\approx\alpha_p$ and writing the number density of atoms $n=\rho N_A/A$ we have
+\begin{equation}
+	\chi_m(T)=\frac{\rho N_Am_0^2\mu_0}{3k}\frac{1}{T}
+	\label{eq:curielawnew}
+\end{equation}
+Which is Curie's law that we defined before, with the constant written out in full in this classical view of microscopic electromagnetism
+\subsubsection{Ferromagnets}
+For ferromagnets the approximation $y<<1$ doesn't hold anymore since $m_0$ is big, and using Weiss' law for ferromagnets \eqref{eq:weisslawfmag} and the definition of magnetization, remembering that $L(\infty)=1$ indicates the saturation of the magnet, we have that the saturation magnetization will simply be $M_s=nm_0$, and we'll get
+\begin{equation}
+	\left\{ \begin{aligned}
+			M(y,H)&=M_sL(y)\\
+			M(y,H)&=\frac{kT}{m_0\mu_0\gamma}y-\frac{H}{\gamma}
+	\end{aligned}\right.
+	\label{eq:langevinmagnetization}
+\end{equation}
+Plotting the first equation we get the magnetization in terms of the parameter $y$, which looks something like this
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw[->] (-5,0) -- (5,0) node[below right] {$y$};
+		\draw[->] (0,-3.5) -- (0,3.5) node[above left] {$M(y)$};
+		\draw[scale=0.3, domain=0.002:15, smooth, variable=\x] plot (\x,{10*Langevin(\x)});
+		\draw[scale=0.3, domain=-15:-0.002, smooth, variable=\x] plot (\x,{10*Langevin(\x)});
+		\draw[dashed] (-5,2.9) -- (5,2.9) node[right] {$M_s$};
+		\draw[dashed] (-5,-3) -- (5,-3) node[right] {$-M_s$};
+	\end{tikzpicture}
+	\caption{Langevin function for Magnetization}
+	\label{fig:langevinfunc}
+\end{figure}
+The second equation is a line tangent to $ML(y)$ at $y=0$ intersecting the $M$ axis at $-H/\gamma$, increasing the field $H$ the intersection moves towards the right up until $M=M_s$.\\
+Lowering the field until $H=H_c$ the line becomes tangent to $M_cL(y)$ for which we get two new intersections.\\
+Inverting $H$ (therefore $I$) the line reaches first $M_c$ then $-M_s$, describing a magnetic hysteresis cycle (not drawn).\\
+Reconsidering he system \eqref{eq:langevinmagnetization} we see that the line has angular coefficient $kT/m_0\mu_0\gamma$, therefore if $T$ is high enough this coefficient is higher than $M_s/3$ of Langevin's curve $M(y)$. In this particular case there is only one intersection point, and therefore the substance becomes paramagnetic (there cannot be an hysteresis cycle).\\
+Considering the derivative of the first and the second we have
+\begin{equation*}
+	\frac{kT}{m_0\mu_0T}\ge\frac{M_s}{3}\implies T\ge\frac{\mu_0\gamma m_0M_s}{3k}=T_c
+\end{equation*}
+Which gives the Curie temperature definition again. For $T>T_c$ we can approximate $L(y)\approx y/3$, therefore
+\begin{equation}
+	\begin{aligned}
+		M&=\frac{M_sy}{3}=\frac{nm_0^2\mu_0}{3kT}H_{loc}=\frac{T_c}{\gamma T}H_{loc}\\
+		H_{loc}&=H+\gamma M
+	\end{aligned}
+	\label{eq:hightempfmag}
+\end{equation}
+Inserting the second equation in the first we have
+\begin{equation*}
+	M=\frac{T_c}{\gamma T}\left( H+\gamma M \right)=\frac{T_c}{\gamma\left( T-T_c \right)}H
+\end{equation*}
+Using again $\chi_m=M/H$ we have
+\begin{equation*}
+	\chi_m=\frac{1}{\gamma}\frac{T_c}{T-T_c}=\frac{\mu_0nm_0^2}{3kT_c}\frac{T_c}{T-T_c}
+\end{equation*}
+And we get via simple algebra the Curie-Weiss law for ferromagnets
+\begin{equation*}
+	\chi_m(T)=\frac{\mu_0m_0^2n}{3k}\frac{1}{T-T_c}
+\end{equation*}
+%0511(f)<++>
+\end{document}

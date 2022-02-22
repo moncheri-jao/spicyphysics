@@ -1,0 +1,1085 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	\section{Free Particle}
+	The motion of a free particle is described by the following Hamiltonian:
+	\begin{equation}
+		\ham=\frac{p^2}{2m}
+		\label{eq:classfreeparticle}
+	\end{equation}
+	Quantizing in Heisenberg representation \eqref{eq:classfreeparticle}, we get the following operatorial representation
+	\begin{equation}
+		\opr{\ham}=\frac{\opr{p}^2}{2m}
+		\label{eq:quantfreeparticle}
+	\end{equation}
+	Since $\comm{\opr{\ham}}{\opr{p}}=0$, there exists a common basis of eigenvectors that we will indicate with $\ket{p}$, for which
+	\begin{equation*}
+		\opr{p}\ket{p}=p\ket{p}
+	\end{equation*}
+	Hence, the secular equation for the Hamiltonian will be
+	\begin{equation}
+		\opr{\ham}\ket{p}=\frac{1}{2m}\opr{p}^2\ket{p}=\frac{p^2}{2m}\ket{p}
+		\label{eq:energylevels}
+	\end{equation}
+	The spectrum of the Hamiltonian operator is twice degenerate, since momentum can be either negative or positive, and the final energy state will then be given by the linear combination of the two states with positive and negative momentum, with energies $\pm \frac{1}{2m}p^2$
+	\begin{equation}
+		\opr{\ham}\ket{E}=\frac{p^2}{2m}\ket{p}-\frac{p^2}{2m}\ket{-p}
+		\label{eq:freepartenergy}
+	\end{equation}
+	It's obvious, from this equation, that the particle is delocalizated, since the momentum is positive and negative at the same time, meaning that the particle is ``going'' both forward and backward.\\
+	Representing the Hamiltonian in the Schrödinger form we will get instead
+	\begin{equation}
+		\opr{\ham}=-\frac{\hbar^2}{2m}\derivative[2]{x}
+		\label{eq:schrfreepart}
+	\end{equation}
+	The Schrödinger equation will then be
+	\begin{equation}
+		\opr{\ham}\psi=-\frac{\hbar^2}{2m}\derivative[2]{\psi}{x}-E\psi=0
+		\label{eq:schreqfreepart}
+	\end{equation}
+	Solving this simple 2nd order ODE, we get the following wavefunction
+	\begin{equation}
+		\psi(x)=Ae^{i\sqrt{\frac{2mE}{\hbar^2}}x}+Be^{-i\sqrt{\frac{2mE}{\hbar^2}}x}
+		\label{eq:freepartwavefunction}
+	\end{equation}
+	Where its twofold degeneracy is obvious
+	\begin{thm}[Degeneration Theorem]
+		Let $\opr{p},\opr{\ham},\opr{I}$ be three observables.\\
+		If
+		\begin{equation}
+			\left\{\begin{aligned}
+				\comm{\opr{p}}{\opr{I}}&\ne0\\
+				\comm{\opr{p}}{\opr{\ham}}&=\comm{\opr{p}}{\opr{H}}=0
+			\end{aligned}\right.
+			\label{eq:nondeg}
+		\end{equation}
+		Then $\opr{I}$ is 2-degenerate
+	\end{thm}
+	\begin{proof}
+		Considering the case of a free particle, introducing operator $\opr{I}$ as a spatial inversion operator, we have that
+		\begin{equation*}
+			\left\{ \begin{aligned}
+					\comm{\opr{p}}{\opr{\ham}}&=\comm{\opr{I}}{\opr{\ham}}=0\\
+					\comm{\opr{p}}{\opr{I}}&\ne0
+			\end{aligned}\right.
+		\end{equation*}
+		Where $\opr{I}\ket{p}=\pm\ket{-p}$
+		It's obvious that $\opr{I}^2=\1$ and that $\acomm{\opr{I}}{\opr{p}}=\acomm{\opr{I}}{\opr{q}}=0$.\\
+		Due to this fact, we can write a new state which is the sum of the simmetrization and antisimmetrization of a the first state found.\\
+		Since $\opr{I}\ket{\pm p}=\pm\ket{\pm p}$ we get this state, indicating the antisimmetric one with $\ket{p}_a$ and the simmetric one as $\ket{p}_s$
+		\begin{equation}
+			\ket{p}=\frac{1}{2}\left( \ket{p}_s+\ket{-p}_s \right)+\frac{1}{2}\left( \ket{p}_a-\ket{-p}_a \right)
+			\label{eq:state}
+		\end{equation}
+		Which is also an eigenstate of $\opr{\ham}$, since it commutes with $\opr{I}$
+	\end{proof}
+	\section{Quantum Harmonic Oscillator}
+	\subsection{Dirac Formulation}
+	The classical harmonic oscillator, is described by the following Hamiltonian
+	\begin{equation}
+		\ham=\frac{1}{2m}p^2+\frac{1}{2}m\omega^2q^2
+		\label{eq:classharmham}
+	\end{equation}
+	Quantizing
+	\begin{equation}
+		\opr{\ham}=\frac{1}{2m}\opr{p}^2+\frac{1}{2}m\omega^2\opr{q}^2
+		\label{eq:qhoham}
+	\end{equation}
+	It's evident that the Hamiltonian is an observable, hence its eigenvalues will be real.\\
+	A solution in operatorial representation can be given, defining two operators, called \textit{creation} and \textit{annihilation} operators, defined as follows
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\opr{\eta}&=\frac{1}{\sqrt{2m\hbar\omega}}(\opr{p}-im\omega\opr{q})\\
+				\adj{\opr{\eta}}&=\frac{1}{\sqrt{2m\hbar\omega}}(\opr{p}+im\omega\opr{q})
+		\end{aligned}\right.
+		\label{eq:creationdestruction}
+	\end{equation}
+	Inverting the relations and expressing position and momentum in terms of creation and distruction operators, we get
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\opr{p}&=\sqrt{\frac{m\hbar\omega}{2}}(\adj{\opr{\eta}}+\opr{\eta})\\
+				\opr{q}&=-i\sqrt{\frac{\hbar}{2m\omega}}(\adj{\opr{\eta}}-\opr{\eta})
+		\end{aligned}\right.
+		\label{eq:pqcd}
+	\end{equation}
+%	The commutators of $\opr{\eta}$ and $\adj{\eta}$ are easy to calculate, and they give the following results
+	In order to evaluate the commutators of these two new operators $\opr{\eta}$, we evaluate the product of the two, from the left and right, obtaining the following result
+\begin{subequations}
+	\begin{equation}
+		\adj{\opr{\eta}}\opr{\eta}=\frac{1}{2m\hbar\omega}(\opr{p}^2+m^2\omega^2\opr{q}^2-im\omega\comm{\opr{q}}{\opr{p}})=\frac{1}{\hbar\omega}\left( \opr{\ham}-\frac{1}{2}\hbar\omega\1 \right)
+		\label{eq:etadageta1}
+	\end{equation}
+	And
+	\begin{equation}
+		\opr{\eta}\adj{\opr{\eta}}=\frac{1}{2m\hbar\omega}(\opr{p}^2+m^2\omega^2\opr{q}^2+im\omega\comm{\opr{q}}{\opr{p}})=\frac{1}{\hbar\omega}\left( \opr{\ham}+\frac{1}{2}\hbar\omega\1 \right)
+		\label{eq:etadageta2}
+	\end{equation}
+\end{subequations}
+	Having evaluated this, we therefore get
+	\begin{equation}
+		\begin{aligned}
+			\comm{\opr{\eta}}{\adj{\opr{\eta}}}&=\frac{1}{2m\hbar\omega}(-2im\omega\comm{\opr{q}}{\opr{p}})=\1\\
+			\comm{\adj{\opr{\eta}}}{\opr{\eta}}&=\frac{1}{2m\hbar\omega}(2im\omega\comm{\opr{q}}{\opr{p}})=-\1
+		\end{aligned}
+		\label{eq:comm}
+	\end{equation}
+	And therefore, inverting the previous relation where the Hamiltonian appears on the right hand side, and utilizing the commutators in order to switch the position of the multiplication of the two operators, we get these two new expressions for the Hamiltonian
+\begin{subequations}
+	\begin{equation}
+		\opr{\ham}=\hbar\omega\left( \adj{\opr{\eta}}\opr{\eta}+\frac{1}{2}\1 \right)
+		\label{eq:etaetaham2}
+	\end{equation}
+	\begin{equation}
+		\opr{\ham}=\hbar\omega\left( \opr{\eta}\adj{\opr{\eta}}-\frac{1}{2}\1 \right)
+		\label{eq:etaetaham1}
+	\end{equation}
+\end{subequations}
+	The commutators between the Hamiltonian and the annihilation/creation operators is calculated easily, utilizing the latter form of the Hamiltonian and the properties of the commutator (remembering that operators in general \emph{do not} commute)
+	\begin{equation}
+		\begin{aligned}
+			\comm{\opr{\ham}}{\opr{\eta}}&=\hbar\omega\left( \comm{\adj{\opr{\eta}}\opr{\eta}}{\opr{\eta}}+\frac{1}{2}\comm{\1}{\opr{\eta}} \right)=\hbar\omega\left( \adj{\opr{\eta}}\comm{\opr{\eta}}{\opr{\eta}}+\comm{\adj{\opr{\eta}}}{\opr{\eta}}\opr{\eta} \right)=-\hbar\omega\opr{\eta}\\
+			\comm{\opr{\ham}}{\adj{\opr{\eta}}}&=\hbar\omega\left( \adj{\opr{\eta}}\comm{\opr{\eta}}{\adj{\opr{\eta}}}+\comm{\adj{\opr{\eta}}}{\adj{\opr{\eta}}}\opr{\eta} \right)=\hbar\omega\opr{\eta}
+		\end{aligned}
+		\label{eq:hametacomm}
+	\end{equation}
+	Consequently, writing the secular equation of the system we get the following results
+	\begin{equation}
+		\begin{aligned}
+			\opr{\ham}\opr{\eta}\ket{E}&=\left( \opr{\eta}\opr{\ham}+\comm{\opr{\ham}}{\opr{\eta}} \right)\ket{E}=\left( \opr{\eta}\opr{\ham}-\hbar\omega\opr{\eta} \right)\ket{E}=\left( E-\hbar\omega \right)\opr{\eta}\ket{E}\\
+			\opr{\ham}\adj{\opr{\eta}}\ket{E}&=\left( \adj{\opr{\eta}}\opr{\ham}+\comm{\opr{\ham}}{\adj{\opr{\eta}}} \right)\ket{E}=\left( \adj{\opr{\eta}}\opr{\ham}+\hbar\omega\adj{\opr{\eta}} \right)\ket{E}=\left( E+\hbar\omega \right)\adj{\opr{\eta}}\ket{E}
+		\end{aligned}
+		\label{eq:anncreopaction}
+	\end{equation}
+	So, the action of these operators actually creates and annihilates quantas of energy, with a spacing of $\hbar\omega$, creating a ladder. This characteristics gives them also the name of \textit{ladder operators}.\\
+	Since the energies of an harmonic oscillator can't obtain negative values, there must exist a state for which the application of the annihilation operators ``annihilates'' the system, returning back zero. Indicating the energy eigenvalues with $\ket{n}$, we identify such state with $\ket{0}$ (watch out, this is \emph{not} the null vector of the Hilbert space, $0$ is simply a label), such state is usually called \textit{vacuum} state.\\
+	Its energy can be determinated without much hassle, noting that the square norm of $0$ is still $0$ (obviously). Rewriting $0$ as $\opr{\eta}\ket{0}$, we get, in Dirac notation, and remembering \eqref{eq:etadageta1}
+	\begin{equation}
+		\bra{0}\adj{\opr{\eta}}\opr{\eta}\ket{0}=\frac{1}{\hbar\omega}\bra{0}\left( \opr{\ham}-\frac{1}{2}\hbar\omega\1 \right)\ket{0}=E_0-\frac{1}{2}\hbar\omega=0
+		\label{eq:zeropointenergy}
+	\end{equation}
+	It's clear then, that the minimum possible value of energy is $E_0=\frac{1}{2}\hbar\omega$, usually called \textit{zero point energy}
+	In order to properly see how the annihilation and creation operators act on the energy eigenstates it's useful to normalize their succession.\\
+	We know, as for \eqref{eq:anncreopaction}, that creation operators increase by one the number of quants in the system, hence, knowing that there is a ground state, indicated with $\ket{0}$, we can write the $n$-th state as follows
+	\begin{equation*}
+		\opr{\eta}^n\ket{0}=\nu\ket{n}
+	\end{equation*}
+	With $\nu\in\mathbb{C}$. Since the normalization condition asks that the square braket of the vector must be equal to one, we simply get the following expression
+	\begin{equation}
+		\bra{0}\opr{\eta}^n\adj[n]{\opr{\eta}}\ket{0}=\abs{\nu}^2\braket{n}
+		\label{eq:normcondqho}
+	\end{equation}
+	Since the former operator multiplication can be written as $\opr{\eta}^{n-1}\comm{\opr{\eta}}{\adj[n]{\opr{\eta}}}$. It can be easily demonstrated that the previous commutator gives the following value
+	\begin{equation*}
+		\comm{\opr{\eta}}{\adj[n]{\opr{\eta}}}=n\adj[(n-1)]{\opr{\eta}}
+	\end{equation*}
+	We can then write \eqref{eq:normcondqho} as
+	\begin{equation*}
+		n\bra{0}\opr{\eta}^{n-1}\adj[(n-1)]{\opr{\eta}}\ket{0}=\nu^2\braket{n-1}
+	\end{equation*}
+	Iterating, we get the following condition
+	\begin{equation}
+		\nu^2=\frac{1}{n!}
+		\label{eq:normcond}
+	\end{equation}
+	Henceforth, we get $\nu=\frac{1}{\sqrt{n!}}$, without any loss of generality.\\
+	The normalization of the $n$-th state, can then be defined recursively starting from $\ket{0}$
+	\begin{equation}
+		\ket{n}=\frac{1}{\sqrt{n!}}\adj[n]{\opr{\eta}}\ket{0}
+		\label{eq:qhoeigenstates}
+	\end{equation}
+	Since all eigenstates must be normalized, we get that the action of the creation and annihilation operators will be, respectively
+	\begin{equation}
+		\begin{aligned}
+			\adj{\opr{\eta}}\ket{n}&=\sqrt{n+1}\ket{n+1}\\
+			\opr{\eta}\ket{n}&=\sqrt{n}\ket{n-1}
+		\end{aligned}
+		\label{eq:annihilationcreationaction}
+	\end{equation}
+	Defining a \textit{particle number operator} as follows
+	\begin{equation}
+		\opr{N}=\adj{\opr{\eta}}\opr{\eta}
+		\label{eq:numberoperatordef}
+	\end{equation}
+	We get the following commutation relations
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\comm{\opr{N}}{\adj{\opr{\eta}}}&=\adj{\opr{\eta}}\\
+				\comm{\opr{N}}{\opr{\eta}}&=-\opr{\eta}
+		\end{aligned}\right.
+		\label{eq:ncommrel}
+	\end{equation}
+	And the new Hamiltonian in terms of $\opr{N}$ becomes, evidently
+	\begin{equation}
+		\opr{\ham}=\hbar\omega\left( \opr{N}+\frac{1}{2}\1 \right)
+		\label{eq:numberopham}
+	\end{equation}
+	Calculating the commutator $\comm{\opr{\ham}}{\opr{N}}$ explicitly we get
+	\begin{equation}
+		\begin{aligned}
+			\comm{\opr{\ham}}{\opr{N}}&=\comm{\hbar\omega\left( \opr{N}+\frac{1}{2}\1 \right)}{\opr{N}}=\hbar\omega\comm{\opr{N}+\frac{1}{2}\1}{\opr{N}}=\\
+			&=\hbar\omega\left( \comm{\opr{N}}{\opr{N}}+\frac{1}{2}\comm{\1}{\opr{N}} \right)=0
+		\end{aligned}
+		\label{eq:hamnumbercomm}
+	\end{equation}
+	Since $\comm{\opr{\ham}}{\opr{N}}=0$, we get from Theorem \ref{thm:comp} on the compatibility of operators, that there exist a common ON basis between $\opr{N}$ and $\opr{\ham}$. This basis will obviously be the energy eigenstates of the Hamiltonian, and remembering the action of $\opr{\eta}$ and $\adj{\opr{\eta}}$ on the energy eigenkets, we get that the number operator will act on these states as such
+	\begin{equation}
+		\opr{N}\ket{n}=n\ket{n}
+		\label{eq:numberoperatoraction}
+	\end{equation}
+	It's now obvious why such operator is called \textit{particle number} operator, since applying it to an energy eigenstate, it will give as an eigenvalue the ``number of particles'' present.\\
+	Since these eigenstates are eigenstates for both the particle number operator and the Hamiltonian, we can write the secular equation of the Hamiltonian \eqref{eq:numberopham}, which gives immediately the following result
+	\begin{equation}
+		\opr{\ham}\ket{n}=\hbar\omega\left( n+\frac{1}{2} \right)\ket{n}
+		\label{eq:secularequation}
+	\end{equation}
+	Since $\opr{\ham}\ket{n}=E_n\ket{n}$, we get that energy is quantized, and has the following expression
+	\begin{equation}
+		E_n=\hbar\omega\left( n+\frac{1}{2} \right)
+		\label{eq:energyqho}
+	\end{equation}
+	From this definition, we can define the ground state of the system as $\ket{0}$, since, applying the annihilation operator on $\ket{0}$ the state gets ``annihilated'' and its action gives $0$, we get our ground state energy (also known as \textit{zero point energy})
+	\begin{equation}
+		\opr{\ham}\ket{0}=\frac{1}{2}\hbar\omega\ket{0}
+		\label{eq:qhogroundstate}
+	\end{equation}
+	Switching to a Schrödinger representation for the definition \eqref{eq:qhoeigenstates}, we can also find the eigenfunctions of the Hamiltonian, $\bra{x}\ket{n}=\psi_n(x)$. Since the operator $\adj{\opr{\eta}}$ and $\opr{\eta}$ are defined in \eqref{eq:creationdestruction}, we can then write the normalized eigenfunctions as the solutions for the following differential equation. For the ground state, we will have, applying the annihilation operator
+	\begin{equation}
+		\opr{\eta}\psi_0(x)=-\frac{1}{\sqrt{2m\hbar\omega}}\left( i\hbar\nabla+im\omega x\right)\psi_0(x)=0
+		\label{eq:groundstateqho}
+	\end{equation}
+	Its solution is simply given by the following exponential
+	\begin{equation*}
+		\psi_0(x)=Ae^{-\frac{m\omega}{2\hbar}x^2}
+	\end{equation*}
+	The normalization condition will be given by the fact that $\psi_0\in L^2(\mathbb{R})$, hence it must be square integrable. Using Gauss' identity, we get
+	\begin{equation*}
+		\abs{A}^2\int_{-\infty}^{\infty}e^{-\frac{m\omega}{\hbar}x^2}\diff{x}=\sqrt{\frac{\hbar\pi}{m\omega}}
+	\end{equation*}
+	The constant $A$ is easily determined, and the normalized wavefunction for the ground state is
+	\begin{equation}
+		\psi_0(x)=\sqrt{\sqrt{\frac{m\omega}{\hbar\pi}}}e^{-\frac{m\omega}{2\hbar}x^2}
+		\label{eq:qhogsnorm}
+	\end{equation}
+	Now, applying the operator $\adj{\opr{\eta}}$ multiple times we can get the $n$-th wavefunction. In formulae, we get that
+	\begin{equation*}
+		\frac{1}{\sqrt{n!}}\adj[n]{\opr{\eta}}\psi_0(x)=\frac{1}{(2m\hbar\omega)^\frac{n}{2}}\left( im\omega x-i\hbar\nabla \right)^n\psi_0(x)=\psi_n(x)
+	\end{equation*}
+	Substituting the function we found for $\psi_0$, we get the following differential equation of the $n$-th order
+	\begin{equation}
+		\psi_n(x)=\frac{1}{\sqrt[n]{2m\hbar\omega}}\sqrt{\frac{1}{n!}\sqrt{\frac{m\omega}{\hbar\pi}}}\left( im\omega x-i\hbar\derivative{x} \right)^ne^{-\frac{m\omega}{2\hbar}x^2}
+		\label{eq:nthqhoeigenfunc}
+	\end{equation}
+	Using the substitution $\xi=\sqrt{\frac{m\omega}{\hbar}}x$ we can write the solution in terms of \textit{Hermite polynomials}, where they're defined through \textit{Rodrigues formula}
+	\begin{equation}
+		H_n(\xi)=(-1)^ne^{\xi^2}\derivative[n]{\xi}e^{-\xi^2}
+		\label{eq:rodrigueshermite}
+	\end{equation}
+	The normalization constant for Hermite polynomials can be calculated to be exactly $(2^nn!)^{-1/2}$, and the eigenfunction succession of the quantum harmonic oscillator will be the following
+	\begin{equation}
+		\psi_n(x)=\sqrt{\frac{1}{2^nn!}\sqrt{\frac{m\omega}{\hbar\pi}}}H_n\left( \sqrt{\frac{m\omega}{\hbar}}x \right)e^{-\frac{m\omega}{\hbar}x^2}
+		\label{eq:psinqho}
+	\end{equation}
+	\subsection{Coherent States of the Quantum Harmonic Oscillator}
+	The coherent states of a quantum harmonic oscillator, are those states defined as the eigenvalues of the annihilation operator $\opr{\eta}$. Hence, we are finding all states $\ket{h}$ such that $\opr{\eta}\ket{h}=h\ket{h}$. Since we're in the Hilbert space of the quantum harmonic oscillator (obviously) we can use Von Neumann's principle in order to Fourier transform our state $\ket{h}$ to an eigenstate of the Hamiltonian. We then get, applying a projection $\opr{\pi}^{(i)}_h=\ket{h}\bra{h}$, the following Fourier series
+	\begin{equation}
+		\ket{h}=\sum_{n=0}^{\infty}\bra{h}\ket{n}\ket{h}
+		\label{eq:projqhocoherent}
+	\end{equation}
+	Applying $\opr{\eta}$ to its eigenstate $\ket{h}$, we get, knowing its action to the energy eigenstates
+\begin{subequations}
+	\begin{equation}
+		\opr{\eta}\ket{h}=\sum_{n=0}^{\infty}\bra{h}\ket{n}\opr{\eta}\ket{n}=\sum_{n=0}^{\infty}\bra{h}\ket{n}\sqrt{n}\ket{n-1}=h\ket{h}
+		\label{eq:actionetacs}
+	\end{equation}
+	Changing the indexes of our sum to $k=n-1$ we get
+	\begin{equation}
+		\sum_{k=0}^{\infty}\bra{h}\ket{k+1}\sqrt{k+1}\ket{k}=h\sum_{k=0}^{\infty}\bra{h}\ket{k}\ket{k}
+		\label{eq:ksubcsqho}
+	\end{equation}
+	We henceforth get the following relation between $\bra{h}\ket{k+1}$ and $\bra{h}\ket{k}$
+	\begin{equation}
+		\bra{h}\ket{k+1}=\frac{h}{\sqrt{k+1}}\bra{h}\ket{k}
+		\label{eq:relationcsqho}
+	\end{equation}
+	Through induction we get, after substituting again the index,
+	\begin{equation}
+		\begin{aligned}
+			\bra{h}\ket{n}&=\frac{h^n}{\sqrt{n!}}\bra{h}\ket{0}\\
+			\ket{h}&=\bra{h}\ket{0}\sum_{n=0}^{\infty}\frac{h^n}{\sqrt{n!}}\ket{n}
+		\end{aligned}
+		\label{eq:inductioncsqho}
+	\end{equation}
+	In order to find $\bra{h}\ket{0}$ we normalize the state $\braket{h}$
+	\begin{equation}
+		\braket{h}=\abs{\bra{h}\ket{0}}^2\sum_{n=0}^{\infty}\frac{\abs{h}^{2n}}{n!}=1
+		\label{eq:normalc0}
+	\end{equation}
+	We finally get $\bra{h}\ket{0}=e^{-\frac{\abs{h}^2}{2}}$, hence, our coherent state will be
+	\begin{equation}
+		\ket{h}=e^{-\frac{\abs{h}^2}{2}}\sum_{n=0}^{\infty}\frac{h^n}{\sqrt{n!}}\ket{n}
+		\label{eq:keth}
+	\end{equation}
+\end{subequations}
+	Writing $\ket{n}$ as in \eqref{eq:qhoeigenstates} we get a new form of this state, in terms of $\adj{\opr{\eta}}$
+	\begin{equation}
+		\ket{h}=e^{\frac{\abs{h}^2}{2}}\sum_{n=0}^{\infty}\frac{h^n}{n!}\adj[n]{\opr{\eta}}\ket{0}
+		\label{eq:adjeta}
+	\end{equation}
+	Summing, we then find a new representation for this coherent state, in terms of both annihilation and creation operators
+	\begin{equation}
+		\ket{h}=e^{-\frac{\overline{h}h}{2}+h\opr{\eta}}\ket{0}=e^{h\adj{\opr{\eta}}-\overline{h}\opr{\eta}}\ket{0}
+		\label{eq:etadagetarepr}
+	\end{equation}
+	\subsection{Schrödinger Formulation}
+	The Schrödinger equation for the quantum harmonic oscillator is simply given converting momentum and position operator to their representation in $L^2(\mathbb{R})$. Taking \eqref{eq:qhoham} and converting, we get the following differential equation for $\psi_n(x)$ as follows
+	\begin{equation}
+		-\frac{\hbar^2}{2m}\derivative[2]{\psi_n}{x}+\frac{1}{2}m\omega^2x^2\psi_n(x)=E_n\psi_n(x)
+		\label{eq:qhoschreq}
+	\end{equation}
+	In order to ease the equation, we utilize the following change of variables
+	\begin{equation*}
+		\xi=\sqrt{\frac{m\omega}{\hbar}}x
+	\end{equation*}
+	Through this change of variables we get that the second derivative of $\psi_n$ will become
+	\begin{equation*}
+		\derivative[2]{\psi_n}{x}=\frac{m\omega}{\hbar}\derivative[2]{\psi_n}{\xi}
+	\end{equation*}
+	Hence, the Schrödinger equation will become
+	\begin{equation*}
+		-\frac{\hbar\omega}{2}\derivative[2]{\psi_n}{\xi}+\left( \frac{\hbar\omega}{2}\xi^2-E_n \right)\psi_n(\xi)
+	\end{equation*}
+	Rearranging everything, we get the following ``easier'' to tackle equation
+	\begin{equation}
+		\derivative[2]{\psi_n}{\xi}-\left( \xi^2-\frac{2E_n}{\hbar\omega} \right)\psi_n(\xi)=0
+		\label{eq:finalschrqho}
+	\end{equation}
+	Considering the limit where $\xi>>\frac{2E_n}{\hbar\omega}$, we can define an asymptotic differential equation for $\psi_n$
+	\begin{equation*}
+		\psi_a(\xi)-\xi^2\psi_a(\xi)=0
+	\end{equation*}
+	Its solution will be a linear combination of esponentials
+	\begin{equation*}
+		\psi_a(\xi)=Ae^{\frac{\xi^2}{2}}+Be^{-\frac{\xi^2}{2}}
+	\end{equation*}
+	Due to normalization problems, we choose $A=0$.\\
+	Through the definition of $\xi$, we can easily find the normalization constant $B$, which it is, simply
+	\begin{equation*}
+		B=\sqrt{\sqrt{\frac{m\omega}{\hbar\pi}}}
+	\end{equation*}
+	Henceforth, the asymptotic solution will simply be the following
+	\begin{equation}
+		\psi_a(x)=\sqrt{\sqrt{\frac{m\omega}{\hbar\pi}}}e^{-\frac{m\omega}{\hbar}x^2}
+		\label{eq:schrqhoasy}
+	\end{equation}
+	The complete solution, will then be the product of a function $h(\xi)$ with the asymptotic solution
+	\begin{equation}
+		\psi_n(\xi)=h(\xi)\psi_a(\xi)
+		\label{eq:solcomplete}
+	\end{equation}
+	Where, $h(x)$ is a power series, defined as follows
+	\begin{equation}
+		h(\xi)=\sum_{j=0}^{\infty}a_j\xi^j
+		\label{eq:hxischrqho}
+	\end{equation}
+	Deriving the new definition of $\psi_n(\xi)$, we get the following relation
+	\begin{equation*}
+		\derivative[2]{\psi_n}{\xi}=\psi_a(\xi)\derivative[2]{h}{\xi}+2\derivative{h}{\xi}\derivative{\psi_a}{\xi}+h(\xi)\derivative[2]{\psi_a}{\xi}
+	\end{equation*}
+	Due to $\psi_a$ being known, we end up with the following equation
+	\begin{equation*}
+		\derivative[2]{\psi_n}{\xi}=\sqrt{\sqrt{\frac{m\omega}{\hbar\pi}}}\derivative[2]{h}{\xi}e^{-\frac{\xi^2}{2}}-2\xi\sqrt{\sqrt{\frac{m\omega}{\hbar\pi}}}\derivative{h}{\xi}e^{-\frac{\xi^2}{2}}+(\xi^2-1)\sqrt{\sqrt{\frac{m\omega}{\hbar\pi}}}h(\xi)e^{-\frac{\xi^2}{2}}
+	\end{equation*}
+	The Schrödinger equation will, finally, become the following, after cleaning up multiplicative constants and nonvanishing exponentials
+	\begin{equation}
+		\derivative[2]{h}{\xi}-2\xi\derivative{h}{\xi}+\left( \frac{2E_n}{\hbar\omega}-1 \right)h(\xi)=0
+		\label{eq:schrqhohxi}
+	\end{equation}
+	The derivatives of $h(\xi)$ are easy to calculate, and they give the following result
+	\begin{equation*}
+		\begin{aligned}
+			\derivative{h}{\xi}&=\sum_{j=1}^{\infty}ja_j\xi^{j-1}=\sum_{n=0}^{\infty}\alpha a_{\alpha}\xi^{\alpha-1}\\
+			\derivative[2]{h}{\xi}&=\sum_{j=2}^{\infty}j(j-1)a_j\xi^{j-2}=\sum_{\alpha=0}^{\infty}(\alpha+1)(\alpha+2)a_{\alpha+2}\xi^{\alpha}
+		\end{aligned}
+	\end{equation*}
+	Inserting in our Schrödinger equation, we get the following
+	\begin{equation*}
+		\sum_{\alpha=0}^{\infty}\left[ (\alpha+1)(\alpha+2)a_{\alpha+2}+\left( \frac{2E_n}{\hbar\omega}-2\alpha-1 \right)a_{\alpha} \right]\xi^{\alpha}=0
+	\end{equation*}
+	For which, the only non trivial solutions will be given if the summand is zero, thing that'll be true only and only if persists a recursive relation
+	\begin{equation}
+		a_{\alpha+2}=\frac{2\alpha+1-\frac{2E_n}{\hbar\omega}}{(\alpha+1)(\alpha+2)}a_{\alpha}
+		\label{eq:recrelation}
+	\end{equation}
+	Since we want the sum to converge, we suppose that $\exists n\in\mathbb{N}:\forall \alpha>n\ a_{\alpha}=0$, hence, using the recursive relation we get
+	\begin{equation}
+		\frac{2E_n}{\hbar\omega}=2n+1
+		\label{eq:energyquant}
+	\end{equation}
+	Solving for $E_n$ we get the quantization of energy
+	\begin{equation}
+		E_n=\hbar\omega\left( n+\frac{1}{2} \right)
+		\label{eq:energyquantschrqho}
+	\end{equation}
+	Getting a closer look on \eqref{eq:schrqhohxi}, we get that a general solution for this differential equation is known, and it's the Hermite polynomials $H_n(\xi)$. The final product solution will then be our eigenfunctions of the Hamiltonian
+	\begin{equation}
+		\psi_{n}(x)=\sqrt{\frac{1}{2^nn!}\sqrt{\frac{m\omega}{\hbar\pi}}}H_n\left( \sqrt{\frac{m\omega}{\hbar}}x \right)e^{-\frac{m\omega}{2\hbar}x^2}
+		\label{eq:finalsolutionschrqho}
+	\end{equation}
+	The factor $(2^nn!)^{-1/2}$ is given by the normalization of Hermite polynomials.
+	\section{Infinite Square Well}
+	Let's consider now a massive particle inside an infinite square well, i.e., where the potential is defined as follows
+	\begin{equation*}
+		V(x)=\begin{dcases}
+			0&0\le x\le a\\
+			\infty&\text{elsewhere}
+		\end{dcases}
+	\end{equation*}
+	Since this problem is simple enough with the Schrödinger approach, we immediately write the Schrödinger equation for the problem
+	\begin{equation}
+		\derivative[2]{\psi}{x}=-k^2\psi(x)
+		\label{eq:infsqwellsch}
+	\end{equation}
+	Where we define $k$ as $k^2=2mE/\hbar^2$.\\
+	The general solution is easily computed as being
+	\begin{equation}
+		\psi(x)=A\sin(kx)+B\cos(kx)
+		\label{eq:gensolinfsqw}
+	\end{equation}
+	Since $\psi$ must be square integrable in all space, we impose its continuity at the borders of the well, hence we must have $\psi(0)=\psi(a)=0$, which gives us $B=0$ and $A\sin(ka)=0$. Since $A=0$ would give a trivial solution, we impose $\sin(ka)=0$, and we get a restriction on the possible values of $k$.
+	\begin{equation}
+		ka=n\pi\longrightarrow k_n=\frac{n\pi}{a}
+		\label{eq:kconstrinfsq}
+	\end{equation}
+	Due to the definition of $k$, we get that energy must be quantized, with the following succession
+	\begin{equation}
+		E_n=\frac{n^2\pi^2\hbar^2}{2ma^2}
+		\label{eq:infsqenquant}
+	\end{equation}
+	Integrating over all space the square modulus of what we have defined, finally, lets us determine the normalization factor $A$
+	\begin{equation}
+		\abs{A}^2\int_{0}^{a}\sin^2(k_nx)\diff{x}=\abs{A}^2\frac{a}{2}=1
+		\label{eq:norm}
+	\end{equation}
+	The complete solution will be, finally
+	\begin{equation}
+		\begin{aligned}
+			\psi_n(x)&=\sqrt{\frac{2}{a}}\sin\left( \frac{n\pi}{a}x \right)\\
+			E_n&=\frac{n^2\pi^2\hbar^2}{2ma^2}
+		\end{aligned}
+		\label{eq:infsqwellsol}
+	\end{equation}
+	\section{Infinite Wall}
+	In order to treat the idea of an infinite wall in quantum mechanics, we have to first define two particular states, \textit{scattering states} and \textit{bound states}\\
+	\begin{defn}[Bound State]
+		We define a bound state, as the set of configurations of the system where $E<V(x)$, and the particle is henceforth ``trapped''
+	\end{defn}
+	\begin{defn}[Scattering State]
+		A scattering state is defined as the set of configurations of the system for which $E>V(x)$, hence, the particle coming from $-\infty$ will simply interact with the potential without getting trapped by it.
+	\end{defn}
+	Getting back to our problem, we define an infinite wall as a system whose potential is described by a Dirac delta function $\delta(x)$. Using a potential $V(x)=-\alpha\delta(x)$, we get that the Hamiltonian will be
+	\begin{equation}
+		\opr{\ham}=\frac{\opr{p}^2}{2m}-\alpha\delta(x)
+		\label{eq:diracdelta}
+	\end{equation}
+	The associated Schrödinger equation will be
+	\begin{equation}
+		\opr{\ham}\psi(x)=-\frac{\hbar^2}{2m}\derivative[2]{\psi}{x}-\alpha\delta(x)\psi(x)=E\psi(x)
+		\label{eq:diracdeltapot}
+	\end{equation}
+	It's obvious that we can both have bound states and scattering states. Considering first the bound states, in the region $x<0$, $V(x)=0$, we get the following equation, where $\kappa=(-2mE)^{1/2}/\hbar$ ($E<0$ by assumption, since we're considering bound states only).
+	\begin{equation*}
+		\derivative[2]{\psi}{x}=\kappa^2\psi(x)
+	\end{equation*}
+	Its solution will simply be $\psi(x)=A\exp(-\kappa x)+B\exp(\kappa x)$, that for normalization reasons, in the region $x<0$, becomes simply
+	\begin{equation}
+		\psi(x)=Be^{\kappa x}
+		\label{eq:solutionbounddeltaxneg}
+	\end{equation}
+	In the region $x>0$, instead, we get the following solution
+	\begin{equation}
+		\psi(x)=Ae^{-\kappa x}
+		\label{eq:solutionboundxpos}
+	\end{equation}
+	Since $\psi(x)$ must be \emph{always} continuous, we get that the solution for our bound states must have $A=B$, and our general solution becomes
+	\begin{equation}
+		\psi(x)=\begin{dcases}
+			Be^{\kappa x}&x\le0\\
+			Be^{-\kappa x}&x\ge0
+		\end{dcases}
+		\label{eq:gensoldeltapotbound}
+	\end{equation}
+	Since $\psi(x)$ must also be a square integrable function, we need that its derivative must be continuous too, hence for $x=0$, we have to check another few things.\\
+	The first idea that comes up to mind is to utilize the properties of the delta function and integrate in a infinitesimal interval around $0$, henceforth, we get
+	\begin{equation}
+			-\frac{\hbar^2}{2m}\int_{-\epsilon}^{\epsilon}\derivative[2]{\psi}{x}\diff{x}-\alpha\int_{-\epsilon}^{\epsilon}\delta(x)\psi(x)\diff{x}=E\int_{-\epsilon}^{\epsilon}\psi(x)\diff{x}\\
+		\label{eq:continuityderdeltapot}
+	\end{equation}
+	Which becomes the following general relation
+	\begin{equation}
+		\lim_{x\to0^{\pm}}\Delta\psi'(x)=-\frac{2m\alpha}{\hbar^2}\psi(0)
+		\label{eq:derivativediffrel}
+	\end{equation}
+	Calculating the derivatives from the left and from the right of our solution, and imposing what has been found previously, we get
+	\begin{equation}
+		\derivative{\psi}{x}=\begin{dcases}
+			-B\kappa&x\to0^{+}\\
+			B\kappa&x\to0^{-}
+		\end{dcases}
+		\label{eq:derpsideltapot}
+	\end{equation}
+	From this, we get $\Delta\psi'(x)=-2B\kappa$ and, then, since $\kappa=(-2mE)^{1/2}/\hbar$, we get from \eqref{eq:derivativediffrel}
+	\begin{equation}
+		E=-\frac{m\alpha^2}{2\hbar^2}
+		\label{eq:boundstatedelta}
+	\end{equation}
+	Normalizing $\psi$, we get
+	\begin{equation}
+		2\abs{B}^2\int_{\mathbb{R}}e^{-2\kappa x}\diff{x}=\frac{\abs{B}^2}{\kappa}=1
+		\label{eq:normdiracdelta}
+	\end{equation}
+	The final solution for the wavefunction of the bound states, will then be
+	\begin{equation}
+		\begin{aligned}
+			\psi(x)&=\frac{\sqrt{m\alpha}}{\hbar}e^{-\frac{m\alpha}{\hbar^2}\abs{x}}\\
+			E&=-\frac{m\alpha^2}{2\hbar^2}
+		\end{aligned}
+		\label{eq:boundstatesdeltae}
+	\end{equation}
+	It's obvious that there is only \emph{one} bound state.\\
+	For scattering states, we define $k=(2mE)^{1/2}/\hbar$, and the Schrödinger equation becomes the following
+	\begin{equation}
+		\derivative[2]{\psi}{x}=-k^2\psi(x)
+		\label{eq:scatteringstateshamdelta}
+	\end{equation}
+	The solution will be formed by the superposition of two complex esponentials, since neither of the two blows up for $x\to\pm\infty$. Hence, we will get
+	\begin{equation}
+		\psi(x)=\begin{dcases}
+			Ae^{ikx}+Be^{-ikx}&x<0\\
+			Fe^{ikx}+Ge^{-ikx}&x>0
+		\end{dcases}
+		\label{eq:solution}
+	\end{equation}
+	Considering again their derivatives coming from left and right, we get the following
+	\begin{equation}
+		\derivative{\psi}{x}=\begin{dcases}
+			ik(A-B)&x\to0^{-}\\
+			ik(F-G)&x\to0^{+}
+		\end{dcases}
+		\label{eq:derivativecond}
+	\end{equation}
+	Since $\Delta\psi'(x)=ik(F-G-A+B)$ and $\psi(0)=A+B$, we get from \eqref{eq:derivativediffrel} the following
+	\begin{equation*}
+		ik\left( F-G-A+B \right)=-\frac{2m\alpha}{\hbar^2}\left( A+B \right)
+	\end{equation*}
+	Defining $\beta=m\alpha/\hbar^2k$, we can write the previous relation in a much more compact way
+	\begin{equation}
+		F-G=A(1+2i\beta)-B(1-2i\beta)
+		\label{eq:coeffcondscattering}
+	\end{equation}
+	In this case normalizating $\psi(x)$ won't help, since this state is absolutely non normalizable. In order to give a viable solution we reason on how the particle would scatter in this potential. Imagine shooting this quantum particle from $-\infty$, since a negative complex exponential describes a wave coming from $+\infty$ to $-\infty$ we can easily set $G=0$, and get the following result:
+	\begin{equation}
+		\left\{ \begin{aligned}
+				B&=\frac{i\beta}{1-i\beta}A\\
+				F&=\frac{1}{1-i\beta}A
+		\end{aligned}\right.
+		\label{eq:scatteringwave}
+	\end{equation}
+	Reasoning in a physical way, we can deduce then that $A$ is the amplitude of the incident wave, $B$ of the reflected wave and $F$ of the trasmitted wave. Since the probability in quantum mechanics is given by the square modulus of the wavefunction, we get that the probability of having a particle reflected back or trasmitted forward, will be given by two coefficients, respectively $R$ and $T$, where they're defined as follows
+	\begin{subequations}
+	\begin{equation}
+		\begin{aligned}
+			R&=\frac{\abs{B}^2}{\abs{A}^2}=\frac{\beta^2}{1+\beta^2}\\
+			T&=\frac{\abs{F}^2}{\abs{A}^2}=\frac{1}{1+\beta^2}
+		\end{aligned}
+		\label{eq:transrefdef}
+	\end{equation}
+	Since their sum must be $1$, being probabilities themselves, we get
+	\begin{equation}
+		R+T=\frac{\abs{B}^2+\abs{F}^2}{\abs{A}^2}=1
+		\label{eq:probdef}
+	\end{equation}
+	And substituting $\beta$ with its full expression,
+	\begin{equation}
+		\begin{aligned}
+			R&=\frac{1}{1+\frac{2\hbar^2E}{m\alpha^2}}\\
+			T&=\frac{1}{1+\frac{m\alpha^2}{2\hbar^2E}}
+		\end{aligned}
+		\label{eq:rtenergy}
+	\end{equation}
+\end{subequations}
+	A fun thing to do, with this potential, is to change the sign of $\alpha$ and reason on what is happening really.\\
+	First of all, since $E\propto\alpha$, we get that the only bound state we found gets brutally killed since $E\nless0$ everywhere, but since $R,T\propto\alpha^2$, they stay unchanged.\\
+	Naively evaluating this as a classical problem, we get that this ``particle'' is thrown towards an infinitely strong wall $n$ times and passes through $nT$ times, and bounces back $nR$ times. This is obviously impossible in the classical world, but instead in the quantum world is much more than possible. This effect is known commonly as \textit{quantum tunneling}. This phenomenon is not restricted to infinite potential walls, let's take a finite potential wall $V$, for which exists a maximum $V_{max}$. If the energy $E$ of the particle is $E<V_{max}$ we get that it might pass through with a nonzero probability $T$, and for $E>V_{max}$ there is still a probability of it bouncing back, expressed with $R$.
+	\section{Finite Square Well}
+	After having considered an infinite square well and the difference between bound and scattering states, we can describe properly the finite square well problem, where the potential is defined as such
+	\begin{equation*}
+		V(x)=\begin{dcases}
+			-V_0&-a\le x\le a\\
+			0&\abs{x}>a
+		\end{dcases}
+	\end{equation*}
+	It's obvious how this potential admits both scattering and bound states.\\
+	Let's consider first the region $x<-a$, where the potential is $0$, from the previous problem on the infinite wall, we can write directly the solution
+	\begin{equation}
+		\psi(x)=Be^{\kappa x}\quad \kappa=\frac{\sqrt{-2mE}}{\hbar},\ x<-a
+		\label{eq:solution1nega}
+	\end{equation}
+	Inside the well, the problem is similar, but it's useful to directly write Schrödinger's equation
+	\begin{equation}
+		\opr{\ham}\psi(x)=\derivative[2]{\psi}{x}-\frac{2m}{\hbar^2}(V_0+E)\psi(x)=0
+		\label{eq:insidewellschr}
+	\end{equation}
+	Replacing $[2m(E+V_0)^{-1/2}]/\hbar$ with $l$ it reduces, yet again, to the following equation
+	\begin{equation*}
+		\derivative[2]{\psi}{x}=-l^2\psi(x)
+	\end{equation*}
+	Since $E>V_{min}$, the solution must be real and positive, hence, we can write it as follows
+	\begin{equation}
+		\psi(x)=C\sin(lx)+D\cos(lx)\quad -a<x<a
+		\label{eq:insidewellsolution}
+	\end{equation}
+	In the outer region, for $x>a$, we have again an exponential solution, this time decreasing
+	\begin{equation}
+		\psi(x)=Fe^{\kappa x}\quad x>a
+		\label{eq:solution2pos}
+	\end{equation}
+	Now, we need to impose the boundary conditions for $\psi$ and $\psi'$, that due to the potential being odd, can only be of two kinds, either odd or even.\\
+	Choosing the even solution, we get immediately that $C=0$, and $\psi(x)$ becomes
+	\begin{equation}
+		\psi(x)=\begin{dcases}
+			Fe^{-\kappa x}&x>a\\
+			D\cos(lx)&0<x<a\\
+			\psi(-x)&x<0
+		\end{dcases}
+		\label{eq:almostfinalpsisquarewell}
+	\end{equation}
+	For the continuity of $\psi,\psi'$ at $x=a$, we get the following system
+	\begin{equation}
+		\left\{ \begin{aligned}
+				Fe^{-\kappa a}&=D\cos(la)\\
+				-\kappa Fe^{-\kappa a}&=-lD\sin(la)
+		\end{aligned}\right.
+		\label{eq:leftcondition}
+	\end{equation}
+	Dividing the two, we get $\kappa=l\tan(la)$. This is clearly a restriction on energies, due to the definition of $\kappa$, but it's a trascendental equation, that can't be solved directly. Applying the transformation $z=la$ and $z_0=a(2mV_0)^{1/2}/\hbar$ we end with the following trascendental equation
+	\begin{equation}
+		\tan(z)=\sqrt{\left( \frac{z_0}{z} \right)^{2}-1}
+		\label{eq:energytranscendental}
+	\end{equation}
+	We can also approximate energy eigenvalues for the case of a deep well or a shallow well. In the first case we get that the solutions to the aforementioned equation will be at $z_n=n\pi/2$ with $n$ odd, and follows that
+	\begin{equation*}
+		E_n+V_0\approx\frac{n^2\pi^2\hbar^2}{8ma^2}
+	\end{equation*}
+	In the second case instead, the intersections between the tangent and the square root get fewer and fewer, until, for $z_0<\pi/2$ we end up with a single eigenstate, no matter how shallow is the well.\\
+	The only thing we miss to properly evaluate this problem (other than compute the normalization constant for $\psi(x)$) is to check the scattering states of the system.\\
+	We assume an ian incoming wave from the right, with a wavefunction $\psi(x)=Fe^{ikx}$, with $k^2=2mE/\hbar^2$. Putting, as before, $A$ as the incident amplitude, $B$ as the reflected amplitude and $F$ the transmitted amplitude, for continuity of $\psi$ and its derivative, we get that the following systems must hold. At $x=-a$ we have
+	\begin{equation}
+		\left\{ \begin{aligned}
+				Ae^{-ika}+Be^{ika}&=D\cos(la)-C\sin(la)\\
+				ik\left[ Ae^{-ika}-Be^{ika} \right]&=l\left[ C\cos(la)+D\sin(la) \right]
+		\end{aligned}\right.
+		\label{eq:conditionsfinitewell}
+	\end{equation}
+	At $x=a$, instead we get the following system
+	\begin{equation}
+		\left\{ \begin{aligned}
+				C\sin(la)+D\cos(la)&=Fe^{ika}\\
+				l\left[ C\cos(la)-D\sin(la) \right]&=ikFe^{ika}
+		\end{aligned}\right.
+		\label{eq:conditionsfinitewelll}
+	\end{equation}
+	Eliminating $C$ and $D$ and solving for $B$ and $F$, we get the following
+	\begin{equation}
+		\begin{aligned}
+			B&=i\frac{\sin(2la)}{2kl}\left( l^2-k^2 \right)F\\
+			F&=\frac{e^{-2ika}}{\cos(2la)-i\frac{k^2+l^2}{2kl}\sin(2la)}A
+		\end{aligned}
+		\label{eq:bfinitewell}
+	\end{equation}
+	Substituting everything back to the original variables, we get that the transmission coefficient $T$ is
+	\begin{equation}
+		\frac{1}{T}=1+\frac{V_0^2}{4E(E+V_0)}\sin^2\left( \frac{2a}{\hbar}\sqrt{2m\left( E+V_0 \right)} \right)
+		\label{eq:transmissioncoeff}
+	\end{equation}
+	The reflection coefficient can be calculated knowing that $R=1-T$.
+	\subsection{Scattering and Transfer Matrices}
+	In order to treat efficiently scattering problems for general potentials, we first of all, suppose that the wavefunction will be the following:\\
+	For an incoming particle, since it's a free particle, we get that $\psi(x)$ will be a superposition of complex exponentials
+	\begin{equation}
+		\psi(x)=Ae^{ikx}+Be^{-ikx}
+		\label{eq:incomingscattering}
+	\end{equation}
+	The same goes for the post-scattering region, but with changed coefficients due to the interaction with the potential
+	\begin{equation}
+		\psi(x)=Fe^{ikx}+Ge^{-ikx}
+		\label{eq:outgoingscattering}
+	\end{equation}
+	In the interaction region, we can still suppose that the wavefunction will be a superposition of two functions $f(x),g(x)$, albeit both will remain unknown, until a specific potential is given.
+	\begin{equation}
+		\psi(x)=Cf(x)+Dg(x)
+		\label{eq:scatteringregion}
+	\end{equation}
+	Using this systems, we can write a linear system of equations for $B$ and $F$ (the reflected and trasmitted amplitudes), as follows
+	\begin{equation}
+		\begin{aligned}
+			B&=S_{11}A+S_{12}G\\
+			F&=S_{21}A+S_{22}G
+		\end{aligned}
+		\label{eq:scatteringsystem}
+	\end{equation}
+	Reuniting everything in a \textit{scattering matrix}, also known as \textit{S-matrix}, we get the following matrix equation
+	\begin{equation}
+		\begin{pmatrix}
+			B\\
+			F
+		\end{pmatrix}=\begin{pmatrix}
+			S_{11}&S_{12}\\
+			S_{21}&S_{22}
+		\end{pmatrix}\begin{pmatrix}
+			A\\
+			G
+		\end{pmatrix}
+		\label{eq:scatteringmatrix}
+	\end{equation}
+	In this formalism, the transmission and reflection coefficients will be:\\
+	For a particle coming from the left
+	\begin{equation}
+		\begin{aligned}
+			R_l&=\frac{\abs{B}^2}{\abs{A}^2}=\abs{S_{11}}^2\\
+			T_l&=\frac{\abs{F}^2}{\abs{A}^2}=\abs{S_{21}}^2
+		\end{aligned}
+		\label{eq:scatteringleftsm}
+	\end{equation}
+	For a scattering from the right instead, we get
+	\begin{equation}
+		\begin{aligned}
+			R_r&=\frac{\abs{F}^2}{\abs{G}^2}=\abs{S_{22}}^2\\
+			T_r&=\frac{\abs{B}^2}{\abs{G}^2}=\abs{S_{12}}^2
+		\end{aligned}
+		\label{eq:scatteringrightsm}
+	\end{equation}
+	The scattering matrix, hence, gives us the outgoing amplitudes in terms of the incoming amplitudes.\\
+	In case we'd like to have the amplitudes on the right of the potential in terms of the amplitudes on the left of the potential, we can ``build'' a second matrix, called \textit{transfer matrix} or \textit{M-matrix}
+	\begin{equation}
+		\begin{pmatrix}
+			F\\
+			G
+		\end{pmatrix}=\begin{pmatrix}
+			M_{11}&M_{12}\\
+			M_{21}&M_{22}
+		\end{pmatrix}\begin{pmatrix}
+			A\\
+			B
+		\end{pmatrix}
+		\label{eq:mmatrix}
+	\end{equation}
+	The usefulness of this matrix, is that if the potential is formed by two separated pieces, the complete M-matrix of the system, will be given as the product of the two M-matrices of the single pieces of the potential, hence $\vec{M}=\vec{M}_2\vec{M}_1$. It's easy then to generalize this product to multiple pieces of the potential.
+	\section{One Dimensional Motion in Generic Potentials}
+	What has been studied with the one dimensional quantum system that have been solved before, can be generalized to a one-dimensional Hamiltonian with a general potential $V(x)$. Without passing through the operatorial representation, we write directly the Schrödinger equation for a general system.\\
+	We will have
+	\begin{equation*}
+		\opr{\ham}\psi(x)=-\frac{\hbar^2}{2m}\derivative[2]{\psi}{x}+V(x)\psi(x)=E\psi(x)
+	\end{equation*}
+	Rewriting the equation in its normal form, we will have the following
+	\begin{equation}
+		\derivative[2]{\psi}{x}-\frac{2m}{\hbar^2}\left( V(x)-E \right)\psi(x)=0
+		\label{eq:schrnormal}
+	\end{equation}
+	We can immediately bring up three conclusions
+	\begin{enumerate}
+	\item If $\psi(x)$ is normalizable, there exists a \textit{discrete spectrum} of eigenvalues of $\opr{\ham}$, $E_n$
+	\item If $\psi(x)$ is \emph{not} normalizable, there exists a \textit{continuous spectrum} of $\opr{\ham}$, $\sigma(E)$
+	\item Since $\psi:\mathbb{R}\to\mathbb{C}$, from the theory of differential equations, we will have that $\real{\psi(x)}$ will be a solution.\\
+	\end{enumerate}
+	Again, if we consider what we derived for scattering and bound states, we can derive from \eqref{eq:schrnormal} two considerations on $\psi(x)$ and its second derivative, that we will indicate with $\psi''(x)$ in order to avoid heavy notations.
+	\begin{enumerate}
+	\item If we are evaluating a bound state, then $\psi''(x)/\psi<0$
+	\item If we are evaluating a scattering state, then $\psi''(x)/\psi>0$
+	\item In passing from a bound state to a scattering state there is an inversion point, where $\psi''(x)/\psi(x)=0$, $\psi(x)\ne0$ and $E=V(x)$
+	\end{enumerate}
+	It can be demonstrated that, if $E<\min(V)$ there won't be any eigenvalues $E$, for $\min(V)<E<0$ there will be at least one eigenvalue $E$, if there is more than one in this region, they will be discrete and nondegenerate. For $0<E<\max(V)$ we will have nondegenerate continue eigenvalues $\sigma(E)$, and for $E>\max(V)$ they will be continuous and twice degenerate.\\
+	Utilizing this general potential Schrödinger equation, we can also define a quite useful theorem
+	\begin{thm}[Theorem of the Oscillations]
+		Let $\opr{D}_s$ be a differential operator that acts in the following way:
+		\begin{equation*}
+			\opr{D}_s=\derivative[2]{x}-\frac{2m}{\hbar^2}\left( V(x)-E \right)
+		\end{equation*}
+		Suppose then that there exist two functions $\psi(x)$ and $\phi(x)$, for which $\opr{D}_s\psi(x)=0$ and $\opr{D}_s\phi(x)=0$, then $\psi$ and $\phi$ are linearly dependent with $n$ zeroes.
+	\end{thm}
+	\begin{proof}
+		We begin writing directly the action of the operator $\opr{D}_s$ on the two functions $\psi(x)$ and $\phi(x)$
+		\begin{equation*}
+			\left\{ \begin{aligned}
+					\opr{D}_s\psi(x)&=\derivative[2]{\psi}{x}-\frac{2m}{\hbar^2}\left( V(x)-E \right)\psi(x)=0\\
+					\opr{D}_s\phi(x)&=\derivative[2]{\phi}{x}-\frac{2m}{\hbar^2}\left( V(x)-E \right)\phi(x)=0
+			\end{aligned}\right.
+		\end{equation*}
+		We solve this linear system multiplying the first equation by $\phi(x)$ and the second by $\psi(x)$, and then subtracting the two rows, obtaining the following relation
+		\begin{equation*}
+			\phi(x)\derivative[2]{\psi}{x}-\psi(x)\derivative[2]{\phi}{x}=0
+		\end{equation*}
+		It's easy to see that this it's the derivative of $\phi(x)\psi'(x)-\psi(x)\phi'(x)$, and since this derivative must be zero, we know that it must be a constant $k$
+		\begin{equation*}
+			\phi\derivative{\psi}{x}-\psi(x)\derivative{\phi}{x}=k
+		\end{equation*}
+		Since both functions must be normalizable, we must have $k=0$, hence we can write the equation in the following way
+		\begin{equation*}
+			\frac{\psi'(x)}{\psi(x)}=\frac{\phi'(x)}{\phi(x)}
+		\end{equation*}
+		Integrating once, we get that $\psi(x)=\lambda\phi(x)$, hence they're linearly independent, and hence essentially the same.
+	\end{proof}
+	\begin{cor}
+		Since $\phi(x),\psi(x)$ are eigenfunctions of the Hamiltonian, we know that there is a direct relation between the energy eigenvalue $E_n$ and the eigenfunction $\psi_{n}(x)$, hence, analyzing everything, we get that it must have $n$ zeroes.
+	\end{cor}
+	Another interesting feature of quantum dynamics, is given by the quantum version of the virial theorem, which states the following
+	\begin{thm}
+		Let $\opr{T}$ be the kinetic energy operator, and $\opr{V}$ the potential energy operator, then the expectation value of the kinetic energy on an energy eigenstate is equal to the expectation value of $qV'(q)$.
+	\end{thm}
+	\begin{proof}
+		In order to demonstrate this theorem we first calculate the commutator between the Hamiltonian operator and the product operator $\opr{q}\opr{p}$.\\
+		The Hamiltonian in question is
+		\begin{equation*}
+			\opr{\ham}=\frac{\opr{p}^2}{2m}+V(q)
+		\end{equation*}
+		Then the desired commutator will be the following
+		\begin{equation*}
+			\comm{\opr{\ham}}{\opr{q}\opr{p}}=\opr{q}\comm{\opr{\ham}}{\opr{p}}+\comm{\opr{\ham}}{\opr{q}}\opr{p}
+		\end{equation*}
+		In order to evaluate the previous commutators, we write the Poisson brackets of each, and then quantize, deforming the brackets through mltiplication by $i\hbar$
+		\begin{equation*}
+			\begin{aligned}
+				\pcomm{\ham}{p}&=\pdv{\ham}{q}\pdv{p}{p}-\pdv{\ham}{p}\pdv{p}{q}=\pdv{V}{q}\\
+				\pcomm{\ham}{q}&=\pdv{\ham}{q}\pdv{q}{p}-\pdv{\ham}{p}\pdv{q}{q}=-\frac{p}{m}
+			\end{aligned}
+		\end{equation*}
+		Quantizing, we get the following
+		\begin{equation*}
+			\begin{aligned}
+				\comm{\opr{\ham}}{\opr{p}}&=i\hbar\pdv{V}{q}\\
+				\comm{\opr{\ham}}{\opr{q}}&=-i\hbar\frac{\opr{p}}{m}
+			\end{aligned}
+		\end{equation*}
+		And the searched commutator will be
+		\begin{equation*}
+			\opr{q}\comm{\opr{\ham}}{\opr{p}}+\comm{\opr{\ham}}{\opr{q}}\opr{p}=i\hbar\opr{q}\pdv{V}{q}-i\hbar\frac{\opr{p}^2}{m}
+		\end{equation*}
+		Rearranging, and remembering how $\opr{T}$ is defined, we get the following
+		\begin{equation*}
+			\comm{\opr{\ham}}{\opr{q}\opr{p}}=i\hbar\left( \opr{q}\pdv{V}{q}-2\opr{T} \right)
+		\end{equation*}
+		We calculate the expectation value of this commutator in the energy eigenstate
+		\begin{equation*}
+			\expval{\comm{\opr{\ham}}{\opr{q}\opr{p}}}=i\hbar\expval{\opr{q}\pdv{V}{q}-2\opr{T}}
+		\end{equation*}
+		We first calculate the left side, and we get the following
+		\begin{equation*}
+			\expval{\opr{q}\opr{\ham}\opr{p}-\opr{q}\opr{p}\opr{\ham}+\opr{\ham}\opr{q}\opr{p}-\opr{q}\opr{\ham}\opr{p}}=\expval{\opr{\ham}\opr{q}\opr{p}-\opr{q}\opr{p}\opr{\ham}}=E\expval{\opr{q}\opr{p}-\opr{q}\opr{p}}=0
+		\end{equation*}
+		Hence, using the linearity of the $\expval{\cdot}$ operator, we get the virial theorem
+		\begin{equation*}
+			\begin{aligned}
+				i\hbar\expval{\opr{q}\pdv{V}{q}}-2i\hbar\expval{\opr{T}}&=0\\
+				2\expval{\opr{T}}&=\expval{\opr{q}\pdv{V}{q}}
+			\end{aligned}
+		\end{equation*}
+	\end{proof}
+	\begin{cor}
+		Considering the particular case of potentials of the form $V(q)=c\opr{q}^{\alpha}$, we get the following
+		\begin{equation*}
+			\expval{\opr{T}}=\frac{\alpha}{2}\expval{\opr{V}}
+		\end{equation*}
+	\end{cor}
+	\begin{proof}
+		We use the previous identity used in the general case, and we get that $\opr{q}V'(q)=c\alpha\opr{q}^{\alpha}=\alpha\opr{V}$, hence
+		\begin{equation*}
+			2\expval{\opr{T}}=\alpha\expval{\opr{V}}
+		\end{equation*}
+	\end{proof}
+	The next theorem that will be stated, will be directly generalized to $n$-dimensions.
+	\begin{thm}[Probability Conservation]
+		Defining $J_i(x_j)$ as the probability current density vector, for a time-independent system the following continuity equation holds
+		\begin{equation*}
+			\pdv{J_i}{x_i}=0
+		\end{equation*}
+		If $J_i(x_j)$ is defined as follows
+		\begin{equation*}
+			J_i(x_j)=-\frac{i\hbar}{2m}\left(\overline{\psi}(x_j)\pdv{\psi}{x_i}-\psi(x_j)\pdv{\overline{\psi}}{x_i}\right)
+		\end{equation*}
+		Or, in operatorial form
+		\begin{equation*}
+			\opr{J}_i=\frac{1}{2m}\left( \bra{\psi}\opr{p}_i\ket{\psi}\1-\ket{\psi}\opr{p}_i\bra{\psi} \right)
+		\end{equation*}
+	\end{thm}
+	\begin{proof}
+		We will begin by writing the Schrödinger equation for both $\psi$ and $\overline{\psi}$. We will then have the following system
+		\begin{equation*}
+			\left\{\begin{aligned}
+					-\frac{\hbar^2}{2m}\pdv{\psi}{x_i}{x_i}+V(x_i)\psi(x_j)&=E\psi(x_j)\\
+					-\frac{\hbar^2}{2m}\pdv{\overline{\psi}}{x_i}{x_i}+V(x_i)\overline{\psi}(x_j)&=E\overline{\psi}(x_j)
+			\end{aligned}\right.
+		\end{equation*}
+		Multiplying the first by $\overline{\psi}_i(x_j)$ and the second by $\psi_i(x_j)$ and adding the second to the first we get the following
+		\begin{equation*}
+			-\frac{\hbar^2}{2m}\left( \overline{\psi}(x_j)\pdv{\psi}{x_i}{x_i}-\psi(x_j)\pdv{\overline{\psi}}{x_i}{x_i} \right)+V(x_i)\left(\abs{\psi(x_j)}^2-\abs{\psi(x_j)}^2\right)=E\left( \abs{\psi}^2-\abs{\psi}^2 \right)
+		\end{equation*}
+		Simplifying everything, we get
+		\begin{equation*}
+			-\frac{\hbar^2}{2m}\left( \overline{\psi}(x_j)\pdv{\psi}{x_i}{x_i}-\psi(x_j)\pdv{\psi}{x_i}{x_i} \right)=0
+		\end{equation*}
+		Bringing outside the gradient operator we get
+		\begin{equation*}
+			-\frac{\hbar^2}{2m}\pdv{}{x_i}\left( \overline{\psi}(x_j)\pdv{\psi}{x_i}-\psi(x_j)\pdv{\psi}{x_i} \right)=\pdv{J_i}{x_i}=0
+		\end{equation*}
+		This theorem, in one dimension, reduces simply to the equation
+		\begin{equation*}
+			\imaginary(\overline{\psi}(x)\psi'(x))=\imaginary(\psi(x)\overline{\psi}'(x))
+		\end{equation*}
+	\end{proof}
+	\section{Time Evolution of Quantum Systems}
+	\subsection{General Remarks and Schrödinger's Picture}
+	The problems we studied in the previous sections never found how the eigenstate of the system evolves in time.\\
+	Time evolution of a system can be seen as a traslation, hence taking the eigenstate of the time independent problem and ``moving'' it to a time $t\ne0$. It's not hard to imagine then how time evolution can be seen as the action of an unitary group with a single parameter, which will be $t$, our time.\\
+	The first question that comes up to the mind is actually how this group is defined in quantum mechanics.\\
+	Here, the following theorem comes to our rescue
+	\begin{thm}[Stone Theorem]
+		Let $U_t$ be a strongly continuous one-parameter unitary group. Then
+		\begin{equation*}
+			\exists!\opr{A}:D_a\subset\mathbb{H}\to\mathbb{H},\ A=\adj{A}\text{ in }D_a\text{ then }\Ut(t)=e^{it\opr{A}}\in U_t
+		\end{equation*}
+		Where holds the following relation $\Ut(t_1+t_2)=\Ut(t_1)\Ut(t_2)$ where $\Ut(t_1+t_2)\in U_{t_1}U_{t_2}$ and $\Ut(t_1)\in U_{t_1}$, $\Ut(t_2)\in U_{t_2}$ (i.e., $\Ut$ is an homomorphism)\\
+		The set $D_a$ is defined as follows
+		\begin{equation*}
+		D_a:=\left\{ \ket{\psi}\in\mathbb{H}\ \left|\ \exists\lim_{\epsilon\to0}\frac{-i}{\epsilon}\left( \Ut(\epsilon)\ket{\psi}-\1\ket{\psi} \right) \right\}\right.
+		\end{equation*}
+		$\opr{A}$ is called the infinitesimal generator of the unitary group, and can be computed as follows
+		\begin{equation*}
+			\opr{A}\ket{\psi}=-i\lim_{\epsilon\to0}\frac{1}{\epsilon}\left( \Ut(\epsilon)\ket{\psi}-\1\ket{\psi} \right)
+		\end{equation*}
+	\end{thm}
+	As a spoiler, we can say that this infinitesimal generator is the Hamiltonian of the system, and the operator $\Ut$ has the form $\Ut=e^{-\frac{i}{\hbar}\opr{\ham}t}$. In order to see how this works out, informally, we write the time-dependent Schrödinger equation, which can be derived considering energy as a differential operator $E\to i\hbar\partial_t$. Substituting, we get the following equation
+\begin{subequations}
+	\begin{equation}
+		\opr{E}\ket{\psi}=\opr{\ham}\ket{\psi}\to i\hbar\pdv{\psi}{t}=\opr{\ham}\psi(x,t)
+		\label{eq:tdschreq}
+	\end{equation}
+	In the case that $\opr{\ham}$ is time-independent, we get that the solution to the differential equation in time will be the following
+	\begin{equation}
+		\psi(x,t)=c(x)e^{-\frac{i}{\hbar}\opr{\ham}t}
+		\label{eq:timesol}
+	\end{equation}
+	It's obvious then that the time-evolved state will be the time-independent state at which gets applied the time evolution operator.
+	\begin{equation}
+		\psi(x,t)=\Ut(t)\psi(x)
+		\label{eq:timeevolop}
+	\end{equation}
+	In case the Hamiltonian is time dependent, the operator easily becomes the following
+	\begin{equation}
+		\Ut(t)=e^{-\frac{i}{\hbar}\int_{0}^{t}\opr{\ham}\diff{t}}
+		\label{eq:timedepopevol}
+	\end{equation}
+\end{subequations}
+	In order to see how this operator actually acts on the states, it's quite useful to utilize the fact that all complex exponentials are holomorphic, and can be written as a power series. This holds even when we talk about operator exponentials, hence $\Ut(t)$ becomes:
+\begin{subequations}
+	\begin{equation}
+		\Ut(t)=\sum_{n=0}^{\infty}\frac{1}{n!}\left( -\frac{i}{\hbar}\opr{\ham}t \right)^n
+		\label{eq:seriesreptimeevol}
+	\end{equation}
+	Applying this to an eigenstate of the Hamiltonian $\ket{\psi}$, we get the following
+	\begin{equation}
+		\begin{aligned}
+			\Ut(t)\ket{\psi}&=\sum_{n=0}^{\infty}\frac{1}{n!}\left( -\frac{i}{\hbar}\opr{\ham}t \right)\ket{\psi}\\
+			\Ut(t)&=\sum_{n=0}^{\infty}\frac{1}{n!}\left( -\frac{i}{\hbar}\opr{\ham}t \right)^{n-1}\left( -\frac{i}{\hbar}\opr{\ham}t \right)\ket{\psi}\\
+		\end{aligned}
+		\label{eq:timeevolaction1}
+	\end{equation}
+	Using Schrödinger's equation and iterating, we finally get, retransforming the series to an exponential, the following result for eigenstates
+	\begin{equation}
+		\Ut(t)\ket{\psi}=e^{-\frac{i}{\hbar}Et}\ket{\psi}
+		\label{eq:timeevolaction}
+	\end{equation}
+	For a general state $\ket{s}$, we then get using Von Neumann's principle, the following result
+	\begin{equation}
+		\Ut(t)\ket{s}=e^{-\frac{i}{\hbar}\opr{\ham}t}\sum_n\bra{\psi}\ket{s}\ket{\psi}=\sum_nc_ne^{-\frac{i}{\hbar}Et}\ket{\psi}
+		\label{eq:generalstatetimeevol}
+	\end{equation}
+\end{subequations}
+	Since all the problems that we discussed were with a time-independent Hamiltonian, they're quite easy to generalize to a time-evolved problem without solving a time dependent Schrödinger equation or even redoing any calculus.
+	This stress on time evolution on the state, is commonly called \textit{Schrödinger picture} of time evolution.\\
+	Having now described time evolution in quantum mechanics, the next step is redescribing the probability conservation equation. Since now we have that the wavefunction is time-dependent, we have now that the time dependent probability amplitude will be defined as follows
+	\begin{equation*}
+		\braket{s(t)}=\bra{s}\adj{\Ut}\Ut\ket{s}\to\int_{-\infty}^{\infty}\overline{\psi_s}(x,t)\psi_s(x,t)\diff{x}=\rho(t)
+	\end{equation*}
+	Having defined this time dependent probability amplitude with $\rho(t)$. We now have an advanced version of the theorem %%probcons%%
+	\begin{thm}[Time Dependent Probability Conservation]
+		The probability amplitude of a wavefunction that solves the Schrödinger's time-dependent equation must always solve the following equation
+		\begin{equation*}
+			\pdv{\rho}{t}+\pdv{J_i}{x_i}=0
+		\end{equation*}
+		Where
+		\begin{equation*}
+			\begin{aligned}
+				\rho(x_j,t)&=\overline{\psi}(x_j,t)\psi(x_j,t)\\
+				J_i(x_j,t)&=-\frac{i\hbar}{2m}\left( \overline{\psi}(x_j,t)\pdv{\psi}{x_i}-\psi(x_j,t)\pdv{\overline{\psi}}{x_i} \right)
+			\end{aligned}
+		\end{equation*}
+	\end{thm}
+	\begin{proof}
+		The first thing to write is the time dependent Schrödinger equation for $\psi$ and its complex conjugate, since both must solve it as a proposition of the theorem.
+		\begin{equation*}
+			\left\{\begin{aligned}
+					i\hbar\pdv{\psi}{t}&=-\frac{\hbar^2}{2m}\pdv{\psi}{x_i}{x_i}+V(x_j)\psi(x_j,t)\\
+					-i\hbar\pdv{\overline{\psi}}{t}&=-\frac{\hbar^2}{2m}\pdv{\overline{\psi}}{x_i}{x_i}+V(x_j)\psi(x_j,t)
+			\end{aligned}\right.
+		\end{equation*}
+		We then multiply the first line by $\cc{\psi}$ and the second by $\psi$
+		\begin{equation*}
+			\left\{\begin{aligned}
+				i\hbar\cc{\psi}(x_j,t)\pdv{\psi}{t}&=-\frac{\hbar^2}{2m}\cc{\psi}(x_j,t)\pdv{\psi}{x_i}{x_i}+\cc{\psi}(x_j,t)V(x_j)\psi(x_j,t)\\
+				-i\hbar\psi(x_j,t)\pdv{\cc{\psi}}{t}&=-\frac{\hbar^2}{2m}\psi(x_j,t)\pdv{\cc{\psi}}{x_i}{x_i}+\psi(x_j,t)V(x_j)\cc{\psi}(x_j,t)
+			\end{aligned}\right.
+		\end{equation*}
+		We then subtract the first line to the second, and we obtain the following equation
+		\begin{equation*}
+			-i\hbar\left( \cc{\psi}(x_j,t)\pdv{\psi}{t}+\psi(x_j,t)\pdv{\cc{\psi}}{t} \right)=\frac{\hbar^2}{2m}\left( \cc{\psi}(x_j,t)\pdv{\psi}{x_i}{x_i}-\psi(x_j,t)\pdv{\cc{\psi}}{x_i}{x_i} \right)
+		\end{equation*}
+		We recognize immediately the left part being exactly equal to $\partial_t\rho(x_j,t)$, hence we substitute it in the equation
+		\begin{equation*}
+			-i\hbar\pdv{\rho}{t}=\frac{\hbar^2}{2m}\left( \cc{\psi}(x_j,t)\pdv{\psi}{x_i}{x_i}-\psi(x_j,t)\pdv{\cc{\psi}}{x_i}{x_i} \right)
+		\end{equation*}
+		Bringing out a gradient operator ($\partial_i$), we recognize the part on the right being the probability density current $J_i$, to which has been applied a gradient operator $\partial_i$ (Einstein summation convention is implied, hence it's a divergence)
+		\begin{equation*}
+			-i\hbar\pdv{\rho}{t}=i\hbar\pdv{J_i}{x_i}
+		\end{equation*}
+		We simplify everything and bring the right hand side on the left of the equation and we finally have demonstrated the theorem
+		\begin{equation*}
+			\pdv{\rho}{t}+\pdv{J_i}{x_i}=0
+		\end{equation*}
+	\end{proof}
+	\subsection{Heisenberg Picture and Constants of Motion}
+	In the Heisenberg picture, the stress on time dependence is given only on operators. It may not be immediately clear how this is equivalent to Schrödinger's picture, where the time dependence is always on the state.\\
+	In order to clearly see this equivalence, we calculate the expectation state of an operator $\opr{A}$ on a time evolved state $\ket{s(t)}$. We get the following relation
+	\begin{equation}
+		\expval{\opr{A}}_t=\bra{s(t)}\opr{A}\ket{s(t)}=\bra{s}\adj{\Ut}(t)\opr{A}\Ut(t)\ket{s}
+		\label{eq:timeevolvedexpval}
+	\end{equation}
+	It's immediate to write the previous relation as $\expval{\opr{A}(t)}_s$, where the time evolved operator is defined as $\opr{A}(t)=\adj{\Ut}(t)\opr{A}\Ut(t)$. Using this definition, we can also calculate the derivative of an operator, in the following way
+	\begin{equation}
+		\begin{aligned}
+			\derivative{\opr{A}}{t}&=\derivative{t}\left( \adj{\Ut}(t)\opr{A}\Ut(t) \right)\\
+			&=\derivative{\adj{\Ut}}{t}\opr{A}\Ut(t)+\adj{\Ut}\opr{A}\derivative{\Ut}{t}=\\
+			&=\frac{i}{\hbar}\left( \opr{\ham}\adj{\Ut}\opr{A}\Ut-\adj{\Ut}\opr{A}\opr{\ham}\Ut \right)=\\
+			&=\frac{i}{\hbar}\adj{\Ut}\comm{\opr{\ham}}{\opr{A}}\Ut
+		\end{aligned}
+		\label{eq:timederop}
+	\end{equation}
+	Or, using the full fledged Heisenberg picture, we can write the last line as follows, for a time-independent Hamiltonian
+	\begin{equation}
+		\derivative{\opr{A}}{t}=\frac{i}{\hbar}\comm{\opr{\ham}}{\opr{A}(t)}
+		\label{eq:oprder}
+	\end{equation}
+	Remembering the connection to the Poisson brackets, we already know that if the $\pcomm{\ham}{A}=0$, then $A$ is a constant of motion. In quantum mechanics, this will be represented as follows
+	\begin{equation}
+		\derivative{\opr{A}}{t}=0\longrightarrow\comm{\opr{\ham}}{\opr{A}}=0
+		\label{eq:constantofmotion}
+	\end{equation}
+	The operator $\opr{A}$, is then called a \textit{constant of motion} in quantum mechanics.
+\end{document}

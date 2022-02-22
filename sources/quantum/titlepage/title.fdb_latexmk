@@ -1,0 +1,14 @@
+# Fdb version 3
+["pdflatex"] 1569857938 "title.tex" "title.pdf" "title" 1569857938
+  "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-basic-merged.lua" 1557554374 128042 842461e0b226762dd46396545d7a277d ""
+  "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-basic.lua" 1557554374 2722 1bf53d4477fd3e857eb562eef52be3e2 ""
+  "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-compat.lua" 1557554374 603 398583cb619d20952d67edcedae41608 ""
+  "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-extended-merged.lua" 1557554374 99095 f4387a3380b6c3221b96f52c0bda5dfe ""
+  "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-extended.lua" 1557554374 4863 71ebb63cd7b26b0bd5592f889e94f08d ""
+  "/var/lib/texmf/web2c/luatex/lualatex.fmt" 1566577740 1376796 02694a4b0d64e9774c15db88b0897336 ""
+  "subfile.cls" 0 -1 0 ""
+  "title.aux" 1569855321 8 a94a2480d3289e625eea47cd1b285758 ""
+  "title.tex" 1569857938 1592 198b231467009592b6d0d16e1498bc68 ""
+  (generated)
+  "title.pdf"
+  "title.log"

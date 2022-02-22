@@ -1,0 +1,380 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	\section{Properties of the $\lc{ijk}$ Tensor}
+	We have defined in the chapter on 3D system, the Levi-Civita tensor, a completely antisymmetrical unit tensor that can be used to define cross products using tensor notation, and ease the calculus of multiple cross products. Some properties of this tensor, that can be particularly useful, are the following ones
+	\begin{subequations}
+	\begin{align}
+		\lc{ijk}\lc{ilm}&=\delta_{jl}\delta_{km}-\delta_{jm}\delta_{kl}\\
+		\lc{ijk}\lc{ijl}&=2\delta_{kl}\\
+		\lc{ijk}\lc{ijk}&=6
+		\label{eq:lcprop1}
+	\end{align}
+	In general, we can write the following identity
+	\begin{equation}
+		\begin{aligned}
+			\lc{ijk}&\lc{lmn}=\det\begin{pmatrix}
+			\kd{il}&\kd{im}&\kd{in}\\
+			\kd{jl}&\kd{jm}&\kd{jn}\\
+			\kd{kl}&\kd{km}&\kd{kn}
+		\end{pmatrix}=\\
+			&=\kd{il}\left( \kd{jm}\kd{kn}-\kd{jn}\kd{km} \right)-\kd{im}\left( \kd{jl}\kd{kn}-\kd{jn}\kd{kl} \right)+\kd{in}\left( \kd{jl}\kd{km}-\kd{jm}\kd{kl} \right)
+	\end{aligned}
+		\label{eq:generalrulelc}
+	\end{equation}
+	For a matrix $a_{ij}$, we can write its determinant in two ways using the Levi-Civita tensor
+	\begin{align}
+		\det(a_{ij})&=\lc{i_1\cdots i_n}a_{1i_1}\cdots a_{ni_n}\\
+		\det(a_{ij})&=\frac{1}{n!}\lc{i_1\cdots i_n}\lc{j_1\cdots j_n}a_{i_1j_1}\cdots a_{i_nj_n}
+	\end{align}
+\end{subequations}
+\begin{subequations}
+	Coupling these rules to the properties of vector products, we get the following identity for operators
+	\begin{equation}
+		\opr{\vec{a}}\times(\opr{\vec{b}}\times\opr{\vec{c}})=\opr{\vec{b}}(\opr{\vec{a}}\cdot\opr{\vec{c}})-(\opr{\vec{a}}\cdot\opr{\vec{b}})\opr{\vec{c}}+\comm{\opr{\vec{a}}_j}{\opr{\vec{b}}}\opr{\vec{c}}_j
+		\label{eq:tripleprod}
+	\end{equation}
+	\begin{proof}
+		Let's write the cross product in tensor notation, using the Levi-Civita tensor
+		\begin{equation*}
+			\begin{aligned}
+				\lc{kji}\opr{a}^j\lc{ilm}\opr{b}^l\opr{c}^m&=\lc{kji}\lc{ilm}\opr{a}^j\opr{b}^l\opr{c}^m=-\lc{ijk}\lc{ilm}\opr{a}^j\opr{b}^l\opr{c}^m\\
+				&=-\left( \kdopr{jl}\kdopr{km}-\kdopr{jm}\kdopr{kl} \right)\opr{a}^j\opr{b}^l\opr{c}^m=\opr{a}_j\opr{b}_k\opr{c}_j-\opr{a}_j\opr{b}_j\opr{c}_k=\\
+				&=\comm{\opr{a}_j}{\opr{b}_k}\opr{c}_j+\opr{b}_k\opr{a}_j\opr{c}_j-\opr{a}_j\opr{b}_j\opr{c}_k
+			\end{aligned}
+		\end{equation*}
+		Where we used the usual index contraction rules with the kronecker symbol, where $\kd{ij}a^j=a_i$. Usually it's made in terms of the metric tensor $g_{ij}=\bra{e_i}\ket{e_j}$ as basis vectors, but in non relativistic cases we simply have $g_{ij}=\kd{ij}$
+	\end{proof}
+	Another useful for vector products of operators that is useful is the following
+	\begin{equation}
+		\vec{\opr{a}}\times\vec{\opr{b}}=-\vec{\opr{b}}\times\vec{\opr{a}}+\lc{ijk}\comm{\opr{a}^j}{\opr{b}^k}
+		\label{eq:adjvectorprod}
+	\end{equation}
+	\begin{proof}
+		This proof is straightforward using the antisimmetry of the tensor $\lc{ijk}$, and yields the following result
+		\begin{equation*}
+			\vec{\opr{a}}\times\vec{\opr{b}}=\lc{ijk}\opr{a}^j\opr{b}^k=\lc{ijk}\left( \comm{\opr{a}^j}{\opr{b}^k}+\opr{b}^k\opr{a}^j \right)=-\lc{ikj}\opr{b}^k\opr{a}^j+\lc{ijk}\left( \comm{\opr{a}^j}{\opr{b}^k} \right)
+		\end{equation*}
+	\end{proof}
+	Although a proof for the next relation won't be given, we'll list it due to its usefulness in quantum mechanical calculations
+	\begin{equation}
+		\left( \lc{ijk}\opr{a}^j\opr{b}^k \right)^2=\opr{a}^2\opr{b}^2-\left( \opr{a}^i\opr{b}_i \right)-\opr{a}_j\comm{\opr{a}^j}{\opr{b}^k}\opr{b}_k+\opr{a}_j\comm{\opr{a}^k}{\opr{b}_k}\opr{b}^j-\opr{a}_j\comm{\opr{a}^k}{\opr{b}^j}\opr{b}_k-\opr{a}_j\opr{a}_k\comm{\opr{b}^k}{\opr{b}^j}
+		\label{eq:squarecross}
+	\end{equation}
+	In the special case of $\comm{\opr{a}_i}{\opr{b}_j}=\gamma\kd{ij}$ with $\gamma\in\mathbb{C}$ and $\comm{\opr{b}^i}{\opr{b}^j}=0$, it yields the following special case
+	\begin{equation}
+		\left( \lc{ijk}\opr{a}^j\opr{b}^k \right)^2=\opr{a}^2\opr{b}^2-\left( \opr{a}^i\opr{b}_i \right)^2+\gamma\opr{a}^i\opr{b}_i
+		\label{eq:squarecrossL}
+	\end{equation}
+	\end{subequations}
+	Now, considering the curl as a vector product between the nabla operator and a vector field ($\nabla\times\vec{F}$), we can also write the following identity
+	\begin{equation}
+		\nabla\times\vec{F}=\lc{ijk}\pdv{F^k}{x^j}
+		\label{eq:levicivitacurl}
+	\end{equation}
+	In general coordinates, indicating the Jacobian as $J:=\det(\partial_jx_i)$, we can write the following identity
+	\begin{equation}
+		\nabla\times\vec{F}=J\lc{ijk}\pdv{F^k}{x^j}
+		\label{eq:generalnabla}
+	\end{equation}
+
+	Which generalizes the vector product.
+	\section{Special Functions}
+	\subsection{Spherical Harmonics}
+	Spherical Harmonics appear in the chapter of quantum angular momentum, where they're defined as the eigenfunctions of the orbital angular momentum.\\
+	Simplifying our calculus, we give the definition, and actual calculation of spherical harmonics as the actual search for the eigenfunctions of orbital angular momentum.\\
+	So, using directly spherical coordinates in 3 dimensions, we already have that the $\opr{L}_z$ is written simply as follows
+	\begin{equation}
+		\opr{L}_z\to -i\hbar\pdv{\phi}
+		\label{eq:lz}
+	\end{equation}
+	Since $\comm{\opr{L}_z}{\opr{L}^2}=0$, we also write out $\opr{L}^2$, as it is needed to solve our equation
+	\begin{equation}
+		\opr{L}^2\to-\hbar^2\left( \csc^2\theta\pdv[2]{\phi}+\csc\theta\pdv{\theta}\sin\theta\pdv{\theta} \right)
+		\label{eq:l2}
+	\end{equation}
+	By definition, we get that the eigenfunctions must solve the following equations \emph{simultaneously}
+	\begin{equation}
+		\begin{aligned}
+			\opr{L}_zf(\theta,\phi)&=-i\hbar\pdv{f}{\phi}=\hbar mf(\theta,\phi)\\
+			\opr{L}^2f(\theta,\phi)&=-\hbar^2\left( \csc^2\theta\pdv[2]{\phi}+\csc\theta\pdv{\theta}\sin\theta\pdv{\theta} \right)f(\theta,\phi)=\hbar^2l(l+1)f(\theta,\phi)
+		\end{aligned}
+		\label{eq:simeq}
+	\end{equation}
+	Due to symmetry, $f$ must also be cyclic in $\phi\mod2\pi$, hence $f(\theta,\phi)=f(\theta,\phi+2\pi)$. Due to the shape of the system of differential equation, we suppose that $f$ is really the product of two function of the single variables, hence we imply that
+	\begin{equation*}
+		f(\theta,\phi)=g(\theta)h(\phi)
+	\end{equation*}
+	The first equation is of immediate solution in this way, and we have that
+	\begin{subequations}
+	\begin{equation}
+		-i\hbar g(\theta)\pdv{h}{\phi}=\hbar mg(\theta)h(\phi)\\
+		\label{eq:lzhg}
+	\end{equation}
+	Hence, finally, solving the equation we get
+	\begin{equation}
+		h(\phi)=g(\theta)ke^{im\phi}
+		\label{eq:lzhgsol}
+	\end{equation}
+	$k$ is simply a multiplicative constant, and without loss of generality can be set to be $k=1$\\
+\end{subequations}
+	In order for $h(\phi)=h(\phi+2\pi)$ to be true, then $m\in\mathbb{N}$.\\
+	The second equation isn't that simple to solve, and after applying the separation of variables and, utilizing the property of $h(\phi)$, for which $h(\phi)\ne0\ \forall\phi$, we get
+	\begin{equation}
+		\csc{\theta}\pdv{\theta}\sin\theta\pdv{g}{\theta}-m^2\csc^2\theta g(\theta)=-\lambda g(\theta)
+		\label{eq:l2hg}
+	\end{equation}
+	There is a way in order to ``simplify'' this differential equation. We define the following nontrivial sostitution
+	\begin{equation*}
+		\left\{
+		\begin{aligned}
+			\xi&=\cos\theta\\
+			F(\xi)&=g(\theta)
+		\end{aligned}
+	\right.
+	\end{equation*}
+	The equation \eqref{eq:l2hg} then becomes a general form of the Legendre differential equation
+	\begin{equation}
+		\derivative{\xi}\left( (1-\xi^2)\derivative{F}{\xi} \right)-\frac{m^2}{1-\xi^2}F(\xi)+\lambda F(\xi)=0
+		\label{eq:genlegendreeq}
+	\end{equation}
+	In order to solve \eqref{eq:genlegendreeq} firstly we impose $m=0$, and then we suppose that $F(\xi)$ is analytical, and hence it holds that
+	\begin{equation*}
+		F(\xi)=\sum_{k=0}^{\infty}a_k\xi^k
+	\end{equation*}
+	Using a method analogous to the analytical solution of the quantum harmonic oscillator, we derive, substitute our indexes and plug the result inside our differential equation. We get then the following equation
+	\begin{equation}
+		\sum_{k=0}^{\infty}\left( a_k(\lambda-k(k+1))+(k+1)(k+2)a_{k+2} \right)\xi^k=0
+		\label{eq:sphharmseries}
+	\end{equation}
+	This is true \emph{if and only if} the following recurrence relation is true
+	\begin{equation}
+		-\frac{\lambda-k(k+1)}{(k+1)(k+2)}a_k=a_{k+2}
+		\label{eq:recrel}
+	\end{equation}
+	In our quantum case, it's evident that $\lambda=l(l+1)$. Looking at the recurrence relation, we see that it's actually the recurrence relation of the Legendre polynomials, that are defined by the Rodrigues' formula
+	\begin{equation}
+		P_l(\xi)=\frac{1}{2^ll!}\derivative[l]{\xi}(\xi^2-1)
+		\label{eq:rodrigueslpol}
+	\end{equation}
+	For completeness, we add that using this formula, we get that the $k$-th element of the succession $a_k$ is, for even $l+k$, the following (with $k$ fixed)
+	\begin{equation*}
+		a_k=\frac{1}{2^ll!}(-1)^{\frac{l-k}{2}}\begin{pmatrix}l\\\frac{1}{2}(l+k)\end{pmatrix}\prod_{\alpha=1}^l(k+\alpha)
+	\end{equation*}
+	It's evident that $P_l(\pm1)=(\pm1)^l$. For $m\ne0$ we have that the equation is solvable only for $m\le l$, and it's solved by the \textit{Legendre functions of the first kind}, defined as follows
+	\begin{equation}
+		P_l^m(\xi)=\frac{(1-\xi^2)^{\frac{m}{2}}}{2^ll!}\derivative[l+m]{\xi}(\xi^2-1)^l
+		\label{eq:generallegendre}
+	\end{equation}
+	Having finally solved the second equation, we remember that the eigenfunction $f$ is the product of $g$ and $h$, and it's exactly the spherical harmonics $Y^m_l(\theta,\phi)$, which their normalized counterpart is defined as follows
+	\begin{equation}
+		Y^m_l(\theta,\phi)=\sqrt{\frac{2(l+1)(l-m)!}{4\pi(l+m)!}}(-1)^me^{im\phi}P^m_l(\cos\theta)
+		\label{eq:sphharmcomp}
+	\end{equation}
+	Since it's possible to define $m\le0$ but $m\ge-l$, we have this property which is impossible for the associated Legendre Functions, and, we get that
+	\begin{equation}
+		Y^{-m}_l(\theta,\phi)=(-1)^m\cc{Y}^m_l(\theta,\phi)
+		\label{eq:minusmsphharm}
+	\end{equation}
+	This condition, finally our searched bounds for $m$, which can take only values in a set $I\subset\mathbb{Z}$, where $I=[-l,l]$
+	\subsection{Confluent Hypergeometric Function and Laguerre Polynomials}
+	The \textit{Confluent Hypergeometric Function} $F(\alpha,\gamma,z)$ is an analytic complex function, defined as follows
+	\begin{equation}
+		F(\alpha,\gamma,z)=\sum_{n=0}^{\infty}\frac{(\alpha)_n}{(\gamma)_n}\frac{z^n}{n!}\ \forall z\in\mathbb{C}
+		\label{eq:confluenthypergeometricgen}
+	\end{equation}
+	Where $\alpha\in\mathbb{C}$, $\gamma\in\mathbb{Z}$. The misterious application on $\alpha$ and $\gamma$ is called the \textit{Pochhammer symbol} and it's defined as follows
+	\begin{equation}
+		(a)_n=\left\{\begin{aligned}
+				&1&n=0\\
+				\prod_{k=0}^{n-1}&(a+k)&n>0
+			\end{aligned}
+		\right.
+		\label{eq:pochhammer}
+	\end{equation}
+	The need for this function comes from the theory of differential equations. Let's define a linear differential operator as follows
+	\begin{equation}
+		\opr{L}_F=z\derivative[2]{z}+(\gamma-z)\derivative{z}-\alpha
+		\label{eq:hypergeodiff}
+	\end{equation}
+	The only function that solves the equation $\opr{L}_Ff(z)=0$ is a superposition of confluent hypergeometric functions, where
+	\begin{equation}
+		f(z)=c_1F(\alpha,\gamma,z)+c_2z^{1-\gamma}F(-\alpha+\gamma+1,\alpha-\gamma,z)
+		\label{eq:solutionhypgeo}
+	\end{equation}
+	A curious property is given if $\alpha=-n$ where $n\in\mathbb{N}$. Then, the confluent hypergeometric function is a polynomial, defined as follows
+	\begin{equation}
+		F(-n,\gamma,z)=\frac{z^{1-\gamma}e^z}{(\gamma)_n}\derivative[n]{z}(e^{-z}z^{\gamma+n-1})
+		\label{eq:polynomialchf}
+	\end{equation}
+	If we also have $\gamma=m$ and $m\in\mathbb{N}$ then the polynomial is defined differently, as follows
+	\begin{equation}
+		F(-n,m,z)=\frac{(-1)^{m+1}e^z}{(m)_n}\derivative[m+n-1]{z}(e^{-z}z^n)
+		\label{eq:polychf2}
+	\end{equation}
+	In the added special case where $0\le m\le n$, we get a particular case, which is fundamental in the physics of hydrogenoid atoms, for which the confluent hypergeometric function is directly proportional to \textit{Laguerre polynomials}, which describe the radial part of the wavefunction. Hence, we have
+	\begin{equation*}
+		F(-n,m,z)\propto L^m_n(z)
+	\end{equation*}
+	Where, $L^m_n(z)$ are the generalized Laguerre polynomials, and are defined from the confluent hypergeometric function as follows
+	\begin{equation}
+		L^m_n(z)=\frac{(-1)^m(n!)^2}{m!(n-m)!}F(-(n-m),m+1,z)
+		\label{eq:genlaguerrepol}
+	\end{equation}
+	Substituting this in \eqref{eq:polychf2}, we get the Rodrigues formula for generalized Laguerre polynomials
+	\begin{equation}
+		L^m_n(z)=\frac{(-1)^mn!}{(n-m)!}e^zz^{-m}\derivative[n-m]{z}(e^{-z}z^n)
+		\label{eq:laguerrerod}
+	\end{equation}
+	For $m=0$ we get the Laguerre polynomials, which, from the previous formula are then defined as follows
+	\begin{equation}
+		L_n(z)=e^z\derivative[n]{z}(e^{-z}z^n)
+		\label{eq:laguerrepol}
+	\end{equation}
+	Hence, from the confluent hypergeometric function, we can define both as follows
+	\begin{equation}
+		\begin{aligned}
+			L^m_n(z)&=(-1)^mn!\begin{pmatrix}n\\m\end{pmatrix}F(-n+m,m+1,z)\\
+			L_n(z)&=n!F(-n,1,z)
+		\end{aligned}
+		\label{eq:laguerrebothchf}
+	\end{equation}
+	\section{Generalized Riemann $\zeta$ Functions and Bernoulli Numbers}\label{app:zeta}
+	In quantum statistical mechanics we end up analyzing integrals of the generalized $\zeta$ functions, defined as follows
+	\begin{equation}
+		\left.\begin{aligned}
+			&g_s(z)\\
+			&f_s(z)
+		\end{aligned}\right\}=\frac{1}{\Gamma(s)}\int_{\mathbb{R}_+}\frac{x^{s-1}}{e^{x}z^{-1}\mp1}\diff{x}
+		\label{eq:generalizedzetafunctions}
+	\end{equation}
+	It's possible to evaluate the integrals of some values for the two functions through direct evaluation and usage of the properties of the Riemann $\zeta$ function, as follows for $g_s(1)$
+	\begin{equation}
+		\begin{aligned}
+			g_s(1)&=\frac{1}{\Gamma(s)}\int_{\mathbb{R}_+}\frac{x^{s-1}}{e^{x}+1}\diff{x}=\sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k^s}=\sum_{k=1}^{\infty}\frac{1}{k^s}-2\sum_{n=1}^{\infty}\frac{1}{(2n)^s}\\
+			g_s(1)&=(1-2^{1-s})\zeta(s)
+		\end{aligned}
+		\label{eq:gs1}
+	\end{equation}
+	And equivalently for $f_s(1)$
+	\begin{equation}
+		f_s(1)=\frac{1}{\Gamma(s)}\int_{\mathbb{R}_+}\frac{x^{s-1}}{e^{x}-1}\diff{x}=\sum_{k=1}^{\infty}\frac{1}{k^s}=\zeta(s)
+		\label{eq:fs1}
+	\end{equation}
+	From the residue theorem tho, we can write the integral form of the Riemann $\zeta$
+	\begin{equation}
+		\zeta(s)=\frac{1}{4i}\int_{\gamma}\frac{\cot(\pi z)}{z^s}\diff{z}
+		\label{eq:intzetariemann}
+	\end{equation}
+	Before continuing, we introduce the following formula
+	\begin{equation}
+		\frac{1}{2}\cot\left( \frac{z}{2} \right)=1-\sum_{n=1}^{\infty}\frac{B_{2n}z^{2n}}{(2n)!}
+		\label{eq:bernoullinumbers}
+	\end{equation}
+	Where $B_n$ are the Bernoulli numbers. Therefore, for even numbers $s=2k\in\mathbb{Z}$ we can write
+	\begin{equation}
+		\zeta(2k)=\frac{(2\pi)^k}{2(2k)!}B_k
+		\label{eq:zeta2k}
+	\end{equation}
+	Using then the definitions \eqref{eq:gs1} and \eqref{eq:fs1}, we can directly calculate the following integrals, that often pop out in quantum statistical mechanics calculations
+	\begin{equation}
+		\begin{aligned}
+			g_{2k}(1)&=(2^{2k-1}-1)\zeta(2k)=\pi^{2k}(2^{2k-1}-1)\frac{B_k}{(2k)!}\\
+			\Gamma(2k)g_{2k}(1)&=(2k-1)!\zeta(2k)=\pi^{2k}(2^{2k-1}-1)\frac{B_{2k}}{2k}\\
+			\Gamma(2k)f_{2k}(1)&=(2k-1)!\zeta(2k)=\frac{(2\pi)^{2k}}{4k}B_k
+		\end{aligned}
+		\label{eq:evengsfs}
+	\end{equation}
+	\section{Saddle Point Method}
+	The saddle point method of approximation of integrals comes from the problem of analyzing the asymptotic behavior of an integral depending from a parameter $\lambda$ for $\lambda\to\infty$, where the integral is defined as $I(\lambda):\R\to\Cf$, with
+	\begin{equation}
+		I(\lambda)=\int_{\gamma}e^{\lambda f(z)}g(z)\diff{z}
+		\label{eq:saddlepointintegral}
+	\end{equation}
+	Where $f,g:D\to\Cf$, $f,g\in H(D)$ (they are both holomorphic function), and $\gamma$ is a piecewise smooth curve such that $\{\gamma\}\subset D$.\\
+	Without loss of generality we can take $\lambda\in\R,\ \lambda>0$.\\
+	Before going directly for the complete calculus in $\Cf$, we begin by supposing that the integral is in a real interval $[a,b]$ and both functions $f,g$ are smooth in this interval.\\
+	Supposing that the function $f$ has a maximum in a point $t_0\in[a,b]$, we approximate around this point with a Taylor expansion at the second order and substitute it back into the integral
+	\begin{equation*}
+		f(t)=f(t_0)+\frac{1}{2}f''(t_0)(t-t_0)^2+\order{(t-t_0)^3}
+	\end{equation*}
+	And therefore
+	\begin{equation}
+		I(\lambda)=\int_{a}^{b}e^{\lambda\left( f(t_0)-\frac{1}{2}\abs{f''(t_0)}(t-t_0)^2+\order{(t-t_0)^3} \right)}\left( g(t_0)+\order{(t-t_0)} \right)\diff{t}
+		\label{eq:Ilambdareal2ord}
+	\end{equation}
+	Using the substitution $u=\sqrt{\lambda\abs{f''(t_0)}}(t-t_0)$ we obtain
+	\begin{equation}
+		I(\lambda)=\frac{e^{\lambda f(t_0)}g(t_0)}{\sqrt{\lambda\abs{f''(t_0)}}}\int_{-(t_0-a)\sqrt{\lambda\abs{f''(t_0)}}}^{(b-t_0)\sqrt{\lambda\abs{f''(t_0)}}}e^{-\frac{1}{2}u^2+\order{(u(\lambda\abs{f''(t_0)})^{-\frac{1}{2}})^3}}\left( 1+\order{(u(\lambda\abs{f''(t_0)})^{-\frac{1}{2}})} \right)\diff{t}
+		\label{eq:integralapproximated}
+	\end{equation}
+	Assuming that $g(t_0)\ne0$ and approximating the integral with $\sqrt{2\pi}$ we obtain that asymptotically we obtain
+	\begin{equation}
+		I(\lambda)\simeq\sqrt{\frac{2\pi}{\lambda\abs{f''(t_0)}}}e^{\lambda f(t_0)}g(t_0)
+		\label{eq:Ilambdaapproximatedreal}
+	\end{equation}
+	Without approximating the integral of the exponential, we can impose the variable substitution $u=f(t_0)-f(t)$ and evaluating in the intervals $[a,t_0)\cup(t_0,b]$ where the function $f(t)$ is strictly monotonous, we have that
+	\begin{equation}
+		I(\lambda)=e^{\lambda f(t_0)}\left( \int_{0}^{f(t_0)-f(b)}G_+(u)e^{-\lambda u}\diff(u)-\int_{0}^{f(t_0)-f(a)}G_{-}(u)e^{-\lambda u}\diff{u} \right)
+		\label{eq:integralnewsub}
+	\end{equation}
+	Where, the two functions $G_{\pm}$ are defined as follows
+	\begin{equation*}
+		G_{\pm}(u)=\left.\frac{g(t)}{f'(t)}\right|_{t=f^{-1}_{\pm}(f(t_0)-u)}
+	\end{equation*}
+	Expanding the function $g/f'$ we get
+	\begin{equation}
+		\frac{g(t)}{f'(t)}=\frac{g(t_0)}{f''(t_0)}(t-t_0)^{-1}+\left( \frac{g'(t_0)}{f''(t_0)}-\frac{g(t_0)f'''(t_0)}{2(f''(t_0))^2} \right)+\order{t-t_0}
+		\label{eq:taylorg/f'}
+	\end{equation}
+	Therefore, inserting the previous u-substitution, we get that $(t-t_0)=\pm\sqrt{2u/\abs{f''(t_0)}}$ and therefore we get
+	\begin{equation}
+		G_{\pm}(u)=\mp\frac{g(t_0)}{\sqrt{2\abs{f''(t_0)}}}u^{-\frac{1}{2}}+\left( \frac{g'(t_0)}{f''(t_0)}-\frac{g(t_0)f'''(t_0)}{2\left( f'(t_0) \right)^2} \right)+\order{\sqrt{u}}
+		\label{eq:Gpmtaylor}
+	\end{equation}
+	For $\lambda\to\infty$ we then obtain
+	\begin{equation}
+		\int_{0}^{f(t_0)-a_i}G_{\pm}(u)e^{-\lambda u}\diff{u}=\pm\frac{g(t_0)}{\sqrt{2\abs{f''(t_0)}}}\sqrt{\frac{\pi}{\lambda}}+\frac{1}{\lambda}\left( \frac{g'(t_0)}{f''(t_0)}-\frac{g(t_0)f'''(t_0)}{2\left( f''(t_0) \right)^2} \right)+\order{\lambda^{-\frac{3}{2}}}
+		\label{eq:gpmintegral}
+	\end{equation}
+	In conclusion, we obtain
+	\begin{equation}
+		I(\lambda)=\sqrt{\frac{2\pi}{\lambda\abs{f''(t_0)}}}e^{\lambda f(t_0)}g(t_0)+\order{\lambda^{-\frac{3}{2}}e^{\lambda f(t_0)}}
+		\label{eq:completeIlambda}
+	\end{equation}
+	Now, going back to the complex case, we have parameterizing the curve $\gamma$, that
+	\begin{equation}
+		I(\lambda)=\int_{a}^{b}e^{\lambda f(\gamma(t))}g(\gamma(t))\gamma'(t)\diff{t}
+		\label{eq:Ilambdacomplexpar}
+	\end{equation}
+	In order to make sure that the saddle point approximation is applicable, we chose a specific parametrization of this curve, which must be inside an open ball from a simple critical point (saddle point) $z_0\in D$ of the function $f(z)$. We can therefore choose two curves, one of ``steepest climb'' ($\gamma_+$) and one of ``steepest descent'' ($\gamma_-$), orthogonal to each other and defined as follows
+	\begin{equation}
+		\begin{dcases}
+			\gamma_+(t)=z_0+(t-t_0)e^{-\frac{i}{2}\mathrm{Arg}f''(z_0)}&t_0-\epsilon<t<t_0+\epsilon\\
+			\gamma_-(t)=z_0+(t-t_0)e^{i\left( \frac{\pi}{2}-\frac{1}{2}\mathrm{Arg}f''(z_0) \right)}&t_0-\epsilon<t<t_0+\epsilon
+		\end{dcases}
+		\label{eq:steepestcurves}
+	\end{equation}
+	In these curves, we have that
+	\begin{equation*}
+		\begin{aligned}
+			\real{f(\gamma_{\pm}(t))}&=\real{f(z_0)}\pm\frac{1}{2}\abs{f''(z_0)}(t-t_0)^2+\order{(t-t_0)^3}\\
+			\imaginary{f(\gamma_{\pm}(t))}&=\imaginary{f(z_0)}+\order{(t-t_0)^3}
+		\end{aligned}
+	\end{equation*}
+	Using an homotopy transformation we can map $\gamma\to\eta$, where $\eta$ is a new curve that coincides with $\gamma_-$ for $t\in[t_0-\epsilon/2,t_0+\epsilon/2]$, coincides with $\gamma$ outside the open ball $B_\epsilon(z_0)$ and joins back with $\gamma$ on the frontier of the ball.\\
+	We then get
+	\begin{equation}
+		\begin{aligned}
+			I(\lambda)&=\int_{\eta}e^{\lambda f(z)}g(z)\diff{z}=\\
+			&=\int_{a}^{t_0-\frac{\epsilon}{2}}e^{\lambda f(\eta(t))}g(\eta(t))\eta'(t)\diff{t}+\int_{t_0-\frac{\epsilon}{2}}^{t_0+\frac{\epsilon}{2}}e^{\lambda f(\gamma_-(t))}g(\gamma_-(t))\gamma_-'(t)\diff{t}\\
+			&+\int_{t_0+\frac{\epsilon}{2}}^{b}e^{\lambda f(\eta(t))}g(\eta(t))\eta'(t)\diff{t}
+		\end{aligned}
+		\label{eq:integralhomotopy}
+	\end{equation}
+	Applicating now the saddle point approximation, we get that for $\lambda\to\infty$
+	\begin{equation}
+		I(\lambda)=\sqrt{\frac{2\pi}{\lambda\abs{f''(z_0)}}}e^{\lambda f(z_0)}g(z_0)e^{i\left( \frac{\pi}{2}-\frac{1}{2}\mathrm{Arg}f''(z_0) \right)}+\order{\lambda^{-\frac{3}{2}}e^{\lambda f(z_0)}}
+		\label{eq:saddlepointmethodcomplete}
+	\end{equation}
+	If we have more than one simple critical point for $f(z)$ along $\gamma$, the solution will be a sum of terms of the kind \eqref{eq:saddlepointmethodcomplete}
+\end{document}

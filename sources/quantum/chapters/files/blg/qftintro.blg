@@ -1,0 +1,9 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[2] Config.pm:315> INFO - Logfile is 'qftintro.blg'
+[349] biber:330> INFO - === lun dic  7, 2020, 22:21:54
+[397] Biber.pm:415> INFO - Reading 'qftintro.bcf'
+[649] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[668] Utils.pm:384> WARN - The file 'qftintro.bcf' does not contain any citations!
+[709] bbl.pm:651> INFO - Writing 'qftintro.bbl' with encoding 'UTF-8'
+[710] bbl.pm:754> INFO - Output to qftintro.bbl
+[711] Biber.pm:128> INFO - WARNINGS: 1

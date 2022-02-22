@@ -1,0 +1,570 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	\section{Rotations}
+	Taking as granted the knowledge that in classical physics rotations around the same axis commute and around different axes do not (it's easy to prove, even mentally by yourself).\\
+%	Let's take as an example a $\pi/2$ rotatio around the $z$ axis and a $\pi/2$ rotation around the $x$ axis, we will call these two rotations respectively $R_z,R_x$
+	A classical rotation around a certain axis can be writted in tensor notation as follows. Let $v_i$ be a vector in the fixed system and $v_i'$ the same vector in the rotated system. We can then write the following relation (where $i,j=x,y,z$ or $i,j=1,2,3$)
+	\begin{equation*}
+		v_i'=R_{ij}v_j
+	\end{equation*}
+	Whereas
+	\begin{equation*}
+		R_{ij}R_{ji}=R_{ji}R_{ij}=\kd{ij}\longrightarrow\tposed{R}=R^{-1}
+	\end{equation*}
+	The second equation is obvious, since applying an identical but opposed rotation on the same axis is exactly like letting act the identity rotation onto the vector (basically doing nothing to it).\\
+	Due to this matrix being then, orthogonal, we know from linear algebra that the following relation holds, and is automatically satisfied.
+	\begin{equation*}
+		\sqrt{v_1^2+v_2^2+v_3^2}=\sqrt{v_1^{2'}+v_2^{2'}+v_3^{2'}}
+	\end{equation*}
+	From this relation, we can define pretty easily, that for a finite rotation of an angle $\phi$, the matrix $R_{ij}^{(z)}(\phi)$, will have the following general form
+	\begin{equation}
+		R_{ij}^{(z)}(\phi)=\begin{pmatrix}
+			\cos\phi&-\sin\phi&0\\
+			\sin\phi&\cos\phi&0\\
+			0&0&1
+		\end{pmatrix}
+		\label{eq:finiterotmatrix}
+	\end{equation}
+	The infinitesimal form all the rotation matrices, in order $\order{\varepsilon^3}$, will be the following, using the taylor expansions of the trigonometric functions
+	\begin{subequations}
+	\begin{equation}
+		R_{ij}^{(z)}(\varepsilon)=\begin{pmatrix}
+			1-\frac{\varepsilon^2}{2}&-\varepsilon&0\\
+			\varepsilon&1-\frac{\varepsilon^2}{2}&0\\
+			0&0&1
+		\end{pmatrix}
+		\label{eq:infrotmatrixz}
+	\end{equation}
+	\begin{equation}
+		R_{ij}^{(x)}(\varepsilon)=\begin{pmatrix}
+			1&0&0\\
+			0&1-\frac{\varepsilon^2}{2}&-\varepsilon\\
+			0&\varepsilon&1-\frac{\varepsilon^2}{2}
+		\end{pmatrix}
+		\label{eq:infrotmatrixx}
+	\end{equation}
+	\begin{equation}
+		R_{ij}^{(y)}(\varepsilon)=\begin{pmatrix}
+			1-\frac{\varepsilon^2}{2}&0&\varepsilon\\
+			0&1&0\\
+			-\varepsilon&0&1-\frac{\varepsilon^2}{2}
+		\end{pmatrix}
+		\label{eq:infrotmatrixy}
+	\end{equation}
+\end{subequations}
+	It's obvious, that the rotations commute only for $\order{\varepsilon}$, and that they follow a cyclic relation. We might write this as follows for rotations of order $\order{\varepsilon^3}$\\
+	\begin{equation}
+		\comm{R_x(\varepsilon)}{R_y(\varepsilon)}=R_x(\varepsilon^2)-R_{(i)}(0)
+		\label{eq:rotationcommutationrel}
+	\end{equation}
+	Where $R_{(i)}(0)$ is a null rotation along a generic axis, which is exactly an identity matrix, for every axis we choose.
+	\subsection{Infinitesimal Rotations in Quantum Mechanics}
+	In order to ``quantize'' the previous section, we assign to the rotation matrix, a rotation operator $\opr{\mc{D}}(R)$, with D as in \textit{Drehung}, which means rotation in German.\\
+	Calling $\ket{\cdot}_r$ the rotated ket, we will have that this operator will act in the following way
+	\begin{equation}
+		\ket{s}_r=\opr{\mc{D}}(R)\ket{s}
+		\label{eq:drehungop}
+	\end{equation}
+	Using an analogy with classical mechanics, and knowing that angular momentum is the generator for infinitesimal rotations, we can imagine that in quantum mechanics, this generator $\opr{G}$ will simply be the following $\opr{\vec{J}}/\hbar$, where we indicated with $\opr{\vec{J}}$ a generic angular momentum operator, and an $\hbar$ added for dimensionality reasons.\\
+	In first approximation, we can see the Drehung operator to the first order, for a rotation of $\mathrm{d}\phi$ degrees, as follows
+	\begin{equation*}
+		\opr{\mc{D}}(\ver{n},\mathrm{d}\phi)=1-i\left( \frac{\opr{\vec{J}}\cdot\ver{n}}{\hbar} \right)\diff{\phi}
+	\end{equation*}
+	Repeating this rotation $N$ times and sending this $N$ to infinity, we can see this as a finite rotation, and due to the way it's written, we can immediately see how the Drehung operator for a finite rotation is shaped. Taking without loss of generality a rotation around the $z$ axis, we get the following result for a rotation of $\phi$ degrees.
+	\begin{equation}
+		\opr{\mc{D}}(\phi)=\lim_{N\to\infty}\left( 1-\frac{i\opr{J}_z\phi}{N\hbar} \right)^N=e^{-\frac{i\opr{J}_z\phi}{\hbar}}
+		\label{eq:finitedrehungop}
+	\end{equation}
+	From this simple result, we can immediately see how the Drehung operator is tied to classical rotation, as it has the same group properties of the classical rotation matrices, which are the following
+	\begin{enumerate}
+	\item Identity: $\opr{\mc{D}}(R)\cdot\1=\opr{\mc{D}}(R)$
+	\item Closure: $\opr{\mc{D}}(R_1)\opr{\mc{D}}(R_2)=\opr{\mc{D}}(R_3)$
+	\item Invertibility: $\opr{\mc{D}}^{-1}(R)\opr{\mc{D}}(R)=\opr{\mc{D}}(R)\opr{\mc{D}}^{-1}(R)=\1$
+	\item Associativity: $\opr{\mc{D}}(R_1)\left( \opr{\mc{D}}(R_2)\opr{\mc{D}}(R_3) \right)=\left( \opr{\mc{D}}(R_1)\opr{\mc{D}}(R_2) \right)\opr{\mc{D}}(R_3)=\opr{\mc{D}}(R_1)\opr{\mc{D}}(R_2)\opr{\mc{D}}(R_3)$
+	\end{enumerate}
+	Now it's quick to ask how do these operators commute, then we use the analogy with the $R$ matrices and use the commutation relations $\eqref{eq:rotationcommutationrel}$. We obviously use the approimation to the second order of $\opr{\mc{D}}(R)$
+	\begin{equation*}
+		\begin{aligned}
+			&\left( 1-\frac{i\opr{J}_x\varepsilon}{\hbar}-\frac{\opr{J}_x^2\varepsilon^2}{2\hbar^2} \right)\left( 1-\frac{i\opr{J}_y\varepsilon}{\hbar}-\frac{\opr{J}_y^2\varepsilon^2}{2\hbar^2} \right)-\left( 1-\frac{i\opr{J}_y\varepsilon}{\hbar}-\frac{\opr{J}_y^2\varepsilon^2}{2\hbar^2} \right)\left( 1-\frac{i\opr{J}_x\varepsilon}{\hbar}-\frac{\opr{J}_x^2\varepsilon^2}{2\hbar^2} \right)=\\
+			&= 1-\frac{i\opr{J}_z\varepsilon^2}{\hbar}-1
+		\end{aligned}
+	\end{equation*}
+	Equating the terms of order $\order{\varepsilon^2}$, we get that $\comm{\opr{J}_x}{\opr{J}_y}=i\hbar\opr{J}_z$, and through cyclic permutations (using the $\lc{ijk}$ tensor) we get the following result
+	\begin{equation}
+		\comm{\opr{J}_i}{\opr{J}_j}=i\hbar\lc{ijk}\opr{J}_k
+		\label{eq:commrelangmom}
+	\end{equation}
+	These are the fundamental commutation relations of angular momentum, and they are said to generate a non-Abelian group of rotations, since two different operators of the same group do not commute.\\
+	Since we have defined angular momentum from rotations, we can easily say that these relations hold for \emph{every kind} of angular momentum we find.
+	\section{Eigenvalues and Eigenstates of Angular Momentum}
+	We have already seen how angular momentum operators between different axes do not commute, hence, in order to find a suitable eigenbasis we build a new operator starting from $\opr{\vec{J}}$. From \eqref{eq:commrelangmom} we can immediately imagine that the simplest operator we can find is $\opr{J}^2$, defined as follows
+	\begin{equation*}
+		\opr{J}^2=\opr{J}_x^2+\opr{J}_y^2+\opr{J}_z^2=\opr{\vec{J}}\cdot\opr{\vec{J}}
+	\end{equation*}
+	This operator commutes with every $\opr{J}_i$, and hence, we have another commutation relations
+	\begin{equation}
+		\comm{\opr{J}^2}{\opr{J}_i}=0
+		\label{eq:jsqjcommrel}
+	\end{equation}
+	We know already that there exists simultaneously an eigenbasis for any operator $\opr{J}_i$ and $\opr{J}^2$. As a convention we take $\opr{J}_3=\opr{J}_z$ as our main direction, and we will call the eigenkets as $\ket{a,b}$, for which holds the already known secular equation
+	\begin{equation*}
+		\begin{aligned}
+			\opr{J}^2\ket{a,b}&=a\ket{a,b}\\
+			\opr{J}_z\ket{a,b}&=b\ket{a,b}
+		\end{aligned}
+	\end{equation*}
+	In order to work out the results, we define two non hermitian operators, that we will call $\opr{J}_+$ and $\adj{\opr{J}}_+=\opr{J}_-$. These operators are defined as follows
+	\begin{equation}
+		\opr{J}_{\pm}=\opr{J}_x\pm i\opr{J}_y
+		\label{eq:ladderopangmom}
+	\end{equation}
+	These operators satisfy the commutation relations
+	\begin{equation}
+		\begin{aligned}
+			\comm{\opr{J}_z}{\opr{J}_{\pm}}&=\pm\hbar\opr{J}_{\pm}\\
+			\comm{\opr{J}_{\pm}}{\opr{J}_{\mp}}&=\pm2\hbar\opr{J}_z\\
+			\comm{\opr{J}^2}{\opr{J}_{\pm}}&=0
+		\end{aligned}
+		\label{eq:ladderopcommrel}
+	\end{equation}
+	Defined as such, these are the ladder operators of angular momentum, but why are they called ladder operators? It's easy to see why if we let them act on an eigenstate and utilize the previous commutation relations. We then get
+	\begin{equation*}
+		\opr{J_z}\opr{J_{\pm}}\ket{a,b}=\left( \comm{\opr{J}_z}{\opr{J}_{\pm}}+\opr{J}_{\pm}\opr{J}_z \right)\ket{a,b}=\left( b\pm\hbar \right)\opr{J}_{\pm}\ket{a,b}
+		\label{eq:ladderaction}
+	\end{equation*}
+	In an analogy with the quantum harmonic oscillator, we see then really why these operators are called ``ladder'' operators, since they move up or down of one step ($\hbar$ long) the ``measured'' value.\\
+	We now redo the same calculations with $\opr{J}^2$, and using \eqref{eq:ladderopcommrel}, we get
+	\begin{equation}
+		\opr{J}^2\opr{J}_{\pm}\ket{a,b}=\opr{J}_{\pm}\opr{J}^2\ket{a,b}=a\opr{J}_{\pm}\ket{a,b}
+		\label{eq:jsqjpmaction}
+	\end{equation}
+	Remembering that $\ket{a,b}$ are simultaneous eigenstates for both $\opr{J}_z$ and $\opr{J}^2$, we can summarize everything in the following way
+	\begin{equation}
+		\opr{J}_{\pm}\ket{a,b}=c_{\pm}\ket{a,b\pm\hbar}
+		\label{eq:ladderact}
+	\end{equation}
+	Now, let's use what we found with this ladder operator machinery for finding the actual eigenstates and eigenvalues of angular momentum. We give the following Ansatz:
+	\begin{equation*}
+		a\ge b^2
+	\end{equation*}
+	But why should the eigenvalue of $\opr{J}_z$ be limited? Let's write a new operator, made through a combination of $\opr{J}^2$ and $\opr{J}_z$
+	\begin{equation}
+		\opr{J}^2-\opr{J}_z^2=\frac{1}{2}\left( \opr{J}_+\opr{J}_-+\opr{J}_-\opr{J}_+ \right)=\frac{1}{2}\left( \opr{J}_+\adj{\opr{J}}_++\adj{\opr{J}}_+\opr{J}_+ \right)
+		\label{eq:jsqjzjpmtie}
+	\end{equation}
+	Now, $\adj{\opr{J}}_+\opr{J}_+$ and $\opr{J}_+\adj{\opr{J}}_+$ must be positive definite, hence it follows that
+	\begin{equation*}
+		\bra{a,b}\left( \opr{J}^2-\opr{J}_z^2 \right)\ket{a,b}\ge0
+	\end{equation*}
+	Which implies the previous Ansatz. It follows, then, that there exists a value $b_{max}$ and $b_{min}$ for the following relations hold
+	\begin{equation}
+		\begin{aligned}
+			\opr{J}_+\ket{a,b_{max}}&=0\\
+			\opr{J}_-\ket{a,b_{min}}&=0
+		\end{aligned}
+		\label{eq:bmaxminangmom}
+	\end{equation}
+	Studying the first case, we know that it also implies $\opr{J}_-\opr{J}_+\ket{a,b_{max}}=0$, but analyzing further and utilizing the definition of the ladder operators, we get that
+	\begin{equation*}
+		\opr{J}_-\opr{J}_+=\opr{J}_x^2+\opr{J}_y^2-i\comm{\opr{J}_y}{\opr{J}_x}=\opr{J}^2-\opr{J}_z^2-\hbar\opr{J}_z
+	\end{equation*}
+	Hence, we get the following important result
+	\begin{equation}
+		\left( \opr{J}^2-\opr{J}_z^2-\hbar\opr{J}_z \right)\ket{a,b_{max}}=0
+		\label{eq:ladderladder}
+	\end{equation}
+	Now, since $\ket{a,b_{max}}$ is an eigenket of every operator acting on it, and for such can't be a null ket, it must hold that
+	\begin{equation}
+		\begin{aligned}
+			a&-b^2_{max}-\hbar b_{max}=0\\
+			a&=b_{max}(b_{max}+\hbar)
+		\end{aligned}
+		\label{eq:eigenvalueeq}
+	\end{equation}
+	Similarly, letting $\ladoprd{J}$ on the ket $\ket{a,b_{min}}$, we obtain that $a$ must also be equal to
+	\begin{equation*}
+		a=b_{min}(b_{min}-\hbar)
+	\end{equation*}
+	Hence, it's obvious that $b_{max}=-b_{min}$, and hence $-b_{max}\le b\le b_{max}$, with $b_{max}\ge0$.\\
+	Due to how $\ladopru{J}$ acts on the eigenkets, it must definitely hold that $b_{max}=b_{min}+n\hbar$, with $n\in\mathbb{N}$.\\
+	Then, it must hold definitely that
+	\begin{equation*}
+		b_{max}=\frac{n\hbar}{2}
+	\end{equation*}
+	Due to convention it's usual to define directly the eigenvalue $j$ as $n/2$, hence, we get that
+	\begin{equation}
+		a=\hbar^2j(j+1)
+		\label{eq:jsqeigenval}
+	\end{equation}
+	Defining another integer eigenvalue $m$, such that we have
+	\begin{equation}
+		b=m\hbar
+		\label{eq:jzeigenvalue}
+	\end{equation}
+	Due to what we found before, $j$ is an half-integer, hence all $m$ must be half-integers too, and they can only take the following values
+	\begin{equation}
+		m=\underbrace{-j,-j+1,\cdots,j-1,j}_{2j+1\text{ times}}
+		\label{eq:mdef}
+	\end{equation}
+	For a little recap, after renaming $a,b$ with $j,m$ we have that the simultaneous eigenkets of $\opr{J}^2$ and $\opr{J}_z$ are the following
+	\begin{equation}
+		\begin{aligned}
+			\opr{J}^2\ket{j,m}&=\hbar^2j(j+1)\ket{j,m}\\
+			\opr{J}_z\ket{j,m}&=\hbar m\ket{j,m}
+		\end{aligned}
+		\label{eq:eigenketsangmom}
+	\end{equation}
+	\subsection{Matrix Elements of the Ladder Operators of Angular Momentum}
+	Now that we have defined the eigenvalues of the $\opr{J}^2$ and $\opr{J}_z$ angular momentum operators, is immediately seen that their tensor representation will be the following:
+	\begin{equation}
+		\begin{aligned}
+			J^2_{\overline{j},\overline{m},j,m}&=\bra{\overline{j},\overline{m}}\opr{J}^2\ket{j,m}=\hbar^2j(j+1)\kd{\overline{j}j}\kd{\overline{m}m}\\
+			J^{(z)}_{\overline{j},\overline{m},j,m}&=\bra{\overline{j},\overline{m}}\opr{J}_z\ket{j,m}=\hbar m\kd{\overline{j}j}\kd{\overline{m}m}
+		\end{aligned}
+		\label{eq:matrixelementsangmomop}
+	\end{equation}
+	The first question that might pop up is, then, what are the matrix elements of the ladder operators? Hence, what's their action on the eigenkets of angular momentum?\\
+	We use the definition in $\eqref{eq:jsqjzjpmtie}$ in order to find this out. From that equation, we can write the two following useful relations
+	\begin{equation}%jplusjminus and jminusjplus
+		\begin{aligned}
+			\ladoprd{J}\ladopru{J}&=\left( \opr{J}_x-i\opr{J}_y \right)\left( \opr{J}_x+i\opr{J}_y \right)=\opr{J}_x^2+\opr{J}_y^2+i\comm{\opr{J}_x}{\opr{J}_y}=\opr{J}^2-\opr{J}_z^2-\hbar\opr{J}_z\\
+			\ladopru{J}\ladoprd{J}&=\left( \opr{J}_x+i\opr{J}_y \right)\left( \opr{J}_x-i\opr{J}_y \right)=\opr{J}_x^2+\opr{J}_y^2-i\comm{\opr{J}_x}{\opr{J}_y}=\opr{J}^2-\opr{J}_z^2+\hbar\opr{J}_z
+		\end{aligned}
+		\label{eq:ladoprudprod}
+	\end{equation}
+	Let's now calculate the matrix elements for these operators, bearing in mind that $\ladoprd{J}=\adj{\opr{J}}_+$
+	\begin{equation}
+		\begin{aligned}
+			\bra{j.m}\adj{\opr{J}}_+\ladopru{J}\ket{j,m}&=\bra{j,m}\left( \opr{J}^2-\opr{J}^2_z-\hbar\opr{J}_z \right)\ket{j,m}=\hbar^2j(j+1)-\hbar^2m^2-\hbar^2m\\
+			\bra{j,m}\adj{\opr{J}}_-\ladoprd{J}\ket{j,m}&=\bra{j,m}\left( \opr{J}^2-\opr{J}^2_z+\hbar\opr{J}_z \right)\ket{j,m}=\hbar^2j(j+1)-\hbar^2m^2+\hbar^2m
+		\end{aligned}
+		\label{eq:matrixelements}
+	\end{equation}
+	But, we can also write the following relations
+	\begin{equation*}
+		\ladoprpm{J}\ket{j,m}=c_{\pm}\ket{j,m\pm1}
+	\end{equation*}
+	And, in order to find $c_{\pm}$, we impose that $\norm{\ladoprpm{J}\ket{j,m}}=1$, and confronting with \eqref{eq:matrixelements}, we can conclude that
+	\begin{equation}
+		\abs{c_{\pm}}^2=\hbar^2\left( j(j+1)-m(m\pm1) \right)\longrightarrow c_{\pm}=\hbar\sqrt{j(j+1)-m(m\pm1)}
+		\label{eq:cplusminus}
+	\end{equation}
+	And we can conclude, definitely, that the action of the ladder operators will be the following
+	\begin{equation}
+		\ladoprpm{J}\ket{j,m}=\hbar\sqrt{j(j+1)-m(m\pm1)}\ket{j,m\pm1}
+		\label{eq:actionladopr}
+	\end{equation}
+	The tensor representations of the operators will then be
+	\begin{equation}
+		\begin{aligned}
+			J_{\overline{j},\overline{m},j,m}^{(+)}&=\hbar\sqrt{j(j+1)-m(m-1)}\kd{\overline{m}m+1}\kd{\overline{j}j}\\
+			J_{\overline{j},\overline{m},j,m}^{(-)}&=\hbar\sqrt{j(j+1)-m(m+1)}\kd{\overline{m}m-1}\kd{\overline{j}j}
+		\end{aligned}
+		\label{eq:tensorrepresentation}
+	\end{equation}
+	\section{Orbital Angular Momentum}
+	We have seen how a general angular momentum, seen as a generator of rotations can be quantized, and be represented as an operator. To delve deeper on the physical meaning of this, we then quantize the classical angular momentum, where it can be written quantum mechanically as follows
+	\begin{equation}
+		\opr{\vec{L}}=\opr{\vec{q}}\wedge\opr{\vec{p}}=\lc{ijk}\opr{q}_j\opr{p}_k
+		\label{eq:orbangmom}
+	\end{equation}
+	It is immediately seen that it satisfies the main commutation relation of angular momentum, and hence it must be a generator of rotations. In fact, it's easy to demonstrate that
+	\begin{equation}
+		\comm{\opr{L}_i}{\opr{L}_j}=i\hbar\lc{ijk}\opr{L}_k
+		\label{eq:commrelorbangmom}
+	\end{equation}
+	Since this must be a generator of rotations, we can write at the first order the Drehung operator as follows
+	\begin{equation}
+		\opr{\mc{D}}_z(\delta\phi)=1-\left( \frac{i\delta\phi}{\hbar} \right)\opr{L}_z=1-\left( \frac{i\delta\phi}{\hbar} \right)(\opr{x}\opr{p}_y-\opr{y}\opr{p}_x)
+		\label{eq:drehungoplz}
+	\end{equation}
+	It's already clear from the beginning, that letting this act on a ket $\ket{x,y,z}$ is uncomfortable, hence we choose a spherical coordinate set $\ket{r,\theta,\phi}$, and we see that the action, to the first order, of the Drehung operator will be the following, considering a toy wavefunction $\ket{\alpha}$
+	\begin{equation}
+		\bra{r,\theta,\phi}\left( 1-\left( \frac{i\delta\phi}{\hbar} \right)\opr{L}_z \right)\ket{\alpha}=\bra{r,\theta,\phi-\delta\phi}\ket{\alpha}=\bra{r,\theta,\phi}\ket{\alpha}-\pdv{\phi}\bra{r,\theta,\phi}\ket{\alpha}\delta\phi
+		\label{eq:actionlz}
+	\end{equation}
+	Since $\ket{r,\theta,\phi}$ is arbitrary, we easily identify the following representation of $\opr{L}_z$
+	\begin{equation}
+		\bra{r_i}\opr{L}_z\ket{\alpha}=-i\hbar\pdv{\phi}\bra{r_i}\ket{\alpha}
+		\label{eq:lzrepresentation}
+	\end{equation}
+	Identically, doing the same evaluation with $\opr{L}_x$ and $\opr{L}_y$, we get the following representations
+	\begin{equation}
+		\begin{aligned}
+			\bra{r_i}\opr{L}_x\ket{\alpha}&=-i\hbar\left( -\sin\phi\pdv{\theta}-\cot\theta\cos\phi\pdv{\phi} \right)\bra{r_i}\ket{\alpha}\\
+			\bra{r_i}\opr{L}_y\ket{\alpha}&=-i\hbar\left( \cos\phi\pdv{\theta}-\cot\theta\sin\phi\pdv{\phi} \right)\bra{r_i}\ket{\alpha}
+		\end{aligned}
+		\label{eq:lxlyrep}
+	\end{equation}
+	Now, defining two new ladder operators for orbital angular momentum as $\ladoprpm{L}$, we have, combining the representations \eqref{eq:lxlyrep}, the following result
+	\begin{equation}
+		\bra{r_i}\ladoprpm{L}\ket{\alpha}=-i\hbar e^{\pm i\phi}\left( \pm i\pdv{\theta}-\cot\theta\pdv{\phi} \right)\bra{r_i}\ket{\alpha}
+		\label{eq:orbangmomladopr}
+	\end{equation}
+	As for $\opr{J}^2$, we can write $\opr{L}^2$ as follows
+	\begin{equation}
+		\opr{L}^2=\opr{L}^2_z+\frac{1}{2}\left( \ladopru{L}\ladoprd{L}+\ladoprd{L}\ladopru{L} \right)
+		\label{eq:lsqlplm}
+	\end{equation}
+	Applying to our wavefunction $\ket{\alpha}$ we, hence get
+	\begin{equation}
+		\bra{r_i}\opr{L}^2\ket{\alpha}=-\hbar^2\left( \csc^2\theta\pdv[2]{\phi}+\csc\theta\pdv{\theta}\left( \sin\theta\pdv{\theta} \right) \right)\bra{r_i}\ket{\alpha}
+		\label{eq:lsqwf}
+	\end{equation}
+	Which is only the angular part of the Laplacian in spherical coordinates.\\
+	Using the property \eqref{eq:squarecrossL} of the tensor $\lc{ijk}$, we can also write $\opr{L}^2$ in operatorial form as follows
+	\begin{equation}
+		\opr{L}^2=\opr{q}^2\opr{p}^2-\left( \opr{\vec{q}}\cdot\opr{\vec{p}} \right)^2+i\hbar\opr{\vec{q}}\cdot\opr{\vec{p}}
+		\label{eq:lsqopform}
+	\end{equation}
+	Using this last expression, we manage to get the following results
+	\begin{equation*}
+		\begin{aligned}
+			\bra{r_i}\opr{q}^j\opr{p}_j\ket{\alpha}&=\opr{q}^j\left( -i\hbar\pdv{x_j}\bra{r_i}\ket{\alpha} \right)\\
+			\bra{r_i}\left( \opr{q}^j\opr{p}_j \right)^2\ket{\alpha}&=-\hbar^2r\pdv{r}\left( r\pdv{r}\bra{r_i}\ket{\alpha} \right)
+		\end{aligned}
+	\end{equation*}
+	Thus, we have
+	\begin{equation}
+		\bra{r_i}\opr{L}^2\ket{\alpha}=r^2\bra{r_i}\opr{p}^2\ket{\alpha}+\hbar^2\left( r^2\pdv[2]{r}+2r\pdv{r} \right)\bra{r_i}\ket{\alpha}
+		\label{eq:lsqcomplete}
+	\end{equation}
+	Now, having $\opr{p}^2$ in the definition of $\opr{L}^2$, we can write the kinetic energy as follows
+	\begin{equation}
+		\opr{T}\bra{r_i}\ket{\alpha}=-\frac{\hbar^2}{2m}\left( \pdv[2]{r}\bra{r_i}\ket{\alpha}+\frac{2}{r}\pdv{r}\bra{r_i}\ket{\alpha}-\frac{\bra{r_i}\opr{L}^2\ket{\alpha}}{\hbar^2r^2} \right)
+		\label{eq:kinenergyl2}
+	\end{equation}
+	Let's now write the actual eigenfunctions $\bra{r_i}\ket{l,m}$\footnote{The two integers $l$ and $m$, are usually identified in literature as \textit{principal quantum number} and \textit{magnetic quantum number}, respectively, due to experimental reasons} of $\opr{L}^2,\opr{L}_z$. Solving for both $\opr{L}_z$ and $\opr{L}^2$, it's easy to see that they are the Spherical Harmonics $Y^m_l(\theta,\phi)$, hence $\bra{r_i}\ket{l,m}=Y^m_l(\theta,\phi)$, and
+	\begin{equation}
+		\begin{aligned}
+			\opr{L}_zY^m_l(\theta,\phi)&=\hbar mY^m_l(\theta,\phi)\\
+			\opr{L}^2Y^m_l(\theta,\phi)&=\hbar^2l(l+1)Y^m_l(\theta,\phi)
+		\end{aligned}
+		\label{eq:orbangmomeigenf}
+	\end{equation}
+	The treatment of the spherical harmonics and its derivation is given in the appendices.\\
+	\section{Spin}
+	So far we managed to define how the algebra of angular momentum works, and how the quantization of orbital angular momentum follows it. A main question arises: due to how orbital angular momentum is defined, it can only have integer eigenvalues, but as we've seen in the general picture, the eigenvalues can also be half-integers, which cannot be explained by orbital angular momentum. This problem arises, where there is this kind of intrinsic angular momentum, which cannot be defined through the quantization of classical objects! This new angular momentum, is called \textit{Spin Angular Momentum} or simply \textit{Spin}, and it's represented through a vector operator $\vecopr{S}$.\\
+	Since it's an angular momentum, it follows every single commutation rule of a generator of rotations, hence it satisfies the following rules
+	\begin{equation}
+		\begin{aligned}
+			\comm{\opr{S}_i}{\opr{S}_j}&=i\hbar\lc{ijk}S_k\\
+			\comm{\opr{S}^2}{\opr{S}_i}&=0\\
+			\opr{S}^2\ket{s,m}&=\hbar^2s(s+1)\ket{s,m}\\
+			\opr{S}_z\ket{s,m}&=\hbar m_s\ket{s,m}
+		\end{aligned}
+		\label{eq:spincomm}
+	\end{equation}
+	Due to the previous statements, we already know that $s$ takes half integer values, but using the algebraic definition of angular momentum, it's obvious that it can also take integer values.\\
+	The simplest case that comes to mind, is the case where $s=1/2$. In this case we have, since $-s\le m\le s$, that
+	\begin{equation}
+		\begin{aligned}
+			\opr{S}_z\ket{\frac{1}{2},\pm\frac{1}{2}}&=\pm\frac{\hbar}{2}\ket{\frac{1}{2},\pm\frac{1}{2}}\\
+			\opr{S}^2\ket{\frac{1}{2},\pm\frac{1}{2}}&=\frac{3\hbar^2}{4}\ket{\frac{1}{2},\pm\frac{1}{2}}
+		\end{aligned}
+		\label{eq:onehalfeigenval}
+	\end{equation}
+	Due to the two different possible values of $m_s$, we can split the ket, in order to have the following result
+	\begin{equation}
+		\begin{aligned}
+			\opr{S}_z\ket{\frac{1}{2},\frac{1}{2}}&=\frac{\hbar}{2}\ket{\frac{1}{2},\frac{1}{2}}\\
+			\opr{S}_z\ket{\frac{1}{2},-\frac{1}{2}}&=-\frac{\hbar}{2}\ket{\frac{1}{2},-\frac{1}{2}}
+		\end{aligned}
+		\label{eq:szplusminus}
+	\end{equation}
+	Immediately, it's easy to define then, two possible states, either spin ``up'' or spin ``down''. This new notation follows the previous rules, although adding some day to day physical intuition that this argument completely lacks:
+	\begin{equation}
+		\begin{aligned}
+			\opr{S}_z\ket{\up}&=\frac{\hbar}{2}\ket{\up}\\
+			\opr{S}_z\ket{\down}&=-\frac{\hbar}{2}\ket{\down}\\
+			\opr{S}^2\ket{\up}&=\opr{S}^2\ket{\down}=\frac{3\hbar^2}{4}\ket{\up}=\frac{3\hbar^2}{4}\ket{\down}
+		\end{aligned}
+		\label{eq:szupdown}
+	\end{equation}
+	The $\opr{S}_z$ is diagonal in this basis, hence we can immediately write it in matrix form as follows
+	\begin{equation}
+		\opr{S}_z\to\frac{\hbar}{2}\begin{pmatrix}
+			1&0\\
+			0&-1
+		\end{pmatrix}
+		\label{eq:sigmazetamatrix}
+	\end{equation}
+	And $\opr{S}^2$, as
+	\begin{equation}
+		\opr{S}^2\to\frac{3\hbar^2}{4}\begin{pmatrix}
+			1&0\\
+			0&1
+		\end{pmatrix}
+		\label{eq:ssqupdown}
+	\end{equation}
+	It jumps immediately to the eye that we're now working on a 2D Hilbert space. This space is spanned by the kets $\ket{\up}$ and $\ket{\down}$, which, due to their nature as spin eigenkets, are called \textit{spinors}.\\
+	Immediately, a question comes to mind: how do the other spin components act on these spinors? Firstly, let's define our spin ladder operators $\ladoprpm{S}$ as usual. Since the only possible values of $m$ are $m=-1/2,1/2$ they'll be represented by the following matrices
+	\begin{equation}
+		\begin{aligned}
+			\ladopru{S}&\to\hbar\begin{pmatrix}
+				0&1\\
+				0&0
+			\end{pmatrix}\\
+			\ladoprd{S}&\to\hbar\begin{pmatrix}
+				0&0\\
+				1&0
+			\end{pmatrix}
+		\end{aligned}
+		\label{eq:spsmmatrix}
+	\end{equation}
+	The $\hbar$ pops out remembering the following rule of angular momentum ladder operators
+	\begin{equation}
+		\ladoprpm{S}\ket{s,m}=\hbar\sqrt{s(s+1)-m(m\pm1)}\ket{s,m\pm1}
+		\label{eq:spinladopr}
+	\end{equation}
+	Now it's easy to answer our first question! We remember how the ladder operators are defined, and we invert them in order to find how we can define $\opr{S}_x$ and $\opr{S}_y$ in terms of these operators, their calculation is quite straightforward, and we get
+	\begin{equation}
+		\begin{aligned}
+			\opr{S}_x&=\frac{1}{2}\left( \ladopru{S}+\ladoprd{S} \right)\\
+			\opr{S}_y&=\frac{1}{2i}\left( \ladopru{S}-\ladoprd{S} \right)
+		\end{aligned}
+		\label{eq:sxsyspsmrep}
+	\end{equation}
+	Their representation is then easy to find
+	\begin{equation}
+		\begin{aligned}
+			\opr{S}_x&\to\frac{\hbar}{2}\begin{pmatrix}
+				0&1\\
+				1&0
+			\end{pmatrix}\\
+			\opr{S}_y&\to\frac{\hbar}{2}\begin{pmatrix}
+				0&-i\\
+				i&0
+			\end{pmatrix}
+		\end{aligned}
+		\label{eq:sxsyrep}
+	\end{equation}
+	Putting it all together, the $\vecopr{S}$ is then represented as follows
+	\begin{equation}
+		\begin{aligned}
+			\opr{S}_x&\to\frac{\hbar}{2}\begin{pmatrix}
+				0&1\\
+				1&0
+			\end{pmatrix}=\frac{\hbar}{2}\opr{\sigma}_x\\
+			\opr{S}_y&\to\frac{\hbar}{2}\begin{pmatrix}
+				0&-i\\
+				i&0
+			\end{pmatrix}=\frac{\hbar}{2}\opr{\sigma}_y\\
+			\opr{S}_z&\to\frac{\hbar}{2}\begin{pmatrix}
+				1&0\\
+				0&-1
+			\end{pmatrix}=\frac{\hbar}{2}\opr{\sigma}_z
+		\end{aligned}
+		\label{eq:paulimatrices}
+	\end{equation}
+	Using index notation, we get that $\opr{S}_i=\frac{\hbar}{2}\opr{\sigma}_i$, where $\opr{\sigma}_i$ is the $i$-th \textit{Pauli matrix} for a spin $1/2$ system.\\
+	These matrices have the following properties, inherited from the properties of Spin
+	\begin{equation}
+		\begin{aligned}
+			\comm{\opr{\sigma}_i}{\opr{\sigma}_j}&=2i\lc{ijk}\opr{\sigma}_k\\
+			\acomm{\opr{\sigma}_i}{\opr{\sigma}_j}&=2\kd{ij}\1
+		\end{aligned}
+		\label{eq:pauliprop}
+	\end{equation}
+	From these, it's easy to derive some additional properties
+	\begin{equation*}
+		\begin{aligned}
+			\opr{\sigma}_i\opr{\sigma}_j&=\kd{ij}\1+\lc{ijk}\opr{\sigma}_k\\
+			A_{ij}&=c_0\kd{ij}+c_k\opr{\sigma}^k\\
+			\opr{\sigma}^2&=\kd{ij}\\
+			\opr{\sigma}_i\opr{\sigma}^i&=3\kd{ij}
+		\end{aligned}
+	\end{equation*}
+	\section{Addition of Angular Momenta}
+	In order to add up two different angular momenta, we need, first of all, to understand how the underlying maths works.\\
+	The two operators act on two different Hilbert spaces, and the \textit{total} angular momentum must act on both. This constraints bring us to the definition of the total angular momentum Hilbert space, which \emph{must} be given by the tensor product of the two, as follows
+	\begin{equation}
+		\hilbert=\hilbert_1\otimes\hilbert_2
+		\label{eq:totalangmomspace}
+	\end{equation}
+	The operator $\vecopr{J}$ will then be defined as
+	\begin{equation}
+		\vecopr{J}=\vecopr{J}_1\otimes\1+\1\otimes\vecopr{J}_2
+		\label{eq:jdef}
+	\end{equation}
+	From this definition, the two following commutation relations are then obvious
+	\begin{equation}
+		\begin{aligned}
+			\comm{\opr{J}_2^2}{\opr{J}^2}&=0\\
+			\comm{\opr{J}^2}{\opr{J}_1^2}&=0
+		\end{aligned}
+		\label{eq:commreljsjl}
+	\end{equation}
+	Although, it follows that $\opr{J}^2$ and $\opr{J}_1^z,\opr{J}_2^z$ do not commute.
+	\begin{equation}
+		\comm{\opr{J}_2^z}{\opr{J}^2}=\comm{\opr{J}^2}{\opr{J}_1^z}=2i\hbar\left( \opr{J}_1^x\opr{J}_2^y-\opr{J}_1^y\opr{J}_2^x \right)\ne0
+		\label{eq:commrelszj2lzj2}
+	\end{equation}
+	Due to the last relation a common basis of eigenvalues between $\opr{J}^2$ and $\opr{J}_1^z,\opr{J}_2^z$ cannot be formed, but two choices are possible:\\
+	\begin{enumerate}
+	\item Since $\opr{J}_1^2$ commutes with $\opr{J}_2^2,\opr{J}_1^z,\opr{J}_2^z$ and each of them commutes, we can utilize a basis $B:=\ket{j_1,m_1}\otimes\ket{j_2,m_2}$
+	\item Since $\opr{J}^2$ commutes only with $\opr{J}_1^2,\opr{J}_2^2,\opr{J}_z$, we can also define a second basis $C:=\ket{j_1,j_2}\otimes\ket{j,m}$
+	\end{enumerate}
+	We will then have the following eigenvalues (where we avoid writing the tensor product between states in order to ease the notation)
+	\begin{equation}
+		\begin{aligned}
+			\opr{J}^2\ket{j_1,j_2,j,m}&=\hbar^2j(j+1)\ket{j_1,j_2,j,m}\\
+			\opr{J}_z\ket{j_1,j_2,j,m}&=\hbar m\ket{j_1,j_2,j,m}\\
+			\opr{J}_1^2\ket{j_1,j_2,j,m}&=\hbar^2j_1(j_1+1)\ket{j_1,j_2,j,m}\\
+			\opr{J}_2^2\ket{l.s.j.m}&=\hbar^2j_2(j_2+1)\ket{j_1,j_2,j.m}\\
+			\opr{J}_2^z\ket{j_1,j_2,m_1,m_2}&=\hbar m_2\ket{j_1,j_2,m_1,m_2}\\
+			\opr{J}_1^z\ket{j_1,j_2,m_1,m_2}&=\hbar m_1\ket{j_1,j_2,m_1,m_2}
+		\end{aligned}
+		\label{eq:totalketaction}
+	\end{equation}
+	We can obviously define an unitary transformation in $\hilbert$ that lets us switch between the two basi
+	\begin{equation}
+		\ket{j_1,j_2,j,m}=\Ut\ket{j_1,j_2,m_1,m_2}
+		\label{eq:unitarytransfclebsh}
+	\end{equation}
+	The shape of $\Ut$ will obviously be that of a projection, and hence we will have the following result
+	\begin{equation}
+		\ket{j_1,j_2,j,m}=\sum_{m_1,m_2}\ket{j_1,j_2,m_1,m_2}\bra{j_1,j_2,m_1,m_2}\ket{j_1,j_2,j,m}
+		\label{eq:realshape}
+	\end{equation}
+	Where here we utilized the completeness relation
+	\begin{equation*}
+		\sum_{m_1,m_2}\ket{j_1,j_2,m_1,m_2}\bra{j_1,j_2,m_1,m_2}=\1
+	\end{equation*}
+	Looking at the braket on the right of \eqref{eq:realshape}, we immediately see the property of these coefficients, called \textit{Clebsch-Gordan coefficients}. These coefficients vanish, unless we have that $m=m_1+m_2$, but how?
+	\begin{proof}
+	We know that the following assertation is true
+	\begin{equation*}
+		\left( \opr{J}_z-\opr{J}_1^z-\opr{J}_2^z \right)\ket{j_1,j_2,j,m}=0
+	\end{equation*}
+	We simply multiply the relation with $\bra{j_1,j_2,m_1,m_2}$ and we get our proof
+	\begin{equation*}
+		\left( m-m_1-m_2 \right)\bra{j_1,j_2,m_1,m_2}\ket{j_1,j_2,j,m}
+	\end{equation*}
+	Where the last braket are our Clebsch-Gordan coefficients
+	\end{proof}
+	Similarly, we have that the Clebsch-Gordan coefficients are nonzero also if only the $\opr{J}^2$ eigenvalue $j$ holds the following values
+	\begin{equation}
+		\abs{j_1-j_2}\le j\le j_1+j_2
+		\label{eq:jpermittedval}
+	\end{equation}
+	One might now ask how many states we can count, after adding the two angular momentums.\\
+	We can already count $2j_1+1$ possible values of $m_1$ and $2j_2+1$ values of $m_2$. Summing it all up we get that there will be $N$ states, counted as follows
+	\begin{equation}
+		\begin{aligned}
+			N=\sum_{j=j_1-j_2}^{j_1+j_2}(2j+1)&=\frac{1}{2}\left( 2(j_1-j_2)+1+2(j_1+j_2)+1 \right)(2j_2+1)\\
+			&=\left( 2j_1+1 \right)\left( 2j_2+1 \right)
+		\end{aligned}
+		\label{eq:totangmomdeg}
+	\end{equation}
+	The Clebsch-Gordan coefficients are taken to be real by covention, hence the inverse coefficients are equal to the coefficient themselves, since it's a unitary transformation.\\
+	Another way that these coefficients can be written, is with the \textit{Wigner 3-j symbols}, through this relation
+	\begin{equation}
+		\bra{j_1,j_2,m_1,m_2}\ket{j_1,j_2,j,m}=(-1)^{j_1-j_2+m}\sqrt{2j+1}\begin{pmatrix}
+			j_1&j_2&j\\
+			m_1&m_2&-m
+		\end{pmatrix}
+		\label{eq:wigner3jcoeff}
+	\end{equation}
+	The values that the ``matrix'' can take are tabulated, and therefore, even the Clebsch-Gordan coefficients.
+\end{document}

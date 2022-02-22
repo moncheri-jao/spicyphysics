@@ -1,0 +1,76 @@
+This is LuaTeX, Version 1.10.0 (TeX Live 2019/Arch Linux)  (format=lualatex 2019.8.23)  30 SEP 2019 17:38
+ restricted system commands enabled.
+**title.tex
+(./title.tex
+LaTeX2e <2018-12-01>
+Lua module: luaotfload-main 2019-02-14 2.96 luaotfload entry point
+Lua module: luaotfload-init 2019-02-14 2.96 luaotfload submodule / initializatio
+n
+Lua module: lualibs 2019-02-14 2.64 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2019-02-14 2.64 ConTeXt Lua libraries -- extended c
+ollection.
+Lua module: luaotfload-log 2019-02-14 2.96 luaotfload submodule / logging
+Lua module: luaotfload-parsers 2019-02-14 2.96 luaotfload submodule / filelist
+Lua module: luaotfload-configuration 2019-02-14 2.96 luaotfload submodule / conf
+ig file reader
+luaotfload | conf : Root cache directory is /home/birrabenzina/.texlive/texmf-va
+r/luatex-cache/generic/names.
+luaotfload | init : Loading fontloader “fontloader-2019-02-14.lua” from kpse
+-resolved path “/usr/share/texmf-dist/tex/luatex/luaotfload/fontloader-2019-02
+-14.lua”.
+Lua-only attribute luaotfload@state = 1
+Lua-only attribute luaotfload@noligature = 2
+Lua-only attribute luaotfload@syllabe = 3
+luaotfload | init : Context OpenType loader version “3.107”
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Lua module: luaotfload-loaders 2019-02-14 2.96 luaotfload submodule / callback h
+andling
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua module: luaotfload-database 2019-02-14 2.96 luaotfload submodule / database
+Lua module: luaotfload-colors 2019-02-14 2.96 luaotfload submodule / color
+Lua-only attribute luaotfload_color_attribute = 4
+Lua module: luaotfload-resolvers 2019-02-14 2.96 luaotfload submodule / resolver
+s
+luaotfload | conf : Root cache directory is /home/birrabenzina/.texlive/texmf-va
+r/luatex-cache/generic/names.
+Lua module: luaotfload-features 2019-02-14 2.96 luaotfload submodule / features
+Lua module: luaotfload-letterspace 2019-02-14 2.96 luaotfload submodule / color
+Lua module: luaotfload-auxiliary 2019-02-14 2.96 luaotfload submodule / auxiliar
+y functions
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
+.
+luaotfload | main : initialization completed in 0.063 seconds
+
+! LaTeX Error: File `subfile.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+   
+l.6 \begin
+        {document}
+End of file on the terminal!
+
+
+
+Here is how much of LuaTeX's memory you used:
+ 13 strings out of 494300
+ 100000,89155 words of node,token memory allocated 267 words of node memory still in use:
+   1 dir, 3 kern, 1 glyph, 1 attribute, 34 glue_spec, 1 attribute_list nodes
+   avail lists: 2:10,3:1,4:1
+ 4361 multiletter control sequences out of 65536+600000
+ 14 fonts using 591799 bytes
+ 10i,0n,7p,50b,15s stack positions out of 5000i,500n,10000p,200000b,100000s
+!  ==> Fatal error occurred, no output PDF file produced!

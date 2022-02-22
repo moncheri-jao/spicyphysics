@@ -1,0 +1,177 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{I\hspace {1em}Electrostatics}{5}{part.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}The Electric Field}{7}{chapter.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Electric Forces and the Electric Field}{7}{section.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.1}Divergence of the Electrostatic Field}{8}{subsection.1.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.2}The Scalar Potential}{10}{subsection.1.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.3}Maxwell Equations for Electrostatics and Boundary Conditions}{12}{subsection.1.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.4}Energy of the Electrostatic Field}{13}{subsection.1.1.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Conductors}{14}{section.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.1}Coulomb Theorem}{15}{subsection.1.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.2}Induced Charges}{16}{subsection.1.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.3}Capacity}{18}{subsection.1.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.4}Capacitors}{19}{subsection.1.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.5}Forces on a Conductor}{21}{subsection.1.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}The Electrostatic Potential}{23}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Poisson and Laplace Equations}{23}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Green Identities}{23}{subsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}Boundary Conditions and Uniqueness of the Solution}{24}{subsection.2.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.3}Method of Images}{25}{subsection.2.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Separation of Variables}{26}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Laplace Equation in Spherical Coordinates}{28}{subsection.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Multipole Expansion of the Potential}{29}{section.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}Electric Dipoles}{29}{subsection.2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Electricity in Matter}{33}{chapter.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Polarization}{33}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}The Polarization Field}{34}{subsection.3.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Perfect Dielectrics}{36}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Local Electric Field}{36}{subsection.3.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Susceptibility and the Clausius-Mossotti relation}{38}{subsection.3.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.2.1}Gases and Vapors}{38}{subsubsection.3.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.2.2}Liquids and Amorphous Substances}{39}{subsubsection.3.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.2.3}Anisotropic Solids, Electrets and Piezoelectricity}{39}{subsubsection.3.2.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}The Electric Displacement Field}{40}{subsection.3.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Maxwell Equations for Electrostatics in Linear Dielectrics}{41}{section.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}Boundary Conditions}{43}{subsection.3.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Electrostatic Energy with Dielectrics}{45}{section.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{II\hspace {1em}Magnetostatics}{47}{part.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}The Magnetic Field}{49}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Electric Currents}{49}{section.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.1}Charge Conservation}{51}{subsection.4.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Lorentz Force and Magnetic Fields}{51}{section.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}Lorentz Force Law}{51}{subsection.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.2}Motion of Charges in Magnetic Fields}{52}{subsection.4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.3}Mechanical Actions on Circuits}{54}{subsection.4.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Maxwell's Equations for Magnetostatics}{55}{section.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Biot-Savart's Law}{55}{subsection.4.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Divergence and Curl of B}{56}{subsection.4.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.3}The Parallel Between Magnetostatics and Electrostatics}{58}{subsection.4.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.3.3.1}Magnetic Potentials}{58}{subsubsection.4.3.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.4}Boundary Conditions for the Magnetic Field}{59}{subsection.4.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Magnetic Dipoles}{60}{section.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.1}Interaction Between Currents}{60}{subsection.4.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Magnetism in Matter}{63}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Magnetization}{63}{section.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.1}The Magnetization Field}{64}{subsection.5.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Maxwell Equations for Magnetostatics in Magnetic Media}{65}{section.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.1}Boundary Conditions}{66}{subsection.5.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}Ferromagnets and Hysteresis Cycles}{67}{section.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.4}Local Magnetic Field}{69}{section.5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4.1}Larmor Precession}{69}{subsection.5.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.4.1.1}Microscopic Interpretation of Diamagnets}{70}{subsubsection.5.4.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4.2}Langevin Function}{70}{subsection.5.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.4.2.1}Paramagnets}{71}{subsubsection.5.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.4.2.2}Ferromagnets}{71}{subsubsection.5.4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{III\hspace {1em}Electrodynamics}{73}{part.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Maxwell's Equations}{75}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Faraday's Law}{75}{section.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.1}Self-Induction}{77}{subsection.6.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.2}Mutual-Induction}{77}{subsection.6.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.2}Magnetic Energy}{78}{section.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.3}Maxwell's Equations}{78}{section.6.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Potentials and Fields}{79}{chapter.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}Relativistic Electrodynamics}{81}{chapter.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Electric Circuits}{83}{appendix.A}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.1}Electronics}{83}{section.A.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.2}DC Current}{83}{section.A.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.3}AC Current}{83}{section.A.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Magnetic Circuits}{85}{appendix.B}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Special Relativity}{87}{appendix.C}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.1}Principle of Relativity}{87}{section.C.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.2}Spacetime}{88}{section.C.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {C.2.1}Spacetime Diagrams}{90}{subsection.C.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.3}Proper Time}{90}{section.C.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.4}Formalization of the Principle of Relativity}{91}{section.C.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {C.4.1}Length Contraction and Time Dilation}{92}{subsection.C.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {C.4.2}Velocity Transformations}{93}{subsection.C.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.5}4-Vectors}{94}{section.C.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {C.5.1}4-Velocity and 4-Acceleration}{95}{subsection.C.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.6}Exercises}{96}{section.C.6}%

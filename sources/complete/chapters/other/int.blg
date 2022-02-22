@@ -1,0 +1,9 @@
+[1] Config.pm:304> INFO - This is Biber 2.12
+[1] Config.pm:307> INFO - Logfile is 'int.blg'
+[29] biber:315> INFO - === ven feb 14, 2020, 13:30:17
+[52] Biber.pm:371> INFO - Reading 'int.bcf'
+[113] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[120] Utils.pm:193> WARN - The file 'int.bcf' does not contain any citations!
+[127] bbl.pm:636> INFO - Writing 'int.bbl' with encoding 'UTF-8'
+[127] bbl.pm:739> INFO - Output to int.bbl
+[127] Biber.pm:110> INFO - WARNINGS: 1

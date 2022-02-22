@@ -1,0 +1,222 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	\section{Selection Rules}
+	Having discussed in detail many-electron atoms, we can go forward and discuss the interaction between single atoms and external electromagnetic field.\\
+	We will consider only single photon interaction. The photon field Hamiltonian can be written as follows
+	\begin{equation}
+		\opr{\ham}_{\gamma}=-\sum_{i=1}^N\frac{i\hbar e}{m}\opr{A}^i(r_i,t)\partial_i=\frac{e}{m}\opr{A}^i(r_i,t)\opr{p}_i
+		\label{eq:photonhamiltonian}
+	\end{equation}
+	We will have $N=Z$ for neutral atoms and $N\ne Z$ for ions.\\
+	Jumping all the calculations (they're already given for single electron atoms), we get that the transition probability depends on a matrix element $M_{ba}$, where
+	\begin{equation}
+		M_{ba}=-\frac{m\omega_{ba}}{\hbar}\epsilon_j\cdot r^j_{ba}
+		\label{eq:transitionmatrixmanyelecem}
+	\end{equation}
+	The generic state $\ket{a}$ is an eigenstate of the total angular momentum and parity, hence, indicating with $p$ the parity eigenstate, we can write $M_{ba}$ in a different way, as follows
+	\begin{equation}
+		M_{ba}=-\frac{Nm\omega_{ba}}{\hbar}\epsilon^j\bra{p'J'M_J'}r_j\ket{pJM_J}
+		\label{eq:mbawithnewbasis}
+	\end{equation}
+	The $N$ comes from the fact that the electrons are indistinguishable. Inserting into $M_{ba}$ the dipole moment operator $\vecopr{D}=-\sum_je\vec{r}_j$ we have
+	\begin{equation}
+		M_{ba}=\frac{m\omega_{ba}}{\hbar e}\epsilon^j\bra{p'J'M_J'}\opr{D}_j\ket{pJM_J}
+		\label{eq:dipolemomentinsideM}
+	\end{equation}
+	From which, the probability of spontaneous emission of a photon with polarization $\epsilon_i$ can be calculated, yielding the following result
+	\begin{equation}
+		W^s_{ab}\diff{\Omega}=\frac{\omega_{ba}}{8\pi^2\epsilon_0\hbar c^3}\abs{\epsilon^j\bra{p'J'M_J'}\opr{D}_j\ket{pJM_J}}^2\diff{\Omega}
+		\label{eq:seprobmanyelec}
+	\end{equation}
+	We can now define the spherical vector components of the polarization versor $\epsilon_j$ and of the electric dipole operator. Using $q$ as an index for the three possible components ($0,\pm1$), we have for the electric dipole operator
+	\begin{equation}
+		\begin{aligned}
+			\opr{D}_1&=-\frac{1}{\sqrt{2}}\left( D_x+i\opr{D}_y \right)=\norm{\opr{D}_i}\sqrt{\frac{4\pi}{3}}Y^1_1(\alpha,\beta)\\
+			\opr{D}_0&=\opr{D}_z=\norm{\opr{D}_i}\sqrt{\frac{4\pi}{3}}Y^0_1(\alpha,\beta)\\
+			\opr{D}_{-1}&=\frac{1}{\sqrt{2}}\left( \opr{D}_x-i\opr{D}_y \right)=\norm{\opr{D}_i}\sqrt{\frac{4\pi}{3}}Y^{-1}_1(\alpha,\beta)
+		\end{aligned}
+		\label{eq:doprsphcomp}
+	\end{equation}
+	And for $\epsilon_i$
+	\begin{equation}
+		\begin{aligned}
+			\epsilon_1&=-\frac{1}{\sqrt{2}}\left( \epsilon_x+i\epsilon_y \right)\\
+			\epsilon_0&= \epsilon_z\\
+			\epsilon_{-1}&= \frac{1}{\sqrt{2}}\left( \epsilon_x-i\epsilon_y \right)
+		\end{aligned}
+		\label{eq:polversphcomp}
+	\end{equation}
+	Using the Wigner-Eckart theorem we know that the matrix elements of a vector operator with respect to the eigenstate of the total angular momentum (squared and through the z axis) depend only on $M_J,M_J'$ and $q$ through the Clebsch-Gordan coefficients $\bra{JM_Jq}\ket{JM_J}$, henceforth
+	\begin{equation}
+		\bra{p'J'M_J'}\opr{D}_q\ket{pJM_J}=\frac{1}{\sqrt{2J'+1}}\bra{JM_Jq}\ket{J'M_J'}\bra{p'J'}\norm{\opr{D}_i}\ket{pJ}
+		\label{eq:selecrulej}
+	\end{equation}
+	The Clebsch-Gordan coefficient vanishes, unless
+	\begin{equation}
+		\begin{aligned}
+			M_J+q&=M_J'\\
+			\abs{J-1}&\le J'\le J+1\\
+			J+J'&\ge1
+		\end{aligned}
+		\label{eq:nonzerocgcoeff}
+	\end{equation}
+	Thus, obtaining the selection rule for electric dipole transition
+	\begin{equation}
+		\begin{aligned}
+			&\boxed{\boxed{\Delta M_J=0,\pm1}}\\
+			&\boxed{\boxed{\Delta J=0,\pm1}}
+		\end{aligned}
+		\label{eq:selectionrulemj}
+	\end{equation}
+	Be cautious, transitions $J=0\leftrightarrow J'=0$ are not permitted. In addition, due to \textit{Laporte's rule}, the state from which the transition happens, \emph{must have the opposite parity of the initial state}
+	\subsection{Spin-Orbit Coupling}
+	In the case of spin-orbit coupling (hence weak spin-orbit interaction) we can approximate the system in a way such that $\opr{L},\opr{S}$ are conserved. We then obtain
+	\begin{equation}
+		\bra{J'L'S'M_J'}\opr{D}_i\ket{JLSM_J}=\delta_{SS'}\bra{J'L'S'M_J'}\opr{D}_i\ket{JLSM_J}
+		\label{eq:matrixelementDmanyelec}
+	\end{equation}
+	Which give the following selection rules
+	\begin{equation}
+		\begin{aligned}
+			&\boxed{\boxed{\Delta L=0,\pm1}}\ (0\leftrightarrow0\text{ not allowed})\\
+			&\boxed{\boxed{\Delta S=0}}
+		\end{aligned}
+		\label{eq:LSselectionrules}
+	\end{equation}
+	\section{Alkali Atoms}
+	As we have seen for single-electron atoms, Alkali metals can be treated as such, with a single valence electron in a $ns^1$ orbital, shielded from the nucleus by a ``core'', which is composed by a closed subshell system.\\
+	Analyzing the valence electron, it's easy to see that it \emph{always} has $l=0$ at its lowest level, and it's subject to a potential which is Coulombian for large $r$. Due to this potential, there is no degeneracy in $l$ for a given $n$, this degeneracy is visible only for highly excited levels, for which the atom's wavefunction is more and more Hydrogenic. The valence electron is weakly bound to the atom, and it usually needs around $5$ eV to transition into the continuum.\\
+	The ground state of Alkalis, since the core is formed by a system of closed subshells and has only a valence electron, will be $(ns^1) ^2S_{1/2}$ (The core has term $^1S_0$ and you add a valence electron to it, where $l=0,s=1/2$). Excited states will be of the following form $(n_1s^1)^2S_{1/2},\ (n_2p^1)\term[1/2,3/2]{P}{2},\ (n_3d^1)\term[3/2,5/2]{D}{2}$ and so on.\\
+	The spectra of Alkali atoms can be determined through an approximation of the energies of single electron atoms. In atomic units, we can then write
+	\begin{equation}
+		E_{nl}=-\frac{1}{2}\frac{1}{(n-\mu_{nl})^2}
+		\label{eq:quantumdef}
+	\end{equation}
+	Where $\mu_{nl}$ is called \textit{quantum defect}. This defect can be approximated to a funxtion of $l$, as $\mu_{nl}\simeq\delta_l$, and with this we can write a ``special'' quantum number $n^{\star}=n-\delta_l$.\\
+	This is especially useful when considering transitions. In fact, we can write that the absorption lines, in this approximation, will fall in these frequencies, at least for $p\to s$ transitions
+	\begin{equation}
+		\nu_{nl}=R\left( \left( \frac{1}{n^{\star}_{s}} \right)^2-\left( \frac{1}{n^{\star}_{p}} \right)^2 \right)
+		\label{eq:ptostransitionsapprox}
+	\end{equation}
+	In the case of emission lines, we can write, with $\tilde{Z}=Z-N+1$, that the energy of the sequence of emission lines will have the following energies (in $\mathrm{cm^{-1}}$)
+	\begin{equation}
+		E_{nl}=-\frac{1}{2}\frac{\tilde{Z}^2}{(n^{\star})^2}
+		\label{eq:spectrumemissionalkali}
+	\end{equation}
+	From this, it's pretty easy to generalize this to the case of fine structure. The shift induced from this is given by
+	\begin{equation}
+		\begin{aligned}
+			\Delta E&=\frac{1}{2}\kappa_{nl}\left( j(j+1)-l(l+1)-\frac{3}{2} \right)\\
+			\kappa_{nl}&=\frac{\hbar^2}{2m^2c^2}\expval{\frac{1}{r}\pdv{V}{r}}
+		\end{aligned}
+		\label{eq:finestructureshiftalkali}
+	\end{equation}
+	The value of $\kappa_{nl}$ can be determined with $V(r)$, using Hartree-Fock's approximation.
+	\section{Alkaline Earths}
+	Using the same reasoning of the Alkali atoms, and using the recursion properties of the periodic table, we can study Alkaline Earths as a special kind of two electron atoms.\\
+	In the case of small spin dependent interaction, we can take the total spin $S$ as a good quantum number. As with Helium, all levels can be divided into singlet levels $S=0$ and triplet levels $S=1$. Since the electric dipole operator can't change spin, we have that the selection rule $\Delta S=0$ must hold. For atoms with small nuclear charge $Ze$, spin-orbit and spin-spin coupling behave like small perturbations on the triplet states (where $\vecopr{S}\ne0$) but aren't big enough in order to mix these states, hence $L,S$ remain good quantum numbers, since both are conserved to a very good approximation.\\
+	In general, for triplet and singlet states, we can have these two following terms
+	\begin{equation}
+		\begin{dcases}
+			\term[L,L\pm1]{L}{2S+1}&L\ne0\\
+			\term[1]{S}{1}
+		\end{dcases}
+		\label{eq:possibletermsalkaliearths}
+	\end{equation}
+	\section{Multiplet Structure}
+	Thanks to Landé's interval rule, we can immediately determine that, in general
+	\begin{equation*}
+		\Delta E_{J,J+1}=AJ
+	\end{equation*}
+	And in spin-orbit coupling regimes, it holds as
+	\begin{equation*}
+		\Delta E_{J,J+1}=AS(2L+1)=AL(2S+1)
+	\end{equation*}
+	Given these two equations, it's now possible to determine level intensities for multiplet transitions. This is especially useful in L-S regimes, since, the number of atoms in each level is proportional to the statistical weight of the level, we get that, if we indicate with $I_i$ the $i-$th transition intensity, we have
+	\begin{equation}
+		\sum_{i=1}^nI_i\propto(2J+1)
+		\label{eq:intensitysumrule}
+	\end{equation}
+	A complete application of this sum rule can be done with $\term[1]{S}{3}\to\ \term[012]{P}{3}$ (note that they're permitted transitions). We get therefore the following system
+	\begin{equation}
+		\left\{
+			\begin{aligned}
+				I_1&+I_2+I_3=3I_S\\
+				I_1&=I_P\\
+				I_2&=3I_P\\
+				I_3&=5I_P
+			\end{aligned}
+		\right.
+		\label{eq:simplesystem}
+	\end{equation}
+	With $I_P$ the proportionality coefficient for $P\to S$ transitions and $I_S$ analogously for $S\to P$ transitions.\\
+	This simple system is basically already solved, and it immediately gives an intensity ratio of $5:3:1$ between the three transitions.\\
+	\section{Magnetic Field Interaction, Zeeman Effect}
+	Let's now consider the perturbation applied on the energy levels of multielectron atom when applying a magnetic field. Indicating our perturbing Hamiltonian with $\opr{\ham}_B$ we have
+	\begin{equation}
+		\begin{aligned}
+			\opr{\ham}&=\opr{\ham}_e+\opr{\ham}_{LS}+\opr{\ham}_B\\
+			\opr{\ham}_{LS}&=\pdv{V}{r}\vecopr{L}\cdot\vecopr{S}\\
+			\opr{\ham}_{B}&=-\vecopr{\mu}\cdot\vecopr{B}=\mu_Bg\vecopr{J}\cdot\vecopr{B}=-\mu_B\vecopr{B}\left( \vecopr{L}+2\vecopr{S} \right)\\
+			\mu_B&=\frac{e\hbar}{2m_e}
+		\end{aligned}
+		\label{eq:totalzeemanhammultielec}
+	\end{equation}
+	Where $\opr{\ham}_{LS}$ is our spin-orbit coupling Hamiltonian. We might immediately define two cases.
+	\begin{enumerate}
+	\item $\abs{\opr{\ham}_B}<<\abs{\opr{\ham}_{LS}}$, i.e. the magnetic field is much weaker than the LS coupling, also known as \textit{Anomalous Zeeman Effect}
+	\item $\abs{\opr{\ham}_B}>>\abs{\opr{\ham}_{LS}}$, i.e. the magnetic field is much stronger than the LS coupling, also known as \textit{Paschen-Back Effect}
+	\end{enumerate}
+	\subsection{Paschen-Back Effect, Strong Field}
+	In this case we have that the magnetic field is much stronger than the LS-coupling, henceforth we can say easily that in this case the coupling is broken, i.e. the $\opr{\ham}_{LS}$ is considered as perturbation, and therefore we're left with this Hamiltonian
+	\begin{equation}
+		\opr{\ham}=\opr{\ham}_e+\opr{\ham}_B=\opr{\ham}_e+\frac{\mu_B}{\hbar}B_z(\opr{L}_z+2\opr{S}_z)+A\opr{L}_z\opr{S}_z
+		\label{eq:paschenbackmultielec}
+	\end{equation}
+	Where we chose for easier calculation our $z$ axis as the magnetic field direction. Since, in this case, both Hamiltonians have the same eigenvectors ($\ket{nlsm_lm_s}$, we have that
+	\begin{equation}
+		\begin{aligned}
+			\bra{lsm_lm_s}\opr{\ham}\ket{lsm_lm_s}&=-E_n+\frac{\mu_B}{\hbar}B_z\bra{lsm_lm_s}(\opr{L}_z+2\opr{S}_z)\ket{lsm_lm_s}+\\
+			&+\bra{lsm_lm_s}A\opr{L}_z\opr{S}_z\ket{lsm_lm_s}=\\
+			&=-E_n+\mu_BB_z\left( M_L+2M_S \right)+\hbar AM_LM_S
+		\end{aligned}
+		\label{eq:shiftpaschenback}
+	\end{equation}
+	Where the Paschen-Back shift is $\Delta_{PB}=\mu_BB_z(M_L+2M_S)+\hbar AM_LM_S$.\\
+	\subsection{Anomalous Zeeman Effect, Weak Field}
+	In this case the magnetic field is too weak in order to break the spin orbit coupling, and our Hamiltonian hasn't got $\ket{nlsm_lm_s}$ as eigenvectors, but rather $\ket{nlsjm_j}$. Hence we have that energy perturbation $\opr{\ham}_B$ is
+	\begin{equation*}
+		\Delta_{AZ}=\bra{nlsjm_j}\frac{\mu_B}{\hbar}\vecopr{J}\cdot\vecopr{B}\ket{nlsjm_j}
+	\end{equation*}
+	Now, writing $\opr{J}_z-\opr{S}_z=\opr{L}_z$ we have that our calculation becomes the following
+	\begin{equation*}
+		\Delta_{AZ}=\mu_BM_JB_z+\frac{\mu_B}{\hbar}B_z\bra{nlsjm_j}S_z\ket{nlsjm_j}
+	\end{equation*}
+	Since the eigenkets are not eigenkets of $\opr{S}_z$, we use the Wigner-Eckart theorem (see appendix) in order to rewrite $\opr{S}_z$ in a easier way to manipulate it
+	\begin{equation}
+		\hbar^2J(J+1)\bra{nlsjm}\opr{S}_z\ket{nlsjm}=\hbar M_J\bra{nlsjm}\vecopr{S}\cdot\vecopr{J}\ket{nlsjm}
+		\label{eq:wignereckart}
+	\end{equation}
+	Using the definition of $\vecopr{J}$ we get
+	\begin{equation*}
+		\vecopr{J}\cdot\vecopr{S}=\frac{1}{2}\left( \opr{J}^2+\opr{S}^2-\opr{L}^2 \right)
+	\end{equation*}
+	These last operators are diagonal in our basis, hence we get, finally
+	\begin{equation*}
+		\bra{nlsjm}S_z\ket{nlsmj}=\hbar M_j\left( \frac{J(J+1)+S(S+1)-L(L+1)}{2J(J+1)} \right)
+	\end{equation*}
+	And, therefore
+	\begin{equation}
+		\Delta_{AZ}=\mu_BM_JB_z\left( 1+\frac{J(J+1)+S(S+1)-L(L+1)}{2J(J+1)} \right)=\mu_Bg_jM_JB_z
+		\label{eq:anomalouszeemanshift1}
+	\end{equation}
+	Where $g_j$ is the so called \textit{Landé g factor}.
+	As a recapitulation, we get that the Zeeman shift is the following for strong fields (Paschen-Back) and weak fields (Anomalous Zeeman)
+	\begin{equation}
+		\begin{aligned}
+			\Delta E_{PB}&=-E_n+\mu_BB_z\left( M_L+2M_S \right)+\hbar AM_LM_S\\
+			\Delta E_{AZ}&=-E_{nj}+\mu_Bg_jM_JB_z
+		\end{aligned}
+		\label{eq:zeemaneffecttot}
+	\end{equation}
+\end{document}

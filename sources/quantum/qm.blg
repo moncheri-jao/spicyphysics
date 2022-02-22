@@ -1,0 +1,17 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[1] Config.pm:315> INFO - Logfile is 'qm.blg'
+[87] biber:330> INFO - === gio mar  4, 2021, 11:03:14
+[106] Biber.pm:415> INFO - Reading 'qm.bcf'
+[190] Biber.pm:952> INFO - Found 15 citekeys in bib section 0
+[207] Biber.pm:4334> INFO - Processing section 0
+[220] Biber.pm:4523> INFO - Looking for bibtex format file '~/Dropbox/appunti/bibliografia/bib.bib' for section 0
+[351] bibtex.pm:1682> INFO - LaTeX decoding ...
+[390] bibtex.pm:1494> INFO - Found BibTeX data source '/home/birrabenzina/Dropbox/appunti/bibliografia/bib.bib'
+[513] Utils.pm:384> WARN - BibTeX subsystem: /tmp/biber_tmp_fd2m/283e1cb250985c2debc501124f55eeff_17143.utf8, line 267, warning: 80 characters of junk seen at toplevel
+[543] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[543] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[543] Biber.pm:4162> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[543] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
+[580] bbl.pm:651> INFO - Writing 'qm.bbl' with encoding 'UTF-8'
+[595] bbl.pm:754> INFO - Output to qm.bbl
+[595] Biber.pm:128> INFO - WARNINGS: 1

@@ -1,0 +1,9 @@
+[1] Config.pm:312> INFO - This is Biber 2.15
+[1] Config.pm:315> INFO - Logfile is '3-quantum1d.blg'
+[271] biber:330> INFO - === lun dic  7, 2020, 22:18:14
+[311] Biber.pm:415> INFO - Reading '3-quantum1d.bcf'
+[560] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[578] Utils.pm:384> WARN - The file '3-quantum1d.bcf' does not contain any citations!
+[600] bbl.pm:651> INFO - Writing '3-quantum1d.bbl' with encoding 'UTF-8'
+[600] bbl.pm:754> INFO - Output to 3-quantum1d.bbl
+[601] Biber.pm:128> INFO - WARNINGS: 1

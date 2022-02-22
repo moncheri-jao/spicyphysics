@@ -1,0 +1,55 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	We know already that the wavefunction for a Hydrogen atom (non-normalized) is
+	\begin{equation}
+		\psi_{nlm}(x_i)=R_{nl}(r)Y^m_l(\theta,\phi)
+		\label{eq:hydrogenwavefunctionappendix}
+	\end{equation}
+	Setting $a_0=\frac{4\hbar^2\pi\epsilon_0}{me^2}$ as our Bohr radius, we get that $R_{nl}$ for $1s,2s,2p$ states are
+	\begin{equation}
+		\begin{aligned}
+			R_{10}&=2\left( \frac{a_0}{Z} \right)^{-\frac{3}{2}}e^{-\frac{Zr}{a_0}}\\
+			R_{20}&=2\left( \frac{2a_0}{Z} \right)^{-\frac{3}{2}}\left( 1-\frac{Zr}{2a_0} \right)e^{-\frac{Zr}{2a_0}}\\
+			R_{21}&=\sqrt{\frac{1}{3}}\frac{Zr}{a_0}\left( \frac{2a_0}{Z} \right)^{-\frac{3}{2}}e^{-\frac{Zr}{2a_0}}
+		\end{aligned}
+		\label{eq:rnlappendix}
+	\end{equation}
+	Hence, polynomials times an exponential with $r/a_0$ as a variable. The integral we have to calculate will then be
+	\begin{equation}
+		\expval{r^d}_{nlm}=\int_{0}^{\infty}r^{d+2}\abs{R_{nl}(r)}^2\diff{r}
+		\label{eq:completeintegralrdapp}
+	\end{equation}
+	Which are of the kind
+	\begin{equation}
+		I(k,p)=\int_{0}^{\infty}r^ke^{-\frac{Zpr}{a_0}}\diff{r}
+		\label{eq:integralstocalculate}
+	\end{equation}
+	Where $k,p\in\mathbb{N}$. Using a coordinate transformation $z=Zpr/a_0$ we have that the integral reduces to a Euler Gamma integral for whole numbers
+	\begin{equation}
+		I(k,p)=\left( \frac{a_0}{Zp} \right)^{k+1}\int_{0}^{\infty}z^ke^{-z}\diff{z}=\left( \frac{a_0}{Zp} \right)^{k+1}k!
+		\label{eq:integralssolved}
+	\end{equation}
+	With this in mind, we calculate the especially useful expectation values for $r^{-i}$, with $i=1,2,3$ on $1s,2s,2p$ states of the Hydrogen atom, for which $Z=1$. These expectation values pop up when evaluating relativistic corrections for atoms.
+	\begin{equation}
+		\begin{aligned}
+			\expval{\frac{1}{r}}_{1s}&=\frac{1}{a_0}\\
+			\expval{\frac{1}{r}}_{2s}&=\frac{1}{2a_0^3}\left( I(1,1)-\frac{1}{a_0}I(2,1)+\frac{1}{4a_0^2}I(3,1) \right)=\frac{1}{4a_0}\\
+			\expval{\frac{1}{r}}_{2p}&=\frac{1}{24a_0^5}I(3,1)=\frac{1}{4a_0}
+		\end{aligned}
+		\label{eq:rminusoneapp}
+	\end{equation}
+	Lowering $k$ by one we obtain the expectation values for $r^{-2}$
+	\begin{equation}
+		\begin{aligned}
+			\expval{\frac{1}{r^2}}_{1s}&=\frac{2}{a_0}\\
+			\expval{\frac{1}{r^2}}_{2s}&=\frac{1}{2a_0^3}\left( I(0,1)-\frac{1}{a_0}I(1,1)+\frac{1}{4a_0}I(2,1) \right)=\frac{1}{4a_0^2}\\
+			\expval{\frac{1}{r^2}}_{2p}&=\frac{1}{24a_0^5}I(2,1)=\frac{1}{12a_0^2}
+		\end{aligned}
+		\label{eq:rminustwoapp}
+	\end{equation}
+	For $r^{-3}$ we will evaluate only the level $2p$, since this expectation value pops up with spin orbit interaction, which is null for $ns$ states
+	\begin{equation}
+		\expval{\frac{1}{r^3}}_{2p}=\frac{1}{24a_0^5}I(1,1)=\frac{1}{24a_0^3}
+		\label{eq:rminusthreeapp}
+	\end{equation}
+\end{document}

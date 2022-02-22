@@ -1,0 +1,9 @@
+[2] Config.pm:312> INFO - This is Biber 2.15
+[3] Config.pm:315> INFO - Logfile is 'lep.blg'
+[289] biber:330> INFO - === dom dic  6, 2020, 23:53:47
+[329] Biber.pm:415> INFO - Reading 'lep.bcf'
+[527] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[544] Utils.pm:384> WARN - The file 'lep.bcf' does not contain any citations!
+[575] bbl.pm:651> INFO - Writing 'lep.bbl' with encoding 'UTF-8'
+[581] bbl.pm:754> INFO - Output to lep.bbl
+[583] Biber.pm:128> INFO - WARNINGS: 1

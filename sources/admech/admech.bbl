@@ -1,0 +1,211 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{goldsteincm}{book}{}
+      \name{author}{3}{}{%
+        {{hash=84dc0044caf3593c8a707fda3a383c1d}{%
+           family={Goldstein},
+           familyi={G\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=41d4420dcc287853d55ec7fecec81c6a}{%
+           family={Poole},
+           familyi={P\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=07a77c173289c9ec8ce11b1bd54acb41}{%
+           family={Safko},
+           familyi={S\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison Wesley}%
+      }
+      \strng{namehash}{2a3a4c8ec1b979a427817ba7baf5fb96}
+      \strng{fullhash}{2a3a4c8ec1b979a427817ba7baf5fb96}
+      \strng{bibnamehash}{2a3a4c8ec1b979a427817ba7baf5fb96}
+      \strng{authorbibnamehash}{2a3a4c8ec1b979a427817ba7baf5fb96}
+      \strng{authornamehash}{2a3a4c8ec1b979a427817ba7baf5fb96}
+      \strng{authorfullhash}{2a3a4c8ec1b979a427817ba7baf5fb96}
+      \field{labelalpha}{GPS}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Classical Mechanics}
+      \true{nocite}
+    \endentry
+    \entry{landau1}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ab77fc1405f1025268c1fed8c4fe3104}{%
+           family={Landau},
+           familyi={L\bibinitperiod},
+           given={L.\bibnamedelimi D.},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=68f89b1b6812be21ce1e8e144ff579de}{%
+           family={Lifshits},
+           familyi={L\bibinitperiod},
+           given={E.\bibnamedelimi M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIR}%
+      }
+      \strng{namehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{fullhash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{bibnamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authorbibnamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authornamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authorfullhash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \field{extraname}{1}
+      \field{labelalpha}{LL69}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Course of Theoretical Physics, Vol.1, Mechanics}
+      \field{year}{1969}
+      \field{dateera}{ce}
+    \endentry
+    \entry{landau2}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ab77fc1405f1025268c1fed8c4fe3104}{%
+           family={Landau},
+           familyi={L\bibinitperiod},
+           given={L.\bibnamedelimi D.},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=68f89b1b6812be21ce1e8e144ff579de}{%
+           family={Lifshits},
+           familyi={L\bibinitperiod},
+           given={E.\bibnamedelimi M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIR}%
+      }
+      \strng{namehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{fullhash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{bibnamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authorbibnamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authornamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authorfullhash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \field{extraname}{2}
+      \field{labelalpha}{LL71}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Course of Theoretical Physics, Vol.2, The Classical Theory of Fields}
+      \field{year}{1971}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{raducm}{book}{}
+      \name{author}{2}{}{%
+        {{hash=74153903f71b6ee8b7a426139ff15fec}{%
+           family={Merches},
+           familyi={M\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod}}}%
+        {{hash=dc7ae18d99aeed1b957eed87ec3aa038}{%
+           family={Radu},
+           familyi={R\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{661031231ff729d9108daba3b4e77fab}
+      \strng{fullhash}{661031231ff729d9108daba3b4e77fab}
+      \strng{bibnamehash}{661031231ff729d9108daba3b4e77fab}
+      \strng{authorbibnamehash}{661031231ff729d9108daba3b4e77fab}
+      \strng{authornamehash}{661031231ff729d9108daba3b4e77fab}
+      \strng{authorfullhash}{661031231ff729d9108daba3b4e77fab}
+      \field{labelalpha}{MR15}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-1-4822-3940-9}
+      \field{title}{Analytical Mechanics}
+      \field{year}{2015}
+      \true{nocite}
+    \endentry
+    \entry{relativita}{book}{}
+      \name{author}{1}{}{%
+        {{hash=2dd8ee5052a98cf1e28888d0e62e2ca4}{%
+           family={Paramatti},
+           familyi={P\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{fullhash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{bibnamehash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{authorbibnamehash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{authornamehash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{authorfullhash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \field{labelalpha}{Par11}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cinematica Relativistica}
+      \field{year}{2011}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{relativitat}{book}{}
+      \name{author}{1}{}{%
+        {{hash=83f7f81cb8f671db34211f26e8145178}{%
+           family={Soler},
+           familyi={S\bibinitperiod},
+           given={E.\bibnamedelimi Massó},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
+           prefix={i},
+           prefixi={i\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Universitat Autònoma de Barcelona, Servei de Publicacions}%
+      }
+      \strng{namehash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{fullhash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{bibnamehash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{authorbibnamehash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{authornamehash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{authorfullhash}{83f7f81cb8f671db34211f26e8145178}
+      \field{labelalpha}{Sol98}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{84-490-1284-8}
+      \field{title}{Curs de Relativitat Especial}
+      \field{year}{1998}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

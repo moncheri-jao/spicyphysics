@@ -1,0 +1,9 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[1] Config.pm:315> INFO - Logfile is 'psf.blg'
+[310] biber:330> INFO - === dom dic  6, 2020, 23:55:48
+[360] Biber.pm:415> INFO - Reading 'psf.bcf'
+[621] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[638] Utils.pm:384> WARN - The file 'psf.bcf' does not contain any citations!
+[672] bbl.pm:651> INFO - Writing 'psf.bbl' with encoding 'UTF-8'
+[672] bbl.pm:754> INFO - Output to psf.bbl
+[673] Biber.pm:128> INFO - WARNINGS: 1

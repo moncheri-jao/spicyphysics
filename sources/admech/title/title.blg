@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[1] Config.pm:307> INFO - Logfile is 'title.blg'
+[36] biber:315> INFO - === gio mar 19, 2020, 16:49:33
+[61] Biber.pm:371> INFO - Reading 'title.bcf'
+[150] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[160] Utils.pm:193> WARN - The file 'title.bcf' does not contain any citations!
+[169] bbl.pm:636> INFO - Writing 'title.bbl' with encoding 'UTF-8'
+[169] bbl.pm:739> INFO - Output to title.bbl
+[169] Biber.pm:110> INFO - WARNINGS: 1

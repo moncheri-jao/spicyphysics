@@ -1,0 +1,9 @@
+[1] Config.pm:312> INFO - This is Biber 2.15
+[2] Config.pm:315> INFO - Logfile is 'osc.blg'
+[324] biber:330> INFO - === dom dic  6, 2020, 23:55:24
+[372] Biber.pm:415> INFO - Reading 'osc.bcf'
+[591] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[611] Utils.pm:384> WARN - The file 'osc.bcf' does not contain any citations!
+[645] bbl.pm:651> INFO - Writing 'osc.bbl' with encoding 'UTF-8'
+[646] bbl.pm:754> INFO - Output to osc.bbl
+[646] Biber.pm:128> INFO - WARNINGS: 1

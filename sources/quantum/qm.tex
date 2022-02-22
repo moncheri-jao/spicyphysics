@@ -1,0 +1,241 @@
+\documentclass[a4paper, 11pt]{book}
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{~/Dropbox/appunti/bibliografia/bib.bib}
+\usepackage{subfiles}
+\usepackage{microtype}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{fontspec}
+\usepackage{lmodern}
+\usepackage[]{graphicx}
+\graphicspath{{./images/}}
+\usepackage{physics}
+\usepackage{chemfig}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usetikzlibrary{calc}
+\usepackage{pdfpages}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{tikzorbital}
+\usepackage{dsfont}
+\usepackage[]{geometry}
+\usepackage{xcolor}
+\usepackage{fancyref}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[]{tipa}
+\usepackage{slashed}
+\usepackage{titlesec}
+\usepackage{subfiles}
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\definecolor{sapienza}{cmyk}{.10,1.00,.61,.50}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=red]{hyperref}
+%
+\definecolor{title}{cmyk}{1,0.60,0,0.40}
+\newcommand{\plogo}{\fbox{$\mathcal{MC}$}}
+%
+\setmainfont[
+	Ligatures=TeX,
+	UprightFont=*_45_light,
+	ItalicFont=SALFrutiger-Italic,
+	BoldFont=*_bold,
+	BoldItalicFont=SALFrutiger-BoldItal,
+]{frutiger}
+\setlength{\headheight}{13.6pt}
+\fancyhf{}
+\fancyhead[R]{\textbf{\textsf{\thepage}}}
+\fancyhead[LE]{\textbf{\textsf{\leftmark}}}
+\fancyhead[LO]{\textbf{\textsf{\rightmark}}}
+\pagestyle{fancy}
+\titleformat{\chapter}[block]{\bfseries}{\fontsize{40}{30}\selectfont\color{gray}\textsf\thechapter}{1.5em}{\fontsize{25}{25}\selectfont\scshape}[\vspace{-1ex}\hfill\rule{\textwidth}{0.5pt}]
+\titleformat{\section}[block]{}{\fontsize{14}{12}\textsf{\S\ \bfseries\thesection}}{0.5em}{\fontsize{14}{12}\bfseries\textsf}[\vspace{-1ex}\hfill\rule{\textwidth}{0.1pt}]
+\titleformat{\subsection}[block]{}{\textsf{\S\S\ \bfseries\thesubsection}}{0.5em}{\bfseries\textsf}
+%
+%%
+%
+\AtBeginEnvironment{equation}{\color{sapienza}}
+\AtBeginEnvironment{equation*}{\color{sapienza}}
+%\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\vec}[1]{\underline{#1}}
+\renewcommand{\trace}{\mathrm{Tr}}
+\newcommand{\ver}[1]{\vec{e}_{#1}}
+\newcommand{\1}{\opr{\mathds{1}}}
+\newcommand{\lbar}{\mbox{\textipa\textcrlambda}}
+\newcommand{\unit}[1]{\ \mathrm{#1}}
+\newcommand{\diff}[2][]{\ \mathrm{d}^{#1}#2}
+\newcommand{\ddiff}[3][]{\ \mathrm{d}^{#1}#2\mathrm{d}^{#1}#3}
+\newcommand{\dddiff}[4][]{\ \mathrm{d}^{#1}#2\mathrm{d}^{#1}#3\mathrm{d}^{#1}#4}
+\newcommand{\ham}{\mathcal{H}}
+\newcommand{\opr}[1]{\hat{#1}}
+\newcommand{\adj}[2][]{#2^{\dagger#1}}
+\newcommand{\tposed}[1]{#1^{\text{T}}}
+\newcommand{\pcomm}[2]{\comm{#1}{#2}_{PB}}
+\newcommand{\Ut}{\opr{\mathcal{U}}}
+\newcommand{\pot}{\mathcal{U}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cc}[1]{\overline{#1}}
+\newcommand{\lc}[1]{\epsilon_{#1}}
+\newcommand{\kd}[1]{\delta_{#1}}
+\newcommand{\kdopr}[1]{\opr{\delta}_{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\ladopru}[1]{\opr{#1}_{+}}
+\newcommand{\ladoprd}[1]{\opr{#1}_{-}}
+\newcommand{\ladoprpm}[1]{\opr{#1}_{\pm}}
+\newcommand{\vecopr}[1]{\opr{\vec{#1}}}
+\newcommand{\up}{\uparrow}
+\newcommand{\down}{\downarrow}
+\newcommand{\hilbert}{\mathbb{H}}
+\newcommand{\sph}{Y^{m_l}_l(\theta,\phi)}
+\newcommand{\tsph}{\mc{Y}^{ls}_{jm}(\theta,\phi)}
+\newcommand{\oham}{\opr{\mathcal{H}}}
+\newcommand{\sla}[1]{\slashed{#1}}
+\newcommand{\term}[3][]{^{#3}#2_{#1}}
+\newcommand{\F}{\hat{\mathcal{F}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cf}{\mathbb{C}}
+\newcommand{\act}{\mathcal{S}}
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\dopr}{\hat{\rho}}
+\newcommand{\qsum}{\sideset{}{'}\sum}
+\newcommand{\del}{\partial}
+\renewcommand{\emph}[1]{ <<{\color{sapienza}#1}>> }
+\newcommand{\nuc}[4][]{ {}_{#4}^{#3}{\mathrm{#2}}_{#1} } %\nuc[N]{M}{A}{Z}
+\DeclarePairedDelimiter\rounding{\lceil}{\rfloor}
+%
+\newtheorem{thm}{Theorem}[chapter]
+\theoremstyle{definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{dfn}{Definition}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{hyp}{Hypothesis}
+\newtheorem{exe}{Exercise}[section]
+\newtheorem{mtd}{Method}
+\newtheorem*{ntn}{Notation}
+\theoremstyle{remark}
+\newtheorem{eg}{Example}[section]
+\newtheorem*{rmk}{Remark}
+\newtheorem{pos}{Postulate}
+\newtheorem{defn}{Definition}[section]
+%
+%
+%\newtheorem{thm}{Theorem}
+%\theoremstyle{plain}
+%\newtheorem{cor}{Corollary}
+%\newtheorem{hyp}{Hypothesis}
+%%
+%%
+\begin{document}
+\pagenumbering{gobble}
+\subfile{./titlepage/title}
+\chapter*{Preface}
+	\subfile{./chapters/0-preface}
+\tableofcontents
+\pagenumbering{arabic}
+\part{Quantum Mechanics}
+	\chapter{The Failure of Classical Physics}
+		\subfile{./chapters/1-failure}
+	\chapter{The Fundamentals}
+		\subfile{./chapters/2-fundamentals}
+	\chapter{Quantum Dynamics in 1D}
+		\subfile{./chapters/3-quantum1d}
+		\chapter{Angular Momentum}
+		\subfile{./chapters/4-angularmomentum}
+	\chapter{Quantum Dynamics in 3D}
+		\subfile{./chapters/5-quantum3d}
+	\chapter{Approximation Methods}
+		\subfile{./chapters/6-approximation}
+	\chapter{Identical Particles}
+		\subfile{./chapters/7-identical}
+\part{Statistical Mechanics}
+	\chapter{Brief Introduction}
+		\subfile{./chapters/15-msintro}
+	\chapter{Microcanonical Ensemble}
+		\subfile{./chapters/16-microcanonical}
+	\chapter{Canonical Ensemble}
+		\subfile{./chapters/17-canonical}
+	\chapter{Grand Canonical Ensemble}
+		\subfile{./chapters/18-grandcanonical}
+	\chapter{Ideal Quantum Gases}
+		\subfile{./chapters/idealquantumgas}
+\part{Atomic Physics}
+	\chapter{One Electron Atoms}
+		\subfile{./chapters/8-oneelectron}
+	\chapter{Two Electron Atoms}
+		\subfile{./chapters/9-twoelectrons}
+	\chapter{Many Electron Atoms}
+		\subfile{./chapters/10-manyelectrons}
+	\chapter{Electromagnetic Interactions}
+		\subfile{./chapters/11-eminteractions}
+\part{Quantum Chemistry}
+	\chapter{Molecular Structure}
+		\subfile{./chapters/12-molecules}
+	\chapter{Molecular Spectra}
+		\subfile{./chapters/14-spectra}
+	\chapter{Molecular Electronic Structure}
+		\subfile{./chapters/13-electronsmolecules}
+	\chapter{Introduction to Solid State Physics}
+		\subfile{./chapters/solids}
+%\part{Statistical Mechanics}
+%	\chapter{Brief Introduction}
+%		\subfile{./chapters/15-msintro}
+%	\chapter{Microcanonical Ensemble}
+%		\subfile{./chapters/16-microcanonical}
+%	\chapter{Canonical Ensemble}
+%		\subfile{./chapters/17-canonical}
+%	\chapter{Grand Canonical Ensemble}
+%		\subfile{./chapters/18-grandcanonical}
+%	\chapter{Ideal Quantum Gases}
+%		\subfile{./chapters/idealquantumgas}
+%%
+\part{Nuclear and Particle Physics}
+	\chapter{Scattering and Cross Sections}
+	\subfile{./chapters/pphys}
+	\chapter{Nuclear Physics}
+	\subfile{./chapters/nuclear}
+	\chapter{Electromagnetic Interactions}
+	\subfile{./chapters/interactions}
+	\chapter{Particle Detectors}
+	\subfile{./chapters/detectors}
+	\chapter{Basics of Quantum Field Theory}
+	\subfile{./chapters/qft.tex}
+%	\chapter{Simmetries and Invariance}
+%	\subfile{./chapters/simmetries}
+%	\chapter{Nuclear Physics}
+%	\subfile{./chapters/nuclear}
+%\part{Quantum Field Theory}
+%	\chapter{Historical Discoveries}
+%		\subfile{./chapters/qftintro}
+\part{Appendices}
+\appendix
+	\chapter{Mathematical Methods}
+		\subfile{./appendices/maths}
+	\chapter{Clebsch-Gordan Table}\label{app:cgt}
+		\subfile{./appendices/cbtable}
+	\chapter{Tensor Spherical Harmonics}\label{app:tsh}
+		\subfile{./appendices/tsh}
+	\chapter{Calculus of $\expval{r^k}_{lnm}$ Integrals}
+		\subfile{./appendices/integral}
+	\chapter{Periodic Table}\label{app:E}
+		\subfile{./appendices/periodic}
+	\chapter{Basic Chemistry}
+		\subfile{./appendices/chem}
+%	\chapter{Dipole Transitions}
+%		\subfile{./appendices/transitions}
+	\chapter{Symmetry and Point Groups}\label{app:groups}
+		\subfile{./appendices/groups}
+	\chapter{Special Relativity}
+		\subfile{./appendices/lorentz}
+		\subfile{./appendices/lep}
+		\subfile{./appendices/relc}
+% E N D %
+\nocite{quantistica,landau3,statistica,struttura,struttura1,griffmq,sakuraimqm,patritesta,molekulphysik,complessa,griffpart,nucleare,relativitat,relativita,pdg,griffpart}
+\printbibliography
+\end{document}

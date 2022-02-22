@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is '13-electronsmolecules.blg'
+[23] biber:315> INFO - === zo okt 13, 2019, 20:18:42
+[43] Biber.pm:371> INFO - Reading '13-electronsmolecules.bcf'
+[107] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[112] Utils.pm:193> WARN - The file '13-electronsmolecules.bcf' does not contain any citations!
+[119] bbl.pm:636> INFO - Writing '13-electronsmolecules.bbl' with encoding 'UTF-8'
+[120] bbl.pm:739> INFO - Output to 13-electronsmolecules.bbl
+[120] Biber.pm:110> INFO - WARNINGS: 1

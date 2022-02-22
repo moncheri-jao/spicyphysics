@@ -1,0 +1,225 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	\section{Diatomic Molecules}
+	Let's now consider again the vibration of diatomic molecules, where now we also consider cases where $\Lambda\ne0$. We then define two ``new'' operators, $\vecopr{\Lambda}$, the angular momentum of the molecule, $\vecopr{N}$, the angular momentum of the two nuclei and the associated total angular momentum operator $\vecopr{J}=\vecopr{\Lambda}+\vecopr{N}$. We shall consider cases where the spin-orbit coupling is negligible and no relativistic corrections are considered.\\
+	We get back to the definition of $\vecopr{N}$. From the definition of angular momentum, we already know that
+	\begin{equation*}
+		\vecopr{N}=\vecopr{R}\wedge\vecopr{P}\Longrightarrow\vecopr{N}\cdot\vecopr{R}=0
+	\end{equation*}
+	Where $\vecopr{R}$ is the internuclear distance operator.\\
+	We define the projection on the internuclear axis of the total angular momentum as follows, and we already know that it must have the same value of the projection of $\vecopr{\Lambda}$ on the internuclear axis, since $\vecopr{N}\cdot\vecopr{R}=0$ so
+	\begin{equation*}
+		\opr{J}_R=\frac{\vecopr{J}\cdot\vecopr{R}}{\opr{R}}=\opr{\Lambda}_R
+	\end{equation*}
+	Considering now all the symmetries of the system, we can with ease say that $\comm{\opr{\ham}}{\opr{J}_R}=\comm{\opr{\ham}}{\opr{J}^2}=0$, and we can define the eigenstate of the molecule as $\ket{sJM\Lambda}$, where $s$ is a set of quantum numbers which do not intervene in the rotovibration of the molecule\\
+	We begin by analyzing the nuclear Schrödinger equation for the diatomic molecule, and we get
+	\begin{equation}
+		\begin{aligned}
+			\opr{\ham}\mathcal{F}_{s\nu J}&=\left( -\frac{\hbar^2}{2\mu}\pdv[2]{R}+\frac{\expval{\opr{N}^2}}{2\mu R_0^2} \right)\mathcal{F}_{s\nu J}+\left( E_s(R_0)-E \right)\mathcal{F}_{s\nu J}=0\\
+			\expval{\opr{N}^2}&=\expval{\left( \opr{J}^2-\opr{\Lambda}^2 \right)}=\hbar^2J(J+1)+\expval{\opr{\Lambda}^2}-2\expval{\vecopr{J}\cdot\vecopr{\Lambda}}\\
+			\opr{\ham}\mathcal{F}_{s\nu J}&=\left( -\frac{\hbar^2}{2\mu}\pdv[2]{R}+\frac{\hbar^2}{2\mu R_0^2}J(J+1)+(E_s'(R_0)-E) \right)\mathcal{F}_{s\nu J}=0\\
+			E_s'(R_0)&=E_s(R_0)+\frac{1}{2\mu R_0}\left( \expval{\opr{\Lambda}^2}-2\expval{\vecopr{J}\cdot\vecopr{\Lambda}} \right)=\\
+			&=E_s(R_0)+\frac{1}{2\mu R_0}\left( \expval{\opr{\Lambda}^2}-2\hbar^2\Lambda^2 \right)
+		\end{aligned}
+		\label{eq:nuclearschrodingerlambdane0}
+	\end{equation}
+	The choice of redefining $E_s(R_0)$ is immediate, by noting how the terms defining $E_s'(R_0)$ all depend on the electronic terms of the molecule.\\
+	Another way of considering the rotation of a molecule, is given by starting from the basic approximation that a molecule could be seen as an almost completely rigid body, and therefore, in the system of the center of mass of the molecule, we can write that the kinetic energy operator will be the following in the coordinates where the inertia tensor is diagonal:
+	\begin{equation}
+		\opr{T}=\frac{1}{2I_a}\opr{J}_a^2+\frac{1}{2I_b}\opr{J}_b^2+\frac{1}{2I_c}\opr{J}_c^2
+		\label{eq:kineticoperatorquantumtop}
+	\end{equation}
+	Since in a diatomic molecule one of the eigenaxis will be the internuclear axis, let's say it's the $c$ axis, we get that $I_a=I_b$, and $\opr{J}_c=\opr{\Lambda}_R$
+	\begin{equation*}
+		\opr{T}=\frac{1}{2I_a}(\opr{J}_a^2+\opr{J}_b^2)+\left( \frac{1}{2I_c}+\frac{1}{2I_b} \right)\opr{\Lambda}_R^2
+	\end{equation*}
+	This equation is the same equation of a symmetric top. For a diatomic molecule we have that $I_a=\mu R_0^2$ and that $I_c$ depends directly on the electronic terms of the molecule\\
+	From this we have
+	\begin{equation}
+		E_{r}=\frac{\hbar^2}{2\mu R_0^2}J(J+1)+\left( \frac{1}{2I_c}+\frac{1}{2I_b} \right)\hbar^2\Lambda^2
+		\label{eq:rotationalenergyII}
+	\end{equation}
+	This point of view makes the generalization to polyatomic molecules much more easy to derive.\\
+	\section{Rovibrational Spectra of Diatomic Molecules}
+	Let's begin considering interaction with the radiation field and the possible transition for the rovibronic states. We define as usual the dipole operator as the sum of the dipole moments of the nuclei and of the electrons
+	\begin{equation}
+		\opr{D}_j=e\left( \sum_iZ_i\opr{R}_{ij}-\sum_i\opr{r}_{ij} \right)
+		\label{eq:dipolemomentmolecule}
+	\end{equation}
+	As we did before, we approximate the system by considering no coupling between angular momentums and by neglecting rotovibrational motions.\\
+	The molecular wavefunction in study will then be a product of the electronic wavefunction, a vibrational wavefunction and a rotational wavefunction, with the following quantum numbers
+	\begin{equation}
+		\ket{\Psi}=\frac{1}{R}\ket{s}_{e^-}\ket{\nu}\ket{JM\Lambda}
+		\label{eq:molecularwavefunctionvibrations}
+	\end{equation}
+	Where, $\ket{\nu}$ is the standard eigenfunction of the quantum harmonic oscillator.\\
+	Disregarding spin in our calculations, we define the \textit{permanent electric dipole moment} $\delta$ of the molecule as the diagonal elements of the $\opr{D}_i$ operator.\\
+	\begin{equation*}
+		\vecopr{D}_{\alpha\alpha}=\bra{\alpha}\vecopr{D}\ket{\alpha}=\vec{\delta}
+	\end{equation*}
+	These matrix elements always vanish if $\ket{\alpha}$ is a nondegenerate state, but also it doesn't fade if there is an excess of charge in one of the two nuclei, which is always true when we consider heteronuclear molecules.\\
+	Since homonuclear molecules are symmetric, all elements of the dipole operator will be zero, and therefore transition can happen only if there is an electronic transition, since $J\ge\abs{\Lambda}$. So, for the already known transition rules for $\Lambda=0$
+	\begin{equation*}
+		\begin{aligned}
+			\Delta J&=\pm1\\
+			\Delta M&= 0,\ \pm1
+		\end{aligned}
+	\end{equation*}
+	We have, for $\Lambda\ne0$
+	\begin{equation*}
+		\begin{aligned}
+			\Delta J&=0,\ \pm1\qquad\text{$\Delta J=0$ if only if $\Lambda\ne0$}\\
+			\Delta M&=0,\ \pm1\\
+			\Delta\Lambda&=0
+		\end{aligned}
+	\end{equation*}
+	The spectrum found will lay on the far IR or the microwave region of frequencies for diatomic molecules, which will have a definite energy
+	\begin{equation}
+		\hbar\Delta\omega_{\Delta J}=E_r(J+1)-E_r(J)=2B(J+1)
+		\label{eq:rotovibrationalspectrum}
+	\end{equation}
+	As we said before, vibrational transitions can happen if and only if the vibrational matrix elements of the dipole operator are nonzero, i.e. if the following integral is nonzero
+	\begin{equation}
+		\vecopr{D}_{\nu\nu'}=\bra{\nu}\vecopr{D}\ket{\nu'}
+		\label{eq:electronictransitionmol}
+	\end{equation}
+	Expanding the integral in power series, and using the definition of Hermite polynomials, we have that the integral depends only on $(R-R_0)$.
+	\begin{equation}
+		\begin{aligned}
+			\vecopr{D}(R)\simeq&\vecopr{D}(R_0)+\left.\pdv{\vecopr{D}}{R}\right|_{R=R_0}(R-R_0)+\cdots\\
+			I(\nu,\nu')&=\int\cc{\psi_\nu}(R-R_0)\psi_\nu\diff{R}\\
+			\psi_\nu(x)&=N_\nu H_\nu(\alpha x)e^{-\frac{\alpha^2x^2}{2}}
+		\end{aligned}
+		\label{eq:calculusintegralelectricdipole}
+	\end{equation}
+	Using the following recursion relation of the Hermite polynomials
+	\begin{equation*}
+		2\alpha xH_{\nu}(\alpha x)=2\nu H_{\nu-1}(\alpha x)+H_{\nu+1}(\alpha x)
+	\end{equation*}
+	We have that the integral will be nonzero if and only if $\Delta\nu=\pm1$\\
+	The selection rules then are the following
+	\begin{equation}
+		\begin{aligned}
+			\Delta J&=0,\ \pm1\\
+			\Delta M&=0,\ \pm1\\
+			\Delta\Lambda&=0\\
+			\Delta\nu&=\pm1
+		\end{aligned}
+		\label{eq:selectionrulesmolecule}
+	\end{equation}
+	We can delve deeper into the $\Delta J=\pm1$ transitions. We can define two different branches, i.e. R branches, if $\Delta J=-1$, and P branches when $\Delta J=1$. The two sets will have the following separations between levels
+	\begin{equation}
+		\begin{aligned}
+			\hbar\omega_{R}&=E_r(\nu+1,J+1)-E_r(\nu,J)=2B(J+1)+\hbar\omega_0\\
+			\hbar\omega_{P}&=E_r(\nu-1,J-1)-E_r(\nu,J)=\hbar\omega_0-2BJ
+		\end{aligned}
+		\label{eq:RPbranches}
+	\end{equation}
+	Both branches form what's usually called as \textit{vibrational-rotational branch}, which is formed by lines spaced by $2B/h$.\\
+	There exists a third branch of the spectrum given by the anharmonicity of the oscillation of the molecule, the Q branch. If $B_\nu=B_{\nu+1}$, we have that
+	\begin{equation}
+		\hbar\omega_Q=E_r(\nu+1,J)-E(\nu,J)=\hbar\omega_0
+		\label{eq:Qbranch}
+	\end{equation}
+	\subsection{Raman Scattering}
+	We get back to our consideration of homonuclear diatomic molecules. We saw that for $\Lambda=0$ no transitions are possible due to the symmetry of the molecule, this is not properly true, since there can be a particular kind of transitions given by an inelastic scattering, called Raman scattering.\\
+	Raman scattering works as a second order process, where a photon with energy $\hbar\omega$ is absorbed from an atom or a molecule, which is excited from a state $a$ to a state $n$, and then emits a second photon with energy $\hbar\omega'$ while decaying to the final state $b$. In this case, if $a=b$, we get again Rayleigh scattering. In other cases, using the conservation of energy we have
+	\begin{equation}
+		\hbar\omega'=\hbar\omega+\Delta E_{ab}
+		\label{eq:ramanfrequency}
+	\end{equation}
+	In general, this kind of scattering permits the existence of another selection rule, valid only for Raman scattering
+	\begin{equation}
+		\Delta J=0,\ \pm2
+		\label{eq:deltaJramans}
+	\end{equation}
+	Let's consider now two particular cases. If the state $a$ is the ground state of the molecule, the state $b$ must ave higher energy, so $\omega'<\omega$, and the observed line is called a \textit{Stokes line}, whereas in the opposite case, we have that $\omega'>\omega$ and this line is called the \textit{Anti-Stokes line}\\
+	\section{Electronic Spectra}
+	The electronic spectra of diatomic molecules is given by combined electronic-rovibronic transitions. The lines associated with this transitions lay on the visible or in the UV part of the light spectrum. We can immediately say that the frequency separation of these lines will be
+	\begin{equation}
+		\omega=\frac{(E_{s'}+E_{\nu'}+E_{r'})-(E_s+E_\nu+E_r)}{\hbar}
+		\label{eqelectronicspectra}
+	\end{equation}
+	This is obviously given by three different components, i.e. the \textit{vibrational} or \textit{band structure}, the \textit{rotational structure} and the \textit{fine structure} of the total band.\\
+	Keeping only the first two terms and ignoring rotational variations we can see that in general, the transitions will have the following energy separation
+	\begin{equation}
+		\hbar\omega=\hbar\omega_{s's}+\hbar\omega_0'\left( \nu'+\frac{1}{2} \right)-\hbar\omega_0\left( \nu+\frac{1}{2} \right)
+		\label{eq:electronicspectranorotation}
+	\end{equation}
+	Or, introducing again the anharmonicity of the oscillator, we get the \textit{Deslandres formula}
+	\begin{equation}
+		\hbar\omega_D=\hbar\omega_{s's}+\hbar\omega_0'\left( \nu'+\frac{1}{2} \right)-\hbar\beta'\omega_0'\left( \nu'+\frac{1}{2} \right)^2-\hbar\omega_0\left( \nu+\frac{1}{2} \right)+\hbar\beta\omega_0\left( \nu+\frac{1}{2} \right)^2
+		\label{eq:Deslandresformula}
+	\end{equation}
+	The series of lines obtained from these transitions is called a $\nu$ \textit{progression}.\\
+	Adding back the $E_r$ term, we are obliged to use the selection rules for $J$.\\
+	If we now consider spin, in absence of coupling we get $\Delta S=0$ and for transitions between $\Sigma$ states we have $\Sigma^+\leftrightarrow\Sigma^+$ and $\Sigma^-\leftrightarrow\Sigma^-$. Due to symmetry reasons we also have the selection rule $g\leftrightarrow u$.\\
+	The three branches, having considered the new selection rules and considering the centrifugal distortion
+	\begin{equation}
+		\begin{aligned}
+			\hbar\omega_P&=\hbar\omega_D+B'J(J-1)-BJ(J+1)\\
+			\hbar\omega_Q&=\hbar\omega_D+B'J(J+1)-BJ(J+1)\\
+			\hbar\omega_R&=\hbar\omega_D+B'(J+1)(J+2)-BJ(J+1)
+		\end{aligned}
+		\label{eq:PQRsequence}
+	\end{equation}
+	It's evident that these formulas, after substituting the Deslandres equation for $\hbar\omega_D$, are not linear nor quadratic in $J$, but rather \textit{parabolic} in $J$, which give a \textit{Fortrat parabola}. Since $B'\ne B$ we also see that the lines aren't equally spaced, which is closely tied to the centrifugal distortion that we have already treated
+	\subsection{The Franck-Condon Principle}
+	The Franck-Condon principle is based on the idea that the atoms of the molecule do not move during the electronic transition but after. This is represented on the energy graph of the molecule as a vertical line between two electronic curves, where the centrifugal distortion gets considered.\\
+	This principle can be seen in action considering the total wavefunction $\Psi_\alpha=R^-1\Phi_s\psi_\nu\phi_{JM\Lambda}$ and evaluating the dipole moment operator's matrix elements
+	\begin{equation}
+		\vecopr{D}_{\alpha'\alpha}=e\int_{}^{}R^{-2}\diff[3]{R}\int_{}^{}\cc{\Phi_{s'}\psi_{\nu'}'\phi_{J'M'\Lambda'}'}\left( \sum_{i=1}^2Z_iR_{ij}-\sum_{i}r_{ij} \right)\Phi_s\psi_\nu\phi_{JM\Lambda}\diff[3]{r}
+		\label{eq:frankcondon}
+	\end{equation}
+	From the definition of the dipole moment operator we take only the electronic part of the dipole operator
+	\begin{equation*}
+		\vecopr{D}_{e^-}(R)=-e\bra{s}\sum_i\opr{r}_{ij}\ket{s}\to-e\int_{}^{}\cc{\Phi}_s\sum_i\opr{r}_{ij}\Phi_s\diff[3]{r}
+	\end{equation*}
+	The Franck-Condon principle then amounts to saying that this operator is independent of $R$, so that the transition amplitudes will be always proportional to the \textit{Franck-Condon factor}
+	\begin{equation}
+		f_{\nu'\nu}=\int_{}^{}\cc{\psi_{\nu'}'}\psi_{\nu}\diff{R}
+		\label{eq:franckcondonfactor}
+	\end{equation}
+	This simply represents the overlap integral between two vibrational wavefunctions in different electronic states.
+	\subsubsection{Fluorescence and Phosphorescence}
+	One event that can be explained using the Franck-Condon principle is fluorescence and phosphorescence, which is an effect given by some molecules, where the radiation absorbed in the near-UV gets re-emitted at a longer wavelenght, whereas in phosphorescence, it's involved the decay from an excited state to a second state with different multiplicity.\\
+	Fluorescence can be graphed as a transition from an electronic level to a second level, respecting the Franck-Condon principle. Let's take as an example a molecule in the ground state $^1X$, which get excited to a second state $^1A$, which slowly decays level by level up until getting back down to the $^1X$ state.\\
+	In this case, the effect of fluorescence can be seen as the slow decay from the excited state $^1A$ to the ground state $^1X$, where all the decays emit photons in the range of visible and near-UV light.\\
+	Phosphorescence, instead, can be seen as a process $^1X\to^1A\to^3A\to^1X$, where the molecule ``slips'' from the state $^1A$ to the state $^3A$ due to the nonzero multiplicity of this state.
+	\section{Inversion Spectrum of Ammonia ($\mathrm{NH_3}$)}
+	The ammonia molecule is a pyramidal molecule composed by a nitrogen atom at the summit and three hydrogens at the basis
+	\begin{figure}[H]
+		\centering
+		\chemfig{N(-[:215]H)(<[:265]H)(<:[:325]H)}
+		\caption{Structure of the Ammonia molecule ($\mathrm{NH_4}$)}
+		\label{fig:ammoniamol}
+	\end{figure}
+	This geometry is twice degenerate, since we can invert the molecule using the nitrogen atom as an inversion point.\\
+	The vibrational modes of this molecule can be seen as an umbrella opening and closing with respect to the hydrogen plane of the molecule. The nitrogen atom can overpass this plane, hence the vibrational potential must have two wells for the two possible stable oscillation points.\\
+	Considering this well and doing a couple calculations, we can see that the transition between vibrational states $\nu=0\to\nu=1$ is classically forbidden, but possible in the framework of quantum tunneling.\\
+	The tunneling of the wavefunction permits the removal of the degeneracy, hence forming a doublet.\\
+	In order to define properly this situation we consider the whole molecule as a two level system, where the upper level is the ``up'' configuration, where the nitrogen atom rests above the hydrogen plane, and a second ``down'' configuration where the nitrogen atom is below the hydrogen plane.\\
+	The wavefunctions representing these states are eigenvalues of the parity operator, and therefore we can write
+	\begin{equation}
+		\begin{aligned}
+			\ket{1}&=\frac{1}{\sqrt{2}}\left( \ket{u}+\ket{d} \right)\\
+			\ket{2}&=\frac{1}{\sqrt{2}}\left( \ket{u}-\ket{d} \right)
+		\end{aligned}
+		\label{eq:nitrogeninversion}
+	\end{equation}
+	We also have that the nitrogen atom could \textit{probably} be above or below the hydrogen plane, so we can also write a third wavefunction. We will directly write the time-dependent wavefunction of the system, which is the following
+	\begin{equation}
+		\Psi(z,t)=\frac{1}{\sqrt{2}}\left( \psi_1(z)e^{-i\frac{E_1t}{\hbar}}+\psi_2(z)e^{-i\frac{E_2t}{\hbar}} \right)=\frac{1}{\sqrt{2}}\left( \psi_1(z)+\psi_2(z)e^{-2\pi i\omega t} \right)e^{-i\frac{E_1t}{\hbar}}
+		\label{eq:psibignh3}
+	\end{equation}
+	Where we used $\Delta E=\hbar\omega$.\\
+	Explicating the two wavefunctions and setting $t=1/4\pi\omega$ we get
+	\begin{equation}
+		\Psi(z,t)=\psi_d(z)e^{-i\frac{E_1t}{\hbar}}
+		\label{eq:halfnutimenh3}
+	\end{equation}
+	So that we have that the probability density of the wavefunction is simply $\abs{\psi_d(z)}^2$
+%\begin{COMUNICAZIONE_DI_SERVIZIO}
+	%% Allora luridi stronzetti che leggerete il file .tex degli appunti, da ora possono già essere considerati conclusi nella versione 0.7 beta, e a breve vedrò se aggiungere meccanica statistica e/o QFT (per triennali), per un salto di qualità alla versione 0.8 beta. La pubblicazione di tali appunti in versione 1.0 completa sarà molto a breve, ora vado a bermi un caffé %% TERMINE COMUNICAZIONE
+%\end{COMUNICAZIONE_DI_SERVIZIO}
+\end{document}

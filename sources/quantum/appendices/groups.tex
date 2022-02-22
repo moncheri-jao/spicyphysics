@@ -1,0 +1,85 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	We can categorize symmetry transformations in various ways, but principally, we have 3 fundamental transformations
+	\begin{enumerate}
+	\item Rotations through an axis
+	\item Reflections on a plane
+	\item Parallel displacements
+	\end{enumerate}
+	It's obvious that the last kind of transformation, in our field, will have sense only in infinite mediums like lattices and solids, hence, for molecules, we'll be interested principally in the first two: \textit{rotations} and \textit{reflections}.\\
+	Let's start by defining a rotation operator $\opr{C}_n$, where $n\in\N$. The whole number $n$ is called \textit{order of symmetry} of the considered axis, which means that the system will be again in the initial transformation after $n$ rotations of $\alpha=2\pi/n$ degrees.\\
+	We can immediately determine two fundamental properties of the rotation operator from this
+	\begin{equation*}
+		\begin{aligned}
+			\opr{C}_1&=1\\
+			\opr{C}_n^n&=\1
+		\end{aligned}
+	\end{equation*}
+	The second operator we will define, is the plane reflection operator $\opr{\sigma}$, which operates through a reflection of the system on a predetermined plane, and finally we can define the inversion operator $\opr{I}$, which corresponds to a complete inversion of the coordinate system used.\\
+	\section{Group Theory}
+	In order to delve deeper into the theory of symmetry, we need to define what a group is mathematically and how does it work, since symmetries of the system arise from the invariance of the Hamiltonian to transformations pertaining to one of these groups.\\
+	So let's begin by calling the set $G$ a group. In order to be such, it has to have the following properties
+	\begin{enumerate}
+	\item Identity: $\1\in G$
+	\item Associativity: $(\opr{a}\opr{b})\opr{c}=\opr{a}(\opr{b}\opr{c})\ \forall\opr{a},\opr{b},\opr{c}\in G$
+	\item Non Commutativity: $\opr{a}\opr{b}\ne\opr{b}\opr{a}\ \forall\opr{a},\opr{b}\in G$
+	\item Existence of the inverse: $\forall\opr{a}\in G\ \exists!\opr{a}^{-1}\in G:\opr{a}^{-1}\opr{a}=\1=\opr{a}\opr{a}^{-1}$
+	\item $\forall\opr{a},\opr{b}\in G\ (\opr{a}\opr{b})^{-1}=\opr{b}^{-1}\opr{a}^{-1}$
+	\end{enumerate}
+	A group is said abelian, if and only if $\forall\opr{a}\opr{b}\in G,\ \opr{a}\opr{b}=\opr{b}\opr{a}$, hence it's \textit{commutative}.\\
+	From an abelian group, one can define a cyclic group, which is an abelian group for which $\forall\opr{a}\in G,\exists n\in\N:\ \opr{a}^n=\1$. The integer $n$ is called the \textit{order} of the group $G$, and it's usually indicated as $\{G\}$.\\
+	\begin{defn}[Finite Group]
+		A finite group is a group $G$ for which there exists a finite number of elements.
+	\end{defn}
+	\begin{defn}[Subgroup]
+		A subset $H\subset G$ is a subgroup, if and only if has all the properties of a group.
+	\end{defn}
+	\begin{defn}[Complex]
+		Let $H\subset G$ be a subgroup of a finite group (hence, a finite subgroup). Since $H\subset G$, there exists a finite number of elements $G_i\in G$, for which $G_i\notin H$. We can then define a new element of $G$ which is not an element of $H$ by multiplying all elements of $H$ with a single $G_i$.\\
+		The new algebraic construction is called \textit{complex}.\\
+		In general, if $G$ is a group, and $L,H\subset G$ are subgroups of $G$, for which $L=G\setminus H$, $\forall \opr{l}_i\in L,\ \opr{h}\in H$, the product $\opr{h}\opr{l}_i$ generates another $n$ subgroups of $G$ called \textit{complexes}.\\
+		Since these all are finite groups by hypothesis, if $\{L\}=l,\ \{H\}=h$, then $\{G\}=\{H\}\{L\}$.
+	\end{defn}
+	\begin{defn}[Direct Product]
+		A direct product of two groups $A,B$, indicated as $A\otimes B$, is defined as follows
+		\begin{equation*}
+			A\otimes B:=\left\{ \opr{a}\in A, \opr{b}\in B:\ \opr{a}\opr{b}\in A\otimes B \right\}
+		\end{equation*}
+	\end{defn}
+	We can now start talking about \textit{molecular point groups}. We start by defining rotation groups.\\
+	\textbf{$C_n$ group}\\
+	The group $C_n$ is the group of symmetries around a rotation axis of the $n$-th order.\\\vskip\baselineskip
+	\textbf{$S_{2n}$ group}\\
+	The $S_{2n}$ group is the \textit{rotoreflection} group of a single axis of the $n$-th order. Two special cases of this group are the $S_2$ and $S_{4p+2}$ group, which are
+	\begin{equation*}
+		\begin{aligned}
+			S_2:&=\{\1,\opr{I}\}=C_i\\
+			S_{4p+2}&=C_{2p+1}\otimes C_i
+		\end{aligned}
+	\end{equation*}\\\vskip\baselineskip
+	\textbf{$C_{nh}$ group}\\
+	The $C_{nh}$ group is the group of simmetries around an axis of the $n$-th order, coupled with a symmetry through a plane perpendicular to the axis. This group can be seen as a complex created from $n$ $\opr{C}_{n}$ elements and one $\opr{\sigma}_h$ element as follows. It's also obvious that it's Abelian
+	\begin{equation*}
+		\opr{C}_{nh}=\opr{C}_n^k\otimes\opr{\sigma}_h=\opr{\sigma}_h\otimes\opr{C}_n^k
+	\end{equation*}
+	A special case is the group $C_{1h}$, which is formed by two elements
+	\begin{equation*}
+		C_{1h}:=\{\1,\opr{\sigma}_h\}=C_s
+	\end{equation*}\\\vskip\baselineskip
+	\textbf{$C_{nv}$ group}\\
+	The $C_{nv}$ group is similar to the $C_{nh}$ group, but the $n$-th order symmetry axis lies on the symmetry plane. This generates $n-1$ more planes of symmetry separated by an angle $\alpha=\pi/n$\\\vskip\baselineskip
+	\textbf{$D_n$ group}\\
+	The $D_n$ group is formed from a symmetry axis of order $n$, which is perpendicular to an axis of order 2. I.e. it's formed from an axis of order $n$ and $n-1$ axes of order 2 separated from an angle $\alpha=\pi/n$. A special case is given by the group $D_2=V$, which is formed from an two axes of order 2 perpendicular to each other\\\vskip\baselineskip
+	\textbf{$D_{nh}$ group}\\
+	The $D_{nh}$ group is a complex formed from the product $D_n\otimes C_s$, i.e. for every order $2$ axis there lies a plane perpendicular to such axis.\\\vskip\baselineskip
+	\textbf{$D_{nd}$ group}\\
+	Starting from the $D_{nh}$ group, one can define the group $D_{nd}$ by taking the planes at a separation of $\alpha=\pi/2n$ radians.\\\vskip\baselineskip
+	\textbf{$T$ group}\\
+	The $T$ group is the group formed from the symmetries of the tetrahedron. This group can be formed from the group $V$ ($D_2$), coupled with 4 oblique $C_3$ axes.\\\vskip\baselineskip
+	\textbf{$T_d$ group}\\
+	The $T_d$ group is formed from the $T$ group by adding a plane of symmetry to the tetrahedron, it's formally given by the product $T_d=T\otimes C_s$\\\vskip\baselineskip
+	\textbf{$T_h$ group}\\
+	The $T_h$ group, instead is formed from the $T$ group through addition of a center of symmetry, i.e. a point of inversion. This is described by the product $T_h=T\otimes C_i$\\\vskip\baselineskip
+	\textbf{$O$ group}\\
+	The $O$ group is the group given by the symmetries of the octahedron. Adding a center of symmetry, we obtain the group $O_h=O\otimes C_i$.
+\end{document}

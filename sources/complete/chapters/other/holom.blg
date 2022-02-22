@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'holom.blg'
+[45] biber:315> INFO - === ven feb 14, 2020, 13:30:07
+[80] Biber.pm:371> INFO - Reading 'holom.bcf'
+[205] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[218] Utils.pm:193> WARN - The file 'holom.bcf' does not contain any citations!
+[230] bbl.pm:636> INFO - Writing 'holom.bbl' with encoding 'UTF-8'
+[230] bbl.pm:739> INFO - Output to holom.bbl
+[230] Biber.pm:110> INFO - WARNINGS: 1

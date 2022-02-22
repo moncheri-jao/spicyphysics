@@ -1,0 +1,9 @@
+[1] Config.pm:312> INFO - This is Biber 2.15
+[1] Config.pm:315> INFO - Logfile is 'heom.blg'
+[290] biber:330> INFO - === dom dic  6, 2020, 23:52:54
+[334] Biber.pm:415> INFO - Reading 'heom.bcf'
+[582] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[610] Utils.pm:384> WARN - The file 'heom.bcf' does not contain any citations!
+[654] bbl.pm:651> INFO - Writing 'heom.bbl' with encoding 'UTF-8'
+[660] bbl.pm:754> INFO - Output to heom.bbl
+[664] Biber.pm:128> INFO - WARNINGS: 1

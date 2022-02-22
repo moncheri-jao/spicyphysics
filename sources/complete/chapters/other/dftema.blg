@@ -1,0 +1,9 @@
+[1] Config.pm:304> INFO - This is Biber 2.12
+[1] Config.pm:307> INFO - Logfile is 'dftema.blg'
+[32] biber:315> INFO - === ven feb 14, 2020, 13:29:17
+[52] Biber.pm:371> INFO - Reading 'dftema.bcf'
+[111] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[118] Utils.pm:193> WARN - The file 'dftema.bcf' does not contain any citations!
+[124] bbl.pm:636> INFO - Writing 'dftema.bbl' with encoding 'UTF-8'
+[125] bbl.pm:739> INFO - Output to dftema.bbl
+[125] Biber.pm:110> INFO - WARNINGS: 1

@@ -1,0 +1,130 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	After having considered the canonical ensemble, i.e. where one system embedded in another can only exchange energy with it (like in a heat bath), we're going to study the grand canonical ensemble, where an overall system is isolated as in the canonical ensemble, but both system can exchange energy and particles.\\
+	The probability distribution of the state variables $E_1,N_1,V_1$ is the following, in analogy with what we wrote for the canonical ensemble
+	\begin{equation}
+		\omega(E_1,N_1,V_1)=\frac{\Omega_1(E_1,N_1,V_1)\Omega_2(E-E_1,N-N_1,V-V_1)}{\Omega(E,N,V)}
+		\label{eq:pdfgc}
+	\end{equation}
+	From the equilibrium conditions ($T_1=T_2,\ V_1=V_2, N_1=N_2$) obtained from the equivalence of the logarithmic derivatives obtained from the normalization conditions of $\Omega$, and from the differential of entropy in the variables $N,V,T$, we get, after defining the \textit{chemical potential} $\mu$
+	\begin{equation*}
+		\begin{aligned}
+			\diff{S}&=\frac{1}{T}\diff{E}+\frac{P}{T}\diff{V}-\frac{\mu}{T}\diff{N}\\
+			\frac{\mu}{T}&=k_B\pdv{N}\log\Omega
+		\end{aligned}
+	\end{equation*}
+	We have finally
+	\begin{equation}
+		\mu=-k_BT\pdv{N}\log\Omega=-T\pdv{S}{N}
+		\label{eq:chemicalpotential}
+	\end{equation}
+	We now need to define the density operator $\dopr_{G}$ for the subsystem $1$. The probability that in the embedded system there are $N_1$ particles in the state $\ket{n}$ is
+	\begin{equation}
+		p(N_1,E_{1n}(N_1),V_1)=\frac{\Omega_2(E-E_{1n},N-N_1,V_2)}{\Omega(E,N,V)}=\frac{1}{Z_G}e^{-\frac{E_{1n}-\mu N_1}{k_BT}}
+		\label{eq:grandcanon}
+	\end{equation}
+	Where $Z_G$ is the grand canonical partition function, also known as \textit{Gibbs distribution}. We thus have
+	\begin{equation}
+		\dopr_G=\frac{1}{Z_G}e^{-\frac{\opr{\ham}_1-\mu N_1\1}{k_BT}}
+		\label{eq:grandcanonrho}
+	\end{equation}
+	And
+	\begin{equation}
+		Z_G=\trace\left( e^{-\frac{\opr{\ham}_1 -\mu N_1\1}{k_BT}} \right)=\sum_{N_1}Z(N_1)e^{\frac{\mu N_1}{k_BT}}
+		\label{eq:grandcanonpartition}
+	\end{equation}
+	The classical limit can be achieved simply applying this abuse of notation
+	\begin{equation*}
+		\trace\to\sum_{N_1}\int\diff{\Gamma_{N_1}}
+	\end{equation*}
+	From the definition of the density matrix, the entropy of the grand canonical ensemble will be
+	\begin{equation}
+		S_G=-k_B\expval{\log\dopr_g}=\frac{1}{T}\left( E-\mu N \right)+k_B\log\dopr_G
+		\label{eq:gcentropy}
+	\end{equation}
+	\section{Thermodynamic Quantities}
+	Analogously to the free energy of the canonical ensemble, we can define the \textit{grand potential} as follows
+	\begin{equation}
+		\Phi=-k_BT\log(Z_G)
+		\label{eq:grandpotential}
+	\end{equation}
+	Where, using \eqref{eq:gcentropy}, we can write alternatively
+	\begin{equation}
+		\Phi(V,T,\mu)=E-TS_G-\mu N
+		\label{eq:gpotcomp}
+	\end{equation}
+	And its differential relations follow
+	\begin{equation}
+		\begin{aligned}
+			\pdv{\Phi}{T}&=\frac{1}{T}(\Phi-E+\mu N)=-S_G\\
+			\pdv{\Phi}{V}&=\expval{\pdv{\opr{\ham}}{V}}=-P\\
+			\pdv{\Phi}{\mu}&=-N
+		\end{aligned}
+		\label{eq:derivatives}
+	\end{equation}
+	Now, in order to avoid confusion between the ensembles and their properties, we can compose a table.
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Ensemble&Microcanonical&Canonical&Grand Canonical\\
+			\hline
+			Situation&Isolated&Energy Exchange&Energy\\
+			&&&and\\
+			&&&Particle Exchange\\
+			\hline
+			Independent Variables&$E,V,N$&$T,V,N$&$T,V,\mu$\\
+			\hline
+			Density Operator&$\Omega^{-1}\opr{\delta}\left( \opr{\ham}-E \right)$&$Z^{-1}e^{-\opr{\ham}/k_BT}$&$Z_G^{-1}e^{-(\opr{\ham}-\mu N\1)/k_BT}$\\
+			\hline
+			Normalization&$\Omega=\trace\left( \opr{\delta}(\opr{\ham}-E) \right)$&$Z=\trace(e^{-\opr{\ham}/k_BT})$&$Z_G=\trace\left( e^{-(\opr{\ham}-\mu N\1)/k_BT} \right)$\\
+			\hline
+			Thermodynamic Potential&$S$&$F$&$\Phi$\\
+			\hline
+		\end{tabular}
+		\caption{Table of the various ensembles, with the definition of their density operators, their normalization and the main thermodynamic potential for each ensemble}
+		\label{tab:ensembles}
+	\end{table}
+	\section{Examples}
+	As our main example we choose again the classical ideal gas.\\
+	We begin by calculating the partition function for $N$ particles (keep in mind that $\beta=(k_BT)^{-1}$
+	\begin{equation}
+		Z_N=\frac{1}{N!h^{3N}}\int_{V}\int_{}^{}e^{-\beta\sum_{i=1}^N\frac{p_i^2}{2m}}\ddiff[3N]{p}{q}
+		\label{eq:partitionfunctioncggc}
+	\end{equation}
+	Noting that the integral on the coordinates is simply $V^N$, we can write, also noting the isotropy of momenta
+	\begin{equation}
+		Z_N=\frac{V^N}{N!h^{3N}}\left( \int_{0}^{\infty}e^{-\beta\frac{p^2}{2m}}\diff{p} \right)^{3N}=\frac{V^N}{N!}\left( \frac{2m\pi}{\beta h^2} \right)^{\frac{3N}{2}}
+		\label{eq:cgnpart}
+	\end{equation}
+	Using the definition of thermal wavelength of $\lambda=h(2\pi mk_BT)^{-1/2}$, we get finally
+	\begin{equation}
+		Z_N=\frac{1}{N!}\left( \frac{V}{\lambda^3} \right)^{\frac{3N}{2}}
+		\label{eq:partitionfunctionlambda}
+	\end{equation}
+	Writing the definition of the grand partition function, we get
+	\begin{equation}
+		Z_G=\sum_{N=0}^{\infty}Z_Ne^{\beta\mu N}=\sum_{N=0}^{\infty}\frac{e^{\beta\mu N}}{N!}\left( \frac{V}{\lambda^3} \right)^{N}=e^{z\frac{V}{\lambda^3}}
+		\label{eq:grandcanonicalpartcg}
+	\end{equation}
+	Where we introduced $z$ as what is usually called as \textit{fugacity} as
+	\begin{equation}
+		z=e^{\beta\mu}
+		\label{eq:fugacitydef}
+	\end{equation}
+	From this, we can write the grand potential and get all the thermodynamic relations of the classical gas
+	\begin{equation}
+		\Phi(T,V,\mu)=-k_BT\log(Z_G)=-k_BT\frac{zV}{\lambda^3}
+		\label{eq:grandpotential}
+	\end{equation}
+	Therefore, omitting all the algebraical passages and calculating $\mu$ through the derivatives of the grand potential and the definition of fugacity, we have
+	\begin{equation}
+		\begin{aligned}
+			-\pdv{\Phi}{\mu}&=N=\frac{zV}{\lambda^3}\\
+			-V\pdv{\Phi}{V}&=PV=Nk_BT\\
+			-\pdv{\Phi}{T}&=S=k_BN\left( \frac{5}{2}+\log\left( \frac{V}{N\lambda^3} \right) \right)\\
+			\mu&=-k_BT\log\left( \frac{V}{N\lambda^3} \right)
+		\end{aligned}
+		\label{eq:thermodynamicvargcg}
+	\end{equation}
+\end{document}

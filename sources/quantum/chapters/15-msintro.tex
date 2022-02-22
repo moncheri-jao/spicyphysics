@@ -1,0 +1,148 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	Statistical Mechanics deals with many-body physical problems, and its main roots derive from thermodynamics.\\
+	There are three main concepts in mechanical statistics: \textit{microstates}, \textit{macrostates} and \textit{statistical ensembles}\\
+	The microstate is defined by the coordinates and momenta of the system (in classical mechanics) and by the wavefunction of the system (in quantum mechanics). The collection of all microstate is referred as statistical ensemble.
+	\section{Probability Theory}
+	Before diving deeply into statistical mechanics we need to grasp a basis of probability theory.
+	\begin{defn}[Random Variable]
+		A random variable is a quantity $X$ which takes a value $x$ depending upon the elements $e\in E$ called events.\\
+		In each observation $X$ is uncertain, and only the probability of the occurrence of a given result $x_i$.
+	\end{defn}
+	\begin{defn}[Probability Density Function]
+		Let $X$ be a random variable, we define the probability density function $w(x)$ as the probability that $X$ assumes a value $x$ in a certain interval of values given by the following integral
+		\begin{equation*}
+			\int_{a}^{b}w(x)\diff{x}
+		\end{equation*}
+		By definition $w(x)$ is normalized.
+		\begin{equation*}
+			\int_{-\infty}^{\infty}w(x)\diff{x}=1
+		\end{equation*}
+	\end{defn}
+	\begin{defn}[Mean Value]
+		Let $w(x)$ be the probability density of a random variable $X$, the expectation or mean value is defined as the integral
+		\begin{equation*}
+			\mathbb{E}(X)=\expval{X}=\int_{\mathbb{R}}xw(x)\diff{x}
+		\end{equation*}
+		Defining a \textit{random function} as the function of a random variable $F(X)$, one can also define
+		\begin{equation*}
+			\expval{F(X)}=\int_{\R}F(x)w(x)\diff{x}
+		\end{equation*}
+	\end{defn}
+	\begin{defn}[Moment]
+		We define the $n-$th moment of a random value as follows
+		\begin{equation*}
+			\mu_n=\expval{X^n}
+		\end{equation*}
+	\end{defn}
+	\begin{defn}[Characteristic Function]
+		The characteristic function of a random variable is defined as the Fourier transform of the probability density function
+		\begin{equation*}
+			\chi(k)=\F[w](k)=\frac{1}{2\pi}\int_{\R}w(x)e^{-ikx}\diff{x}=\expval{e^{-ikX}}
+		\end{equation*}
+		If all moments are well defined, we can write the characteristic function as a power series of moments
+		\begin{equation*}
+			\chi(k)=\sum_{n=0}^{\infty}\frac{(-ik)^n}{n!}\expval{X^n}
+		\end{equation*}
+		For a multidimensional random function $F(\vec{X})$ which can take values $f$ corresponding to a density function $w_F(f)$. $w_F(f)$ is defined as follows
+		\begin{equation*}
+			w_F(f)=\expval{\delta\left( F(\vec{X})-f \right)}
+		\end{equation*}
+	\end{defn}
+	One important theorem that should be defined is the \textit{central limit theorem}:
+	\begin{thm}[Central Limit]
+		Let $X_1,\dots,X_n$ be a set of independent random variables with probability distributions $w(x_i)$, suppose that there exist the $n$-th moment of every variable, and define a second random variable $Y$ as follows
+		\begin{equation*}
+			Y=\sum_{i=1}^nX_i
+		\end{equation*}
+		Then the probability density function of $Y$ will be a Gaussian distribution, when $n\to\infty$
+	\end{thm}
+	\begin{proof}
+		Let's define a third random variable $Z$ as follows
+		\begin{equation*}
+			Z=\sum_{i=1}^n\frac{1}{\sqrt{n}}(X_i-\expval{X})=\frac{1}{\sqrt{n}}(Y-n\expval{X})
+		\end{equation*}
+		Where by definition we have $\expval{X_1}=\expval{X_2}=\cdots=\expval{X_n}$.\\
+		The probability density function of $Z$ is then defined as follows
+		\begin{equation*}
+			\begin{aligned}
+				w_Z(z)&=\int \prod_{i=1}^nw(x_i)\delta\left( z-\frac{1}{\sqrt{n}}\left( \sum_{k=1}^nx_k \right)+\sqrt{n}\expval{x} \right)\diff{x_i}=\\
+				&=\frac{1}{2\pi}\int e^{ikz}\diff{k}\int\prod_{i=1}^nw(x_i)e^{\frac{-ik\sum_{k=1}^nx_i}{\sqrt{n}}+ik\sqrt{n}\expval{X}}\diff{x_i}=\\
+				&=\frac{1}{2\pi}\int e^{ikz+ik\sqrt{n}\expval{X}}\left( \chi\left( \frac{k}{\sqrt{n}} \right) \right)^N
+			\end{aligned}
+		\end{equation*}
+		Where $\chi(q)$ is the characteristic function of $w(x_i)$. We can then reformulate the probability density by defining in an alternative way the characteristic function, as follows
+		\begin{equation*}
+			\chi(q)=\exp\left( \sum_{n=1}^{\infty}\frac{(-iq)^n}{n!}C_n \right)
+		\end{equation*}
+		Where $C_n$ are called the \textit{cumulants}. They're related to the momenta of the variable, and it can be seen by comparing the Taylor series expansion of $\chi(q)$ with the previous equation.\\
+		Reinserting it all into the definition of $w_Z(z)$, we get
+		\begin{equation*}
+			w_Z(z)=\frac{1}{2\pi}\int_{}^{}e^{ikz-\frac{1}{2}k^2\mu_2^2+\ldots+k^3\sqrt{n}+\ldots}\diff{k}
+		\end{equation*}
+		Neglecting the terms that vanish for $\order{\sqrt{N}}$, we obtain the following
+		\begin{equation*}
+			w_Z(z)=\frac{1}{\sqrt{2\pi\mu_2^2}}e^{-\frac{z^2}{2\mu_2^2}}
+		\end{equation*}
+		And since $w_Y(y)\diff{y}=w_Z\diff{z}$ we get, substituting the definition of $z$
+		\begin{equation*}
+			w_Y(y)=\frac{1}{\sqrt{2\pi n\mu_2^2}}e^{-\frac{(y-n\expval{X})^2}{2n\mu_2^2}}
+		\end{equation*}
+		Which is our searched Gaussian probability density for large $n$, which demonstrates the theorem.
+	\end{proof}
+		\section{Quantum Statistics}
+		For dealing with quantum statistics we need to define a deeper mathematical apparatus.\\
+		We already know that in quantum mechanics, the expected value of an observable $\opr{A}$ is defined as follows
+		\begin{equation*}
+			\expval{A}=\bra{\psi}A\ket{\psi}
+		\end{equation*}
+		And the trace of this operator as follows
+		\begin{equation}
+			\trace{\opr{A}}=\sum_n\bra{n}\opr{A}\ket{n}
+			\label{eq:traceqm}
+		\end{equation}
+		From the previous two definitions, we can then define a new operator, called the \textit{density operator}
+		\begin{equation}
+			\opr{\rho}=\ket{\psi}\bra{\psi}
+			\label{eq:densityoperatordefinition}
+		\end{equation}
+		Which can be used to redefine the expectation value as follows
+		\begin{equation}
+			\expval{A}=\trace{\opr{\rho}\opr{A}}
+			\label{eq:expectationvaluerhooperator}
+		\end{equation}
+		If the system in question is all in one single state $\ket{\psi}$, we have what's called a \textit{pure ensemble}, whereas if the system is in a mixture of states, each with a probability $p_i$, we are in what's called a \textit{mixed ensemble} or a \textit{statistical mixture}.\\
+		In the case of a statistical mixture of states $\ket{\psi_i}$, we then define our density operator as follows
+		\begin{equation}
+			\opr{\rho}=\sum_ip_i\ket{\psi_i}\bra{\psi_i}
+			\label{eq:mixeddensitymatrix}
+		\end{equation}
+		Another important feature we can define for the density matrix is its behavior in time evolution. For this we start by writing both the time dependent Schrödinger equation and its adjoint
+		\begin{equation}
+			\left\{\begin{aligned}
+					i\hbar\pdv{t}\ket{\psi}&=\opr{\ham}\ket{\psi}\\
+					-i\hbar\pdv{t}\bra{\psi}&=\bra{\psi}\opr{\ham}
+			\end{aligned}\right.
+			\label{eq:schrodingervonneumann}
+		\end{equation}
+		From the definition of $\opr{\rho}$ for statistical mixtures, inserting it into the Schrödinger equation we obtain
+		\begin{subequations}
+			\begin{equation}
+				\begin{aligned}
+					i\hbar\pdv{\opr{\rho}}{t}&=i\hbar\sum_ip_i\left( \pdv{t}\ket{\psi_i}\bra{\psi_i}+\ket{\psi_i}\pdv{t}\bra{\psi_i} \right)=\\
+					&=\sum_ip_i\left( \opr{\ham}\ket{\psi_i}\bra{\psi_i}-\ket{\psi_i}\bra{\psi_i}\opr{\ham} \right)
+				\end{aligned}
+				\label{eq:vonneumannequationpre}
+			\end{equation}
+			From this, substituting again into it the definition of $\opr{\rho}$, we obtain the \textit{Von Neumann equation}
+			\begin{equation}
+				i\hbar\pdv{\opr{\rho}}{t}=\comm{\opr{\ham}}{\opr{\rho}}
+				\label{eq:vonneumannequation}
+			\end{equation}
+			In Heisenberg representation, this equation appears easily remembering the definition of $\opr{\rho}$. Without delving into the calculations (which can be made directly using the definition itself of a time-evolved state), we get
+			\begin{equation}
+				\opr{\rho}(t)=\Ut(t)\opr{\rho}\adj{\Ut}(t)
+				\label{eq:vonneumannheisenberg}
+			\end{equation}
+		\end{subequations}
+\end{document}

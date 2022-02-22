@@ -1,0 +1,9 @@
+[1] Config.pm:312> INFO - This is Biber 2.15
+[3] Config.pm:315> INFO - Logfile is 'rig.blg'
+[331] biber:330> INFO - === dom dic  6, 2020, 23:56:36
+[377] Biber.pm:415> INFO - Reading 'rig.bcf'
+[590] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[612] Utils.pm:384> WARN - The file 'rig.bcf' does not contain any citations!
+[643] bbl.pm:651> INFO - Writing 'rig.bbl' with encoding 'UTF-8'
+[644] bbl.pm:754> INFO - Output to rig.bbl
+[645] Biber.pm:128> INFO - WARNINGS: 1

@@ -1,0 +1,9 @@
+[1] Config.pm:312> INFO - This is Biber 2.15
+[3] Config.pm:315> INFO - Logfile is 'lorentz.blg'
+[318] biber:330> INFO - === dom dic  6, 2020, 23:54:12
+[376] Biber.pm:415> INFO - Reading 'lorentz.bcf'
+[702] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[731] Utils.pm:384> WARN - The file 'lorentz.bcf' does not contain any citations!
+[768] bbl.pm:651> INFO - Writing 'lorentz.bbl' with encoding 'UTF-8'
+[769] bbl.pm:754> INFO - Output to lorentz.bbl
+[769] Biber.pm:128> INFO - WARNINGS: 1

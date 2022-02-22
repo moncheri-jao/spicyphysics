@@ -1,0 +1,688 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\section{Perturbations and Feynman Diagrams}
+The first question that comes to mind when talking about particle accelerators is why.\\
+The idea is quite simple and comes from $E^2=m^2+p^2$, therefore we can use higher $E$ for converting it into mass.\\
+This lets us discover heavier particles, create more particles via inelastic collisions and to obviously discover new particles.\\
+In general we treat a reaction of the kind
+\begin{equation*}
+	a+b\to c+d(+f+g+\cdot)
+\end{equation*}
+We need to evaluate the initial and final states for such reactions, and Fermi's golden rule comes in handy for this. For FGR, given a transition probability $P_{fi}$ between an initial state and a final state is
+\begin{equation}
+	\lim_{T\to0}\frac{P_{fi}}{T}=2\pi\abs{\opr{\mathcal{M}}_{fi}}^2\delta\left( E_f-E_i \right)
+	\label{eq:fgr}
+\end{equation}
+Note that different disposition of particles in the final state changes only the kinematics of the final state, since the 4-momentum is always conserved.\\
+What this actually mean is that $\opr{\mathcal{M}}_{fi}$ is independent from the kinematics of the process.\\
+Remember that the decay rate of a reaction is
+\begin{equation}
+	\Gamma_{fi}=\int_{}^{}2\pi\abs{\opr{\mathcal{M}}_{fi}}^2\delta(E_f-E_i)\dd n=2\pi\abs{\opr{\mathcal{M}}_{fi}}^2\rho(E)
+	\label{eq:transitionrateqft}
+\end{equation}
+Where $\rho(E)$ is the density of states in the phase space and is equal to
+\begin{equation}
+	\rho(E)=\dv{n}{E_f}
+	\label{eq:statedensityqft}
+\end{equation}
+It's important to note that
+\begin{equation}
+	\opr{\mathcal{M}}_{fi}=-i\bra{f}\opr{\ham}_I\ket{f}
+	\label{eq:transmatrixqft}
+\end{equation}
+Where $\opr{\ham}_I$ is the perturbation Hamiltonian for a system $\opr{\ham}=\opr{\ham}_0+\opr{\ham}_I$.\\
+Using perturbation theory for such system we have
+\begin{equation}
+	\begin{aligned}
+		\opr{\ham}_0\psi_n=E_n\psi_n
+		i\pdv{\psi}{t}&=\left( \opr{\ham}_0+\opr{\ham}_I \right)\psi\\
+		\psi=\sum_na_n(t)\psi_ne^{-iE_nt}
+	\end{aligned}
+	\label{eq:perturbtheory1st}
+\end{equation}
+For a transition $\ket{i}\to\ket{f}$ we impose the following approximation conditions on the functions $a_n(t)$
+\begin{equation}
+	\begin{dcases}
+		a_i(t)=1&k=i\\
+		a_k(0)=0&k\ne i\\
+	\end{dcases}
+	\label{eq:approxcases}
+\end{equation}
+Taking the second equation in \eqref{eq:perturbtheory1st} and multiplying on the left by $\bra{k}$ we get the following Schrödinger equation for a $k-$th state
+\begin{equation}
+	\dot{a}_k(t)=-i\int_{}^{}\cc{\psi}_k\opr{\ham}_I\psi_ie^{i(E_k-E_i)t}\dd^3r
+	\label{eq:trans1stpert}
+\end{equation}
+Integrating and rewriting on the RHS the definition of $\opr{\mathcal{M}}_{ki}$, and imposing $\ket{k}=\ket{f}$ we have that
+\begin{equation}
+	P_{fi}=\abs{a_f(t)}^2=\abs{\int_{0}^{t}\opr{\mathcal{M}}_{fi}e^{i(E_f-E_i)t}\dd t}^2
+	\label{eq:transprob1stqft}
+\end{equation}
+Going over to the second order terms of the perturbation and reinserting everything inside the Schrödinger equation, where we write the $a_n(t)$ we found before, we have
+\begin{equation}
+	\dot{a}_k(t)=-i\opr{V}_{ki}e^{i(E_k-E_i)t}+(-i)^3\sum_{n\ne i}\frac{\opr{V}_{kn}\opr{V}_{ni}}{E_n-E_i}e^{i(E_k-E_i)t}=-i\opr{V}_{ki}^{(2)}e^{i(E_k-E_i)t}
+	\label{eq:secondorderpertqft}
+\end{equation}
+Where $\opr{V}_{ki}^{(2)}$ is the second order perturbation and is equal to
+\begin{equation}
+	\begin{aligned}
+		\opr{V}_{ki}^{(2)}&=\opr{V}_{ki}+(-i)^3\sum_{n\ne i}\frac{\opr{V}_{kn}\opr{V}_{ni}}{E_i-E_n}\\
+		\opr{V}_{ki}&=\bra{k}\opr{\ham}_I\ket{i}
+	\end{aligned}
+	\label{eq:pertV}
+\end{equation}
+The second order transition probability is then
+\begin{equation}
+	\Gamma^{(2)}_{fi}=2\pi\abs{\opr{\mathcal{M}}_{fi}^{(2)}}^2\rho(E)
+	\label{eq:trans2ordqft}
+\end{equation}
+Using FGR we have for the conservation of energy $\delta(E_f-E_i)\implies{}E_f=E_i$ but only to the first order.\\
+Considering a scattering like Rutherford scattering we have considering second order corrections
+\begin{equation*}
+	\opr{\mathcal{M}}_{fi}\sim\sum_{n\ne i}\frac{\opr{V}_{fn}\opr{V}_{ni}}{E_i-E_n}
+\end{equation*}
+The system in this approximation will jump from the first state $\ket{i}$ to accessible states $\ket{n}$ to the final state $\ket{f}$ via the transition matrices $\opr{V}_{ni}$, $\opr{V}_{fn}$.\\
+By definition we have $E_n\ne E_i\ne E_f$, therefore energy is not conserved in this situation. This is fixed by imposing that states with $E_n>>E_i$ and $E_n>>E_i$ are improbable.\\
+A good example of showing graphically these perturbations is using \emph{Feynman diagrams}, graphs where each vertex corresponds to a degree of perturbation.\\
+At the first order of perturbation we can write as an example the following transition
+\begin{equation*}
+	\ket{e^+e^-}\to\ket{\gamma}
+\end{equation*}
+Which corresponds to a pair annihilation reaction $e^++e^-\to\gamma$. The first order perturbation will be graphed as
+\begin{figure}[H]
+	\centering
+%	\feynmandiagram[horizontal = a to b] {
+%		i1 [particle=\(e^-\)] -- [fermion] a [edge label=\(\tiny{\opr{V}_{fi}}\)] -- [fermion] i2 [particle=\(e^+\)],
+%		a -- [photon, edge label=\(\gamma\)] b,
+%	};
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a);
+			\vertex[above left=of a] (i1) {\(e^-\)};
+			\vertex[below left=of a] (i2) {\(e^+\)};
+			\vertex[right=of a] (b);
+		\diagram*{
+			(i1) -- [fermion] (a) -- [fermion] (i2),
+			(a) -- [photon,edge label=\(\gamma\)] (b),
+		};
+		\end{feynman}
+		\draw[->,very thin, dashed] (a.north) --+ (0,1) node[above] {$\opr{V}_{fi}$};
+	\end{tikzpicture}
+	\caption{Feynman representation of the first order perturbation $\opr{V}_{fi}$.}
+	\label{fig:feynmandiagram1node}
+\end{figure}
+This graph is a $\approx1$ dimensional graph. The only dimension accounted here is time, which flows from right to left. Matter is drawn as arrows flowing with time and antimatter (see $e^+$) is drawn with arrows that flow against time. The vertices represent the actual interaction matrix $\opr{V}_{fi}$, in this case only for a 1st order perturbation.\\
+With a quick check of this process we see that
+\begin{enumerate}
+\item The incoming particles are a positron and an electron
+\item The only outgoing particle is a photon
+\end{enumerate}
+And therefore
+\begin{equation*}
+	\sqrt{s_i}=2m_e^2\ne0=\sqrt{s_f}
+\end{equation*}
+Therefore the conservation of energy given by $\delta(E_f-E_i)$ is not valid.\\
+More generally, with a reaction $a+b\to X$, the diagram would be drawn as
+\begin{figure}[H]
+	\centering
+	\feynmandiagram[horizontal = a to b] {
+		i1 [particle=\(a\)] -- a -- i2 [particle=\(b\)],
+		a -- [dashed,edge label=\(X\)] b,
+	};
+	\caption{Feynman diagram for the process $a+b\to X$}
+	\label{fig:feynmanabX}
+\end{figure}
+Note that this process can only happen if $s_i=m_a^2+m_b^2=m_X^2=s_f$, and therefore doesn't happen for $s_i>s_f$.\\
+For second order processes the diagram for the interaction described in \eqref{fig:feynmandiagram1node} becomes
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a);
+			\vertex[right=1.5cm of a] (b) {\(\oplus\)};
+			\vertex[below left=of a] (i2) {\(e^+\)};
+			\vertex[above left=of a] (i1) {\(e^-\)};
+			\vertex[right=1.8cm of b] (c);
+			\vertex[above right=of c] (f1) {\(e^+\)};
+			\vertex[below right=of c] (f2) {\(e^-\)};
+			\diagram*{
+				(i1) -- [fermion] (a) -- [fermion] (i2),
+				(a) -- [photon] (b) -- [photon] (c),
+				(f1) -- [fermion] (c) -- [fermion] (f2),
+			};
+		\end{feynman}
+		\draw[->,very thin,dashed] (a.north) --+ (0,1) node[above] {$\opr{V}_{ni}$};
+		\draw[->,very thin,dashed] (c.north) --+ (0,1) node[above] {$\opr{V}_{fn}$};
+	\end{tikzpicture}
+	\caption{Second order diagram considered as the sum of the two vertexes corresponding to the transitions $\ket{i}\to\ket{n}$ and $\ket{n}\to\ket{f}$. The photon connecting the two diagram is known as \emph{virtual} due to its non-physical and non measurable energy $E_n$}
+	\label{fig:2ndorderfeynman}
+\end{figure}
+This diagram is exactly drawn as the sum of two single vertex diagrams corresponding to a transition $\ket{i}\to\ket{n}\to\ket{f}$. The photon inside can have $E_n$ that aren't possible otherwise, such as $E_n\ne p^2+m^2$, the so called \emph{off shell} energies.\\
+What happened in this scattering process, a $e^+e^-\to e^+e^-$ elastic scattering, is that a virtual photon mediates the process. Basically the electron and positron annihilate creating a virtual photon which re-decays into an electron and a positron, which get measured as outgoing particles.\\
+Note that for Heisenberg this is possible. In fact $\Delta E\Delta t\approx\hbar$ imply that $\Delta t\le\hbar/\Delta E$, and therefore for $t<\Delta t$ the $\Delta E$ violations are possible, as long as charge and quantum numbers are conserved.
+\subsection{Electrodynamic Processes}
+For describing electromagnetic processes we can build three basic vertexes which can be used to build up higher order diagrams\\
+\begin{minipage}[H]{0.33\linewidth}
+	\begin{center}
+	\feynmandiagram[horizontal=a to b]{
+		i1 [particle=\(e^-\)] -- [fermion] a -- [fermion] i2 [particle=\(e^+\)],
+		a -- [photon,edge label=\(\gamma\)] b,
+	};
+\end{center}
+\end{minipage}
+\begin{minipage}[H]{0.33\linewidth}
+	\begin{center}
+	\feynmandiagram[horizontal=a to b]{
+		a [particle=\(e^-\)] -- [fermion] b -- [fermion] c [particle=\(e^-\)],
+		b -- [photon] o [particle=\(\gamma\)],
+	};
+\end{center}
+\end{minipage}
+\begin{minipage}[H]{0.33\linewidth}
+	\begin{center}
+	\feynmandiagram[horizontal=a to b]{
+		a -- [photon,edge label=\(\gamma\)] b,
+		b -- [fermion] o1 [particle=\(e^-\)],
+		b -- [anti fermion] o2 [particle=\(e^+\)],
+	};
+	\end{center}
+\end{minipage}\\
+All these three basic vertexes share one main thing: charge is conserved.\\
+Consider now Rutherford scattering, this process can be described via the following diagram
+\begin{figure}[H]
+	\centering
+	\feynmandiagram[horizontal=a to b]{
+		a [particle=\(e^-\)] -- [fermion,momentum'=\(\vec{p}_i\)] a1 -- [fermion,momentum'=\(\vec{p}_o\)] b [particle=\(e^-\)],
+		a1 -- [photon,edge label=\(\gamma\)] a2,
+		i [particle=\(Ze\)] -- [anti fermion] a2 -- [anti fermion] o [particle=\(Ze\)],
+	};
+	\caption{Feynman diagram for Rutherford scattering}
+	\label{fig:rutherfordfeynmand}
+\end{figure}
+From this diagram we can immediately see that $Q_i=e(Z-1)=Q_f$, since we used two fundamental vertexes. In order to get something more from this diagram, especially how to grasp the perturbations from the vertexes we need to do some calculations on the initial state $\ket{i}$ and the final state $\ket{f}$. We begin by Born-approximating the wavefunction of the incoming electron as a planar wave, therefore
+\begin{equation}
+	\begin{aligned}
+		\psi_i&=\frac{1}{\sqrt{V}}e^{i\vec{p}_i\vec{r}}\\
+		\psi_0&=\frac{1}{\sqrt{V}}e^{i\vec{p}_o\vec{r}}
+	\end{aligned}
+	\label{eq:inoutpsi}
+\end{equation}
+Therefore, having an electromagnetic perturbation given by the potential of the nucleus, we have that our perturbation is
+\begin{equation*}
+	\opr{V}_{fi}=-\bra{f}\frac{Z\alpha}{r}\ket{i}=-\frac{Z\alpha}{V}\int_{}^{}\frac{1}{r}e^{i(\vec{p}_i-\vec{p}_o)\vec{r}}\dd^3r
+\end{equation*}
+Writing $\vec{q}=\vec{p}_i-\vec{p}_f$ and $\vec{q}\vec{r}=qr\cos\theta$ and transforming the integral into spherical coordinates we have
+\begin{equation*}
+	\opr{V}_{fi}=-\frac{Z\alpha}{V}\int_{0}^{\infty}r\dd r\int_{0}^{2\pi}\dd\varphi\int_{0}^{\pi}e^{iqr\cos\theta}\sin\theta\dd\theta
+\end{equation*}
+Taking the third integral and writing $\dd\cos\theta=-\sin\theta$ we have
+\begin{equation*}
+	\int_{0}^{\pi}\sin\theta e^{iqr\cos\theta}\dd\theta=\frac{1}{iqr}\int_{-1}^{1}e^{iqr\cos\theta}\dd\cos\theta=\frac{1}{iqr}\left( e^{iqr}-e^{-iqr} \right)
+\end{equation*}
+Reinserting it into the integral and integrating with respect to $\varphi$ we have
+\begin{equation*}
+	\opr{V}_{fi}=-\frac{2\pi Z\alpha}{iqV}\int_{0}^{\infty}\left( e^{iqr}-e^{-iqr} \right)\dd r
+\end{equation*}
+The last integral can be calculated using something similar to Feynman's integration trick, by multiplying the function by a dummy function $e^{-\varepsilon r}$ and taking the limit for $\varepsilon\to0$ for getting back the last result. Substituting and integrating we have
+\begin{equation*}
+	\opr{V}_{fi}=-\frac{2Z\pi\alpha}{iqV}\lim_{\varepsilon\to0}\left( -\frac{1}{iq-\varepsilon}-\frac{1}{iq+\varepsilon} \right)=-\frac{2Z\pi\alpha}{iqV}\frac{2iq}{q^2}
+\end{equation*}
+Simplifying, we get
+\begin{equation}
+	\opr{V}_{fi}=-\frac{-4Z\pi\alpha}{Vq^2}
+	\label{eq:pertmatrixruthfeynman}
+\end{equation}
+Using $\opr{\mathcal{M}}_{fi}=-i\opr{V}_{fi}$ we get the transition matrix, and the transition probability as
+\begin{equation}
+	\begin{aligned}
+		\opr{\mathcal{M}}_{fi}&=\frac{4iZ\pi\alpha}{Vq^2}\\
+		\abs{\opr{\mathcal{M}}_{fi}}^2&=\frac{16Z^2\pi^2\alpha^2}{V^2q^4}
+	\end{aligned}
+	\label{eq:transprobrutherfordfeyn}
+\end{equation}
+Which implies $\sigma\propto Z^2\alpha^2q^{-4}$.\\
+Going back to the diagram and remembering that each vertex represents a perturbation we have, for the vertex of the nucleus a charge of $Ze$ and a contribute of $\sqrt{\alpha}$, for the other one we have another contribution $\sqrt{\alpha}$ with charge $e$, connected by a virtual photon, which contributes for the moment with a so called \emph{propagator}. The photon propagator is proportional to $q^{-2}$, and therefore, simply by looking at the two vertexes in natural units ($e=1$), we get
+\begin{equation}
+	\opr{\mathcal{M}}_{fi}=\sqrt{\alpha}\frac{1}{q^2}Z\sqrt{\alpha}=\frac{Z\alpha}{q^2}
+	\label{eq:fromdiagramruth}
+\end{equation}
+Which is what we found up to a factor of $-i4\pi$.\\
+Consider now as a second example of these rules the process of Compton scattering.\\
+The diagram for this process will be
+\begin{figure}[H]
+	\centering
+	\feynmandiagram[horizontal=a tob]{
+		i1 [particle=\(e^-\)] -- [fermion] a -- [fermion,edge label=\(e^-\)] b -- [fermion] o1 [particle=\(e^-\)],
+		i2 [particle=\(\gamma\)] -- [photon] a,
+		b -- [photon] o2 [particle=\(\gamma\)]
+	};
+	\caption{Second order diagram for Compton scattering}
+	\label{fig:comptonscatfeynman}
+\end{figure}
+Using Feynman rules on vertexes we have that $\opr{\mathcal{M}}_{fi}\approx\sqrt{\alpha}\sqrt{\alpha}=\alpha$, and therefore we can immediately suppose that $\sigma\sim\abs{\opr{\mathcal{M}}_{fi}}^2\approx\alpha^2$.\\
+One quick thought about conservation laws makes clear that if the virtual particle in the diagram \textit{must} be an electron, because the number of leptons must be conserved in all vertexes. Note that if the virtual particle was a baryon like a proton, it also wouldn't be right since the number of baryons isn't conserved.\\
+Also consider a quick thing, if the outgoing particles were switched in the diagram, the result would be the same, although we must consider this diagram's contribution in the final calculations.\\
+Take now the Bremsstrahlung radiation, this process corresponds to the following third order diagram
+\begin{figure}[h!]
+	\centering
+	\feynmandiagram[horizontal=a to b] {
+		a [particle=\(e^-\)] -- [fermion] ve -- [fermion,edge label=\(e^-\)] b -- [fermion] o1 [particle=\(e^-\)],
+		in [particle=\(Ze\)] -- [anti fermion] vg -- [anti fermion] o3 [particle=\(Ze\)],
+		vg -- [photon,edge label=\(\gamma\)] ve,
+		b -- [photon] o2 [particle=\(\gamma\)],
+	};
+	\caption{Bremsstrahlung effect third order Feynman diagram}
+	\label{fig:feynmandbremsstrahlung}
+\end{figure}
+For this diagram we have $\opr{\mathcal{M}}_{fi}\propto Z\sqrt{\alpha}\sqrt{\alpha}\sqrt{\alpha}\frac{1}{q^2}$, therefore $\sigma\propto Z^2\alpha^3/q^4$.\\
+Confronting the obtained cross section to the one for Rutherford scattering we get $\sigma_R\propto\alpha^2$, and $\sigma_{Brem}\propto\alpha^3$, with $\alpha=1/137$.\\
+Going down this path of describing electrodynamic processes with Feynman diagrams we impact ourselves in a new Feynman rule for electromagnetic interactions: vertexes can't have multiple photons reaching them, therefore this diagram is impossible
+\begin{figure}[H]
+	\centering
+	\feynmandiagram[horizontal=a to b]{
+		a -- [photon,edge label=\(\gamma\)] b -- [opacity=0] o,
+		n1 -- [photon,edge label=\(\gamma\)] b,
+		ni [particle=\(N\)] -- [fermion] n1 -- [fermion] no [particle=\(N\)],
+	};
+	\caption{An impossible diagram}
+	\label{fig:impossibleqed}
+\end{figure}
+And now one might think, how can I build a pair production diagram? The answer is: add a virtual particle between the photonic vertexes. The searched diagram then is
+\begin{figure}[H]
+	\centering
+	\feynmandiagram[horizontal=a to eo] {
+		a -- [photon,edge label=\(\gamma\)] b -- [fermion,edge label=\(e^-\)] ev -- [fermion] eo [particle=\(e^-\)],
+		b -- [fermion] po [particle=\(e^+\)],
+		ev -- [photon,edge label=\(\gamma\)] np,
+		ni [particle=\(Ze\)] -- [fermion] np -- [fermion] no [particle=\(Ze\)],
+	};
+%	\begin{tikzpicture}
+%		\begin{feynman}
+%			\vertex (a);
+%			\vertex[right=of a] (ev);
+%			\vertex[above right=of ev] (po);
+%			\vertex[below right=of ev] (pn);
+%			\vertex[right=of pn] (eo);
+%			\vertex[below=of pn] (np);
+%			\vertex[below right=of np] (ni);
+%			\vertex[below left=of np] (no);
+%			\diagram*{
+%				a -- [photon,edge label=\(\gamma\)] ev -- [fermion] po [particle=\(e^+\)],
+%				ev -- [fermion,edge label=\(e^-\)] pn -- [fermion] eo [particle=\(e^-\)],
+%				pn -- [photon,edge label=\(\gamma\)] np,
+%				ni [particle=\(Ze\)] -- [fermion] np -- [fermion] no [particle=\(Ze\)],
+%
+%			};
+%		\end{feynman}
+%	\end{tikzpicture}
+	\caption{Maybe fix this? idk not sure probably pair production}
+	\label{fig:pairproductionfdiag}
+\end{figure}
+By just looking at the diagram we have $\opr{\mathcal{M}}_{fi}\propto Z\sqrt{\alpha}\sqrt{\alpha}\sqrt{\alpha}q^{-2}=Z\alpha^{3/2}/q^2$.\\
+Another interesting process is Bhabha scattering, $e^+e^-\to e^+e^-$. This diagram is pretty simple to draw\\
+\begin{minipage}[H]{0.5\linewidth}
+	\begin{figure}[H]
+		\centering
+		\feynmandiagram[horizontal=a to b]{
+			a [particle=\(e^-\)] -- [fermion] ep -- [fermion] b [particle=\(e^-\)],
+			ep -- [photon,edge label=\(\gamma\)] pp,
+			pi [particle=\(e^+\)] -- [fermion] pp -- [fermion] po [particle=\(e^+\)],
+		};
+		\caption{Bhabha scattering diagram}
+		\label{fig:bhabhascatdiag}
+	\end{figure}
+\end{minipage}
+\begin{minipage}[H]{0.5\linewidth}
+	\begin{figure}[H]
+		\centering
+		\feynmandiagram[horizontal=a to b]{
+			pi [particle=\(e^+\)] -- [anti fermion] a -- [photon,edge label=\(\gamma\)] b -- [anti fermion] po [particle=\(e^+\)],
+			ei [particle=\(e^-\)] -- [fermion] a,
+			b -- [fermion] eo [particle=\(e^-\)]
+		};
+		\caption{A symmetric version of the same bhabha scattering diagram}
+		\label{fig:bhabha2}
+	\end{figure}
+\end{minipage}
+By checking the nodes of this diagram we get immediately that $\sigma\propto\alpha^2/q^4$
+\section{Klein-Gordon Equation and the Yukawa Potential}
+Yukawa in 1935, using the idea of virtual mediator particles went on trying to explain the nuclear force between nucleons. Experimetally it had been seen that it was a short range force, and that there is a symmetry between neutrons and protons.\\
+From classical EM we know that the electrostatic potential generated by a pointlike charge at the origin solves the inhomogeneous Poisson equation
+\begin{equation}
+	\nabla^2V=-e\delta^3(r)
+	\label{eq:empoissoneq}
+\end{equation}
+The solution is an integral retarded potential
+\begin{equation}
+	V(r)=\int_{V}^{}\frac{\rho(\vec{r}')}{\abs{\vec{r}-\vec{r}'}}\dd^3r'
+	\label{eq:retespot}
+\end{equation}
+For time dependent potentials, defining $\square=\del^\mu\del_\mu=\del_t^2-\nabla^2$ the Maxwell equations are
+\begin{equation}
+	\square\left( \vec{E},\vec{B} \right)=0
+	\label{eq:maxwelleq}
+\end{equation}
+Where, in the potential formulation become, writing a 4-potential $A_\mu=(\phi,\vec{A})$
+\begin{equation}
+	\begin{aligned}
+		\pdv[2]{\phi}{t}-\nabla^2\phi&=\rho\\
+		\pdv[2]{\vec{A}}{t}-\nabla^2\vec{A}&=\vec{J}
+	\end{aligned}
+	\label{eq:maxwelleqpot}
+\end{equation}
+Taking only the first of the two equations, we might think to quantize this equation imposing $i\del_t\to\opr{E}$ and $-i\nabla\to\vec{\opr{p}}$, getting the following equation
+\begin{equation}
+	\square\phi=\left( \opr{E}^2-\opr{p}^2 \right)\phi=0
+	\label{eq:scalarpotquant}
+\end{equation}
+It's immediately clear that we must have $E=p$, and therefore this equation works only for massless particles.\\
+Since we're dealing with massive particles we might immediately think to substitute $E^2=m^2+p^2$, getting what is known as the \emph{Klein-Gordon equation}, which satisfies a massive mediation of the potential
+\begin{equation}
+	\left( \opr{E}^2-\opr{p}^2+m^2 \right)\phi=\left( \square+m^2 \right)\phi=0
+	\label{eq:kleingordoneq}
+\end{equation}
+Fitting it into the stationary case of the nucleon with a nuclear charge $g\ne0$ at $\vec{r}=0$ we get the following equation
+\begin{equation}
+	\left( \nabla^2-m^2 \right)\phi(\vec{r})=-g\delta^3(\vec{r})
+	\label{eq:yukawapoteq}
+\end{equation}
+Which has for solution the Yukawa potential for the strong interaction
+\begin{equation}
+	\phi(r)=-\frac{g}{4\pi r}e^{-mr}
+	\label{eq:yukawapot}
+\end{equation}
+This potential corresponds to a shielded couloomb interaction.\\
+In natural units we have that $mr$ is adimensional, and using $\Delta E\Delta t\approx\hbar$ with $'D E\approx mc^2,\Delta t\approx R/c$ with $R\approx1.5\unit{fm}$ we get that
+\begin{equation*}
+	mc^2\approx\frac{\hbar c}{R}\approx150\unit{MeV}
+\end{equation*}
+The mediating particle for this process must have a mass of $m\approx150\unit{MeV}$, so Yukawa theorized the existence of a mesotron particle which mediates the nuclear force.\\
+From experiments we now know that this mesotron, or better known as pion, isn't an elementary particle, and therefore Yukawa's model is effective in explaining these interactions but it's not a fundamental one.\\
+In general a charged pion $\pi^2$ is a meson (quark-antiquark bound state), with state $\ket{u\cc{d}}$.\\
+We might think to find this pion propagator using Yukawa's potential as a perturbation to Born states, which gives
+\begin{equation}
+	\bra{f}-\frac{g}{4\pi r}e^{-mr}\ket{i}=-i\frac{g^2}{4\pi}\frac{1}{q^2+m^2}
+	\label{eq:pionpropagator}
+\end{equation}
+This propagator is similar to the photon propagator, and using $\alpha_{EM}=e^2/4\pi$ we might think to construct a ``fine structure constant'' for strong interaction, which is $\alpha_S=g^2/4\pi$.\\
+In general for a massive potential we have a propagator of the following kind
+\begin{equation}
+	\bra{f}\opr{\ham}_I\ket{i}=-i\alpha\frac{1}{q^2+m^2}
+	\label{eq:massivepropagator}
+\end{equation}
+Supposing a force with $m^2>>q^2$ we can see immediately that the momentum exchanged between the interacting particles is negligible with respect to the mass of the mediating particle, which lets us approximate the propagator to
+\begin{equation}
+	\bra{f}\opr{\ham}_I\ket{i}\approx-i\alpha\frac{1}{m^2}
+	\label{eq:propagatormassiveapprox}
+\end{equation}
+\subsection{Weak Interactions}
+We might think to apply this approximation to Fermi's interactions, with $\opr{\ham}_I=G_F$. The weak interaction that Fermi studied is a finite range interaction. Let's suppose that this interaction is mediated by a massive particle with charge $g_w$ and mass $m_w$, the potential for such interaction is analoguous to Yukawa's potential
+\begin{equation}
+	V_w=-\frac{g_w}{4\pi r}e^{-m_wr}
+	\label{eq:weakpot}
+\end{equation}
+%%
+%%Insert feynman diagram for supposed weak mediator
+%%
+Writing $\opr{\ham}_I=g_wV_w=G_F$ we get from experimental values
+\begin{equation}
+	G_F=\frac{g^2_w}{4\pi m_w^2}=1.16\cdot10^{-5}\unit{MeV^{-2}}
+	\label{eq:fermicoupling}
+\end{equation}
+Which suggests a mass of the weak mediator, in terms of measurable quantities, of
+\begin{equation}
+	m_w=\left( \frac{g_w}{e} \right)^2\frac{\alpha_{EM}}{G_F}\approx\left( \frac{g_w}{e} \right)^210^2\unit{MeV}
+	\label{eq:weakmediator}
+\end{equation}
+In order to discover this new $W$ particle a new particle accelerator was built at LEP, which was the combination of a proton-synchrotron and an antiproton-synchrotron, which was used to verify the following theoretical reaction
+\begin{equation}
+	p+\cc{p}\to W^++X
+	\label{eq:protonsynchrotronweak}
+\end{equation}
+Considering a cross beam interaction with two targets we have
+\begin{equation*}
+	E_p=E_{\cc{p}}=270\unit{GeV},\qquad\sqrt{s}=2E_p=540\unit{GeV}
+\end{equation*}
+%%
+%%Feynman diagram weak p+antip--W*--lepton+neutrino
+%%
+The confirmation of this reaction awarded a Nobel prize in 1984 to Rubbiz and Van der Meer.\\
+So far we have listed three fundamental forces: Electromagnetism, strong force and the weak force, all mediated by particles, respectively $\gamma,g,W^{\pm}/Z^0$. The second mediator is known as the \emph{gluon} and it's a massless particle, which is not predicted by Yukawa's theory, although it's effective to explain nuclear phenomena.\\
+Only one fundamental force is missing a mediator particle, which is gravity. The idea of a \emph{graviton} particle which for now there haven't been any experimental verifications.
+\section{Symmetries}
+As we know from Nöther's theorem, each constant of motion corresponds to a simmetry of the system.\\
+Considering reactions $a+b\to c+d$, we immediately know that a conserved quantity in the reaction is a symmetry of the transition Hamiltonian $\opr{\ham}_I$.\\
+There are 4 kinds of symmetry we might consider
+\begin{enumerate}
+\item Continuous symmetries
+	\begin{itemize}
+	\item Temporal traslations, which correspond to $E$ conservation
+	\item Spatial translations, which correspond to $\vec{p}$ conservation
+	\item Spatial rotations, which correspond to $\vec{L}$ conservation
+	\end{itemize}
+\item Gauge symmetries, which correspond to $q$ conservation
+\item Fundamental symmetries, like the lepton number conservation, baryon number conservation, etc.
+\item Non-spatial rotations, which correspond to the conservation of a new quantity known as Isospin $\vecopr{I}$
+\end{enumerate}
+\subsection{Discrete Transformations}
+Going to the quantum world with our symmetries we can list immediately three discrete symmetries
+\begin{itemize}
+\item Parity reflection, $\opr{P}:\opr{r}\to-\opr{r}$
+\item Charge conjugation, $\opr{C}:q\to-q$
+\item Time inversion, $\opr{T}:t\to-t$
+\end{itemize}
+These laws are multiplicative, and as an example the matter-antimatter symmetry corresponds to a $\opr{C}\opr{P}$ transformation.
+\subsection{Leptonic Number}
+Consider a weak interaction like the $\beta$ decay, with reaction
+\begin{equation*}
+	n\to p+e^-+X
+\end{equation*}
+Considering Reines-Cowan's experiment which supposes a reaction $X+p\to n+e^+$, a possible reaction with $Q>0$, we have a problem, and the reaction was never observed.\\
+It was theorized the existence of a leptonic number associated with the electron $L_e$, for which $\Delta L_e=0$ in reactions.\\
+Leptonic matter accounts for $L=1$, while leptonic antimatter for $L=-1$. In leptonic matter also neutrinos are accounted, and we can make a list of couples lepton/neutrino.
+\begin{equation}
+	\begin{pmatrix}
+		e^-\\\nu_e
+	\end{pmatrix}\ L_e=1\quad\begin{pmatrix}
+		\mu^-\\
+		\nu_\mu
+	\end{pmatrix}\ L_\mu=1\quad\begin{pmatrix}
+		\tau^-\\
+		\nu_\tau
+	\end{pmatrix}\ L_\tau=1
+	\label{eq:matterleptons}
+\end{equation}
+And antilepton/antineutrino
+\begin{equation}
+	\begin{pmatrix}
+		e^+\\\cc{\nu}_e
+	\end{pmatrix}\ L_e=-1\quad\begin{pmatrix}
+		\mu^+\\
+		\cc{\nu}_\mu
+	\end{pmatrix}\ L_\mu=-1\quad\begin{pmatrix}
+		\tau^+\\
+		\cc{\nu}_\tau
+	\end{pmatrix}\ L_\tau=-1
+	\label{eq:antimatterleptons}
+\end{equation}
+For all interactions, a violation of the conservation of the leptonic number was never observed, and therefore it's possible to assume
+\begin{equation}
+	\Delta L_i=0\qquad i=e,\mu,\tau
+	\label{eq:leptonselectionrule}
+\end{equation}
+\subsection{Baryonic Number and Isospin}
+Segré with its experiment discovered the antiproton, was searching for the proof of the existence of the following reaction
+\begin{equation}
+	p+p\to p+p+p+\cc{p}
+	\label{eq:antiprotonsegre}
+\end{equation}
+This reaction corresponds to an inelastic scattering of two protons, but there are also other reactions possible
+\begin{equation*}
+	\begin{aligned}
+		p+p&\to p+p+\pi^++\pi^-\\
+		p+p&\to p+p+\pi^0\\
+		p+p&\to p+p
+	\end{aligned}
+\end{equation*}
+From his eperiment it was discovered that $m_p=m_{\cc{p}}$, but also a new question arises. Why is this reaction not observed?
+\begin{equation*}
+	p+p\to p+\cc{p}+\pi^++\pi^+
+\end{equation*}
+This non-possibility of the previous reaction brings us to the conservation of the baryonic number $B$.\\
+A baryon (antibaryon) is a composite particle composed by three quarks (antiquarks)
+\begin{equation}
+	B=\begin{pmatrix}
+		q_1\\q_2\\q_3
+	\end{pmatrix}\quad\cc{B}=\begin{pmatrix}
+		\cc{q}_1\\\cc{q}_2\\\cc{q}_3
+	\end{pmatrix}
+	\label{eq:baryonantibarion}
+\end{equation}
+For each baryon a baryonic number $N$ is associated, which evaluates to $\pm1$ if the particle considered is either a baryon or an antibaryon. Particles like the pions $\pi^\pm,\pi^0$ are known as \emph{mesons} and are composed of a quark/antiquark bound state
+\begin{equation}
+	M=\begin{pmatrix}
+		q_1\\\cc{q}_2
+	\end{pmatrix}
+	\label{eq:mesonqq}
+\end{equation}
+Counting $1/3$ for each quark and $-1/3$ for each antiquark we have that mesons contribute with $N_B=0$ and each baryon with $N_B=\pm1$ as we said before.\\
+The question remains, why doesn't that reaction happen, since the baryonic number is conserved? In order to explain this we have to dwelve deeper into the physics of this.\\
+Since $m_n-m_p\approx1\unit{MeV}$, nuclear interactions \textit{do not} distinguish neutrons from protons. Due to the non-degeneration theorem we know that there exists a new degree of freedom of the system with an associated quantum number in order to account to this strong symmetry between $n,p$.\\
+This new degree of freedom is the \emph{Isospin}, which its algebra corresponds exactly to the spin algebra, a rotation group.\\
+We have for protons and neutrons
+\begin{equation}
+	\begin{aligned}
+		\ket{p}&=\ket{I,I_3}=\ket{\frac{1}{2},\frac{1}{2}}\\
+		\ket{n}&=\ket{I,I_3}=\ket{\frac{1}{2},-\frac{1}{2}}
+	\end{aligned}
+	\label{eq:isospinpn}
+\end{equation}
+Accounting for this, nuclear interactions are invariant under isospin transformations.\\
+Note that for pions
+\begin{equation}
+	\begin{aligned}
+		\ket{\pi^+}&=\ket{11}\\
+		\ket{\pi^0}&=\ket{10}\\
+		\ket{\pi^-}&=\ket{1-1}
+	\end{aligned}
+	\label{eq:pionisospin}
+\end{equation}
+\section{Isospin}
+Isospin was a property first introduced by Heisenberg in order to explain strong nuclear interactions between protons and neutrons.\\
+This property behaves algebrically as angular momentum and it can be used for classifying known Hadrons, estimate strong cross section and to theorize states which are not yet observed.\\
+In strong interactions isospin is conserved, indicating that it's a symmetry of the strong interaction Hamiltonian.\\
+Let's begin considering a bound neutron-proton state, deuterium $\nuc{H}{2}{1}$. As we know from before we have
+\begin{equation*}
+	\begin{aligned}
+		\ket{p}&=\ket{I,I_z}=\ket{\frac{1}{2},\frac{1}{2}}\\
+		\ket{n}&=\ket{I,I_z}=\ket{\frac{1}{2},-\frac{1}{2}}
+	\end{aligned}
+\end{equation*}
+Using the angular momentum summation rules we have that, for a state $\ket{np}$ we have $I=0,1$ which implies the existence of three states plus one with total $I_z=-1,0,1$, these triplet states correspond to the couple $\ket{pp},\ket{np},\ket{nn}$ plus $\ket{np}$ and are
+\begin{equation}
+	\begin{aligned}
+		\ket{pp}&=\ket{p}\ket{p}=\ket{1,1}\\
+		\ket{np}&=\frac{1}{\sqrt{2}}\left( \ket{n}\ket{p}+\ket{n}\ket{p} \right)=\ket{0,1}\\
+		\ket{nn}&=\ket{n}\ket{n}=\ket{1,-1}
+	\end{aligned}
+	\label{eq:tripletisospin}
+\end{equation}
+The previous states are known, as for spin, triplet symmetric isospin states. The additional remaining state is the singlet antisymmetric state
+\begin{equation}
+	\ket{np}=\frac{1}{\sqrt{2}}\left( \ket{n}\ket{p}-\ket{n}\ket{p} \right)=\ket{0,0}
+	\label{eq:singletisospin}
+\end{equation}
+Experimentally triplet states are not observed, therefore we can safely assume that for a deuterium nucleus, (deuteron, $d$) we have
+\begin{equation}
+	\ket{d}=\ket{np}=\ket{00}
+	\label{eq:deuteriumisospin}
+\end{equation}
+%Let's consider now two strongly mediated reactions
+%\begin{equation}
+%	p+p\to d+\pi^+
+%	\label{eq:strongreac1}
+%\end{equation}
+%And
+%\begin{equation}
+%	p+n\to d+\pi^0
+%	\label{eq:strongreac2}
+%\end{equation}
+%Noting that for pions that
+%\begin{equation}
+%	\ket{\pi^+}&=\ket{11}\\
+%	\ket{\pi^0}&=\ket{10}\\
+%	\ket{\pi^-}&=\ket{1-1}
+%	\label{eq:pionsisospin}
+%\end{equation}
+%Noting that for $\eqref{eq:strongreac1}$ $q_1=2$ in both sides and $q_2=1$ in both sides in \eqref{eq:strongreac2} which already imply that these reactions conserve charge. Considering isospin
+\subsection{Pion-Nucleon Scattering}
+Consider the scattering between pions and nucleons
+\begin{equation}
+	\pi^{\pm,0}+(p,n)\to\pi^{\pm,0}+(p,n)
+	\label{eq:pionnucleonscat}
+\end{equation}
+Considering the isospin for the system and noting that $I_\pi=1$, $I_{p,n}=1/2$ we have that for the initial state
+\begin{equation}
+	\ket{i}=\ket{1,a}+\ket{\frac{1}{2},b}=\alpha\ket{\frac{3}{2},a+b}+\beta\ket{\frac{1}{2},a+b}
+	\label{eq:pionnucleoniso}
+\end{equation}
+The scattering process can be seen as the addition of an interaction Hamiltonian $\opr{\ham}_S$ which is invariant for isospin, and considering a final state
+\begin{equation}
+	\ket{f}=\gamma\ket{\frac{3}{2}}+\delta\ket{\frac{1}{2}}
+	\label{eq:finalpionnucleoniso}
+\end{equation}
+We have that, using the selection rule $\Delta I=0$
+\begin{equation}
+	\bra{f}\opr{\ham}_S\ket{i}=a\bra{\frac{3}{2}}\opr{\ham}_S\ket{\frac{3}{2}}+b\bra{\frac{1}{2}}\opr{\ham}_S\ket{\frac{1}{2}}=a\opr{\mathcal{M}}_3+b\opr{\mathcal{M}}_1
+	\label{eq:intmat}
+\end{equation}
+The final cross section will then be
+\begin{equation}
+	\sigma\propto\abs{a}^2\abs{\opr{\mathcal{M}}_3}^2+\abs{b}^2\abs{\opr{\mathcal{M}}_1}^2+ab\opr{\mathcal{M}}_1\opr{\mathcal{M}}_3
+	\label{eq:strongcsisospin}
+\end{equation}
+Using Clebsch-Gordan coefficients we can already see how these transition matrices will decompose.\\
+Noting that pions are isospin $1$ and nucleons are isospin $1/2$ system we have a $\mathbf{3}\otimes\mathbf{2}$ system. From the table \ref{app:cgt} we have that such state will decouple in a symmetric quadruplet and an antisymmetric doublet (remembering that $I_z^\pi=1,0-1$ and $I_z^{(n,p)}=1/2,-1/2$) giving for $\pi^++p\to\pi^++p$ and $\pi^-+n\to\pi^-+n$
+\begin{equation}
+	\sigma\propto\abs{\opr{\mathcal{M}}_3}^2
+	\label{eq:sigma+pn}
+\end{equation}
+Due to symmetry one immediately expects that $N(\pi^-+p)=N(\pi^++n)$ where
+\begin{equation}
+	\sigma_{\pi^-p}\propto\frac{1}{3}\abs{\opr{\mathcal{M}}_3}^2+\frac{2}{3}\abs{\opr{\mathcal{M}_1}}^2+\frac{2}{9}\opr{\mathcal{M}}_1\opr{M}_3
+	\label{eq:sigmapi-p}
+\end{equation}
+Expanding for the other possible reaction and remembering that $\opr{\ham}_S$ is orthonormal in the total isospin basis the remaining cross sections (and therefore also the number of reactions) are easily calculable
+\subsection{Isospin and Charge}
+Consider a nucleus $(A,Z)$, using $I_z^p=1/2,\ I_z^n=-1/2$ we have that the total $z-$projection of isospin will be
+\begin{equation}
+	I_z=\frac{Z}{2}-\frac{A-Z}{2}
+	\label{eq:nucleusisospin}
+\end{equation}
+Inverting for $Z$ we have a direct connection between isospin and charge
+\begin{equation}
+	Z=I_z+\frac{A}{2}
+	\label{eq:nucleuscharge}
+\end{equation}
+Considering that $A$ is the total number of neutrons and protons in the nucleus, we have from Gell-Mann-Nishijima that for a generic system with baryonic number $B$ the total charge will be given by the following equation
+\begin{equation}
+	Q=I_3+\frac{B}{2}
+	\label{eq:gellmannnishijima}
+\end{equation}
+This clearly also works for mesons, in fact taking $\pi^+$ as an example, for which $Q=1$
+\begin{equation*}
+	Q_{\pi^+}=1+\frac{0}{2}=1
+\end{equation*}
+The later discovery of strange particle broke this formula, which was fixed by defining a \textit{hypercharge}, which is defined as
+\begin{equation}
+	Y=B+S
+	\label{eq:hypercharge}
+\end{equation}
+With $B$ being the baryonic number and $S$ the strangeness number.
+The introduction of the quark model with charm, strange, top and bottom quarks then defined the hypercharge as the sum of the quantum numbers of all the previous quarks, giving for the Nishijima equation
+\begin{equation}
+	Q=I_z+\frac{B+s+c+b+t}{2}=I_z+\frac{Y}{2}
+	\label{eq:nishijimaquarks}
+\end{equation}
+Note that that strange and bottom quarks reduce $s,b$ by 1 like antitop and anticharm quarks reduce charm and top quantum numbers. Remember that this is purely a convention
+\end{document}

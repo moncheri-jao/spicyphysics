@@ -1,0 +1,9 @@
+[1] Config.pm:312> INFO - This is Biber 2.15
+[2] Config.pm:315> INFO - Logfile is '10-manyelectrons.blg'
+[267] biber:330> INFO - === lun dic  7, 2020, 22:13:12
+[312] Biber.pm:415> INFO - Reading '10-manyelectrons.bcf'
+[551] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[569] Utils.pm:384> WARN - The file '10-manyelectrons.bcf' does not contain any citations!
+[599] bbl.pm:651> INFO - Writing '10-manyelectrons.bbl' with encoding 'UTF-8'
+[600] bbl.pm:754> INFO - Output to 10-manyelectrons.bbl
+[601] Biber.pm:128> INFO - WARNINGS: 1

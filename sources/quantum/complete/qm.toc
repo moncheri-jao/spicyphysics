@@ -1,0 +1,357 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{I\hspace {1em}Quantum Mechanics}{9}{part.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}The Failure of Classical Physics}{11}{chapter.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Old Quantum Mechanics}{13}{section.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Wave-Particle Duality}{14}{section.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.3}Experimental Verifications of Quantum Mechanics}{15}{section.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.1}Double Slit Experiment and Quantum Measurement}{15}{subsection.1.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}The Fundamentals}{17}{chapter.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Dirac Notation}{17}{section.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Generalized Vectors and Tensors in Dirac Notation}{17}{subsection.2.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}Function Spaces and Linear Operators}{18}{subsection.2.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Axioms of Quantum Mechanics}{19}{section.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Representation Theory}{23}{section.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}Heisenberg Representation}{23}{subsection.2.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Unitary Transformations}{24}{subsubsection*.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}Schrödinger Representation}{24}{subsection.2.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.3}Hamiltonian Operators}{25}{subsection.2.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Quantum Dynamics in 1D}{27}{chapter.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Free Particle}{27}{section.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Quantum Harmonic Oscillator}{28}{section.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Dirac Formulation}{28}{subsection.3.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Coherent States of the Quantum Harmonic Oscillator}{33}{subsection.3.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}Schrödinger Formulation}{34}{subsection.3.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Infinite Square Well}{36}{section.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Infinite Wall}{37}{section.3.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Finite Square Well}{40}{section.3.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.1}Scattering and Transfer Matrices}{42}{subsection.3.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.6}Considerations on One Dimensional Motion in Generic Potentials}{43}{section.3.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.7}Time Evolution of Quantum Systems}{48}{section.3.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.7.1}General Remarks and Schrödinger's Picture}{48}{subsection.3.7.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.7.2}Heisenberg Picture and Constants of Motion}{51}{subsection.3.7.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}The Theory of Angular Momentum}{53}{chapter.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Rotations}{53}{section.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.1}Infinitesimal Rotations in Quantum Mechanics}{54}{subsection.4.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Eigenvalues and Eigenstates of Angular Momentum}{55}{section.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}Matrix Elements of the Ladder Operators of Angular Momentum}{58}{subsection.4.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Orbital Angular Momentum}{58}{section.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Spin}{60}{section.4.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.5}Addition of Angular Momenta}{63}{section.4.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Quantum Dynamics in 3D}{67}{chapter.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Free Particles and Infinite Wells Revisited}{69}{section.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Isotropic Harmonic Oscillator}{69}{section.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}Particle in a Coulomb Potential, Hydrogen Atom}{71}{section.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Approximation Methods}{73}{chapter.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Perturbation Theory}{73}{section.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.1}Rayleigh-Schrödinger Perturbation Theory, Nondegenerate Case}{73}{subsection.6.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.2}Rayleigh-Schrödinger Perturbation Theory, Degenerate Case}{76}{subsection.6.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.2}Variational Methods}{77}{section.6.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.3}Time Dependent Perturbation Theory}{78}{section.6.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.1}Dirac Interaction Picture}{78}{subsection.6.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3.2}Dyson Series}{80}{subsection.6.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Identical Particles}{81}{chapter.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.1}Symmetrization Postulate}{82}{section.7.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1.1}Two Electron System}{83}{subsection.7.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.2}Multiparticle States}{84}{section.7.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{II\hspace {1em}Atomic Physics}{85}{part.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}One Electron Atoms}{87}{chapter.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.1}Dipole Approximation}{88}{section.8.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.1.1}Dipole Selection Rules}{89}{subsection.8.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.1.2}Spontaneous Emission}{90}{subsection.8.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.1.3}Thermodynamic Equilibrium}{91}{subsection.8.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.2}Relativistic Corrections and Fine Structure}{91}{section.8.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.2.1}Relativistic Correction for the Kinetic Energy}{92}{subsection.8.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.2.2}Darwin Term}{93}{subsection.8.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.2.3}Spin Orbit Coupling}{93}{subsection.8.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.2.4}Fine Structure Splitting}{94}{subsection.8.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.3}Fine Structure Dipole Transitions}{95}{section.8.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.4}Zeeman Effect}{96}{section.8.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.4.1}Strong Fields}{97}{subsection.8.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.4.2}Paschen-Back Effect}{97}{subsection.8.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.4.3}Anomalous Zeeman Effect}{98}{subsection.8.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.5}Stark Effect}{99}{section.8.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.5.1}Linear Stark Effect}{99}{subsection.8.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.6}Hyperfine Structure and Isotope Shifts}{99}{section.8.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.6.1}Magnetic Dipole Hyperfine Structure}{100}{subsection.8.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {9}Two Electron Atoms}{103}{chapter.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.1}Independent Particle Model}{104}{section.9.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.1.1}Central Field Approximation}{105}{subsection.9.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.2}Ground State of Two Electron Atoms}{106}{section.9.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2.1}Perturbation Theory}{106}{subsection.9.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2.2}Variational Methods}{107}{subsection.9.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.3}Excited States of Two Electron Atoms}{108}{section.9.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.3.1}Perturbation Theory}{108}{subsection.9.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.3.2}Variational Methods}{109}{subsection.9.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {10}Many Electron Atoms}{111}{chapter.10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.1}Central Field Approximation}{111}{section.10.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.1.1}Shells and Subshells}{113}{subsection.10.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.1.2}Aufbau Rule and the Periodic Table}{114}{subsection.10.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.2}Hartree-Fock Metod and Self-Consistent Fields}{114}{section.10.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.2.1}Beryllium Ground State}{117}{subsection.10.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10.3}Spin-Orbit Interactions and Fine Structure of Many-Electron Atoms}{118}{section.10.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.3.1}Determination of Possible Terms in Spin-Orbit Coupling}{118}{subsection.10.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Hund's Rules}{119}{paragraph*.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {10.3.2}Fine Structure Terms and Landé's Interval Rule}{119}{subsection.10.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {11}Electromagnetic Interactions}{121}{chapter.11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11.1}Selection Rules}{121}{section.11.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {11.1.1}Spin-Orbit Coupling}{122}{subsection.11.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11.2}Alkali Atoms}{123}{section.11.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11.3}Alkaline Earths}{124}{section.11.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11.4}Multiplet Structure}{124}{section.11.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11.5}Magnetic Field Interaction, Zeeman Effect}{125}{section.11.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {11.5.1}Paschen-Back Effect, Strong Field}{125}{subsection.11.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {11.5.2}Anomalous Zeeman Effect, Weak Field}{126}{subsection.11.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{III\hspace {1em}Quantum Chemistry}{127}{part.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {12}Molecular Structure}{129}{chapter.12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {12.1}Introductory Remarks}{129}{section.12.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {12.2}Born-Oppenheimer Approximation}{130}{section.12.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {12.3}Rovibronic States}{131}{section.12.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {12.3.1}Centrifugal Distortion}{133}{subsection.12.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {13}Electronic Structure of Molecules}{135}{chapter.13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {13.1}Approximation Methods and the $\mathrm {H}_2$ Molecule}{137}{section.13.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.1.1}Linear Combination Of Atomic Orbitals (LCAO-MO)}{137}{subsection.13.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.1.2}Heiter-London Valence Bond Method (VB-MO)}{141}{subsection.13.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.1.3}Variational LCAO-MO Method}{143}{subsection.13.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {13.2}Homonuclear Diatomic Molecules}{144}{section.13.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.2.1}Valency and Chemical Bonding}{145}{subsection.13.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {13.3}Heteronuclear Diatomic Molecules}{146}{section.13.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.3.1}Lithium Hydride LiH}{146}{subsection.13.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.3.2}Hydrogen Chloride HCl}{147}{subsection.13.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.3.3}Sodium Chloride NaCl}{147}{subsection.13.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {13.4}Triatomic Molecules}{147}{section.13.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.4.1}Hybridization}{147}{subsection.13.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.4.2}Beryllium Dihydride ($\mathrm {BeH_2}$)}{149}{subsection.13.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.4.3}Water ($\mathrm {H_2O}$)}{150}{subsection.13.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.4.4}Carbon Dioxide ($\mathrm {CO_2}$) and Lone Pairs}{152}{subsection.13.4.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {13.5}$\pi $ Electron Systems and Unlocalized Orbitals}{152}{section.13.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.5.1}Butadiene ($\mathrm {C_4H_6}$)}{153}{subsection.13.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.5.2}Methane and Ethylene($\mathrm {CH_4,\ C_2H_4}$)}{153}{subsection.13.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.5.3}Benzene ($\mathrm {C_6H_6}$)}{154}{subsection.13.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {14}Molecular Spectra}{157}{chapter.14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {14.1}Diatomic Molecules}{157}{section.14.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {14.2}Rovibrational Spectra of Diatomic Molecules}{158}{section.14.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {14.2.1}Raman Scattering}{160}{subsection.14.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {14.3}Electronic Spectra}{161}{section.14.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {14.3.1}The Franck-Condon Principle}{161}{subsection.14.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Fluorescence and Phosphorescence}{162}{subsubsection*.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {14.4}Inversion Spectrum of Ammonia ($\mathrm {NH_3}$)}{162}{section.14.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{IV\hspace {1em}Statistical Mechanics}{165}{part.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {15}Brief Introduction}{167}{chapter.15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {15.1}Probability Theory}{167}{section.15.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {15.2}Quantum Statistics}{169}{section.15.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {16}Microcanonical Ensemble}{171}{chapter.16}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {16.1}The Classical Definition}{171}{section.16.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {16.2}The Quantum Definition}{172}{section.16.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {16.3}Entropy, Temperature and Pressure}{173}{section.16.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {16.3.1}Entropy of a Microcanonical Ensemble}{173}{subsection.16.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {16.3.2}Temperature and Pressure}{174}{subsection.16.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {16.4}Examples}{175}{section.16.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {16.4.1}The Classical Ideal Gas}{175}{subsection.16.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {16.4.2}Ideal Quantum Gas of Harmonic Oscillators}{177}{subsection.16.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {16.4.3}Paramagnetic Spin $\frac {1}{2}$ System}{178}{subsection.16.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {17}Canonical Ensemble}{181}{chapter.17}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {17.1}Entropy of the Canonical Ensemble}{182}{section.17.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {17.2}The Virial Theorem and the Equipartition Theorem}{183}{section.17.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {17.3}Thermodynamic Quantities in the Canonical Ensemble}{183}{section.17.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {17.3.1}Equivalence of the Canonical and Microcanonical Macroscopic Ensembles}{183}{subsection.17.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {17.3.2}Thermodynamic Quantities}{184}{subsection.17.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {17.3.3}Heat}{185}{subsection.17.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {18}Grand Canonical Ensemble}{187}{chapter.18}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {18.1}Thermodynamic Quantities}{188}{section.18.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {18.2}Examples}{189}{section.18.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {19}Ideal Quantum Gases}{191}{chapter.19}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {19.1}Degenerate Fermi Gas}{194}{section.19.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {19.1.1}Complete Degeneracy Limit}{194}{subsection.19.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {19.2}Bose-Einstein Condensation}{195}{section.19.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Mathematical Methods}{199}{appendix.A}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.1}Properties of the $\epsilon _{ijk}$ Tensor}{199}{section.A.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.2}Special Functions}{200}{section.A.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.2.1}Spherical Harmonics}{200}{subsection.A.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.2.2}Confluent Hypergeometric Function and Laguerre Polynomials}{203}{subsection.A.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.3}Generalized Riemann $\zeta $ Functions and Bernoulli Numbers}{204}{section.A.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.4}Saddle Point Method}{205}{section.A.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Clebsch-Gordan Table}{209}{appendix.B}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Tensor Spherical Harmonics}{213}{appendix.C}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.1}Spin $1/2$ System}{214}{section.C.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {D}Calculus of $\expval {r^k}_{lnm}$ Integrals}{215}{appendix.D}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {E}Periodic Table}{217}{appendix.E}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {F}Symmetry and Point Groups}{219}{appendix.F}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {F.1}Group Theory}{219}{section.F.1}% 

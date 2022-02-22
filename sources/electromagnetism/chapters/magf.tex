@@ -1,0 +1,580 @@
+\documentclass[../electromagnetism]{subfiles}
+\begin{document}
+\section{Electric Currents}
+As for all materials (like dielectrics) we can see conductors as crystalline solids with atoms positioned at the nodes of the crystalline reticle, the valence electrons are free to roam on on all the volume of the conductor via thermal agitations.\\
+Classically, this gas of electrons is in thermal equilibrium with kinetic energy
+\begin{equation*}
+	\frac{1}{2}m_e\expval{v^2}=\frac{3}{2}kT
+\end{equation*}
+This implies a classical root mean square velocity of
+\begin{equation*}
+	v_t=\sqrt{\expval{v^2}}=\sqrt{\frac{3kT}{m_e}}\approx120\unit{\frac{km}{s}}
+\end{equation*}
+If we add over this an electric field we get an ordinate motion of charges, that we call \textit{current}.\\
+Consider now a conductor where charges are moving and consider a generic section of it, if in this section $S$ in some time interval $\dd t$ a charge $\dd q$ passes through that, we define the current $I$ as
+\begin{equation}
+	I=\dv{q}{t}
+	\label{eq:currentdef}
+\end{equation}
+The units of current in the SI are therefore
+\begin{equation}
+	[I]=\frac{[Q]}{[t]}=1\unit{\frac{C}{s}}=1\unit{A}
+	\label{eq:amperedef}
+\end{equation}
+These units are known as \textit{Ampères}.\\
+In a conductor, if a current is present, we have that if we have two sections with different potentials $V_A$ and $V_B$ the work needed to move charges between the plates is
+\begin{equation}
+	\dd W=V_A\dd q-V_B\dd q=I\Delta V\dd t\implies\dv{W}{t}=I\Delta V
+	\label{eq:workplates}
+\end{equation}
+This represents the work employed by the electric field for moving the charges.\\
+In general the electric field will induce a force $F^i_e$, which, for Newton's second law will be
+\begin{equation}
+	F^i_e=qE^i=ma^i\implies a^i=\frac{qE^i}{m}
+	\label{eq:forceoncharge}
+\end{equation}
+Remembering that for electrons $q=-e$ we have that the acceleration will be on the opposite direction from the field. The average velocity of electrons in a time $\Delta t$ will then be, by definition
+\begin{equation*}
+	\expval{v^i}=\frac{1}{2}\Delta v^i=-\frac{eE^i}{2m}\Delta t
+\end{equation*}
+This, between collisions, that happen on average in a time $\Delta t=\lambda/v_t$, where $\lambda$ is the mean free path of the electron and $v_t$ is the thermal velocity of the electrons. Therefore
+\begin{equation*}
+	\expval{v^i}=-\frac{e}{2m}\frac{\lambda}{\sqrt{\frac{3kT}{m}}}E^i=-e\frac{\lambda}{\sqrt{3kTm}}E^i
+\end{equation*}
+I.e. $\expval{v^i}\propto E^i$.\\
+Formally for a group of charges $q$ inside a conductor where current is flowing, taken a differential cross-sectional surface $\dd s$ we have that the charge flowing through that is, if $n$ is the volumetric density of charges
+\begin{equation*}
+	\dd Q=qn\expval{v^i}\hat{n}_i\dd s\dd t
+\end{equation*}
+We define the \textit{current density} as the vector $J^i$, where
+\begin{equation*}
+	J^i=nq\expval{v^i}
+\end{equation*}
+Then, we have
+\begin{equation}
+	\dd Q=J^i\hat{n}_i\dd s\dd t
+	\label{eq:currdensity}
+\end{equation}
+Therefore, the charge through this flux tube is
+\begin{equation*}
+	\dd I=\dv{Q}{t}=J^i\hat{n}_i\dd s
+\end{equation*}
+Integrating, we get
+\begin{equation}
+	I=\int\dd I=\oiint_{S}J^i\hat{n}_i\dd s
+	\label{eq:currentflux}
+\end{equation}
+It's clear that the current density then has the following units
+\begin{equation*}
+	[J]=[n][q][\expval{v}]=\unit{m^{-3}\cdot C\cdot ms^{-1}}=\unit{\frac{A}{m^2}}
+\end{equation*}
+Considering that the average velocity of the charges is $\expval{v}\propto E$, since it's collinear with the $E^i$ field (with direction depending on the sign of the charge) we have that with a special kind of conductors (known as \textit{Ohmic conductors}) we can define what is known as \textit{Ohm's law} which ties directly current flow density to the electric field applied
+\begin{equation}
+	J^i=\sigma E^i
+	\label{eq:ohmlaw}
+\end{equation}
+$\sigma$ is known as the \textit{electric conductibility}, and indicates how much one is able to move charges applying an electric field
+\subsection{Charge Conservation}
+Consider a bounded volume $V$ with inside it some variable charge $Q(t)$. Since charge doesn't pop up randomically into existence (yet) we have that if $Q(t)$ changes there must be some charge going inside or coming outside $V$ depending from the current itself. Then, if the current goes \emph{out}, the charge must \emph{reduce}. Then
+\begin{equation}
+	-\dd Q=I\dd t=\oiint_{\del V}J^i\hat{n}_i\dd s\dd t
+	\label{eq:chargeremovalsurf}
+\end{equation}
+In general we can write $Q$ as a volume integral, and deriving the previous equation with respect to time, we have (bringing inside the integral the time derivative)
+\begin{equation*}
+	\dv{Q}{t}=\iiint_V\pdv{\rho}{t}\dd^3x=-\oiint_{\del V}J^i\hat{n}_i\dd s
+\end{equation*}
+Using Stokes' theorem and bringing everything to the left then we have that
+\begin{equation}
+	\iiint_V\left( \pdv{\rho}{t}+\pdv{J^i}{x^i} \right)\dd^3x=0
+	\label{eq:conteqint}
+\end{equation}
+This implies the \textit{continuity equation}
+\begin{equation}
+	\del_iJ^i+\del_t\rho=0
+	\label{eq:continuityequation}
+\end{equation}
+We define now \textit{stationary currents} as currents for which $\del_t\rho=0$, i.e., where the continuity equation becomes
+\begin{equation}
+	\del_iJ^i=0
+	\label{eq:conteqstatcurr}
+\end{equation}
+%\subsection{Electromotive Field}
+\section{Lorentz Force and Magnetic Fields}
+\subsection{Lorentz Force Law}
+Consider a small (closed) test circuit where there is a stationary current and a mobile rod long $\dd l$ with its tangent in the same direction of $I$. If we put it in a permanent magnetic field or next to cables where current is passing through we have that it will experience a force $\dd F$ such that
+\begin{equation}
+	\dd F\propto I,\qquad\dd F\propto\dd l,\qquad\dd F^i\perp \hat{t}^i\dd l
+	\label{eq:lorenceforceder}
+\end{equation}
+Noting that there is a direction for which $F=0$ which coincides with the direction of the magnetic needle in that point we can write what is known as \textit{Lorentz's force law}, which introduces a new field, the \textit{magnetic induction field}  $B^i$ which is oriented as the magnetic needle in the point considered
+\begin{equation}
+	\dd F^i=I\cpr{i}{j}{k}\hat{t}^jB^k\dd l
+	\label{eq:lorentzforceoperational}
+\end{equation}
+Rewriting $I\hat{t}^i\dd l$ in terms of the current density $J^i$ we have
+\begin{equation*}
+	I\hat{t}^i\dd l=J\hat{t}^i\dd S\dd l=J^i\dd^3x
+\end{equation*}
+Therefore
+\begin{equation}
+	\dd F^i=\cpr{i}{j}{k}J^jB^k\dd^3x
+	\label{eq:lorforcediffvol}
+\end{equation}
+Or, writing $J^i=nqv^i$ and integrating
+\begin{equation*}
+	F^i=\iiint_V\cpr{i}{j}{k}J^iB^k\dd^3x=q\iiint_V\cpr{i}{j}{k}v^iB^kn\dd^3x
+\end{equation*}
+Writing again $n\dd^3x=\dd N$ we have then integrating the final and better known shape of Lorentz's force law
+\begin{equation}
+	F^i=q\cpr{i}{j}{k}v^jB^k
+	\label{eq:lorenzforce}
+\end{equation}
+Note that by this definition, we have that \textit{magnetic forces do no work}. In fact we have
+\begin{equation}
+	\dd W=F^i\dd x_i=q\cpr{i}{j}{k}v_iv^jB^k\dd t=0
+	\label{eq:workmag}
+\end{equation}
+Note that this is obvious by the definition of the triple product $\cpr{i}{j}{k}v_iv^jB^k$. In boldface notation this can be written as a determinant of the matrix which has as colums the vectors $v^i,v^j,B^k$, therefore since two colums are equal, it must be zero by definition of the determinant.\\
+What's the unit for magnetic fields in the SI system?
+\begin{equation}
+	[B]=\left[ \frac{F}{qv} \right]=\unit{\frac{kg\cdot m\cdot s^{-2}}{C\cdot m\cdot s^{-1}}}=\unit{kg\cdot C^{-1}s^{-1}}=\unit{\frac{Vs}{m^2}}=\unit{\frac{Wb}{m^2}}=\unit{T}
+	\label{eq:webertesla}
+\end{equation}
+The unit $\unit{Wb}$ is known as \textit{Weber} and it's a measure of \textit{magnetic flux}, while the one on the right measures the intensity of the field and is known as \textit{Tesla}.\\
+The \textit{total} force on an electric charge can then be written as a sum of the Coulomb force and the Lorentz force, where
+\begin{equation}
+	F^i=qE^i+q\cpr{i}{j}{k}v^jB^k
+	\label{eq:totalforcecharge}
+\end{equation}
+It's clear that if $v=0$ there won't be any Lorentz force, and therefore $B^i$ acts only on moving charges.\\
+Do another supposition: Take a set of moving charges with current $I$. If I do a relativistic frame change and I move to a frame where the charges have $v=0$ then $B$ disappears magically. It means that there must be an \textit{electromagnetic field} which transforms covariantly with respect to Lorentz transformations, which can be seen as a mix of magnetic and electric fields.\\
+Basically, the magnetic field can be seen as some kind of ``relativistic effect'' on charges
+\subsection{Motion of Charges in Magnetic Fields}
+Consider a charge with some velocity $v$ in a magnetic field, we have then that in absolute value we have a \textit{centripetal} force
+\begin{equation*}
+	F=qvB
+\end{equation*}
+Since the force is centripetal the motion will be circular on a plane, take it as the $xy$ plane. In this plane
+\begin{equation*}
+	\frac{mv^2}{R}=qvB\implies\frac{v}{R}=\frac{qB}{m}=\omega
+\end{equation*}
+$\omega$ is the frequency of the circular motion, and the radius is
+\begin{equation*}
+	R=\frac{mv}{qB}
+\end{equation*}
+With period $T=2\pi m/qB$ independent from the speed of the particle, and momentum $p=mv=qBR$. If the initial velocity goes along the $z$ axis it's clear that the motion then is elicoidal.\\
+Let's write this properly. Writing $v\to v^i$ in vector form, and $B^i=B\delta^i_3$ we have evaluating the cross product (use your preferred method, note that using Levi-Civita symbols it's easy to find when it's positive in 3 dimensions. Knowing that it's positive for even permutations, you can write 12312 as the first row and then writing 3 subsequent numbers removing the first one of the row. You'll get then three rows with values 123,231,312 which are all the positive elements of $\cpr{i}{j}{k}$. obviously the negative ones will be 132,213,321 and the cross product vector can be then be written easily in terms of the components of the product of the two vectors multiplied, $v^iB^j$ in our case. Another way is to write the two vectors one over another and then work more or less like if it's a determinant starting from above. When we hide the x component of the first vector we will have the x component of the product, when we hide the second we will have \emph{minus} the y component and at last the z coponent. Another way is to write a determinant in vector quaternion notation as follows
+	\begin{equation*}
+		\cpr{i}{j}{k}a^jb^k\to\det\abs{\begin{pmatrix}\ver{e}_1&\ver{e}_2&\ver{e}_3\\a^i&a^2&a^3\\b^1&b^2&b^3\end{pmatrix}}
+	\end{equation*}
+Remember that each way is valid as long as you get the right answer, especially for cross products which have their particularities)
+After this long parenthesis, we calculate our cross product with our favorite method, and we get, (Remember that $B^i\parallel z$, i.e. $B^i=B\delta^i_3$ this can ease calculations)
+\begin{equation*}
+	m\dv{v^i}{t}=q\cpr{i}{j}{k}v^jB^k=qB\cpr{i}{j}{k}v^j\delta^k_3\to qB\begin{pmatrix}v_y\\-v_x\\0\end{pmatrix}
+\end{equation*}
+Note that $\dv{v^3}{t}=0$ since the $B$ field is acting only in the $xy$ plane. Then
+\begin{equation}
+	\begin{pmatrix}
+		\dv{v^x}{t}\\
+		\dv{v^y}{t}\\
+		\dv{v^z}{t}
+	\end{pmatrix}=\frac{qB}{m}\begin{pmatrix}
+		v^y\\
+		-v^x\\
+		0
+	\end{pmatrix}
+	\label{eq:matrixformlinearmotionB}
+\end{equation}
+Rewriting everything as a 2D problem in the $xy$ plane and remembering that $v_z=v_0$ is constant and equal to the initial value of the velocity, we have
+\begin{equation}
+	\begin{pmatrix}
+		\dv{v^x}{t}\\
+		\dv{v^y}{t}
+	\end{pmatrix}=\frac{qB}{m}\begin{pmatrix}
+		v^y\\
+		-v^x
+	\end{pmatrix}
+	\label{eq:haha}
+\end{equation}
+From \eqref{eq:haha}, deriving again we get
+\begin{equation*}
+	\begin{pmatrix}
+		\dv[2]{v^x}{t}\\
+		\dv[2]{v^y}{t}
+	\end{pmatrix}=\frac{qB}{m}\begin{pmatrix}
+		\dv{v^y}{t}\\
+		-\dv{v^x}{t}
+	\end{pmatrix}
+\end{equation*}
+Connecting this one to \eqref{eq:haha} we have two identical differential equations
+\begin{equation}
+	\begin{pmatrix}
+		\dv[2]{v^x}{t}\\
+		\dv[2]{v^y}{t}
+	\end{pmatrix}=\left( \frac{qB}{m} \right)^2\begin{pmatrix}
+		\dv{v^x}{t}\\
+		\dv{v^y}{t}
+	\end{pmatrix}
+	\label{eq:hahafinal}
+\end{equation}
+Solving these equations and inserting the initial values we have the final solutions
+\begin{equation}
+	\begin{pmatrix}
+		v^x\\
+		v^y\\
+		v^z
+	\end{pmatrix}=\begin{pmatrix}
+		v_{0\perp}\cos(\omega t)\\
+		-v_{0\perp}\sin(\omega t)\\
+		v_{0}
+	\end{pmatrix}
+	\label{eq:finalfuckit}
+\end{equation}
+And this is the equation of an elicoidal motion, as we expected.
+\subsection{Mechanical Actions on Circuits}
+We know already a formula for magnetic forces, given from Lorentz's force law. In its differential form we have \textit{Laplace's second formula}
+\begin{equation}
+	\dd F^i=I\cpr{i}{j}{k}\dd l^jB^k
+	\label{eq:laplace2}
+\end{equation}
+Where $\dd l^i=\hat{t}^i\dd l$.\\
+We always consider here \textit{steady} currents, therefore in all our circuits there will be current generators that keep $I$ constant. For a rigid circuit we have that the total force exerted on the charges is
+\begin{equation}
+	F^i=I\oint\cpr{i}{j}{k}\dd l^jB^k=I\oint\cpr{i}{j}{k}\hat{t}^jB^k\dd l
+	\label{eq:forcecircuit}
+\end{equation}
+Note that if $B$ is uniform then, for a closed circuit the total force exerted on the charges is 0
+\begin{equation*}
+	F^i=I\oint\cpr{i}{j}{k}\hat{t}^jB^k\dd l=I\cpr{i}{j}{k}B^k\oint\hat{t}^j\dd l=0
+\end{equation*}
+Since
+\begin{equation*}
+	\oint\hat{t}^i\dd l=0
+\end{equation*}
+%In general, if we consider a point distant $r$ from $\dd l$ we define the \textit{magnetic momentum} as
+\begin{equation}
+	M^i=I\oint\cpr{i}{j}{k}r^j\cpr{k}{l}{m}\hat{t}^lB^m\dd l
+	\label{eq:magmomentum}
+\end{equation}
+Note that it's the usual classical formula $\vec{M}=\vec{r}\times\vec{F}$ extended to the whole circuit
+\begin{eg}[A Closed Circuit]
+	Consider a closed rectangular rigid circuit with a current $I$, submerged in an uniform $B$ field.\\
+	If the rectangle has sides $a$ and $b$ where $a\perp b$ and the sides $b$ are the ones ``above'' and ``below''. If the circuit isn't normal to the $B$ field, and denominating with $F_1,F_4$ the forces acting on the sides long $a$, while $F_3,F_1$ the ones acting on the sides long $b$, we have
+	\begin{equation*}
+		F_1=F_3=BIb\cos\theta
+	\end{equation*}
+	(Remember that the total current on one cable is $Il$ where the cable is long $l$)\\
+	While
+	\begin{equation*}
+		F_2=F_4=BIa
+	\end{equation*}
+	Using the right hand rule for cross products we know then that $F_1,F_3$ must be coplanar and therefore don't contribute to a force couple, while $F_2,F_4$ do. The angular momentum $M^i$ depends on the orientation of $B$, and therefore we car write
+	\begin{equation*}
+		M=BIab\sin\theta=BIS\sin\theta
+	\end{equation*}
+	Where $S=ab$ is the surface area. Therefore, rewriting $B\sin\theta=\norm{\vec{B}\times\ver{n}}$ we have
+	\begin{equation*}
+		M^i=IS\cpr{i}{j}{k}\hat{n}^jB^k=\cpr{i}{j}{k}m^jB^k
+	\end{equation*}
+	Via analogy we define the \textit{magnetic dipole moment} of the circuit $m^i$ as
+	\begin{equation}
+		m^i=IS\hat{n}^i
+		\label{eq:magdipmomcirc}
+	\end{equation}
+\end{eg}
+%\subsection{Ampere Equivalence}
+%A closed circuit with current $I$ as for the previous example, can be considered as a magnetic dipole $m^i=IS\hat{n}^i$ with $S$ as the surface area enclosed by the circuit and $\hat{n}^i$ as its normal versor.\\
+%In general we have that in order to move a segment $\dd l^i$ we need to apply a force $\dd f^i$ that goes \textit{against} the field $B$. Therefore
+%\begin{equation*}
+%	\dd f^i=-I\cpr{i}{j}{k}\dd l^jB^k=-\dd F^i
+%\end{equation*}
+%The work of this force after a small movement by $\dd s^i$ is then
+%\begin{equation*}
+%	\dd W=\dd f^i\dd s_i=\dd U_m
+%\end{equation*}
+%Where $U_m$ is the mechanical potential energy. Therefore, substituting we have
+%\begin{equation*}
+%	\dd U_m=-I\cpr{i}{j}{k}\dd l^jB^k\dd s_i
+%\end{equation*}
+%Using the properties of the triple product we can write then
+%\begin{equation*}
+%	\dd U_m=I\cpr{i}{j}{k}\dd l^j\dd s^kB_i=IB^i\hat{n}_i\dd S
+%\end{equation*}
+%where we used $\vec{\dd l}\times\vec{\dd s}=\ver{n}\dd S$ with $\dd S$ being the infinitesimal element of the surface spanned by the two vectors. Then, by definition of magnetic moment \eqref{eq:magdipmomcirc} we have, for a motion around the ``circuit``, created by this small movement and the circulating current $I$
+%\begin{equation}
+%	\Delta U_m=I\oiint_{\Delta S}B^i\hat{n}_i\dd s
+%	\label{eq:energyvar}
+%\end{equation}
+%Since the movement is infinitesimal, we can consider $B$ constant in the motion spanned.
+\section{Maxwell's Equations for Magnetostatics}
+\subsection{Biot-Savart's Law}
+In general, experimentally it has been found that the magnetic field follows the right hand rule and depends in magnitude from the current density and the inverse of the distance from the magnetic object. Experimentally it has been found that for a wire with static current density $\dd I^i=I\dd l^i=I^i\dd l$ the magnetic field is
+\begin{equation}
+	B^i=\frac{\mu_0}{4\pi}\int_\lambda\frac{\cpr{i}{j}{k}I^j\hat{r}^k}{r^2}\dd l
+	\label{eq:biotsavart}
+\end{equation}
+This equation is known as the law of \textit{Biot and Savart}. The constant $\mu_0$ is a coupling constant known as the \textit{permeability of free space} and has units of Newton/Ampere squared. It has the following (exact) value in the SI system
+\begin{equation}
+	\mu_0=4\pi\cdot10^{-7}\unit{\frac{N}{A^2}}
+	\label{eq:munot}
+\end{equation}
+Note that this holds dimensionally with the $B$ from what we found before from Lorentz's force law.
+\begin{eg}[A Live Wire]
+	Consider a wire along the $x$ axis where a stationary current goes from right to left. Using Biot-Savart we can find the field $B^i$ at a distance $s$ from the wire.
+	We have that for the symmetries of the system we're working on a 2D plane $xy$. The radius vector from the current to the point where we're evaluating the field describes a triangle in this plane, we indicate the angle between the height of the triangle ($s$) and the radius vector $r$ as $\theta$. Using trigonometry we have that the length of the basis of this triangle is $l=s\tan\theta$, therefore
+	\begin{equation*}
+		\dd l=\frac{s}{\cos^2\theta}\dd \theta
+	\end{equation*}
+	Also, we have that in this triangle considering the angle $\alpha$ between the current and the radius vector we have that the cross product of the two has the following magnitude
+	\begin{equation*}
+		\norm{\dd\vec{l}\cross\ver{r}}=r\sin\alpha\dd l=r\frac{\sin\alpha}{\cos^2\theta}\dd\theta
+	\end{equation*}
+	Using the fact that we're in an euclidean triangle (duh) we must have that $\alpha+\theta+\pi/2=\pi$, therefore $\alpha=\pi-\theta$. Still using trigonometry we can also say that
+	\begin{equation*}
+		s=r\cos\theta\implies r=\frac{s}{\cos\theta}\implies\frac{1}{r^2}=\frac{\cos^2\theta}{s^2}
+	\end{equation*}
+	From Biot-Savart then
+	\begin{equation*}
+		\dd B=\frac{\mu_0}{4\pi}\frac{\cos\theta}{r^2}\dd l=\frac{\mu_0\cos\theta}{4\pi}\left( \frac{s}{\cos^2\theta}\frac{\cos^2\theta}{s^2} \right)\dd\theta
+	\end{equation*}
+	Therefore
+	\begin{equation}
+		\dd B=\frac{\mu_0\cos\theta}{4\pi s}\dd\theta
+		\label{eq:cablebfield}
+	\end{equation}
+	Considering that $\theta$ goes from some $\theta_0$ to some $\theta_1$ if the wire is finite, and $\theta_0=-\pi/2,\theta_1=\pi/2$ for an \emph{infinite} wire, we have in the second case
+	\begin{equation}
+		B(s)=\frac{\mu_0}{4\pi s}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos\theta\dd\theta=\frac{\mu_0}{2\pi s}
+		\label{eq:wirebfieldcomp}
+	\end{equation}
+	Using the right hand rule we can also find the direction of $B$, being always normal to both $r$ and $I$ we have that in 3 dimensions, using cylindrical coordinates
+	\begin{equation}
+		B^i=\frac{\mu_0}{2\pi s}\hat{\varphi}^i
+		\label{eq:wireBfield}
+	\end{equation}
+\end{eg}
+\subsection{Divergence and Curl of B}
+Consider now an infinite wire with a static current $I^i$ going through it. If we take a closed loop $C$ around the wire it's clear that if we integrate $B$ in that loop the integral can't be 0. From Biot-Savart we have, using what we found previously for infinite wires
+\begin{equation}
+	B=\frac{\mu_0I}{2\pi r}\oint_C\dd l=\mu_0 I
+	\label{eq:biotsavwiresintcurr}
+\end{equation}
+In general it's clear that for some loop $C$ around multiple currents $I_{(i)}$, we will have that as for Gauss' law for electric fields with charges, that
+\begin{equation}
+	\oint_CB^i\hat{t}_i\dd l=\mu_0 I_{in}
+	\label{eq:totcurrin}
+\end{equation}
+Where $I_{in}$ is the total current inside the loop. If we have a current density $J^i$ it's clear that then,
+\begin{equation*}
+	I_{in}=\iint_{S}J^i\hat{n}_i\dd s
+\end{equation*}
+Where $S$ is the surface such that $\del S=C$. Reconnecting and using Stokes' theorem on $B$ we have
+\begin{equation}
+	\iint_S\cpr{i}{j}{k}\del^jB^k\hat{n}_i\dd s=\mu_0\iint_SJ^i\hat{n}_i\dd s
+	\label{eq:ampereintwires}
+\end{equation}
+We get then that \emph{for straight wires}
+\begin{equation}
+	\cpr{i}{j}{k}\del^jB^k=\mu_0J^i
+	\label{eq:rotbwires}
+\end{equation}
+What about the divergence of $B$? We begin again with Biot-Savart law in a general setting with a volume current $J^i$. We have
+\begin{equation*}
+	B^i=\frac{\mu_0}{4\pi}\iiint_V\frac{1}{r^2}\cpr{i}{j}{k}J^j\hat{r}^k\dd^3x
+\end{equation*}
+We then apply the divergence operator to both sides
+\begin{equation*}
+	\del_iB^i=\frac{\mu_0}{4\pi}\iiint_V\pdv{x^i}\left( \cpr{i}{j}{k}J^j\frac{\hat{r}^k}{r^2} \right)\dd^3x
+\end{equation*}
+Using the antisymmetry of $\cpr{i}{j}{k}$ we can rewrite the divergence of the cross product as follows
+\begin{equation*}
+	\pdv{x^i}\cpr{i}{j}{k}J^j\frac{\hat{r}^k}{r^2}=\frac{\hat{r}_i}{r^2}\cpr{i}{j}{k}\del^jJ^k-J_i\cpr{i}{j}{k}\del^j\left( \frac{\hat{r}^k}{r^2} \right)
+\end{equation*}
+\emph{Remember:} $J^i$ doesn't depend from how far we're measuring the field, therefore $\del_iJ^k=0$! The first part on the right hand side of the previous equation is zero, therefore we have
+\begin{equation}
+	\pdv{x^i}\cpr{i}{j}{k}J^j\frac{\hat{r}^k}{r^2}=-J_i\cpr{i}{j}{k}\del^j\left( \frac{\hat{r}^k}{r^2} \right)=0
+	\label{eq:divcrosscurrent}
+\end{equation}
+Where we used that the curl of $\hat{r}^i/r^2$ is 0 (it's the gradient of another function). Therefore we have that
+\begin{equation}
+	\del_iB^i=0
+	\label{eq:divB}
+\end{equation}
+Note that this holds everywhere since we started from a generic current distribution! We can also recompute the curl of $B$ from this generic current distribution. Remembering again that $J$ depends only on the local coordinates of the distribution itself and not from how far we're measuring $B$ we have, firstly, using the identities of $\cpr{i}{j}{k}$, and juggling a bit
+\begin{equation}
+	\cpr{i}{j}{k}\del^j\cpr{k}{l}{m}J^l\frac{\hat{r}^m}{r^2}=J^i\del_l\left( \frac{\hat{r}^l}{r^2} \right)-\left(J^l\del_l\right)\frac{\hat{r}^i}{r^2}
+	\label{eq:lcidentitescurlb}
+\end{equation}
+Using the definition of the 3D Dirac delta for evaluating the first divergence we have
+\begin{equation}
+	\cpr{i}{j}{k}\cpr{k}{l}{m}\del^jJ^l\frac{\hat{r}^m}{r^2}=4\pi\delta^3(r)J^i-\left( J^l\del_l \right)\frac{\hat{r}^i}{r^2}
+	\label{eq:fixedabit}
+\end{equation}
+Looking closely at the second side, we have
+\begin{equation*}
+	\pdv{x^i}\left( J^i\frac{\hat{r}^j}{r^2} \right)=\frac{\hat{r}^j}{r^2}\del_iJ^i+\left(J^i\del_i\right)\frac{\hat{r}^j}{r^2}
+\end{equation*}
+Noting that for steady currents $\del_iJ^i=0$ we have then
+\begin{equation*}
+	\left( J^l\del_l \right)\frac{\hat{r}^i}{r^2}=\pdv{x^j}\left( J^i\frac{\hat{r}^j}{r^2} \right)
+\end{equation*}
+Reinserting everything into the definition of $B^i$ we have
+\begin{equation}
+	\cpr{i}{j}{k}\del^jB^k=\mu_0\iiint_VJ^i\delta^3(r)\dd^3x+\frac{\mu_0}{4\pi}\oiint_{\del V}\frac{\hat{r}^i}{r^2}J^j\hat{n}_j\dd s
+	\label{eq:curlBfirst}
+\end{equation}
+The surface integral is safely equal to zero since all currents are safely inside the surface (by definition), and collapsing the first integral we have
+\begin{equation}
+	\cpr{i}{j}{k}\del^jB^k=\mu_0J^i
+	\label{eq:amperelaw}
+\end{equation}
+This relation is \emph{general} and holds for all current distributions $J^i$. This is known formally as \textit{Ampere's law for Magnetostatics}.\\
+Analogously to Gauss' law for $E$, we have some tricks for evaluating $B$ using Ampere's law. We draw some convenient closed loops for which $B$ comes out easily from the integral. As we have Gaussian surfaces, we have for $B$ \textit{Amperian loops}.\\
+Integrating both sides of \eqref{eq:amperelaw} we have applying Stokes that if we chose a nice enough loop, i.e. one where $B$ is parallel to the tangent of the loop it will come out from the integral and we will have on the right $\mu_0 I_{in}$, easing all calculations
+\subsection{The Parallel Between Magnetostatics and Electrostatics}
+We have now found 4 Maxwell equations, two for static charges and two for static currents. These equations are, in free space
+\begin{equation}
+	\left\{\begin{aligned}
+		\del_iE^i&=\frac{\rho}{\epsilon_0}\\
+		\cpr{i}{j}{k}\del^jE^k&=0\\
+		\del_iB^i&=0\\
+		\cpr{i}{j}{k}\del^jB^k&=\mu_0J^i
+\end{aligned}\right.
+	\label{eq:maxstatic}
+\end{equation}
+These equations are asymmetric! If we made a symmetric parallel between the two and supposed $\del_iB^i=\mu_0\rho_m$ where $\rho_m$ is a ''magnetic charge``, the magnetic counterpart to the electric charge, these equation would be perfectly symmetric. The fact that $\del_iB^i=0$ always shows that magnetic charges, or magnetic monopoles, cannot exist in nature due to the actual shape of $B$.\\
+This particular parallel, lets us think that there might also be a potential for $B$. We are already sure that it can't be a scalar potential in general, since the curl of $B$ is nonzero.
+\subsubsection{Magnetic Potentials}
+Let's look back at Biot-Savart's law, we have
+\begin{equation*}
+	B^i=\frac{\mu_0}{4\pi}\iiint_V\frac{1}{r^2}\cpr{i}{j}{k}J^j\hat{r}^k\dd^3x=\frac{\mu_0}{4\pi}\iiint_V\cpr{i}{j}{k}J^j\del^k\left( \frac{1}{r} \right)\dd^3x
+\end{equation*}
+Using $\curl\vec{J}=0$ we can use a little property of the epsilon symbol and bring outside the curl. We have
+\begin{equation}
+	B^i=\frac{\mu_0}{4\pi}\cpr{i}{j}{k}\pdv{x_j}\iiint_V\frac{J^k}{r}\dd^3x
+	\label{eq:bcurl}
+\end{equation}
+I.e. we wrote $B$ in terms of the curl of some other vector. This vector is the \textit{magnetic vector potential} $A^i$ and, writing
+\begin{equation}
+	A^i=\frac{\mu_0}{4\pi}\iiint_V\frac{J^i}{r}\dd^3x
+	\label{eq:mvpot}
+\end{equation}
+It's clear that since the curl of a gradient is zero, this potential is defined up to gradients of continuous functions.\\
+We will usually choose the \textit{Coulomb Gauge}, where $\del_iA^i=0$, this means that since
+\begin{equation*}
+	A^i=A^i_0+\del^i\lambda\implies \del_iA^i=0\iff\del^i\del_i\lambda=-\del_iA^i_0
+\end{equation*}
+This is a Poisson equation and the solution is easily
+\begin{equation*}
+	\lambda(r)=\frac{1}{4\pi}\iiint_V\frac{\del_iA^i_0}{r}\dd^3x
+\end{equation*}
+In this potential formulation, if we take Ampere's law we have
+\begin{equation}
+	\cpr{i}{j}{k}\del^jB^k=\cpr{i}{j}{k}\del^j\cpr{k}{l}{m}\del^lA^m=\del_i\del_lA^l-\del^l\del_lA^i=\mu_0J^i
+	\label{eq:amperepot}
+\end{equation}
+Taking the previous gauge choice we have 3 Poisson equations for each component of $A$
+\begin{equation}
+	\del_l\del^lA^i=-\mu_0J^i
+	\label{eq:poissonB}
+\end{equation}
+If $J(r)\to0$ we have then that the solution is, as before
+\begin{equation*}
+	A^i=\frac{\mu_0}{4\pi}\iiint_V\frac{J^i}{r}\dd^3x
+\end{equation*}
+\subsection{Boundary Conditions for the Magnetic Field}
+Going back to electrostatic boundary conditions, we have that $E$ is discontinuous on the surface \textit{charge}. Instead, $B$, by analogy of the formulas is discontinuous on surface \textit{currents}.\\
+Checking again Maxwell's equations, we must have that if $E$ is discontinuous on the \emph{normal} to the surface, $B$ must be discontinuous on the \emph{tangent}, in fact, taken a pillbox $P$ that goes through this surface current, then, since $\del_iB^i=0$ \emph{always} we have
+\begin{equation}
+	\iint_PB^i\hat{n}_i\dd s=0
+	\label{eq:pillboxsurfc}
+\end{equation}
+This immediately implies, noting that the normal vector above is opposite to the normal vector below the surface, that
+\begin{equation}
+	B^i\hat{n}^{ab}_i=B^i\hat{n}^{bel}_i
+	\label{eq:normalcontinuity}
+\end{equation}
+I.e., the normal components of the magnetic field are continuous.\\
+Take now an Amperian loop that goes through the surface. Then, by Ampere's law we get
+\begin{equation*}
+	\oint_AB^i\hat{t}_i\dd l=\mu_0I_{enc}
+\end{equation*}
+Where $I_{enc}=KI$ if $K$ is our surface current density. Therefore, expanding the integral
+\begin{equation}
+	B^i\hat{t}^{ab}_i-B^i\hat{t}^{bel}_i=\mu_0K
+	\label{eq:abovebelowtangent}
+\end{equation}
+Note that this holds since if we check the parallel components of the tangent of this loop, we must have $I_{enc}=0$. Both these conditions can be summarized into a single equation.\\
+Let $K^i$ be the surface current density, then if we measure the magnetic field above ($B^i_{ab}$) and below $B^i_{bel}$, it must be continuous passing through the current surface and discontinuous on its tangent, i.e.
+\begin{equation}
+	B^i_{ab}-B^i_{bel}=\mu_0\cpr{i}{j}{k}K^j\hat{n}^j
+	\label{eq:boundarycond}
+\end{equation}
+%to see with classes blah blah blah
+\section{Magnetic Dipoles}
+As for electrostatic potentials, it's possible to expand the magnetic potential into multipoles.\\
+Remembering that if $r^i=r^i-\tilde{r}^i$, we can write $r^{-1}$ in terms of Legendre functions
+\begin{equation*}
+	\frac{1}{r}=\frac{1}{\sqrt{r^2+(\tilde{r})^2-2r\tilde{r}\cos\theta}}=\sum_{l=0}^\infty\left( \frac{\tilde{r}}{r} \right)^2P_l(\cos\theta)
+\end{equation*}
+Therefore, for any Amperian loop $A$ with current $I\hat{t}^i$ we have
+\begin{equation}
+	A^i(r)=\frac{\mu_0I}{4\pi}\sum_{l=0}^\infty\frac{1}{r^{l+1}}\oint_A\left( \tilde{r} \right)^lP_l(\cos\theta)\hat{t}^i\dd l
+	\label{eq:exactexpansion}
+\end{equation}
+Expanding till quadrupoles ($l=2$) we then can write
+\begin{equation}
+	A^i\approx\frac{\mu_0 I}{4\pi r}\oint_A\hat{t}^i\dd l+\frac{\mu_0I}{4\pi r^2}\oint_A\tilde{r}\cos\theta\hat{t}^i\dd l+\frac{\mu_0I}{4\pi r^3}\oint_A\frac{(\tilde{r})^2}{2}\left( 3\cos\theta-1 \right)\hat{t}^i\dd l
+	\label{eq:aquadrupoleb}
+\end{equation}
+Note that the monopole term ($l=0$) is zero, as we expected! Again, there are no magnetic monopoles.\\
+We concentrate on the $l=1$ term, the dipole term. We have then that the magnetic dipole is
+\begin{equation}
+	A_{dip}^i(r)=\frac{\mu_0I}{4\pi r^2}\oint_A\tilde{r}\cos\theta\hat{t}^i\dd l
+	\label{eq:magdipint}
+\end{equation}
+Remembering that by definition $\hat{r}^i\hat{\tilde{r}}_i=\cos\theta$ we can write everything in terms of scalar products. Since
+\begin{equation*}
+	\tilde{r}\cos\theta=\tilde{r}\hat{r}
+\end{equation*}
+We can write the integral in terms of a surface integral. Call $S$ the surface enclosed by the loop, then
+\begin{equation*}
+	A_{dip}^i(r)=\frac{\mu_0I}{4\pi r^2}\oint_A(\tilde{r}^j\hat{r}_j)\hat{t}^i\dd l=\frac{\mu_0I}{4\pi r^2}\left( -\cpr{i}{j}{k}\hat{r}^j\iint_S\hat{n}^k\dd s \right)
+\end{equation*}
+Remembering the definition of magnetic dipole, and switching the indexes on the cross product, we have
+\begin{equation}
+	A_{dip}^i(r)=\frac{\mu_0}{4\pi r^2}\cpr{i}{j}{k}m^j\hat{r}_k
+	\label{eq:dipolepotmag}
+\end{equation}
+Look how this is clearly equivalent to the field generated by a small dipole $m^i$ generated by a current loop on a circuit $A$.\\
+\subsection{Interaction Between Currents}
+Consider two rigid circuits with some current $I_i$, $i=1,2$. Suppose these two circuits are small enough so that we can consider them as two magnetic dipoles.\\
+In the second circuit, there is a force $\dd F_{21}$ generated from the $B_1$ field of the first circuit. We have
+\begin{equation*}
+	\dd F^i_{21}=I_2\cpr{i}{j}{k}\dd l_2^jB_{1}^k=I_2\cpr{i}{j}{k}\dd l^j_2\oint_{1}\frac{\mu_0I_1}{4\pi r^2_{12}}\cpr{k}{l}{m}\dd l_1^l\hat{r}_{12}^k
+\end{equation*}
+Where we took $r_{12}$ as the distance between the two circuit elements $\dd l_{i}$. The total force will be then, integrating
+\begin{equation}
+	F^i_{12}=\frac{\mu_0I_1I_2}{4\pi}\oint_1\oint_2\frac{1}{r_{12}^2}\cpr{i}{j}{k}\cpr{k}{l}{m}\dd l^j_2\dd l^l_1\hat{r}^m_{12}=\frac{\mu_0I_1I_2}{4\pi}\oint_1\oint_2\left( \dd l_1^i\left( \frac{\hat{r}_{12}^l}{r_{12}^2}\dd l_l^2 \right)-\frac{\hat{r}^i_{12}}{r^2_{12}}\dd l^l_1\dd l^2_l \right)
+	\label{eq:forcebwcirc}
+\end{equation}
+Where we used the properties of $\cpr{i}{j}{k}$ for computing the products. On the right hand side the first term can be seen as the curl of a vector (with respect to the 2nd line integral) integrated on the surface enclosed by the second loop. This curl is zero, and therefore we have finally
+\begin{equation}
+	F^i_{12}=-\frac{\mu_0I_1I_2}{4\pi}\oint_1\oint_2\frac{\hat{r}^i_{12}}{r_{12}^2}\dd l_1^l\dd l_l^2
+	\label{eq:forcebwcircuits}
+\end{equation}
+Note that $F_{12}=-F_{21}$ simply because $r_{12}=-r_{21}$! Therefore what we found respects Newton's third law.\\
+Consider now two infinite parallel wires with the same currents, we have that if $\dd l^1_l\dd l^l_2\ge0$ or $\dd l^1_l\dd l^l_2\le0$ (i.e. the two currents have the same direction or opposite direction), we will get wither an attractive force or a repulsive force.\\
+It's clear that this force will be orthogonal to the wires (see Lorentz's force law) and therefore we're interested to check only the orthogonal component.\\
+If the two parallel wires are distant $a$ from each other we can write immediately $r_{12}\cos\theta=a$, and $\dd l_1=\frac{a}{\cos^2\theta}\dd\theta$. Noting that the two wires are infinite, using the transformation $\dd l_1\to\dd\theta$ we get (dividing by $\dd l_2$)
+\begin{equation*}
+	\dv{F_{21}^\perp}{l_2}=-\frac{\mu_0I_1I_2}{4\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\left( \frac{\cos^2\theta}{a^2} \right)\cos\theta\left( \frac{a}{\cos^2\theta}\dd\theta \right)=-\frac{\mu_0I_1I_2}{4\pi a}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos\theta\dd\theta
+\end{equation*}
+Integrating, we immediately get
+\begin{equation}
+	\dv{F_{12}^\perp}{l_2}=-\frac{\mu_0I_1I_2}{2\pi a}
+	\label{eq:forcewiresinf}
+\end{equation}
+Note this is negative only if $\dd l^l_1\dd l^2_l>0$, i.e. when the currents are parallel.
+\end{document}

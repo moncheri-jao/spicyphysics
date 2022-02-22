@@ -1,0 +1,141 @@
+\documentclass{book}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+%\usepackage[italian]{babel}
+\usepackage{physics}
+\usepackage{subfiles}
+\usepackage[]{csquotes}
+\usepackage{fontspec}
+\usepackage{amsthm, mathtools, amssymb, amsfonts}
+\usepackage{esint}
+\usepackage{xcolor}
+\usepackage[]{geometry}
+\usepackage[]{graphicx}
+\graphicspath{{./images/}}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{stmaryrd}
+\usepackage{dsfont}
+\usepackage{lipsum}
+\usepackage{etoolbox}
+\usepackage{pgfplots}
+\usepgflibrary{fpu}
+%\usepackage{siunitx}
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{~/Dropbox/appunti/bibliografia/bib.bib}
+\definecolor{sapienza}{cmyk}{.10,1.00,.61,.50}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=red,citecolor=blue]{hyperref}%
+%% OFFICIAL SAPIENZA FONT %%
+%\setmainfont[
+%	Ligatures=TeX,
+%	UprightFont=*_45_light,
+%	ItalicFont=SALFrutiger-Italic,
+%	BoldFont=*_bold,
+%	BoldItalicFont=SALFrutiger-BoldItal,
+%]{frutiger}
+%%
+\setlength{\headheight}{13.6pt}
+\fancyhf{}
+\fancyhead[R]{\textbf{\textsf{\thepage}}}
+\fancyhead[LE]{\textbf{\textsf{\leftmark}}}
+\fancyhead[LO]{\textbf{\textsf{\rightmark}}}
+\pagestyle{fancy}
+\titleformat{\chapter}[block]{\bfseries}{\fontsize{40}{30}\selectfont\color{gray}\textsf\thechapter}{1.5em}{\fontsize{25}{25}\selectfont\scshape}[\vspace{-1ex}\hfill\rule{\textwidth}{0.5pt}]
+\titleformat{\section}[block]{}{\fontsize{14}{12}\textsf{\S\ \bfseries\thesection}}{0.5em}{\fontsize{14}{12}\bfseries\textsf}[\vspace{-1ex}\hfill\rule{\textwidth}{0.1pt}]
+\titleformat{\subsection}[block]{}{\textsf{\S\S\ \bfseries\thesubsection}}{0.5em}{\bfseries\textsf}
+\titleformat{\subsubsection}[block]{}{\textsf{\S\S\S\ \bfseries\thesubsubsection}}{0.5em}{\bfseries\textsf}
+% EN %
+%%
+\newtheorem{thm}{Theorem}[chapter]
+\theoremstyle{definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{dfn}{Definition}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{hyp}{Hypothesis}
+\newtheorem{exe}{Exercise}[section]
+\newtheorem{mtd}{Method}
+\newtheorem*{ntn}{Notation}
+\theoremstyle{remark}
+\newtheorem{eg}{Example}[section]
+\newtheorem*{rmk}{Remark}
+%%
+%% IT %%
+%\newtheorem{thm}{Teorema}
+%\theoremstyle{definition}
+%\newtheorem{defn}{Definizione}
+%\newtheorem{cor}{Corollario}
+%\newtheorem{exe}{Esercizio}
+%\theoremstyle{remark}
+%\newtheorem{eg}{Esempio}
+%\newtheorem{rmk}{Osservazione}
+%\newtheorem*{nb}{N.B.}
+%% %%
+%% EQUATION COLOR %%
+\AtBeginEnvironment{equation}{\color{sapienza}}
+\AtBeginEnvironment{equation*}{\color{sapienza}}
+%% %%
+\DeclareMathOperator{\F}{\mathbb{F}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\Cf}{\mathbb{C}}
+\DeclareMathOperator{\V}{\mathbb{V}}
+\DeclareMathOperator{\W}{\mathbb{W}}
+\DeclareMathOperator{\UU}{\mathcal{U}}
+\DeclareMathOperator{\LL}{\mathcal{L}}
+%\DeclareMathOperator{\del}{\partial}
+\newcommand{\cpr}[3]{\epsilon^{#1}_{\ #2#3}}
+\newcommand{\del}{\partial}
+\renewcommand{\real}{\mathfrak{Re}}
+\renewcommand{\imaginary}{\mathfrak{Im}}
+\newcommand{\varvec}[1]{\underline{#1}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\dd}{\ \mathrm{d}}
+\newcommand{\ver}[1]{\hat{\mathbf{#1}}}
+\newcommand{\unit}[1]{\ \mathrm{#1}}
+%
+\directlua{
+	function langevin (i)
+		return math.cosh(i) / math.sinh(i) - 1/i
+	end
+}
+\pgfmathdeclarefunction{Langevin}{1}{\edef\pgfmathresult{\directlua{tex.print("" .. langevin(#1))}}}
+\begin{document}
+\subfile{./title/title}
+\tableofcontents
+\part{Electrostatics}
+\chapter{The Electric Field}
+%\subfile{./chapters/efield.tex}
+\subfile{./chapters/efieldind.tex}
+\chapter{The Electrostatic Potential}
+\subfile{./chapters/poilap.tex}
+\chapter{Electricity in Matter}
+\subfile{./chapters/die.tex}
+\part{Magnetostatics}
+%\chapter{Electric Currents}
+\chapter{The Magnetic Field}
+\subfile{./chapters/magf.tex}
+%\chapter{Magnetostatic Potentials}
+\chapter{Magnetism in Matter}
+\subfile{./chapters/mattmag.tex}
+\part{Electrodynamics}
+\chapter{Maxwell's Equations}
+\subfile{./chapters/emind.tex}
+\chapter{Potentials and Fields}
+\chapter{Relativistic Electrodynamics}
+\appendix
+\chapter{Electric Circuits}
+\section{Electronics}
+\section{DC Current}
+\section{AC Current}
+\chapter{Magnetic Circuits}
+\chapter{Special Relativity}
+\subfile{./chapters/lorentz.tex}
+\nocite{griffem,jackson,landau2,zangwillem}
+\printbibliography
+\end{document}

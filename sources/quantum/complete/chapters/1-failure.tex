@@ -1,0 +1,181 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	The failure of classical physics starts in the first years of the 1900s, when the first experimental measurements on the world of the very small begun. The first discrepancies found, after Planck's quantization of energy ``trick'' for avoiding the UV catastrophe, were in the experimental results given from the measurements of the wavelength of the emission of Hydrogen, Bremsstrahlung radiation and the famous photoelectric effect.\\
+	The first approaches for a correct theoretical modelization of a Hydrogen atom were put forward by Thomson, where the atom itself is considered as a charged sphere, in which there are inside positive and negative charges.\\
+	For Hydrogen we will have a sphere of radius $a$ with charge $\abs{q}=e=1.6\cdot10^{-19}\unit{C}$. Using Gauss' theorem, we know that the flux of the electric field $\vec{E}$ will be given by the following piecewise function
+	\begin{subequations}
+	\begin{equation}
+		\Phi_E(r)=\begin{dcases}
+			4\pi e\frac{r^3}{a^3}&0\le r\le a\\
+			4\pi e& r\ge a
+		\end{dcases}
+		\label{eq:thomsoneflux}
+	\end{equation}
+	Since we are in a spherically simmetrical system, the flux of the $\vec{E}$ field will simply be $4\pi r^2\vec{E}(r)$, and our $\vec{E}$ field will be
+	\begin{equation}
+		\vec{E}(r)=\begin{dcases}
+			\frac{er}{a}\ver{r}&0\le r\le a\\
+			\frac{e}{r^2}\ver{r}&r\le a
+		\end{dcases}
+		\label{eq:thomsonefield}
+	\end{equation}
+\end{subequations}
+	Since $\vec{E}$ is conservative, we can define a scalar potential $\phi$ such that $\nabla\phi=\vec{E}$. This function is easily determined by the solution of a 1st order ODE
+	\begin{subequations}
+	\begin{equation}
+		\left\{\begin{aligned}
+			&\derivative{\phi}{r}=\begin{dcases}
+				-\frac{er}{a^3}&0\le r\le a\\
+				-\frac{e}{r^2}&r\ge a
+			\end{dcases}\\
+			&\lim_{r\to\infty}(\phi(r))=0
+		\end{aligned}\right.
+		\label{eq:thomsonscalarpot}
+	\end{equation}
+	The ODE is a separable differential equation with the following solution
+	\begin{equation}
+		\phi(r)=\begin{dcases}
+			\frac{3e}{2a}-\frac{er^2}{2a^3}&0\le r\le a\\
+			-\frac{e^2}{r}&r\ge a
+		\end{dcases}
+		\label{eq:thomsonscalarpotential}
+	\end{equation}
+\end{subequations}
+	Since the total charge of the system is $q=-e$, and the potential energy of the system will be given from the scalar potential times the total charge, we have that $V(r)=-e\phi(r)$.\\
+	Since the ionization energy is defined as $E_I=V(0)$, we get for Hydrogen,
+	\begin{equation*}
+		E_I=-\frac{3e^2}{2a}\approx-13.6\unit{eV}
+	\end{equation*}
+	For evaluating the emission frequency of this system, we write the Hamiltonian for a harmonic oscillator with the mass of an electron, $m_e$, coupled to a Hamiltonian with the potential $V(r)$.\\
+	The Hamiltonian will then be defined piecewise as such
+	\begin{equation}
+		\ham(p,r)=\begin{dcases}
+			\frac{p^2}{2m_e}+\frac{1}{2}m_e\omega^2r^2\\
+			\frac{p^2}{2m_e}+\frac{e^2r^2}{2a^3}
+		\end{dcases}
+		\label{eq:thomsonham}
+	\end{equation}
+	Solving the system for $\omega$ we get
+	\begin{equation*}
+		\omega=\sqrt{\frac{e^2}{m_ea^3}}
+	\end{equation*}
+	Plugging the measured values of the electron mass and the radius of the charged sphere, we get a frequency $\nu\approx1.2\cdot10^{15}\unit{Hz}$ and a corresponding wavelength of $\lambda\approx3\cdot10^3\unit{\AA}$.\\
+	Although the values obtained from this classical model of the atom core are consistent, the whole idea has been disproven by Geiger and Madsen, whom have demonstrated that if a Gold sheet is irradiated with $\alpha$ particles, most of them will pass through without scattering, some get sligthly deflected after interacting with the Gold atoms and another part gets deflected with angles that are completely incompatible with Thomson's model.\\
+	A different model which explains the Geiger-Madsen experiment is the Rutherford model of the atom, where the system is evaluated as two opposed charges, the nucleus positively charged, and the orbiting electrons with negative charge.\\
+	The total energy of the Rutherford atom can be calculated using the classical Virial theorem, which gives
+	\begin{equation}
+		E=\frac{1}{2}m_ev^2-\frac{e^2}{a}=-\frac{e^2}{2a}
+		\label{eq:rutherfordenergy}
+	\end{equation}
+	Forcing in the measured valued for $E_I$, we get for Hydrogen $a\approx0.5\unit{\AA}$ and $\lambda\approx455\unit{\AA}$.\\
+	Although these values are consistent with observations, the model isn't physically accurate, since the electrons in these orbits have a nonzero acceleration, which brings them to emit sincrotron radiation and consequently lose angular momentum, falling towards the nucleus.\\
+	If one explicits all the values in game with such system, will get that a random atom will have a mean life of $10^{-8}\unit{s}$, which is completely in contrast with observation, since atoms exist, and didn't get annihilated $10^{-8}\unit{s}$ after their formation in the early universe.\\
+	The final blow to this huge crisis in classical physics has been given by Einstein and his discovery of the photoelectric effect, where it's shown that, if a metal is irradiated from a source with an energy $E>W$, with $W$ a work function, there is an emission of electrons linearly proportional to the frequency of the radiation, with coupling constant being exactly Planck's constant, $h=6.6\cdot10^{-34}\unit{Js}$. The inverted experiment gives instead a ``stopping radiation'', Bremsstrahlung in German, where at given frequencies the blackbody radiation of the source gets ``stopped''. This kind of behavior is not explainable with classical physics, which gave rise to the formulation of quantum mechanics.\\
+	The photoelectric effect, with its astonishing results, gave rise to the idea that radiation is quantized, hence it behaves as a particle, and at the same time, due to the certainity behind classical optics, it has the behavior of a wave.
+	\section{Old Quantum Mechanics}
+	After the discovery of Bremsstrahlung and the photoelectric effect, there has been an attempt to formalize this new mechanics of quanta by Bohr, through 3 hypotheses
+	\begin{hyp}[Bound States]
+		For any atom, only states with discrete energies $E_n$ are allowed, where $E_n$ is a monotonically increasing succession of values, called Energy Levels. The set of these discrete states is called the set of Bound States, the minimum value of this succession is $E_0$ and is commonly referred to as Ground State.
+	\end{hyp}
+	\begin{hyp}[Transition Between Levels]
+		When the system is in a bound state radiates only in transitions between levels.\\
+		Taking a level $E_n$ and a level $E_m$ where $m>n$, the frequency of the radiation is
+		\begin{equation*}
+			\nu_{nm}=\frac{\abs{E_m-E_n}}{h}
+		\end{equation*}
+		Where $h$ is Planck's Constant.
+	\end{hyp}
+	\begin{cor}[Ritz Combination Principle]
+		The emission spectrum of an atom, with this hypothesis, is then given by evaluating all the energy differences of the absorption spectrum's difference, hence
+		\begin{equation*}
+			\abs{\nu_{0n}-\nu_{0m}}=\abs{\frac{E_n-E_0}{h}-\frac{E_m-E_0}{h}}=\frac{\abs{E_n-E_m}}{h}=\nu_{nm}
+		\end{equation*}
+	\end{cor}
+	\begin{hyp}[Bohr-Sommerfield Quantization]
+		Defining $\hbar$ as $h/2\pi$ as the reduced Planck Constant, we get that the only permitted orbits are those where $L\propto n\hbar$.\\
+		For an orbit $\gamma$ then holds that
+		\begin{equation*}
+			L=\oint_{\gamma}p\diff{q}=n\hbar
+		\end{equation*}
+		For a circular orbit, $L=\mu vr$, hence
+		$\mu vr=n\hbar$
+	\end{hyp}
+	For an Hydrogen atom we then get the following results.\\
+	Considering that the system is virialized, we can write the energy as such
+	\begin{subequations}
+		\begin{equation}
+			E=\frac{1}{2}V=-\frac{Ze^2}{2r}
+			\label{eq:bohrenergy}
+		\end{equation}
+		The third Bohr hypothesis requires that $\mu vr=n\hbar$, with $\mu$ being the reduced mass of the system nucleus-electron.\\
+		Squaring the previous relation and inserting it in the expression of energy, we get
+		\begin{equation}
+			\frac{1}{2}\mu v^2=\frac{n^2\hbar^2}{2\mu r^2}=\frac{Ze^2}{2r}
+		\end{equation}
+		From this we get that the only possible orbits are at a radius $r_n$, where
+		\begin{equation*}
+			r_n=\frac{n^2\hbar^2}{\mu Ze^2}=\frac{n^2m_ea_B}{Z\mu}
+		\end{equation*}
+		With $a_B=\hbar^2/m_ee^2$ a constant with dimensions of length, called Bohr radius.\\
+		Inserting what we have just derived in \eqref{eq:bohrenergy} we get the succession of quantized levels of energy, with the following relation
+		\begin{equation}
+			E_n=-\frac{Z^2e^2m_e}{2a_Bn^2}
+			\label{eq:atomicbohrenergy}
+		\end{equation}
+	\end{subequations}
+	Inserting $Z=1$ for restricting these levels to hydrogen, we get, with the approximation $\mu\approx m_e$ that
+	\begin{equation}
+		\begin{aligned}
+			r_n&=n^2a_B\\
+			a_B&=\frac{\hbar^2}{m_ee^2}=0.53\unit{\AA}\\
+			E_n&=-\frac{e^2}{2a_Bn^2}
+		\end{aligned}
+		\label{eq:bohrhydrogenresult}
+	\end{equation}
+	The values obtained are in accord with experimental results, but the new ``theory'' of quantum mechanics had yet to be formalized with a set of fundamental principles.
+	\section{Wave-Particle Duality}
+	The photoelectric effect, as said before, gave rise to the discovery of the particle-like behavior of light. L. de Broglie, put forward the following problem:\\
+	Taking as true the wave like behavior of the electromagnetic radiation, and at the same time taking as true the particle behavior of the same, there must be a particular wavelength for any particle, for which can be then defined a \textit{matter wave}, which has the same ondulatory behavior of classical waves, while still having all the properties of matter.\\
+	Taking as an Ansatz the Bohr-Sommerfield quantization hypothesis, we get that
+	\begin{equation*}
+		pL=nh
+	\end{equation*}
+	Dividing by $p$ we finally get that
+	\begin{equation*}
+		L=n\frac{h}{p}
+	\end{equation*}
+	Since for a photon $\lambda=h/p$, we get the following hypothesis
+	\begin{hyp}[de Broglie Hypothesis]
+		A wave is associated with each particle, and its wavelength is given by the relation $\lambda=h/p$. All the allowed orbits are those which contain an integer number of wavelengths.
+	\end{hyp}
+	We can then define the \textit{de Broglie wavelength} of matter as such:\\
+	Since $p=\sqrt{2mE}$, we get
+	\begin{equation}
+		\lambda_{DB}=\frac{h}{\sqrt{2mE}}
+		\label{eq:debrogliewavelength}
+	\end{equation}
+	If preferred, defining a ``reduced'' de Broglie wavelenght as $\lbar=\lambda_{DB}/2\pi$, we get, in terms of $\hbar$
+	\begin{equation*}
+		\lbar=\frac{\hbar}{\sqrt{2mE}}
+	\end{equation*}
+	\section{Experimental Verifications of Quantum Mechanics}
+	\subsection{Double Slit Experiment and Quantum Measurement}
+	In order to verify de Broglie's hypothesis of matter waves, many experiments were carried on, but the one that is really worth of notice is the \textit{double slit experiment}.\\
+	Let a beam of monochromatic light hit a completely opaque screen, on which there are two parallel slits. Due to the wave nature of electromagnetic radiation, the light passing through the two waves interferes with itself, and if a detector is put on front of such screen, a diffraction pattern can be observed and measured, as expected from classical electromagnetism and optics. In terms of photons, this diffraction pattern indicates where more photons hit the detector and where less did, and the diffraction can be seen as mere interaction with photons that got through different slits.\\
+	The real hassle comes when the same experiment is repeated without a continuous beam of light, but with a single photon. In this case an interference pattern \emph{can't} be explained with interacting photons, as there is a single photon in the whole system.\\
+	According to the corpuscular model, the photon must pass through one single slit, but the interference pattern wouldn't be observed in this case, giving a further confirmation of the wave-particle duality.\\
+	Getting back again to the first case, we can also try to interpret the interference pattern as a sum of the interference patterns of the photons passing only through one of the two slits. Introducing the idea of \textit{state}, we can identify with $\ket{A},\ket{B}$ the diffraction patterns of the photons passing through a single slit, and with $\ket{C}$ the interference pattern identified in the doble slit experiment.\\
+	It's easy to see that the final state isn't exactly a sum of the first two.\\
+	Leaving the world of classical physics, we can interpret the final state $\ket{C}$ as being a ``mixture'' of the state $\ket{A}$ and $\ket{B}$. taking $a,b$ constants, then we can write that
+	\begin{equation*}
+		\ket{C}=a\ket{A}+b\ket{B}
+	\end{equation*}
+	This result has no similar results in classical physics, since, if evaluated for a single photon, it explicitly indicates that the photon is passing through both slits at the same time!\\
+	A similar experiment uses a Mach-Zehnder interferometer, where a beam of neutrons gets shot through two different paths, where at the end of both a detector is carefully placed.\\
+	The result for a single neutron experiment are basically the same of the double slit experiment, because it is measured that the single neutron passes through both paths, and gets then measured from both detectors.\\
+	Modifying the experiment, and putting a detector on both slits, removes this indecision on which slit the particle went through (or path in the interferometer), and would let a detailed description of the construction of the interference pattern to be brought up from data.\\
+	What is observed though is extremely different from what is expected, in fact, measuring from which slit the particle goes through completely destroys the interference pattern, and what is measured is a corpuscular behavior of the particles.\\
+	This result, tells us that measuring a state, changes it. In fact, it changes the state in such a way that we can either have an interference pattern of a wave-like behavior or a particle-like behavior.\\
+	In fact, wave-particle duality still holds, but now gets a whole different meaning: \textit{particles aren't waves nor corpuscules, but both at the same time}. This affirmation has no meaning whatsoever in the classical world that we perceive, and it's the key factor in making quantum mechanics not understandable with physical intuition.\\
+	Although not humanly understandable, quantum mechanics can be formalized in a full fledged physical theory with a formal mathematical background, which lets us ``understand'' quantum mechanics through mathematics. In fact, we can grasp the mathematics of it, even without grasping the physical reality behind it.
+\end{document}

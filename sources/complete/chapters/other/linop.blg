@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'linop.blg'
+[35] biber:315> INFO - === ven feb 14, 2020, 13:30:28
+[59] Biber.pm:371> INFO - Reading 'linop.bcf'
+[137] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[146] Utils.pm:193> WARN - The file 'linop.bcf' does not contain any citations!
+[155] bbl.pm:636> INFO - Writing 'linop.bbl' with encoding 'UTF-8'
+[155] bbl.pm:739> INFO - Output to linop.bbl
+[155] Biber.pm:110> INFO - WARNINGS: 1

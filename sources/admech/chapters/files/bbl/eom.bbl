@@ -1,0 +1,56 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{landau1}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ab77fc1405f1025268c1fed8c4fe3104}{%
+           family={Landau},
+           familyi={L\bibinitperiod},
+           given={L.\bibnamedelimi D.},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=68f89b1b6812be21ce1e8e144ff579de}{%
+           family={Lifshits},
+           familyi={L\bibinitperiod},
+           given={E.\bibnamedelimi M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIR}%
+      }
+      \strng{namehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{fullhash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{bibnamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authorbibnamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authornamehash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \strng{authorfullhash}{7043f9a43cf932e356ff02a18d78ac8d}
+      \field{labelalpha}{LL69}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Course of Theoretical Physics, Vol.1, Mechanics}
+      \field{year}{1969}
+      \field{dateera}{ce}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

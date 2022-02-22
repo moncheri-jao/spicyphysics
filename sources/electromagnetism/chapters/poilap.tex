@@ -1,0 +1,359 @@
+\documentclass[../electromagnetism]{subfiles}
+\begin{document}
+\section{Poisson and Laplace Equations}
+%\subsection{Uniqueness of Solutions}%from jackson
+\subsection{Green Identities}
+From the equations of Maxwell for electrostatics, we have seen that inserting the relation between the electrostatic field and the potential we get a second order partial differential equation known as the \textit{Poisson equation}
+\begin{equation}
+	\nabla^2V=\del^i\del_iV(r^i)-\frac{\rho}{\epsilon_0}
+	\label{eq:poissoneq1}
+\end{equation}
+And its homogeneous counterpart where $\rho=0$, the \textit{Laplace equation}
+\begin{equation}
+	\del^i\del_iV=0
+	\label{eq:laplaceeq}
+\end{equation}
+There are two fundamental theorems that we're gonna use for solving PDEs (Partial differential equations).
+\begin{thm}[First Green Identity]
+	Given two functions $\varphi,\psi\in C^2(V)$ with $V$ being a bounded set, we have
+	\begin{equation}
+		\iiint_{V}^{}\left( \varphi\del^i\del_i\psi+\del^i\varphi\del_i\psi \right)\dd^3x=\oiint_{\del V}\varphi\pdv{\psi}{x^i}\hat{n}^i\dd s=\oiint_{\del V}\varphi\pdv{\psi}{n}\dd s
+		\label{eq:green1id}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $A_i=\varphi\del_i\psi$ we have that
+	\begin{equation*}
+		\del^iA_i=\del^i\left( \varphi\del_i\psi \right)=\varphi\del^i\del_i\psi+\del^i\varphi\del_i\psi
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\iiint_V\del^iA_i\dd^3x=\iiint_V\left( \varphi\del^i\del_i\psi+\del^i\varphi\del_i\psi \right)\dd^3x=\oiint_{\del V}\varphi\pdv{\psi}{n}\dd s=\oiint_{\del V}A_i\hat{n}^i\dd s
+	\end{equation*}
+\end{proof}
+\begin{thm}[Second Green Identity]
+	Given two functions $\varphi,\psi\in C^2\left( \R^3 \right)$, again from stokes theorem one has
+	\begin{equation}
+		\iiint_V\left( \varphi\del^i\del_i\psi-\psi\del^i\del_i\varphi \right)\dd^3x=\oiint_{\del V}\left( \varphi\pdv{\psi}{n}-\psi\pdv{\varphi}{n} \right)\dd s
+		\label{eq:green2id}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken two vector fields $A_i=\varphi\del_i\psi$, $B_i=\psi\del_i\varphi$, analogously as before we have
+	\begin{equation*}
+		\del^i\left( A_i-B_i \right)=\varphi\del^i\del_i\psi-\psi\del^i\del_i\varphi
+	\end{equation*}
+	Applying Stokes' theorem to the previous definition we have the proof, since
+	\begin{equation*}
+		A_i-B_i=\varphi\del_i\psi-\psi\del_i\varphi
+	\end{equation*}
+\end{proof}
+With these two theorems, we can easily modify Poisson's equation into an integral equation which can help us find useful informations on the shape of $V$.\\
+Taking \eqref{eq:green2id} where we set
+\begin{equation*}
+	\begin{aligned}
+		V(r^i)&=\varphi\\
+		\frac{1}{r}&=\psi
+	\end{aligned}
+\end{equation*}
+We get, remembering that $\del^i\del_i(r^{-1})=-4\pi\delta^3(r^i-\tilde{r}^i)$ and $\del^i\del_iV=-\rho/\epsilon_0$
+\begin{equation*}
+	\iiint_V\left(V(\tilde{r}^i)\del^i\del_i\left( \frac{1}{r} \right)-\frac{1}{r}\del^i\del_iV\right)\dd^3x=\iiint_V\left( -4\pi V\delta^3(r^i)+\frac{\rho}{r\epsilon_0} \right)\dd^3x
+\end{equation*}
+Therefore
+\begin{equation*}
+	\iiint_V\left( -4\pi V(\tilde{r}^i)\delta^3(r^i)+\frac{\rho}{r\epsilon_0} \right)\dd^3x=\oiint_{\del V}\left( V(r^i)\pdv{n}\left( \frac{1}{r} \right)-\frac{1}{r}\pdv{V}{n} \right)\dd s
+\end{equation*}
+Bringing to the left the surface integral and solving for $V(r^i)$ after having applied the Dirac delta we have
+\begin{equation}
+	V(r^i)=\frac{1}{4\pi\epsilon_0}\iiint_V\frac{\rho}{r}\dd^3x-\frac{1}{4\pi}\oiint_{\del V}\left( V(r^i)\pdv{n}\left( \frac{1}{r} \right)-\frac{1}{r}\pdv{V}{n} \right)\dd s
+	\label{eq:gensol}
+\end{equation}
+This result, is the general solution for Poisson's equation, consistent with a known volume charge $\rho$ and a surface charge $\sigma=\epsilon_0\del_nV$. Note how the solution depends on the boundary values of $V$.
+\subsection{Boundary Conditions and Uniqueness of the Solution}
+Given the general solution $\eqref{eq:gensol}$ how can we choose for appropriate boundary values such that the solution exists and is unique $\forall r^i\in V$ where $V$ is a bounded and closed set?\\
+One way is to specify $V$ at the boundary, i.e. using Dirichlet boundary conditions, or to specify $E_n=E^i\hat{n}_i=-\del_nV$ in the boundary $\del V$, i.e. using Neumann boundary conditions.\\
+Supposing Dirichlet boundary conditions for $V$ we have that the solution is unique. Why?\\
+Let $V$ be the usual bounded set of $\R^3$ in which we have
+\begin{equation*}
+	\del^i\del_iV=-\frac{\rho}{\epsilon_0}\qquad\forall x^i\in V
+\end{equation*}
+Then, let $U=V_1-V_2$ where $V_1,V_2$ are two solutions to Poisson's equation. By definition, then, $U$ solves Laplace's equation
+\begin{equation*}
+	\del^i\del_iU=\del^i\del_iV_1-\del^i\del_iV_2=0
+\end{equation*}
+At the boundary therefore we must have
+\begin{equation*}
+	U,\qquad\pdv{U}{n}=0\qquad\forall x^i\in\del V
+\end{equation*}
+From Green's 1st identity we also have that
+\begin{equation*}
+	\iiint_VU\del^i\del_iU+\del^iU\del_iU\dd^3x=\oiint_{\del V}U\pdv{U}{n}\dd s
+\end{equation*}
+Using that $U$ must solve Laplace's equation and it must also be zero at the boundary, we have, writing $\del^iU\del_iU=\abs{\del U}^2$
+\begin{equation*}
+	\iiint_V\abs{\del U}^2\dd^3x=0
+\end{equation*}
+This last integral implies that $\abs{\del U}^2=0$ and therefore $\del_iU=0$ $\forall x^i\in V$, i.e. $U$ is constant. Since $U\in C^2$ and it must be $0$ in $\del V$ the constant must be 0 and therefore
+\begin{equation*}
+	V_1=V_2
+\end{equation*}
+Which implies $\exists!V:V\to\R$ which solves Poisson's equation where $V$ is defined on the boundary. With Neumann conditions this implies that the two solutions are linearly dependent, still implying the uniqueness of the solution.\\
+It's also clear that using mixed Dirichlet/Neumann boundary conditions will give rise to a well behaved and unique solution.
+\subsection{Method of Images}%mixed
+A cool method for finding a solution of the Poisson and Laplace equations is the \textit{method of images}, where we choose some imaginary charges put in some special positions such that the potential found solves the PDE and therefore is unique.\\
+\begin{eg}[A Toy Problem]
+	Suppose that some point charge $q$ is held at some distance $d$ from a grounded infinite conducting plane put at $z=0$. What is $V(r^i)$ above the plane where there is $q$?\\
+	Note that it cannot be $q/4\pi\epsilon_0r$ since there is an induced charge on the surface of the plane where $Q_i=-q$.\\
+	We imagine removing the plane and setting a charge $-q$ on the opposite side of the first charge. In this case the potential will be simply the sum of the two potentials of the single charge, where
+	\begin{equation*}
+		V(x,y,z)=\frac{q}{4\pi\epsilon_0}\left( \frac{1}{\sqrt{x^2+y^2+(z-d)^2}}-\frac{1}{\sqrt{x^2+y^2+(z+d)^2}} \right)
+	\end{equation*}
+	Note that this potential goes to 0 at infinity and it's 0 at $z=0$ where there should be our plane. Due to the uniqueness of the solution we have that this is the solution to the first problem. We can also calculate the induced surface charge. We know that the surface charge will be proportional to the normal derivative of the potential at $z=0$ (see the general solution of Poisson's equation), therefore, since the normal to the plane is the $\hat{z}^i$ versor, we have that
+	\begin{equation*}
+		\pdv{V}{n}=\pdv{V}{z}=\frac{q}{4\pi\epsilon_0}\left( \frac{z+d}{\left( x^2+y^2+(z+d)^2 \right)^{3/2}}-\frac{z-d}{\left( x^2+y^2+(z-d)^2 \right)^{3/2}} \right)
+	\end{equation*}
+	Therefore, taking $z=0$ and multiplying by $-\epsilon_0$ we have that the induced surface charge on the plane is:
+	\begin{equation*}
+		\sigma(x,y)=-\frac{qd}{2\pi\left( x^2+y^2+d^2 \right)^{3/2}}
+	\end{equation*}
+	Note that integrating $\sigma$ over all the plane we get back that the total induced charge is $-q$ as expected.
+\end{eg}
+The method of images is a particular method that uses the symmetries of the problem in order to carve out a solution to Poisson's equation and it can't be used in most situations. In those other situations we need to actually solve the partial differential equation and find the potential through integration, using a cool method that will be explained in the next section
+\section{Separation of Variables}
+The main line of attack for Laplace's equation is the \textit{separation of variables}, i.e. taking the following Ansatz for the potential $V(x,y,z)$
+\begin{equation*}
+	V(x,y,z)=f(x)g(y)h(z)
+\end{equation*}
+This Ansatz tho it's only usable when either the surface charge distribution $\sigma$ or $V$ are defined on the boundary of the set $V$, i.e. when our PDE has a defined boundary value problem with either Dirichlet or Neumann conditions.\\
+Take as an example the following 2D problem.
+\begin{eg}[Two Infinite Planes]
+	Suppose that there are two infinite plates (grounded) parallel to each other and to the $xz$ plane. One is at $y=0$ and the other is at $y=a$. At $x=0$ the left end of this strip is closed by an infinitely vertical strip at some fixed potential $V_0(y)$. Find $V(x,y,z)$ of the system.\\
+	Since the system is independent from $z$ we gotta solve the following differential equation
+	\begin{equation*}
+		\pdv[2]{V}{x}+\pdv[2]{V}{y}=0
+	\end{equation*}
+	Where we have the following boundary conditions
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				V(x,0)&= V(x,a)=0\\
+				V(0,y)=V_0(y)\\
+				\lim_{x\to\infty}V(x,y)&=0
+		\end{aligned}\right.
+	\end{equation*}
+	We begin by separating the variables and writing $V(x,y)=f(x)g(y)$. We substitute into the differential equation and then divide by $f(x)g(y)$ and we get
+	\begin{equation*}
+		\frac{1}{f(x)}\dv[2]{f}{x}+\frac{1}{g(y)}\dv[2]{g}{y}=0
+	\end{equation*}
+	Note that now we have a sum of two functions depending on only one variable, i.e. $X(x)+Y(y)=0$ This means that these functions must be equal, opposite in sign and constant, therefore the differential equation decouples into two ordinary differential equations
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				\dv[2]{f}{x}&=kf(x)\\
+				\dv[2]{g}{y}&=-kg(y)
+		\end{aligned}\right.
+	\end{equation*}
+	These two equations are of easy solution, and therefore we get
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				f(x)&=Ae^{kx}+Be^{-kx}\\
+				g(y)&=C\cos(ky)+D\sin(ky)
+		\end{aligned}\right.
+	\end{equation*}
+	Imposing the boundary conditions we get
+	\begin{equation*}
+		\begin{aligned}
+			\lim_{x\to\infty}f(x)&=0\implies A=0\\
+			g(0)&=0\implies C=0
+		\end{aligned}
+	\end{equation*}
+	The searched potential therefore has the following shape
+	\begin{equation*}
+		V(x,y)=De^{-kx}\sin(ky)
+	\end{equation*}
+	Imposing $V(x,a)=0$ we have the following constraint on the coupling constant $k$
+	\begin{equation*}
+		V(x,a)=De^{-kx}\sin{ka}=0\implies k_n=\frac{n\pi}{a}
+	\end{equation*}
+	Therefore, we finally have
+	\begin{equation*}
+		V_n(x,y)=D_ne^{-\frac{n\pi x}{a}}\sin\left( \frac{n\pi y}{a} \right)
+	\end{equation*}
+	The general solution of our problem then will be a linear superposition of \textit{all} solutions, therefore
+	\begin{equation*}
+		V(x,y)=\sum_{n=0}^\infty C_ne^{-\frac{n\pi x}{a}}\sin\left( \frac{n\pi y}{a} \right)
+	\end{equation*}
+	This is clearly the Fourier series solution of $V$, therefore the constants $C_n$ will be found using Fourier's trick and multiplying on the left by $\sin(k_{n'}y)$ and integrating on the expansion interval, which for us is $[0,a]$. We have then, for $V(0,a)=V_0(y)$
+	\begin{equation*}
+		\sum_{n=0}^\infty C_n\int_{0}^{a}\sin\left( \frac{k\pi y}{a} \right)\sin\left( \frac{n\pi y}{a} \right)\dd y=\int_{0}^{a}V_0(y)\sin\left( \frac{k\pi y}{a} \right)\dd y
+	\end{equation*}
+	Remembering that
+	\begin{equation*}
+		\int_{0}^{a}\sin\left( \frac{k\pi y}{a} \right)\sin\left( \frac{n\pi y}{a} \right)\dd y=\frac{a}{2}\delta_{kn}
+	\end{equation*}
+	We have
+	\begin{equation*}
+		C_n=\frac{2}{a}\int_{0}^{a}V_0(y)\sin\left( \frac{n\pi y}{a} \right)\dd y
+	\end{equation*}
+	I.e. $C_n$ are the Fourier coefficients of the function $V_0(y)$. If $V_0(y)=V_0$ is constant the integral can be solved quickly, and we get
+	\begin{equation*}
+		C_n=\frac{2V_0}{a}\left( 1-\cos(n\pi) \right)=\begin{dcases}\frac{4V_0}{n\pi}&n\mod 2k=0\\0&n\mod 2k+1=0\end{dcases}
+	\end{equation*}
+	And the complete solution is then
+	\begin{equation*}
+		V(x,y)=\frac{4V_0}{\pi}\sum_{n=0}^\infty\frac{e^{-\frac{(2n+1)\pi x}{a}}}{2n+1}\sin\left( \frac{(2n+1)\pi y}{a} \right)
+	\end{equation*}
+\end{eg}
+%\subsection{Expansion in Orthogonal Functions}%jackson/maths
+\subsection{Laplace Equation in Spherical Coordinates}%mixed
+What happens when the boundaries exhibit spherical symmetry? We change to spherical coordinates!. The Laplacian in spherical coordinates is
+\begin{equation*}
+	\del_i\del^i=\frac{1}{r^2}\pdv{r}\left( r^2\pdv{r} \right)+\frac{1}{r^2\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{r^2\sin^2\theta}\pdv[2]{\varphi}
+\end{equation*}
+The Laplace equation therefore becomes
+\begin{equation}
+	\del_i\del^iV=\frac{1}{r^2}\left( r^2\pdv{V}{r} \right)+\frac{1}{r^2\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{V}{\theta} \right)+\frac{1}{r^2\sin^2\theta}\pdv[2]{V}{\varphi}=0
+	\label{eq:laplacesph}
+\end{equation}
+We suppose that the system has azimuthal symmetry, i.e. $\del_\varphi V=0$ and we solve the equation using the separation of variables, supposing $V(r,\theta)=f(r)g(\theta)$, then after dividing by $V$ and multiplying by $r^2$ we get the following equation
+\begin{equation*}
+	\frac{1}{f(r)}\pdv{r}\left( r^2\pdv{f}{r} \right)+\frac{1}{g(\theta)\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{g}{\theta} \right)=0
+\end{equation*}
+The equation can be then separated. Taking $c_1=-c_2=l(l+1)$ We get two ordinary differential equations
+\begin{equation}
+	\left\{ \begin{aligned}
+			\dv{r}\left( r^2\dv{f}{r} \right)&=l(l+1)f(r)\\
+			\dv{\theta}\left( \sin\theta\dv{g}{\theta} \right)&=-l(l+1)\sin\theta g(\theta)
+	\end{aligned}\right.
+	\label{eq:laplacesepsph}
+\end{equation}
+The first equation has a power series solution, while the second is a special differential equation solved by the Legendre polynomials $P_l(\cos\theta)$, a complete and orthogonal set of polynomials defined by the recursive relation using the Rodrigues' formula
+\begin{equation}
+	P_l(x)=\frac{1}{2^ll!}\dv[l]{x}\left[ (x^2-1)^l \right]
+	\label{eq:rodriguesleg}
+\end{equation}
+The solutions for the two differential equations are then
+\begin{equation}
+	\left\{ \begin{aligned}
+			f(r)&=Ar^l+\frac{B}{r^{l+1}}\\
+			g_l(\theta)&=P_l(\cos\theta)
+	\end{aligned}\right.
+	\label{eq:sphsolleg}
+\end{equation}
+The potential will then be, after superposition of all solutions in $l$, the following
+\begin{equation}
+	V(r,\theta)=\sum_{l=0}^\infty\left( A_lr^l+\frac{B_l}{r^{l+1}} \right)P_l(\cos\theta)
+	\label{eq:potlapsph}
+\end{equation}
+An example of using this solution is the following
+\begin{eg}[A Hollow Sphere]
+	Consider a hollow sphere with radius $R$, find $V$ inside the sphere considering that the surface of the sphere is at some fixed potential $V_0(\theta)$.\\
+	The differential equation that must be solved here is the following
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				\del_i\del^iV(r,\theta)&=0\\
+				V(\theta,R)&=V_0(\theta)\\
+				\lim_{r\to0}V(r,\theta)&=0
+		\end{aligned}\right.
+	\end{equation*}
+	From the third condition we need that $B_l=0$, if not the potential would blow up at the center, therefore the first sketch of the solution will be from the general solution \eqref{eq:potlapsph}
+	\begin{equation*}
+		V(r,\theta)=\sum_{l=0}^\infty A_lr^lP_l(\cos\theta)
+	\end{equation*}
+	From the second equation we have that at $R$ it must be equal to $V_0(\theta)$. From \eqref{eq:rodriguesleg} we can also get, using induction, the completeness relation for $P_l$.
+	\begin{equation}
+		\int_{-1}^{1}P_l(x)P_k(x)\dd x=\int_{0}^{\pi}P_l(\cos\theta)P_k(\cos\theta)\sin\theta\dd\theta=\frac{2}{2l+1}\delta_{lk}
+		\label{eq:completenesslegendre}
+	\end{equation}
+	Therefore, using Fourier's trick to the potential we found, we get that
+	\begin{equation*}
+		A_lR^l\frac{2}{2l+1}\delta_{lk}=\int_{0}^{\pi}V_0(\theta)P_k(\cos\theta)\sin\theta\dd\theta
+	\end{equation*}
+	This implies that the coefficients $A_l$ we're searching are
+	\begin{equation*}
+		A_l=\frac{2l+1}{2R^l}\int_{0}^{\pi}V_0(\theta)P_l(\cos\theta)\sin\theta\dd\theta
+	\end{equation*}
+	The complete potential inside the sphere is then
+	\begin{equation*}
+		V(r,\theta)=\sum_{l=0}^\infty\frac{2l+1}{2}\left( \frac{r}{R} \right)^lP_l(\cos\theta)\int_{0}^{\pi}V_0(\theta)P_l(\cos\theta)\sin\theta\dd\theta
+	\end{equation*}
+\end{eg}
+%<++>
+\section{Multipole Expansion of the Potential}
+\subsection{Electric Dipoles}
+It's clear that from our calculations, at large distances from the distribution the electrostatic potential behaves approximatively like the potential of a single point charge
+\begin{equation*}
+	V(r)\approx \frac{q}{4\pi\epsilon_0}\frac{1}{r}
+\end{equation*}
+Note that if $Q_{tot}=0$ we don't have necessarily that $V\approx0$ at large distances! Take as an example the \textit{electric dipole}. Take two point charges with charge $\pm q$ and position them at some distance $d$ between them. Writing $r_+$ and $r_-$ as the distances of each charge from the point considered we can immediately write the potential of such system by superimposing the potentials of each single charge
+\begin{equation*}
+	V(r)=\frac{q}{4\pi\epsilon_0}\left( \frac{1}{r_+}-\frac{1}{r_-} \right)
+\end{equation*}
+Noting that the distance $d$ between the two charges and the distance from the origin of each writes a triangle, we can write
+\begin{equation*}
+	r^2_{\pm}=r^2+\frac{d^2}{4}\mp rd\cos\theta=r^2\left( 1+\frac{d^2}{4r^2}\mp\frac{d}{r}\cos\theta \right)
+\end{equation*}
+In our case $r_{\pm}>>d$ since we're far from the system, and therefore, approximating to the first order in $\frac{d}{r}$
+\begin{equation*}
+	\frac{1}{r_{\pm}}\approx\frac{1}{r}\left( 1\pm\frac{d}{2r}\cos\theta \right)
+\end{equation*}
+Therefore
+\begin{equation*}
+	\frac{1}{r_+}-\frac{1}{r_-}\approx\frac{d}{r^2}\cos\theta
+\end{equation*}
+Which, by substitution into our previous definition of the potential, gives
+\begin{equation}
+	V(r)=\frac{1}{4\pi\epsilon_0}\frac{qd\cos\theta}{r^2}
+	\label{eq:dippot}
+\end{equation}
+The term on the right, $qd$, is known as the \textit{electric dipole moment} of the distribution $p$.\\
+In general, a potential can be approximated in a \textit{multipole series}. The first term (the dominant one) is known as the \textit{monopole term} of the potential, and it's equal to the potential of a single point charge
+\begin{equation}
+	V_{mon}(r)=\frac{Q}{4\pi\epsilon_0r}=\frac{1}{4\pi\epsilon_0}\frac{1}{r}\iiint_V\rho(\tilde{r}^i)\dd^3\tilde{x}^i
+	\label{eq:monopolepot}
+\end{equation}
+If the total charge $Q=0$, as for the previous case, the dominant term will be the \textit{dipole term} of the potential
+\begin{equation}
+	V_{dip}(r)=\frac{1}{4\pi\epsilon_0}\frac{p^i\hat{r}_i}{r^2}=\frac{1}{4\pi\epsilon_0}\frac{\hat{r}_i}{r^2}\iiint_V\tilde{r}^i\cos\theta\rho(\tilde{r}^i)\dd^3\tilde{x}
+	\label{eq:dipolepot}
+\end{equation}
+The vector $p^i$ is what we have defined as the dipole moment of the system, which is equal to
+\begin{equation}
+	p^i=\iiint_V\tilde{r}^i\rho\left( \tilde{r}^i \right)\dd^3\tilde{x}
+	\label{eq:dipmomvector}
+\end{equation}
+For the previous case of the two charges, we easily have
+\begin{equation}
+	p^i=qr_+^i-qr_-^i=qd^i
+	\label{eq:dipmompuredip}
+\end{equation}
+Where $d^i$ is the vector connecting the two charges.\\
+Note that in the case that the dipole moment of the potential is zero, there will be other terms that will dominate the expansion, such as \textit{quadrupole terms, octupole terms} and so on.
+The general formula for finding these coefficients can be extracted from the general shape of the potential in integral form
+\begin{equation*}
+	\frac{1}{4\pi\epsilon_0}\iiint_V\frac{\rho(\tilde{r}^i)}{\norm{r^i-\tilde{r}^i}}\dd^3\tilde{x}
+\end{equation*}
+Using
+\begin{equation*}
+	\norm{r^i-\tilde{r}^i}=r^2\left( 1+\left( \frac{\tilde{r}}{r} \right)^2-2\left( \frac{\tilde{r}}{r} \right)\cos\theta \right)
+\end{equation*}
+And supposing $\norm{r^i-\tilde{r}^i}=r\sqrt{1+\varepsilon}$, where we choose $\varepsilon$ as follows
+\begin{equation*}
+	\varepsilon=\left( \frac{\tilde{r}}{r} \right)\left( \frac{\tilde{r}}{r}-2\cos\theta \right)
+\end{equation*}
+We have, for $1+\varepsilon\to0$, which is the case for long distances from the potential
+\begin{equation}
+	\frac{1}{\norm{r^i-\tilde{r}^i}}\approx\frac{1}{r}\left( 1-\frac{1}{2}\varepsilon+\frac{3}{8}\varepsilon^2-\frac{5}{16}\varepsilon^3+\cdots\right)
+	\label{eq:legendrepolapprox}
+\end{equation}
+Rewriting in terms of $\tilde{r}/r,\ \cos\theta$, we have on the right a series of cosines, which is known as the \textit{Legendre Polynomials} in $\cos\theta$ $P_l(\cos\theta)$, which are the solutions to the angular part of the Laplace equation in polar coordinates. The function on the left of the series approximation is known as the \textit{generating function} of the polynomials.
+\begin{equation}
+	\frac{1}{\norm{r^i-\tilde{r}^i}}=\frac{1}{r}\sum_{l=0}^\infty\left( \frac{\tilde{r}}{r} \right)^lP_l\left( \cos\theta \right)
+	\label{eq:legendrepol}
+\end{equation}
+In general, we have then that the complete multipole expansion of the electrostatic potential is
+\begin{equation}
+	V_{mult}(r)=\frac{1}{4\pi\epsilon_0}\sum_{l=0}^\infty\frac{1}{r^{l+1}}\iiint_V\tilde{r}^lP_l\left( \cos\theta \right)\rho\left( \tilde{r}^i \right)\dd^3\tilde{x}
+	\label{eq:multipolepot}
+\end{equation}
+Note that this gives consistently that the potential goes as $1/r$ for monopoles, $1/r^2$ for dipoles, $1/r^3$ for quadrupoles and so on, and approximate charge distributions at great distances as a sum of simpler problems, a single point charge for the monopole, two point charges for the dipole, four point charges in a square for a quadrupole and so on.<++>
+\end{document}

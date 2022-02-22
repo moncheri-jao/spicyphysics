@@ -1,0 +1,17 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[1] Config.pm:315> INFO - Logfile is 'electromagnetism.blg'
+[84] biber:330> INFO - === mer mag 19, 2021, 16:14:29
+[98] Biber.pm:415> INFO - Reading 'electromagnetism.bcf'
+[167] Biber.pm:952> INFO - Found 4 citekeys in bib section 0
+[183] Biber.pm:4334> INFO - Processing section 0
+[194] Biber.pm:4523> INFO - Looking for bibtex format file '~/Dropbox/appunti/bibliografia/bib.bib' for section 0
+[302] bibtex.pm:1682> INFO - LaTeX decoding ...
+[343] bibtex.pm:1494> INFO - Found BibTeX data source '/home/birrabenzina/Dropbox/appunti/bibliografia/bib.bib'
+[395] Utils.pm:384> WARN - BibTeX subsystem: /tmp/biber_tmp_Uv0c/283e1cb250985c2debc501124f55eeff_11444.utf8, line 288, warning: 80 characters of junk seen at toplevel
+[409] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[409] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[409] Biber.pm:4162> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[409] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
+[415] bbl.pm:651> INFO - Writing 'electromagnetism.bbl' with encoding 'UTF-8'
+[417] bbl.pm:754> INFO - Output to electromagnetism.bbl
+[417] Biber.pm:128> INFO - WARNINGS: 1

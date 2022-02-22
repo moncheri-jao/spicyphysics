@@ -1,0 +1,550 @@
+\documentclass[../electromagnetism]{subfiles}
+\begin{document}
+\section{Polarization}
+So far we dealt with electrostatics with conductors only. We begin to consider non-conducting materials, which are known as \textit{dielectrics}.\\
+What changes from electrostatics with conductors? Experimentally it can be seen using capacitors.\\
+Consider a parallel plane capacitor on which we put a charge $Q$ and then fill the space between the places with some isotropic and homogeneous dielectric.\\
+It can be seen that if $V_0$ is the potential without the dielectric, then in this case $\Delta V<\Delta V_0$. From the definition of capacitance then
+\begin{equation*}
+	C>C_0
+\end{equation*}
+Experimentally it's seen that, independently from the shape of the capacitor
+\begin{equation}
+	\frac{C}{C_0}=\epsilon_r
+	\label{eq:dielectricconst}
+\end{equation}
+This is known as the \textit{relative dielectric constant}, which is from what we have seen greater than 1 and non-dimensional.\\
+We can then write
+\begin{equation}
+	C=\epsilon_rC_0=\epsilon_r\frac{\epsilon_0S}{d}=\frac{\epsilon S}{d}
+	\label{eq:capdie}
+\end{equation}
+Where we defined $\epsilon=\epsilon_r\epsilon_0$, which is the \textit{dielectric constant of the medium}.\\
+Using the known formulas for the capacitance we get that $\Delta V=\Delta V_0/\epsilon_r$ and therefore $E=E_0/\epsilon_r$, and this phenomenon can be explained as if we added a surface charge distribution on the two plates, and therefore
+\begin{equation*}
+	E=\frac{\sigma+\sigma'}{\epsilon_0},\qquad E_0=\frac{\sigma}{\epsilon_0}
+\end{equation*}
+I.e.
+\begin{equation*}
+	\sigma+\sigma'=\frac{\sigma}{\epsilon_r}\implies\sigma'=\frac{1-\epsilon_r}{\epsilon_r}\sigma
+\end{equation*}
+We decide to cleverly distribute this charge on the positively charged plate as a negative charge distribution and vice versa on the other plate.\\
+These charges are due to the \textit{polarization} of the medium.\\
+We also have that if we put a point charge inside a dielectric we get a new ``scaled'' Coulomb law
+\begin{equation}
+	E=\frac{E_0}{\epsilon_r}=\frac{q}{4\pi\epsilon_0\epsilon_r}\frac{1}{r^2}=\frac{q}{4\pi\epsilon}\frac{1}{r^2}
+	\label{eq:coulombdie}
+\end{equation}
+\subsection{The Polarization Field}
+Consider now an atom $A$. An atom in general it's a neutral object composed of a positively charged nucleus with charge $q=Ze$ and $Z$ electrons with charge $q=-Ze$ Inserting it into a constant electric field we have that if it's not big enough to ionize the atom (making a conductor) it will move the nucleus and electrons till they get to a stable point, generating a dipole moment $p^i$. This process is known as \textit{polarization} of the medium.\\
+It's clear that this dipole moment is linearly coupled to the electric field with the following relationship
+\begin{equation}
+	p^i=\alpha E^i
+	\label{eq:atompol}
+\end{equation}
+The coupling constant $\alpha$ is known as the \textit{atomic polarizability} and depends on the chosen atom $A$. For anisotropic media, like molecules, this coupling constant becomes the \textit{atomic polarizability tensor}, with the following relation
+\begin{equation}
+	p^i=\alpha^i_kE^k
+	\label{eq:atompoltensor}
+\end{equation}
+Consider now a molecule with a ``built in'' polarization, (i.e. \textit{polar molecules}) like water. What happens when we apply an $E$ field?\\
+If $E$ is uniform then the force on the positive charge cancels the one on the negative, $F_+=-F_-$, however there is still a torque to consider
+\begin{equation}
+	\tau^i=\cpr{i}{j}{k}r^jF^k_++\cpr{i}{j}{k}r^jF^k_-
+	\label{eq:torquemol}
+\end{equation}
+Since $r^i=\pm d^i/2$ we have, substituting $F_{\pm}=\pm qE$
+\begin{equation*}
+	\tau^i=\frac{q}{2}\cpr{i}{j}{k}d^jE^k+\frac{q}{2}\cpr{i}{j}{k}d^jE^k
+\end{equation*}
+This is nonzero, in fact we have
+\begin{equation}
+	\tau^i=q\cpr{i}{j}{k}d^jE^k=\cpr{i}{j}{k}p^jE^k
+	\label{eq:indtorq}
+\end{equation}
+I.e., since $p^i=qd^i$ is the dipole moment of the molecule (which is nonzero), there is an induced torque when applying the field, which rotates the molecules until $p^i\parallel E^i$, and therefore $\tau^i=0$.\\
+Note that if the field is nonuniform we won't have anymore $F_+=-F_-$, and we will have a net force applied to our dipole (the molecule)
+\begin{equation*}
+	F^i=F^i_++F^i_-=q\Delta E^i
+\end{equation*}
+For small dipoles, i.e. for small $\Delta E^i$, we can approximate it to
+\begin{equation*}
+	\Delta E^i\approx d^i\del_iE^j
+\end{equation*}
+And therefore the net force applied on the dipole is
+\begin{equation}
+	F^i=qd^j\del_jE^i=p^j\del_jE^i
+	\label{eq:netforcedip}
+\end{equation}
+Now consider an element with an amount of molecules of the order of $10^{23}$. All these tiny dipoles induced from the electric field or from the single molecule itself will sum up to a general dipole field, called the \textit{polarization field} of the medium. By definition we have, that if $V$ is some volume then
+\begin{equation}
+	P^i=\lim_{V\to0}\frac{1}{V}\sum_{\alpha=1}^Np_{(\alpha)}^i=\expval{p^i}\dv{N}{V}
+	\label{eq:polarizationfield}
+\end{equation}
+Here we have indicated with $\expval{p^i}$ the average dipole moment of the system.\\
+Now let's write the potential for a single molecule. Since the molecule can be approximated as a dipole, we know already then that
+\begin{equation*}
+	V(r)=\frac{p^i\hat{r}_i}{4\pi\epsilon_0r^2}
+\end{equation*}
+From our previous definition of polarization field, then, integrating over all the dielectric and using $\dd V\to\dd^3x$ we have
+\begin{equation}
+	V_{pol}(r)=\frac{1}{4\pi\epsilon_0}\iiint_V\frac{P^i\hat{r}_i}{r^2}\dd^3\tilde{x}
+	\label{eq:polobjpot}
+\end{equation}
+Looking closely inside the integral, we can rewrite an identity inside that will ease our calculations, in fact
+\begin{equation*}
+	\frac{\hat{r}_i}{r^2}=\pdv{x^i}\left(\frac{1}{r}\right)
+\end{equation*}
+With a clever trick then we can write, using product rules
+\begin{equation*}
+	P^i\pdv{x^i}\left( \frac{1}{r} \right)=\pdv{x^i}\left( \frac{P^i}{r} \right)-\frac{1}{r}\pdv{P^i}{x^i}
+\end{equation*}
+Therefore, reinserting into our definition of $V$ and applying Stokes when possible, we have
+\begin{equation}
+	V_{pol}(r)=\frac{1}{4\pi\epsilon_0}\left[ \oiint_{\del V}\frac{P^i\hat{n}_i}{r}\dd s-\iiint_V\frac{1}{r}\del_iP^i\dd^3x \right]
+	\label{eq:potdietotint}
+\end{equation}
+This potential resembles \emph{a lot} the potential given from a volumetric charge plus some surface charge in some closed bound set, like
+\begin{equation*}
+	V_{v}(r)=\frac{1}{4\pi\epsilon_0}\left[ \oiint_{\del V}\frac{\sigma(r^i)}{r}\dd s+\iiint_V\frac{\rho(r^i)}{r}\dd^3x \right]
+\end{equation*}
+And, reinterpreting the polarization field as a field generated by a \textit{bound charge}, we can define two simple equations that will make our $V$ similar to $V_v$. Then, if
+\begin{equation}
+	\left\{ \begin{aligned}
+			P^i\hat{n}_i&=\sigma_b\\
+			\del_iP^i&=-\rho_b
+	\end{aligned}\right.
+	\label{eq:boundchargesdef}
+\end{equation}
+And defined as $V_{\sigma},V_{\rho}$ the two potentials generated by this ``bound charge'', we have that the total potential generated by a polarized medium is
+\begin{equation}
+	V_{pol}(r^i)=V_\sigma(r^i)+V_\rho(r^i)
+	\label{eq:polfieldpot}
+\end{equation}
+A nice observation from the second equation of \eqref{eq:boundchargesdef} is that if the dielectric is homogeneous, the dipole moments inside the object will average to 0, and therefore $P^i$ will be independent from the position inside the dielectric, i.e.
+\begin{equation*}
+	\del_iP^i=0=-\rho_b
+\end{equation*}
+And all bound charges will be on the surface with distribution $\sigma_b$
+%\subsection{The Electric Displacement Field}
+\section{Perfect Dielectrics}
+\subsection{Local Electric Field}
+So far we defined a dielectric as a cluster of molecules and atoms. It's clear so far that each atom and molecule has its little microscopic $e^i$ field, therefore the electric field inside a dipole can change greatly between points, depending on where we measure the field, if near or far away from an electron (considering that the distances are $d\approx10^{-10}\unit{m}$ ``far'' can be a negligible quantity in relation to the dimension of the dielectric).\\
+Take now a really small part of the dielectric, in this small element of dielectric we will have inside some sphere $S$ molecules which are polarized when an external field $E^i$ gets applied.\\
+We consider 2 major cases:
+\begin{enumerate}
+\item There are no molecules inside $S$ and therefore there will be only the bound surface charge $\sigma_b=P^i\hat{n}_i$ with $\hat{n}^i$ being the outward normal of the conductor
+\item There are molecules inside $S$ and therefore, there will also be a field generated by the polarization of the molecules
+\end{enumerate}
+The field at the center of $S$, $E^i_{S}$ will then be the sum of these three fields we considered, the external polarizing field $E^i$, the field $\tilde{E}^i$ generated by the bound surface charge, and the field $E_{dip}^i$ generated by the molecular dipoles. Therefore
+\begin{equation}
+	E^i_S=E^i+\tilde{E}^i+E_{dip}^i
+	\label{eq:fieldinsideS}
+\end{equation}
+Due to the homogeneity of the dielectric we must have that $\del_iP^i=0$, and therefore the field generated by the dipoles and the bound surface charge must balance themselves, $\tilde{E}^i+E^i_{dip}=0$.\\
+As we said before the molecule itself generates a small microscopic field $e^i$, therefore we define a \textit{local field} or \textit{Lorentz field} inside the dielectric by subtracting this $e^i$. We have that this field $E^i_{loc}$ is
+\begin{equation}
+	E^i_{loc}=E^i+\tilde{E}^i+E^i_{dip}-e^i=E^i+\tilde{E}^i+\underline{E}^i
+	\label{eq:localfielddie}
+\end{equation}
+Where we defined $\underline{E}^i=E^i_{dip}-e^i$. What's this field then?\\
+We begin by evaluating $\tilde{E}^i$, which is the field generated by the surface charge. Then by definition of the $E^i$ field itself we can immediately say
+\begin{equation*}
+	\dd\tilde{E}^i=\frac{1}{4\pi\epsilon_0}\frac{\sigma_b\hat{r}^i}{r^2}\dd s
+\end{equation*}
+Due to the symmetries imposed on the system (homogeneity of the dielectric,\ldots) we have that $\dd\tilde{E}^z=-\norm{\dd\tilde{E}^i}\cos\theta$, and therefore, remembering that $\sigma_b=P^i\hat{n}_i=-P\cos\theta$ ($\hat{n}^i$ is the \emph{outward} normal)
+\begin{equation*}
+	\dd\tilde{E}^z=-\frac{\sigma_b\cos\theta}{4\pi\epsilon_0r^2}\dd s
+\end{equation*}
+Since $\dd s=r^2\dd\Omega$ we then have
+\begin{equation}
+	\dd\tilde{E}^z=-\frac{P\cos^2\theta}{4\pi\epsilon_0}\dd\Omega
+	\label{eq:tildeez}
+\end{equation}
+Integrating, we have
+\begin{equation}
+	\tilde{E}^z=-\frac{P}{4\pi\epsilon_0}\int_{0}^{2\pi}\dd\phi\int_{-\pi}^{\pi}\cos^2\theta\sin\theta\dd\theta=\frac{P}{2\epsilon_0}\int_{-1}^1\cos^2\theta\dd\left( \cos\theta \right)=\frac{P}{3\epsilon_0}
+	\label{eq:tildeezintdie}
+\end{equation}
+Therefore, we firstly found that
+\begin{equation}
+	\tilde{E}=\frac{P}{3\epsilon_0}
+	\label{eq:pover3epsilonnottildee}
+\end{equation}
+We only miss evaluating the field generated by the dipoles minus the microscopic molecular electric field. We only need to know what's the field generated by an isotropic dipole.\\
+We know already that an electric dipole has the following scalar potential
+\begin{equation*}
+	V(r)=\frac{p^i\hat{r}_i}{4\pi\epsilon_0r^2}=\frac{p^ir_i}{4\pi\epsilon_0r^3}
+\end{equation*}
+Taking the gradient we have
+\begin{equation*}
+	\pdv{V}{x_i}=\frac{1}{4\pi\epsilon_0}\left( \frac{1}{r^3}\pdv{x_i}\left( p^jr_j \right)+p^jr_j\pdv{x_i}\left( \frac{1}{r^3} \right) \right)
+\end{equation*}
+Expanding and writing explicitly the gradient of a radial function with the usual formula, we have
+\begin{equation*}
+	\pdv{V}{x_i}=\frac{1}{4\pi\epsilon_0}\left[ \frac{1}{r^3}\left( \pdv{p^j}{x_i}r_j+p^j\pdv{r_j}{x_i} \right)-\frac{3(p^jr_j)r^i}{r^5} \right]
+\end{equation*}
+Using $\del^ip^j=0$ and $\del^ir_j=\delta^i_j$ we have that
+\begin{equation*}
+	\pdv{x_i}\left( p^jr_j \right)=p^j\delta^i_j=p^i
+\end{equation*}
+And therefore
+\begin{equation*}
+	\pdv{V}{x_i}=\frac{1}{4\pi\epsilon_0}\left( \frac{p^i}{r^3}-\frac{3(p^jr_j)r^i}{r^5} \right)
+\end{equation*}
+Writing $\hat{r}^i=r^i/r$ we have finally, multiplying by -1
+\begin{equation}
+	E^i=-\pdv{V}{x_i}=\frac{1}{4\pi\epsilon_0r^3}\left( 3\left( p^j\hat{r}_j \right)\hat{r}^i-p^i \right)
+	\label{eq:efielddipole}
+\end{equation}
+In our special isotropic case inside a little sphere $S$, inside a dipole itself we have that this field will be oriented on the $z$ axis, with a constant dipole moment of the $\alpha-$th molecule $p_{(\alpha)}$, then
+\begin{equation}
+	\underline{E}=\underline{E}^z=\sum_{\alpha=1}^N\frac{p_{(\alpha)}\left( 3z_{(\alpha)}^2-r^2_{(\alpha)}\right)}{4\pi\epsilon_0 r_{(\alpha)^5}}
+	\label{eq:efieldunderbar}
+\end{equation}
+(Note that here we took the opposite process and rewrote the non normalized vector $r^i$ for ease of calculation).\\
+Since the $p_{(\alpha)}$ are uniformly distributed around the dielectric we must have that
+\begin{equation}
+	\sum_{\alpha=1}^N\frac{x^2_{(\alpha)}}{r^5_{(\alpha)}}=\sum_{\alpha=1}^N\frac{y^2_{(\alpha)}}{r^5_{(\alpha)}}=\sum_{\alpha=1}^N\frac{z^2_{(\alpha)}}{r_{(\alpha)}^5}=\frac{1}{3}\sum_{\alpha=1}^N\frac{r^2_{\alpha}}{r^5_{(\alpha)}}
+	\label{eq:omogeneitycondlorentzfield}
+\end{equation}
+Simply inserting it back into the definition of $\underline{E}$ we get then $\underline{E}=0$.\\
+The final result for the Lorentz field (the local field inside a dielectric), considering all the microscopic variables, is
+\begin{equation}
+	E^i_{loc}=E^i+\frac{P^i}{3\epsilon_0}
+	\label{eq:lorentzfield}
+\end{equation}
+I.e. it only depends on the external applied field $E^i$ and the polarization of the dielectric $P^i$ (divided by $3\epsilon_0$)
+\subsection{Susceptibility and the Clausius-Mossotti relation}
+So far we can finally conclude that with a good approximation the polarization of the dielectric $P^i$ must depend on this local field $E^i_{loc}$, which basically decides how a certain material gets polarized. Therefore, using the definition of $P^i$ and defining the numerical volumetric density of molecules $\dv{N}{V}=n$
+\begin{equation}
+	P^i=n\expval{p^i}=n\alpha E^i_{loc}
+	\label{eq:polarizationfieldalmostcomp}
+\end{equation}
+\subsubsection{Gases and Vapors}
+Let's now consider different relations between the Lorentz field and the polarization field. The easiest case to consider is a gas. In this case, if we take the perfect gas approximation, i.e. the density is low enough, we can say that the molecules are too far apart in order for their fields to interact between each other, therefore $E^i_{loc}\approx E^i$.\\
+We also have to consider thermal excitations of the molecules of the gas, and therefore the coupling constant $\alpha$ must be split in two parts. One, $\alpha_d$, dependent on the molecule itself, and one $\alpha_t$ depending on the temperature of the gas and the specific polarization of the molecule
+\begin{equation*}
+	\begin{aligned}
+		\alpha&=\alpha_d+\alpha_t=\alpha_d+\frac{p_0^2}{3kT}\\
+		P^i&=n\alpha E^i=n\left( \alpha_d+\frac{p_0}{3kT} \right)E^i
+	\end{aligned}
+\end{equation*}
+We then define the \textit{electric susceptibility} of the medium $\chi$ via the following relation
+\begin{equation}
+	P^i=\epsilon_0\chi E^i
+	\label{eq:electricsusceptibility}
+\end{equation}
+Therefore, for a gas
+\begin{equation}
+	\chi(T)=\frac{n}{\epsilon_0}\left( \alpha_d+\frac{p_0}{3kT} \right)=\epsilon_r-1
+	\label{eq:suscgas}
+\end{equation}
+Where $\epsilon_r$ is the relative permittivity of the substance, as we will see later
+\subsubsection{Liquids and Amorphous Substances}
+For liquids everything changes a little bit. Since the density isn't low enough, the molecules will be packed and their local field will comprise of the external field applied plus the field generated by the polarization. We have
+\begin{equation*}
+	\begin{aligned}
+		E_{loc}^i&=E^i+\frac{P^i}{3\epsilon_0}\\
+		P^i&=n\alpha E^i_{loc}
+	\end{aligned}
+\end{equation*}
+Then, by mere substitution
+\begin{equation*}
+	P^i=n\alpha\left( E^i+\frac{P^i}{3\epsilon_0} \right)
+\end{equation*}
+Solving for $P^i$ (bringing it on the left and taking it outside the product with the constants) we have then
+\begin{equation}
+	P^i=\frac{n\alpha}{1-\frac{n\alpha}{3\epsilon_0}} E^i=\epsilon_0\chi E^i
+	\label{eq:polliq}
+\end{equation}
+Now, solving for $\alpha$, we have after some algebra, the \textit{Clausius-Mossotti relation}, which ties $\alpha$, a microscopic quantity, to $\epsilon_r$ via $\chi$, a macroscopic quantity
+\begin{equation}
+	\alpha=\frac{\epsilon_0}{n}\frac{3(\epsilon_r-1)}{\epsilon_r+2}
+	\label{eq:clausiusmossotti}
+\end{equation}
+\subsubsection{Anisotropic Solids, Electrets and Piezoelectricity}
+In general when the solid is anisotropic, as we defined before the polarizability is not a simple constant but a tensor, where
+\begin{equation}
+	P^i=\alpha^i_jE^j
+	\label{eq:anisosolidspol}
+\end{equation}
+For other materials, $\alpha$ can also be nonlinear. Take for example \textit{electrets}. An \textit{electret} or a \textit{ferroelectric material} is a material which keeps a permanent polarization inside after turning off the external field, showing magnet-like behavior, like \textit{hysteresis}. In this case $\alpha$ is non-unique.\\
+Another example of a non-linear relation comes from \textit{piezoelectric materials}. \textit{Piezoelectricity} is a phenomenon given by substances that polarize under mechanical pressure, like quartz. In these materials $\alpha$ must depend on the mechanical pressure itself.
+\subsection{The Electric Displacement Field}
+So far, adding the theory on dielectrics, we can build multiple equations describing the polarization $P^i$, bound charges $\rho_b,\sigma_b$ and the relation between $P^i$ and $E^i$.\\
+From Gauss' law we know that the divergence of the $E^i$ field is equal to the (total) volumetric charge divided by $\epsilon_0$. With dielectrics we then gotta consider also bound charges, therefore
+\begin{equation*}
+	\del_iE^i=\frac{\rho+\rho_b}{\epsilon_0}
+\end{equation*}
+Remembering that the bound volumetric charge is tied to the polarization with the differential equation
+\begin{equation*}
+	\del_iP^i=-\rho_b
+\end{equation*}
+We then have
+\begin{equation*}
+	\del_iE^i=\frac{\rho}{\epsilon_0}-\frac{1}{\epsilon_0}\del_iP^i
+\end{equation*}
+Multiplying by $\epsilon_0$ and bringing $\del_iP^i$ on the left and using the linearity of $\del_i$ we have
+\begin{equation*}
+	\del_i\left( \epsilon_0E^i+P^i \right)=\rho
+\end{equation*}
+We define the vector on the left as the \textit{Electric Displacement field} $D^i$
+\begin{equation}
+	D^i=\epsilon_0E^i+P^i
+	\label{eq:electricdisplacement}
+\end{equation}
+And we immediately get from the previous equation, the equivalent Gauss law for this field
+\begin{equation}
+	\del_iD^i=\rho
+	\label{eq:dispfieldgauss}
+\end{equation}
+With this field, the first and third Maxwell equations in dielectrics become two coupled partial differential equations for two different fields, $E^i$ and $D^i$
+\begin{equation}
+	\left\{ \begin{aligned}
+		\del_iD^i&=\rho\\
+		\cpr{i}{j}{k}\del^jE^k&=0
+\end{aligned}\right.
+	\label{eq:mwdie}
+\end{equation}
+This is solvable only if we know the relations between $D^i$ and $E^i$, or in general how $P^i$ is related to $E^i$.\\
+In a perfect dielectric we have that the polarizability tensor $\alpha^i_j$ is independent of the position, time and electric field (note that a gas cannot be a perfect dielectric since $\alpha$ depends on the temperature).\\
+We will study only isotropic perfect dielectrics, also known as \textit{linear dielectrics}, where $\alpha^i_j=\alpha\delta^i_j$, and we can write for these, as we saw before
+\begin{equation}
+	P^i=\alpha E^i=\epsilon_0\chi E^i
+	\label{eq:lineardiepol}
+\end{equation}
+Therefore, from our previous definition of $D^i$ and noting that $\chi=\epsilon_r-1$,
+\begin{equation}
+	D^i=\epsilon_0E^i+P^i=\epsilon_0E^i+\epsilon_0\chi E^i=\epsilon_0\left( 1+\chi \right)E^i=\epsilon_0\epsilon_rE^i
+	\label{eq:displacementfieldlindie}
+\end{equation}
+Using $\epsilon=\epsilon_0\epsilon_r$ we have then, that in linear dielectrics the $D^i$ field is linearly dependent on the $E^i$ field, where
+\begin{equation}
+	D^i=\epsilon E^i
+	\label{eq:lindieDErel}
+\end{equation}
+Note that outside a dielectric (i.e. in free space) we must have $P^i=0$, and therefore
+\begin{equation}
+	D^i_{f}=\epsilon_0E^i_{f}
+	\label{eq:freespaceDE}
+\end{equation}
+Maxwell's equations for a linear dielectric then modify to a much simpler variant which differs from the usual electrostatic maxwell equations by simply setting $\epsilon_0\to\epsilon$
+\begin{equation}
+	\left\{ \begin{aligned}
+			\del_iE^i&=\frac{\rho}{\epsilon}\\
+			\cpr{i}{j}{k}\del^jE^k&=0
+	\end{aligned}\right.
+	\label{eq:linperfdiemweq}
+\end{equation}
+Note that in free space
+\begin{equation*}
+	\del_i\left( \epsilon_0E^i_f \right)=\rho
+\end{equation*}
+And in a dielectric
+\begin{equation*}
+	\del_i\left( \epsilon E^i \right)=\rho
+\end{equation*}
+Then, we must have
+\begin{equation*}
+	\del_i\left( \epsilon E^i \right)=\del_i\left( \epsilon_0E^i_f \right)
+\end{equation*}
+Integrating and using the first principle of the calculus of variation then it's obvious that
+\begin{equation}
+	\epsilon_0E^i_f=\epsilon E^i\implies E^i=\frac{1}{\epsilon_r}E_f^i
+	\label{eq:empiricalreconnectiondie}
+\end{equation}
+Where we used $\epsilon=\epsilon_r\epsilon_0$. This is the exact same experimental result that we found empirically before with the parallel plate capacitor
+\section{Maxwell Equations for Electrostatics in Linear Dielectrics}
+We can now begin defining all the various laws we derived for electrostatic fields in free space in presence of dielectrics, using the linear relations that we found before.\\
+From Gauss' law for the $D^i$ field integrating we immediately have
+\begin{equation}
+	\iiint_V\del_iD^i\dd^3x=\oiint_{\del V}D^i\hat{n}_i\dd s=Q_{loc}=\iiint_V\rho\dd^3x
+	\label{eq:gausslawD}
+\end{equation}
+And, analogously, the Coulomb theorem for surface charges
+\begin{equation}
+	D^i=\sigma\hat{n}^i
+	\label{eq:coulombthmD}
+\end{equation}
+Note that we didn't indicate the \emph{total} charge inside $V$, $Q_V$, since we're not considering the polarization bound charge $Q_b$! We're only considering the ``free'' charge, which is not due to polarization effects of the dielectric.\\
+We have a bit of luck tho when dielectrics are linear, then with a simple multiplication of the third Maxwell equation by $\epsilon$ we also get a coupled set of equations for the $D^i$ field
+\begin{equation}
+	\left\{ \begin{aligned}
+		\del_iD^i&=\rho\\
+		\cpr{i}{j}{k}\del^jD^k&=0
+\end{aligned}\right.
+	\label{eq:lindiemweseq}
+\end{equation}
+Due to the clear linear relations between $E^i$ and $P^i$ it's also possible to know the polarization inside the medium, which is not always obvious and measurable (it's clear only for perfect dielectrics). Since $E^i=D^i/\epsilon_0\epsilon_r$ and $\chi=\epsilon_r-1$ we have
+\begin{equation}
+	P^i=\epsilon_0\chi E^i=\epsilon_0(\epsilon_r-1)\frac{D^i}{\epsilon_0\epsilon_r}=\frac{\epsilon_r-1}{\epsilon_r}D^i
+	\label{eq:polarizationrelationdispfield}
+\end{equation}
+\begin{eg}[A Charged Dielectric Sphere]
+	Take as an example a sphere composed of dielectric material of radius $R$ with charge $Q$.\\
+	From Gauss' theorem for $D^i$ we have, for a spherical Gaussian surface with $r>R$
+	\begin{equation*}
+		\Phi\left( D^i \right)=4\pi RD=Q\implies D=\frac{Q}{4\pi r^2}
+	\end{equation*}
+	Since $E^i=\epsilon^{-1}D^i$ and $P^i=\epsilon_0\chi E^i$ we have
+	\begin{equation*}
+		P^i=\epsilon_0\chi\frac{D^i}{\epsilon}=\frac{\epsilon_0(\epsilon_r-1)}{\epsilon_0\epsilon_r}D^i=\left( \frac{\epsilon_r-1}{\epsilon_3} \right)\frac{Q}{4\pi r^2}\hat{r}^i
+	\end{equation*}
+	And
+	\begin{equation*}
+		E^i=\frac{Q}{4\pi\epsilon r^2}\hat{r}^i
+	\end{equation*}
+	The bound polarization charge distributions are then found using the known formulas, and therefore for the surface polarization charge
+	\begin{equation*}
+		\sigma_b=P^i\hat{n}_i=-P^i\hat{r}_i=-\frac{\epsilon_r-1}{\epsilon_r}\frac{Q}{4\pi R^2}=-\frac{\epsilon_r-1}{\epsilon_r}\sigma
+	\end{equation*}
+	The total polarization charge is
+	\begin{equation*}
+		Q_b=4\pi R^2\sigma_b=-\frac{\epsilon_r-1}{\epsilon_r}Q
+	\end{equation*}
+	And therefore the total charge is
+	\begin{equation*}
+		Q_t=Q+Q_b=Q\left( 1-\frac{\epsilon_r-1}{\epsilon_r} \right)=\frac{Q}{\epsilon_r}
+	\end{equation*}
+	While, for the volumetric polarization charge we have
+	\begin{equation*}
+		\rho_b=-\del_iP^i=\frac{1}{r^2}\dv{r}\left( r^2P^r \right)=-\frac{1}{r^2}\dv{r}\left( \frac{\epsilon_r-1}{\epsilon_r}\frac{Q}{4\pi} \right)=0
+	\end{equation*}
+	I.e. $\rho_b=0$ as we expected. Since the dielectric is neutral there also must be a charge $-Q_b>0$ at $r\to\infty$.
+\end{eg}
+\begin{eg}[A Parallel Plate Capacitor]
+	This example is quite simple. We know from Gauss' theorem for the surface charge and $D^i$ that
+	\begin{equation*}
+		D=\sigma
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		E=\frac{D}{\epsilon}=\frac{\sigma}{\epsilon}
+	\end{equation*}
+	The polarization field instead is
+	\begin{equation*}
+		P=\epsilon_0\chi E=\chi\epsilon_0\frac{\sigma}{\epsilon}=\frac{\epsilon_r-1}{\epsilon_r}\sigma
+	\end{equation*}
+	And, the polarization surface charge (remembering that we take the outer normal) is
+	\begin{equation*}
+		\sigma_b=P^i\hat{n}_i=-P=-\frac{\epsilon_r-1}{\epsilon_r}\sigma
+	\end{equation*}
+	The potential difference between the plates is simply
+	\begin{equation*}
+		\Delta V=Ed=\frac{D}{\epsilon}d=\frac{\sigma}{\epsilon}d=\sigma S\frac{d}{\epsilon S}=Q\frac{d}{\epsilon S}=\frac{Q}{C}
+	\end{equation*}
+	Note that
+	\begin{equation*}
+		C=\frac{S\epsilon}{d}=\epsilon_rC_0
+	\end{equation*}
+	As we expected.
+\end{eg}
+\subsection{Boundary Conditions}
+Suppose now that we have multiple dielectric regions. On the boundaries of these regions, passing from one dielectric to another, it's clear that the fields $D^i,E^i$ have discontinuities and therefore we cannot use the differential equations anymore.\\
+We might try by either solving the equations for every dielectric region, or instead by directly solving Poisson's equation with appropriate boundary conditions for each dielectric.\\
+While we cannot use the differential equations (local) in the boundaries of the dielectrics we instead have that the integral relations still hold, where
+\begin{equation}
+	\left\{ \begin{aligned}
+			\oiint D^i\hat{n}_i\dd s&=0\\
+			\oiint E^i\hat{n}_i\dd s&\ne0
+	\end{aligned}\right.
+	\label{eq:integralrelbounddie}
+\end{equation}
+These imply that
+\begin{enumerate}
+\item The dielectric is neutral, $\sigma=0$
+\item The dielectric is polarized, $\sigma_b\ne0$
+\end{enumerate}
+Considering an infinitesimal cylinder centered on the boundary of two different dielectric regions, we have that inside the cylinder the flux of $D$ must be 0, i.e.
+\begin{equation*}
+	D^i_1\hat{n}_i^1\dd s+D^i_2\hat{n}_2\dd s=0
+\end{equation*}
+Therefore, noting that $\hat{n}_1^i=-\hat{n}^i_2$ we get
+\begin{equation}
+	\left( D^i_1-D^i_2 \right)\hat{n}_i^1\dd s=0\implies D_{n1}=D_{n2}
+	\label{eq:Dboundconddien}
+\end{equation}
+While, for $E$, using $D_{n1}=\epsilon_1E_{n1}$
+\begin{equation}
+	\frac{E_{n1}}{E_{n2}}=\frac{\epsilon_2}{\epsilon_1}\ne1
+	\label{eq:Eboundconddien}
+\end{equation}
+Considering that $\cpr{i}{j}{k}\del^jE^k=0$ we can write instead, for the line integral on the closed curve describing the cylinder instead that
+\begin{equation}
+	\begin{aligned}
+		E_{t1}&=E_{t2}\\
+		\frac{D_{t1}}{D_{t2}}&=\frac{\epsilon_1}{\epsilon_2}
+	\end{aligned}
+	\label{eq:EDboundconddiet}
+\end{equation}
+The boundary conditions between two dielectrics then become the following connection relations
+\begin{equation}
+	E_{t1}=E_{t2},\qquad D_{n1}=D_{n2}
+	\label{eq:boundconddie}
+\end{equation}
+\begin{eg}[Parallel Plate Capacitor with 2 Dielectrics Inside]
+	Consider now a parallel plate capacitor with surface area $S$, composed inside of two dielectrics, one thick $d_1$ with permeability $\epsilon_1$ and one thick $d_2$ with permeability $\epsilon_2$. If we smear on the plates a charge $Q$ we have that by our previous definitions that $D$ only sees the charge $Q$ but not the polarization charges, that $E$ sees. Since the field is normal to the plates we must have that between the two dielectrics
+	\begin{equation*}
+		D_1=D_2=D
+	\end{equation*}
+	And, for what we've seen before
+	\begin{equation*}
+		D=\sigma=\frac{Q}{S}
+	\end{equation*}
+	The potential difference is then
+	\begin{equation*}
+		\Delta V=E_1d_1+E_2d_2=D\left( \frac{d_1}{\epsilon_1}+\frac{d_2}{\epsilon_2} \right)=\frac{Q}{S}\left( \frac{d_1}{\epsilon_1}+\frac{d_2}{\epsilon_2} \right)
+	\end{equation*}
+	Note that
+	\begin{equation*}
+		\frac{\Delta V}{Q}=\frac{1}{C}=\frac{d_1}{\epsilon_1S}+\frac{d_2}{\epsilon_2S}=\frac{1}{C_1}+\frac{1}{C_2}
+	\end{equation*}
+	I.e. this parallel plate capacitor works exactly as a series of two capacitors!
+	From what we've seen before we can write then the potential difference of these ``2'' capacitors
+	\begin{equation*}
+		\begin{aligned}
+			\Delta V_1&=E_1d_1=\frac{D}{\epsilon_1}d_1\\
+			\Delta V_2&=E_2d_2=\frac{D}{\epsilon_2}d_2
+		\end{aligned}
+	\end{equation*}
+	Or noting that
+	\begin{equation*}
+		\Delta V=\frac{\epsilon_1d_2+\epsilon_2d_1}{\epsilon_1\epsilon_2}D
+	\end{equation*}
+	We can write
+	\begin{equation*}
+		\begin{aligned}
+			\Delta V_1&=\frac{\epsilon_2d_1}{\epsilon_2d_1+\epsilon_1d_2}\Delta V\\
+			\Delta V_2&=\frac{\epsilon_1d_2}{\epsilon_2d_1+\epsilon_1d_2}\Delta V
+		\end{aligned}
+	\end{equation*}
+\end{eg}
+\section{Electrostatic Energy with Dielectrics}
+We know already that the electrostatic energy in free space is given by the following formula
+\begin{equation*}
+	U=\frac{1}{2}\iiint_{\R^3}\rho V\dd^3x
+\end{equation*}
+In presence of dielectrics this still holds if we consider that $\rho=\rho_b+\rho_f$ where $\rho_b,\rho_f$ are the bound polarization charges and the free charges respectively.\\
+Remembering that $\del_iD^i=\rho$ and integrating by parts, we get for a volume $V$
+\begin{equation}
+	U=\frac{1}{2}\iiint_V\pdv{x^i}\left( D^iV \right)\dd^3x-\iiint_VD^i\del_iV\dd^3x
+	\label{eq:dieen1}
+\end{equation}
+Sending $V\to\R^3$ we get that the first integral is zero (it becomes a surface integral with Stokes' theorem and goes to 0), therefore, for a dielectric, remembering that $-\del_iV=E_i$
+\begin{equation}
+	U=\frac{1}{2}\iiint_{\R^3}D^iE_i\dd^3x
+	\label{eq:energydie}
+\end{equation}
+Which implies that the volumetric energy density for a dielectric is
+\begin{equation}
+	u=\frac{1}{2}D^iE_i
+	\label{eq:endendie}
+\end{equation}
+For a perfect isotropic dielectric $D^i=\epsilon E^i$, therefore
+\begin{equation}
+	u=\frac{1}{2}D^iE_i=\frac{\epsilon}{2}E^2=\frac{1}{2}\frac{D^2}{\epsilon}
+	\label{eq:perfectisodieenden}
+\end{equation}
+Which, if integrated, give the exact identical result for free space if we substitute $\epsilon_0\to\epsilon$
+\end{document}

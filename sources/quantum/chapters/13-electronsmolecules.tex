@@ -1,0 +1,954 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	It's now time to analyze the electronic structure of diatomic molecules. We begin with the usual multielectron Hamiltonian without fine and hyperfine corrections. We choose for easier calculus the $z$-axis as the internuclear axis, and in this case we can immediately say that
+	\begin{equation*}
+		\comm{\opr{\ham}}{\opr{L}_z}=0
+	\end{equation*}
+	It's also obvious that due to the nature of the system, $\opr{L}_x,\opr{L}_y,\opr{L}^2$ \emph{do not} commute with the Hamiltonian of this system (this can be proved through direct calculus). Due to the previous statement, we know that the electronic eigenfunctions of the molecular Hamiltonian $\Phi_s$ are simultaneous eigenfunctions of $\opr{\ham}$ and $\opr{L}_z$.\\
+	Since $\opr{L}_z\to i\hbar\partial_{\phi}$, we can solve directly for the angular part through separation of variables. We suppose that $\Phi_s(r_i;R)=f_r(R;r_i)\eta(\phi)$, solving then for $\eta$ we have \begin{equation}
+		\eta(\phi)=e^{iM_L\phi}
+		\label{eq:angularpart}
+	\end{equation}
+	In molecular physics tho is common to use a new quantum number, $\Lambda=\abs{M_L}$, therefore, we can then write for $\Phi_s$ (with appropriate normalization)
+	\begin{equation}
+		\Phi_s(R;r_i)=\frac{1}{\sqrt{2\pi}}f_s(r)e^{\pm i\Lambda\phi}
+		\label{eq:electronicwavefunction}
+	\end{equation}
+	In the usual spectroscopic notation, we now have $m_l$ for single particles, $M_L$ for atoms and $\Lambda$ for molecules, and it follows a similar pattern. It's also used $\lambda=\abs{m_l}$ for single molecular electrons
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c}
+			\hline
+			Quantum Number&0&1&2&3$\ldots$\\
+			\hline
+			$m_l$&s&p&d&f$\ldots$\\
+			\hline
+			$M_L$&S&P&D&F$\ldots$\\
+			\hline
+			$\Lambda$&$\Sigma$&$\Pi$&$\Delta$&$\Phi\ldots$\\
+			\hline
+			$\lambda$&$\sigma$&$\pi$&$\delta$&$\phi\ldots$\\
+			\hline
+		\end{tabular}
+		\caption{Table of quantum numbers in spectroscopic notation}
+		\label{tab:quantumnumbers}
+	\end{table}
+	Let's get back to our molecular system. Through a quick sketch of a diatomic molecule it's obvious that, if the $z$-axis is taken as the intermolecular axis, the system is invariant for reflections along the $x-y$ plane. Let's call this reflection operator $\opr{A}_{xy}$. Since it's a reflection we know that $\opr{A}_{xy}^2=\1$ and its eigenvalues are $\pm1$, and from the previous consideration that
+	\begin{equation*}
+		\comm{\opr{\ham}}{\opr{A}_{xy}}
+	\end{equation*}
+	Writing out explicitly the angular momentum operator $\opr{L}_z=\opr{\Lambda}_z$ (using $\opr{\Lambda}$ makes it easier to distinguish this operator from the usual angular momentum operators) in Cartesian form ($\opr{\Lambda}_z\to i\hbar y\partial_x-i\hbar x\partial_y$), and knowing that $\opr{A}_{xy}$ maps $y\to -y$, we also have that these two operators anticommute.
+	\begin{equation*}
+		\acomm{\opr{\Lambda}_z}{\opr{A}_{xy}}=0
+	\end{equation*}
+	We therefore have that, for states with $\Lambda\ne0$
+	\begin{equation}
+		\opr{\Lambda}_z\opr{A}_{xy}\ket{\Lambda}=-\opr{A}_{xy}\opr{\Lambda}_z\ket{\Lambda}=\pm\hbar\Lambda\ket{\Lambda}
+		\label{eq:xyreflection}
+	\end{equation}
+	Depending on the symmetry of the wavefunction, this brings up what is usually called $\Lambda$-doubling, i.e. a two-fold degeneracy on levels given by the symmetries of the system.\\
+	A particular case happens when $\Lambda=0$, in this case we can construct simultaneous eigenfunctions of $\opr{\ham},\opr{\Lambda}_z,\opr{A}_{xy}$, and the degeneracy is broken into two non-degenerate states, $\Sigma^+,\Sigma^-$, where for the first the wavefunction is unchanged on reflections along the internuclear axis, and for the second state that the wavefunction changes sign ($\opr{A}_{xy}\ket{a}=\pm\ket{a}$).\\
+	Therefore, for inversions of the kind $\vec{r}_i\to-\vec{r}_i$, we can define states which are invariant and non-invariant to this transformation, these will be indicated by either a subscript $g$ or $u$, which come from the German \textit{gerade} and \textit{ungerade}, which mean respectively ``even'' and ``odd''.\\
+	For homonuclear diatomic molecules, the behavior of the $\Sigma$ wavefunctions through the inversions $y_i\to-y_i$ and $\vec{r}_i\to-\vec{r}_i$, give the additional definition of 4 non degenerate $\Sigma$ states, respectively $\Sigma_g^+,\Sigma_g^-,\Sigma_u^+,\Sigma_u^-$.\\
+	These states can be determined precisely by considering the inversion $\vec{R}\to-\vec{R}$, made by the composition of the inversion $y_i\to-y_i$ and $\vec{r}_i\to-\vec{r}_i$. The result of these inversion will be an unchanged sign for $\Sigma_g^+,\Sigma_u^-$ wavefunctions and a changed sign for $\Sigma_g^-,\Sigma_u^+$ wavefunctions.\\
+	\vskip\baselineskip\noindent
+	Considering now the spin of the molecular electrons, we're left with the usual operator $\vecopr{S}$, with the usual eigenvalues. With spin, we can write the terms as follows
+	\begin{equation*}
+		\term[g/u]{\Lambda}{2S+1}
+	\end{equation*}
+	The ground states are usually indicated as $X\term[g/u]{\Lambda}{2S+1}$, and for diatomic molecules, they are usually $X\term[]{\Sigma^+}{1}$ and $X\term[g]{\Sigma^+}{1}$ for homonuclear diatomic molecules, with some exceptions\footnote{See $\mathrm{O}_2$ and $NO$, which have as ground states $X\term[g]{\Sigma}{3}$ and $X\term[]{\Pi}{2}$, respectively}
+	\section{Approximation Methods and the $\mathrm{H}_2$ Molecule}
+	\subsection{Linear Combination Of Atomic Orbitals (LCAO-MO)}
+%	\subsection{Molecular Hydrogen Ion $\mathrm{H}_2^+$}
+	A great example of a molecular system that can be analyzed, is the \textit{Dihydrogen cation}, i.e. the molecule $\mathrm{H}_2^+$.\\
+	Considering all particles present in the system, we can write our Hamiltonian as follows (using atomic units $\hbar=1,k_e=1,e=1,m_e=1$)
+	\begin{equation}
+		\opr{\ham}_{H_2^+}=-\frac{1}{2}\nabla^2_r-\frac{1}{r_a}-\frac{1}{r_b}+\frac{1}{R}
+		\label{eq:h2plusham}
+	\end{equation}
+	Where $r,r_a,r_b$ are not independent, given in terms of the distance between the two nuclei $R$, as
+	\begin{equation*}
+		\begin{aligned}
+			\vec{r}_a&=\vec{r}+\frac{\vec{R}}{2}\\
+			\vec{r}_b&=\vec{r}-\frac{\vec{R}}{2}
+		\end{aligned}
+	\end{equation*}
+	The Schrödinger equation can be exactly solved, but it's useful to firstly develop the Linear Combination of Atomic Orbitals (LCAO) approximation technique.\\
+	As we have already seen, at great distances, we must have that the system is a simple hydrogen atom, hence
+	\begin{equation*}
+		\ket{\Phi}=\ket{1s}
+	\end{equation*}
+	Where the $1s$ orbital takes into consideration whether it's bound to the nucleus $a$ or $b$.\\
+	From this, we can construct two molecular wavefunctions with either an even (gerade) symmetry or an uneven (ungerade) symmetry.\\
+	We have
+	\begin{equation}
+		\begin{aligned}
+			\ket{g}&=\frac{1}{\sqrt{2}}\left( \ket{1s}_a+\ket{1s}_b \right)\\
+			\ket{u}&=\frac{1}{\sqrt{2}}\left( \ket{1s}_a-\ket{1s}_b \right)
+		\end{aligned}
+		\label{eq:geradeungeradewfh2plus}
+	\end{equation}
+	We then can find our molecular energy levels by plugging it into our variational equation
+	\begin{equation*}
+		E_{g,u}(R)=\frac{\bra{g,u}\opr{\ham}\ket{g,u}}{\bra{g,u}\ket{g,u}}
+	\end{equation*}
+	Let's calculate firstly the normalization of the state $\ket{g,u}$. We have
+	\begin{equation}
+		\begin{aligned}
+			\bra{g,u}\ket{g,u}&=\frac{1}{2}\left( \bra{1s}_a\pm\bra{1s}_b \right)\left( \ket{1s}_a\pm\ket{1s}_b \right)\\
+			&=\frac{1}{2}\left( \bra{1s}\ket{1s}_a+\bra{1s}\ket{1s}_b\pm2\bra{1s}\ket{1s}_{ab} \right)=\\
+			&=1\pm\bra{1s}\ket{1s}_{ab}=1\pm I(R)
+		\end{aligned}
+		\label{eq:normalizationguh2plus}
+	\end{equation}
+	Where $I(R)=\bra{1s}\ket{1s}_{ab}$ is an overlap integral, which can be calculated, considering that
+	\begin{equation*}
+		\bra{r}\ket{1s}=\psi_{1s}(r)=\frac{1}{\pi}e^{-r}
+	\end{equation*}
+	A piece-by-piece calculation of this and some further integrals will be given in an appendix, but for now, we have that the result is
+	\begin{equation*}
+		I(R)=\left( 1+R+\frac{1}{3}R^2 \right)e^{-R}
+	\end{equation*}
+	We then evaluate the numerator, keeping in mind that these two Schrödinger equations also hold
+	\begin{equation*}
+		\begin{aligned}
+			\left( \frac{1}{2}\opr{p}^2_r-\frac{1}{r_a} \right)\ket{1s}_a&=E_{1s}\ket{1s}_a\\
+			\left( \frac{1}{2}\opr{p}^2_r-\frac{1}{r_b} \right)\ket{1s}_b&=E_{1s}\ket{1s}_b
+		\end{aligned}
+	\end{equation*}
+	So, we then have, expanding $\ket{g,u}$ in its composing kets
+	\begin{equation}
+		\begin{aligned}
+			\bra{g,u}\opr{\ham}\ket{g,u}&=\frac{1}{2}\left( \bra{1s}_a\pm\bra{1s}_b \right)\opr{\ham}\left( \ket{1s}_a\pm\ket{1s}_b \right)\\
+			&=\bra{1s}\opr{\ham}\ket{1s}_a\pm\bra{1s}\opr{\ham}\ket{1s}_{ab}
+		\end{aligned}
+		\label{eq:numeratorvariationalh2plus}
+	\end{equation}
+	Writing the Hamiltonian and distributing once again, we get
+	\begin{equation}
+		\begin{aligned}
+			\bra{g,u}\opr{\ham}\ket{g,u}&=\left( E_{1s}+\frac{1}{R} \right)-\bra{1s}\frac{1}{r_b}\ket{1s}_a\pm\left( E_{1s}+\frac{1}{R} \right)\bra{1s}\ket{1s}_{ab}\pm\bra{1s}\frac{1}{r_b}\ket{1s}_{ab}\\
+			&=E_{1s}\left( 1\pm I(R) \right)\pm\frac{1}{R}I(R)+\frac{1}{R}-\bra{1s}\frac{1}{r_b}\ket{1s}_a\pm\bra{1s}\frac{1}{r_b}\ket{1s}_{ab}
+		\end{aligned}
+		\label{eq:numeratorh2pluscalc}
+	\end{equation}
+	Solving the two last integrals and putting everything together, we finally get
+	\begin{equation}
+	E_{g,u}(R)=E_{1s}+\frac{(1+R)e^{-2R}\pm\left( 1-\frac{2}{3}R^2 \right)e^{-R}}{R\pm\left( 1+R+\frac{1}{3}R^2 \right)Re^{-R}}
+		\label{eq:h2plusenergy}
+	\end{equation}
+	From this, we can then define the two following levels
+	\begin{equation*}
+		\begin{aligned}
+			\opr{\ham}_{H_2^+}\ket{g}&=E_g(R)\ket{g}\\
+			\opr{\ham}_{H_2^+}\ket{u}&=E_u(R)\ket{u}
+		\end{aligned}
+	\end{equation*}
+	The first energy is the one for which the wavefunction is symmetrical ($\pm\to+$). For this wavefunction, if plotted or calculated, it's easy to see that there exists a well, for which the molecule can bond, and therefore, this molecular orbital is said to be a \textit{bonding orbital}, indicated by the term $\sigma_g$, in the other case, for the uneven wavefunction, there is no energetic well, hence it's easy to see how this orbital doesn't contribute to the bonding of the molecule, hence it's called an \textit{antibonding orbital}, and it's indicated by the term $\sigma_u^\star$
+%	\subsection{Molecular Hydrogen $\mathrm{H}_2$}
+	The second approach, after the molecule $\mathrm{H}_2^+$, is the actual hydrogen molecule $\mathrm{H}_2^+$, which has two electrons.\\
+	We shall build its electronic wavefunctions using what we found for the dihydrogen cation.\\
+	We already know that the eigenspinors must either be a singlet state $S=\sum_is_i=0$ or a triplet state. We can immediately write these spinors, starting from the singlet state (remembering that $a\otimes b\ne b\otimes a$, for two vectors $a,b\in\mathbb{H}$, here due to the indistinguishability of the two electrons it only matters to know that the first ket is referring to the first electron and the second ket, obviously, to the second and last electron)
+	\begin{equation}
+		\begin{aligned}
+			\ket{00}&=\frac{1}{\sqrt{2}}\left[ \ket{\up}\otimes\ket{\down}-\ket{\down}\otimes\ket{\up} \right]\\
+			\ket{11}&=\ket{\up}\otimes\ket{\up}\\
+			\ket{10}&=\frac{1}{\sqrt{2}}\left[ \ket{\up}\otimes\ket{\down}+\ket{\down}\otimes\ket{\up} \right]\\
+			\ket{1-1}&=\ket{\down}\otimes\ket{\down}
+		\end{aligned}
+		\label{eq:eigenspinorsh2}
+	\end{equation}
+	Using the two eigenfunctions $\ket{u},\ket{g}$ we can then form four combinations of the two
+	\begin{equation}
+		\begin{aligned}
+			\ket{A}&=\left[ \ket{g}\otimes\ket{g} \right]\otimes\ket{00}\\
+			\ket{B}&=\left[ \ket{u}\otimes\ket{u} \right]\otimes\ket{00}\\
+			\ket{C}&=\frac{1}{\sqrt{2}}\left[ \ket{g}\otimes\ket{u}+\ket{u}\otimes\ket{g} \right]\otimes\ket{00}\\
+			\ket{D}&=\frac{1}{\sqrt{2}}\left[ \ket{g}\otimes\ket{u}-\ket{u}\otimes\ket{g} \right]\otimes\ket{1,M_S}
+		\end{aligned}
+		\label{eq:molecularspins}
+	\end{equation}
+	It's immediate to see that, since $\ket{g},\ket{u}$, as calculated previously for $\mathrm{H}_2^+$, are either $\sigma_g$ or $\sigma_u^{\star}$ states, that $\ket{A},\ket{B}$ represent $\term[g]{\Sigma^+}{1}$, while $\ket{C}$ represents a $\term[u]{\Sigma^+}{1}$ state, and $\ket{D}$ represents the remaining $\term[u]{\Sigma^+}{3}$ states.
+	The exact Hamiltonian for the Hydrogen molecule is, in atomic units
+	\begin{equation}
+		\opr{\ham}_{H_2}=-\frac{1}{2}\left( \nabla^2_1+\nabla^2_2 \right)-\sum_{i=1}^2\frac{1}{r_{ai}}-\sum_{i=1}^2\frac{1}{r_{bi}}+\frac{1}{r_{12}}+\frac{1}{R}
+		\label{eq:h2ham}
+	\end{equation}
+	Regrouping the two single electron Hamiltonians as $\opr{h}_i$, and remembering that
+	\begin{equation*}
+		\opr{h}_i\ket{g,u}=\left( E_{g,u}(R)-\frac{1}{R} \right)\ket{g,u}
+	\end{equation*}
+	We get by using the eigenket $\ket{A}$, imposing without loss of generality that $\bra{g,u}\ket{g,u}=1$, that the associated energy will be, after plugging everything into the Rayleigh-Ritz variational expression, that
+	\begin{equation}
+		\begin{aligned}
+			E_A&=\bra{00}\bra{g}\otimes\bra{g}\opr{\ham}\ket{g}\otimes\ket{g}\ket{00}\\
+			&=\bra{00}\bra{g}\otimes\bra{g}\sum_{i=1}^2\opr{h}_i+\frac{1}{r_{12}}\ket{g}\otimes\ket{g}\ket{00}\\
+			&=2E_g(R)-\frac{1}{R}+\bra{00}\bra{g}\otimes\bra{g}\frac{1}{r_{12}}\ket{g}\otimes\ket{g}\ket{00}
+		\end{aligned}
+		\label{eq:rayleighritzh2}
+	\end{equation}
+	The last expression, corresponds to the following integral
+	\begin{equation*}
+		\iint\cc{\Phi}_g(r_1)\cc{\Phi}_g(r_2)\frac{1}{r_{12}}\Phi_g(r_1)\Phi_g(r_2)\ddiff[3]{r_1}{r_2}=\iint\frac{\abs{\Phi_g(r_1)}^2\abs{\Phi_g(r_2)}^2}{r_{12}}\ddiff[3]{r_1}{r_2}
+	\end{equation*}
+	This integral can be computed using the approximate LCAO form, or the ``exact'' solution of the Schrödinger equation for the $\mathrm{H}_2^+$ molecule.\\
+	Using the LCAO form of $\ket{g}$, we can then write in extensive form
+	\begin{equation}
+		\begin{aligned}
+			\ket{A}&=\ket{g}_1\otimes\ket{g}_2\ket{00}=\\
+			&=\frac{1}{2}\left( \ket{1s}_a\otimes\ket{1s}_b+\ket{1s}_b\otimes\ket{1s}_a+\ket{1s}_a\otimes\ket{1s}_a+\ket{1s}_b\otimes\ket{1s}_b \right)\ket{00}
+		\end{aligned}
+		\label{eq:eigenfunctionAh2}
+	\end{equation}
+	Or, using directly the Schrödinger representation of eigenstates
+	\begin{equation}
+		\begin{aligned}
+			\bra{r_{ij}}\ket{A}=\Phi_A=&\frac{1}{2}\left( \psi_{1s}(r_{a1})\psi_{1s}(r_{b2})+\psi_{1s}(r_{b1})\psi_{1s}(r_{a2})+\right.\\
+			+&\left.\psi_{1s}(r_{a1})\psi_{1s}(r_{a2})+\psi_{1s}(r_{b1})\psi_{1s}(r_{b2}) \right)\chi_{00}(r_1,r_2)
+		\end{aligned}
+		\label{eq:eigenfunctonAh2schr}
+	\end{equation}
+	It's easy to see how this eigenstate can be expressed by a superposition of two states, as $\ket{A}=\ket{A}_{cov}+\ket{A}_{ion}$, which respresent two types of molecular bonding already known in chemistry: \textit{covalent and ionic bonding}. Using the previous expression, we can write these two kinds of bonding as follows
+	\begin{equation}
+		\begin{aligned}
+			\ket{A}_{cov}&=\frac{1}{2}\left( \ket{1s}_a\otimes\ket{1s}_b+\ket{1s}_b\otimes\ket{1s}_a \right)\ket{00}\\
+			\ket{A}_{ion}&=\frac{1}{2}\left( \ket{1s}_a\otimes\ket{1s}_a+\ket{1s}_b\otimes\ket{1s}_b \right)\ket{00}
+		\end{aligned}
+		\label{eq:ioniccovalentbonding}
+	\end{equation}
+	It's immediate to see how the covalent eigenstate ($\ket{A}_{cov}$) represents a situation where the two electrons (remember that we're working in a Hilbert space of the kind $\mathbb{H}_1\otimes\mathbb{H}_2$) are bound to both nuclei, whereas the ionic eigenstate represents a situation where both electrons are bound to one nucleus. Using the LCAO approximation, in the limit $R\to\infty$, the covalent bond yields two hydrogen atoms ($\mathrm{H}_2\to\mathrm{H}+\mathrm{H}$), whereas the second yields one proton and a negative hydrogen ion ($\mathrm{H}_2\to\mathrm{H}^-+p^+$).\\
+	A better approximation can be given using the Rayleigh-Ritz variational principle, with a trial eigenket $\ket{\lambda}$, formed by an equal mixture of the two states $\ket{A}$ and $\ket{B}$, which both have symmetry $\term[g]{\Sigma^+}{1}$.\\
+	Noting that the state $\ket{B}$ is the following
+	\begin{equation*}
+		\ket{B}=\frac{1}{2}\left( \ket{1s}_A\otimes\ket{1s}_A-\ket{1s}_A\otimes\ket{1s}_B-\ket{1s}_B\otimes\ket{1s}_A+\ket{1s}_B\otimes\ket{1s}_B \right)\ket{00}
+	\end{equation*}
+	The eigenstate $\ket{\lambda}$ will then have the following definition
+	\begin{equation}
+		\begin{aligned}
+			\ket{\lambda}&=\ket{A}+\lambda\ket{B}\\
+			\ket{\lambda}&=\frac{1}{2}\left[ (1-\lambda)\left( \ket{1s}_A\otimes\ket{1s}_B+\ket{1s}_B\otimes\ket{1s}_A \right)\right.\\
+			&\left.+(1+\lambda)\left( \ket{1s}_A\otimes\ket{1s}_A+\ket{1s}_B\otimes\ket{1s}_B \right) \right]\ket{00}\\
+			\ket{\lambda}&=(1-\lambda)\ket{A}_{cov}+(1+\lambda)\ket{A}_{ion}
+		\end{aligned}
+		\label{eq:ketlambda}
+	\end{equation}
+	Using the Rayleigh Ritz variational method, it's possible to calculate the energy of the system in relation to the parameter $\lambda$, as follows
+	\begin{equation}
+		E(\lambda)=\frac{\bra{\lambda}\opr{\ham}\ket{\lambda}}{\bra{\lambda}\ket{\lambda}}
+		\label{eq:rayleighritzvariationalmolen}
+	\end{equation}
+	Finding the extremum, (i.e. where $\delta E(\lambda)=0$, i.e. $\partial_{\lambda}E=0$ and $\lambda_0$ is an extremum) it is possible to find values closer to the experimental values than the previous approximations.
+	\subsection{Heiter-London Valence Bond Method (VB-MO)}
+	Considering now the \textit{Valence Bond method}, we approximate the wavefunction for $\mathrm{H}_2$ basing ourselves on the separated atom wavefunctions.\\
+	We begin taking the triplet sigma wavefunction $\ket{D}$, for which, the covalent part is the following
+	\begin{equation}
+		\ket{D}_{cov}=\frac{1}{2}\left( \ket{1s}_A\otimes\ket{1s}_B-\ket{1s}_B\otimes\ket{1s}_A \right)\ket{1 M_S}
+		\label{eq:covalentDwavefunction}
+	\end{equation}
+	This wavefunction has the symmetry $\term[u]{\Sigma^+}{3}$. Now, substituting this and $\ket{A}_{cov}$ for the $\term[g]{\Sigma^+}{1}$ term in the variational equation, we get that the searched energy for gerade and ungerade states is the following
+	\begin{equation}
+		E_{g,u}(R)=2E_{1s}+\frac{J\pm K}{1\pm I^2}+\frac{1}{R}
+		\label{eq:geradeungeradeheiterlondon}
+	\end{equation}
+	Where (using Schrödinger's representation), we have that
+	\begin{equation*}
+		\begin{aligned}
+			I&=\int\psi_{1s}(r_{A1})\psi_{1s}(r_{B1})\diff[3]{r_1}\\
+			J&=\iint\abs{\psi_{1s}(r_{A1})}^2\left( \frac{1}{r_{12}}-\frac{1}{r_{A2}}-\frac{1}{r_{B1}} \right)\abs{\psi_{1s}(r_{B2})}^2\ddiff[3]{r_1}{r_2}\\
+			K&=\iint\cc{\psi}_{1s}(r_{A1})\cc{\psi}_{1s}(r_{B2})\left( \frac{1}{r_{12}}-\frac{1}{r_{A2}}-\frac{1}{r_{B1}} \right)\psi_{1s}(r_{A2})\psi_{1s}(r_{B1})
+		\end{aligned}
+	\end{equation*}
+	In order to get these two results we begin by inserting everything into the Rayleigh-Ritz equation.\\
+	For the $\term[u]{\Sigma^+}{3}$ we have
+	\begin{equation*}
+		E_u(R)=\frac{\bra{D}\opr{\ham}\ket{D}_c}{\bra{D}\ket{D}_c}
+	\end{equation*}
+	We begin calculating the normalization factor $\bra{D}\ket{D}$
+	\begin{equation*}
+		\begin{aligned}
+			\bra{D}\ket{D}_c&=\frac{1}{4}\left( \bra{1s}_A\otimes\bra{1s}_B-\bra{1s}_B\otimes\bra{1s}_A \right)\otimes\left( \ket{1s}_A\otimes\ket{1s}_B-\ket{1s}_B\otimes\ket{1s}_A \right)=\\
+			&=\frac{1}{4}\left( 2\bra{1s}\ket{1s}_{A}\bra{1s}\ket{1s}_B-2\bra{1s}\ket{1s}_{AB}\bra{1s}\ket{1s}_{BA} \right)=\\
+			&=\frac{1}{2}\left( 1-\bra{1s}\ket{1s}_{AB1}^2 \right)
+		\end{aligned}
+	\end{equation*}
+	Where, $\bra{1s}\ket{1s}_{AB1}=\bra{1s}\ket{1s}_{AB2}=I$\\
+	Secondly, we find the expectation value of the Hamiltonian $\expval{\opr{\ham}}_{D_c}$. We begin by noting that the Hamiltonian can be separated into the sum of three Hamiltonians
+	\begin{equation*}
+		\begin{aligned}
+			\opr{\ham}&=\opr{h}_a+\opr{h}_b+\opr{h}_{12}=2\opr{h}_a-\opr{h}_{12}\\
+			\opr{h}_a&=\frac{\opr{p}^2}{2}-\frac{1}{r_{a1}}\\
+			\opr{h}_b&=\frac{\opr{p}^2}{2}-\frac{1}{r_{b2}}\\
+			\opr{h}_{12}&=\frac{1}{r_{12}}+\frac{1}{R}-\frac{1}{r_{a2}}-\frac{1}{r_{b1}}
+		\end{aligned}
+	\end{equation*}
+	In order to ease the notation in this calculation we will indicate $\ket{1s}_i\otimes$ as $\ket{1}_i$ and $\otimes\ket{1s}_i$ as $\ket{2}_i$\\
+	In this notation, we have $\ket{D}_c=1/2(\ket{1}_A\ket{2}_B-\ket{1}_B\ket{2}_A)$, and therefore, remembering that $\adj{\opr{\ham}}=\opr{\ham}$ always holds, we have
+	\begin{equation*}
+		\begin{aligned}
+			\bra{D}\opr{\ham}\ket{D}_c&=2\bra{D}\opr{h}_a\ket{D}_c-\bra{D}\opr{h}_{12}\ket{D}_c=\\
+			&=2\left(h^a_{1212}+h^a_{2112}\right)+h^{12}_{1212}-h^{12}_{2112}=\\
+			&=\left(4E_{1s}+\frac{2}{R}\right)(1-\bra{1s}\ket{1s}_{AB1}^2)+\opr{h}^{12}_{1212}-\opr{h}^{12}_{2112}
+		\end{aligned}
+	\end{equation*}
+	Writing explicitly the integrals in the last equation for the matrix elements of $\opr{h}_{12}$, we get the $J$ integral for the first and the $K$ integral for the second, therefore obtaining the results
+	\begin{equation}
+		\begin{aligned}
+			\bra{D}\opr{\ham}\ket{D}_c&=\left( 4E_{1s}+\frac{2}{R} \right)\left( 1-I^2 \right)+\frac{1}{2}\left(J-K\right)\\
+			\bra{D}\ket{D}_c&=\frac{1}{2}\left( 1-I^2 \right)\\
+		\end{aligned}
+		\label{eq:valencebondketd}
+	\end{equation}
+	Putting it up altogether, we get for the $\term[u]{\Sigma^+}{3}$
+	\begin{equation}
+		E_u(R)=2E_{1s}+\frac{1}{R}+\frac{J-K}{1-I^2}
+		\label{eq:ungeradeenergyketd}
+	\end{equation}
+	For the $\term[g]{\Sigma^+}{1}$ state, everything remains equal, except for the sign $-$, that becomes a $+$ due to the definition of $\ket{A}_c$, and therefore we have
+	\begin{equation}
+		E_g(R)=2E_{1s}+\frac{1}{R}+\frac{J+K}{1+I^2}
+		\label{eq:geradeenergyketa}
+	\end{equation}
+	A question arises now, after all these calculations. One might ask what do $I,J,K$ actually mean physically. The first is the overlap integral between the nucleus $A$ and the nucleus $B$ of the two electrons (it is squared since the two electrons are indistinguishable), $J$ is the Coulomb integral which represents the interactions between the charge densities of the two electrons ($-e\abs{\psi_{1s}(r_{A1})}^2$ and $-e\abs{\psi_{1s}(r_{B2})}^2$) and $K$ is the exchange integral, each of these already known through the Hartree-Fock approximation for many-electron atoms.
+	\section{Homonuclear Diatomic Molecules}
+	In general, for homonuclear diatomic molecules, we can write the electronic wavefunction for the molecular orbitals in the LCAO approximation as
+	\begin{equation*}
+		\ket{g,u}=N_{g,u}\left( \ket{a}_{Ai}\pm\ket{b}_{Bi} \right)
+	\end{equation*}
+	Where $N_{g,u}$ is an appropriate normalization factor, and $\ket{a},\ket{b}$ are two (non necessarily equal) atomic orbitals, with respect to the first or the second atom.\\
+	Studying more the molecular orbitals we have that
+	\begin{enumerate}
+	\item MOs with a given value of $\lambda$ must connect with atomic orbitals with the same value of $\abs{m_l}$.
+	\item The parity of the wavefunction ($g,u$) must be preserved
+	\end{enumerate}
+	From spatial MOs it's possible to build spinorbitals for ech electrons, using Slater determinants.\\
+	As an example, we can write the state $\ket{A}$ for $\mathrm{H}_2$ as follows
+	\begin{equation}
+		\ket{A}=\frac{1}{\sqrt{2}}\mathrm{det}_2\left|\begin{matrix}
+				\ket{g}\ket{\uparrow}_1&\ket{g}\ket{\downarrow}_1\\
+				\ket{g}\ket{\uparrow}_2&\ket{g}\ket{\downarrow}_2
+			\end{matrix}\right|
+		\label{eq:ketah2matrix}
+	\end{equation}
+	In this case, both electrons of the $\mathrm{H}$ atoms can be in the bonding $\sigma_g$ orbital, but in higher electron number systems, due to Pauli's principle, is not possible anymore.\\
+	For $\mathrm{He}_2,\mathrm{He}_2^+$ we have in the first case that the molecular configuration is $\sigma_g^2\sigma_u^2$, which is unstable and hence bond-breaking. For the second case instead we're left with one less electron in the antibonding $\sigma_u$ orbital, which corresponds to a weakly bond molecule.\\
+	Next in line of homonuclear diatomic molecules, there is $Li_2$, each atom with electronic configuration $[\mathrm{He}]2s$. The molecule will be formed through the bonding of the $2s$ valence electron, forming a $\left( \sigma_g 2s \right)^2$ molecular orbital, which is a stable bond.\\
+	Going forward in the periodic table, we have $\mathrm{Be}_2$, which must have a $\sigma_g^2\sigma_u^2$ unstable configuration. For $\mathrm{B}_2$ we have a $\left( \sigma_g 2p \right)^2$ state, given by the uncomplete LII atomic subshell, which corresponds to the $2p$ atomic orbital (the complete shell would be the $2s^22p$ valence shell for Boron). Going forwards, we reach the $\mathrm{C}_2$ molecule. The $\mathrm{C}$ atom has a configuration $[\mathrm{He}]2s^22p^2$. The 4 $p$ electrons form two bonding orbitals, $\sigma_g^2\pi_u^2$, which are both bonding, hence giving a stable molecule.\\
+	Finally we consider the $\mathrm{O}_2$ molecule. Each atom has a configuration $[\mathrm{He}]2s^22p^4$, which gives a molecular configuration $\sigma_g^2\pi_u^4\pi_g^2$. Following the Aufbau rules we know that the unfilled antibonding $\pi_u$ orbital, must have one electron in the $\pi_x^{\star}$ and one in the $\pi_y^{\star}$ (remember that the star is usually used in literature to indicate an antibonding orbital, in our case the $\pi_g$ orbital)\\
+	\subsection{Valency and Chemical Bonding}
+	It's interesting to see now what valence electrons and chemical bonds really mean in physics. Usually, in order to form a bonding molecular orbital we need to form a singlet spin state. Let's now imagine what happens when we bring an hydrogen atom close to an helium atom. Both the electrons in He are in a singlet spin state, and the Hydrogen atom can't pair with Helium, since it can't exchange with neither of the two He electrons, since such bond would have two electrons in the same state, violating Pauli's principle. We quickly study this three electron system. The total wavefunction will be the following Slater determinant
+	\begin{equation}
+		\ket{\Phi}=N\det_3\left|\begin{matrix}
+			\ket{1s}_{He}\ket{\uparrow}_1&\ket{1s}_{He}\ket{\downarrow}&\ket{1s}_H\ket{\uparrow}_1\\
+			\ket{1s}_{He}\ket{\uparrow}_2&\ket{1s}_{He}\ket{\downarrow}_2&\ket{1s}_H\ket{\uparrow}_2\\
+			\ket{1s}_{He}\ket{\uparrow}_3&\ket{1s}_{He}\ket{\downarrow}_3&\ket{1s}_H\ket{\uparrow}_3
+		\end{matrix}\right|
+		\label{eq:HHewavefunction}
+	\end{equation}
+	With $N$ our normalization constant. Substituting this wavefunction into the Rayleigh-Ritz variational expression, we have that $E(R)=J-K$, where $J$ is the following direct integral
+	\begin{equation}
+		\begin{aligned}
+			J&=N^2\bra{1s}_{He}\bra{1s}_{He}\bra{1s}_H\opr{\ham}\ket{1s}_{He}\ket{1s}_{He}\ket{1s}_H\\
+			J&=N^2\int\cc{\psi_{1s}(1)\psi_{1s}(2)\phi_{1s}(3)}\opr{\ham}\psi_{1s}(1)\psi_{1s}(2)\phi_{1s}(3)\dddiff[3]{r_1}{r_2}{r_3}\\
+			\phi_{1s}(i)&=\bra{r_i}\ket{1s}_H\\
+			\psi_{1s}(i)&=\bra{r_i}\ket{1s}_{He}
+		\end{aligned}
+		\label{eq:HHedirectintegral}
+	\end{equation}
+	And $K$ is the following exchange integral
+	\begin{equation}
+		K=N^2\int\cc{\psi_{1s}(1)\psi_{1s}(2)\phi_{1s}(3)}\opr{\ham}\psi_{1s}(3)\psi_{1s}(2)\phi_{1s}(1)\dddiff[3]{r_1}{r_2}{r_3}
+		\label{eq:HHeexchangeintegral}
+	\end{equation}
+	The only exchange happening from this integral is between the electron $1$ and the electron $3$, which have the same spin, thus introducing a repulsion, which makes the existence of a stable $\mathrm{HHe}$ molecule impossible. The two electrons in the He atom are said to be \textit{paired}, and only \textit{unpaired} electrons contribute to chemical bonding. Due to this, since for atoms with closed valence subshells we have only paired valence electrons, they are said to be \textit{chemically inert}. A chemical bond forms principally singlet states using unpaired electrons, forming states with $S=0$, with the exception of the  $\mathrm{O}_2$ molecule, in which the two electrons in the antibonding $\pi_g$ orbitals are in a relative triplet state, giving $\mathrm{O}_2$'s ground state a relative triplet state.
+	\section{Heteronuclear Diatomic Molecules}
+	These methods of forming molecular orbitals can also be applied to heteronuclear molecules, formed by two different atoms. Since in this case there is no reflection symmetry along the internuclear axis, orbitals can't be classified as gerade or ungerade.\\
+	In general we will write our molecular orbital as a weighted combination of atomic orbitals of the atom $A$ and the atom $B$
+	\begin{equation}
+		\ket{\Phi}=\lambda\ket{u}_A+\mu\ket{v}_B
+		\label{eq:heteromolorb}
+	\end{equation}
+	A rule of thumb in order to write these molecular orbital comes from the chemical properties of the two elements, in fact, the more electronegative atom's atomic orbitals will have a greater weight, represented in a MO diagram as having a lower energy than the other atom's orbitals.\\
+	A quick way to grasp these concepts is to dive directly into the examples, in our case these will be LiH, HCl and NaCl molecules.
+	\subsection{Lithium Hydride LiH}
+	We begin by writing out the valence orbitals of these two compounds. We have that Lithium has a configuration $[\mathrm{He}]2s$, and Hydrogen has a configuration $1s$. The lowest lying molecular orbital will be the $1\sigma^2$ orbital formed by the complete K shell of Lithium, going higher in energy we find the $2\sigma$ orbital, that should be formed by the $1s$ orbital of Hydrogen and the $2s$ orbital of Lithium. Using the variational LCAO method, where as a trial function we take the superposition of the $2s$ and $2p$ orbitals of Lithium, in what is usually called \textit{hybridization}, we can then find a lower energy eigenvalue. The new hybrid orbital is called an $sp$ orbital, and will have a wavefunction of the following kind, if we write the atomic hydrogenoid orbitals as $\ket{nlm}$
+	\begin{equation}
+		\ket{sp}=c_1\ket{200}+c_2\ket{210}
+		\label{eq:sporbital}
+	\end{equation}
+	This hybridization causes an excess negative charge, which gives a permanent electric dipole moment.\\
+	In other hydrides like BH, NH and HF, this negative charge excess still exists, but with an opposite sign.
+	\subsection{Hydrogen Chloride HCl}
+	The configuration of Chlorine is $[\mathrm{He}]3s^23p^5$, with the K and L shells completely filled and not participating in the chemical bonding.\\
+	Since energies of the $3s$ orbital of Chlorine aren't similar to the energies of Hydrogen's $1s$ orbital, these two do not mix, but the bond will be formed between the $1s$ orbital of Hydrogen and the $3p$ orbital of Chlorine. Only the $p_z$ orbital can form a $\sigma$ orbital, and therefore the searched bond will be formed by a superposition of the $3p_z$ of Chlorine with the $1s$ of Hydrogen.\\
+	The weight on the $3p_z$ in this case will be greater than the weight on the $1s$, therefore representing at $R\to\infty$ the combination $\mathrm{H}^++\mathrm{Cl}^-$, which represents a \textit{ionic} bond
+	\subsection{Sodium Chloride NaCl}
+	Really good examples of molecules characterized by ionic bonds are compounds of an alkali atom with a halogen. In this case, the alkalis have a single valence electron outside a closed shell $(X\term[1/2]{S}{3})$, whereas halogens miss only an electron in order to close the last shell.\\
+	This configuration makes sure that both atoms end up with a closed shell through bonding, which happens through a ionic bonding. Considering Sodium Chloride, we have that the lowest energy configuration is given by the combination of the ions $\mathrm{Na}^++\mathrm{Cl}^-$. At small distances, this system works like inert gases, and is strongly repulsive.\\
+	Empirically, one can then write
+	\begin{equation}
+		E_s(R)=E_s(\infty)-\frac{1}{R}+Ae^{-cR}
+		\label{eq:naclrepulsion}
+	\end{equation}
+	\section{Triatomic Molecules}
+	\subsection{Hybridization}
+	The construction of molecular orbitals for polyatomic molecules works in a similar way as it does for diatomic molecules.\\
+	We begin taking our molecular orbital $\ket{\psi}$ and expanding it into a basis of Gauss-wavefunctions or atomic orbitals $\ket{\phi}$
+	\begin{equation*}
+		\ket{\psi}=\sum_{i=1}^nc_i\ket{\phi}
+	\end{equation*}
+	The coefficients $c_i$ are determined through the Rayleigh-Ritz variational calculus. Due to the importance of geometry and symmetry groups (see Appendix \ref{app:groups}), we need this wavefunction as a basis of an irreducible translation of the molecular point groups.\\
+	We begin by searching the minimal potential energy for every wavefunction $\ket{\psi}_k$, with electronic state $\ket{k}$ for every single nucleus
+	\begin{equation*}
+		\nabla_{R_i}V_k=0
+	\end{equation*}
+	As noted before, in case we have different atoms participating in the binding, if the energy differences given by two different orbitals aren't too different, we get what's usually called hybrid orbital. Since in polyatomic molecules we mostly have heterogeneous systems, we might get different kinds of orbital hybridizations given by the intermixing of orbitals.\\
+	As we have already seen, with $s$ and $p$ orbitals, we can get what's called a $sp$ orbital, if an $s$ orbital intermixes with a $p_z$ orbital.\\
+	It's not actually the only kind of hybridization that can happen between $s$ and $p$ orbitals, in fact we have a couple more possibilities.\\
+	One of these possibility is the $sp^2$ hybrid orbital, given by the triple mixing of an $s$ orbital and two $p_x,p_y$ orbitals, following the following pattern
+	\begin{equation}
+		\ket{sp^2}=\left\{\begin{aligned}
+				&\frac{1}{\sqrt{3}}\left( \ket{s}+\sqrt{2}\ket{p_x} \right)\\
+				&\frac{1}{\sqrt{3}}\ket{s}-\frac{1}{\sqrt{6}}\ket{p_x}+\frac{1}{\sqrt{2}}\ket{p_y}\\
+				&\frac{1}{\sqrt{3}}\ket{s}-\frac{1}{\sqrt{6}}\ket{p_x}-\frac{1}{\sqrt{2}}\ket{p}_y
+		\end{aligned}\right.
+		\label{eq:sp2hybridization}
+	\end{equation}
+	Adding up to this mix the orbital $p_z$, we get the $sp^3$ hybrid orbital, formed as follows
+	\begin{equation}
+		\ket{sp^3}=\left\{\begin{aligned}
+				&\frac{1}{2}\left( \ket{s}+\sqrt{3}\ket{p_z} \right)\\
+				&\frac{1}{2}\ket{s}+\sqrt{\frac{2}{3}}\ket{p_x}-\frac{1}{2\sqrt{3}}\ket{p_z}\\
+				&\frac{1}{2}\ket{s}-\frac{1}{\sqrt{6}}\ket{p_x}+\frac{1}{\sqrt{2}}\ket{p_y}-\frac{1}{2\sqrt{3}}\ket{p_z}\\
+				&\frac{1}{2}\ket{s}-\frac{1}{\sqrt{6}}\ket{p_x}-\frac{1}{\sqrt{2}}\ket{p_y}-\frac{1}{2\sqrt{3}}\ket{p_z}
+		\end{aligned}\right.
+		\label{eq:sp3hybridization}
+	\end{equation}
+	There are more kinds of hybridization, and each one of these gives a different kind of geometry to the molecule, mainly written up on the following table
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Hybrid Orbital & Geometry\\
+			\hline
+			$sp,\ dp$& Linear\\
+			$p^2,\ sd$& Bent\\
+			$sp^2,\ s^2d$& Trigonal Planar ($\alpha=120^{\circ}$)\\
+			$p^3$& Trigonal Pyramidal\\
+			$sp^3$& Tetrahedral\\
+			$sp^3d$& Bipyramidal\\
+			$sp^3d^2$& Octahedral\\
+			\hline
+		\end{tabular}
+		\caption{Different kinds of hybridization and subsequent molecular geometry}
+		\label{tab:hybridorbitalstable}
+	\end{table}
+	\subsection{Beryllium Dihydride ($\mathrm{BeH_2}$)}
+	Our first real example will be Beryllium Dihydride. This molecule is linear, and considering that the valence shell of Beryllium is $[\mathrm{He}]2s^2$ we have that our complete molecular orbital can be written as an intermixing of $s$ orbitals of the 3 atoms.\\
+	In formulae
+	\begin{equation}
+		\ket{\psi}_{BeH_2}=c_1\ket{1s}_H+c_2\ket{2s}_{Be}+c_3\ket{1s}_H
+		\label{eq:psibeh2}
+	\end{equation}
+	This molecular orbital has $\sigma$ symmetry (it's not hard to see this, it's a superposition of $s$ orbitals). Following the hybridization method of orbitals we can also find 3 more orbitals
+	\begin{equation}
+		\ket{\psi}_i=\left\{\begin{aligned}
+			\ket{\psi}_1&=\ket{1s}+\lambda\ket{2s}+\ket{1s}\\
+			\ket{\psi}_2&=\ket{1s}+\mu\ket{2p_z}-\ket{1s}\\
+			\ket{\psi}_3&=\ket{1s}-\nu\ket{2s}+\ket{1s}\\
+			\ket{\psi}_4&=-\ket{1s}+\omega\ket{2p_z}+\ket{1s}
+		\end{aligned}\right.
+		\label{eq:beh2orbitals}
+	\end{equation}
+	All of these configurations represent the state $X^1\Sigma_g$ of Beryllium Dihydride.\\
+	It's easy also to verify that this molecule (like all linear molecules) can have either a $C_{\infty h}$ symmetry or a $D_{\infty h}$ symmetry
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\drawLevel[elec = up, pos = { (-2,2.2) }, width = 1, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{1s}
+			\drawLevel[elec = up, pos = { (-2,2.5) }, width = 1, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{1sb}
+
+			\drawLevel[elec = pair, pos = { (8,-1) }, width = 1, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{2s}
+			\drawLevel[pos = { (8,1) }, width = 0.7, spinstyle = {thick, color = red!80, -stealth}, spinlength = 0.5]{2px}
+			\drawLevel[pos = { (9,1) }, width = 0.7, spinstyle = {thick, color = red!80, -stealth}, spinlength = 0.5]{2pz}
+			\drawLevel[pos = { (7,1) }, width = 0.7, spinstyle = {thick, color = red!80, -stealth}, spinlength = 0.5]{2py}
+
+			\drawLevel[elec = pair, pos = { (3,-3) }, width = 1.5, spinstyle = {thick, color = red!80, -stealth}, spinlength = 0.5]{sigma}
+			\drawLevel[elec = pair, pos = { (3,-2) }, width = 1.5, spinstyle = {thick, color = red!80, -stealth}, spinlength = 0.5]{sigmas}
+			\drawLevel[pos = { (2.5,1) }, width = 1, spinstyle = {thick, color = red!80, -stealth}, spinlength = 0.5]{piy}
+			\drawLevel[pos = { (4,1) }, width = 1, spinstyle = {thick, color = red!80, -stealth}, spinlength = 0.5]{pix}
+			\drawLevel[pos = { (3,3) }, width = 1.5]{sigmags}
+			\drawLevel[pos = { (3,3.5) }, width = 1.5]{sigmaus}
+
+			\draw[dashed](right 1s) -- (left sigma)
+			(right 1s) -- (left sigmags)
+			(right 1sb) -- (left sigmas)
+			(right 1sb) -- (left sigmaus)
+			(left 2s) -- (right sigma)
+			(left 2s) -- (right sigmags)
+			(left 2py) -- (right sigmas)
+			(left 2py) -- (right pix)
+			(left 2py) -- (right sigmaus);
+			\node[left] at (left 1s) {$1s$};
+			\node[left] at (left 1s) {$1s$};
+			\node[left] at (left sigma) {$\sigma_g$};
+			\node[left] at (left sigmas) {$\sigma_u$};
+			\node[left] at (left piy) {$\pi$};
+			\node[below] at (right sigmags) {$\sigma_g^{\star}$};
+			\node[above] at (right sigmaus) {$\sigma_u^{\star}$};
+			\node[right] at (right 2s) {$2s$};
+			\node[right] at (right 2pz) {$2p$};
+		\end{tikzpicture}
+		\caption{The Beryllium Hydride molecular orbital diagram}
+		\label{fig:beh2modiagram}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\chemfig{H-Be-H}
+		\caption{The Beryllium Hydride molecule}
+		\label{fig:berylliumhydride}
+	\end{figure}
+	\subsection{Water ($\mathrm{H_2O}$)}
+	For water the situation is completely different. The two $1s$ orbitals of the hydrogen mix with the $2p$ orbitals of Oxygen, forming a $sp^2$ hybridization. In this case, we know already that this molecule has a bent symmetry, and the Hamiltonian will be invariant to all transformations of the group $C_{2v}$, due to the planar hybridization with the $p_x,p_y$ orbitals of Oxygen.\\
+	The two hybrid orbitals will then be the following 2
+	\begin{equation}
+		\begin{aligned}
+			\ket{sp^2}_1&=\ket{1s}_H+\lambda\ket{2p_x}_O\\
+			\ket{sp^2}_2&=\ket{1s}_H+\lambda\ket{2p_y}_O
+		\end{aligned}
+		\label{eq:sp2h2ohyb}
+	\end{equation}
+	Due to the symmetry of the molecule it's possible to determine that the angle of separation of the two Hydrogen atoms is $\alpha=105^{\circ}$. Note that since this molecule is bent, usual molecular states do not apply to molecular orbitals, therefore, another notation based on group theory is used, and we get that the ground state of the water molecule is $X^1A_1$ and the electronic configuration is
+	\begin{equation*}
+		2a_1^21b_2^23a_1^21b_1^2
+	\end{equation*}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\drawLevel[elec = up, pos = { (-2,2.7) }, width = 1, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{1sa}
+			\drawLevel[elec = up, pos = { (-2,3) }, width = 1, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{1sb}
+
+			\drawLevel[elec = pair, pos = { (8,-2) }, width = 1, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{3s}
+			\drawLevel[elec = pair, pos = { (7,1.9) }, width = 0.7, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{3px}
+			\drawLevel[elec = pair, pos = { (8,1.9) }, width = 0.7, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{3py}
+			\drawLevel[elec = up, pos = { (9,1.9) }, width = 0.7, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{3pz}
+
+			\drawLevel[elec = pair, pos = { (3,-3) }, width = 1.5, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{a1}
+			\drawLevel[elec = pair, pos = { (3,-0.5) }, width = 1.5, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{b2}
+			\drawLevel[elec = pair, pos = { (3,1) }, width = 1.5, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{a12}
+			\drawLevel[elec = pair, pos = { (3,1.7) }, width = 1.5, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{b1}
+
+			\drawLevel[elec = no, pos = { (3,4) }, width = 1.5, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{a1star}
+			\drawLevel[elec = no, pos = { (3,5) }, width = 1.5, spinstyle = { thick, color = red!80, -stealth }, spinlength = 0.5]{b2star}
+
+			\draw[dashed](left 3s) -- (right a1)
+				(left 3s) -- (right a1star)
+				(left 3px) -- (right b2)
+				(left 3px) -- (right a12)
+				(left 3px) -- (right b1)
+				(left 3px) -- (right b2star)
+				(right 1sa) -- (left a1)
+				(right 1sa) -- (left a1star)
+				(right 1sb) -- (left b2)
+				(right 1sb) -- (left b2star) ;
+
+				\node[right] at (right 3pz) {$3p$} ;
+				\node[right] at (right 3s) {$3s$} ;
+				\node[left] at (left 1sa) {$1s$} ;
+				\node[left] at (left 1sb) {$1s$} ;
+				\node[left] at (left a1) {$2a_1$} ;
+				\node[left] at (left b2) {$1b_2$} ;
+				\node[left] at (left a12) {$3a_1$} ;
+				\node[left] at (left b1) {$1b_1$} ;
+				\node[right] at (right a1star) {$2a_1^{\star}$} ;
+				\node[right] at (right b2star) {$1b_2^{\star}$} ;
+		\end{tikzpicture}
+		\label{fig:watermodiagram}
+		\caption{The molecular orbital diagram for water ($\mathrm{H_2O}$)}
+	\end{figure}
+	Where the first two orbitals, $a_1,b_2$ are bonding orbitals.\\
+	The new notation for electronic structure of the molecule is given directly by group theory. This notation takes into account the bending of the molecule, which changes the energies of the usual $\sigma,\ \pi,\cdots$ molecular orbitals. This can be seen by taking a $C_{2v}$ transformation and applying it to these molecular orbitals. Through this change of coordinates we see that the $p$ orbitals transform as follows
+	\begin{equation}
+		\begin{aligned}
+			\ket{p_x'}&=\frac{1}{\sqrt{2}}\left( \ket{p_x}+\ket{p_y} \right)\\
+			\ket{p_y'}&=\frac{1}{\sqrt{2}}\left( \ket{p_x}-\ket{p_y} \right)
+		\end{aligned}
+		\label{eq:c2vh2otransformation}
+	\end{equation}
+	Looking closely at this definition, we see that the state $\ket{2s}$ and $\ket{2p_x}$ transform into themselves, thus they have a $a_1$ symmetry, whereas we see that $\ket{2p_y'}$ changes sign upon this $C_{2}$ rotation, and therefore has a $b_2$ symmetry, and last, the state $\ket{2p_z}$ changes sign upon reflection $\sigma_v$, and therefore has $b_1$ symmetry.\\
+	Putting this all together we get the previous molecular configuration, which through a simple direct calculus (evaluating sign changes and symmetries) gives back the $X^1A_1$ spectroscopic term for water.
+	\begin{figure}[H]
+		\centering
+		\chemfig{O(-[:217]H)(-[:322]H)}
+		\caption{The Water molecule}
+		\label{fig:h20}
+	\end{figure}
+	\subsection{Carbon Dioxide ($\mathrm{CO_2}$) and Lone Pairs}
+	For this molecule, we have 16 valence electrons, and we can form a bond using the $2s,2p_x,2p_y,2p_z$ molecular orbitals of both atomic species.\\
+	Since the molecule is linear with an inversion point it is a $D_{\infty h}$ molecule, and he only possible $\sigma_g$ atoms are given by the three $2s$ orbitals of Carbon and the two $2p_z$ orbitals of the two Oxygen atoms. We choose the internuclear axis as our $z$ axis, and we build our orbitals as usual through the projection of $\vecopr{\Lambda}$ and $\vecopr{\lambda}$. The hybrid atomic orbitals will then be a superposition of $2s,\ 2p_z$ orbitals ($\Lambda=0$, $\Sigma$ symmetry) and of $2p_x,\ 2p_y$ orbitals ($\Lambda=1$, $\Pi$ symmetry) which give a $\pi$ bond.\\
+	Therefore, the electronic configuration of $\mathrm{CO_2}$ will be, using the usual Aufbau rules for molecular orbitals
+	\begin{equation}
+		(1\sigma_g)^2(1\sigma_u^{\star})^2(2\sigma_g)^2(2\sigma_u^{\star})^2(1\pi_u)^4(1\pi_g^{\star})^4
+		\label{eq:co2configuration}
+	\end{equation}
+	The antibonding molecular orbitals do not contribute to the bonding, and therefore lead to a destabilization of the molecule. These are usually called (in chemistry) as \textit{lone pairs}, and are indicated by couples of electrons which do not participate in the bonding.\\
+	The \textit{bond order} of the molecule is given by this simple calculus
+	\begin{equation}
+		B_o=\frac{1}{2}\left( N_B-N_A \right)
+		\label{eq:bondorder}
+	\end{equation}
+	Where $N_B$ is the number of bonding electrons and $N_A$ is the number of antibonding electrons.\\
+	From this we can immediately see that if the electrons involved in the lone pair had participated into the bonding, placing themselves into an antibonding orbital, would have brought the bond order $B_o=0$, which means that there are \textit{no bonds} in the molecule. This is clearly not what happens in nature in a standard atmosphere, because we are quite certain that this molecule exists!\\
+	Talking about the bond order again, it is also used in order to determine the number of bonds of a molecule, i.e. if $B_o=3$ it means that this molecule has a triple bond, and so on.
+	\begin{figure}[H]
+		\centering
+		\chemfig{O=C=O}
+		\caption{The Carbon Dioxide molecule}
+		\label{fig:co2}
+	\end{figure}
+\section{Rayleigh-Ritz Variational Method}
+	It's useful to check a different approach on the LCAO method, by introducing a variational form of this approximation.\\
+	We start by defining our unnormalized Hamiltonian eigenstate as follows, indicating with the subscript $A$ the first atom, and with the subscript $B$ the second atom.\\
+	\begin{equation}
+		\ket{\Phi}=c_1\ket{\psi}_A+c_2\ket{\psi}_B
+		\label{eq:unnormalizedvarLCAO}
+	\end{equation}
+	Normalizing, and considering, without loss of generality that $\braket{\psi}_i=1\ i=A,B$, we get the new normalized eigenstate
+	\begin{equation}
+		\ket{\Psi}=\frac{1}{\sqrt{c_1^2+c_2^2+2c_1c_2\bra{\psi}\ket{\psi}_{AB}}}\left( c_1\ket{\psi}_A+c_2\ket{\psi}_B \right)
+		\label{eq:normalizedeigenstate}
+	\end{equation}
+	Inserting this eigenstate in the Rayleigh-Ritz variational equation, we have
+	\begin{equation*}
+		\begin{aligned}
+			E&=\bra{\Psi}\opr{\ham}\ket{\Psi}\\
+			E&=\frac{1}{c_1^2+c_2^2+2c_1c_2\braket{\psi}_{AB}}\left( \bra{\psi}_Ac_1+\bra{\psi}_Bc_2 \right)\opr{\ham}\left( c_1\ket{\psi}_A+c_2\ket{\psi}_B \right)
+		\end{aligned}
+	\end{equation*}
+	We continue calculating by bringing to the left the normalization factor
+	\begin{equation*}
+		\begin{aligned}
+			&E\left( c_1^2+c_2^2+2c_1c_2\braket{\psi}_{AB} \right)=c_1^2\bra{\psi}\opr{\ham}\ket{\psi}_{AA}+c_2^2\bra{\psi}\opr{\ham}\ket{\psi}_{BB}+2c_1c_2\bra{\psi}\opr{\ham}\ket{\psi}_{AB}\\
+			&c_1^2E+c_2E+2c_1c_2E\braket{\psi}_{AB}-c_1^2\bra{\psi}\opr{\ham}\ket{\psi}_{AA}-c_2^2\bra{\psi}\opr{\ham}\ket{\psi}_{BB}-2c_1c_2\bra{\psi}\opr{\ham}\ket{\psi}_{AB}=0
+	\end{aligned}
+	\end{equation*}
+	Now, we impose the condition $\partial_{c_i}\bra{\Psi}\opr{\ham}\ket{\Psi}=0$ in order to find the extremal value for the coefficients, and semplifying the constants and regrouping, we get the following system of equation
+	\begin{equation}
+		\begin{aligned}
+			c_1\left( \bra{\psi}\opr{\ham}\ket{\psi}_{AA}-E \right)+c_2\left( \bra{\psi}\opr{\ham}\ket{\psi}_{AB}-E\braket{\psi}_{AB} \right)&=0\\
+			c_1\left( \bra{\psi}\opr{\ham}\ket{\psi}_{AB}-E\braket{\psi}_{AB} \right)+c_2\left( \bra{\psi}\opr{\ham}\ket{\psi}_{BB}-E \right)&=0
+		\end{aligned}
+		\label{eq:finalconditionmatrix}
+	\end{equation}
+	Writing the matrix elements of the Hamiltonian as $\mathcal{H}_{ij}$, with $i,j=A,B$ and the overlap integral as $S_{AB}$, we have that the previous system, in the basis of the two coefficients is represented by the following matrix
+	\begin{equation*}
+		A_{ij}=\begin{pmatrix}
+			\mathcal{H}_{AA}-E&\mathcal{H}_{AB}-ES_{AB}\\
+			\mathcal{H}_{AB}-ES_{AB}&\mathcal{H}_{BB}-E
+		\end{pmatrix}
+	\end{equation*}
+	It's easy to note how this matrix is given by the following matrix equation
+	\begin{equation*}
+		\begin{aligned}
+			\bra{\psi}\opr{\ham}\ket{\psi}_{ij}&-E\braket{\psi}_{ij}=\mathcal{H}_{ij}-ES_{ij}\\
+			\mathcal{H}_{ij}&=\begin{pmatrix}
+				\bra{\psi}\opr{\ham}\ket{\psi}_{AA}&\bra{\psi}\opr{\ham}\ket{\psi}_{AB}\\
+				\bra{\psi}\opr{\ham}\ket{\psi}_{AB}&\bra{\psi}\opr{\ham}\ket{\psi}_{BB}
+			\end{pmatrix}\\
+			S_{ij}&=\begin{pmatrix}
+				1&\braket{\psi}_{AB}\\
+				\braket{\psi}_{AB}&1
+			\end{pmatrix}
+		\end{aligned}
+	\end{equation*}
+	This matrix gives the searched solution for $\det_2(A_{ij})=0$, hence we get the following second order linear equation on $E$
+	\begin{equation*}
+		\left( \mathcal{H}_{AA}-E \right)\left( \mathcal{H}_{BB}-E \right)-\left( \mathcal{H}_{AB}-ES_{AB} \right)^2=0
+	\end{equation*}
+	Noting that $\ket{\psi}_A=\ket{\psi}_B$ we have that $\mathcal{H}_{AA}=\mathcal{H}_{BB}$, and the solution to the equation are
+	\begin{equation}
+		\begin{aligned}
+			E_+(R)&=\frac{\mathcal{H}_{AA}+\mathcal{H}_{AB}}{1+S_{AB}}\\
+			E_-(R)&=\frac{\mathcal{H}_{AA}-\mathcal{H}_{AB}}{1-S_{AB}}\\
+			\abs{c_1}^2=\abs{c_2}^2&\longrightarrow c_1=\pm c_2
+		\end{aligned}
+		\label{eq:egeradeungeradevarlcao}
+	\end{equation}
+	Where, expressing the matrix elements of the Hamiltonian in Schrödinger notation, we get
+	\begin{equation}
+		\begin{aligned}
+			\mathcal{H}_{AA}&=\int\cc{\psi}(r_A)\opr{\ham}\psi(r_A)\diff[3]{r_A}=J\\
+			\mathcal{H}_{AB}&=\iint\cc{\psi}(r_A)\opr{\ham}\psi(r_B)\ddiff[3]{r_A}{r_B}=K\\
+			S_{AB}&=\iint\cc{\psi}(r_A)\psi(r_B)\ddiff[3]{r_A}{r_B}=I
+		\end{aligned}
+		\label{eq:integralsmatrixelementsvarlcao}
+	\end{equation}
+	Which are the already known Coulomb integral ($J$), Exchange integral ($K$) and the Overlap integral ($I$). The energies therefore represent the bonding-antibonding state couple
+\subsection{Hückel Theory}
+Further approximations can be made using this variational method. Commonly one chooses a minimal LCAO basis (overlap of $\ket{1s}$ states) in order to complete the calculations, but this is not always the best choice. An example are organic molecules and molecules with weak overlaps of orbitals (like in pi bonds). Therefore, as an example, suppose taking a planar hydrocarbon. The $\pi$ bond of carbon can be thought, as for the Rayleigh-Ritz theory described before, as a linear sum of $\ket{p_z}$ states.
+\begin{equation}
+	\ket{\pi}=c_1\ket{p_z^1}+c_2\ket{p_z^2}
+	\label{eq:pibondhuckel}
+\end{equation}
+The energies will therefore be the solution of the following secular equation
+\begin{equation}
+	\abs{\begin{matrix}
+			\ham_{11}-ES_{11}&\ham_{12}-ES_{12}\\
+			\ham_{21}-ES_{21}&\ham_{22}-ES_{22}
+\end{matrix}}=0
+	\label{eq:seculardet}
+\end{equation}
+In order to solve this equation, we impose the two main approximation of Hückel theory
+\begin{enumerate}
+\item We assume an orthonormal basis, therefore $S_{ij}=\bra{p_{z}^i}\ket{p_{z}^j}=\delta_{ij}$
+\item We assume that the $p_z$ orbitals interact only with their next closest orbital, therefore $\ham_{ij}=\alpha$ if $i=j$, or $\ham_{ij}=\beta$ if the orbitals are adjacent. Otherwise it's considered to be zero
+\end{enumerate}
+The secular equation therefore becomes
+\begin{equation}
+	\abs{\begin{matrix}
+		\alpha-E&\beta\\
+		\beta&\alpha-E
+\end{matrix}}=(\alpha-E)^2-\beta^2=0
+	\label{eq:secularhuckel}
+\end{equation}
+Solving for $E$ we get $E_\pm=\alpha\pm\beta$, which gives $E_+$ as our bonding $\pi_u$ orbital and $E_-$ as the antibonding $\pi^\star_g$ orbital
+\section{$\pi$ Electron Systems and Unlocalized Orbitals}
+	From now on we will consider a different class of molecules, where the electronic wavefunction isn't precisely localized in a certain position, permitting the existence of \textit{unlocalized orbitals}. These particular molecules include chains of Carbon atoms, where double and single bonds alternate and aren't localized. The electrical polarizability of these molecules is much larger than the usual molecules with localized bonds. This fenomenon is given by overlapping $p$ orbitals, i.e. $\pi$ bonds.
+	\subsection{Butadiene ($\mathrm{C_4H_6}$)}
+	Transbutadiene is an isomer of Butadiene (molecule with the same composition of Butadiene) which is planar. It's formed by a single $\sigma$ bond between two $\mathrm{CH}$ radicals, which are themselves doubly bonded with two $\mathrm{CH_2}$ radicals. In this case there exist 4 $\pi$ bonds which are linear combinations of the $p$ orbitals of the Carbon atoms, with the following wavefunction
+	\begin{equation}
+		\ket{\pi}=\sum_{n=1}^4c_n\ket{2p}_n
+		\label{eq:nonlocalizedbutadiene}
+	\end{equation}
+	These 4 $c_n$ coefficients can be determined using the Rayleigh-Ritz variational equation, which corresponds to the eigenvalue problem
+	\begin{equation*}
+		\abs{\mathcal{H}_{ij}-ES_{ij}}=0
+	\end{equation*}
+	In order to solve easily these equations we impose some approximations
+	\begin{enumerate}
+	\item $\mathcal{H}_{ii}=\alpha$, with $\alpha$ a parameter
+	\item $\mathcal{H}_{ij}=\beta<0,\ i\ne j$ only for adjacent atoms
+	\item $S_{ij}=\delta_{ij}$
+	\end{enumerate}
+	These assumptions are the basis of the \textit{Hückel method}. After some calculations, for Transbutadiene, we obtain the following wavefunction for the $\pi$ bonds
+	\begin{equation}
+		\begin{aligned}
+			\ket{\pi_1}&=0.37\ket{1}+0.60\ket{2}+0.60\ket{3}+0.37\ket{4}\\
+			\ket{\pi_2}&=0.60\ket{1}+0.37\ket{2}-0.37\ket{3}-0.60\ket{4}\\
+			\ket{\pi_3}&=0.60\ket{1}-0.37\ket{2}-0.37\ket{3}+0.60\ket{4}\\
+			\ket{\pi_4}&=0.37\ket{1}-0.60\ket{2}+0.60\ket{3}-0.37\ket{4}
+		\end{aligned}
+		\label{eq:butadienewf}
+	\end{equation}
+	The orbital $\pi_1$ is completely unlocalized over the whole Transbutadiene molecule.
+	\begin{figure}[H]
+		\centering
+		\chemfig{C(-[::90]H)(-[:200]H)=[:-30]C(-[:270]H)-[::60]C(-[:90]H)=[::-60]C(-[:270]H)(-[:20]H)}
+		\caption{The Transbutadiene Molecule}
+		\label{fig:transbutadiene}
+	\end{figure}
+	\subsection{Methane and Ethylene($\mathrm{CH_4,\ C_2H_4}$)}
+	As a continuation to our examples, we take the Methane molecule, $\mathrm{CH_4}$. Carbon bonds readily in an excited state $1s^22s2p^3$ which is very close in energy, forming, for Methane, an $sp^3$ hybridization. We can construct the usual 4 combinations for the wavefunction of the molecular orbitals
+	\begin{equation}
+		\begin{aligned}
+			\ket{1}&=\ket{2s}+\ket{2p_x}+\ket{2p_y}+\ket{2p_z}\\
+			\ket{2}&=\ket{2s}+\ket{2p_x}-\ket{2p_y}-\ket{2p_z}\\
+			\ket{3}&=\ket{2s}-\ket{2p_x}+\ket{2p_y}-\ket{2p_z}\\
+			\ket{4}&=\ket{2s}-\ket{2p_x}-\ket{2p_y}+\ket{2p_z}
+		\end{aligned}
+		\label{eq:methanewavefunctions}
+	\end{equation}
+	Since all $\ket{2p_i}$ eigenstates are proportional to the standard euclidean basis, we can immediately determine that the direction of the maximum are respectively
+	\begin{equation*}
+		\begin{aligned}
+			&(1,1,1)\\
+			&(1,-1,-1)\\
+			&(-1,1,-1)\\
+			&(-1,-1,1)
+		\end{aligned}
+	\end{equation*}
+	Calculating the cosine between these directions we obtain a bond angle of $109.6^{\circ}$, giving $\mathrm{CH_4}$ a tetrahedral structure.\\
+	In case of a planar molecule like Ethylene, we can form $sp^2$ hybrids as follows
+	\begin{equation}
+		\begin{aligned}
+			\ket{1}&=\ket{2s}+\sqrt{2}\ket{2p_x}\\
+			\ket{2}&=\ket{2s}+\sqrt{\frac{3}{2}}\ket{p_y}-\sqrt{\frac{1}{2}}\ket{p_x}\\
+			\ket{3}&=\ket{2s}-\sqrt{\frac{3}{2}}\ket{p_y}-\sqrt{\frac{1}{2}}\ket{2p_x}
+		\end{aligned}
+		\label{eq:ethylene}
+	\end{equation}
+	\begin{figure}[H]
+		\centering
+		\chemfig{C(-[:210]H)(-[:90]H)(<:[:-20]H)(<[:290]H)}\qquad\qquad\chemfig{C(-[:-121.3]H)(-[:121.3]H)=C([:58.7]-H)-[:-58.7]H}
+		\label{fig:methaneethylene}
+		\caption{The Methane and Ethylene molecules}
+	\end{figure}
+	\section{Cyclic Molecules}
+	\subsection{Ideal Homonuclear Trimer}
+	We can begin our treatment of polyatomic molecules by studying a toy problem, as the homonuclear trimer, i.e. a triangular molecule composed from 3 atoms of the same element. We begin evaluating the system by immediately finding that there is a $C_3$ axis of symmetry, passing through the center of the triangle. Having considered this, we already know that the electronic Hamiltonian and the $\opr{C}_3$ operator, which applicates a rotation of $\frac{2}{\pi}{3}$ radians, commutes $\comm{\opr{\ham}_e}{\opr{C}_3}=0$, thus there exists a common diagonalizing base.\\
+	We search this base by taking the minimal LCAO base orbitals. In this base, the electronic Hamiltonian $\opr{\ham}_e$ has the energy of the single orbitals in the diagonal, and these base kets diagonalize the $\opr{C}_3$ operator.\\
+	We have
+	\begin{equation*}
+		\opr{C}_3\ket{\alpha}=c_m\ket{\alpha}=c_1\ket{1s}_1+c_2\ket{1s}_2+c_3\ket{1s}_3
+	\end{equation*}
+	Since these eigenvalues must have norm $\norm{c_m}=1$ and must also express a rotation, have the shape of a complex exponential
+	\begin{equation*}
+		c_i=e^{\frac{2im\pi}{3}}
+	\end{equation*}
+	Therefore, we can write
+	\begin{equation*}
+		\opr{C_3}\ket{\alpha_m}=e^{\frac{2im\pi}{3}}\ket{\alpha_m}=\ket{1s}_1+e^{\frac{2im\pi}{3}}\ket{1s}_2+e^{-\frac{2im\pi}{3}}\ket{1s}_3,\quad m=0,\pm1
+	\end{equation*}
+	Where we ignored general phases.\\
+	This base is made from a linear combination of bases of the electronic Hamiltonian $\opr{\ham}_e$, hence we can easily write that $\mathrm{diag}\ \mathcal{H}_{ij}^{(e)}=(\epsilon,\epsilon,\epsilon)$, with $\epsilon$ the single atomic orbital energy, and the diagonal elements are all the same $\mathcal{H}_{ij}=-t\ \forall i\ne j$ at the same time we can also say easily that the Schrödinger equation holds
+	\begin{equation*}
+		\opr{\ham}_e\ket{\alpha_m}=E_m\ket{\alpha_m}
+	\end{equation*}
+	And therefore, applying the Hamiltonian matrix to the matrix representation of this vector (with normalization), we obtain
+	\begin{equation}
+		\begin{aligned}
+			\mathcal{H}_{ij}\alpha^{(m)}_j&=\frac{1}{\sqrt{3}}\begin{pmatrix}\epsilon&-t&-t\\-t&\epsilon&-t\\-t&-t&\epsilon\end{pmatrix}\begin{pmatrix}1\\e^{\frac{2im\pi}{3}}\\e^{-\frac{2im\pi}{3}}\end{pmatrix}=\\
+			&=\frac{1}{\sqrt{3}}\begin{pmatrix}\epsilon-t\left( e^{\frac{2im\pi}{3}}+e^{-\frac{2im\pi}{3}} \right)\\\epsilon-t\left( e^{\frac{2im\pi}{3}}+e^{-\frac{4im\pi}{3}} \right)\\\epsilon-t\left( e^{\frac{4im\pi}{3}}+e^{-\frac{2im\pi}{3}} \right)\end{pmatrix}=\\
+			&=\frac{1}{\sqrt{3}}\left[ \epsilon-t\left( e^{\frac{2im\pi}{3}}+e^{\frac{2im\pi}{3}} \right) \right]\begin{pmatrix}1\\e^{\frac{2im\pi}{3}}\\e^{-\frac{2im\pi}{3}}\end{pmatrix}=\\
+			&=\frac{1}{\sqrt{3}}\left[ \epsilon-2t\cos\left( \frac{2m\pi}{3} \right) \right]\alpha_j^{(m)}=E_m\alpha_j^{(m)}
+		\end{aligned}
+		\label{eq:trimerenergy}
+	\end{equation}
+	Which are the energies of the three $\ket{\alpha_m}$ molecular orbitals, where two are degenerate and shifted upwards from the single orbital by $+t$ and one is shifted downwards of $-2t$.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\node at (-1.5,0.2) {$\epsilon$};
+			\node at (0.9,0.5) {\small$\epsilon+t$};
+			\node at (0.9,-1.2) {\small$\epsilon-2t$};
+			\drawLevel[elec = no, pos = { (-4,0) }, width = 1]{1s12}
+			\drawLevel[elec = no, pos = { (4,0) }, width = 1]{1s3};
+			\drawLevel[elec = up, pos = { (0,1) }, width = 1]{A}
+			\drawLevel[elec = pair, pos = { (0,-2) }, width = 1]{B}
+			\draw[dashed](right 1s12) -- (left A)
+			(right 1s12) -- (left B)
+			(left 1s3) -- (right A)
+			(left 1s3) -- (right B)
+			(right 1s12) -- (left 1s3);
+			\draw[->] (0,0.2) -- (0,0.8);
+			\draw[->] (0,-0.2) -- (0,-1.8);
+			\node[left] at (left 1s12) {$s_1,\ s_2$};
+			\node[right] at (right 1s3) {$s_3$};
+			\node[above] at (left A) {$\alpha_{\pm1}$};
+			\node[below] at (left B) {$\alpha_0$};
+		\end{tikzpicture}
+		\caption{LCAO diagram for the homonuclear trimer}
+		\label{fig:homotrimerlcao}
+	\end{figure}
+	These energy levels though, are \emph{not} optimized. In fact it's energetically convenient to distort the molecule from a triangular symmetry to a isosceles symmetry, breaking the degeneration for the orbitals $\ket{\alpha_{\pm1}}$. This effect is known as \textit{Jahn-Teller effect}.
+	\subsection{Ideal Polyatomic Ring and the Tight Binding Approximation}
+	After treating the ideal homonuclear trimer it's possible to generalize the calculations to a generic ring formed by $N$ atoms. Suppose having a ring of such $N$ atoms with one valence electron, this ring will be a regular polyhedron with the nuclei at its vertexes. We must obviously have $\comm{\opr{\ham}}{\opr{C}_N}=0$ which means that the eigenstates of the Hamiltonians must also be eigenstates of the rotation operator $\opr{C}_N$ with eigenvalue $e^{\pm2mi\pi/N}$ with $m=0,\pm1,\cdots,\pm(N/2-1),N/2$ if $N\mod 2n=0$ with $n\in\N$.\\
+	Considering a minimal LCAO basis $\ket{1s_n}=\ket{n}$, all the eigenvectors of $\opr{\ham}$ will be therefore linear combinations of 1s orbitals of the following kind
+	\begin{equation}
+		\ket{\alpha_m}=\frac{1}{\sqrt{N}}\sum_{n=1}^Ne^{\frac{2imn\pi}{N}}\ket{n}
+		\label{eq:polyatomiccyclic}
+	\end{equation}
+	Note how the state $\ket{\alpha_0},\ket{\alpha_{N/2}}$ correspond respectively to the normalized sum of the orbitals (generalization of a bonding orbital) and to the alternated sum of orbitals (generalization of an antibonding orbital).\\
+	Considering the $\ket{n}$ basis as a complete orthonormal system we have that the energies of the system will be the matrix elements of the Hamiltonian, as follows
+	\begin{equation}
+		\epsilon_m=\bra{\alpha_m}\opr{\ham}\ket{\alpha_m}=\frac{1}{N}\sum_{n'=1}^N\sum_{n=1}^Ne^{\frac{2im(n'-n)}{N}}\bra{n'}\opr{\ham}\ket{n}
+		\label{eq:cyclicenergies}
+	\end{equation}
+	Calling the diagonal elements of the Hamiltonian as $\epsilon$ and the off diagonal as $\bra{n\pm k}\opr{\ham}\ket{n}=-t^{(k)}$ we can safely suppose that $t^{(k)}=0$ for $k>1$ since the atomic eigenfunction must decay exponentially with the distance. This approximation is known as the \textit{tight binding approximation}. Calculating the energies as we did for the trimer we get, analogously, the following expression
+	\begin{equation*}
+		\epsilon_m=\epsilon-\frac{1}{N}\sum_{k=1}^{N-1}\sum_{n=1}^Nt^{(k)}\left(e^{\frac{2^kim\pi}{N}}+e^{\frac{2^kim\pi}{N}}\right)=\epsilon-2\sum_{k=1}^{N-1}t^{(k)}\cos\left( \frac{2^km\pi}{N} \right)
+	\end{equation*}
+	Including the tight binding approximation, the levels become
+	\begin{equation}
+		\epsilon_m=\epsilon-2t\cos\left( \frac{2m\pi}{N} \right)
+		\label{eq:tblevelncyc}
+	\end{equation}
+	Note how this is a reformulation of the previously discussed Hückel theory.\\
+	All the energy levels will lay in the interval $[\epsilon-2t,\epsilon+2t)$ ($\epsilon+2t$ included if the number of atoms is even).\\
+	We therefore will have, for the minimum and maximum value of the energies
+	\begin{equation}
+		\epsilon_m\to\begin{cases}
+			\epsilon_0=\epsilon-2t\\
+			\epsilon_{\frac{N}{2}}=\epsilon+2t&N\mod 2n=0\\
+			\epsilon_{\pm\frac{N-1}{2}}=\epsilon-2t\cos\left( \frac{2\pi(N-1)}{N} \right)&N\mod(2n+1)=0
+		\end{cases}\quad n\in\N
+		\label{eq:minmaxenergies}
+	\end{equation}
+	The minimum will be $\epsilon_0$ and the remaining 2 will be the maximum levels of energy, for even and uneven $N$.\\
+	Generally, from this property of energy we have that the energy levels will move from the median value $\epsilon$ by $\pm2t$, defining the band of permitted energies. Note that since we have to fill these orbitals with electrons (2 per time due to the spin degeneracy and the Pauli exclusion principle), therefore if the single atoms have only one valence electron, only half of these $N$ orbitals will be occupied.
+	\subsection{Benzene ($\mathrm{C_6H_6}$)}
+	Benzene is a planar molecule, formed by a ring of carbon atoms, for which each one of those is bonded with a hydrogen atom. This symmetry structure indicates an $sp^2$ hybridization of the carbon atom's orbitals.\\
+	This molecule has a $C_{6v}$ symmetry which lets us hypothesize immediately an $sp^2$ hybridization of the orbitals of the carbon atoms, or more precisely of the orbitals of the Methyl group $\mathrm{CH}$. Again using the symmetry of the molecule, we can write our eigenfunctions as follows, noting that there exist 3 combinations possible for a $sp^2$ hybridization
+	\begin{equation}
+		\ket{\psi_j}=\frac{1}{\sqrt{6}}\sum_{n=1}^6e^{\frac{i\pi n}{3}}\ket{sp^2}_j\quad j=1,2,3
+		\label{eq:benzeneeigenfunctions}
+	\end{equation}
+	We need simply to add to these 3 hybrid orbitals another 2 orbitals participating in the bonding, which are given by the $\mathrm{CH}$ group.\\
+	Solving everything, we find that the $sp^2$ hybrids are well localized in the molecule, and instead the remaining $2p_z$ orbitals, which participate in the bonding, are loosely bound in a unlocalized $\pi$ bond.
+	\begin{figure}[H]
+		\centering
+		\chemfig{C*6((-H)=C(-H)-C(-H)=C(-H)-C(-H)=C(-H)-)}\qquad\qquad\chemfig{C*6((-H)-C(-H)=C(-H)-C(-H)=C(-H)-C(-H)=)}
+		\label{fig:benzene}
+		\caption{The Benzene molecule and its resonance of the double $\pi$ bonds}
+	\end{figure}
+	Another way to treat this organic molecule, is to use its rotational symmetry for $C-C$ bonds and tight binding for tying everything up. Since there are 6 $C$ atoms we have that there will be 6 $\alpha_m$ orbitals, combination of the basis orbitals. Mathematically
+	\begin{equation}
+		\ket{\alpha_m}=\frac{1}{\sqrt{6}}\sum_{n=1}^6e^{\frac{2im\pi}{6}}\ket{n}
+		\label{eq:carbonring}
+	\end{equation}
+	Adding up the hydrogens and supposing that only the $2s2p$ orbitals of carbon will partake in the bonding, considering also the three previously mentioned $sp^2$ hybrid orbitals, we will have a grand total of 30 atomic orbitals. Since carbon is tetravalent and hydrogen is univalent, we will have $4*6+6=30$ electrons. Due to the doubly degenerate nature of molecular orbitals, only the first 15 will be completely occupied, leaving 15 free orbitals.\\
+	It's not easy to solve easily a $30\times30$ Hamiltonian for such problem, but it's possible to greatly reduce the dimensionality of the problem. We have that the interacting orbitals in this system must be 4 for the carbons and only one for hydrogen.\\
+	We identify with $\alpha,\beta$ the two orbitals of carbon coplanar with the ring, the first in the clockwise direction and vice versa, with $p$ the perpendicular $p_z$ orbital, with $\gamma$ the orbital between carbon and hydrogen, and with $s$ the remaining hydrogen orbital.\\
+	Using therefore these $\alpha,\beta,\gamma,p,s$ orbitals end up, using the previous formula, with the following general expression for their linear combination
+	\begin{equation}
+		\begin{aligned}
+			\ket{C\alpha_m}&=\frac{1}{\sqrt{6}}\sum_{n=1}^6e^{\frac{2im\pi}{6}}\ket{\alpha_n}\\
+			\ket{C\beta_m}&=\frac{1}{\sqrt{6}}\sum_{n=1}^6e^{\frac{2im\pi}{6}}\ket{\beta_n}\\
+			\ket{C\gamma_m}&=\frac{1}{\sqrt{6}}\sum_{n=1}^6e^{\frac{2im\pi}{6}}\ket{\gamma_n}\\
+			\ket{Cp_m}&=\frac{1}{\sqrt{6}}\sum_{n=1}^6e^{\frac{2im\pi}{6}}\ket{p_n}\\
+			\ket{Hs_m}&=\frac{1}{\sqrt{6}}\sum_{n=1}^6e^{\frac{2im\pi}{6}}\ket{s_n}
+		\end{aligned}
+		\label{eq:benzenebasis}
+	\end{equation}
+	Approximating with the tight binding model we have that 2 of each of these orbitals are orthogonal for different $m$ and have 0 Hamiltonian matrix element, imposing these two constraints
+	\begin{equation}
+		\begin{aligned}
+			\bra{I}\ket{J}&=\delta_{mm'}S_{IJ}(m)\\
+			\bra{I}\opr{\ham}\ket{J}&=\delta_{mm'}\ham_{IJ}(m)
+		\end{aligned}
+		\label{eq:benzeneconstr}
+	\end{equation}
+	This reduces the complete $30\times30$ problem in 6 $5\times5$ problems.\\
+	To this first reduction, we apply the tight binding approximation therefore rendering the $S$ matrix nonzero only on the diagonal and on the first elements above and below the diagonal. We apply the same reasoning for the Hamiltonian, giving finally
+	\begin{equation}
+		\begin{aligned}
+		S_{IJ}&=\begin{pmatrix}
+			1&0&0&0&0\\
+			0&1&S_{\alpha\beta}&0&0\\
+			0&S_{\beta\alpha}&1&0&0\\
+			0&0&0&1&S_{\gamma s}\\
+			0&0&0&S_{s\gamma}&1
+			\end{pmatrix}\\
+		\ham_{IJ}&=\begin{pmatrix}
+			\epsilon_m&0&0&0&0\\
+			0&\epsilon_{\alpha\beta\gamma}&-t_{CC\sigma}&0&0\\
+			0&-t_{CC\sigma}&\epsilon_{\alpha\beta\gamma}&0&0\\
+			0&0&0&\epsilon_{\alpha\beta\gamma}&-t_{CH\sigma}\\
+			0&0&0&-t_{CH\sigma}&\epsilon_{s}
+		\end{pmatrix}
+		\end{aligned}
+		\label{eq:benzenematrix}
+	\end{equation}
+	Where $I,J=p,\alpha,\beta,\gamma,s$ and
+	\begin{equation}
+		\begin{aligned}
+			\epsilon_m&=\epsilon_p-2t_{pp\pi}\cos\left( \frac{2m\pi}{6} \right)\\
+			\epsilon_{\alpha\beta\gamma}&=\bra{C\alpha}\opr{\ham}\ket{C\alpha}=\bra{C\beta}\opr{\ham}\ket{C\beta}=\bra{C\gamma}\opr{\ham}\ket{C\gamma}\\
+			\epsilon_s=\bra{Hs}\opr{\ham}\ket{Hs}
+			-t_{CC\sigma}&=\bra{C\alpha}\opr{\ham}\ket{C\beta}\\
+			-t_{CH\sigma}&=\bra{C\gamma}\opr{\ham}\ket{Hs}
+		\end{aligned}
+		\label{eq:benzmatdef}
+	\end{equation}
+	Note how the energies for the sigma bonds are localized to either the $C-C$ or $C-H$ bonds and are localized to one single orbital, while the energy for the $p_z$ orbitals of each carbon are dependent on $m$ and are delocalized over the whole ring.\\
+	Ordering the orbital energies and filling up the orbitals using the usual rules we have that the two hybrid $sp^2$ orbitals $\sigma_{CH},\sigma_{CC}$ are completely filled, while the delocalized $\pi_{CC}$ orbital is filled only in the lower levels with $m=0,\pm1$<++>
+\end{document}

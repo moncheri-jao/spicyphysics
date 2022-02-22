@@ -1,0 +1,290 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	We start by directly writing the Schrödinger equation for a two electron atom in atomic units, where
+	\begin{equation*}
+		\begin{aligned}
+			\hbar&=1\\
+			k_e&=\frac{1}{4\pi\epsilon_0}=1\\
+			e&=1
+		\end{aligned}
+	\end{equation*}
+	We immediately have
+	\begin{equation}
+		\opr{\ham}=-\frac{1}{2}\nabla_1^2-\frac{1}{2}\nabla_2^2-\frac{Z}{r_1}-\frac{Z}{r_2}+\frac{1}{r_{12}}
+		\label{eq:twoelectronham}
+	\end{equation}
+	In this case we have that the wavefunction is simmetric to spatial exchange of the two electrons (also called para-wavefunction, similarly spatially antisymmetric wavefunction are called ortho-wavefunctions).\\
+	We also must impose the Pauli exclusion principle, by taking into account the electrons' spin. We end up having our wavefunction as
+	\begin{equation}
+		\Psi(q_1,q_2)=\psi(x_i^1,x_i^2)\chi_{1/2,m_s}(1,2)
+		\label{eq:wavefunctiontwoeminus}
+	\end{equation}
+	As we know already, the basis spinor wavefunction for a system of two electrons can be either antisymmetric (singlet) or symmetric (triplet), and hence can take the following shapes
+	\begin{equation*}
+		\begin{aligned}
+			\ket{00}&=\frac{1}{\sqrt{2}}\left( \ket{\up}\ket{\down}-\ket{\down}\ket{\up} \right)\\
+			\ket{11}&=\ket{\up}\ket{\up}\\
+			\ket{10}&=\frac{1}{\sqrt{2}}\left( \ket{\up}\ket{\down}+\ket{\down}\ket{\up} \right)\\
+			\ket{1\down1}&=\ket{\down}\ket{\down}
+		\end{aligned}
+	\end{equation*}
+	Due to Pauli's exclusion principle, we have that the final wavefunction must be completely antisymmetric, hence, if we have a para wavefunction $\psi_+$, the final solution will take the shape
+	\begin{equation}
+		\Psi(q_1,q_2)=\psi_+(x_i^1,x_i^2)\chi_{00}
+		\label{eq:parawave}
+	\end{equation}
+	Or analoguously, if we have an ortho wavefunction
+	\begin{equation}
+		\Psi(q_1,q_2)=\psi_-(x_i^1,x_i^2)\cdot\left.\begin{dcases}\chi_{11}\\\chi_{10}\\\chi_{1-1}\end{dcases}\right\}
+		\label{eq:orthowave}
+	\end{equation}
+	Written this, one may immediately ask what's then the scheme of energy levels? As an example we take an Helium atom. We have that $Z=2<<40$, hence we have a set of levels of an almost independent levels, one of ortho-triplet states and one of para-singlet states. The lowest energy levels, are divided then between singlets ($S=0$) and triplets ($S=1$), where $S$ is the total spin.\\
+	Let $L$ be the sum of the eigenvalues of the square angular momentum of both electrons and $M_L$ the sum of the eigenvalues of the projection. We can introduce the \textit{spectroscopic terms} as a new notation for atomic energy levels. They're written as follows
+	\begin{equation}
+		^{2S+1}L_{M_J}
+		\label{eq:atomictermsymboldef}
+	\end{equation}
+	The term $L$, analogously to the term $l$ for particles, takes the ``values'' $S,P,D,F,G,H,\cdots$, as $l$, which takes values $s,p,d,f,g,h,\cdots$. In addition, on the top left of the term there is indicated the \textit{multiplicity of the state}, which indicates whether it's a singlet or a triplet state, in terms of total spin. On the bottom right there are indicated the possible $M_J$ values of the considered system.
+	\section{Independent Particle Model}
+	In order to get a first approach to two-electron atoms, we need to develop an approximate theory, in which the $e^--e^-$ interaction is taken as a perturbation on the system
+	\begin{equation}
+		\begin{aligned}
+			\opr{\ham}&=-\frac{1}{2}\nabla^2_1-\frac{Z}{r_1}-\frac{1}{2}\nabla^2_2-\frac{Z}{r_2}+\opr{\ham}'\\
+			\opr{\ham}'&=\frac{1}{r_{12}}\\
+			\opr{\ham}&=\opr{h}_1+\opr{h}_2+\opr{\ham}'=\opr{\ham}_0+\opr{\ham}'
+		\end{aligned}
+		\label{eq:indepparticles}
+	\end{equation}
+	In this case we have that the eigenvalues of the single electron Hamiltonian ($\opr{h}_i$) are known to be the following
+	\begin{equation*}
+		\opr{h}_i\psi_{nlm_i}(x^i_j)=-\frac{Z^2}{2n_i^2}\psi_{nlm_i}(x^i_j)\quad i=1,2;\ j=1,2,3
+	\end{equation*}
+	Hence, in general, we then have the following solution for the unperturbed Hamiltonian
+	\begin{equation}
+		\opr{\ham}_0\psi^0(x^1_i,x^2_i)=-\frac{Z^2}{2}\left( \frac{1}{n_1^2}+\frac{1}{n_2^2} \right)\psi_{n_1l_1m_1}(x_i^1)\psi_{n_2l_2m_2}(x_i^2)
+		\label{eq:unpertsol2el}
+	\end{equation}
+	This solution adds up a new exchange degeneracy of the state. We already know tho that the final wavefunction must be the symmetrization or antisymmetrization of the two single electron wavefunctions. In Dirac notation, using $\ket{1,2}$ for the full wavefunction and $\ket{i}$ for the single electron wavefunction, we must then have
+	\begin{equation}
+		\ket{1,2}_{\pm}=\frac{1}{\sqrt{2}}\left( \ket{1}\ket{2}\pm\ket{2}\ket{1} \right)
+		\label{eq:twoelectronatomwf}
+	\end{equation}
+	Therefore, we can take the antisymmetric wavefunctions ($\psi^0_-$) as an approximation for ortho states and ($\psi^0_+$) for para states.\\
+	This consideration lets the ortho wavefunction vanish for the ground state of the system, in accord with the Pauli exclusion principle, hence there can exist a single para-singlet state as ground state, for which, the associated wavefunction is the following
+	\begin{equation}
+		\bra{1,2}\ket{1s,1s}=\psi_{GS}^0=\psi_{1s}(x_i^1)\psi_{1s}(x_i^2)=\frac{Z^3}{\pi}e^{-Z(r_1+r_2)}
+		\label{eq:independentgs}
+	\end{equation}
+	This result, gives then for Helium ($Z=2$) $E_{GS}^0=-Z^2=-4$ a.u. ($-108.8$ eV), which corresponds to a ionization potential of $I_p=Z^2/2=2$ a.u ($54.4$ eV). The experimental values are not in accord with these results, which are $E_{GS}^{exp}=-2.90$ a.u. ($-79.0$ eV) and a ionization potential $I_p^{exp}=0.90$ a.u. ($24.6$ eV).\\
+	This final result is quite far from the experimental result, since we neglected the $e^--e^-$ interaction.
+	\subsection{Central Field Approximation}
+	We now take again our equation \eqref{eq:indepparticles} and we take a new unperturbed Hamiltonian, which is the sum of the two single particle hamiltonians
+	\begin{equation}
+		\opr{h}_i'=-\frac{1}{2}\nabla_i^2+V(r_i)
+		\label{eq:newsingleparthamind}
+	\end{equation}
+	And we modify the perturbation, getting this new formula
+	\begin{equation}
+		\opr{\ham}'=\frac{1}{r_{12}}-\frac{Z}{r_1}-V(r_1)-\frac{Z}{r_2}-V(r_2)
+		\label{eq:newpertindel}
+	\end{equation}
+	In this new representation of the problem, we need to choose a central potential $V(r_i)$, for which we have that $\opr{\ham}'$ is small enough. We choose his potential to be the following
+	\begin{equation*}
+		V(r)=-\frac{Z-S}{r}=-\frac{Z_e}{r}
+	\end{equation*}
+	Where $S$ is some constant, called \textit{screening constant}. What we indicated with $Z_e$ is commonly considered as an \textit{effective charge}.\\
+	Since the new potential is a Coulomb potential, we already know the ground state wavefunction and the energy levels, since we might simply insert the substitution $Z\to Z_e$ in what we have already found.\\
+	Writing $u_{nlm}$ as the single particle equation, we will have that the single-particle energy levels will depend directly on $l$, breaking the degeneracy on that quantum number. Our complete wavefunction for discrete excited states will then be the following
+	\begin{equation}
+		\psi_{\pm}'(x_i^1,x_i^2)=\frac{1}{\sqrt{2}}\left( u_{100}(x_i^1)u_{nlm}(x_i^2)\pm u_{nlm}(x_i^1)u_{100}(x_i^2) \right)
+		\label{eq:generalpsitwononinteminus}
+	\end{equation}
+	The total energy of the atom will then be, simply
+	\begin{equation}
+		E^0_{nl}=E_{1s}+E_{nl}
+	\end{equation}
+	Where $E_{nl}$ depends on the chosen potentia $V(r_i)$, and is $E_{nl}=-Z_{nl}^2/n^2$.\\
+	In the special case of a completely screened electron we will have $S=1$, and the energy levels will then be described, in the non-interacting electron approximation as follows
+	\begin{equation}
+		E_n^0=-\frac{Z^2}{2}-\frac{(Z-1)^2}{2n^2}
+		\label{eq:newlevels}
+	\end{equation}
+	\section{Ground State of Two Electron Atoms}
+	\subsection{Perturbation Theory}
+	We have already seen that the ground state eigenket of two electron atoms, in its most general expression can be written as follows
+	\begin{equation}
+		\ket{q_1,q_2}=\frac{1}{\sqrt{2}}\ket{1,2}\left( \ket{\up}_1\ket{\down}_2-\ket{\down}_1\ket{\up}_2 \right)
+		\label{eq:2eminusatomgsstate}
+	\end{equation}
+	Using perturbation theory, we can already get a nice guess of the ground state correction, via the calculus of the matrix elements $\bra{1s,1s}\opr{\ham}'\ket{1s,1s}$, where $\opr{\ham}'=r_{12}^{-1}$. Writing explicitly the integral, we get
+	\begin{equation}
+		E_0^1=\int_{0}^{\infty}\abs{\psi_{1s}(r_1)}^2\frac{1}{r_{12}}\abs{\psi_{1s}(r_2)}^2\ddiff{r_1}{r_2}
+		\label{eq:ptgspert}
+	\end{equation}
+	Using the following conversion, and the connection between Legendre polynomials and spherical harmonics, we have that, firstly
+	\begin{equation*}
+		\frac{1}{r_{12}}=\sum_{l=0}^{\infty}\frac{\min^l(r_1,r_2)}{\max^{l+1}(r_1,r_2)}P_l(\cos\theta)
+	\end{equation*}
+	Hence
+	\begin{equation*}
+		\frac{1}{r_{12}}=\sum_{l=0}^{\infty}\sum_{m=-l}^l\frac{4\pi}{2l+1}\frac{\min^l(r_1,r_2)}{\max^{r+1}(r_1,r_2)}\cc{Y}^m_l(\theta_1,\phi_1)Y^m_l(\theta_2,\phi_2)
+	\end{equation*}
+	Plugging it into the integral, and using the properties of spherical harmonics, we get
+	\begin{equation*}
+		E_0^1=\frac{Z^6}{\pi^2}\sum_{l=0}^{\infty}\sum_{m=-l}^l\frac{16\pi^2}{2l+1}\int_{0}^{\infty}r_1^2\diff{r_1}\int_{0}^{\infty}e^{-2Z(r_1+r_2)}\frac{r_m^l}{r_M^{l+1}}\kd{l0}\kd{m0}\diff{r_2}
+	\end{equation*}
+	Contracting the indices with the sums and the Kronecker deltas, we have our final integral
+	\begin{equation}
+		E_0^1=16Z^6\int_{0}^{\infty}e^{-2Zr_1}r_1^2\diff{r_1}\left( \frac{1}{r_1}\int_{0}^{r_1}e^{-2Zr_2}r_2^2\diff{r_2}+\int_{r_1}^{\infty}e^{-2Zr_2}r_2\diff{r_2} \right)
+		\label{eq:energygshegspt}
+	\end{equation}
+	The integrals give the value $5/128 Z^5$, hence, we get our correction
+	\begin{equation}
+		E_0^1=\frac{5}{8}Z
+		\label{eq:pthegscorr}
+	\end{equation}
+	The final approximate energy is then
+	\begin{equation}
+		E_0\approx E_0^0+E_0^1=-Z^2+\frac{5}{8}Z
+		\label{eq:pthecorrtotal}
+	\end{equation}
+	\subsection{Variational Methods}
+	Proceding instead using variational calculus, we set our $\ket{1s}$ wavefunction to be dependent from a parameter $Z_e$, which will be needed to minimize the following functional
+	\begin{equation}
+		E[\phi]=\frac{\bra{\phi}\opr{\ham}\ket{\phi}}{\braket{\phi}}
+		\label{eq:phiwavefunction}
+	\end{equation}
+	Where we set $\ket{\phi}=\ket{1s}_1\otimes\ket{1s}_2$.\\
+	Calculating and introducing here the quantum virial theorem, we get that
+	\begin{equation}
+		\bra{\phi}\frac{\opr{p}^2_1}{2m}\ket{\phi}=\bra{\phi}\frac{\opr{p}^2_2}{2m}\ket{\phi}=\bra{1s}\frac{\opr{p}^2}{2m}\ket{1s}=\frac{1}{2}Z_e^2
+		\label{eq:expectedvalueheliumelectrons}
+	\end{equation}
+	We then also have
+	\begin{equation}
+		-\bra{\phi}\frac{Z}{r_1}+\frac{Z}{r_2}\ket{\phi}=-2ZZ_e
+		\label{eq:potentialexpval}
+	\end{equation}
+	And, due to our previous calculations
+	\begin{equation}
+		\bra{\phi}\frac{1}{r_{12}}\ket{\phi}=\frac{5}{8}Z_e
+		\label{eq:r12expval}
+	\end{equation}
+	The final result is our energy as a function of the parameter $Z_e$, which is
+	\begin{equation}
+		E(Z_e)=Z_e^2-2ZZ_e+\frac{5}{8}Z_e
+		\label{eq:heliumenergyparameter}
+	\end{equation}
+	We search for an extremal of this function deriving with respect to the parameter, and we get
+	\begin{equation}
+		\begin{aligned}
+			\pdv{E}{Z_e}&=2Z_e-2Z+\frac{5}{8}\\
+			Z_e&=Z-\frac{5}{16}
+		\end{aligned}
+		\label{eq:parametervalue}
+	\end{equation}
+	Hence, since our energy was $E_0=-Z_e^2$, we get, in atomic units, that for Helioid atoms, the energy of the ground state will be approximated as follows
+	\begin{equation}
+		E_0^{GS}=-\left( Z-\frac{5}{16} \right)^2=-Z^2+\frac{5}{8}Z-\frac{25}{256}
+		\label{eq:heliumgsfinal}
+	\end{equation}
+	Plugging in the values for Helium, we find that $E_0=2.84766\ \mathrm{au}$, a value that differs only by the $0.056\ \mathrm{au}$ from the experimental value.\\
+	Another way of finding a more precise ground state energy has been found by Hylleraas, where another set of coordinates is chosen, and the trial wavefunction has multiple variational parameters. These are the following coordinates
+	\begin{equation*}
+		\begin{aligned}
+			s&=r_1+r_2\\
+			t&=r_1-r_2\\
+			u&=r_{12}=\norm{\vec{r}_1-\vec{r}_2}
+		\end{aligned}
+	\end{equation*}
+	The trial wavefunction is the following
+	\begin{equation*}
+		\phi(s,t,u)=e^{-ks}\sum_{l=0}^N\sum_{m=0}^N\sum_{n=0}^Nc_{l,2m,n}s^lt^{2m}u^m
+	\end{equation*}
+	Where $c_{l,2m,n}$ are linear variational parameters, and $k$ is a nonlinear variational parameter that behaves like the effective charge $Z_e$.\\
+	Since the ground state must be a para state, this wavefunction must be an even function of $t$. Calculating for $N=5$, we have $6$ variational parameters, we have that the energy calculated is $-2.90324\ \mathrm{au}$, which is surprisingly close to the experimental value, differing only by $4.8\cdot10^{-4}\ \mathrm{au}$ ($0.013\ \mathrm{eV}$).
+	\section{Excited States of Two Electron Atoms}
+	We will now treat the excited states of Helioid atoms, with the same methods used for evaluating the ground states.
+	\subsection{Perturbation Theory}
+	Firstly, we apply perturbation theory to our system, formed by the sum $\opr{\ham}_0+\opr{\ham}'$, with $\opr{\ham}'=r_{12}^{-1}$.\\
+	We already know that these states must either be parastates or orthostates, hence we will need our wavefunction to be either exchange-symmetric or exchange-antisymmetric. The energy perturbation will then depend on the sign of the wavefuction. We also know that $\comm{\opr{\ham}'}{\opr{L}_z}=0$, hence we can write the following result
+	\begin{equation}
+		E_{\pm}^1=\bra{\psi^0_{\pm}}\opr{\ham}'\ket{\psi^0_{\pm}}=J\pm K
+		\label{eq:energyplusminusexcited}
+	\end{equation}
+	Where
+	\begin{equation}
+		\begin{aligned}
+			J&=\int_{\mathbb{R}^3\times\mathbb{R}^3}\abs{\psi_{100}(\vec{r}_1)}^2\frac{1}{r_{12}}\abs{\psi_{nlm}(\vec{r}_2)}^2\ddiff[3]{r_1}{r_2}\\
+			K&=\int_{\mathbb{R}^3\times\mathbb{R}^3}\cc{\psi_{100}}(\vec{r}_1)\cc{\psi_{nlm}}(\vec{r}_2)\frac{1}{r_{12}}\psi_{100}(\vec{r}_2)\psi_{nlm}(\vec{r}_1)\ddiff[3]{r_1}{r_2}
+		\end{aligned}
+		\label{eq:jkintegrals}
+	\end{equation}
+	Where $n\ge2$. The integral $J$ is called \textit{Coulomb or direct integral} and $K$ is called \textit{Exchange integral}.\\
+	Expanding $r_{12}^{-1}$ in spherical harmonics, we get
+	\begin{equation}
+		\begin{aligned}
+			J_{nl}&=\int_{0}^{\infty}R_{nl}(r_2)r_2^2\diff{r_2}\int_{0}^{\infty}R_{10}^2(r_1)\frac{r_1^2}{\max(r_1,r_2)}\diff{r_1}\\
+			K_{nl}&=\frac{1}{2l+1}\int_{0}^{\infty}R_{10}(r_2)R_{nl}(r_2)r^2_2\diff{r_2}\int_{0}^{\infty}R_{10}(r_1)R_{nl}(r_1)\frac{\min^l(r_1,r_2)}{\max^{l+1}(r_1,r_2)}r_1^2\diff{r_1}
+		\end{aligned}
+		\label{eq:jkcompleteshexpansion}
+	\end{equation}
+	Hence, $E_{\pm}^1=E_{nl\pm}^1$, so the energy after this correcion directly depends on $n,l$.\\
+	At first order, we can then write
+	\begin{equation}
+		E_{nl\pm}\approx E_{1n}^0+E_{nl\pm}^1=-\frac{Z^2}{2}\left( 1+\frac{1}{n^2} \right)+J_{nl}\pm K_{nl}
+		\label{eq:energyshiftjkintegrals}
+	\end{equation}
+	In order to see how this perturbation acts, we can see that $J_{nl}$ must be always positive. Seeing that for $l=n-1$, $R_{n,n-1}$ has no nodes, hence $K_{n,n-1}>0$. It can also be seen that, in general $K_{nl}>0$, so, from $\eqref{eq:energyshiftjkintegrals}$ we see that an orthostate has an energy lower to the corresponding parastate.\\
+	This can be seen introducing spin into our calculus, as follows.
+	\begin{equation}
+		E_{nl\pm}^1=J_{nl}-\frac{1}{2}\left( 1+\sigma_i^1\sigma^i_2 \right)K_{nl}
+		\label{eq:spinenergyjk}
+	\end{equation}
+	Where $\sigma_i^j$ are the pauli matrices of the two electrons.\\
+	\subsection{Variational Methods}
+	Variational methods can be applied supposing that the higher-order wavefunction are orthogonal to the ground-state trial function and then calculate the variational integrals.\\
+	This method is best applied on singular states.\\
+	Starting with the $2^3S$ state of the atom, we have that, using variational parameters $Z_i,Z_o$ as the inner and outer effective charge, we can write the state as follows
+	\begin{equation}
+		\ket{2^3S}=N\left( \ket{1s}\ket{2s}-\ket{2s}\ket{1s} \right)
+		\label{eq:tripletSvarstate}
+	\end{equation}
+	Where
+	\begin{equation}
+		\begin{aligned}
+			u_{1s}(r)&=e^{-Z_ir}\\
+			v_{2s}(r)&=\left( 1-\frac{Z_or}{2} \right)e^{-\frac{Z_or}{2}}
+		\end{aligned}
+		\label{eq:trialwavefunctionstripletS}
+	\end{equation}
+	Substituting into the variational integral and finding the minimum, we get $Z_i=2.01$ au and $Z_o=1.53$ au, which yeld $E_{2^3S}=-2.167$ au. Analogously, one can use Hylleraas wavefunction in order to get a more precise result.\\
+	For $2^1P$ and $2^3P$ states, we use the following state kets
+	\begin{equation}
+		\begin{aligned}
+			\ket{2^1P}&=N_+\left( \ket{1s}_1\ket{2pm}_2+\ket{2pm}_1\ket{2s}_2 \right)\\
+			\ket{2^3P}&=N_-\left( \ket{1s}_1\ket{2pm}_2-\ket{2pm}_1\ket{2s}_2 \right)
+		\end{aligned}
+		\label{eq:2SPstateshe}
+	\end{equation}
+	With wavefunctions
+	\begin{equation}
+		\begin{aligned}
+			u_{1s}(r)&=e^{-Z_ir}\\
+			v_{2pm}(r)&=re^{\frac{Z_0r}{2}}Y^1_m(\ver{r})
+		\end{aligned}
+		\label{eq:wavefunctions2pstates}
+	\end{equation}
+	The variation gives, in atomic units
+	\begin{equation*}
+		\begin{aligned}
+			Z_i^{2^1P}&=2.00\\
+			Z_o^{2^1P}&=0.97\\
+			E_{2^1P}&=-2.123\\
+			Z_i^{2^3P}&=1.99\\
+			Z_o^{2^3P}&=1.09\\
+			E_{2^3P}&=-2.131
+		\end{aligned}
+	\end{equation*}
+	The two theoretical values are around $3$ au from the experimental measurements.\\
+\end{document}

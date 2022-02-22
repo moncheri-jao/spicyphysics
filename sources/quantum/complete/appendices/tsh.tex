@@ -1,0 +1,74 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	In this appendix, we will treat the particular theme of spin-orbit angular momenta addition, and tensor spherical harmonics.\\
+	We define our total angular momentum as follows
+	\begin{equation}
+		\vecopr{J}=\vecopr{L}\otimes\1+\1\otimes\vecopr{S}
+		\label{eq:totalsoangmom}
+	\end{equation}
+	We then define our common basis between these operators and their projections, as in the general rules of angular momenta addition, using Clebsch-Gordan coefficients
+	\begin{equation*}
+		\ket{lsjm}=\sum_{m_l=-l}^l\sum_{m_s=-s}^s\bra{lsm_lm_s}\ket{lsjm}\ket{lsm_lm_s}
+	\end{equation*}
+By definition we then have that the eigenvalues of $\opr{J}^2,\opr{J}_z$ can then take the following values
+	\begin{equation*}
+		\begin{aligned}
+			\abs{l-s}&\le j\le l+s\\
+			m&=m_l+m_s
+		\end{aligned}
+	\end{equation*}
+	We then recall that, in Schrödinger representation, the eigenfunctions of $\vecopr{L}$ and $\vecopr{S}$ are the following
+	\begin{equation}
+		\begin{dcases}
+			\bra{x_i}\opr{S}^2\ket{sm_s}=\hbar^2s(s+1)\bra{x_i}\ket{sm_s}&\bra{x_i}\opr{S}_z\ket{sm_s}=\hbar m_s\bra{x_i}\ket{sm_s}\\
+			\bra{x_i}\opr{L}^2\ket{lm_l}=\hbar^2l(l+1)\bra{x_i}\ket{lm_l}&\bra{x_i}\opr{L}_z\ket{lm_l}=\hbar m_l\bra{x_i}\ket{lm_l}
+		\end{dcases}
+		\label{eq:lseigen}
+	\end{equation}
+	Where $\bra{x_i}\ket{sm_s}=\chi_{sm_s}$ is the basis spinor and $\bra{x_i}\ket{lm_l}=Y^{m_l}_l(\theta,\phi)$ are the spherical harmonics.\\
+	In the new basis of common eigenvectors of $\opr{J}^2,\opr{J}_z,\opr{L}^2,\opr{S}^2$ we then define the \textit{tensor spherical harmonics} $\bra{x_i}\ket{lsjm}=\mc{Y}^{ls}_{jm}(\theta,\phi)$ as follows
+	\begin{equation}
+		\begin{dcases}
+			\opr{J}^2\mc{Y}^{ls}_{jm}(\theta,\phi)=\hbar^2j(j+1)\mc{Y}^{ls}_{jm}(\theta,\phi)&\opr{J}_z\tsph=\hbar m\tsph\\
+			\opr{L}^2\tsph=\hbar^2l(l+1)\tsph&\opr{S}^2\tsph=\hbar^2s(s+1)\tsph
+		\end{dcases}
+		\label{eq:tsphaction}
+	\end{equation}
+	By definition then, we can define the tensor spherical harmonics as follows
+	\begin{equation}
+		\begin{aligned}
+			\ket{lsjm}&=\sum_{m_l=-l}^l\sum_{m_s=-s}^s\bra{lsm_lm_s}\ket{jm}\ket{lm_l}\otimes\ket{sm_s}\\
+			\tsph&=\sum_{m_l=-l}^l\sum_{m_s=-s}^s\bra{lsm_lm_s}\ket{jm}\bra{x_i}\ket{lm_l}\otimes\bra{x_i}\ket{sm_s}
+		\end{aligned}
+		\label{eq:tsphdef}
+	\end{equation}
+	Or, indicating the Clebsch-Gordan coefficients as $C^{lsm_lm_s}_{jm}$
+	\begin{equation*}
+		\tsph=C^{lsm_lm_s}_{jm}\sph\chi_{sm_s}
+	\end{equation*}
+	\section{Spin $1/2$ System}
+	The overall problem simplifies enormously for $s=\frac{1}{2}$ systems. The permitted values of $j$ are $l+1/2$ and $l-1/2$ and, the Clebsch-Gordan coefficients, are then simply the following
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			&&\\
+			$j$&$m_s=\tfrac{1}{2}$&$m_s=-\tfrac{1}{2}$\\
+			&&\\
+			\hline
+			&&\\
+			$l+\frac{1}{2}$&$\sqrt{\frac{l+m+\frac{1}{2}}{2l+1}}$&$\sqrt{\frac{l+m+\frac{1}{2}}{2l+1}}$\\
+			&&\\
+			\hline
+			&&\\
+			$l-\frac{1}{2}$&$-\sqrt{\frac{l+m+\frac{1}{2}}{2l+1}}$&$\sqrt{\frac{l+m+\frac{1}{2}}{2l+1}}$\\
+			&&\\
+			\hline
+		\end{tabular}
+	\end{table}
+	\begin{equation}
+		\mc{Y}^{l\frac{1}{2}}_{l\pm\frac{1}{2},m}(\theta,\phi)=\frac{1}{\sqrt{2l+1}}\begin{pmatrix}\pm\sqrt{l\pm m+\tfrac{1}{2}}Y_l^{m-\frac{1}{2}}(\theta,\phi)\\\sqrt{l\mp m+\tfrac{1}{2}}Y^{m+\frac{1}{2}}_l(\theta,\phi)\end{pmatrix}
+		\label{eq:tensorsphericalharm}
+	\end{equation}
+	Which can then be manipulated in order to get various useful informations, as spin-orbit coupling eigenvalues, which appear in atomic physics in the relativistic approximation of hydrogenoid atoms.
+\end{document}

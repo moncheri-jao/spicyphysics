@@ -1,0 +1,9 @@
+PWD /home/birrabenzina/Dropbox/quantum/titlepage
+INPUT /var/lib/texmf/web2c/luatex/lualatex.fmt
+INPUT ./title.tex
+OUTPUT title.log
+INPUT /usr/share/texmf-dist/tex/luatex/lualibs/lualibs-basic.lua
+INPUT /usr/share/texmf-dist/tex/luatex/lualibs/lualibs-basic-merged.lua
+INPUT /usr/share/texmf-dist/tex/luatex/lualibs/lualibs-compat.lua
+INPUT /usr/share/texmf-dist/tex/luatex/lualibs/lualibs-extended.lua
+INPUT /usr/share/texmf-dist/tex/luatex/lualibs/lualibs-extended-merged.lua

@@ -1,0 +1,469 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{struttura}{book}{}
+      \name{author}{2}{}{%
+        {{hash=6f8c0c95c51fa06465c7eafd7053d100}{%
+           family={Bransden},
+           familyi={B\bibinitperiod},
+           given={B.\bibnamedelimi H.},
+           giveni={B\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=b573826dd20a011501cdaa423ab001a4}{%
+           family={Joachain},
+           familyi={J\bibinitperiod},
+           given={C.\bibnamedelimi J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Longman Scientific \& Technical, John Wiley \& Sons Inc.}%
+      }
+      \strng{namehash}{32b7d32b224ff85fd25f96de33145a9a}
+      \strng{fullhash}{32b7d32b224ff85fd25f96de33145a9a}
+      \strng{bibnamehash}{32b7d32b224ff85fd25f96de33145a9a}
+      \strng{authorbibnamehash}{32b7d32b224ff85fd25f96de33145a9a}
+      \strng{authornamehash}{32b7d32b224ff85fd25f96de33145a9a}
+      \strng{authorfullhash}{32b7d32b224ff85fd25f96de33145a9a}
+      \field{labelalpha}{BJ90}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Physics of Atoms and Molecules}
+      \field{year}{1990}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{struttura1}{book}{}
+      \name{author}{2}{}{%
+        {{hash=64bd2c6b75d331c71e1310063871a298}{%
+           family={Bachelet},
+           familyi={B\bibinitperiod},
+           given={G.\bibnamedelimi B.},
+           giveni={G\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=aaa0bb305d981a1e91f594cdd8c40f0b}{%
+           family={Servedio},
+           familyi={S\bibinitperiod},
+           given={V.\bibnamedelimi D.\bibnamedelimi P.},
+           giveni={V\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Aracne Editrice}%
+      }
+      \strng{namehash}{39516033a2eb6177e2f9b929a32d3c38}
+      \strng{fullhash}{39516033a2eb6177e2f9b929a32d3c38}
+      \strng{bibnamehash}{39516033a2eb6177e2f9b929a32d3c38}
+      \strng{authorbibnamehash}{39516033a2eb6177e2f9b929a32d3c38}
+      \strng{authornamehash}{39516033a2eb6177e2f9b929a32d3c38}
+      \strng{authorfullhash}{39516033a2eb6177e2f9b929a32d3c38}
+      \field{labelalpha}{BS17}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Elementi di Fisica Atomica, Molecolare e dei Solidi}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{molekulphysik}{book}{}
+      \name{author}{1}{}{%
+        {{hash=6f90b4471a2206bb62a8576e485a0006}{%
+           family={Demtröder},
+           familyi={D\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oldenbourg Verlag München Wien}%
+      }
+      \strng{namehash}{6f90b4471a2206bb62a8576e485a0006}
+      \strng{fullhash}{6f90b4471a2206bb62a8576e485a0006}
+      \strng{bibnamehash}{6f90b4471a2206bb62a8576e485a0006}
+      \strng{authorbibnamehash}{6f90b4471a2206bb62a8576e485a0006}
+      \strng{authornamehash}{6f90b4471a2206bb62a8576e485a0006}
+      \strng{authorfullhash}{6f90b4471a2206bb62a8576e485a0006}
+      \field{labelalpha}{Dem03}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{3486249746}
+      \field{title}{Molekülphysik, Teoretische Grundlagen und Experimentelle Methoden}
+      \field{year}{2003}
+      \true{nocite}
+    \endentry
+    \entry{nucleare}{book}{}
+      \name{author}{2}{}{%
+        {{hash=f66992173157700a1c50badaf32e4f48}{%
+           family={Dionisi},
+           familyi={D\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=68ed9cb30b36853240b88656f06e7be7}{%
+           family={Longo},
+           familyi={L\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{8093b7c81ef8e8a90d5788707d6a3b20}
+      \strng{fullhash}{8093b7c81ef8e8a90d5788707d6a3b20}
+      \strng{bibnamehash}{8093b7c81ef8e8a90d5788707d6a3b20}
+      \strng{authorbibnamehash}{8093b7c81ef8e8a90d5788707d6a3b20}
+      \strng{authornamehash}{8093b7c81ef8e8a90d5788707d6a3b20}
+      \strng{authorfullhash}{8093b7c81ef8e8a90d5788707d6a3b20}
+      \field{labelalpha}{DL17}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Fisica Nucleare e Subnucleare}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{griffmq}{book}{}
+      \name{author}{1}{}{%
+        {{hash=ca66bbf3ab1a52eadeefc36dc52dc408}{%
+           family={Griffiths},
+           familyi={G\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education International}%
+      }
+      \strng{namehash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{fullhash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{bibnamehash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{authorbibnamehash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{authornamehash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{authorfullhash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \field{extraname}{1}
+      \field{labelalpha}{Gri05}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introduction to Quantum Mechanics}
+      \field{year}{2005}
+      \true{nocite}
+    \endentry
+    \entry{griffpart}{book}{}
+      \name{author}{1}{}{%
+        {{hash=ca66bbf3ab1a52eadeefc36dc52dc408}{%
+           family={Griffiths},
+           familyi={G\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {WILEY-VCH Verlag GmbH \& Co. KGaA, Weinheim}%
+      }
+      \strng{namehash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{fullhash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{bibnamehash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{authorbibnamehash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{authornamehash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \strng{authorfullhash}{ca66bbf3ab1a52eadeefc36dc52dc408}
+      \field{extraname}{2}
+      \field{labelalpha}{Gri87}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9783-527-40601-2}
+      \field{title}{Introduction to Elementary Particles}
+      \field{year}{1987}
+      \true{nocite}
+    \endentry
+    \entry{landau3}{book}{}
+      \name{author}{3}{}{%
+        {{hash=ab77fc1405f1025268c1fed8c4fe3104}{%
+           family={Landau},
+           familyi={L\bibinitperiod},
+           given={L.\bibnamedelimi D.},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=68f89b1b6812be21ce1e8e144ff579de}{%
+           family={Lifshits},
+           familyi={L\bibinitperiod},
+           given={E.\bibnamedelimi M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=bcbde67a36840adc06858468fc60e362}{%
+           family={Pitajevsky},
+           familyi={P\bibinitperiod},
+           given={L.\bibnamedelimi P.},
+           giveni={L\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIR}%
+      }
+      \strng{namehash}{5b6716c34fc814a47895d14f45a275c3}
+      \strng{fullhash}{5b6716c34fc814a47895d14f45a275c3}
+      \strng{bibnamehash}{5b6716c34fc814a47895d14f45a275c3}
+      \strng{authorbibnamehash}{5b6716c34fc814a47895d14f45a275c3}
+      \strng{authornamehash}{5b6716c34fc814a47895d14f45a275c3}
+      \strng{authorfullhash}{5b6716c34fc814a47895d14f45a275c3}
+      \field{labelalpha}{LLP89}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Course of Theoretical Physics, Vol.3, Non-relativistic Quantum Mechanics}
+      \field{year}{1989}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{relativita}{book}{}
+      \name{author}{1}{}{%
+        {{hash=2dd8ee5052a98cf1e28888d0e62e2ca4}{%
+           family={Paramatti},
+           familyi={P\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{fullhash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{bibnamehash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{authorbibnamehash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{authornamehash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \strng{authorfullhash}{2dd8ee5052a98cf1e28888d0e62e2ca4}
+      \field{labelalpha}{Par11}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cinematica Relativistica}
+      \field{year}{2011}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{pdg}{book}{}
+      \name{author}{1}{}{%
+        {{hash=62f82d98d3dd4098ffb2e12b019f57fe}{%
+           family={(Particle\bibnamedelimb Data\bibnamedelima Group)},
+           familyi={(\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           given={M.\bibnamedelimi Tanabashi},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod},
+           prefix={et\bibnamedelima al.},
+           prefixi={e\bibinitperiod\bibinitdelim a\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Particle Data Group, LBNL, CERN}%
+      }
+      \strng{namehash}{62f82d98d3dd4098ffb2e12b019f57fe}
+      \strng{fullhash}{62f82d98d3dd4098ffb2e12b019f57fe}
+      \strng{bibnamehash}{62f82d98d3dd4098ffb2e12b019f57fe}
+      \strng{authorbibnamehash}{62f82d98d3dd4098ffb2e12b019f57fe}
+      \strng{authornamehash}{62f82d98d3dd4098ffb2e12b019f57fe}
+      \strng{authorfullhash}{62f82d98d3dd4098ffb2e12b019f57fe}
+      \field{labelalpha}{Par18}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Particle Physics Booklet}
+      \field{year}{2018}
+      \true{nocite}
+      \verb{urlraw}
+      \verb http://pdg.lbl.gov/
+      \endverb
+      \verb{url}
+      \verb http://pdg.lbl.gov/
+      \endverb
+    \endentry
+    \entry{quantistica}{book}{}
+      \name{author}{2}{}{%
+        {{hash=0a11f2fe2dd460962b8e18cbd29cfcbd}{%
+           family={Picasso},
+           familyi={P\bibinitperiod},
+           given={L.\bibnamedelimi E.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=e273ad158d6481e399f86c8f71158ca7}{%
+           family={d'Emilio},
+           familyi={d\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{4ce7e60f44f8ff9ec6b89e613c66eb0c}
+      \strng{fullhash}{4ce7e60f44f8ff9ec6b89e613c66eb0c}
+      \strng{bibnamehash}{4ce7e60f44f8ff9ec6b89e613c66eb0c}
+      \strng{authorbibnamehash}{4ce7e60f44f8ff9ec6b89e613c66eb0c}
+      \strng{authornamehash}{4ce7e60f44f8ff9ec6b89e613c66eb0c}
+      \strng{authorfullhash}{4ce7e60f44f8ff9ec6b89e613c66eb0c}
+      \field{labelalpha}{Pd16}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lectures in Quantum Mechanics}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{complessa}{book}{}
+      \name{author}{1}{}{%
+        {{hash=19ff1e965aff13dfd626cbba795760c9}{%
+           family={Presilla},
+           familyi={P\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{19ff1e965aff13dfd626cbba795760c9}
+      \strng{fullhash}{19ff1e965aff13dfd626cbba795760c9}
+      \strng{bibnamehash}{19ff1e965aff13dfd626cbba795760c9}
+      \strng{authorbibnamehash}{19ff1e965aff13dfd626cbba795760c9}
+      \strng{authornamehash}{19ff1e965aff13dfd626cbba795760c9}
+      \strng{authorfullhash}{19ff1e965aff13dfd626cbba795760c9}
+      \field{labelalpha}{Pre13}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9788847055001}
+      \field{title}{Elementi di Analisi Complessa, Funzioni di una Variabile}
+      \field{year}{2013}
+      \true{nocite}
+    \endentry
+    \entry{patritesta}{book}{}
+      \name{author}{2}{}{%
+        {{hash=55aafa8b1d698b3c6d547b4ddd34b67f}{%
+           family={Patrì},
+           familyi={P\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3da522089a48691002a3d5a698bce1b2}{%
+           family={Testa},
+           familyi={T\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Edizioni Nuova Cultura}%
+      }
+      \strng{namehash}{f450d11796970a177f3c7bee4a03bb1f}
+      \strng{fullhash}{f450d11796970a177f3c7bee4a03bb1f}
+      \strng{bibnamehash}{f450d11796970a177f3c7bee4a03bb1f}
+      \strng{authorbibnamehash}{f450d11796970a177f3c7bee4a03bb1f}
+      \strng{authornamehash}{f450d11796970a177f3c7bee4a03bb1f}
+      \strng{authorfullhash}{f450d11796970a177f3c7bee4a03bb1f}
+      \field{labelalpha}{PT15}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Fondamenti di Meccanica Quantistica}
+      \field{year}{2015}
+      \true{nocite}
+    \endentry
+    \entry{sakuraimqm}{book}{}
+      \name{author}{1}{}{%
+        {{hash=f7fe4eaf1ee9c40c20b04441f82e92e6}{%
+           family={Sakurai},
+           familyi={S\bibinitperiod},
+           given={J.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison Wesley Publishing Company}%
+      }
+      \strng{namehash}{f7fe4eaf1ee9c40c20b04441f82e92e6}
+      \strng{fullhash}{f7fe4eaf1ee9c40c20b04441f82e92e6}
+      \strng{bibnamehash}{f7fe4eaf1ee9c40c20b04441f82e92e6}
+      \strng{authorbibnamehash}{f7fe4eaf1ee9c40c20b04441f82e92e6}
+      \strng{authornamehash}{f7fe4eaf1ee9c40c20b04441f82e92e6}
+      \strng{authorfullhash}{f7fe4eaf1ee9c40c20b04441f82e92e6}
+      \field{labelalpha}{Sak94}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Modern Quantum Mechanics}
+      \field{year}{1994}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{statistica}{book}{}
+      \name{author}{1}{}{%
+        {{hash=7c8720a1a19df7aff88194a5aa2aee80}{%
+           family={Schwabl},
+           familyi={S\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag Berlin Heidelberg}%
+      }
+      \strng{namehash}{7c8720a1a19df7aff88194a5aa2aee80}
+      \strng{fullhash}{7c8720a1a19df7aff88194a5aa2aee80}
+      \strng{bibnamehash}{7c8720a1a19df7aff88194a5aa2aee80}
+      \strng{authorbibnamehash}{7c8720a1a19df7aff88194a5aa2aee80}
+      \strng{authornamehash}{7c8720a1a19df7aff88194a5aa2aee80}
+      \strng{authorfullhash}{7c8720a1a19df7aff88194a5aa2aee80}
+      \field{labelalpha}{Sch16}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Statistical Mechanics}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{relativitat}{book}{}
+      \name{author}{1}{}{%
+        {{hash=83f7f81cb8f671db34211f26e8145178}{%
+           family={Soler},
+           familyi={S\bibinitperiod},
+           given={E.\bibnamedelimi Massó},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
+           prefix={i},
+           prefixi={i\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Universitat Autònoma de Barcelona, Servei de Publicacions}%
+      }
+      \strng{namehash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{fullhash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{bibnamehash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{authorbibnamehash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{authornamehash}{83f7f81cb8f671db34211f26e8145178}
+      \strng{authorfullhash}{83f7f81cb8f671db34211f26e8145178}
+      \field{labelalpha}{Sol98}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{84-490-1284-8}
+      \field{title}{Curs de Relativitat Especial}
+      \field{year}{1998}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

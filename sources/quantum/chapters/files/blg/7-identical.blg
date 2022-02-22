@@ -1,0 +1,9 @@
+[3] Config.pm:312> INFO - This is Biber 2.15
+[4] Config.pm:315> INFO - Logfile is '7-identical.blg'
+[246] biber:330> INFO - === lun dic  7, 2020, 22:20:03
+[300] Biber.pm:415> INFO - Reading '7-identical.bcf'
+[542] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
+[566] Utils.pm:384> WARN - The file '7-identical.bcf' does not contain any citations!
+[599] bbl.pm:651> INFO - Writing '7-identical.bbl' with encoding 'UTF-8'
+[600] bbl.pm:754> INFO - Output to 7-identical.bbl
+[600] Biber.pm:128> INFO - WARNINGS: 1

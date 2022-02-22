@@ -260,6 +260,27 @@ Now, we can go back to our mathematical rigor.\newpage
 		\label{eq:1dfgraphlength}
 	\end{equation}
 \end{rmk}
+\begin{thm}[Length Invariance under Homotopy of Curves]
+	Let $\{\gamma_1\},\ \{\gamma_2\}\subset\R^n$ be two curves, such that $\gamma_1\sim\gamma_2$, then
+	\begin{equation*}
+		L_{\gamma_1}=L_{\gamma_2}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	By definition we have that since the two curves are homotopic, the two domains of definition of both are diffeomorphic to each other, and therefore
+	\begin{equation}
+		\gamma_1^\mu(t)=\gamma_2^\mu\left(\varphi(t)\right)
+		\label{eq:diffeomorph}
+	\end{equation}
+	Where $\varphi:I\fto[\sim]J$ is our $C^1$ diffeomorphism. Therefore
+	\begin{equation*}
+		L_{\gamma_1}=\int_{I}^{}\norm{\dot{\gamma}_1^\mu}_\mu\dd t=\int_{I}\norm{\dot{\gamma_2^\mu\left( \varphi(t) \right)}}_\mu\dd t=\int_{I}^{}\norm{(\gamma_2^\mu)'}_\mu\abs{\dot{\varphi}(t)}\dd t
+	\end{equation*}
+	Then, changing variables $t\to\varphi(t)=s$ we get
+	\begin{equation*}
+		L_{\gamma_1}=\int_{\varphi(I)}^{}\norm{(\gamma_2^\mu)'}_\mu\abs{\dot{\varphi}\left( \varphi^{-1}(s) \right)}(\varphi^{-1}(s))'\dd s=\int_{J}^{}\norm{(\gamma_2^\mu)'}_\mu\dd s=L_{\gamma_2}
+	\end{equation*}
+\end{proof}
 \begin{dfn}[Curviline Coordinate]
 	Let $\varphi:[a,b]\fto\R^n$, we can define a function $s(t)$ as follows
 	\begin{equation}
@@ -377,7 +398,7 @@ In $\Cf$ everything that was said about curves holds, however one must watch out
 		\end{equation*}
 	\end{enumerate}
 \end{proof}
-\begin{thm}[Continuous Differentiation]
+\begin{thm}[Total Differential]
 	Let $f:A\subset\R^n\fto\R$, with $A$ open. If $f\in C^1(A)$ (i.e. the derivatives of $f$ are continuous), then $f$ is differentiable in $A$, the vice versa is also true
 \end{thm}
 \begin{proof}
@@ -397,6 +418,21 @@ In $\Cf$ everything that was said about curves holds, however one must watch out
 		\label{eq:continuousdiff}
 	\end{equation}
 	Therefore $\partial_i f(p^\mu)$ is continuous and the function is differentiable.
+\end{proof}
+\begin{thm}
+	Given $f:A\to\R$ with $f\in C^1(A)$. Then $\del_\mu f=0\quad\forall x^\mu\in A$ implies that $f$ is constant in $A$
+\end{thm}
+\begin{proof}
+	Define $A$ as $A_1\cup A_2$ where
+	\begin{equation*}
+		A_1=\left\{ x^\mu\in A\st f(x^\mu)=f(x^\mu_0) \right\}.\quad A_2=\left\{ x^\mu\in A\st f(x^\mu)\ne f(x^\mu_0) \right\}
+	\end{equation*}
+	Since $A$ is open, both $A_1,A_2$ must be open. Define a path $\gamma$ from $x^\mu$ to $x^\mu_0$ and define the composite function
+	\begin{equation*}
+		\varphi(t)=f\left( x^\mu_0+t(x^\mu-x^\mu_0) \right),\quad t\in[0,1]
+	\end{equation*}
+	Since $f$ is differentiable and $\del_\mu f=0$ by definition $\varphi$ is constant and therefore continuous, which confirms that $A_1$ is open.\\
+	Since $A_1\cap A_2$
 \end{proof}
 \begin{thm}[Differentiability of Vector Fields, Jacobian Matrix]
 	Let $f^\mu:A\subseteq\R^n\fto\R^m$ be a vector field and $A$ an open set, then the function $f^\mu$ is differentiable iff exists a matrix $J^\mu_\nu\in M_{nm}(\R)$ such that
@@ -813,10 +849,49 @@ Is written as
 	\end{equation*}
 	By definition of minimizing sequence. Analogously, one can define a maximizing sequence and obtain the same result for the maximum of the function in $K$
 \end{proof}
+\begin{thm}[Heine-Cantor]
+	Given $f\st K\to\R$ with $K$ a compact set, then if $f\in C(K)$, $f$ is uniformly continuous
+\end{thm}<++>
+\begin{thm}[Existence of Intermediate Values]
+	Let $f:A\subset\R^n\fto\R$, $f\in C(A)$, then, given $u\in\R$ such that
+	\begin{equation*}
+		\min_A(F)\le u\le\max_A(F)
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\exists c^\mu\in A\st f(c^\mu)=u
+	\end{equation*}
+\end{thm}
+\begin{thm}[Squeeze]
+	Let $g(x^\mu),f(x^\mu),h(x^\mu)$ be three functions such that $g\le f\le h$ for $x^\mu\in B_\delta(x^\mu_0)$, then
+	\begin{equation*}
+		\lim_{x^\mu\to x_0^\mu}g(x^\mu)=\lim_{x^\mu\to x_0^\mu}h(x^\mu)=L\implies\lim_{x^\mu\to x_0^\mu}f(x^\mu)=L
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	By definition of limit we can say, supposing that the affirmation is true, that
+	\begin{equation*}
+		\begin{aligned}
+			\forall\epsilon>0, \exists\delta>0\st\abs{f(x^\mu)-L}<\epsilon,\quad\norm{x^\mu-x^\mu_0}<\delta\\
+			\forall\epsilon>0, \exists\delta>0\st\abs{g(x^\mu)-L}<\epsilon,\quad\norm{x^\mu-x^\mu_0}<\delta_1\\
+			\forall\epsilon>0, \exists\delta>0\st\abs{h(x^\mu)-L}<\epsilon,\quad\norm{x^\mu-x^\mu_0}<\delta_2\\
+		\end{aligned}
+	\end{equation*}
+	Since we're working in $\R^n$ with the standard topology, the last condition on the right tells us that we're working in $B_\delta(x_0^\mu)$, for which $g\le f\le h$ for some $\delta_3>0$.\\
+	Taken $\delta=\min\left\{ \delta_1,\delta_2,\delta_3 \right\}$ then
+	\begin{equation*}
+		\forall\epsilon>0\quad L-\epsilon\le g(x^\mu)\le f(x^\mu)\le h(x^\mu)\le L+\epsilon,\quad x^\mu\in B_\delta(x^\mu_0)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\abs{f(x^\mu)-L}\le\epsilon
+	\end{equation*}
+	Which proves the theorem
+\end{proof}<++>
 \begin{thm}[Closed Weierstrass]
 	Let $f:L\subseteq\R^n\fto\R$. If $L=\cc{L}$ and $f\in C(L)$ is a \textit{coercitive} function, i.e.
 	\begin{equation}
-		\lim_{\sqrt{x_\mu x^\mu}\to\infty}f(x^\mu)=+\infty
+		\lim_{\norm{x}\to\infty}f(x^\mu)=+\infty
 		\label{eq:coercitivef}
 	\end{equation}
 	Then

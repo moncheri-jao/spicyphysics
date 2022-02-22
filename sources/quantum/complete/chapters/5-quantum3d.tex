@@ -1,0 +1,208 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	In this chapter, we will treat problems defined by Hamiltonians of the following kind
+	\begin{equation}
+		\opr{\ham}=\frac{\opr{p}^2}{2m}+V(r)
+		\label{eq:centralpotentialham}
+	\end{equation}
+	Where
+	\begin{equation*}
+		\begin{dcases}
+			\opr{p}^2=p_ip^i\\
+			\opr{r}=\sqrt{\opr{q}_i\opr{q}^i}
+		\end{dcases}\ i=1,2,3
+	\end{equation*}
+	Due to this definition, it's evident that this Hamiltonian is \textit{spherically symmetrical}, because it's easy to show that angular momentum is conserved. In fact
+	\begin{equation*}
+		\comm{\opr{L}_i}{\opr{p}^2}=\comm{\opr{L}_i}{\opr{q}^2}=0
+	\end{equation*}
+	Due to how the Hamiltonian is defined, we have
+	\begin{equation}
+		\comm{\opr{L}_i}{\opr{\ham}}=\comm{\opr{L}^2}{\opr{\ham}}=0
+		\label{eq:conservationangmom}
+	\end{equation}
+	Which, indicates that angular momentum is conserved. The fact that the commutator between every element of the angular momentum and the Hamiltonian brings our problem to the search of common eigenstates of angular momentum and energy, that for simplicity we will call $\ket{Elm}$.\\
+	The secular equations that we need to solve simultaneously are the following three
+	\begin{equation}
+		\begin{aligned}
+			\opr{\ham}\ket{Elm}&=E\ket{Elm}\\
+			\opr{L}^2\ket{Elm}&=\hbar^2l(l+1)\ket{Elm}\\
+			\opr{L}_z\ket{Elm}&=\hbar m\ket{Elm}
+		\end{aligned}
+		\label{eq:sphersimmseceq}
+	\end{equation}
+	Using what we found for angular momentum, we write $\bra{x_i}\opr{p}^2\ket{Elm}$ in spherical coordinates, and, we then get
+	\begin{equation}
+		\begin{aligned}
+			\bra{x_i}\opr{\ham}\ket{Elm}&=-\frac{\hbar^2}{2mr^2}\pdv{r}\left( r^2\pdv{r} \right)\psi_{Elm}(x_i)+\\
+			&+\frac{\hbar^2l(l+1)}{2mr^2}\psi_{Elm}(x_i)+V(r)\psi_{Elm}(x_i)=E\psi_{Elm}(x_i)
+		\end{aligned}
+		\label{eq:schreqcentralpot}
+	\end{equation}
+	As we seen for angular momentum, $\opr{L}^2$ takes the angular dependence, hence this equation can be reduced to a single variable differential equation on $r$ through separation of variable, utilizing the fact that $\bra{\theta,\phi}\ket{lm}\ne0$ for all $\theta,\phi$. As a convention, we will call the radial part $R_{El}(r)$\\
+	We simplify the equation (the \textit{radial} equation), introducing a new radial function, and an effective potential
+	\begin{equation}
+		\left\{\begin{aligned}
+			R_{El}&=\frac{u_{El}(r)}{r}\\
+			V_{eff}(r)&=\frac{\hbar^2l(l+1)}{2mr^2}+V(r)
+		\end{aligned}\right.
+		\label{eq:substitutionsradeq}
+	\end{equation}
+	The new equation then becomes the following
+	\begin{equation}
+		-\frac{\hbar^2}{2m}\derivative[2]{u_{El}}{r}+V_{eff}(r)u_{El}(r)=Eu_{El}(r)
+		\label{eq:newradeq}
+	\end{equation}
+	Considering the behavior in an infinitesimal ball around $r=0$, and supposing that our potential is regular enough to have $\lim_{r\to0}V(r)=0$, we have that our equation becomes the following
+	\begin{equation}
+		\derivative[2]{u_{El}}{r}=\frac{l(l+1)}{r^2}u_{El}(r)
+		\label{eq:aroundr0behavior}
+	\end{equation}
+	Which has the following general solution
+	\begin{equation*}
+		u(r)=Ar^{l+1}+Br^{-l}
+	\end{equation*}
+	For our needs, we set $B=0$, since $r^{-l}$ blows up at $r\to0$. We have now a restriction for $R_{El}$, which imposes that $R_{El}(r)\to r^{l}$ for $r\to0$.\\
+	For $r\to\infty$ we get a new equation, of simple solution
+	\begin{equation}
+		\derivative[2]{u_{E}}{r}=\kappa^2u_{E}(r)\quad\kappa^2=-\frac{2mE}{\hbar^2}>0
+		\label{eq:rtoinftyradeq}
+	\end{equation}
+	It's solution is a decaying exponential $u_E(r)\propto e^{-\kappa r}$\\
+	Introducing a new dimensionless variable $\rho=\kappa r$, we can write our radial function as a product of the asymptotic behaviors and a new unknown function $w(\rho)$
+	\begin{equation*}
+		u_{El}=\rho^{l+1}e^{-\rho}w(\rho)
+	\end{equation*}
+	The function $w(\rho)$ is well behaved, and satisfies the following differential equation
+	\begin{equation}
+		\rho\derivative[2]{w}{\rho}+2\left( l+1-\rho \right)\derivative{w}{\rho}+\left( \frac{V(\rho/\kappa)}{E}\rho-2(l+1) \right)w(\rho)=0
+		\label{eq:wrhodiffeq}
+	\end{equation}
+	This equation depends on the potential $V(r)$, hence a formal solution can't yet be defined.
+	\section{Free Particles and Infinite Wells Revisited}
+	Starting from the radial equation, we define as before $\rho=kr$ and $E=\hbar^2k^2/2m$. Plugging it all into the radial equation, we then get the following
+	\begin{equation}
+		\derivative[2]{R}{\rho}+\frac{2}{\rho}\derivative{R}{\rho}+\left( 1-\frac{l(l+1)}{\rho^2} \right)R(\rho)=0
+		\label{eq:freeparticle3d}
+	\end{equation}
+	This differential equation is solved immediately including the \textit{spherical Bessel functions} $j_l,n_l$, defined as follows
+	\begin{equation}
+		\begin{aligned}
+			j_l(\rho)&=(-1)^l\rho^l\left( \frac{1}{\rho}\derivative{\rho} \right)^l\left( \frac{\sin\rho}{\rho} \right)\\
+			n_l(\rho)&=(-1)^{l+1}\rho^l\left( \frac{1}{\rho}\derivative{\rho} \right)^l\left( \frac{\cos\rho}{\rho} \right)
+		\end{aligned}
+		\label{eq:besselsphericalfunctionsfreep}
+	\end{equation}
+	This result can be applied directly to the problem of a particle confined inside an infinite spherical well ($V(\rho)=0$ in $r<a$) through the imposition of the condition $j_l(ka)=0$. At $l=0,1,2$ the levels are non degenerate, and for $l=0$ we then have the following energy values
+	\begin{equation}
+		E_{nl}=E_{n0}=\frac{\hbar^2(n\pi)^2}{2ma}
+		\label{eq:enlsphinfwell}
+	\end{equation}
+	\section{Isotropic Harmonic Oscillator}
+	The Hamiltonian for a 3D isotropic oscillator can be written as follows
+	\begin{equation}
+		\opr{\ham}=\frac{\opr{p}^2}{2m}+\frac{1}{2}m\omega^2\opr{r}^2
+		\label{eq:3dharmosc}
+	\end{equation}
+	We introduce immediately the two following dimensionless variables and introduce them in the radial equation
+	\begin{equation*}
+		\begin{aligned}
+			E&=\frac{1}{2}\hbar\omega\lambda\\
+			r&=\sqrt{\frac{\hbar}{m\omega}}\rho
+		\end{aligned}
+	\end{equation*}
+	We obtain the following equation
+	\begin{equation}
+		\derivative[2]{u}{\rho}-\frac{l(l+1)}{\rho^2}u(\rho)+(\lambda-\rho)^2u(\rho)=0
+		\label{eq:radeq3dhamosc}
+	\end{equation}
+	We separate immediately the asymptotic behavior of $u(\rho)$, and since the potential diverges for $r\to\infty$, we write
+	\begin{equation}
+		u(\rho)=\rho^{l+1}e^{-\frac{\rho^2}{2}}f(\rho)
+		\label{eq:asbehavior3darmosc}
+	\end{equation}
+	Inserting it back into \eqref{eq:radeq3dhamosc}, we get an equation on $f(\rho)$
+	\begin{equation}
+		\rho\derivative[2]{f}{\rho}+2\left( l+1-\rho^2 \right)\derivative{f}{\rho}+(\lambda-2l+3)\rho f(\rho)=0
+		\label{eq:frhoeq3dho}
+	\end{equation}
+	This equation is solvable by writing $f(\rho)$ as a power series, and after manipulating it analogously to how it's done for a simple linear quantum harmonic oscillator, we get, after plugging it back into \eqref{eq:frhoeq3dho}
+	\begin{equation}
+		\sum_{n=2}^{\infty}\left[ (n+2)(n+1)a_{n+2}+2(l+1)(n+2)a_{n+2}-2na_n+(\lambda-2l+3)a_n \right]\rho^{l+1}=0
+		\label{eq:frhosumrel}
+	\end{equation}
+	Which gives the following recursion relation
+	\begin{equation}
+		a_{n+2}=\frac{2n+2l+3-\lambda}{(n+2)(n+2l+3)}a_n
+		\label{eq:recursionrel}
+	\end{equation}
+	It's immediate to see that $\lim_{n\to\infty}a_{n+2}/a_n=2/n=q^{-1}$, therefore, we get that $\lim_{\rho\to\infty}f(\rho)\propto e^{\rho^2}$, which gives us a non normalizable wavefunction. Due to this, the series must terminate for some even $q=2n$, which gives the quantization of energy
+	\begin{equation}
+		\lambda=2n+2l+3
+		\label{eq:engquant}
+	\end{equation}
+	Which, gives finally
+	\begin{equation}
+		E_{ql}=\hbar\omega\left( 2q+l+\frac{3}{2} \right)=\hbar\omega\left( N+\frac{3}{2} \right)
+		\label{eq:energy3dqho}
+	\end{equation}
+	It's easy so see how energy is degenerate in $l$, and how for even (or odd) $N$ we can only have even (or odd) values for $l$.\\
+	Another way to solve this problem is by seeing how the Hamiltonian is simply the sum of three Hamiltonians, one for each coordinate
+	\begin{equation*}
+		\opr{\ham}=\opr{\ham}_x+\opr{\ham}_y+\opr{\ham}_y
+	\end{equation*}
+	And write each in terms of creation and destruction operators as follows
+	\begin{equation*}
+		\opr{\ham}_i=\hbar\omega\left( \adj{\opr{\eta}}_i\opr{\eta}_i+\frac{1}{2}\1 \right)
+	\end{equation*}
+	Labeling the eigenstates as $\ket{n_x}\otimes\ket{n_y}\otimes\ket{n_z}=\ket{n_x,n_y,n_z}$, we get then the simple result
+	\begin{equation*}
+		\opr{\ham}\ket{n_x,n_y,n_z}=\hbar\omega\left( n_x+\frac{1}{2}+n_y+\frac{1}{2}+n_z+\frac{1}{2} \right)\ket{n_x,n_y,n_z}
+	\end{equation*}
+	It's obvious that in this basis, the degeneration is the same of the previous, and it can be seen changing the basis using the following unitary transformation matrix $\bra{n_x,n_y,n_z}\ket{qlm}$
+	\section{Particle in a Coulomb Potential, Hydrogen Atom}
+	We basically treated most of the common problems in 3 dimensions, but there is one potential that we didn't treat in a single dimension that will pop up various times in this book, especially when we'll start touching particular themes such as atomic physics and quantum chemistry: \textbf{The Coulomb potential}.\\
+	We write our potential in Gaussian units as follows
+	\begin{equation}
+		V(r)=-\frac{Ze^2}{r}
+		\label{eq:coulpot}
+	\end{equation}
+	We already know the shape of this potential and what do the constants really mean, since we already treated it in the old quantum theory, so we immediately write our Schrödinger equation, remembering how on the general case, the assumption of $V(r)\propto r^{-1}$ brought the equation \eqref{eq:wrhodiffeq}.\\
+	Considering that bound states happen only for $E<0$ and defining a $\rho_0$ as
+	\begin{equation*}
+		\rho_0=\sqrt{-\frac{2m}{E}}\frac{Ze^2}{\hbar}=\sqrt{-\frac{2mc^2}{E}}Z\alpha
+	\end{equation*}
+	Where $\alpha=e^2/\hbar c\approx137^{-1}$ is the fine structure constant. Inserting everything in \eqref{eq:wrhodiffeq} we get a particular differential equation
+	\begin{equation}
+		\rho\derivative[2]{w}{\rho}+2(l+1-\rho)\derivative{w}{\rho}+(\rho_0-2l+2)w(\rho)=0
+		\label{eq:kummerequation}
+	\end{equation}
+	This equation is immediately solved by a confluent hypergeometric function\footnote{See appendix B.2}, with parameters $\alpha=l+1-\rho$, $\gamma=2l+2$ and $z=2\rho$, so
+	\begin{equation}
+		w(\rho)=F\left( 2l+2-\rho_0,2l+2,2\rho \right)
+		\label{eq:wtochf}
+	\end{equation}
+	Approximating $w$ with a power series for large $N$ we get that
+	\begin{equation*}
+		w(\rho)=\sum_{N=0}^{\infty}\frac{\left( 2l+2-2\rho_0 \right)_N}{\left( 2l+2 \right)_N}\frac{(2\rho)^N}{N!}\approx\sum_{N=0}^{\infty}\frac{(N/2)^N(2\rho)^N}{N^NN!}\approx\sum_{N=0}^{\infty}\frac{\rho^N}{N!}\approx e^{\rho}
+	\end{equation*}
+	Hence, this series must terminate, for some $n\ge\tilde{N}$, defined as $n=N+l+1$. This number is called the \textit{principal quantum number}\footnote{So far we found 3 quantum numbers, $n$ the principal quantum number, $l$ the angular quantum number and $m$ the magnetic quantum number.}.\\
+	Since we defined $\rho_0$ as $2N+2l+2$, we can write the energy eigenvalues as follows
+	\begin{equation*}
+		\rho_0=\sqrt{-\frac{E}{2mc^2}}=2n
+	\end{equation*}
+	And therefore, solving for $E$, we get the energy quantization rule
+	\begin{equation}
+		E_n=-\frac{1}{2}mc^2\frac{Z^2\alpha^2}{n^2}
+		\label{eq:energyquant1}
+	\end{equation}
+	Now we can define properly our eigenfunction $\bra{r,\theta,\phi}\ket{nlm}$. As we know already the symmetries of the system, we know it will be composed by a radial part and a spherical part, multiplied together tensorially. Therefore, we have our wavefunction as follows
+	\begin{equation}
+		\begin{aligned}
+		\psi_{nlm}(r,\theta,\phi)&=\frac{1}{(2l+1)!}\left( \frac{2Zr}{na_0} \right)^l\\
+		&\sqrt{\left( \frac{2Z}{na_0}\right)^3\left(\frac{(n+l)!}{2n(n-l-1)!} \right)}F\left( -n+l+1,2l+2,\frac{2Zr}{na_0} \right)Y^m_l(\theta,\phi)
+		\end{aligned}
+		\label{eq:wavefunc}
+	\end{equation}
+	Where $a_0=\hbar/mc\alpha$ is Bohr's radius. The appearance of Bohr's radius in this equation is not casual, since the solution of the Schrödinger equation for a Coulomb potential is \emph{identical} to the direct solution of the equation for a Hydrogen atom (non-relativistic). This finally closes at least partially all the questions that the old quantum theory left, and gave a proper solution to the main problem of atomic physics: the Hydrogen atom.
+\end{document}

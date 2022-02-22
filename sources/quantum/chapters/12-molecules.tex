@@ -1,0 +1,177 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	\section{Introductory Remarks}
+	In order to begin to appreciate physically how a molecule can be described is by considering a few conditions:\\
+	Obviously the nuclei of the molecules have comparatively a much bigger mass than all the electrons combined, therefore, the center of mass of the nuclei can be thought as being ``fixed'' in space, at a certain average distance from both atoms, called the \textit{equilibrium spacing} which depends on the considered molecule.\\
+	Let's now consider valence electrons. They're distributed all around the molecule, and their charge distribution gives the force needed to keep the molecule bound. Now, if $a$ is an average distance between the two nuclei, we have a rough estimate of the energy levels of the valence electrons of the molecule. Using the uncertainty principle, we get that the magnitude of the electronic energies is approximately the following
+	\begin{equation*}
+		E_e\approx\frac{\hbar^2}{ma^2}
+	\end{equation*}
+	Since $a\approx1$ \AA, we have that $E_e$ is on the order of some eV.\\
+	Let's now consider motions. A molecule, in general, can rototraslate in space, which can be reduced to the calculation of vibrations around the equilibrium distance of the molecule and the rotation of itself, after separating the center of mass.\\
+	The nuclear vibrational energies can be calculated by supposing that both nuclei are tied by an elastic force, for which the oscillation frequency is $\omega_N=(k/M)^{1/2}$ (where $M$ is the nuclear mass, and $k$ is a parameter). Comparing it to the electroinc oscillation, we get that the energy levels associated to vibration will have the following spacing (in relation to electronic levels)
+	\begin{equation*}
+		\frac{E_v}{E_e}=\frac{\hbar\omega_N}{\hbar\omega_e}=\sqrt{\frac{m}{M}}
+	\end{equation*}
+	Hence
+	\begin{equation*}
+		E_v\simeq\sqrt{\frac{m}{M}}E_e
+	\end{equation*}
+	Inserting the approximate values for the mass ratio $m/M$ we have that $E_v$ is around $10^{2}$ times smaller than $E_e$.\\
+	Let's now consider the rotation of a diatomic molecule. In this simplified case, we have that the moment of inertia is $Ma^2/2$, and the energy associated will then be
+	\begin{equation*}
+		E_r\simeq\frac{\hbar^2}{Ma^2}\simeq\frac{m}{M}E_e
+	\end{equation*}
+	Which gives has an even smaller value than $E_v$. Therefore we can say that $E_r<E_v<E_e$, and we can imagine $E_r,E_v$ as a first and second order splitting of the initial energy levels $E_e$
+	\section{Born-Oppenheimer Approximation}
+	We now consider a diatomic molecule with nuclei A and B with mass $M_a,M_b$ with together $N$ electrons. The internuclear coordinate will be indicated with $\vec{R}=\vec{R}_B-\vec{R}_A$ and the electronic positions with respect to the center of mass will be indicated by $\vec{r}_i$. The Schrödinger equation for this system is straightforward, and neglecting spin we have
+	\begin{equation}
+		\left( \opr{T}_N+\opr{T}_e+\opr{V} \right)\ket{\psi}=E\ket{\psi}
+		\label{eq:diatomicmolhamiltonian}
+	\end{equation}
+	Where $\opr{T}_N$ is the kinetic energy of the nuclei, $\opr{T}_e$ of the electrons, and $\opr{V}$ is the potential operator. Rewriting everything explicitly, where $\mu$ is taken as the reduced mass of the two nuclei, we have
+	\begin{equation}
+		\begin{aligned}
+			&-\frac{\hbar^2}{2\mu}\nabla_R^2\psi(R_j,r_k)-\frac{\hbar^2}{2m}\sum_{i=1}^N\nabla_i^2\psi(R_j,r_k)-\left(\sum_{i=1}^N\frac{Z_Ae^2}{4\pi\epsilon_0\abs{r_i-R_A}}-\right.\\
+		&\left.-\sum_{i=1}^N\frac{Z_Be^2}{4\pi\epsilon_0\abs{r_i-R_B}}+\sum_{i>j=1}^N\frac{e^2}{4\pi\epsilon_0\abs{r_i-r_j}}+\frac{Z_AZ_Be^2}{4\pi\epsilon_0R}\right)\psi(R_j,r_k)=E\psi(R_j,r_k)
+		\end{aligned}
+		\label{eq:diatomicmolschrcomp}
+	\end{equation}
+	This equation is clearly unsolvable. In this case tho, we can suppose that the total wavefunction $\ket{\psi}$ is the product of two wavefunctions, an electronic wavefunction, and a nuclear wavefunction, hence, respectively $\ket{\psi}=\ket{\Phi_q}\otimes\ket{F_q}$.\\
+	Here, we have that the electronic wavefunction will depend parametrically by the internuclear distance, and the wave equation searched is the following
+	\begin{equation}
+		\begin{aligned}
+			\opr{T}_e\ket{\Phi_q}+\opr{V}\ket{\Phi_q}&=E_q(R)\ket{\Phi_q}\\
+			-\frac{\hbar^2}{2m}\sum_{i=1}^N\nabla^2_i\Phi_q(r_k;R)&=E_q(R)\Phi_q(r_k;R)
+		\end{aligned}
+		\label{eq:electronicequationdiamol}
+	\end{equation}
+	These wavefunctions form a complete basis set for each $R$, and therefore, we can expand the total molecular wavefunction as follows
+	\begin{equation}
+		\psi(R_i,r_k)=\sum_qF_q(R)\Phi_q(r_k;R)
+		\label{eq:psiexpansion}
+	\end{equation}
+	Reinserting it back on the initial equation, we have that, projecting into the $\ket{\Phi}$ basis, we have
+	\begin{equation}
+		\sum_q\int\cc{\Phi_s}\left( \opr{T}_N+\opr{T}_e+\opr{V}-E \right)F_q(R)\Phi_q\diff[N]{r_i}=0
+		\label{eq:phiprojectionbornopp}
+	\end{equation}
+	Usin the fact that $\Phi_q$ is an eigenfunction for the electronic kinetic energy operator and the potential operator, we have, also considering the orthonormality condition $\bra{\Phi_s}\ket{\Phi_q}=\delta_{sq}$ we have
+	\begin{equation}
+		\sum_q\int\cc{\Phi_s}\opr{T}_N\Phi_qF_q(R)\diff[N]r_i+\left( E_s(R)-E \right)F_s(R)=0
+		\label{eq:substitutionbornopp}
+	\end{equation}
+	Where the operator $\opr{T}_N$ acts as follows
+	\begin{equation}
+		\bra{x_i}\opr{T}_N\ket{\Phi_q}\ket{F_q}=-\frac{\hbar^2}{2\mu}\left( F_q\nabla_R^2\Phi_q+2\nabla_RF_q\cdot\nabla_R\Phi_q+\Phi_q\nabla^2_R\Phi_q \right)
+		\label{eq:bornoppenheimerapprox}
+	\end{equation}
+	Here comes the important piece, as we said before, the motion of the nuclei around the equilibrium value doesn't affect particularly electrons, hence all the $\nabla_R^2\Phi_q$ parts of the differential equation can be neglected, and we're left with the \textit{Nuclear wave equation}
+	\begin{equation}
+		-\frac{\hbar^2}{2\mu}\nabla_R^2F_q(R)+(E_q(R)-E)F_q(R)=0
+		\label{eq:nuclearwaveequationbornopp}
+	\end{equation}
+	Thus, we have finally that the differential equation \eqref{eq:diatomicmolschrcomp} will be solved with two different equations with the following conditions
+	\begin{equation*}
+		\begin{aligned}
+			-\frac{\hbar^2}{2m}\sum_{i=1}^N\nabla_i^2\Phi_q+V(r_k,R)\Phi_q&=E_q(R)\Phi_q\\
+			-\frac{\hbar^2}{2\mu}\nabla_R^2F_q+E_q(R)F_q&=EF_q\\
+		\end{aligned}
+		\label{eq:bornoppenheimerlist}
+	\end{equation*}
+	Where
+	\begin{equation*}
+		\begin{aligned}
+			\nabla_R\Phi_q&=0\\
+			\psi(R_i,r_k)&=F_q(R_i)\Phi_q(r_k;R_i)
+		\end{aligned}
+	\end{equation*}
+	It's of particular interest the fact that the energies found solving the electronic equation $E_q(R)$, while using the Born-Oppenheimer approximation, behave as a potential energy for the nuclear Schrödinger equation.
+	\section{Rovibronic States}
+	Let's now analyze properly the nuclear wavefunction. Analyzing the symmetries of the system, it's obvious that this wavefunction will be the product of a radial and an angular part.\\
+	Already knowing how $\nabla_R^2$ can be written, we have that it must be an eigenfunction of the total angular momentum $\opr{J}^2,\opr{J}_z$, and plugging it into \eqref{eq:nuclearwaveequationbornopp} we get our desired radial equation
+	\begin{equation}
+		-\frac{\hbar^2}{2\mu}\pdv[2]{\mc{F}_{s\nu J}}{R}+\frac{\hbar^2}{2\mu R^2}J(J+1)\mc{F}_{s\nu J}+(E_s(R)-E_{s\nu J})\mc{F}_{s\nu J}=0
+		\label{eq:nucradeqbo}
+	\end{equation}
+	Here $\nu$ works as a ``principal'' quantum number for the quantized levels of the oscillation of the two nuclei, and together with the quantum number $J$ forms the set of \textit{Rovibronic States}. Another problem ensues from this equation, the ``potential'' $E_s(R)$ hasn't been determined, and it can't properly be determined. Hence we approximate it in a power series around the equilibrium position $R_0$ up to the second order, and since $E_s'(R_0)=0$, we're left with the following expression
+	\begin{equation}
+		E_s(R_0)=E_s(R_0)+\frac{1}{2}\pdv{E_s}{R_0}(R-R_0)+\order{(R-R_0)^2}
+		\label{eq:espowerseriesbo}
+	\end{equation}
+	Rewriting the second derivative as $k$, and putting $k/\mu=\omega_0$ we see already how it behaves like a harmonic potential. We immediately write from this that the total energy will be $E_{s\nu J}=E_s(R_0)+E_{\nu}+E_r$, with the last one being the rotational energy
+	\begin{equation*}
+		E_r=\frac{\hbar^2}{2\mu R_0^2}J(J+1)=BJ(J+1)
+	\end{equation*}
+	Where $B$ is called the rotational constant.\\
+	Due to the harmonicity of the new $E_s(R)$ potential, we will have obviously the following result for $E_{\nu}$
+	\begin{equation*}
+		E_{\nu}=\hbar\omega_0\left( \nu+\frac{1}{2} \right)
+	\end{equation*}
+	We can then rewrite our Schrödinger equation as follows, with $\mc{F}_{s\nu J}Y^M_J(\theta,\phi)\to\ket{\nu JM}$
+	\begin{equation}
+		\opr{\ham}_N\ket{\nu JM}=\left( E_s(R_0)+\hbar\omega_0\left( \nu+\frac{1}{2} \right)+\frac{\hbar^2}{2\mu R_0^2}J(J+1) \right)\ket{\nu JM}
+		\label{eq:newnucschrbo}
+	\end{equation}
+	A better approximation is given by the empirical Morse potential $V_M(R)$, where
+	\begin{equation*}
+		V_M(R)=D_e\left( e^{-2\alpha(R-R_0)}-2e^{\alpha(R-R_0)} \right)
+	\end{equation*}
+	With $D_e,\alpha$ constants.\\
+	We plug it into our equation as a correction of $E_s(R)$, as $E_s(R)=E_s(\infty)+V(R)$, which then yields $D_e$ as a minimum for $R\to\infty$, that gives its name as the \textit{dissociation constant} for the molecule.\\
+	Approximating again $E_s(R)$ to the second order and equating the coefficients of $E_s(R)$ and $V_M(R)$, we get the following equality
+	\begin{equation}
+		D_e\alpha^2=\frac{1}{2}k
+		\label{eq:morseesequality}
+	\end{equation}
+	Now, taking $V_M(R)$ into account, we get the new vibrational energy, which has now an anharmonic correction
+	\begin{equation}
+		E_\nu=\hbar\omega_0\left[ \left( \nu+\frac{1}{2} \right)-\beta\left( \nu+\frac{1}{2} \right)^2 \right]
+		\label{eq:newvibrationalenergy}
+	\end{equation}
+	$\beta$ is our anharmonicity constant, and from the previous considerations, we get that
+	\begin{equation*}
+		\beta\omega_0=\frac{\hbar\omega_0}{4D_e}
+	\end{equation*}
+	From the new energy, we now know that at the ground vibrational state $\nu=0$, is not $0$, which gives us the true dissociation energy $D_0$ as
+	\begin{equation*}
+		D_0=E_s(\infty)-E_s(R_0)-\frac{\hbar\omega_0}{2}
+	\end{equation*}
+	Or, more explicitly
+	\begin{equation}
+		D_0=D_e-\frac{\hbar\omega_0}{2}
+		\label{eq:dissociationenergymolecule}
+	\end{equation}
+	\subsection{Centrifugal Distortion}
+	Now we have determined that the oscillations of the two nuclei are quantized, hence there exists a series of values $R_k$, which modifies the energies of the system. We now rewrite the nuclear Hamiltonian as follows
+	\begin{equation}
+		\opr{\ham}_N=\frac{\opr{p}_R^2}{2\mu}+\opr{V}_{eff}-\tilde{E}_{s\nu J}
+		\label{eq:newnuclearhambo}
+	\end{equation}
+	Where
+	\begin{equation*}
+		\begin{aligned}
+			\opr{V}_{eff}&=\opr{V}_M+\frac{\opr{J}^2}{2\mu R^2}\\
+			\tilde{E}_{s\nu J}&=E_{s\nu J}-E_s(\infty)
+		\end{aligned}
+	\end{equation*}
+	Starting from this, we begin to evaluate the energies at $R=R_1$. We start by approximating the effective potential at the new minimum $R_1$ up until the 4th order
+	\begin{equation*}
+		V_{eff}(R)\simeq V_0+\frac{1}{2}\tilde{k}(R-R_1)^2+c_1(R-R_1)^3+c_2(R-R_1)^4
+	\end{equation*}
+	We search iteratively the exact value of $R_1$ by deriving $V_{eff}(R)$, and we finally get
+	\begin{equation}
+		R_1\simeq R_0+\frac{\hbar^2}{2\mu\alpha^2R_0^3D_e}J(J+1)
+		\label{eq:R1bornopp}
+	\end{equation}
+	Where for a simpler calculus we put $c_1=c_2=0$, $D_e\alpha^2=k/2$ and $\tilde{k}=k$.\\
+	Using what we found, and applying the third and fourth order of the approximation as a second order perturbation, we finally get our effective energy $\tilde{E}_{s\nu J}$
+	\begin{equation}
+		\begin{aligned}
+			\tilde{E}_{s\nu J}&=-D_e+\hbar\omega_0\left[ \left( \nu+\frac{1}{2} \right)-\beta\left( \nu+\frac{1}{2} \right)^2 \right]+\frac{\hbar^2J(J+1)}{2\mu R_0^2}-\\
+			&-\frac{3\hbar^3\omega_0J(J+1)}{4\mu\alpha R_0^3D_e}\left( 1-\frac{1}{\alpha R_0} \right)\left( \nu+\frac{1}{2} \right)-\frac{\hbar^4J^2(J+1)^2}{4\mu^2\alpha^2R_0^6D_e}
+		\end{aligned}
+		\label{eq:effectiveenergybornopp}
+	\end{equation}
+	This effective energy includes the anharmonic correction to the quantum oscillator, a rotation-vibration coupling correction and a correction to the energy of the rigid rotor. This lets us evaluate directly the centrifugal distortions, since for large $\nu$ the average distance $R>R_0$. The same goes for large values of $J$.
+\end{document}

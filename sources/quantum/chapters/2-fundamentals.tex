@@ -1,0 +1,395 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\section{Dirac Notation}
+	In order to fully grasp this and the future chapters is useful to really know how Dirac notation works in a mathematical framework. In Dirac notation, a vector of a complex Hilbert space $\mathbb{H}$ is indicated with the following notation: $\ket{\cdot}$, called a \textit{ket}, where in place of the dot there is usually a label or an index. Hence, if we have a vector $\vec{a}\in\mathbb{H}$, this vector can be indicated as $\ket{a}\in\mathbb{H}$. Defining the dual space of $\mathbb{H}$ as the space of all linear functionals, i.e. all elements $\vec{b}\in\mathbb{H^{\star}}$ such that $\vec{b}\cdot\vec{a}=\lambda\in\mathbb{C}$, we define such vectors (or covectors) with the notation $\bra{b}$, called \textit{bra}. With this notation, the scalar product simply becomes $\bra{b}\ket{a}=\lambda$. It's also useful to remember that there exist an isomophism $\iota:\mathbb{H}\to\mathbb{H^{\star}}$, where it is defined as follows
+	\begin{equation*}
+		\iota(\vec{a})=\overline{\vec{a}}^{\text{T}}=\overline{\vec{a}^{\text{T}}}\in\mathbb{H^{\star}}\quad\forall\vec{a}\in\mathbb{H}
+	\end{equation*}
+	In Dirac notation, we will then have the following
+	\begin{equation*}
+		\iota(\ket{a})=\overline{\ket{a}}^{\text{T}}=\overline{\ket{a}^{\text{T}}}=\bra{a}\quad\forall\ket{a}\in\mathbb{H}
+	\end{equation*}
+	\subsection{Generalized Vectors and Tensors in Dirac Notation}
+	Generalizing to tensor spaces, we get the following notation equivalences in the case of rank 2 tensors.\\
+	Let $T_{ij},G_{i}^{j},H^{ij}$ be tensors in the spaces, respectively $\mathbb{H}^{\star}\otimes\mathbb{H}^{\star},\mathbb{H}^{\star}\otimes\mathbb{H},\mathbb{H}\otimes\mathbb{H}$\\
+	In Dirac notation, since they represent the direct product of two vectors (or covectors), they can be indicated as such
+	\begin{equation}
+		\begin{aligned}
+			T_{ij}&\longrightarrow\bra{i}\otimes\bra{j}=\bra{i}\bra{j}=\bra{ij}\\
+			G^i_j&\longrightarrow\ket{i}\otimes\bra{j}=\ket{i}\bra{j}\\
+			H^{ij}&\longrightarrow\ket{i}\otimes\ket{j}=\ket{i}\ket{j}=\ket{ij}
+		\end{aligned}
+		\label{eq:tensorsdiracnot}
+	\end{equation}
+	Remembering that the isomorphism between the space and its dual is given by a trasposition and a complex conjugation, we have that the operation of index raising and index lowering (also known as musical isomorphisms), in Dirac notation will be indicated as follows:
+	\begin{equation}
+		T^{ij}=\overline{T_{ij}^{\text{T}}}=\overline{T_{ji}}\longrightarrow\ket{i}\ket{j}=\bra{j}\bra{i}
+		\label{eq:musicalisomorphism}
+	\end{equation}
+	This is especially useful when treating the contraction of all indexes of a tensor.\\
+	Let $R_{ij}=a_ib_j$ and $S^{ij}=c^id^j$. The product $R_{ij}S^{ij}$ will then be, using the Einstein convention for repeated indexes and the rules defined before for raising and lowering indexes,
+	\begin{equation}
+		R_{ij}S^{ij}=a_ib_jc^id^j=\overline{b^ja^i}c^id^j\to\bra{b}\bra{a}\ket{c}\ket{d}=\bra{a}\ket{c}\bra{b}\ket{d}
+		\label{eq:doublescalarprod}
+	\end{equation}
+	Since a tensor product of two vector spaces is a vector space itself, it's common to directly use superindexes or labels in the labels of the kets and bras, such that a tensor $\ket{ij}=\ket{I}$, where $I$ is the chosen label. It's not hard to then generalize the notation to rank-$n$ tensors.\\
+	There is only one exception, irreducible tensors. Since they can't be factorized as the direct product of two vectors, they're usually directly indicated with a simple label as before.\\
+	\subsection{Function Spaces and Linear Operators}
+	Since quantum mechanics can be also represented with elements of function spaces, Dirac notation can be extended to indicate even functions and operators.\\
+	Let $\mathcal{F}$ be a function space, and let $\psi\in\mathcal{F}$ be an element of such.\\
+	We can write the function $\psi(x):\mathbb{C}\to\mathbb{R}$ as the projection of the element of $\mathcal{F}$ to the field of complex numbers $\mathbb{C}$. In Dirac notation this becomes
+	\begin{equation}
+		\psi(x)\leftrightarrow\bra{x}\ket{\psi}
+		\label{eq:functionstokets}
+	\end{equation}
+	An operator, is a linear endomorphism of $\mathbb{H}$. If we have an operator $\opr{\eta}$ bounded, and an operator $\opr{\sigma}$ unbounded, their definition spaces will be the following
+	\begin{equation}
+		\begin{aligned}
+			\opr{\eta}&:\mathbb{H}\to\mathbb{H}\\
+			\opr{\sigma}&:\mathcal{D}\subset\mathbb{H}\to\mathcal{D}\subset{H}
+		\end{aligned}
+		\label{eq:linopdefi}
+	\end{equation}
+	Since they're linear, if we define a new operator $\opr{\iota}_i$, where $\opr{\iota}_1=\opr{\eta}$ and $\opr{\iota}_2=\sigma$, we have, that $\forall\alpha,\beta\in\mathbb{C}$ and $\forall\ket{A},\ket{B}\in\mathcal{D}$, ($\in\mathbb{H}$ if we're considering a bounded operator)
+	\begin{equation}
+		\opr{\iota}_i\left( \alpha\ket{A}+\beta\ket{B} \right)=\alpha\opr{\iota}_i\ket{A}+\beta\opr{\iota}_i\ket{B}
+		\label{eq:lineardef}
+	\end{equation}
+	Let's now define an operator $\opr{R}$ such that $\opr{R}\psi(x)=e^{i\pi}\psi(x)$. In Dirac notation it's simply $\opr{R}\ket{\psi}=e^{i\pi}\ket{\psi}$, nothing changes much.\\
+	Although, since operators acting on functions can be seen as tensors (or matrices) acting on vectors, we can write the (infinite) matrix representation of such objects, as such:\\
+	Let $\vec{e}_i,\vec{e}_j$ be two basis elements of $\mathcal{F}$. We then will have the following relation, if the scalar product is indicated as $\langle\cdot,\cdot\rangle$
+	\begin{equation*}
+		R_{ij}=\langle\vec{e}_i,\opr{R}\vec{e}_j\rangle
+	\end{equation*}
+	In Dirac notation, its formulation it's similar in shape, and it's written as such
+	\begin{equation*}
+		R_{ij}=\bra{i}\opr{R}\ket{j}
+	\end{equation*}
+	If now we define the \textit{adjoint} operation (indicated with ($\dagger$) as the composition of complex conjugation and transposition ($\square^{\dagger}=\overline{\square}\circ\square^{\text{T}}$), we have
+	\begin{equation*}
+		\adj{R_{ij}}=\adj{\langle\vec{e}_i,\opr{R}\vec{e}_j\rangle}=\langle\vec{e}_j\adj{\opr{R}},\vec{e}_i\rangle
+	\end{equation*}
+	Without writing the equivalent operation in Dirac notation, and just confronting how the adjoint operator works, we get immediately get how it will behave with kets and bras. The operator will act on the right, and its adjoint on the left.\\
+	Let $\ket{a}$ be an eigenvector (or eigenket) of $\opr{R}$, with eigenvalue $\alpha$. We then can express the fact that the operator acts on the right, and its adjoint on the left using $\opr{R}$'s secular equation
+	\begin{equation*}
+		\begin{aligned}
+			\opr{R}\ket{a}&=\alpha\ket{a}\\
+			\bra{a}\adj{\opr{R}}&=\bra{a}\overline{\alpha}
+		\end{aligned}
+	\end{equation*}
+	But since applying the double adjoint means applying the identity transformation, we get that
+	\begin{equation*}
+		\adj{\left[\adj{\left( \opr{R}\ket{a} \right)}\right]}=\adj{\left(\bra{a}\adj{\opr{R}}\right)}=\adj{\left(\bra{a}\overline{\alpha}\right)}=\alpha\ket{a}=\opr{R}\ket{a}
+	\end{equation*}
+	Hence, an adjoint of an operator acts on the left, and the adjoint of the adjoint operator is the operator itself, and if a ket is a solution to the secular equation, its equivalent bra will be the solution to the adjoint secular equation.\\
+	Let's remember that in general, $\adj{\opr{R}}\ne\opr{R}$, hence generally $\opr{R}\ket{A}\ne\bra{A}\opr{R}$
+	\section{Axioms of Quantum Mechanics}
+	The first postulate of quantum mechanics used to formalize mathematically its structure is the \textit{superposition principle}
+	\begin{pos}[Superposition Principle]
+		The state of a quantum system is a vector of a separable Hilbert space ($\mathbb{H}$), and if two different vectors are proportional to eachother, they represent the same state. This space must be endowed with a Hermitian scalar product and its dimension is usually infinite.
+	\end{pos}
+	Since this Hilbert space is a linear vector space, it's algebraically closed, which means that, for two different states $\ket{a}$ and $\ket{b}$, with $\alpha\in\mathbb{C}$, we have
+	\begin{equation}
+		\alpha\left( \ket{a}+\ket{b} \right)=\alpha\ket{a}+\alpha\ket{b}=\ket{c}\in\mathbb{H}
+		\label{eq:algebraiclosed}
+	\end{equation}
+	\begin{pos}[Observables]
+		Every quantity that can be observed, hence measured, is called observable, and it's mathematically represented by a self-adjoint operator.\\
+		The eigenvalues of this operator are the possible results of the measurement.
+	\end{pos}
+	With such definition, the eigenvectors of the self-adjoint operator will be all the states invariant to the action of the operator.\\
+	If to every eigenvalue of the observable corresponds one and only one eigenvector, the observable is said to be nondegenerate.
+	\begin{pos}[Postulate of von Neumann]
+		If a measurement of an observable $\opr{\alpha}$ on a state $\ket{a}$ gives a degenerate eigenvalue $\alpha$, the eigenstate of the observable will then be given by the projection of $\ket{a}$ onto the eigenspace of $\opr{\alpha}$, corresponding to the subspace generated by all vectors that satisfy the equation
+		\begin{equation*}
+			\opr{\alpha}\ket{r_i}=\alpha\ket{r_i}
+		\end{equation*}
+		The searched state will then be
+		\begin{equation*}
+			\ket{s}=\sum_ip_i\ket{r_i}
+		\end{equation*}
+	\end{pos}
+	\begin{pos}[Transition Probabilities]
+		Let $\opr{\beta}$ be an observable, hence $\opr{\beta}=\adj{\opr{\beta}}$. Consider now a state $\ket{d}$. If $\opr{\beta}\ket{d}=p\ket{f}$, we can define the probability of the transition $\ket{d}\to\ket{f}$ as follows:
+		\begin{equation*}
+			P\left( \ket{d}\to\ket{f} \right)=\frac{\abs{\bra{f}\ket{d}}^2}{\braket{d}\braket{f}}\le1
+		\end{equation*}
+	\end{pos}
+	There are two main cases for the study of transition probabilities, one for nondegenerate states and one for degenerate states. Since the case for nondegenerate states is a particular case of the degenerate case, we can study directly the latter.\\
+	Let $\opr{S}$ be a degenerate observable. For a state $\ket{A}$ (with $\braket{A}=1$), we will then have, after a projection to an orthonormal basis of eigenstates $\ket{s_i}$, as indicated in the von Neumann postulate
+	\begin{equation*}
+		\ket{A}=\sum_ia_i\ket{s_i}
+	\end{equation*}
+	Let's define a state $\opr{S}\ket{A}=\ket{k}=\sum_ia_i\ket{s_i}$
+	The problem is straightforward. What's the transition probability from a state $\ket{A}$ to a state $\ket{s_i}$ (with $i$ fixed)?\\
+	From the last postulate we can write
+	\begin{equation*}
+		p_i=P\left( \ket{A}\to\ket{k} \right)=\frac{\abs{\bra{k}\ket{A}}^2}{\braket{k}}
+	\end{equation*}
+	Due to the orthonormality of $\ket{s_i}$ ($\bra{s_i}\ket{s_j}=\delta_{ij}$) we will have
+	\begin{equation*}
+		p_i=\sum_i\abs{a_i}^2
+	\end{equation*}
+	Which is a direct consequence of von Neumann's postulate.\\
+	Hence, in order to treat a general state $\ket{B}$ which is not an eigenstate of a given observable $\opr{b}$, we can apply a projection, as stated from von Neumann. But how does this projection work? What's its mathematical form?\\
+	The answers to these questions are quite easy to think what shape would they take. As the projection of a state can be interpreted as a Fourier series, we get that the projection will be given by an operator that sends $\ket{B}$ to a set of eigenstates $\ket{b_i}$, multiplied by some constant which is exactly given by the scalar product $\bra{B}\ket{b_i}$. Summarizing, if we indicate the projected state with $\ket{b}$
+	\begin{equation}
+		\begin{aligned}
+			\ket{b}&=\opr{\pi}_i\ket{B}=\sum_i\bra{b_i}\ket{B}\ket{b_i}\\
+			\opr{\pi}_i&=\ket{b_i}\bra{b_i}
+		\end{aligned}
+		\label{eq:projection}
+	\end{equation}
+	Where $\adj{\opr{\pi}_i}=\opr{\pi}_i$ and $\opr{\pi}^2=\opr{\pi}$, due to the definition of the projector operator.\\
+	Moreover, we can even define a theorem from this definition, where, if $\ket{b_i}$ is a complete orthonormal basis, then
+	\begin{equation}
+		\ket{b_i}\bra{b_i}=\1
+		\label{eq:completeness}
+	\end{equation}
+	Which indicates the completeness relation for a basis.\\
+	We subsequently define the expectation value of an observable, its variance, commutators and anticommutators
+	\begin{defn}[Mean Value]
+		Given an observable $\opr{\eta}$, we can define its mean value on a state $\ket{a}$ as follows
+		\begin{equation}
+			\expval{\opr{\eta}}_{\ket{a}}=\bra{a}\opr{\eta}\ket{a}=\sum_i\bra{a}\opr{\pi}_i\opr{\eta}\opr{\pi}_i\ket{a}=\sum_ip_i\eta_i,\quad p_i=\frac{N_i}{N}
+			\label{eq:expval}
+		\end{equation}
+		Due to the arbitrary definition of $\opr{\eta}$ and $\ket{a}$, what has been written is valid generally
+	\end{defn}
+	\begin{defn}[Variance]
+		If we define the variance as $Var(x)=\sqrt{\expval{x^2}-\expval{x}^2}$, we can define the variation of an observable on a state $\ket{a}$ as such
+		\begin{equation}
+			Var\left(\opr{\eta}\right)=\sqrt{\bra{a}\opr{\eta}\opr{\eta}\ket{a}-\bra{a}\opr{\eta}\ket{a}\bra{a}\opr{\eta}\ket{a}}=\sqrt{\expval{\opr{\eta}^2}_{\ket{a}}-\expval{\opr{\eta}}_{\ket{a}}^2}
+			\label{eq:variance}
+		\end{equation}
+	\end{defn}
+	\begin{defn}[Commutators and Anticommutators]
+		The commutator is an operator of operators defined for $\opr{\eta},\opr{\gamma}$ as such:
+		\begin{equation}
+			\comm{\opr{\eta}}{\opr{\gamma}}=\opr{\eta}\opr{\gamma}-\opr{\gamma}\opr{\eta}
+			\label{eq:commutator}
+		\end{equation}
+		The anticommutator is defined as such
+		\begin{equation}
+			\acomm{\opr{\eta}}{\opr{\gamma}}=\opr{\eta}\opr{\gamma}+\opr{\gamma}\opr{\eta}
+			\label{eq:anticommutator}
+		\end{equation}
+	\end{defn}
+	In general, the commutator is antihermitian and bilinear, whereas an anticommutator is hermitian and bilinear.\\
+	\begin{thm}[Compatibility]
+		Two operators $\opr{a}$ and $\opr{b}$ are said compatible, if there exists a common basis of eigenstates and their commutator is equal to $0$
+		\label{thm:comp}
+	\end{thm}
+	\begin{proof}
+		If $\opr{a}$ and $\opr{b}$ are compatible, then there exists a common basis of eigenstates. Let $\ket{A}\ne0$ be such basis, then, such statement is true
+		\begin{equation}
+			\left\{\begin{aligned}
+					\opr{a}\ket{A}&=\alpha\ket{a}\\
+					\opr{b}\ket{A}&=\beta\ket{a}
+			\end{aligned}\right.
+			\label{eq:comp1}
+		\end{equation}
+		Then,
+		\begin{equation}
+			\begin{aligned}
+				\comm{\opr{a}}{\opr{b}}\ket{A}&=(\opr{a}\opr{b}-\opr{b}\opr{a})\ket{A}=\\
+				&=\opr{a}\opr{b}\ket{A}-\opr{b}\opr{a}\ket{A}=\beta\opr{a}\ket{A}-\alpha\opr{b}\ket{A}=\\
+				&=\beta\alpha\ket{A}-\alpha\beta\ket{A}=0
+			\end{aligned}
+			\label{eq:comp1d}
+		\end{equation}
+		But, if $\comm{\opr{a}}{\opr{b}}\ket{A}=0$
+		\begin{equation}
+			\begin{aligned}
+				\opr{a}\ket{A}&=\alpha\ket{A}\\
+				\opr{b}\alpha\ket{A}&=\alpha\beta\ket{A}\\
+				(\opr{a}\opr{b}-\opr{b}\opr{a})\ket{A}&=0
+			\end{aligned}
+			\label{eq:comp2}
+		\end{equation}
+		As expected from the statement of the theorem.
+	\end{proof}
+	\begin{pos}[Canonical Quantization]
+		\label{pos:canquant}
+		There exists a strict relation between commutators and Poisson brackets. If we define the Poisson brackets as $\comm{\cdot}{\cdot}_{PB}$, we can quantize Poisson brackets with the following relation
+		\begin{equation*}
+			\comm{\cdot}{\cdot}=i\hbar\comm{\cdot}{\cdot}_{PB}
+		\end{equation*}
+		Since $\comm{q_i}{p_j}_{PB}=\delta_{ij}$, in quantum mechanics holds this fundamental relation
+		\begin{equation}
+			\comm{\opr{q}}{\opr{p}}=i\hbar\1
+			\label{eq:canonical quantization}
+		\end{equation}
+		This is known as canonical quantization, where position and momentum are represented by observables.
+	\end{pos}
+	\begin{pos}[Heisenberg Uncertainity]
+		In quantum mechanics there is an intrinsic uncertainity on measurements.
+	\end{pos}
+		Taking two observables $\opr{a}$ and $\opr{b}$, we define an operator $\alpha=\opr{a}+ix\opr{b}$ with $x\in\mathbb{R}$.\\
+		Its expectation value on a state $\ket{s}$ will be the following
+		\begin{equation*}
+			\bra{s}\adj{\opr{\alpha}}\opr{\alpha}\ket{s}\le\bra{s}\adj{\opr{\alpha}}\ket{s}\bra{s}\opr{\alpha}\ket{s}
+		\end{equation*}
+		Since $\adj{\opr{\alpha}}\opr{\alpha}=\opr{a}^2+x^2\opr{b}^2+ix\comm{\opr{a}}{\opr{b}}$, we get that
+		\begin{equation*}
+			\expval{\opr{a}^2}+x^2\expval{\opr{b}^2}+ix\expval{\comm{\opr{a}}{\opr{b}}}\ge\expval{\opr{a}}^2+x^2\expval{\opr{b}}^2
+		\end{equation*}
+		Hence
+		\begin{equation*}
+			\expval{\opr{a}^2}-\expval{\opr{a}}^2+x^2\left( \expval{\opr{b}^2}-\expval{\opr{b}}^2 \right)-ix\expval{\comm{\opr{a}}{\opr{b}}}\ge0
+		\end{equation*}
+		Rewriting $\expval{c^2}-\expval{c}^2=\sigma_c^2$, with $c$ arbitrary and $\sigma$ its standard deviation, we get
+		\begin{equation*}
+			\sigma_a^2-x^2\sigma_b^2+ix\expval{\comm{\opr{a}}{\opr{b}}}\ge0
+		\end{equation*}
+		In order for this equation to be true, the discriminant of the quadratic equation must be greater than $0$, hence
+		\begin{equation*}
+			-\expval{\comm{\opr{a}}{\opr{b}}}^2+4\sigma_a^2\sigma_b^2\ge0
+		\end{equation*}
+		And finally we get
+		\begin{equation*}
+			\sigma_a\sigma_b\ge\frac{1}{2}\expval{\comm{\opr{a}}{\opr{b}}}
+		\end{equation*}
+		Taking $\opr{a}=\opr{q}$ and $\opr{b}=\opr{p}$, and following canonical quantization rules, we get that momentum and position can't be measured simultaneously due to a fundamental uncertainity, given by Heisenberg's uncertainity principle
+		\begin{equation}
+			\sigma_q\sigma_p\ge\frac{1}{2}\hbar
+			\label{eq:heisenberguncqp}
+		\end{equation}
+	\section{Representation Theory}
+	\subsection{Heisenberg Representation}
+	In quantum mechanics, we can define two main representations: Heisenberg representation or Schrödinger representation.\\
+	Heisenberg representation is given by matrix elements of operators, through an isomorphism between $l_2$ and the Hilbert space of quantum configurations $\mathbb{H}$. Defining a CON basis (complete orthonormal) $\ket{e_i}$ on $\mathbb{H}$, we get that, $\forall\ket{A}\in\mathbb{H}$
+	\begin{equation}
+		\ket{A}=\1\ket{A}=\sum_i\ket{e_i}\bra{e_i}\ket{A}=\sum_ia_i\ket{A}
+		\label{eq:Htol2isom}
+	\end{equation}
+	Where the operator $\opr{\pi}=\ket{e_i}\bra{e_i}$ is defined as $\opr{\pi}:\mathbb{H}\to l_2$, which it's simply a projection, as defined in \eqref{eq:projection}.\\
+	Hence, we can define the operation of a general operator $\opr{\rho}$ in $l_2$ as a combination of the projection $\opr{\pi}$ and $\opr{\rho}$. So, if $\rho\ket{A}=\ket{B}$, we have that
+	\begin{equation}
+		b_n=\bra{e_n}\opr{\rho}\sum_i\ket{e_i}\bra{e_i}\ket{A}\rightarrow b_n=\rho_{ni}a_i\in l_2
+		\label{eq:l2isom}
+	\end{equation}
+	Where $\rho_{ni}$ is the matricial representation in $l_2$ of the operator $\opr{\rho}$.\\
+	\begin{thm}[Block Representation for Degenerate Observables]
+		Let $\opr{a}$ and $\opr{b}$ be two observables. If they're compatible, and the basis of eigenvectors of $\ket{a}$ is degenerate, then $\opr{b}$ can be represented as a block matrix
+	\end{thm}
+	\begin{proof}
+		Let $\ket{e_i}$ be such degenerate base, then we can write $b_{ij}$ as such
+		\begin{equation*}
+			b_{ij}=\bra{e_i}\opr{b}\ket{e_j}
+		\end{equation*}
+		Since $\bra{e_i}\ket{e_j}=1$ for all the degenerate $i,j$, and it's $0$ elsewhere, $b_{ij}$ will be a block matrix.
+	\end{proof}
+	\subsubsection{Unitary Transformations}
+	If $\ket{e_i}$ and $\ket{r_i}$ are two ON bases in $\mathbb{H}$, we can define an unitary operator of base change $\opr{U}$ with the following equation.\\
+	\begin{equation}
+		\opr{U}\ket{e_i}=\ket{r_i}
+		\label{eq:unitaryoperator}
+	\end{equation}
+	Since the two bases are ON, this operator will be defined as the projection $\ket{r_i}\bra{r_i}$.\\
+	It follows, in order for the equation \eqref{eq:unitaryoperator} to be true, $\bra{r_i}\ket{e_j}=\delta_{ij}$, and for $\opr{U}$, it must hold that
+	\begin{equation}
+		\opr{U}\adj{\opr{U}}=\adj{\opr{U}}\opr{U}=\1
+		\label{eq:leftrightunitariety}
+	\end{equation}
+	The last relation can be reduced to the fact that $\opr{U}$ must be left unitary and right unitary.
+	\begin{thm}[Von Neumann Theorem]
+		Quantization is invariant to unitary transformations
+	\end{thm}
+	\begin{proof}
+		Let $\opr{U}$ be an unitary operator, for which $\tilde{\opr{q}}=\opr{U}\opr{q}\adj{\opr{U}}$ and $\tilde{\opr{p}}=\opr{U}\opr{p}\adj{\opr{U}}$.\\
+		Then, since $\adj{\opr{U}}\opr{U}=\1$
+		\begin{equation}
+			\left\{ \begin{aligned}
+					\comm{\tilde{\opr{q}}}{\tilde{\opr{p}}}&=\opr{U}\opr{q}\adj{\opr{U}}\opr{U}\opr{p}\adj{\opr{U}}-\opr{U}\opr{p}\adj{\opr{U}}\opr{U}\opr{q}\adj{\opr{U}}=\\
+					&=\opr{U}\opr{q}\1\opr{p}\adj{\opr{U}}-\opr{U}\opr{p}\1\opr{q}\adj{\opr{U}}=\opr{U}\comm{\opr{q}}{\opr{p}}\adj{\opr{U}}=i\hbar\1
+			\end{aligned}\right.
+			\label{eq:unitarytranscons}
+		\end{equation}
+		The same holds for every commutator and anticommutator.
+	\end{proof}
+	\subsection{Schrödinger Representation}
+	Schrödinger representatio is obtained through an isomorphism between $\mathbb{H}$ and $L^2(\mathbb{R})$.\\
+	Let's consider a space $\mathbb{H}$ formed by the direct product of $n$ Hilbert spaces, then $\mathbb{H}\simeq L^2(\mathbb{R}^n)$. The isomorphism between these two spaces is given through a projection to the space $\mathbb{R}^n$, indicated as such.\\
+	Let $\ket{A}\in\mathbb{H}$, then $\exists\opr{S}:\mathbb{H}\to L^2(\mathbb{R}^n)$ defined as such
+	\begin{equation}
+		\opr{S}\ket{A}=\bra{x_i}\ket{A}=\psi_A(x_i)\in L^2(\mathbb{R}^n)
+		\label{eq:schrodingerisom}
+	\end{equation}
+	Where the function $\psi_A$ is called \textit{wavefunction}.\\
+	In this space, the scalar product is defined through the following integral
+	\begin{equation}
+		\bra{A}\ket{B}\to\int_{\mathbb{R}^n}\overline{\psi_B(x_i)}\psi_A(x_j)\diff[n]{x}
+		\label{eq:scalarprodschr}
+	\end{equation}
+	In order to be a valid representation of quantum mechanics, canonical quantization must hold, and the momentum and position operators will be defined as such, in position space
+\begin{subequations}
+	\begin{equation}
+		\left\{ \begin{aligned}
+				p_i&\to-i\hbar\nabla_{x}\\
+			q_i&\to \opr{x}_i
+	\end{aligned}\right.
+		\label{eq:schrquantizationpos}
+	\end{equation}
+	And in momentum space as such
+	\begin{equation}
+		\left\{ \begin{aligned}
+				p_i&\to \opr{k}_i\\
+				q_i&\to-i\hbar\nabla_{p}
+		\end{aligned}\right.
+		\label{eq:schrquantizationmom}
+	\end{equation}
+\end{subequations}
+	The canonical quantization rules will then become, for position space
+	\begin{equation}
+		\comm{\opr{q}}{\opr{p}}\ket{A}\to-i\hbar\left( x_i\nabla_j-\nabla_jx_i \right)\psi_A=i\hbar\delta_{ij}\psi_A
+		\label{eq:canonicalquantschro}
+	\end{equation}
+	Since a quantum state must be normalizable, in order to have a proper probability of transition, we need that even the wavefunction must be normalizable.\\
+	The normalization equation will then be
+	\begin{equation}
+		N\braket{A}=1\rightarrow N\int_{\mathbb{R}^n}\overline{\psi_A}\psi_A\diff[n]{x}=N\int_{\mathbb{R}^n}\abs{\psi_A}^2\diff[n]{x}=1
+		\label{eq:normalization}
+	\end{equation}
+	Since $\psi_A\in L^2$, the integral converges, and $N^{-1}$ is the searched normalization constant.\\
+	Due to the definition of probability density function, we have that the absolute value squared of the wavefunction is the probability density of finding the particle in a certain position (in position representation) or in a certain momentum (momentum representation). Mean values and superior statistical models are then calculated as \\
+	In order to switch between representation, we can use Fourier transforms. Defining the integral operator $\opr{\mathcal{F}}$ as the Fourier transform operator, we get, if $\phi(k_i)$ is the momentum wavefunction and $\psi(x_i)$ the position wavefunction
+	\begin{equation}
+		\phi(k_i)=\opr{\mathcal{F}}_{k}\psi(x_i)
+		\label{eq:fouriertransformmompos}
+	\end{equation}
+	And, defining an inverse Fourier transform operator $\opr{\mathcal{F}}^{-1}$
+	\begin{equation}
+		\psi(x_i)=\opr{\mathcal{F}}^{-1}_{x}\phi(k)
+		\label{eq:fouriertrasformposmom}
+	\end{equation}
+	\subsection{Hamiltonian Operators}
+	In order to define a function for a whole system, a Lagrangian can be written. In non relativistic quantum mechanics although, its Legendre tranform is used, the Hamiltonian. We then have, for a system with a general potential, that the Hamiltonian will be given in this general form
+	\begin{equation}
+		\ham=\frac{p^2}{2m}+V(x_i)
+		\label{eq:hamiltonianclass}
+	\end{equation}
+	Quantizing, in Heisenberg representation, we will get an observable, a self adjoint operator:
+	\begin{equation}
+		\opr{\ham}=\frac{\opr{p}^2}{2m}+V(x_i)
+		\label{eq:quantumham}
+	\end{equation}
+	This operator is used, since its eigenvalues are the energy levels of the system.\\
+	Hence, given an eigenstate $\ket{E}$, we will have the following equation
+	\begin{equation}
+		\opr{\ham}\ket{E}=E\ket{E}
+		\label{eq:seculareqham}
+	\end{equation}
+	Which is the secular equation of the Hamiltonian, with eigenket $\ket{E}$ and eigenvalue $E$.\\
+	Remembering \eqref{eq:schrquantizationpos}, we will get the Schrödinger representation of the Hamiltonian operator
+	\begin{equation}
+		\opr{\ham}=-\frac{\hbar^2}{2m}\nabla^2+V(x_i)
+		\label{eq:schrham}
+	\end{equation}
+	The secular equation will then become a eigenfunction equation for the differential operator $\opr{\ham}$, and the energy levels will be the spectrum of the operator
+	\begin{equation}
+		\opr{\ham}\psi=-\frac{\hbar^2}{2m}\nabla^2\psi+V(x_i)\psi=E\psi(x_i)
+		\label{eq:schreigfun}
+	\end{equation}
+	The solution to this equation, commonly called \textit{Schrödinger equation} is the wavefunction of the system, with associated energy eigenvalue $E$. Due to what said before, Schrödinger and Heisenberg representations are equivalent, and a problem can be solved either as an eigenstate problem or an eigenfunction problem. The most common example of problem that can be solved with both methods is the Quantum Harmonic Oscillator, treated in the next chapter.\\
+\end{document}

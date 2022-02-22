@@ -1,0 +1,610 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\section{Interaction of Particles with EM Fields}
+	Before diving into a full computation of an electromagnetic Hamiltonian, we need to properly ``quantize'' it. Having $\vecopr{A}$ our vector potential operator and $\opr{\phi}$ our scalar potential operator, and knowing that $\vec{P}=\vec{p}-q\vec{A}$, where $\vec{P}$ is the minimal coupling momentum of an EM field, we have that the classical Hamiltonian for an electromagnetic field is
+	\begin{equation}
+		\ham=\frac{1}{2m}\left( p_i-qA_i \right)^2+q\phi
+		\label{eq:classemham}
+	\end{equation}
+	Quantizing, and noting that $\comm{\opr{p}_i}{\opr{A}_i}\ne0$ generally, we have, setting the Coulombe gauge ($\partial_iA^i=0,\ \phi=0$) that the Hamiltonian in study for our quantum system is the following
+	\begin{equation}
+		\opr{\ham}=\frac{1}{2m}\left( -\hbar^2\nabla^2+q^2\opr{A}^2+2iq\hbar\vecopr{A}\cdot\nabla\right)
+		\label{eq:qhamemfield}
+	\end{equation}
+	The interaction of the field with the particle can be analyzed perturbatively, and considering first order terms in $\vecopr{A}$ we have
+%	\begin{equation}
+%		\opr{\ham}=-\frac{\hbar^2}{2mr^2}\pdv{r}\left( r^2\pdv{r} \right)+\frac{\opr{L}^2}{2mr^2}-\frac{e^2}{r}+\frac{q^2}{2m}\opr{A}^2+\frac{iq\hbar}{m}\vecopr{A}\cdot\nabla
+%		\label{eq:fullpert}
+%	\end{equation}
+%	We already know that for weak fields the term with $A^2$ is negligible, and our Hamiltonian for weak fields is
+	\begin{equation}
+		\opr{\ham}=\opr{\ham}_0+\frac{iq\hbar}{m}\vecopr{A}\cdot\nabla
+		\label{eq:weakfieldemham}
+	\end{equation}
+	Where we put $\opr{\ham}_0$ as the unperturbed Hamiltonian.\\
+	Calling the perturbative piece of the Hamiltonian $\opr{W}(t)$ we have that the perturbation on a transition between a state $\ket{a}$ and $\ket{b}$ will be given by the following integral
+	\begin{equation}
+		W_{ba}(t)=\frac{q}{m}\bra{b}\vecopr{A}\cdot\vecopr{p}\ket{a}
+		\label{eq:empertmatrix}
+	\end{equation}
+	Where the vector potential is the solution of the following integral
+	\begin{equation}
+		\hat{A}_i(x_i,t)=\frac{1}{2}\int_{0}^{\infty}A_0(\omega)\epsilon_i\left( e^{i(k_ix^i-\omega t+\delta_{\omega})}+e^{-i(k_ix^i-\omega t +\delta_{\omega})} \right)\diff{\omega}
+		\label{eq:vectorpotentialem}
+	\end{equation}
+	Take now a time evolved eigenstate of the unperturbed Hamiltonian, and rewrite as a linear combination of those times an unknown time-dependent function $c_k(t)$. We can write, for a generic eigenstate $\ket{k}$, that the new perturbed state will be $\ket{\psi}$
+	\begin{equation}
+		\ket{\psi}=\sum_kc_k(t)e^{-\frac{iE_kt}{\hbar}}\ket{k}
+		\label{eq:perturbedempsi}
+	\end{equation}
+	Inserting everything in the time-dependent Schrödinger equation for the perturbed Hamiltonian, and simplifying terms, we have
+	\begin{equation}
+		i\hbar\sum_k\dot{c}_k(t)e^{-\frac{iE_kt}{\hbar}}\ket{k}=\sum_kc_k\hat{W}(t)e^{-\frac{iE_kt}{\hbar}}\ket{k}
+		\label{eq:tdsep}
+	\end{equation}
+	Checking now the transition $\ket{k}\to\ket{b}$, and remembering the orthonormality between states, we have, putting $\omega_{bk}=(E_b-E_k)/\hbar$
+	\begin{equation}
+		\dot{c}_b(t)=\frac{1}{i\hbar}\sum_kc_k(t)\bra{b}\hat{W}\ket{k}e^{-i\omega_{bk}t}
+	\end{equation}
+	Approximating $c_k(t)$ to the first order in $\lambda$ and making the assumption that the system will be in a state $\ket{a}$ for $t\le0$, therefore implying $c_k(t)=\delta_{ka}$ for $k\ne a,b$, we have, rearranging terms of the same order
+	\begin{equation}
+		\dot{c}_b(t)=\frac{1}{i\hbar}\bra{b}\hat{W}\ket{a}e^{-i\omega_{ba}t}
+	\end{equation}
+	Factoring out constants and time dependent parameters, we have that the coefficient for our perturbation is
+	\begin{equation}
+		c_b(t)=\frac{q}{2im\hbar}\int_{0}^{\infty}\int_0^tA_0(\omega)\bra{b}e^{ik^ix_i}\epsilon\cdot\vecopr{p}\ket{a}e^{-i(\omega_{ba}-\omega)t'}e^{i\delta_\omega}\diff{t}\dd\omega+c.c.
+		\label{eq:transitionprobqem}
+	\end{equation}
+	If $t>>2\pi/\omega$ we can approximate the radiation as a plane wave solution. Parting the integrals we have that one will be nonzero for $\omega_{ba}\simeq\omega$ and the second for $\omega_{ba}\simeq-\omega$. The first nonzero solution describes an absorption between the state with $\ket{a}$ and $\ket{b}$, with $E_b>E_a$, and the second instead describes an emission between the state $\ket{a}$ and $\ket{b}$.\\
+	Now, indicating $\bra{b}e^{ik_ix^i}\epsilon\cdot\vecopr{p}\ket{a}$ as $M_{ba}$ and noting that $\expval{e^{i\delta_{\omega}}}=\delta(\omega)$ we have that the transition probability will be
+	\begin{equation}
+		\abs{c_b(t)}^2=\frac{q^2}{4m^2\hbar^2}\int_{0}^\infty\abs{A_0(\omega)}^2\abs{\bra{b}e^{ik^ix_i}\vec{\epsilon}\cdot\vecopr{p}\ket{a}}^2F(t,\omega_{ba}-\omega)\dd\omega
+		\label{eq:transprob}
+	\end{equation}
+	Where the function $F$ is defined as the square modulus of the integral of the exponential, which corresponds to a $\mathrm{sinc^2}$ function
+	For $t>>1$ we have that, for the properties of the function $F$, Fermi's Golden Rule, and the connection between $A^2$ and the intensity $I$, we have
+	\begin{equation}
+		P_{a\to b}(t)=\abs{c_b(t)}^2=\frac{\pi q^2t}{2\hbar^2\epsilon_0\omega^2m^2c}I(\omega)\abs{M_{ba}}^2\delta(\omega_{ba}-\omega)
+		\label{eq:transprobfermi}
+	\end{equation}
+	Note that this probability is linearly dependent on time, therefore, the time-weighted probability of transition between the states $\ket{a}$ and $\ket{b}$ for a system in an electromagnetic field is
+	\begin{equation}
+		W_{ba}=\frac{\pi q^2}{\epsilon_0\omega_{ba}^2m^2c\hbar^2}I(\omega_{ba})\abs{M_{ba}}^2
+		\label{eq:perttransem}
+	\end{equation}
+	\section{Dipole Approximation}
+	In order to evaluate dipole transitions we approximate our plane wave solution to the first order, getting $e^{ik_ix^i}\approx1$, which gives us that $M_{ba}=\bra{b}\ver{\epsilon}\cdot\vecopr{p}\ket{a}$. In this approximation, we can write
+	\begin{equation*}
+		\vecopr{p}=\frac{m}{i\hbar}\comm{\vecopr{r}}{\opr{\ham}_0}
+	\end{equation*}
+	Substituting in $M_{ba}$ and using $\opr{\ham}_0$'s hermiticity, we have, defining an \textit{electric dipole operator} $\vecopr{D}=-e\vecopr{r}$
+	\begin{equation}
+		M_{ba}^{(1)}=\frac{im\omega_{ba}}{e}\bra{b}\ver{\epsilon}\cdot\vecopr{D}\ket{a}
+		\label{eq:mbadipole}
+	\end{equation}
+	And
+	\begin{equation}
+		W_{ba}^{(1)}=\frac{\pi I(\omega_{ba})}{\hbar^2c\epsilon_0}\abs{\bra{b}\ver{\epsilon}\cdot\vecopr{D}\ket{a}}^2
+		\label{eq:transprobdipole}
+	\end{equation}
+	Evaluating the square norm on the right, we have that in case of unpolarized light, the vector $\epsilon$ lays randomly on a sphere, and therefore we have that the matrix elements of $M_{ba}$ will depend solely on $\ket{b}\vecopr{r}\ket{a}$, as follows
+	\begin{equation}
+		\abs{\bra{b}\ver{\epsilon}\cdot\vec{r}\ket{a}}^2=\frac{1}{3}\sum_k\abs{\bra{b}\opr{r}_k\ket{a}}^2=\frac{1}{3}\abs{\vec{r}_{ba}}^2
+		\label{eq:mbadipoletransunpol}
+	\end{equation}
+	Where we used that $\expval{\cos^2(\theta)}=1/3$.\\
+	Finally, we have that in the dipole approximation
+	\begin{equation}
+		W_{ba}=\frac{\pi q^2I(\omega_{ba})}{3\hbar^2\epsilon_0c}\abs{\bra{b}\vecopr{r}\ket{a}}^2
+		\label{eq:wbadipole}
+	\end{equation}
+	\subsection{Dipole Selection Rules for Atomic Transitions}
+	Consider now a Hydrogenic Hamiltonian (without spin) as our unperturbed system. In this case we choose $q=-e$.\\
+	As we have seen before, the electric dipole transition probability between two states with $E_b>E_a$ depends only on the matrix elements of $\ver{\epsilon}\cdot\vec{r}$. Rewriting everything in terms of spherical components, we have
+	\begin{equation}
+		\begin{aligned}
+			\opr{r}_{\pm1}&=\frac{\opr{x}\pm i\opr{y}}{\sqrt{2}},\quad\opr{r}_0=\opr{z}\\
+			\ver{\epsilon_{\pm1}}&=\frac{\ver{\epsilon_x}\pm i\ver{\epsilon_y}}{\sqrt{2}},\quad\ver{\epsilon_0}=\ver{\epsilon_z}
+		\end{aligned}
+		\label{eq:sphcoord}
+	\end{equation}
+	Considering that Spherical Harmonics are eigenfunctions of our unperturbed Hamiltonian and can also be used to describe the components of the vectors, we have $r_{\pm1}=\sqrt{\frac{4\pi}{3}}Y_{1,\pm1}\opr{r}$ and $\opr{r}_0=\sqrt{\frac{4\pi}{3}}Y_{1,0}\opr{r}$, hence we get that $\ver{\epsilon}\cdot\vec{r}_{ba}$ is
+	\begin{equation}
+		\sum_q\bra{n'l'm'}\cc{\ver{\epsilon_q}}\opr{r}_q\ket{nlm}=\sum_q\cc{\ver{\epsilon_q}}\sqrt{\frac{4\pi}{3}}\iint\cc{R}_{n'l'}R_{nl}r^3\cc{Y}^{m'}_{l'}Y_{1}^qY^m_l\diff{\Omega}\diff{r}
+		\label{eq:selrulesdippolarization}
+	\end{equation}
+	The last integral is nonzero if and only if $m'=m+q$, hence we must have that $m-m'=\pm1$ and $q=\pm1$. On the other hand, due to the parity of spherical harmonics, we need that $l+l'+1$ must be even, hence summing the coefficients using Clebsch-Gordan rules, we need that $l=l'\pm1$, and hence $l-l'=\pm1$. In bra-ket notation this reduces to the following calculation
+	\begin{equation}
+		\int\cc{Y}_{l'}^{m'}Y^q_1Y^m_l\diff{\Omega}\to\sqrt{\frac{3(2l+1)}{4\pi(2l'+1)}}\bra{l100}\ket{l'0}\bra{l1mq}\ket{l'm'}
+		\label{eq:cgtableselrule}
+	\end{equation}
+	Which brings back our previously found selection rules, plus one more constraint on $\Delta m$. Recapping everything, we get that for a spinless system, the selection rules for a dipole transition are
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Quantum Number&Permitted Transitions\\
+			\hline
+			$l$&$\pm1$\\
+			\hline
+			$m$&$0,\pm1$\\
+			\hline
+		\end{tabular}
+		\label{tab:selectionrulesspinless}
+	\end{table}
+	\subsection{Spontaneous Emission}
+	A situation that can't be evaluated using semiclassical methods is that of spontaneous emission, since an atom can decay spontaneously, even without having some radiation stimulating the process.\\
+	We start by evaluating an atom-photon system, for which we have three probabilities of interaction between the two: absorption ($B_a$), emission ($B_e$) and spontaneous emission ($A_{se}$). The $B$s indicate the probability in unit time that the photon induces a transition between the two states $b$ and $a$ with $E_b>E_a$, and $A$ indicates the probability for unit time that the state $b$ decays spontaneously to the state $a$. We already know that the $B$s are tied to our previous perturbation matrix as follows
+	\begin{equation*}
+		W_{ba}=B_{ba}\rho(\omega_{ba})
+	\end{equation*}
+	Where $\rho$ is a density tied to the photon number, which has the following formal expression
+	\begin{equation*}
+		\rho(\omega)=\frac{\hbar\omega N(\omega)}{V}
+	\end{equation*}
+	With $V$ the volume considered and $N(\omega)$ the number of photons in that given frequency.\\
+	Given this, the number of atoms that decay from $a$ to $b$ is the following
+	\begin{equation*}
+		N_{ba}=N_aB_a\rho(\omega_{ba})
+	\end{equation*}
+	And, vice-versa
+	\begin{equation*}
+		N_{ab}=N_bB_e\rho(\omega_{ba})+N_bA_{se}
+	\end{equation*}
+	If the system is at equilibrium we must have $N_{ab}=N_{ba}$, hence
+	\begin{equation}
+		\frac{N_b}{N_a}=\frac{B_a\rho(\omega_{ba})}{B_e\rho(\omega_{ba})+A_{se}}=e^{-\beta\hbar\omega_{ba}}
+		\label{eq:equilibriumse}
+	\end{equation}
+	Where $\beta=(k_BT)^{-1}$. Knowing that $\rho$ must follow a Black-Body law, we have, solving for $\rho$
+	\begin{equation}
+		\rho(\omega_{ba})=\frac{A_{se}}{B_a\left( e^{\beta\hbar\omega_{ba}}-\frac{B_e}{B_a} \right)}
+		\label{eq:transitiondensityse}
+	\end{equation}
+	Hence
+	\begin{equation}
+		\begin{aligned}
+			\frac{B_e}{B_a}&=1\\
+			\frac{A_{se}}{B_a}&=\frac{\hbar\omega_{ba}^3}{\pi^2c^3}
+		\end{aligned}
+		\label{eq:coefficients}
+	\end{equation}
+	We then must have that $W_{ba}^a=W_{ba}^{se}=B_a\rho(\omega_{ba})$, and coupling it to equation \eqref{eq:perttransem}, we must have that
+	\begin{equation}
+		W_{ba}^{se}=\frac{\pi\omega_{ba}^3e^2}{\hbar c^3\epsilon_0}\abs{\ver{epsilon}\cdot\vecopr{r}_{ba}}^2
+		\label{eq:spontaneousemissiontransmatrix}
+	\end{equation}
+	\subsection{Thermodynamic Equilibrium}
+	We already saw how the density of photons at a given frequency is given by the following expression, without proof.
+	\begin{equation*}
+		\rho(\omega)=\frac{\hbar\omega^3}{\pi^2c^3}\frac{1}{e^{\beta\hbar\omega}-1}
+	\end{equation*}
+	\begin{proof}
+		We need to prove this relation. We start supposing that we have a system of levels with $\Delta E=\hbar\omega$ for every level in the set. The number of photons that populate this system at a temperature $T$ is
+		\begin{equation}
+			N(\omega,T)=\frac{\sum_{n=0}^{\infty}ne^{-\beta n\hbar\omega}-\frac{\beta\hbar\omega}{2}}{\sum_{n=0}^{\infty}e^{-\beta n\hbar\omega-\frac{\beta\hbar\omega}{2}}}=\frac{\sum_{n=0}^{\infty}nx^n}{\sum_{n=0}^{\infty}x^n}=-x\derivative{\log(1-x)}{x}=\frac{1}{e^{\beta\hbar\omega}-1}
+			\label{eq:numberofphotonsaeq}
+		\end{equation}
+		Where we put, for convenience, $x=e^{-\beta\hbar\omega}$\\
+		We now need to evaluate how many states we have with frequency $\omega$. We begin considering a box with sides of length $L$ with periodic boundary value conditions. The number of possible modes is
+		\begin{equation*}
+			N_m(k)=2\frac{\frac{4}{3}\pi k^3}{\left( \frac{2\pi}{L} \right)^3}
+		\end{equation*}
+		Differentiating and passing to frequency ($\omega=ck$), we get
+		\begin{equation}
+			\diff{N_m}(\omega)=\frac{V\omega^2}{\pi^2c^3}\diff{\omega}
+			\label{eq:frequencymodes}
+		\end{equation}
+		And, henceforth, the energy density is
+		\begin{equation}
+			\rho(\omega)\diff{\omega}=\frac{\hbar\omega}{V}N(\omega,T)\diff{N_m}(\omega)=\frac{\hbar\omega^3}{\pi^2c^3}\frac{1}{e^{\beta\hbar\omega}-1}\diff{\omega}
+			\label{eq:rhoomegamodesproof}
+		\end{equation}
+	\end{proof}
+	\section{Relativistic Corrections and Fine Structure}
+	Taking the full-blown relativistically invariant Dirac Hamiltonian and considering it in the limit $v/c<<1$ and assuming infinite nuclear mass, we get the following expression
+	\begin{equation}
+		\opr{\ham}=mc^2+\frac{\opr{p}^2}{2m}-\frac{\opr{p}^4}{8m^3c^2}+\frac{1}{2m^2c^2}\frac{1}{R}\derivative{V}{R}\vecopr{L}\cdot\vecopr{S}+\frac{\hbar^2}{8m^2c^2}\nabla^2V(R)+V(R)
+		\label{eq:dirachamiltonianslowspeed}
+	\end{equation}
+	This Hamiltonian can be divided in three parts: The non-relativistic Hamiltonian, a kinetic relativistic correction, spin-orbit interaction and the Darwin term.\\
+	\subsection{Relativistic Correction for the Kinetic Energy}
+	The relativistic correction for kinetic energy is given by the expansion of $E=c\sqrt{p^2+m^2c^2}$. Expanding, we get
+	\begin{equation}
+		E\simeq mc^2+\frac{\opr{p}^2}{2m}-\frac{\opr{p}^4}{8m^3c^2}
+		\label{eq:energypowerseries}
+	\end{equation}
+	We have our non perturbed Hamiltonian $\opr{\ham}_0$ with our hydrogenoid potential summed to the correction, as follows
+	\begin{equation}
+		\begin{aligned}
+			\opr{\ham}&=\frac{\opr{p}^2}{2m}-\frac{Ze^2}{4\pi\epsilon_0r}+W_p\\
+			W_p&=-\frac{\opr{p}^4}{8m^3c^2}
+		\end{aligned}
+		\label{eq:hampluspert}
+	\end{equation}
+	We already know that $\opr{p}^2=2m\left( \opr{\ham}_0-V \right)$, hence $\opr{p}^4=4m^2\left( \opr{\ham}_0-V \right)^2$, and
+	\begin{equation*}
+		W_p=-\frac{1}{2mc^2}\left( \opr{\ham}_0-V \right)^2
+	\end{equation*}
+	Surprisingly, this perturbation is diagonal in the basis of the Hydrogen atom, hence we find ourselves in need of calculating only some expectation values, as follows
+	\begin{equation}
+		\expval{W_p}=-\frac{1}{2mc^2}\expval{\opr{\ham}_0^2+V^2-\comm{\opr{\ham}_0}{V}}
+		\label{eq:evaluationkineticcorr}
+	\end{equation}
+	Which gives
+	\begin{equation}
+		\expval{W_p}=-\frac{1}{2mc^2}\left( E_n^2+\frac{Z^2e^4}{(4\pi\epsilon_0)^2}\expval{\frac{1}{r^2}}+2E_n\frac{Ze^2}{4\pi\epsilon_0}\expval{\frac{1}{r}} \right)
+		\label{eq:completecalc}
+	\end{equation}
+	The expectation values are easy to calculate and their explicit calculation is given in appendix \ref{app:E}. For our specific case, we get that
+	\begin{equation}
+		\begin{aligned}
+			\expval{\frac{1}{r}}&=\frac{Z}{a_0n^2}\\
+			\expval{\frac{1}{r^2}}&=\frac{Z^2}{a_0^2n^3\left( l+\frac{1}{2} \right)}\\
+			\expval{\frac{1}{r^3}}&=\frac{Z^3}{a_0^3n^3l\left( l+\frac{1}{2} \right)\left( l+1 \right)}\quad l>0
+		\end{aligned}
+		\label{eq:expvalrminusk}
+	\end{equation}
+	Putting it all into our matrix elements of the perturbation, and remembering that $E_n=-E_1/n^2$, with $E_1=-Z^2/n^2\alpha^2mc^2$, with $\alpha=e^2/\hbar c$ is the fine structure constant, we get
+	\begin{equation}
+		\expval{W_p}=-\frac{1}{2mc^2}\left( E_n^2+\frac{Z^4e^4}{a_0^2n^3(4\pi\epsilon_0)^2(l+1/2)}+2E_n\frac{Z^2e^2}{4\pi\epsilon_0a_0n^2} \right)
+		\label{eq:pertrelkinen}
+	\end{equation}
+	Substituting for $E_n$, we get, finally
+	\begin{equation}
+		\expval{W_p}=-E_n\frac{Z^2\alpha^2}{2n^2}\left( \frac{3}{4}-\frac{n}{l+1/2} \right)
+		\label{eq:pertrelkinencomplete}
+	\end{equation}
+	For a Hydrogen atom we have $Z=1$, and the correction is of order $\alpha^2E_n$. Counting that $\alpha=137^{-1}$ the perturbation is small enough to be treated as such.\\
+	\subsection{Darwin Term}
+	The Darwin term $\left( \frac{\hbar^2}{8m^2c^2}\nabla^2V(r) \right)$, for Hydrogenoid atoms, becomes
+	\begin{equation}
+		\opr{W}_D=\frac{\hbar^2Ze^2}{8\epsilon_0m^2c^2}\delta(r_i)
+		\label{eq:darwinterm}
+	\end{equation}
+	Where we used that $\nabla^2(1/r)=-4\pi\delta(r)$\\
+	The matrix elements of $\opr{W}_D$ will be nonzero only for $l=0$, and will take the following form
+	\begin{equation}
+		\expval{W_D}=\frac{\hbar^2Ze^2}{8\epsilon_0m^2c^2}\abs{\phi_{nlm}(0)}^2
+		\label{eq:darwinmatrixelements}
+	\end{equation}
+	In general $\abs{\phi_{n00}(0)}^2=(4\pi)^{-1}\abs{R_{n0}}^2$, where
+	\begin{equation}
+		R_{nl}(\rho)=\frac{1}{(2l+1)!}\sqrt{\left( \frac{2Z}{na_0} \right)^3\frac{(n+l)!}{2n(n-l-1)!}}e^{\frac{\rho}{2}}r^lF(l+1-n,2l+2,\rho)
+		\label{eq:rnlgeneral}
+	\end{equation}
+	With $\rho=2Zr/na_0$. We have that $\abs{R_{n0}(0)}^2=\frac{4Z^3}{n^3a_0^3}$, hence
+	\begin{equation}
+		\abs{\phi_{n00}(0)}^2=\frac{Z^3}{\pi a_0^3n^3}
+		\label{eq:phin00}
+	\end{equation}
+	For which, finally we get
+	\begin{equation}
+		\expval{W_D}=\frac{\hbar^2Z^4e^2}{8\pi\epsilon_0a_0^3m^2c^2n^3}=\frac{\hbar^2}{2m^2c^2}\frac{Z^2}{n^3a_0^2}\alpha^2mc^2=-E_n\frac{\hbar^2Z^2}{na_0m^2c^2}=-E_n\frac{Z^2\alpha^2}{n}
+		\label{eq:darwintermpert}
+	\end{equation}
+	\subsection{Spin Orbit Coupling}
+	The last term to evaluate, is the Spin-Orbit coupling of angular momentums, which gives the following perturbation
+	\begin{equation}
+		\opr{W}_{SO}=\frac{1}{2m^2c^2}\frac{1}{r}\derivative{V}{r}\vecopr{L}\cdot\vecopr{S}
+		\label{eq:spinorbitpert}
+	\end{equation}
+	Explicitly
+	\begin{equation}
+		\opr{W}_{SO}=\frac{Ze^2}{8\pi\epsilon_0m^2c^2r^3}\vecopr{L}\cdot\vecopr{S}
+		\label{eq:spinorbitpertexp}
+	\end{equation}
+	Its matrix elements will be, then
+	\begin{equation}
+		\expval{W_{SO}}=\frac{Ze^2}{8\pi\epsilon_0m^2c^2}\expval{\frac{1}{r^3}}\expval{\vecopr{L}\cdot\vecopr{S}}
+		\label{eq:matrixelementssoint}
+	\end{equation}
+	Adding angular momentums and passing to the basis $\ket{jlsm_j}$, we get that
+	\begin{equation*}
+		\vecopr{L}\cdot\vecopr{S}=\frac{1}{2}\left( \opr{J}^2-\opr{L}^2-\opr{S}^2 \right)
+	\end{equation*}
+	And remembering that
+	\begin{equation*}
+		\expval{\frac{1}{r^3}}=\frac{Z^3}{a_0^3n^3l(l+1/2)(l+1)},\quad l>0
+	\end{equation*}
+	We get
+	\begin{equation}
+		\expval{W_{SO}}=\frac{\hbar^2Z^4e^2}{16\pi\epsilon_0a_0^3n^3l(l+1/2)(l+1)m^2c^2}\left( j(j+1)-l(l+1)-s(s+1) \right)
+		\label{eq:wsocomplete}
+	\end{equation}
+	In which, substituting in the following values
+	\begin{equation*}
+		\begin{aligned}
+			E_n&=-\frac{Z^2\alpha^2mc^2}{2n^2}\\
+			a_0&=\frac{\hbar}{mc\alpha}\\
+			\frac{e^2}{4\pi\epsilon_0}&=\alpha\hbar c
+		\end{aligned}
+	\end{equation*}
+	We have
+	\begin{equation}
+		\expval{W_{SO}}=-E_n\frac{Z^2\alpha^2}{2n^2}\frac{j(j+1)-l(l+1)-s(s+1)}{l(l+1/2)(l+1)}
+		\label{eq:wsosubstituted}
+	\end{equation}
+	Which, dividing it in two cases, if we have $j=l+1/2$ or $j=l-1/2$, we get
+	\begin{equation}
+		\expval{W_{SO}}=-E_n\frac{Z^2\alpha^2}{2nl(l+1/2)(l+1)}\cdot\left.\begin{dcases}l&j=l+1/2\\-(l+1)&j=l-1/2\end{dcases}\right\}
+		\label{eq:spinorbitcomplete}
+	\end{equation}
+	The total, and final, perturbation given by the relativistic approximation will not depend on $l$, and it's given by the following formula
+	\begin{equation}
+		E_{nj}=E_n\left( 1+\frac{Z^2\alpha^2}{n^2}\left( \frac{n}{j+1/2}-\frac{3}{4} \right) \right)
+		\label{eq:finalpertrelcorr}
+	\end{equation}
+	\subsection{Fine Structure Splitting}
+	After summing all these perturbations to our initial energy, we have that although the non-relativistic energy levels were $2n^2$ times degenerate, we have that in the Dirac theory (i.e. relativistic quantum mechanics), we have that the $n-$th level splits in $n$ different levels, each one with its own value of $j$. This splitting is commonly called \textit{fine structure splitting}, and these $n$ levels are called \textit{fine structure multiplets}. The dimensionless \textit{fine structure constant} $\alpha\simeq1/137$ controls the scale of this splitting. It's important to note how in Dirac theory, two states with the same quantum numbers $n,j$ but with $l=j\pm1/2$, have the same energy, where the solution still has $(-1)^l$ parity. Thus for each $j$ we have two series of $2j+1$ solutions with opposite parity, except for $j=n-1/2$, for which there is only a series of solutions with parity $(-1)^{n-1}$. The splitting we talked about in this paragraph is indicated as follows with spectroscopic notation.\\
+	e.g. let's say that we have $n=3$, hence $l=0,1,2$ and $j=1/2,\ 3/2,\ 5/2$. Through the perturbed energy \eqref{eq:finalpertrelcorr} we will have that the $n=3$ level will split in $5$ levels, as follows
+	\begin{equation*}
+		3s_{1/2},3p_{1/2},3p_{3/2},3d_{3/2},3d_{5/2}
+	\end{equation*}
+	This splitting is accompanied by a further splitting, called \textit{hyperfine splitting}, and its contribution is called \textit{Lamb shift}
+	\subsection{Fine Structure Dipole Transitions}
+	We already seen how the only permitted transitions in the dipole approximation are those that have $\Delta l=\pm1$ and $\Delta s=0$, which implies that $\Delta j=0,\pm1$. Since $\vecopr{J}$ eigenstates are linear combinations of eigenstates of $\vecopr{S},\vecopr{L}$, we have that $\Delta j=0$ transitions are permitted.\\
+	e.g., let's see how it works for states with $l=1$ and $s=1/2$. There will be 6 states, where 4 will have $j=3/2$ and 2 will have $j=1/2$. The six states in the $\ket{jm_j}$ basis can be written as a linear combination of states $\ket{lsm_lm_s}$. Starting with $m_j=3/2$ we have
+	\begin{equation*}
+		\ket{\frac{3}{2},\frac{3}{2}}=\ket{1,\frac{1}{2},1,\frac{1}{2}}
+	\end{equation*}
+	Operating with $\ladoprd{J}$ we have
+	\begin{equation*}
+		\ket{\frac{3}{2},\frac{1}{2}}=A\ket{1,\frac{1}{2},0,\frac{1}{2}}+B\ket{1,\frac{1}{2},1,-\frac{1}{2}}
+	\end{equation*}
+	Analoguously, starting from $m_j=-3/2$ and working our way up the eigenstate ladder with $\ladopru{J}$, we get
+	\begin{equation*}
+		\ket{\frac{3}{2},-\frac{1}{2}}=C\ket{1,\frac{1}{2},0,-\frac{1}{2}}+D\ket{1,\frac{1}{2},-1,\frac{1}{2}}
+	\end{equation*}
+	And finally, the last two states
+	\begin{equation*}
+		\begin{aligned}
+			\ket{\frac{1}{2},-\frac{1}{2}}&=-\sqrt{\frac{2}{3}}\ket{1,\frac{1}{2},-1,\frac{1}{2}}+\sqrt{\frac{1}{\sqrt{3}}}\ket{1,\frac{1}{2},0,-\frac{1}{2}}\\
+			\ket{\frac{1}{2},\frac{1}{2}}&=E\ket{1,\frac{1}{2},1,-\frac{1}{2}}+F\ket{1,\frac{1}{2},0,\frac{1}{2}}
+		\end{aligned}
+	\end{equation*}
+	In this situation there are 7 possible transitions, but there will be only 5 visible lines, since $\Delta j=2$ is not permitted by the selection rules.\\
+	This can be seen as follows: before the absorption, the total angular momentum is $j_i$, of the electron, summed with the photon spin $s_{\gamma}=1$, hence the total (initial) angular momentum will be $k_i$, where $\abs{j_i-1}<k_i<j_i+1$. After the transition, we must have $k_f=j_f$, and since angular momentum must be conserved, we have that $k_i=k_f$, hence $\abs{j_i-1}<j_f<j_i+1$, this happens analogously with emission transitions.
+	Finally, the selection rules for dipole transitions in fine structure systems are $\Delta l=\pm1,\ \Delta s=0,\ \Delta j=0,\pm1$ where $j=0\to j=0$ is not permitted
+	\section{Zeeman Effect}
+	Getting back to our semiclassical EM Hamiltonian, we have that the time dependent perturbation can be written as
+	\begin{equation*}
+		-\frac{i\hbar e}{m}\vecopr{A}\cdot\nabla=\frac{e}{2m}\vec{B}\cdot\vecopr{L}
+	\end{equation*}
+	And the quadratic perturbation as follows
+	\begin{equation*}
+		\frac{e^2}{2m}\opr{A}^2=\frac{e^2}{8m}\left( B^2\opr{r}^2-(\vec{B}\cdot\vecopr{r})^2 \right)
+	\end{equation*}
+	Since in laboratories is rare to exceed $10$ T of magnetic field intensity, hence since $4a_0^2B/4\hbar\approx 10^{-6}B$ we suppose that the quadratic term is again negligible.\\
+	We define a \textit{Magnetic dipole moment operator} as follows.\\
+	\begin{equation}
+		\vecopr{M}=-\frac{e}{2m}\vecopr{L}=-\frac{\mu_B}{\hbar}\vecopr{L}
+		\label{eq:mmomopr}
+	\end{equation}
+	With $\mu_B=e\hbar/2m$ is \textit{Bohr's magneton}, which has the value of around $9.27408\cdot10^{24}\ \mathrm{J/T}$ or $\mathrm{Am^2}$. The interaction Hamiltonian with this field then is
+	\begin{equation}
+		\opr{\ham}_{m}=-\vecopr{M}\cdot\vec{B}
+		\label{eq:interactionhammag}
+	\end{equation}
+	To this we have to add the intrinsic magnetic moment given by the electron, which has the following shape
+	\begin{equation}
+		\vecopr{M}_s=-\frac{g\mu_B}{\hbar}\vecopr{S}
+		\label{eq:spinmmopr}
+	\end{equation}
+	Where $g=2$ is the \textit{gyromagnetic ratio} of the electron
+	And the following Hamiltonian
+	\begin{equation}
+		\opr{\ham}_s=-\vecopr{M}_s\cdot\vec{B}
+		\label{eq:interactionhamspin}
+	\end{equation}
+	Our final Hamiltonian that accounts for spin-orbit interactions and atom-magnetic field interaction is simply given via the Pauli equation, at which has been ``attached'' the spin-orbit coupling element. The Pauli equation will then be %ik gotta fix%
+	\begin{equation}
+		\bra{r}\opr{\ham}\ket{\psi}=\left( -\frac{\hbar^2}{2m}\nabla^2-\frac{Ze^2}{4\pi\epsilon_0r}+\xi(r)\vecopr{L}\cdot\vecopr{S}+\frac{\mu_B}{\hbar}\left( \vecopr{L}+2\vecopr{S} \right)\cdot\vec{B} \right)\psi(r)=E\psi(r)
+		\label{eq:sopauliequation}
+	\end{equation}
+	Where, our $\psi(r)$ not only accounts for spin, but for spin-orbit coupling also.
+	\subsection{Strong Fields}
+	Strong fields are characterized for having a magnetic field intensity of $B>Z^4$ Tesla. In this situation the spin-orbit coupling term is negligible, and our equation, after applying a rotation and having $\vec{B}||\ver{z}$, we have
+	\begin{equation}
+		\left( -\frac{\hbar^2}{2m}\nabla^2-\frac{Ze^2}{4\pi\epsilon_0r} \right)\psi(r_i)=\left( E-\frac{\mu_BB_z}{\hbar}\left( \opr{L}_z+2\opr{S}_z \right) \right)\psi(r_i)
+		\label{eq:strongfieldham}
+	\end{equation}
+	The perturbation is diagonal, and the shift will be
+	\begin{equation}
+		E_{nm_lm_s}=E_n+\mu_BB_z(m_l+2m_s)
+		\label{eq:energyshiftmagfield}
+	\end{equation}
+	Where in this case $m_s=\pm1/2$. Since there is no spin orbit coupling in this case, we have that levels with $m_l=1,m_s=-1/2$ and $m_l=-1,m_s=1/2$ coincide.\\
+	We already know from the selection rules that we must have $\Delta m_s=0$ and $\Delta m_l=0,\pm1$, thus splitting the transition $n\to n'$ into three components. The two components with $\Delta m_l=\pm1$ are called $\pi$ lines, and the remaining one, with $\Delta m_l=0$ is called the $\sigma$ line.\\
+	These $\pi$ transitions have the following frequencies
+	\begin{equation}
+		\omega^{\pm}_{n'n}=\omega_{n'n}\pm\omega_L
+		\label{eq:pitranslines}
+	\end{equation}
+	Where $\omega_L=\mu_BB_z/\hbar$ is the \textit{Larmor frequency}. This effect is known as \textit{normal Zeeman effect}, and the $\pi$ and $\sigma$ lines of this effect are said to be \textit{Lorentz triplets}. They are also observed in atoms for which $S=0$, hence where spin-orbit coupling is absent.
+	\subsection{Paschen-Back Effect}
+	At field strengths for which spin orbit coupling is appreciable but still small with respect to the field intensity $B$, we have that first order perturbation theory can be applied in order to calculate the energy shift.\\
+	We have then
+	\begin{equation}
+		\Delta E=\int_{0}^{\infty}r^2R_{nl}^2\xi(r)\diff{r}\bra{l\frac{1}{2}m_lm_s}\vecopr{L}\cdot\vecopr{S}\ket{l\frac{1}{2}m_lm_s}=\lambda_{nl}m_lm_s\quad l\ne0
+		\label{eq:paschenbackshiftfirstorder}
+	\end{equation}
+	We have that<++>
+	\begin{equation}
+		\lambda_{nl}=-E_n\frac{Z^2\alpha^2}{n}\frac{1}{l(l+1/2)(l+1)}
+		\label{eq:lambdapb}
+	\end{equation}
+	Which removes the degeneracy in $l$. The energy difference between two different levels, when $m_s=m_s'$ ($\Delta m_s=0$) is then the following
+	\begin{equation}
+		\Delta E=E_{n'}-E_n+E_{z}+E_{pb}=E_{n'}-E_n+\mu_BB_z(m_l'-m_l)+(\lambda_{n'l'}m_l'-\lambda_{nl}m_l)m_s
+		\label{eq:paschenbackshift}
+	\end{equation}
+	\subsection{Anomalous Zeeman Effect}
+	For weak magnetic fields, we have what's usually called the \textit{anomalous Zeeman effect}. In this case, the spin-orbit coupling is the dominant term, and our unperturbed Hamiltonian takes the following shape
+	\begin{equation}
+		\opr{\ham}_0=-\frac{\hbar^2}{2m}\nabla^2-\frac{Ze^2}{4\pi\epsilon_0r}+\xi(r)\vecopr{L}\cdot\vecopr{S}
+		\label{eq:spinorbitham}
+	\end{equation}
+	This Hamiltonian has exact wavefunctions, which are given via what's known as \textit{Tensor Spherical Harmonics} (see appendix \ref{app:tsh}). Our unperturbed wavefunction will then be
+	\begin{equation}
+		\psi_{nlsjm_j}(r,\theta,\phi)=R_{nl}(r)\mc{Y}^{jm_j}_{ls}(\theta,\phi)=C_{jm_j}^{lsm_lm_s}R_{nl}(r)Y^{m_l}_l(\theta,\phi)\chi_{s,m_s}
+		\label{eq:wavefunctionspinorbit}
+	\end{equation}
+	Or, in Dirac notation
+	\begin{equation}
+		\ket{nl}\otimes\ket{ls}\otimes\ket{jm_j}=\bra{lsm_lm_s}\left(\ket{jm_j}\otimes\ket{nl}\otimes\ket{lm_l}\otimes\ket{sm_s}\right)
+		\label{eq:spinorbitautoket}
+	\end{equation}
+	Taking the magnetic field parallel to the $z$ axis, we have that the perturbation needed to be evaluated is
+	\begin{equation}
+		\opr{\ham}'=\frac{\mu_B}{\hbar}\left( \opr{J}_z+\opr{S}_z \right)B_z
+		\label{eq:perturbationweakfield}
+	\end{equation}
+	And, the perturbation on the energy levels is
+	\begin{equation}
+		\Delta E=\mu_Bm_jB_z+\frac{\mu_B}{\hbar}B_z\sum_{m_s}\int\cc{\mc{Y}}^{jm}_{l,1/2}\opr{S}_z\mc{Y}^{jm}_{l,1/2}\diff{\Omega}
+		\label{eq:energyshiftweakfield}
+	\end{equation}
+	From the properties of tensor spherical harmonics, we have that the integral is of easy computation, and gives the following result
+	\begin{equation}
+		\int\cc{\mc{Y}}^{l\pm1/2,m_j}_{l,1/2}\opr{S}_z\mc{Y}^{l\pm1/2,m_j}_{l,1/2}\diff{\Omega}=\pm\frac{\hbar m_j}{2l+1}
+		\label{eq:integralcomputationweakf}
+	\end{equation}
+	Which gives our searched energy shift
+	\begin{equation}
+		\Delta E=\mu_Bm_jB_z+\frac{\mu_BB_z}{2l+1}\sum_{m_s}m_j
+		\label{eq:anomalouszeemanshift}
+	\end{equation}
+	Finally, getting back to our Hydrogenoid atoms, we now can write the total perturbation of the energy levels for an interaction with a constant magnetic field as follows
+	\begin{equation}
+		E_{njm_j}=E_n+\Delta E_{nj}+\Delta E_{m_j}
+		\label{eq:totalperthyatoms}
+	\end{equation}
+	Where $E_n$ is the unperturbed energy, $\Delta E_{nj}$ is the fine structure correction and $\Delta E_{m_j}$ is the weak field correction
+	\section{Stark Effect}
+	The splitting of energy levels given by static electric fields is called \textit{Stark effect}. We assume that the electric field is perpendicular to our $z$ axis, and that the field strength is much larger than Spin-Orbit coupling.\\
+	The perturbation acting on our Hydrogenic Hamiltonian is
+	\begin{equation}
+		\opr{\ham}'=eEz
+		\label{eq:starkpert}
+	\end{equation}
+	\subsection{Linear Stark Effect}
+	In order to evaluate Stark shifts with perturbations at first order, we start by calculating the perturbation given to the fundamental state.\\
+	Its first order correction is
+	\begin{equation}
+		E^{(1)}_{100}=eE\bra{100}\opr{z}\ket{100}
+		\label{eq:starkgs}
+	\end{equation}
+	We already see that $E^{(1)}_{100}=0$, since the integral is null, due to it being the product of an even function ($\bra{x_i}\ket{nlm}$) with an odd one ($z$). We therefore check for excited states, starting at $n=2$, for which we have a fourfold degeneration given by $l$, with energy $E_{2lm}=-mc^2\alpha^2/8$.\\
+	In this case we have that $\bra{nlm}\opr{z}\ket{n'l'm'}$ doesn't vanish, if and only if $\Delta m=0$ and $\Delta l=\pm1$, hence, the permitted transitions are only those between $2s$ and $2p$ states, for which our perturbation (which is real, hence Hermitian) gives the following result
+	\begin{equation}
+		E^{(1)}_{2s\to2p}=eE\int\cc{\psi}_{210}(x_i)z\psi_{200}(x_i)\diff[3]{x_i}
+		\label{eq:energyshiftstarkeff}
+	\end{equation}
+	This last integral gives us that $E^{(1)}=\pm3eEa_0/Z$, for which we have two different energy levels, described by the following states
+	\begin{equation}
+		\begin{aligned}
+			\ket{1}&=\frac{1}{\sqrt{2}}\left( \ket{200}+\ket{210} \right)\\
+			\ket{2}&=\frac{1}{\sqrt{2}}\left( \ket{200}-\ket{210} \right)
+		\end{aligned}
+		\label{eq:eigenstateslinearstark}
+	\end{equation}
+%	\section{Lamb Shift}
+	\section{Hyperfine Structure and Isotope Shifts}
+	Hyperfine structure of energy levels appears when nucleii aren't considered anymore point charges with infinite mass. The name, \textit{hyperfine} has been given to this structure, since the deviation of the energy levels due to this additional perturbation is much smaller than that of the fine structure shifts.\\
+	In general we can have two kinds of hyperfine effects: \textit{isotope shifts}, that slightly deviate degenerate energy levels without splitting them, and proper hyperfine effects that break the degeneration on the levels and splits them.\\
+	\subsection{Magnetic Dipole Hyperfine Structure}
+	As for the electrons, we can define a \textit{nuclear} spin, indicated with $\opr{I}$, which obey the same spin algebra of ordinary spin. As with electrons, the eigenvalues for nuclear spin can be half-integer, if the sum of the spins of the nucleons is fermionic, or integer, if the sum of the spins of the nucleons is bosonic. We denote the eigenvalues of $\opr{I}^2$ as $\hbar^2I(I+1)$ and of $\opr{I}_z$ as $\hbar M_I$.\\
+	We can define, as for electrons, a \textit{Nuclear Magnetic Dipole Moment}, $\opr{M}_I$ as follows
+	\begin{equation}
+		\opr{M}_I=\frac{g_I\mu_N}{\hbar}\opr{I}
+		\label{eq:nucleardipolemoment}
+	\end{equation}
+	Where $g_I$ is the \textit{Landé factor}, and $\mu_N$ is the \textit{Nuclear magneton}, defined as
+	\begin{equation}
+		\mu_N=\frac{e\hbar}{2m_p}=\frac{m_e}{m_p}\mu_B
+		\label{eq:nuclearmagneton}
+	\end{equation}
+	We now proceed to write our perturbed Hamiltonian as follows
+	\begin{equation}
+		\opr{\ham}=\opr{\ham}_0+\opr{\ham}_{ND}
+		\label{eq:pertrel}
+	\end{equation}
+	Since we have already solved for the fine structure Hamiltonian, it is included into the unperturbed Hamiltonian together with the Coulomb interaction.\\
+	At the zeroth order we have that the wavefunctions of $\opr{\ham}$ are separable in electronic and nuclear variables, and are eigenfunctions of $\opr{J}^2,\opr{J}_z,\opr{I}^2,\opr{I}_z$. These wavefunction are $(2j+1)(2I+1)$ degenerate in $m_j,M_I$.\\
+	Examining the perturbation $\opr{\ham}_{ND}$, we have that it will couple with both $\vecopr{L}$ and $\vecopr{S}$ of the electrons, hence splitting the Hamiltonian in a sum. Since this point dipole is located at the origin, we have that
+	\begin{equation}
+		\opr{\ham}_{NL}=-\frac{i\hbar e}{m}\vecopr{A}\cdot\nabla=\frac{\mu_0}{2\pi\hbar^2r^3}g_I\mu_B\mu_N\vecopr{L}\cdot\vecopr{I}
+	\end{equation}
+	For the spin-spin coupling Hamiltonian we have that, in terms of magnetic fields we can write the perturbation term as
+	\begin{equation}
+		\opr{\ham}_{SS}=-\vecopr{M}_s\cdot\vec{B}
+		\label{eq:spinspinham}
+	\end{equation}
+	Where
+	\begin{equation}
+		\vec{B}=-\frac{\mu_0}{4\pi}\left( \vecopr{M}_N\nabla^2\frac{1}{r}-\nabla(\vecopr{M}_N\cdot\nabla)\frac{1}{r} \right)
+		\label{eq:magneticdipolenucleus}
+	\end{equation}
+	Hence
+	\begin{equation}
+		\opr{\ham}_{SS}=-\frac{2\mu_0}{4\hbar^2\pi}g_I\mu_B\mu_N\left( \vecopr{S}\cdot\vecopr{I}\nabla^2\frac{1}{r}-(\vecopr{S}\cdot\nabla)(\vecopr{I}\cdot\nabla)\frac{1}{r} \right)
+		\label{eq:spinspincoupling}
+	\end{equation}
+	At $r=0$ this perturbation will act only on s-states, and for $r\ne0$ we get
+	\begin{equation*}
+		\opr{\ham}_{SS}=-\frac{\mu_0}{4\pi r^3}\left( \vecopr{M}_s\cdot\vecopr{M}_N-\frac{3}{r^2}\left( (\vecopr{M}_s\cdot\vecopr{r})(\vecopr{M}_N\cdot\vecopr{r}) \right) \right)
+	\end{equation*}
+	Summing the two terms, we have that $\opr{\ham}_{ND}=\opr{\ham}_{NL}+\opr{\ham}_{SS}$, and we finally have
+	\begin{equation}
+		\opr{\ham}_{ND}=\frac{\mu_0}{2\hbar^2\pi}g_I\mu_B\mu_N\frac{1}{r^3}\left( \vecopr{L}\cdot\vecopr{I}-\vecopr{S}\cdot\vecopr{I}+3\frac{(\vecopr{S}\cdot\opr{r})(\vecopr{I}\cdot\opr{r})}{r^2} \right)\ r\ne0
+		\label{eq:nucleardipole}
+	\end{equation}
+	Simplifying everything, we have, at $r=0$
+	\begin{equation}
+		\opr{\ham}_{ND}=-\frac{2\mu_0}{3\pi}\vecopr{M_s}\cdot\vecopr{M_N}\delta(\opr{r})\ r=0
+		\label{eq:centernucleardipole}
+	\end{equation}
+	This last expression is called \textit{Fermi contact interaction}. Another way to write \eqref{eq:nucleardipole} is to define the new operator
+	\begin{equation}
+		\vecopr{G}=\vecopr{L}-\vecopr{S}+3\frac{(\vecopr{S}\cdot\vecopr{r})\vecopr{r}}{r^2}
+		\label{eq:gangularmomnuc}
+	\end{equation}
+	And \eqref{eq:nucleardipole} becomes
+	\begin{equation}
+		\opr{\ham}_{ND}=\frac{\mu_0}{2\hbar^2\pi}g_I\mu_B\mu_N\frac{1}{r^3}\vecopr{G}\cdot\vecopr{I}
+		\label{eq:nucleardipoleG}
+	\end{equation}
+	Before proceeding in the calculation of the energy shifts, we define a \textit{total angular momentum} for the whole system as $\vecopr{F}=\vecopr{I}+\vecopr{J}$, and the energy shift will be given in the total angular momentum basis as follows
+	\begin{equation}
+		\Delta E=\frac{\mu_0}{2\hbar^2\pi}g_I\mu_B\mu_N\bra{lsjIFM_F}\frac{1}{r^3}\vecopr{G}\cdot\vecopr{I}\ket{lsjIFM_F}
+		\label{eq:energyshiftnucmom}
+	\end{equation}
+	We can write $\vecopr{G}\cdot\vecopr{I}$ as $(\vecopr{G}\cdot\vecopr{J})(\vecopr{I}\cdot\vecopr{J})/\hbar^2j(j+1)$, and knowing that $\vecopr{I}\cdot\vecopr{J}=1/2\left( \opr{F}^2-\opr{I}^2-\opr{J}^2 \right)$ we have the total shift as
+	\begin{equation}
+		\Delta E=\frac{C}{2}\left( F(F+1)-I(I+1)-j(j+1) \right)
+		\label{eq:totalenergyshiftmnd}
+	\end{equation}
+	Where
+	\begin{equation}
+		C=\frac{\mu_0}{2\hbar^2j(j+1)\pi}g_I\mu_B\mu_N\expval{\frac{1}{r^3}\vecopr{G}\cdot\vecopr{J}}
+		\label{eq:constantmdshift}
+	\end{equation}
+	Noting that $\vecopr{G}\cdot\vecopr{J}=\opr{L}^2$, we finally get our solution, having put $a_{\mu}$ as $a_0m/\mu$, with $\mu$ the reduced mass of the electron and the nucleus
+	\begin{equation}
+		\Delta E_{ND}=\frac{\mu_0}{4\pi}g_I\mu_B\mu_N\frac{l(l+1)}{j(j+1)}\frac{Z^3}{a_{\mu}^3n^3l(l+1/2)(l+1)}\left( F(F+1)-I(I+1)-j(j+1) \right)\ l\ne0
+		\label{eq:finalsolenuclearmom}
+	\end{equation}
+	For $l=0$ we instead get
+	\begin{equation}
+		\Delta E_{ND}=\frac{2\mu_0}{3\pi}g_I\mu_B\mu_N\frac{Z^3}{a_{\mu}^3n^3}\left( F(F+1)-I(I+1)-s(s+1) \right)
+		\label{eq:l0nuclearmom}
+	\end{equation}
+	In atomic units, the final result will then be
+	\begin{equation}
+		\Delta E_{hyp}=\frac{m_e}{m_p}\left( \frac{\mu}{m_e} \right)^3\frac{2g_IZ^3\alpha^2}{n^3(j+1)(2l+1)}\cdot\left.\begin{dcases}I+\frac{1}{2}&j\le I\\
+		\frac{I(j+1/2)}{j}&j\ge I\end{dcases}\right\}
+		\label{eq:hyperfinetrans}
+	\end{equation}
+	We see that the total angular momentum quantum number behaves as $\vecopr{J}$, hence $\Delta F=0,\pm1$ are the only permitted transitions, with $0\to0$ being excluded
+\end{document}

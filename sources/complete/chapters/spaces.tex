@@ -175,7 +175,7 @@ We're now ready to define the \textit{topology} on a metric space
 	\end{enumerate}
 \end{prop}
 \begin{proof}
-		$\boxed{1}$ Let $I(A):=\{\derin{x\in X}\exists\epsilon>0\st B_\epsilon(x)\subset A$.\\
+		$\boxed{1}$ Let $I(A):=\{\derin{x\in X}\exists\epsilon>0\st B_\epsilon(x)\subset A$\}\\
 		\begin{equation*}
 			x\in I(A)\implies\exists\epsilon>0\st B_\epsilon(x)\subset A,\ \therefore x\in\bigcup_{G\subset A}G
 		\end{equation*}
@@ -305,9 +305,12 @@ We're now ready to define the \textit{topology} on a metric space
 \begin{dfn}[Compact Space]
 	A metric space $(X,d)$ is said to be \textit{compact} or \textit{sequentially compact} if
 	\begin{equation*}
-		\forall(x_k)\in X\ x_k\to x\in X, \exists(y_k)\text{ Subsequence}\st y_k\to y\in X
+		\forall(x_k)\in X\ x_k\to x\in X, \exists\{(x_{k_n})\}\st x_{k_n}\to x\in X
 	\end{equation*}
 \end{dfn}
+\begin{thm}[Heine-Borel]
+	Let $K\subset\R^n$, then $K$ is compact if and only if $K$ is closed and bounded
+\end{thm}<++>
 \begin{thm}
 	Let $(X,d)$ be a compact space. Then $(X,d)$ is also complete
 \end{thm}

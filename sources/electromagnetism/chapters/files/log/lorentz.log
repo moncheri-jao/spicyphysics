@@ -1,0 +1,95 @@
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Debian)  (format=lualatex 2021.6.3)  7 JUN 2021 10:27
+ restricted system commands enabled.
+**/home/birrabenzina/Dropbox/appunti/electromagnetism/chapters/lorentz.tex
+(/home/birrabenzina/Dropbox/appunti/electromagnetism/chapters/lorentz.tex
+LaTeX2e <2020-10-01> patch level 4
+Lua module: luaotfload 2021-01-08 3.17 Lua based OpenType font support
+Lua module: lualibs 2020-12-30 2.73 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2020-12-30 2.73 ConTeXt Lua libraries -- extended c
+ollection.
+luaotfload | conf : Root cache directory is "/home/birrabenzina/.texlive2020/tex
+mf-var/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2021-01-07.lua" from kpse-res
+olved path "/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/fontloader-2021-
+01-07.lua".
+Lua-only attribute luaotfload@noligature = 1
+Lua-only attribute luaotfload@syllabe = 2
+luaotfload | init : Context OpenType loader version 0x1.8e76c8b439581p+1
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 3
+luaotfload | conf : Root cache directory is "/home/birrabenzina/.texlive2020/tex
+mf-var/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
+Inserting `luaotfload.harf.finalize_vlist' at position 1 in `post_linebreak_filt
+er'.
+Inserting `luaotfload.harf.finalize_hlist' at position 2 in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' at position 1 in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' at position 1 in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' at position 1 in `glyph_info'.
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.set_font_index' at position 2 in `luaotfload.patch_fon
+t'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 3 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
+. L3 programming layer <2021-01-09> xparse <2020-03-03>
+(/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.cls
+Document Class: subfiles 2020/11/14 v2.2 Multi-file projects (class)
+Preamble taken from file `../admech.tex'
+(/usr/share/texlive/texmf-dist/tex/latex/import/import.sty
+Package: import 2020/04/01  v 6.2
+)
+
+! LaTeX Error: File `../admech.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+! Interruption.
+<to be read again> 
+}
+l.45 \input{\preamble@file}
+                         
+? 
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex File ignored))
+luaotfload | db : Font names database loaded from /home/birrabenzina/.texlive202
+0/texmf-var/luatex-cache/generic/names/luaotfload-names.luc
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2020-01-29 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count173
+\l__pdf_internal_box=\box47
+)
+(./lorentz.aux
+! Undefined control sequence.
+l.6 \abx@aux@refcontext
+                     {anyt/global//global/global}
+? X
+
+
+Here is how much of LuaTeX's memory you used:
+ 287 strings out of 478824
+ 100000,383344 words of node,token memory allocated 343 words of node memory still in use:
+   2 hlist, 1 rule, 1 dir, 3 kern, 1 glyph, 2 attribute, 43 glue_spec, 2 attribu
+te_list nodes
+   avail lists: 2:10,3:3,4:1
+ 20027 multiletter control sequences out of 65536+600000
+ 23 fonts using 2647927 bytes
+ 53i,0n,58p,224b,44s stack positions out of 5000i,500n,10000p,200000b,200000s
+
+warning  (pdf backend): no pages of output.
+
+PDF statistics: 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+
