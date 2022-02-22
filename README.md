@@ -2,22 +2,24 @@
 So here we are bois, this is the final publication of my work. I hope you'll like it.
 
 If you really liked them and want to thank me with a coffee or a physical print of my works, you can send some cents here [in my paypal](https://www.paypal.me/birrabenzina)
-Now it's possible to check unfinished works or unfinished updates of the notes in the tbc branch of the repository
+
+# UPDATE 22 FEB 2022
+From now on this repository will be my main folder for notes, it will be way more active and not just when I decide to publish something, which is rare I must be honest. Commits will include edits, adds, unfinished work on notes I'm still writing, bullshit and everything, making it a better repo.
+I hope you enjoy your stay here and my "secondary" job of writing this while relaxing from my real day job. Love you all, -MC
 
 # Ready to be Downloaded
 * complete.pdf -> An Essential Mathematical Analysis Handbook
 * qm-pdf -> Quantum Mechanics (QM, Atomic Physics, Quantum Chemistry, StatMech, Condensed Matter and some QFT) [QFT needs to be fixed]
+* electromagnetism.pdf, beta version -> Electromagnetism; still misses the part on Optics and relativistic EM
+* admech.pdf -> Advanced Mechanics and Special Relativity
+## Italian notes (under the it folder)
 * astronomia.pdf -> Astronomia in Italiano, prof. O.Straniero
 * mqmstmat.pdf -> Meccanica Quantistica/Statistica (Statistica incompleta, prof. Presilla), Struttura (prof. Postorino), in Italiano
 * astrofisica.pdf -> Astrofisica in Italiano, prof. P. de Bernardis
 * ifa.pdf -> Istituzioni di Fisica dell'Atmosfera in Italiano, prof. M. Cacciani
-* admech.pdf -> Advanced Mechanics and Special Relativity
-
-# JUST PUBLISHED
-* electromagnetism.pdf, beta version, still misses the part on Optics and relativistic EM
 
 # Future Works
-* Completing the Quantum Mechanics notes (qm.pdf) [almost there]
+* Completing the Quantum Mechanics notes (qm.pdf) [real soon]
 * Classical Thermodynamics notes
 * Classical Electromagnetism notes [published in beta]
 
