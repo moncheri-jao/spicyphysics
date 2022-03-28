@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -44,7 +44,6 @@
       \field{isbn}{978-1-108-42041-9}
       \field{title}{Introduction to Electrodynamics}
       \field{year}{2017}
-      \true{nocite}
     \endentry
     \entry{jackson}{book}{}
       \name{author}{1}{}{%
@@ -72,7 +71,6 @@
       \field{isbn}{0-471-30932-X}
       \field{title}{Classical Electrodynamics}
       \field{year}{1998}
-      \true{nocite}
     \endentry
     \entry{landau2}{book}{}
       \name{author}{2}{}{%
@@ -104,7 +102,6 @@
       \field{title}{Course of Theoretical Physics, Vol.2, The Classical Theory of Fields}
       \field{year}{1971}
       \field{dateera}{ce}
-      \true{nocite}
     \endentry
     \entry{zangwillem}{book}{}
       \name{author}{1}{}{%
@@ -131,7 +128,6 @@
       \field{isbn}{978-0-521-89697-9}
       \field{title}{Modern Electrodynamics}
       \field{year}{2012}
-      \true{nocite}
     \endentry
   \enddatalist
 \endrefsection

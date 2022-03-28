@@ -124,7 +124,7 @@ With what we wrote before, we might consider a circuit with a given self-inducti
 	\dv{w}{t}=-f_{em}I(t)
 	\label{eq:work/timemag}
 \end{equation}
-Using faraday's law we know that
+Using Faraday's law we know that
 \begin{equation*}
 	\dv{\Phi}{t}=-f_{em}=-L\dv{I}{t}
 \end{equation*}
@@ -154,9 +154,141 @@ Where we used Ampere's law to get the last integral. Playing around with the las
 \begin{equation*}
 	\nabla\cdot(\vec{A}\times\vec{B})=\vec{B}\cdot\nabla\times\vec{A}-\vec{A}\cdot\nabla\times\vec{B}=B^2-\vec{A}\cdot\nabla\times\vec{B}
 \end{equation*}
-<++>
+Applying Stokes' theorem on the divergence and noting that the surface integral goes to 0 when we integrate over all space, we end up with the following result
+\begin{equation*}
+	w=\frac{1}{2\mu_0}\iiint_{\R^3}B^2\dd^3x
+\end{equation*}
+The parallelism with the energy of an electric field is astounding. Written side by side we have
+\begin{equation}
+	\begin{aligned}
+		W_{es}&=\frac{1}{2}\int_{\R^3}V\rho\dd^3x=\frac{\epsilon_0}{2}\int_{\R^3}E^2\dd^3x\\
+		W_{ms}&=\frac{1}{2}\int_{\R^3}A^iJ_i\dd^3x=\frac{1}{2\mu_0}\int_{\R^3}B^2\dd^3x
+	\end{aligned}
+	\label{eq:esmsenergy}
+\end{equation}
 \section{Maxwell's Equations}
-<++>
-%\section{Energy of the Electromagnetic Field}
+So far, we found 2 pairs of coupled differential equations for the electric and magnetic field
+\begin{equation}
+	\left\{ \begin{aligned}
+			\del_iE^i&=\frac{\rho}{\epsilon_0}\\
+			\cpr{i}{j}{k}\del^jE^k&=-\del_{t}B^i
+	\end{aligned}\right.
+	\label{eq:mwcouple1}
+\end{equation}
+And
+\begin{equation}
+	\left\{ \begin{aligned}
+		\del_iB^i&=0\\
+		\cpr{i}{j}{k}\del^jB^k&=\mu_0J^i
+	\end{aligned}\right.
+	\label{eq:mwcouple2}
+\end{equation}
+The second pair of equations holds only if the current field is divergenceless, but using Gauss' law and the current conservation equation we have
+\begin{equation}
+	\del_iJ^i+\del_t\rho=\del_iJ^i+\epsilon_0\del_t\del_iE^i=0
+	\label{eq:cf+cc}
+\end{equation}
+Grouping the divergences we see that the time derivative of the electric field behaves exactly like a current, commonly called the ``displacement current''. In order to fix all the equations now we can add this new current in the last couple of the Maxwell equations and get the well known fundamental equations of electromagnetism
+\begin{equation}
+	\left\{\begin{aligned}
+		\del_iE^i&=\frac{\rho}{\epsilon_0}\\
+		\cpr{i}{j}{k}\del^jE^k&=-\del_tB^i\\
+		\del_iB^i&=0\\
+		\cpr{i}{j}{k}\del^jB^k&=\mu_0J^i+\epsilon_0\mu_0\del_tE^i
+	\end{aligned}\right.
+	\label{eq:maxwellequationsfull}
+\end{equation}
+These equations account for moving charges and are absolutely general in nature. It will be seen later that they're also Lorentz invariant, therefore they preserve between Lorentz transformations and therefore are relativistically covariant.\\
+For linear dielectric and magnetic media we can rewrite easily with the already known rules, Maxwell's equations
+\begin{equation}
+	\left\{\begin{aligned}
+			\del_iD^i&=\rho\\
+			\cpr{i}{j}{k}\del^jD^k&=\epsilon\mu\del_tH^i\\
+			\del_iH^i&=0\\
+			\cpr{i}{j}{k}\del^jH^k&=J^i+\del_tD^i
+	\end{aligned}\right.
+	\label{eq:maxwellfulllinearmedia}
+\end{equation}
+\subsection{The Energy of the Electromagnetic Field, Poynting's Theorem}
+As we have seen via previous calculations, the energies of the two separated fields are, calling them $U_e$ and $U_m$
+\begin{equation}
+	\begin{aligned}
+		U_e&=\frac{\epsilon_0}{2}\int_VE^2\dd^3x\\
+		U_m&=\frac{1}{2\mu_0}\int_VB^2\dd^3x
+	\end{aligned}
+	\label{eq:fieldenergies}
+\end{equation}
+We can imagine that the energy of the combined electromagnetic field will be a sum of the two, i.e.
+\begin{equation}
+	U_{em}=\frac{1}{2}\int_V\epsilon_0E^2+\frac{B^2}{\mu_0}\dd^3x
+	\label{eq:emfieldenergy}
+\end{equation}
+We try to confirm this using the work done by some particle. Substituting into the force the formula for Lorentz's force we get
+\begin{equation*}
+	F^i\dd l_i=q\left( E^i+\cpr{i}{j}{k}v^jB^k \right)\dd l_i=q\left( E^i+\cpr{i}{j}{k}v^jB^k \right)v_i\dd t=qE^iv_i\dd t=\dd W
+\end{equation*}
+Which is what we expected.\\
+Going to a microscopic consideration we substitute $q=\rho\dd^3x$, we get $J^i=\rho v^i$, and therefore, integrating with respect to time we have
+\begin{equation*}
+	W=\int_VE^iJ_i\dd^3x\dd t\implies E^iJ_i=\dv{w}{t}
+\end{equation*}
+But, from Maxwell equations we have
+\begin{equation*}
+	\cpr{i}{j}{k}\del^jB^k=\mu_0J^i+\frac{1}{c^2}\pdv{E^i}{t}\implies J^i=\frac{\cpr{i}{j}{k}\del^jB^k}{\mu_0}-\frac{1}{\mu_0c^2}\pdv{E^i}{t}
+\end{equation*}
+Where we used $\mu_0\epsilon_0=c^-2$ (it will be clear later, for now check multiplying those two and see that it adds up)\\
+Therefore, we rewrite $E^iJ_i$ as follows
+\begin{equation*}
+	E^iJ_i=\frac{1}{\mu_0}E_i\cpr{i}{j}{k}\del^jB^k-\epsilon_0E_i\cpr{i}{j}{k}\del^jB^k
+\end{equation*}
+Note that, tho:
+\begin{equation*}
+	\del_i\cpr{i}{j}{k}E^j\frac{B^k}{\mu_0}=\frac{1}{\mu_0}B_i\cpr{i}{j}{k}\del^jE^k-E^i\cpr{i}{j}{k}\del^j\frac{B^k}{\mu_0}
+\end{equation*}
+Therefore
+\begin{equation*}
+	E_i\cpr{i}{j}{k}\del^j\frac{B^k}{\mu_0}=-\frac{1}{\mu_0}B_i\cpr{i}{j}{k}\del^jE^k-\del_i\cpr{i}{j}{k}E^j\frac{B^k}{\mu_0}=-\frac{B_i}{\mu_0}\pdv{B^i}{t}-\del_i\cpr{i}{j}{k}E^j\frac{B^k}{\mu_0}
+\end{equation*}
+Which, gives us back
+\begin{equation}
+	E^iJ_i=-\frac{1}{2}\pdv{t}\left( \epsilon_0E^2+\frac{1}{\mu_0}B^2 \right)-\frac{1}{\mu_0}\del_i\cpr{i}{j}{k}E^jB^k=\dv{w}{t}
+	\label{eq:diffworkpoynting}
+\end{equation}
+We immediately recognize the volumetric density of energy of the electromagnetic field, let's denote it as $u_{em}$, and we get
+\begin{equation}
+	E^iJ_i=-\pdv{u_{em}}{t}-\del_i\cpr{i}{j}{k}E^j\left( \frac{B^k}{\mu_0} \right)
+	\label{eq:poynting-1}
+\end{equation}
+We begin to have a better view of the phenomenon, we see a variation of energy on the right plus the divergence of some vector that we define now.
+\begin{dfn}[Poynting Vector]
+	The \textit{Poynting vector} is a vector defined as follows:
+	\begin{equation}
+		S^i=\frac{1}{\mu_0}\cpr{i}{j}{k}E^jB^k
+		\label{eq:poyntingdef}
+	\end{equation}
+	It has dimensions of a flux of energy, as we will see.
+\end{dfn}
+With the previous definition, everything bexomes much clearer in terms of notation, in fact
+\begin{equation*}
+	E^iJ_i=-\pdv{u_{em}}{t}-\del_iS^i
+\end{equation*}
+Integrating in a random volume $V$ we get, as said before, our flux of energy!
+\begin{equation*}
+	\int_VE^iJ_i\dd^3x=-\pdv{t}\int_Vu_{em}\dd^3x - \oiint_{\del V}S^i\hat{n}_i\dd s
+\end{equation*}
+It's clear that in order to make sense we must sum energies with energies, giving the previously stated dimensions of the Poynting vector as an energy flux.\\
+Rewriting $E^iJ_i$ as our work variation we have that it's nothing else than the time derivative of the volumetric density of mechanical energy, and writing $u_{em}+u_{mech}$ as our total energy variation, we have
+\begin{equation}
+	\int_{V}^{}\pdv{u}{t}\dd^3{x}=-\oiint_{\del V}S^i\hat{n}_i\dd s
+	\label{eq:energyvariationpoynting}
+\end{equation}
+The associated PDE is clearly the conservation of energy of the whole system
+\begin{equation}
+	\pdv{u}{t}+\del_iS^i=0
+	\label{eq:energyconspoynting}
+\end{equation}
+This shape also gives the real idea of what's Poynting's vector: an energy ``current''
+%\subsection{Stress Tensor}
+%%TODO: ADD STRESS TENSOR SECTION
 %END OF CHAPTER
 \end{document}
