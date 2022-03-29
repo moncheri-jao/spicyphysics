@@ -209,7 +209,7 @@ For linear dielectric and magnetic media we can rewrite easily with the already 
 	\end{aligned}\right.
 	\label{eq:maxwellfulllinearmedia}
 \end{equation}
-\subsection{The Energy of the Electromagnetic Field, Poynting's Theorem}
+\subsection{Poynting's Vector, Energy Conservation}
 As we have seen via previous calculations, the energies of the two separated fields are, calling them $U_e$ and $U_m$
 \begin{equation}
 	\begin{aligned}
@@ -268,7 +268,7 @@ We begin to have a better view of the phenomenon, we see a variation of energy o
 	\end{equation}
 	It has dimensions of a flux of energy, as we will see.
 \end{dfn}
-With the previous definition, everything bexomes much clearer in terms of notation, in fact
+With the previous definition, everything becomes much clearer in terms of notation, in fact
 \begin{equation*}
 	E^iJ_i=-\pdv{u_{em}}{t}-\del_iS^i
 \end{equation*}
@@ -287,8 +287,42 @@ The associated PDE is clearly the conservation of energy of the whole system
 	\pdv{u}{t}+\del_iS^i=0
 	\label{eq:energyconspoynting}
 \end{equation}
-This shape also gives the real idea of what's Poynting's vector: an energy ``current''
-%\subsection{Stress Tensor}
-%%TODO: ADD STRESS TENSOR SECTION
+This shape also gives the real idea of what's Poynting's vector: an energy ``current'' 
+\subsection{Stress Tensor, Momentum Conservatipon}
+Lorentz'force as we have seen, in terms of microscopic evaluations is written (it's a force density in this case) as
+\begin{equation}
+	f^i=\rho E^i+\cpr{i}{j}{k}J^jB^k
+	\label{eq:lorentzforcedensity}
+\end{equation}
+We rewrite it in terms of fields only using the two following Maxwell equations
+\begin{equation}
+	\begin{aligned}
+		\del_iE^i&=\frac{\rho}{\epsilon_0}\quad\implies\quad\rho=\frac{1}{\epsilon_0}\del_iE^i\\
+		\cpr{i}{j}{k}\del^jB^k&=\mu_0J^i+\frac{1}{c^2}\pdv{E^i}{t}\quad\implies\quad J^i=\frac{1}{\mu_0}\cpr{i}{j}{k}\del^jB^k-\frac{1}{\mu_0c^2}\pdv{E^i}{t}
+	\end{aligned}
+	\label{eq:currentandchargeasfields}
+\end{equation}
+Therefore, Lorentz's force becomes, using $\epsilon_0=(\mu_0c^2)^{-1}$
+\begin{equation*}
+	f^i=\epsilon_0E^i\del_jE^j+\cpr{i}{j}{k}\left( \frac{1}{\mu_0}\cpr{j}{m}{l}\del^lB^m-\epsilon_0\pdv{E^j}{t} \right)B^k
+\end{equation*}
+Or, moving inside the cross product for clarity
+\begin{equation*}
+	f^i=\epsilon_0E^i\del_jE^j+\frac{1}{\mu_0}\cpr{i}{j}{k}B^k\cpr{j}{l}{m}\del^lB^m-\epsilon_0\cpr{i}{j}{k}\del_t{E^j}B^k
+\end{equation*}
+Using the product rule on the time derivative at the last factor we have that
+\begin{equation*}
+	\del_t\cpr{i}{j}{k}E^jB^k=\cpr{i}{j}{k}\del_t(E^j)B^k+\cpr{i}{j}{k}E^j\del_t(B^k)\implies\cpr{i}{j}{k}\del_t(E^j)B^k=\del_t\cpr{i}{j}{k}E^jB^k-\cpr{i}{j}{k}E^j\del_tB^k
+\end{equation*}
+From the second Maxwell equation tho we have
+\begin{equation*}
+	\cpr{i}{j}{k}\del^jE^k=-\del_tB^i
+\end{equation*}
+Therefore
+\begin{equation*}
+	\cpr{i}{j}{k}\del_t(E^j)B^k=\del_t\cpr{i}{j}{k}E^jB^k+\cpr{i}{j}{k}E^j\cpr{k}{l}{m}\del^lE^m
+\end{equation*}i
+%%TODO complete at line before cross yellow notebook
+<++>
 %END OF CHAPTER
 \end{document}

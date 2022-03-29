@@ -68,7 +68,8 @@
 \contentsline {subsection}{\numberline {6.1.2}Mutual-Induction}{79}{subsection.6.1.2}%
 \contentsline {section}{\numberline {6.2}Magnetic Energy}{80}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Maxwell's Equations}{81}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}The Energy of the Electromagnetic Field, Poynting's Theorem}{82}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.1}Poynting's Vector, Energy Conservation}{82}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Stress Tensor, Momentum Conservatipon}{83}{subsection.6.3.2}%
 \contentsline {chapter}{\numberline {7}Potentials and Fields}{85}{chapter.7}%
 \contentsline {chapter}{\numberline {8}Relativistic Electrodynamics}{87}{chapter.8}%
 \contentsline {chapter}{\numberline {A}Electric Circuits}{89}{appendix.A}%

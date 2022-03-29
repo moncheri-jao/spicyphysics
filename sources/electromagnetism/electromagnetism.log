@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.13.2 (TeX Live 2021/Arch Linux)  (format=lualatex 2022.3.21)  28 MAR 2022 21:19
+This is LuaHBTeX, Version 1.13.2 (TeX Live 2021/Arch Linux)  (format=lualatex 2022.3.21)  29 MAR 2022 21:08
  restricted system commands enabled.
 **/home/birrabenzina/Dropbox/spicyphysics/sources/electromagnetism/electromagne
 tism.tex
@@ -1565,11 +1565,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 220--222
 Chapter 6.
 (./chapters/emind.tex [77
 
-] [78] [79] [80] [81] [82]) [83] [84
-
-]
+] [78] [79] [80] [81] [82] [83]) [84]
 Chapter 7.
-[85] [86
+[85
+
+] [86
 
 ]
 Chapter 8.
@@ -1602,22 +1602,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--345
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `electromagnetism.out' has not changed.
-(rerunfilecheck)             Checksum: 50BBF98B5F38CCCC627BAEF934D22538;16566.
+(rerunfilecheck)             Checksum: DDA70E86F1115FE229AFEFC551D872D6;16705.
 Package logreq Info: Writing requests to 'electromagnetism.run.xml'.
 
 \openout1 = electromagnetism.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 47772 strings out of 477800
+ 47778 strings out of 477800
  125081,2373549 words of node,token memory allocated
- 4110 words of node memory still in use:
+ 4146 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 1 local_par, 5 glue, 4 kern, 1 penalty, 2 sub_mlist
-, 1 margin_kern, 3 glyph, 871 attribute, 72 glue_spec, 871 attribute_list, 2 wri
+, 1 margin_kern, 3 glyph, 880 attribute, 72 glue_spec, 880 attribute_list, 2 wri
 te nodes
-   avail lists: 1:3,2:836,3:424,4:322,5:578,6:134,7:5997,8:94,9:1191,10:13,11:34
+   avail lists: 1:3,2:836,3:423,4:321,5:578,6:135,7:5997,8:94,9:1191,10:13,11:34
 4
- 66277 multiletter control sequences out of 65536+600000
+ 66280 multiletter control sequences out of 65536+600000
  105 fonts using 6833247 bytes
  84i,12n,82p,1244b,949s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/share/
@@ -1643,10 +1643,10 @@ type1/public/esint-type1/esint10.pfb></usr/share/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/sy
 mbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 7.pfb>
-Output written on electromagnetism.pdf (108 pages, 581163 bytes).
+Output written on electromagnetism.pdf (108 pages, 584626 bytes).
 
-PDF statistics: 1463 PDF objects out of 1728 (max. 8388607)
- 1294 compressed objects within 13 object streams
- 541 named destinations out of 1000 (max. 131072)
- 728 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1471 PDF objects out of 1728 (max. 8388607)
+ 1301 compressed objects within 14 object streams
+ 544 named destinations out of 1000 (max. 131072)
+ 736 words of extra memory for PDF output out of 10000 (max. 100000000)
 
