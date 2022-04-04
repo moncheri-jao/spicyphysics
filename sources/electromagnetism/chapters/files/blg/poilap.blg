@@ -1,9 +1,0 @@
-[0] Config.pm:311> INFO - This is Biber 2.16
-[0] Config.pm:314> INFO - Logfile is 'poilap.blg'
-[99] biber:340> INFO - === lun giu  7, 2021, 10:27:29
-[118] Biber.pm:415> INFO - Reading 'poilap.bcf'
-[217] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[226] Utils.pm:384> WARN - The file 'poilap.bcf' does not contain any citations!
-[239] bbl.pm:654> INFO - Writing 'poilap.bbl' with encoding 'UTF-8'
-[239] bbl.pm:757> INFO - Output to poilap.bbl
-[239] Biber.pm:128> INFO - WARNINGS: 1
