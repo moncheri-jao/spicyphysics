@@ -1,0 +1,153 @@
+\documentclass[../electromagnetism.tex]{subfiles}
+\begin{document}
+\section{Maxwell's Equation for Potentials}
+As we have seen already, Maxwell's equations are the following
+\begin{equation}
+	\left\{ \begin{aligned}
+			\del_iE^i&=\frac{\rho}{\epsilon_0}\\
+			\cpr{i}{j}{k}\del^jE^k&=-\pdv{B^i}{t}\\
+			\del_iB^i&=0\\
+			\cpr{i}{j}{k}\del^jB^k&=\mu_0J^i+\frac{1}{c^2}\pdv{E^i}{t}
+	\end{aligned}\right.
+	\label{eq:maxwellpotentialchapter}
+\end{equation}
+If we wanted to write the potential formulation of this equation, we must know that in general, the potentials might be different. In fact, Coulomb's law and Biot-Savart only work in the static case, i.e. where $\del_tE=\del_tB=0$.\\
+Using that $\del_iB^i=0$ from the third equation we can say for sure that
+\begin{equation*}
+	\cpr{i}{j}{k}\del^jA^k=B^i
+\end{equation*}
+And inserting it in the second we get
+\begin{equation*}
+	\begin{aligned}
+		\cpr{i}{j}{k}\del^jE^k&=-\pdv{t}\cpr{i}{j}{k}\del^jA^k\\
+		\cpr{i}{j}{k}\del^j\left( E^k+\pdv{A^k}{t} \right)&=0
+	\end{aligned}
+\end{equation*}
+The second line immediately tells us that the vector field inside must be the gradient of some scalar field!\\
+Using $\del^iV=-E^i$ then we can rewrite the electric potential as a sum of the time variation of the vector potential and the scalar potential, which gives us
+\begin{equation}
+	E^i(x^i,t)=-\pdv{V}{x_i}-\pdv{A^i}{t}
+	\label{eq:electric-dynamicpotential}
+\end{equation}
+Now that we have the potentials for the dynamic case we know that the Poisson equation for the electric field then becomes
+\begin{equation*}
+	\del_iE^i=-\del_i\del^iV-\pdv{t}\del_iA^i=\frac{\rho}{\epsilon_0}
+\end{equation*}
+Or, written better
+\begin{equation}
+	\del_i\del^iV+\pdv{t}\del_iA^i=-\frac{\rho}{\epsilon_0}
+	\label{eq:poissondynamiceq-V}
+\end{equation}
+Also, for the equivalent vectorial Poisson equation for the $A^i$ field
+\begin{equation*}
+	\cpr{i}{j}{k}\cpr{k}{l}{m}\del^lA^m=\mu_0J^i-\frac{1}{c^2}\pdv{t}\left( \pdv{V}{x_i}-\frac{1}{c^2}\pdv{A^i}{t} \right)
+\end{equation*}
+Rewriting the first double cross product as
+\begin{equation*}
+	\del^i\del_jA^j-\del_j\del^jA^i
+\end{equation*}
+And bringing the time derivative of the gradient of V to the left, while grouping it inside the $\del^i$ operator (it's linear), and bringing with it the second time derivative on $A^i$ we have (note also that I changed sign on both sides)
+\begin{equation}
+	\del_j\del^jA^i-\pdv{x_i}\left( \frac{1}{c^2}\pdv{V}{t}+\del_jA^j \right)-\frac{1}{c^2}\pdv[2]{A^i}{t}=-\mu_0J^i
+	\label{eq:poissondynamiceq-A}
+\end{equation}
+Both together give us the most general possible way to formulate Maxwell equations for potentials, which reduce to two coupled non-homogeneous second order PDEs 
+\begin{equation}
+	\left\{ \begin{aligned}
+			&\del_j\del^jV+\pdv{t}\del_jA^j=-\frac{\rho}{\epsilon_0}\\
+			&\del_j\del^jA^i-\frac{1}{c^2}\pdv[2]{A^i}{t}-\pdv{x_i}\left( \frac{1}{c^2}\pdv{V}{t}+\del_jA^j \right)=-\mu_0J^i
+	\end{aligned}\right.
+	\label{eq:mweqpot}
+\end{equation}
+\subsection{Gauge Freedom}
+What we've learned before about electromagnetic potentials is that \textit{they're gauge-modifiable}. Depending on what we really need we might choose between any given gauge, since Maxwell's equation are gauge-invariant.\\
+The first gauge we will use is the most common one, it's useful when dealing with magnetostatics or when we really need to find V. It's \textit{Coulomb's gauge}.\\
+Here we set the divergence of $A^i$ to zero, and the first equation of \eqref{eq:mweqpot} reduces back to a Poisson's equation. The second simplifies a bit, but it's not easy to solve\ldots
+\begin{equation}
+	\left\{ \begin{aligned}
+			&\del_i\del^iV=-\frac{\rho}{\epsilon_0}\\
+			&\del_j\del^jA^i-\frac{1}{c^2}\pdv[2]{A^i}{t}-\frac{1}{c^2}\pdv[2]{V}{x_i}{t}=-\mu_0J^i
+	\end{aligned}\right.
+	\label{eq:mweqpotcoulombg}
+\end{equation}
+Another thing to note here is that V \emph{cannot} be observable, moving charges change $\rho$ which changes $V$ istantaneously, it's not Lorentz invariant.\\
+The second most important gauge we can define it's Lorenz's\footnote{Lorenz, not Lorentz, apparently} gauge, which defines the divergence of A as follows
+\begin{equation}
+	\del_iA^i=\frac{1}{c^2}\pdv{V}{t}
+	\label{eq:lorenzgauge-mwpot}
+\end{equation}
+Then, reinserting it back to \eqref{eq:mweqpot} we get by immediate substitution two uncoupled non-homogeneous wave equations
+\begin{equation}
+	\left\{\begin{aligned}
+		\del_j\del^jV-\frac{1}{c^2}\pdv[2]{V}{t}&=-\frac{\rho}{\epsilon_0}\\
+		\del_j\del^jA^i-\frac{1}{c^2}\pdv[2]{A^i}{t}&=-\mu_0J^i\\
+	\end{aligned}\right.
+	\label{eq:relwaveeq}
+\end{equation}
+This is a \textit{relativistic wave equation} with sources $\rho$ and $J^i$.\\
+Note that if we define the four-gradient as the 4-vector composed by the following components ($\mu=0,\cdots,3$)
+\begin{equation}
+	\del_\mu=\left( \frac{1}{c}\del_t,-\del_i \right)
+	\label{eq:4-gradient-mwpot}
+\end{equation}
+We have that, formally
+\begin{equation*}
+	\del_\mu\del^\mu=\frac{1}{c^2}\del^2_t-\del_i\del^i=\square
+\end{equation*}
+Where the box operator is known as the \textit{D'Alambertian}, which is the equivalent of the Laplacian in 4 spacetime dimensions. Therefore we can also write
+\begin{equation}
+	\left\{\begin{aligned}
+		\square V&= \del^\mu\del_\mu V=\frac{\rho}{\epsilon_0}\\
+		\square A^i&= \del^\mu\del_\mu A^i=\mu_0J^i
+	\end{aligned}\right.
+	\label{eq:relativisticwaveeq-mwpot}
+\end{equation}
+\section{Retarded Potentials}
+Using \eqref{eq:relativisticwaveeq-mwpot} and setting the time derivatives as 0, we get back Poisson's equations for both potentials, for which we know already the general solution for a volume $V$.
+\begin{equation*}
+	\begin{aligned}
+		V(x^j)&=\frac{1}{4\pi\epsilon_0}\int_{V}^{}\frac{\rho(\tilde{x}^j)}{r}\dd^3{\tilde{x}}\\
+		A^i(x^j)&=\frac{\mu_0}{4\pi}\int_{V}^{}\frac{J^i(\tilde{x}^j)}{r}\dd^3{\tilde{x}}
+	\end{aligned}
+\end{equation*}
+We can say, from the previous equations, that the interaction travels at speed $c$, therefore we might imagine the time progression of the interaction as ``retarded in time'' by a factor of $r/c$. We then define the \textit{retarded time} as
+\begin{equation}
+	t_r=t-\frac{r}{c}
+	\label{eq:retardedtime}
+\end{equation}
+We therefore can imagine a solution to those equations as 
+\begin{equation}
+	\begin{aligned}
+		V(x^j,t_r)&=\frac{1}{4\pi\epsilon_0}\int_{V}^{}\frac{\rho(\tilde{x}^j,t_r)}{r}\dd^3{\tilde{x}}\\
+		A^i(x^j,t_r)&=\frac{\mu_0}{4\pi}\int_{V}^{}\frac{J^i(\tilde{x}^j,t_r)}{r}\dd^3{\tilde{x}}
+	\end{aligned}
+	\label{eq:retardedsolution}
+\end{equation}
+Note that we could imagine this solution only due to the mathematical shape of the equation, it cannot be done the same way for the fields.\\
+Now let's check if this idea we had is a solution for the relativistic equations. Noting that
+\begin{equation*}
+	\del_it_r=-\frac{\hat{x}^i}{c}
+\end{equation*}
+We have, after using the chain rule
+\begin{equation*}
+	\pdv{\rho}{x^i}=-\frac{1}{c}\pdv{\rho}{t}\hat{x}^i
+\end{equation*}
+And therefore
+\begin{equation*}
+	\del_iV=-\frac{1}{4\pi\epsilon_0}\int_{V}^{}\frac{1}{c}\pdv{\rho}{t}\frac{\hat{x}^i}{r}-\rho\frac{\hat{x}^i}{r^2}\dd^3{\tilde{x}}
+\end{equation*}
+Applying again the del operator we get
+\begin{equation*}
+	\del^i\del_iV=-\frac{1}{4\pi\epsilon_0}\int_{V}^{}\frac{1}{c}\left( \frac{\hat{x}^i}{r}\pdv[2]{\rho}{t}{x^i}+\pdv{\rho}{t}\frac{\del_i\hat{x}^i}{r}+\pdv{\rho}{t}\hat{x}^i\del_i\left( \frac{1}{r} \right) \right) +\left( \frac{\hat{x}^i}{r^2}\pdv{\rho}{x^i}+\rho\pdv{x^i}\left( \frac{\hat{x}^i}{r^2} \right) \right)\dd^3{\tilde{x}}
+\end{equation*}
+But
+\begin{equation*}
+	\pdv[2]{\rho}{t}{x^i}=-\frac{1}{c}\pdv[2]{\rho}{t}\hat{x}^i
+\end{equation*}
+And
+\begin{equation*}
+	\del_i\left( \frac{\hat{x}^i}{r} \right)=\frac{1}{r^2},\qquad\del_i\left( \frac{\hat{x}^i}{r^2} \right)=4\pi\delta^3(x^i)
+\end{equation*}
+<++>
+\section{Jefimenko's Equations}
+\end{document}
