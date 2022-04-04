@@ -192,10 +192,24 @@ For $B^i$ the calculations are slightly harder due to the presence of the curl, 
 \end{equation*}
 But, by definition we have
 \begin{equation*}
-	\del_iJ^k=\left( \del_tJ^k\del_k \right)t_r=-\frac{1}{c}\pdv{J^k}{t}\pdv{r}{x^k}
+	\del_iJ^k=\left( \del_tJ^k\del_k \right)t_r=-\frac{1}{c}\pdv{J^k}{t}\pdv{r}{x^k}=\frac{1}{c}\pdv{J^k}{t}\hat{x}_k
 \end{equation*}
-<++>
+So, the cross product is simply
 \begin{equation*}
-	\cpr{i}{j}{k}\del^jJ^k=
-\end{equation*}<++>
+	\cpr{i}{j}{k}\del^jJ^k=\frac{1}{c}\cpr{i}{j}{k}\del_tJ^j\hat{x}^k
+\end{equation*}
+The second part instead comes immediately from the gradient of $r^{-1}$, and we have 
+\begin{equation}
+	B^i(x^j,t)=\frac{\mu_0}{4\pi}\int_{V}^{}\frac{1}{r}\cpr{i}{j}{k}\left( \frac{J^j}{r}+\frac{1}{c}\pdv{J^j}{t} \right)\hat{x}^k\dd^{3}{x}
+	\label{eq:Bfimenko}
+\end{equation}
+Both Jefimenko equations grouped are, therefore (and finally)
+\begin{equation}
+	\left\{	\begin{aligned}
+		E^i(x^k,t)&=\frac{1}{4\pi\epsilon_0}\int_{V}^{}\frac{1}{r}\left( \frac{1}{c}\pdv{\rho}{t}\hat{x}^i+\rho\frac{\hat{x}^i}{r}-\frac{1}{c^2}\pdv{J^i}{t}\right)\dd^{3}{\tilde{x}}\\
+		B^i(x^k,t)&=\frac{\mu_0}{4\pi}\int_{V}^{}\frac{1}{r}\cpr{i}{j}{k}\left( \frac{J^j}{r}+\frac{1}{c}\pdv{J^j}{t} \right)\hat{x}^k\dd^{3}{\tilde{x}}
+	\end{aligned}\right.
+	\label{eq:Jefimenko}
+\end{equation}
+%%TODO Liénard-Wiechert potentials, point charge potentials
 \end{document}

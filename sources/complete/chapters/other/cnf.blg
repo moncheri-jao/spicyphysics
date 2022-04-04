@@ -1,9 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[1] Config.pm:307> INFO - Logfile is 'cnf.blg'
-[31] biber:315> INFO - === ven feb 14, 2020, 13:29:07
-[55] Biber.pm:371> INFO - Reading 'cnf.bcf'
-[115] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
-[122] Utils.pm:193> WARN - The file 'cnf.bcf' does not contain any citations!
-[129] bbl.pm:636> INFO - Writing 'cnf.bbl' with encoding 'UTF-8'
-[129] bbl.pm:739> INFO - Output to cnf.bbl
-[129] Biber.pm:110> INFO - WARNINGS: 1

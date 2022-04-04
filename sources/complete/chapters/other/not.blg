@@ -1,9 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[1] Config.pm:307> INFO - Logfile is 'not.blg'
-[33] biber:315> INFO - === ven feb 14, 2020, 13:30:47
-[52] Biber.pm:371> INFO - Reading 'not.bcf'
-[110] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
-[116] Utils.pm:193> WARN - The file 'not.bcf' does not contain any citations!
-[123] bbl.pm:636> INFO - Writing 'not.bbl' with encoding 'UTF-8'
-[123] bbl.pm:739> INFO - Output to not.bbl
-[123] Biber.pm:110> INFO - WARNINGS: 1

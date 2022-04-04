@@ -1,9 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[0] Config.pm:307> INFO - Logfile is 'ode.blg'
-[49] biber:315> INFO - === ven feb 14, 2020, 13:30:56
-[87] Biber.pm:371> INFO - Reading 'ode.bcf'
-[216] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
-[230] Utils.pm:193> WARN - The file 'ode.bcf' does not contain any citations!
-[245] bbl.pm:636> INFO - Writing 'ode.bbl' with encoding 'UTF-8'
-[245] bbl.pm:739> INFO - Output to ode.bbl
-[245] Biber.pm:110> INFO - WARNINGS: 1

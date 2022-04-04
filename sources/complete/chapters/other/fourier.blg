@@ -1,9 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[0] Config.pm:307> INFO - Logfile is 'fourier.blg'
-[31] biber:315> INFO - === ven feb 14, 2020, 13:29:48
-[54] Biber.pm:371> INFO - Reading 'fourier.bcf'
-[114] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
-[120] Utils.pm:193> WARN - The file 'fourier.bcf' does not contain any citations!
-[127] bbl.pm:636> INFO - Writing 'fourier.bbl' with encoding 'UTF-8'
-[127] bbl.pm:739> INFO - Output to fourier.bbl
-[127] Biber.pm:110> INFO - WARNINGS: 1
