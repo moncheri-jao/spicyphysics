@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber electromagnetism"] 1648492800 "electromagnetism.bcf" "electromagnetism.bbl" "electromagnetism" 1649069926
+["biber electromagnetism"] 1648492800 "electromagnetism.bcf" "electromagnetism.bbl" "electromagnetism" 1649083189
   "/home/birrabenzina/Dropbox/appunti/bibliografia/bib.bib" 1621433019 8290 c2d9b81a087603ba9a5153f344cdfa65 ""
-  "electromagnetism.bcf" 1649069926 107552 e6bfae539f38c9dbe267f099f85fdea9 "lualatex"
+  "electromagnetism.bcf" 1649083188 107552 e6bfae539f38c9dbe267f099f85fdea9 "lualatex"
   (generated)
   "electromagnetism.bbl"
   "electromagnetism.blg"
-["lualatex"] 1649069920 "electromagnetism.tex" "electromagnetism.pdf" "electromagnetism" 1649069926
+["lualatex"] 1649083183 "/home/birrabenzina/Dropbox/spicyphysics/sources/electromagnetism/electromagnetism.tex" "electromagnetism.pdf" "electromagnetism" 1649083189
   "/home/birrabenzina/.texlive/texmf-var/luatex-cache/generic/fonts/otl/frutiger-bold.luc" 1648141223 26164 f57dd720782320cdad72b8a16d54e763 ""
   "/home/birrabenzina/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc" 1648141581 81824 c55db50e764ebb22976582672ad0dc88 ""
   "/home/birrabenzina/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmmonocaps10-regular.luc" 1648141580 81915 88819b1d75380568cc3c6d5171d3cf5d ""
@@ -19,6 +19,7 @@
   "/home/birrabenzina/.texlive/texmf-var/luatex-cache/generic/fonts/otl/palatino.luc" 1648141223 37646 98bd6c0770e86caa57047fb69a5c9638 ""
   "/home/birrabenzina/.texlive/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1648492694 2575 84cf0ca6427ffacd270f7337d34e3a24 ""
   "/home/birrabenzina/.texlive/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1648141220 68546 7a8c80041494d849147ce2c14bba3d39 ""
+  "/home/birrabenzina/Dropbox/spicyphysics/sources/electromagnetism/electromagnetism.tex" 1649069920 4726 6c4dece6d872815194406d3076b36495 ""
   "/usr/local/share/fonts/ttf/frutiger/Frutiger_bold.ttf" 1646326176 35948 21fc1ceeea54a05436ec706318269b13 ""
   "/usr/local/share/fonts/ttf/palatino/Palatino.ttf" 1646659467 100456 c17a6697a7e85168c55b97e05adf06f9 ""
   "/usr/share/texmf-dist/fonts/opentype/public/lm/lmmonocaps10-regular.otf" 1647844622 63228 320920efe9d62e0600f966f1dfc7ebfc ""
@@ -359,17 +360,17 @@
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1647893464 4560029 9e849e6b8221fa8c4a57aae0511c5770 ""
   "chapters/die.tex" 1645117511 30710 5386ccd1186714ab0ccf0b2e1decd5eb ""
   "chapters/efieldind.tex" 1648495126 39815 9865ebc0351470a3b495cdbed2dee904 ""
-  "chapters/emind.tex" 1648831345 19444 2b2d152b4b87215ac2489a2b9958df32 ""
+  "chapters/emind.tex" 1649083164 19443 fd2873efe38bd7f17a769dcb4970eb47 ""
   "chapters/lorentz.tex" 1645117511 26819 3a296932b8f24e0d6fedc3bff3da4078 ""
   "chapters/magf.tex" 1645117511 34228 7dc0c4fab4a6ae768bda605afb45df71 ""
   "chapters/mattmag.tex" 1648495177 22890 2e8836a9312e253daabac43438d5db22 ""
   "chapters/poilap.tex" 1645117511 21708 14ce924d7fd9eb5dd9f4b024484fe488 ""
-  "electromagnetism.aux" 1649069926 40555 4f719a0ba1a574c7b76bbe9b85dcf29b "lualatex"
+  "electromagnetism.aux" 1649083188 40548 0d45768339c02321f373ee63719b56b6 "lualatex"
   "electromagnetism.bbl" 1648492801 4949 878f811a6e78c1d78e1c231d3df5220c "biber electromagnetism"
-  "electromagnetism.out" 1649069926 16953 ed40eee1a5543badcdf9aec6487b8f1d "lualatex"
-  "electromagnetism.run.xml" 1649069926 2454 af74986aecd760282911d159f2cdafad "lualatex"
+  "electromagnetism.out" 1649083188 16948 dd44a1bfcf51346dd9ce3435a5dbf2f5 "lualatex"
+  "electromagnetism.run.xml" 1649083188 2454 af74986aecd760282911d159f2cdafad "lualatex"
   "electromagnetism.tex" 1649069920 4726 6c4dece6d872815194406d3076b36495 ""
-  "electromagnetism.toc" 1649069926 8269 fc6563dbc6849009e5df72b0a036b4b1 "lualatex"
+  "electromagnetism.toc" 1649083188 8268 a40686420a0676fd2d1b7f0e3c827e3c "lualatex"
   "title/title.tex" 1645117511 1678 c96aee138dcbec82bffb1903140cee86 ""
   (generated)
   "electromagnetism.aux"

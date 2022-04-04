@@ -69,7 +69,7 @@
 \contentsline {section}{\numberline {6.2}Magnetic Energy}{80}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Maxwell's Equations}{81}{section.6.3}%
 \contentsline {subsection}{\numberline {6.3.1}Poynting's Vector, Energy Conservation}{82}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Stress Tensor, Momentum Conservatipon}{83}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.2}Stress Tensor, Momentum Conservation}{83}{subsection.6.3.2}%
 \contentsline {chapter}{\numberline {7}Potentials and Fields}{87}{chapter.7}%
 \contentsline {chapter}{\numberline {8}Relativistic Electrodynamics}{89}{chapter.8}%
 \contentsline {part}{IV\hspace {1em}Optics}{91}{part.4}%
