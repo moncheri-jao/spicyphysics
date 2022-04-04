@@ -70,21 +70,23 @@
 \contentsline {section}{\numberline {6.3}Maxwell's Equations}{81}{section.6.3}%
 \contentsline {subsection}{\numberline {6.3.1}Poynting's Vector, Energy Conservation}{82}{subsection.6.3.1}%
 \contentsline {subsection}{\numberline {6.3.2}Stress Tensor, Momentum Conservatipon}{83}{subsection.6.3.2}%
-\contentsline {chapter}{\numberline {7}Potentials and Fields}{85}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Relativistic Electrodynamics}{87}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Electric Circuits}{89}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Electronics}{89}{section.A.1}%
-\contentsline {section}{\numberline {A.2}DC Current}{89}{section.A.2}%
-\contentsline {section}{\numberline {A.3}AC Current}{89}{section.A.3}%
-\contentsline {chapter}{\numberline {B}Magnetic Circuits}{91}{appendix.B}%
-\contentsline {chapter}{\numberline {C}Special Relativity}{93}{appendix.C}%
-\contentsline {section}{\numberline {C.1}Principle of Relativity}{93}{section.C.1}%
-\contentsline {section}{\numberline {C.2}Spacetime}{94}{section.C.2}%
-\contentsline {subsection}{\numberline {C.2.1}Spacetime Diagrams}{96}{subsection.C.2.1}%
-\contentsline {section}{\numberline {C.3}Proper Time}{96}{section.C.3}%
-\contentsline {section}{\numberline {C.4}Formalization of the Principle of Relativity}{97}{section.C.4}%
-\contentsline {subsection}{\numberline {C.4.1}Length Contraction and Time Dilation}{98}{subsection.C.4.1}%
-\contentsline {subsection}{\numberline {C.4.2}Velocity Transformations}{99}{subsection.C.4.2}%
-\contentsline {section}{\numberline {C.5}4-Vectors}{100}{section.C.5}%
-\contentsline {subsection}{\numberline {C.5.1}4-Velocity and 4-Acceleration}{101}{subsection.C.5.1}%
-\contentsline {section}{\numberline {C.6}Exercises}{102}{section.C.6}%
+\contentsline {chapter}{\numberline {7}Potentials and Fields}{87}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Relativistic Electrodynamics}{89}{chapter.8}%
+\contentsline {part}{IV\hspace {1em}Optics}{91}{part.4}%
+\contentsline {chapter}{\numberline {9}Electromagnetic Waves}{93}{chapter.9}%
+\contentsline {chapter}{\numberline {A}Electric Circuits}{95}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Electronics}{95}{section.A.1}%
+\contentsline {section}{\numberline {A.2}DC Current}{95}{section.A.2}%
+\contentsline {section}{\numberline {A.3}AC Current}{95}{section.A.3}%
+\contentsline {chapter}{\numberline {B}Magnetic Circuits}{97}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Special Relativity}{99}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Principle of Relativity}{99}{section.C.1}%
+\contentsline {section}{\numberline {C.2}Spacetime}{100}{section.C.2}%
+\contentsline {subsection}{\numberline {C.2.1}Spacetime Diagrams}{102}{subsection.C.2.1}%
+\contentsline {section}{\numberline {C.3}Proper Time}{102}{section.C.3}%
+\contentsline {section}{\numberline {C.4}Formalization of the Principle of Relativity}{103}{section.C.4}%
+\contentsline {subsection}{\numberline {C.4.1}Length Contraction and Time Dilation}{104}{subsection.C.4.1}%
+\contentsline {subsection}{\numberline {C.4.2}Velocity Transformations}{105}{subsection.C.4.2}%
+\contentsline {section}{\numberline {C.5}4-Vectors}{106}{section.C.5}%
+\contentsline {subsection}{\numberline {C.5.1}4-Velocity and 4-Acceleration}{107}{subsection.C.5.1}%
+\contentsline {section}{\numberline {C.6}Exercises}{108}{section.C.6}%

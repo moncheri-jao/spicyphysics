@@ -312,7 +312,7 @@ Or, moving inside the cross product for clarity
 \end{equation*}
 Using the product rule on the time derivative at the last factor we have that
 \begin{equation*}
-	\del_t\cpr{i}{j}{k}E^jB^k=\cpr{i}{j}{k}\del_t(E^j)B^k+\cpr{i}{j}{k}E^j\del_t(B^k)\implies\cpr{i}{j}{k}\del_t(E^j)B^k=\del_t\cpr{i}{j}{k}E^jB^k-\cpr{i}{j}{k}E^j\del_tB^k
+	\del_t\cpr{i}{j}{k}E^jB^k=\cpr{i}{j}{k}\del_t(E^j)B^k+\cpr{i}{j}{k}E^j\del_t(B^k)\implies\cpr{i}{j}{k}\del_t(E^j)B^k=\del_t\cpr{i}{j}{k}E^jB^k-\cpr{i}{j}{k}E^j\del_t(B^k)
 \end{equation*}
 From the second Maxwell equation tho we have
 \begin{equation*}
@@ -320,9 +320,52 @@ From the second Maxwell equation tho we have
 \end{equation*}
 Therefore
 \begin{equation*}
-	\cpr{i}{j}{k}\del_t(E^j)B^k=\del_t\cpr{i}{j}{k}E^jB^k+\cpr{i}{j}{k}E^j\cpr{k}{l}{m}\del^lE^m
-\end{equation*}i
-%%TODO complete at line before cross yellow notebook
-<++>
+	-\cpr{i}{j}{k}E^j\del_t(B^k)=\cpr{i}{j}{k}E^j\cpr{k}{l}{m}\del^lB^m
+\end{equation*}
+And everything comes back to
+\begin{equation*}
+	\cpr{i}{j}{k}\del_t(E^j)B^k=\del_t\left( \cpr{i}{j}{k}E^jB^k \right)+\cpr{i}{j}{k}E^j\cpr{k}{l}{m}\del^lE^m
+\end{equation*}
+And inserting it back into the Lorentz force density gives
+\begin{equation}
+	f^i=\epsilon_0E^i\del_jE^j+\frac{1}{\mu_0}\cpr{i}{j}{k}B^k\cpr{j}{l}{m}\del^lB^m-\epsilon_0\pdv{t}\left( \cpr{i}{j}{k}E^jB^k \right)+\epsilon_0\cpr{i}{j}{k}E^j\cpr{k}{l}{m}\del^lE^m
+	\label{eq:forcedensitylorentz1}
+\end{equation}
+Or, rearranging the two fields
+\begin{equation}
+	f^i=\epsilon_0\left( E^i\del_jE^j-\cpr{i}{j}{k}\cpr{k}{l}{m}E^j\del^lE^m \right)+\frac{1}{\mu_0}\left( B^i\del_jB^j-\cpr{i}{j}{k}\cpr{j}{l}{m}\del^lB^mB^k \right)-\epsilon_0\pdv{t}\left( \cpr{i}{j}{k}E^jB^k \right)
+	\label{eq:lfdrearr}
+\end{equation}
+Where we used $\del_iB^i=0$ in order to symmetrize the shape of the equation.\\
+Using the properties of the Levi-Civita symbol we have that (note that $g_{ij}=\delta_{ij}$ in this metric)
+\begin{equation}
+	\cpr{i}{j}{k}\cpr{k}{l}{m}=\delta^i_l\delta_{jm}-\delta_{jl}\delta^i_l
+	\label{eq:levicivitaproductrule}
+\end{equation}
+We have (using a generic vector here, it can be either $B^i$ or $E^i$)
+\begin{equation*}
+	\cpr{i}{j}{k}\cpr{k}{l}{m}A^j\del^lA^m=A_m\del^iA^m-A^l\del_lA^i
+\end{equation*}
+So
+\begin{equation*}
+	f^i=\epsilon_0\left( E^i\del_jE^j+E^l\del_lE^i-E^m\del^iE_m \right)+\frac{1}{\mu_0}\left( B^i\del_jB^j+B^l\del_lB^i-B^m\del^iB_m \right)-\frac{1}{c^2}\pdv{S^i}{t}
+\end{equation*}
+Looking closely we see that the big mess inside the parentheses is simply
+\begin{equation*}
+	\del_j\left( E^iE^j \right)-\frac{1}{2}\del_j\left( E^kE_k \right)=\del_j\left( E^iE^j-\frac{1}{2}\delta^{ij}E^kE_k \right)
+\end{equation*}
+Seen this, we define the following symmetric rank-2 tensor $\sigma^{ij}$
+\begin{dfn}[Maxwell Stress Tensor]
+	The Maxwell stress tensor is defined as follows:
+	\begin{equation}
+		\sigma^{ij}=\epsilon_0\left( E^iE^j-\frac{1}{2}\delta^{ij}E^kE_k \right)+\frac{1}{\mu_0}\left( B^iB^j-\frac{1}{2}\delta^{ij}B^kB_k \right)
+	\end{equation}
+	It's a rank 2 tensor and it's obviously symmetric 
+\end{dfn}
+The Lorentz force density becomes then the following simply
+\begin{equation}
+	f^i=\pdv{\sigma^{ij}}{x^k}-\frac{1}{c^2}\pdv{S^i}{t}
+	\label{eq:lorentzforce}
+\end{equation}
 %END OF CHAPTER
 \end{document}
