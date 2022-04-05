@@ -1,0 +1,111 @@
+\documentclass[../electromagnetism.tex]{subfiles}
+\begin{document}
+\section{Plane Harmonic Waves}
+The wave equation in 4d is the following second order partial differential equation
+\begin{equation}
+	\pdv[2]{f}{x}+\pdv[2]{f}{y}+\pdv[2]{f}{z}=\frac{1}{u^2}\pdv[2]{f}{t}
+	\label{eq:3dwaveeq}
+\end{equation}
+Taken the simpler case of a wave equation moving through a single spatial dimension, i.e.
+\begin{equation*}
+	\pdv[2]{f}{x}=\frac{1}{u^2}\pdv[2]{f}{t}
+\end{equation*}
+We already know that it has a simple solution in terms of cosines (or sines)
+\begin{equation}
+	f(x,t)=f_0\cos(kx-\omega t)
+	\label{eq:1dwavesol}
+\end{equation}
+Given that
+\begin{equation*}
+	\frac{\omega}{k}=u
+\end{equation*}
+The solution \eqref{eq:1dwavesol} is of particular importance in treating electromagnetic waves (or waves in general). It tells us that the wave $f(x,t)$ varies sinusoidally with the distance $x$ and it's harmonic in $t$ for any given point in space.\\
+Fixing the position and moving only through time, going to a new time $t+\Delta t$, we have that due to the previous constraint the point $x$ will have moved by $\Delta x=u\Delta t$.\\
+It's exactly like adding a phase to the wave (hence the name \textit{phase velocity} of $u$). Note that if we used another solution, say
+\begin{equation*}
+	f_r(x,t)=f_0\cos(kx+\omega t)
+\end{equation*}
+We would describe a wave going back, with displacement $\Delta x=-u\Delta t$ for some given time.\\
+In terms of electrodynamics, all these constants have names:
+\begin{itemize}
+\item $u$ is the phase velocity
+\item $\lambda$ is the wavelength
+\item $\omega$ is the angular frequency
+\item $k$ is the angular wavenumber
+\end{itemize}
+There are also other derived values that have given name, which are
+\begin{itemize}
+\item $T$ the period, for which $\lambda=uT=\frac{2\pi}{k}$
+\item $\nu$ the frequency, for which $\nu=\frac{u}{\lambda}=\frac{\omega}{2\pi}=T^{-1}$
+\item $\sigma$ the spectroscopic wavenumber, for which $\sigma=\frac{1}{\lambda}$
+\end{itemize}
+Going back to waves in 3 spatial dimensions, the general solution of the wave equation \eqref{eq:3dwaveeq} is known as a \textit{plane harmonic wave}, and has the following mathematical shape
+\begin{equation}
+	f(x,y,z,t)=f_0\cos\left( k^ix_i-\omega t \right)
+	\label{eq:3dwavesol}
+\end{equation}
+Here the angular wavenumber (or wavenumber for simplicity), is a vector, and is known as the \textit{propagation vector} $k^i$. The magnitude of this vector \emph{is the actual wavenumber}, i.e.
+\begin{equation*}
+	k=\sqrt{k^ik_i}
+\end{equation*}
+The physical meaning of this solution resides mostly inside the cosine argument, $k^ix_i-\omega t$.\\
+Setting it as constant we get the equation of a plane in space, which are called the \textit{surfaces of constant phase}. The normals of these surfaces (planes) are proportional and perpendicular to the wavevector, and these planes ``move'' in that direction at a rate equal to the phase velocity $u$
+\subsection{Alternative Representations of the Wavefunction}
+We can think immediately about alternative representations of the wavefunction \eqref{eq:3dwavesol}. One of these is by using the definition of the constant phase surfaces we gave before, in fact, as we said $k^i=k\hat{n}^i$, and therefore
+\begin{equation*}
+	f(x^i,t)=f_0\cos\left[ (x^i\hat{n}_i-ut)k \right]
+\end{equation*}
+Remember that $ku=\omega$.\\
+Another one, is by using complex functions. Using the Euler identity for the complex exponential we can write
+\begin{equation*}
+	f(x^i,t)=F_0e^{i\left( k^ix_i-\omega t \right)}
+\end{equation*}
+Note that since generally $F_0\in\Cf$, the actual physical quantity is the real part of $f$.\\
+One use of the complex wavefunction is immediate when dealing with spherical waves, where $x^i=r$ and
+\begin{equation}
+	f(r,t)=\frac{1}{r}\cos(kr-\omega t)=\real\left\{ \frac{1}{r}e^{i(kr-\omega t)} \right\}
+	\label{eq:sphericaleq}
+\end{equation}
+Ignoring the real part on the right it's clear that the second will be extremely easier to manipulate.
+\section{Group Velocity}
+Suppose now that we have two harmonic waves $\phi,\psi$ with different angular frequencies $\omega_1=\omega+\Delta\omega$ and $\omega_2=\omega-\Delta\omega$.\\
+In general also the wavenumbers will differ, and we'll call them for simplicity $k_1=k+\Delta k$, $k_2=k-\Delta k$. Supposing that the waves have the same amplitude $A$ and are traveling in the same direction (say z), the superposition of the two will be
+\begin{equation*}
+	\Psi=\psi+\phi=A\left( e^{i\left( (k+\Delta k)z-(\omega+\Delta\omega)t \right)}+e^{i\left( (k-\Delta k)z-(\omega-\Delta\omega)t \right)} \right)
+\end{equation*}
+Collecting terms 
+\begin{equation*}
+	\Psi=Ae^{i\left( kz-\omega t \right)}\left( e^{i\left( z\Delta k-t\Delta\omega \right)}+e^{-i\left( z\Delta k-t\Delta\omega \right)} \right)
+\end{equation*}
+Recognizing a $2\cos(\cdots)$ on the right we have that
+\begin{equation*}
+	\Psi=2Ae^{i\left( kz-\omega t \right)}\cos\left( z\Delta k-t\Delta\omega \right)
+\end{equation*}
+The result of this superposition is a new wave $\eta$, with amplitude $B=2A$ multiplied by a ``modulation envelope'' given by the cosine.\\
+From the previous results it's clear that this envelope doesn't travel at the phase velocity, in fact, we have a new propagation velocity, known as the \textit{group velocity}
+\begin{equation}
+	u_g=\frac{\Delta\omega}{\Delta k}
+	\label{eq:groupvelwaves}
+\end{equation}
+At the limit, we have that $\omega'(k)=u_g$, and since $\omega=ku$ or $\omega=kc/n$ we have
+\begin{equation*}
+	u_g=\dv{k}\left( \frac{kc}{n} \right)=\frac{c}{n}-\frac{ck}{n^2}\dv{n}{k}=u\left( 1-\frac{k}{n}\dv{n}{k} \right)
+\end{equation*}
+Note that we wrote $n=n(k)$! The refraction index is in general dependent on the angular frequency $\omega$, and therefore on $k$! As an example, you can see how different wavelengths of light behave passing through glass. They go through when $\lambda$ is in the range of visible light, but are completely opaque in infrared, i.e. $n$ \emph{must} vary with frequency (or wavelength, or wavenumber, or \ldots)\\
+From the previous monologue and from the definitions we can then say that
+\begin{equation}
+	\begin{aligned}
+		u_g&=u\left( 1-\frac{k}{n}\dv{n}{k} \right)\\
+		u_g&=u-\lambda\dv{u}{\lambda}\\
+		\frac{1}{u_g}&=\frac{1}{u}-\frac{\lambda_0}{c}\dv{n}{\lambda_0}
+	\end{aligned}
+	\label{eq:groupvelder}
+\end{equation}
+Where $\lambda_0$ is the vacuum wavelength.\\
+Phase velocity and group velocity can only be equal in vacuum ($n=0$), where $u_g=u=c$.
+%%TODO DOPPLER EFFECT
+\section{Doppler Effect}
+<++>
+\subsection{Relativistic Doppler Effect}
+\subsection{Doppler Broadening of Spectrum Lines}
+\end{document}
