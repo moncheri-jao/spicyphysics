@@ -19,6 +19,7 @@
 \usepackage{microtype}
 \usepackage{stmaryrd}
 \usepackage{lipsum}
+\usepackage{verbatim}
 \usepackage{etoolbox}
 \usepackage{pgfplots}
 \usepgflibrary{fpu}
@@ -136,9 +137,8 @@
 \subfile{./chapters/emind.tex}
 \chapter{Potentials and Fields}
 \subfile{./chapters/potentials.tex}
-%%TODO ADD RELATIVISTIC EM
+%%TODO ADD RELATIVISTIC EM (maybe in an appendix? Another part? idk [05/04/22]
 %\chapter{Relativistic Electrodynamics}
-%\part{Optics}
 \chapter{Electromagnetic Waves}
 \subfile{./chapters/light.tex}
 \chapter{Coherence and Interference}
@@ -150,13 +150,17 @@
 \chapter{Lasers}
 \chapter{Ray Optics}
 \appendix
+\begin{comment}
 \chapter{Electric Circuits}
 \section{Electronics}
 \section{DC Current}
 \section{AC Current}
 \chapter{Magnetic Circuits}
+\end{comment}
+\chapter{Waves}
+\subfile{./chapters/waves.tex}
 \chapter{Special Relativity}
 \subfile{./chapters/lorentz.tex}
-\nocite{griffem,jackson,landau2,zangwillem}
+\nocite{griffem,jackson,landau2,zangwillem,fowles}
 \printbibliography
 \end{document}

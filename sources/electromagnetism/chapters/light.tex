@@ -1,4 +1,83 @@
 \documentclass[../electromagnetism.tex]{subfiles}
 \begin{document}
+\section{Propagation of Electromagnetic Waves}
+Consider a random point in spacetime, where only an electromagnetic field is present.\\
+Here we have
+\begin{equation*}
+	\begin{aligned}
+		\rho&=0\\
+		J^i&=0
+	\end{aligned}
+\end{equation*}
+Using $H^i$ instead of $B^i$, since, in free space
+\begin{equation*}
+	B^i=\mu_0H^i
+\end{equation*}
+We get Maxwell's equation for what's known as a free electromagnetic field
+\begin{equation}
+	\left\{ \begin{aligned}
+		\del_iE^i&=0\\
+		\cpr{i}{j}{k}\del^jE^k&=-\mu_0\pdv{H^i}{t}\\
+		\del_iH^i&=0\\
+		\cpr{i}{j}{k}\del^jH^k&=\epsilon_0\pdv{E^i}{t}
+	\end{aligned}\right.
+	\label{eq:freespacemaxwell}
+\end{equation}
+The absence of sources here is given by the two divergence relations. Note also that these coupled PDEs are valid both in the dynamic and static case.\\
+These equations, although it might not be that clear from the system, are completely separable. Taken the two curl equations we have, using the relations found before, that
+\begin{equation*}
+	\left\{ \begin{aligned}
+			\cpr{i}{j}{k}\cpr{k}{l}{m}\del^j\del^lE^m&= -\mu_0\epsilon_0\pdv[2]{E^i}{t}\\
+			\cpr{i}{j}{k}\cpr{k}{l}{m}\del^j\del^lH^m&= -\mu_0\epsilon_0\pdv[2]{H^i}{t}
+	\end{aligned}\right.
+\end{equation*}
+Using the Levi-Civita identity we have that the double curl becomes
+\begin{equation*}
+	\del^i\left( \del_jE^j \right)-\del^j\del_jE^i
+\end{equation*}
+Which, if substituted inside the previous system, using that $\del_i(H^i,E^i)=0$ gives back the already well known wave equation
+\begin{equation}
+	\begin{aligned}
+		\frac{1}{c^2}\pdv[2]{E^i}{t}-\del^j\del_jE^i&=\square E^i= 0\\
+		\frac{1}{c^2}\pdv[2]{H^i}{t}-\del^j\del_jH^i&=\square H^i= 0
+	\end{aligned}
+	\label{eq:emwaveeq}
+\end{equation}
+The solution will be what's known as an \textit{electromagnetic wave}, a wave moving in space composed by both an electric and magnetic field. From the wave equation we can already say that it's moving at speed $c$, as it should. To be precise it's what we know as \emph{light}.
+\subsection{Electromagnetic Waves in Dielectric Media}
+In case that we're dealing with the movement of this wave in dielectric or magnetic media, we must remember that the fields \emph{will be different}. The equations will be the same in shape, but will need some tweaking.\\
+The tweaking is not actually in the fields, but in the constants. Given the speed of an electromagnetic wave in the vacuum is $c$, where
+\begin{equation*}
+	c=\frac{1}{\sqrt{\mu_0\epsilon_0}}
+\end{equation*}
+In a media, we will have the \textit{speed of propagation} of the waves, $u$, given by the substitution of $\mu_0\epsilon_0$ with $\mu\epsilon$ (remember that $\mu=\mu_r\mu_0$ and $\epsilon_r\epsilon_0$)
+\begin{equation}
+	u=\frac{1}{\sqrt{\mu\epsilon}}=\frac{1}{\sqrt{\mu_r\mu\epsilon_r\mu_0}}=\frac{c}{\sqrt{\mu_r\epsilon_r}}
+	\label{eq:speedofprop}
+\end{equation}
+From this we define the \textit{index of refraction} of a medium, $n$ as
+\begin{equation}
+	n=\frac{c}{u}=\sqrt{\mu_r\epsilon_r}
+	\label{eq:refractionindex}
+\end{equation}
+So that, the propagation speed can be written also
+\begin{equation*}
+	u=\frac{c}{n}
+\end{equation*}
+And the wave equations become
+\begin{equation}
+	\left\{ \begin{aligned}
+			\frac{n^2}{c^2}\pdv[2]{E^i}{t}-\del^j\del_jE^i&= 0\\
+			\frac{n^2}{c^2}\pdv[2]{H^i}{t}-\del^j\del_jH^i&= 0
+	\end{aligned}\right.
+	\label{eq:waveequationinmedia}
+\end{equation}
+\section{Polarization of Electromagnetic Waves}
 <++>
+%%TODO Polarization from Fowles (CH 2 VECTORIAL NATURE OF LIGHT)
+\subsection{Jones Calculus}
+\section{Reflection and Refraction}
+\subsection{External and Internal Reflection}
+\subsection{Total Reflection}
+\subsection{Phase Changes}
 \end{document}
