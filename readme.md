@@ -17,7 +17,7 @@ I've begun developing the part of optics in electromagnetism.tex, it will need t
 * ifa.pdf -> Istituzioni di Fisica dell'Atmosfera in Italiano, prof. M. Cacciani
 
 # Future Works
-* Classical Thermodynamics 
+* Classical Thermodynamics (what if I place them as an appendix to the statmech part in the qm.pdf? That'd be... based? 😳 )
 
 ## REMARK
 This and all future works will be FREE OF CHARGE. You can download them whenever you want and how many times you want without ever worrying about them costing actual real money.
