@@ -104,8 +104,29 @@ From the previous monologue and from the definitions we can then say that
 Where $\lambda_0$ is the vacuum wavelength.\\
 Phase velocity and group velocity can only be equal in vacuum ($n=0$), where $u_g=u=c$.
 %%TODO DOPPLER EFFECT
+\begin{comment}
 \section{Doppler Effect}
-<++>
-\subsection{Relativistic Doppler Effect}
-\subsection{Doppler Broadening of Spectrum Lines}
+Consider a source of waves and an observer moving in relative motion from one another. The frequency observed is changed compared to the measured frequency when there is no relative motion.\\
+Say that the source is moving away from the receiver with velocity $u$. It's observed that the measured frequency is expanded from $\nu$ to $c+\nu$ with $c$ being the speed of the waves.\\
+The observed frequency is
+\begin{equation}
+	\nu'=\nu\left( \frac{c}{c+u} \right)\approx\nu\left( 1-\frac{u}{c}+\frac{u^2}{c^2} \right)
+	\label{eq:awayfreqdoppler}
+\end{equation}
+While, if the receiver (or the source) is moving away from the receiver, we will have
+\begin{equation}
+	\nu'=\nu\left( \frac{c-u}{c} \right)=\nu\left( 1-\frac{u}{c} \right)
+	\label{eq:closerdoppler}
+\end{equation}
+or
+\begin{equation*}
+	\frac{\Delta\nu}{\nu}=\frac{u}{c}
+\end{equation*}
+These formulas, with these considerations, although equal to the first order, make no sense in the context of special relativity. The measured frequency is instead
+\begin{equation}
+	\nu'=n\sqrt{\frac{1-u/c}{1+u/c}}\approx\nu\left( 1-\frac{u}{c}+\frac{1}{2}\frac{u^2}{c^2} \right)
+	\label{eq:reldoppler}
+\end{equation}
+Notice how the first order of the relativistic formula is exactly the same of the classical case
+\end{comment}
 \end{document}
