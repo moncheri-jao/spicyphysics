@@ -1,5 +1,6 @@
 \documentclass{book}
 \usepackage{fancypages}
+%\addbibresource{~/Dropbox/appunti/bibliografia/bib.bib}
 \usepackage{sapienza}
 %
 \directlua{
@@ -36,14 +37,16 @@
 %\chapter{Relativistic Electrodynamics}
 \chapter{Electromagnetic Waves}
 \subfile{./chapters/light.tex}
+\chapter{Reflection and Refraction}
+\subfile{./chapters/reflection.tex}
 \chapter{Coherence and Interference}
-\section{Multiple Beam Interference}
+\subfile{./chapters/coherence.tex}
 \chapter{Diffraction}
+\subfile{./chapters/diffraction.tex}
 \chapter{Optics of Solids}
-\chapter{Thermal Radiation and Photons}
-\chapter{Optical Spectra}
-\chapter{Lasers}
-\chapter{Ray Optics}
+\subfile{./chapters/solids.tex}
+\section{Diffraction}
+%%TODO check if diffraction needs to be a different chapter
 \appendix
 \begin{comment}
 \chapter{Electric Circuits}
@@ -56,6 +59,6 @@
 \subfile{./chapters/waves.tex}
 \chapter{Special Relativity}
 \subfile{./chapters/lorentz.tex}
-\nocite{griffem,jackson,landau2,zangwillem,fowles}
+\nocite{griffem,jackson,landau2,zangwillem,fowles,fourieropt}
 \printbibliography
 \end{document}
