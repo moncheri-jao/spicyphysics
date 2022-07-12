@@ -9,6 +9,15 @@
 	end
 }
 \pgfmathdeclarefunction{Langevin}{1}{\edef\pgfmathresult{\directlua{tex.print("" .. langevin(#1))}}}
+\setmainfont[
+  	UprightFont=*,
+ 	BoldFont=*,
+ 	BoldFeatures={FakeBold=1},
+ 	ItalicFont=*,
+ 	ItalicFeatures={FakeSlant=0.2},
+ 	BoldItalicFont=*,
+ 	BoldItalicFeatures={FakeBold=1,FakeSlant=0.2},
+]{Frutiger_45_Light}
 \begin{document}
 \subfile{./title/title}
 \subfile{./title/frontispice}
