@@ -1,397 +1,307 @@
 \documentclass[../electromagnetism.tex]{subfiles}
 \begin{document}
-\section{Propagation of Electromagnetic Waves}
-Consider a random point in spacetime, where only an electromagnetic field is present.\\
-Here we have
+\section{The Wave Equation}
+Maxwell's equations are of utmost importance in studying the behavior of electromagnetic field, due to their versatility and generality. It's due to Maxwell himself that we now treat light as electromagnetic radiation, particularly, electromagnetic waves.
+The reasoning behind Maxwell's work comes \textit{directly} from his equation. Consider a location of space in which there are no charges nor currents, i.e. no \textit{sources}. For such system, Maxwell's equations are\footnote{From now on, here we will use the standard boldface vector notation for ease of reading. Index notation will be used in the chapter on crystals and in some other section}
+\begin{equation}
+	\left\{ \begin{aligned}
+			\nabla\times\vec{E}&=-\pdv{\vec{B}}{t}\\
+			\nabla\times\vec{B}&=\frac{1}{c^2}\pdv{\vec{E}}{t}
+	\end{aligned}\right.
+	\label{eq:mweq.waves}
+\end{equation}
+Where, the divergence equations are both equally zero
+\begin{equation}
+	\nabla\cdot\vec{E}=\nabla\cdot\vec{B}=0
+	\label{eq:diveq.waves}
+\end{equation}
+It's important to remember that 
+\begin{equation*}
+	c^2=\frac{1}{\mu_0\epsilon_0}
+\end{equation*}
+Is the ``\textit{speed of light}'' for reasons that will be clear after a couple of manipulations. For reasons of symmetry of the two curl equations we use the following substitution
+\begin{equation}
+	\vec{B}=\mu_0\vec{H}
+	\label{eq:btoh.waves}
+\end{equation}
+for which, the only nonzero equations are
+\begin{equation}
+	\left\{\begin{aligned}
+		\nabla\times\vec{E}&=-\mu_0\pdv{\vec{H}}{t}\\
+		\nabla\times\vec{H}&=\epsilon_0\pdv{\vec{E}}{t}
+	\end{aligned}\right.
+	\label{eq:nonzeromwe.waves}
+\end{equation}
+The main problem of these equations is that they're still coupled between eachother, and there are still the previous divergence equations, but this can be solved quickly. Remembering the following operator identity
+\begin{equation*}
+	\nabla\times\nabla\times[\quad]=\nabla\left(\nabla\cdot[\quad]\right)-\nabla^2[\quad]
+\end{equation*}
+We get, by taking the curl of both equations, and reinserting them to the right hand side
+\begin{equation}
+\left\{	\begin{aligned}
+		\nabla\times\nabla\times\vec{E}&=-\mu_0\epsilon_0\pdv[2]{\vec{E}}{t}\\
+		\nabla\times\nabla\times\vec{H}&=-\mu_0\epsilon_0\pdv[2]{\vec{H}}{t}
+	\end{aligned}\right.
+	\label{eq:nablanabla.waves}
+\end{equation}
+Or, inserting the identity and \eqref{eq:diveq.waves}
+\begin{equation}
+	\left\{\begin{aligned}
+			\nabla^2\vec{E}&=\frac{1}{c^2}\pdv[2]{\vec{E}}{t}\\
+			\nabla^2\vec{H}&=\frac{1}{c^2}\pdv[2]{\vec{H}}{t}
+	\end{aligned}\right.
+	\label{eq:waveeq.waves}
+\end{equation}
+Or, more compactly
+\begin{equation}
+	\left\{ \begin{aligned}
+			\square\vec{E}&=0\\
+			\square\vec{H}&=0
+	\end{aligned}\right.
+	\label{eq:square.waves}
+\end{equation}
+Where
+\begin{equation}
+	\square=\frac{1}{c^2}\pdv[2]{t}-\nabla^2
+	\label{eq:dalambertian.waves}
+\end{equation}
+Is known as the \textit{D'Alembertian} operator. The equation we wrote is a wave equation for waves traveling at $v=c$.
+\subsection{Dielectric Wave Equation}
+If we consider now ourselves inside some media, we have to take account of both \textit{polarization} and \textit{magnetization}, given by the presence of atoms inside the medium. These atoms will absorb some special frequencies, which will be known as \textit{resonance frequencies}.\\
+Far from the resonant frequencies, the medium is known as a transparent and non-absorbent medium. Maxwell's equations are the usual complete ones:
+\begin{equation}
+	\left\{ \begin{aligned}
+			\nabla\cdot\vec{E}&= \frac{\rho}{\epsilon_0}\\
+			\nabla\times\vec{E}&= -\pdv{\vec{B}}{t}\\
+			\nabla\cdot\vec{B}&= 0\\
+			\nabla\times\vec{B}&= \mu_0\vec{J}+\mu_0\epsilon_0\pdv{\vec{E}}{t}
+	\end{aligned}\right.
+	\label{eq:mwgeneralmedia}
+\end{equation}
+Consider now a real electromagnetic wave, it will be composed of multiple frequencies, denoted with $\omega$. An electromagnetic wave will be denoted as \textit{monochromatic} if and only if it's composed by a single frequency, (note that in nature there are no monochromatic waves). In this ideal case, the electric field is:
+\begin{equation}
+	\vec{E}(\vec{r},t)=\vec{E}_\omega(\vec{r})e^{-i\omega t}
+	\label{eq:frequencydec.waves}
+\end{equation}
+With the exponential coming from the wave equation itself.\\
+Since we are dealing with dielectrics, we gotta consider charge polarization $\vec{P}$, which will also be decomposed in frequencies, therefore, inserting the $D$ field in our calculations
+\begin{equation}
+	\vec{D}_\omega=\epsilon_0\vec{E}_\omega+\vec{P}_\omega=\epsilon_\omega\vec{E}_\omega
+	\label{eq:dvector.waves}
+\end{equation}
+Where we used the following two relations
+\begin{equation}
+	\left\{\begin{aligned}
+			\vec{P}_\omega&= \epsilon_0\chi_\omega\vec{E}_\omega\\
+			\epsilon_\omega&= \epsilon_0(1+\chi_\omega)
+	\end{aligned}\right.
+	\label{eq:dtoe.waves}
+\end{equation}
+Noting that here, in general, $\epsilon_\omega$ depends on position, the first Maxwell equation for dielectrics becomes slightly more complicated
+\begin{equation*}
+	\nabla\cdot\vec{D}_\omega=\vec{E}_\omega\cdot\nabla\epsilon_\omega+\epsilon_\omega\nabla\cdot\vec{E}_\omega=0
+\end{equation*}
+Solving for $E_\omega$ we get
+\begin{equation}
+	\nabla\cdot\vec{E}_\omega=-\frac{\vec{E}_\omega\cdot\nabla\epsilon_\omega}{\epsilon_\omega}
+	\label{eq:gaussdie.waves}
+\end{equation}
+Evaluating the time derivatives for the monochromatic fields we have
 \begin{equation*}
 	\begin{aligned}
-		\rho&=0\\
-		J^i&=0
+		\pdv{\vec{E}}{t}&= -i\omega\vec{E}\\
+		\pdv{\vec{H}}{t}&= -i\omega\vec{H}
 	\end{aligned}
 \end{equation*}
-Using $H^i$ instead of $B^i$, since, in free space
+Inserting everything into Maxwell's equations we get the set of equations for monochromatic waves in general non-magnetic media
+\begin{equation}
+	\left\{\begin{aligned}
+			\nabla\cdot\vec{E}_\omega&= -\frac{\vec{E}_\omega\cdot\nabla\epsilon_\omega}{\epsilon_\omega}\\
+			\nabla\times\vec{E}_\omega&= i\omega\mu_0\vec{H}_\omega\\
+			\nabla\cdot\vec{H}_\omega&= 0\\
+			\nabla\times\vec{H}_\omega&= -i\omega\epsilon_\omega\vec{E}_\omega
+	\end{aligned}\right.
+	\label{eq:mweqdie.waves}
+\end{equation}
+Now, using the same technique we used before for finding the wave equation, we get
 \begin{equation*}
-	B^i=\mu_0H^i
+	\begin{aligned}
+		\nabla\times\nabla\times\vec{E}_\omega&= -\omega^2\mu_0\epsilon_\omega\vec{E}_\omega\\
+		\nabla\times\nabla\times\vec{H}_\omega&= -\omega^2\mu_0\epsilon_\omega\vec{H}_\omega
+	\end{aligned}
 \end{equation*}
-We get Maxwell's equation for what's known as a free electromagnetic field
+Therefore, inserting the divergence equations and taking care of the minus signs
+\begin{equation*}
+	\begin{aligned}
+		\nabla^2\vec{E}_\omega+\nabla\left( \frac{\vec{E}_\omega\cdot\nabla\epsilon_\omega}{\epsilon_\omega} \right)&= \omega^2\mu_0\epsilon_\omega\vec{E}_\omega\\
+		\nabla^2\vec{H}_\omega&= \omega^2\mu_0\epsilon_\omega\vec{H}_\omega
+	\end{aligned}
+\end{equation*}
+\begin{dfn}[Refraction Index]
+	We define the \textit{refraction index} $n_\omega$ as follows
+	\begin{equation}
+		n_\omega(\vec{r})=\sqrt{\frac{\epsilon_\omega(\vec{r})}{\epsilon_0}}
+		\label{eq:refractionind.waves}
+	\end{equation}
+	Hence
+	\begin{equation*}
+		\epsilon_\omega=\epsilon_0n_\omega^2
+	\end{equation*}
+\end{dfn}
+Inserting the previous definition into the divergence of $E_\omega$ we see that
+\begin{equation*}
+	\frac{\vec{E}_\omega\cdot\nabla\epsilon_\omega}{\epsilon_\omega}=2\vec{E}_\omega\cdot\nabla\log\left( n_\omega \right)
+\end{equation*}
+And, the right hand side becomes
+\begin{equation*}
+	\omega^2\mu_0\epsilon_\omega\vec{E}_\omega=\frac{\omega^2}{c^2}n_\omega^2\vec{E}_\omega
+\end{equation*}
+\begin{dfn}[Wavenumber]
+	We define the \textit{vacuum wavenumber} $k_0$ as follows
+	\begin{equation}
+		k_0=\frac{\omega}{c}=\frac{2\pi}{\lambda}
+		\label{eq:wavenumber.waves}
+	\end{equation}
+\end{dfn}
+Reuniting both definitions and the simplification we then get, for the equation on $E$
+\begin{equation*}
+	\nabla^2\vec{E}_\omega+2\nabla\left( \vec{E}_\omega\cdot\nabla\log(n_\omega) \right)=k_0^2n_\omega^2\vec{E}_\omega
+\end{equation*}
+Now, in order to ease calculations in our range of frequencies (or wavelenghts, or wavenumbers also) we check if defined a characteristic length $l_n$ which indicates the spatial scale of variation of $n_\omega$ (remember that it depends on space position), we have that:
+\begin{equation*}
+	\begin{aligned}
+		\nabla^2E_\omega&\propto\frac{E_\omega}{l_n\lambda}\frac{\Delta n_\omega}{n_\omega}\propto k_0^2n_\omega^2E_\omega\\
+		\norm{\nabla\nabla\cdot\vec{E}_\omega}&\propto\frac{E_\omega}{l_n^2}\frac{\Delta n_\omega}{n_\omega}
+	\end{aligned}
+\end{equation*}
+And since in optical ranges of light $l_n>>\lambda$ and $\Delta n_\omega<<n_\omega$ we can discard immediately the divergence term, and get two symmetric wave equations for the wave in a generic dielectric (nonmagnetic or transparent) medium
 \begin{equation}
 	\left\{ \begin{aligned}
-		\del_iE^i&=0\\
-		\cpr{i}{j}{k}\del^jE^k&=-\mu_0\pdv{H^i}{t}\\
-		\del_iH^i&=0\\
-		\cpr{i}{j}{k}\del^jH^k&=\epsilon_0\pdv{E^i}{t}
+			\nabla^2\vec{E}_\omega&= k_0^2n_\omega^2\vec{E}_\omega\\
+			\nabla^2\vec{H}_\omega&= k_0^2n_\omega^2\vec{H}_\omega
 	\end{aligned}\right.
-	\label{eq:freespacemaxwell}
+	\label{eq:helmholtz.waves}
 \end{equation}
-The absence of sources here is given by the two divergence relations. Note also that these coupled PDEs are valid both in the dynamic and static case.\\
-These equations, although it might not be that clear from the system, are completely separable. Taken the two curl equations we have, using the relations found before, that
-\begin{equation*}
-	\left\{ \begin{aligned}
-			\cpr{i}{j}{k}\cpr{k}{l}{m}\del^j\del^lE^m&= -\mu_0\epsilon_0\pdv[2]{E^i}{t}\\
-			\cpr{i}{j}{k}\cpr{k}{l}{m}\del^j\del^lH^m&= -\mu_0\epsilon_0\pdv[2]{H^i}{t}
-	\end{aligned}\right.
-\end{equation*}
-Using the Levi-Civita identity we have that the double curl becomes
-\begin{equation*}
-	\del^i\left( \del_jE^j \right)-\del^j\del_jE^i
-\end{equation*}
-Which, if substituted inside the previous system, using that $\del_i(H^i,E^i)=0$ gives back the already well known wave equation
+These equations are known as \textit{Helmholtz equations} for the single chromatic part of the $E, H$ fields. Note that these equations are exactly the equations solved by a single Fourier component of the transformed wave equation ($n$ appears since we are in some media and $\epsilon_r\ne0$).\\
+Note that via Fourier transforms it's possible to go back to the already known wave equation, where the speed of propagation is not $c$ but it's $c/n_\omega=u$. It's then also obvious that in vacuum $n_\omega=1$, which is also clear from the definition of the refraction index.\\
+%%TODO waves appendix, phase-group velocity
+\section{Vectorial Behavior of Electromagnetic Waves}
+The general solution to the wave equation \eqref{eq:waveeq.waves} can be written both as a real function or a complex exponential. The latter one, although non ``real'', eases a lot calculations and therefore will be the favored approach. Using all previous definitions the general result is
 \begin{equation}
 	\begin{aligned}
-		\frac{1}{c^2}\pdv[2]{E^i}{t}-\del^j\del_jE^i&=\square E^i= 0\\
-		\frac{1}{c^2}\pdv[2]{H^i}{t}-\del^j\del_jH^i&=\square H^i= 0
+		\vec{E}&= \vec{E}_0e^{i\vec{k}\cdot\vec{r}-i\omega t}\\
+		\vec{H}&= \vec{H}_0e^{i\vec{k}\cdot\vec{r}-i\omega t}
 	\end{aligned}
-	\label{eq:emwaveeq}
+	\label{eq:wavesolution.waves}
 \end{equation}
-The solution will be what's known as an \textit{electromagnetic wave}, a wave moving in space composed by both an electric and magnetic field. From the wave equation we can already say that it's moving at speed $c$, as it should. To be precise it's what we know as \emph{light}.
-\subsection{Electromagnetic Waves in Dielectric Media}
-In case that we're dealing with the movement of this wave in dielectric or magnetic media, we must remember that the fields \emph{will be different}. The equations will be the same in shape, but will need some tweaking.\\
-The tweaking is not actually in the fields, but in the constants. Given the speed of an electromagnetic wave in the vacuum is $c$, where
-\begin{equation*}
-	c=\frac{1}{\sqrt{\mu_0\epsilon_0}}
-\end{equation*}
-In a media, we will have the \textit{speed of propagation} of the waves, $u$, given by the substitution of $\mu_0\epsilon_0$ with $\mu\epsilon$ (remember that $\mu=\mu_r\mu_0$ and $\epsilon_r\epsilon_0$)
-\begin{equation}
-	u=\frac{1}{\sqrt{\mu\epsilon}}=\frac{1}{\sqrt{\mu_r\mu\epsilon_r\mu_0}}=\frac{c}{\sqrt{\mu_r\epsilon_r}}
-	\label{eq:speedofprop}
-\end{equation}
-From this we define the \textit{index of refraction} of a medium, $n$ as
-\begin{equation}
-	n=\frac{c}{u}=\sqrt{\mu_r\epsilon_r}
-	\label{eq:refractionindex}
-\end{equation}
-So that, the propagation speed can be written also
-\begin{equation*}
-	u=\frac{c}{n}
-\end{equation*}
-And the wave equations become
-\begin{equation}
-	\left\{ \begin{aligned}
-			\frac{n^2}{c^2}\pdv[2]{E^i}{t}-\del^j\del_jE^i&= 0\\
-			\frac{n^2}{c^2}\pdv[2]{H^i}{t}-\del^j\del_jH^i&= 0
-	\end{aligned}\right.
-	\label{eq:waveequationinmedia}
-\end{equation}
-In general, it's clear that both fields solve the same basic wave equation
-\begin{equation*}
-	\del^i\del_if=\frac{1}{u^2}\pdv[2]{f}{t}
-\end{equation*}
-The solution of this equation (in terms of complex exponentials) is
-\begin{equation}
-	f(x^i,t)=e^{i\left( k^ix_i-\omega t \right)}
-	\label{eq:wavesolutionemwaves}
-\end{equation}
-What happens when we apply the same differential operators that appear in Maxwell's equation to this solution?\\
-Well we simply take the derivatives and see that we're actually dealing with an eigenfunction of the differential operator, with eigenvalues
-\begin{equation}
-	\left\{ \begin{aligned}
-		\del_if&= ik_if\\
-		\del_tf&= -i\omega f
-\end{aligned}\right.
-	\label{eq:eigenwave}
-\end{equation}
-Thus, in terms of electromagnetic fields we can write Maxwell's equations as follows
-\begin{equation}
-	\left\{ \begin{aligned}
-			k^iE_i&= 0\\
-			\cpr{i}{j}{k}k^jE^k&= \mu\omega H^i\\
-			k^iB_i&= 0\\
-			\cpr{i}{j}{k}k^jH^k&= -\epsilon\omega E^i
-	\end{aligned}\right.
-	\label{eq:eigenmaxwell}
-\end{equation}
-It's clear that these three vectors compose a mutually orthogonal triad. Therefore, if we consider the magnitudes of these vectors from the third equation, we get
-\begin{equation}
-	H=\frac{\epsilon\omega}{k}E=\epsilon uE
-	\label{eq:HErelwaves}
-\end{equation}
-Where we used $\omega/k=u$. If we rewrite them in terms of the refraction index $n=c/u$, defined $Z_0=\sqrt{\mu_0/\epsilon_0}$ the ``free space impedance'' we also have
-\begin{equation*}
-	H=\frac{n}{Z_0}E
-\end{equation*}
-\subsection{Energy Flow}
-As we saw before, the Poynting vector is defined as the cross product of $E$ with $H$, and is a representation of the flux of electromagnetic energy per unit area. If we take an electromagnetic field which solves the wave equation, as 
+Evaluating the curl, the divergence and the time derivative for these solutions it's possible to write the following operator equation
 \begin{equation}
 	\begin{aligned}
-		E^i&= E_0^i\cos\left( k^ix_i-\omega t \right)\\
-		H^i&= H_0^i\cos\left( k^ix_i-\omega t \right)
+		\hat{\del}_t&\to-i\omega\\
+		\hat{\nabla}&\to i\vec{k}
 	\end{aligned}
-	\label{eq:planewaveem}
+	\label{eq:operatorrel.waves}
 \end{equation}
-We have that the Poynting vector for such fields is
-\begin{equation*}
-	S^i=\cpr{i}{j}{k}E^jH^k=S^i_0\cos^2\left( k^ix_i-\omega t \right)
-\end{equation*}
-Where $S_0=E_0\times H_0$. Since, as we saw before $k^i$ is perpendicular to both $E$ and $H$, it must be parallel to the Poynting vector. Taken the average (remember that $\expval{\cos^2(\theta)}=1/2$) we get
+Where $\vec{k}$ is known as the \textit{wavevector}, which is the vector with magnitude $\norm{\vec{k}}=nk_0$
+And Maxwell's equations can be rewritten as
 \begin{equation}
-	\expval{S^i}=\frac{1}{2}S^i_0=I\frac{k^i}{k}=I\hat{n}
-	\label{eq:poyntingvec}
+	\left\{ \begin{aligned}
+			\vec{k}\cdot\vec{E}&= 0\\
+			\vec{k}\cdot\vec{H}&= 0\\
+			\vec{k}\times\vec{E}&= \omega\mu_0\vec{H}\\
+			\vec{k}\times\vec{H}&= -\omega\epsilon\vec{E}\\
+	\end{aligned}\right.
+	\label{eq:maxwellktimes.waves}
 \end{equation}
-Where $I$ is known as the \textit{irradiance} and has, clearly, value
-\begin{equation*}
-	I=\frac{1}{2}E_0H_0=\frac{n}{2Z_0}E_0^2
-\end{equation*}
-This is known also as \textit{Malus' Law}.\\
-The irradiance, defined as before, is nothing more than the rate of flow of energy, and it's proportional to the square of the amplitude of the electric field.\\
-For isotropic media, then the direction of the energy flux is defined by both $S^i$ and $k^i$.
-\section{Polarization of Electromagnetic Waves}
-\subsection{Linear Polarization}
-\begin{dfn}[Linear Polarization]
-	Consider a general plane harmonic wave with the following solution to Maxwell's equations:
-	\begin{equation*}
-		\begin{aligned}
-			E^i&=E_0^ie^{i\left( k^ir_i-\omega t \right)}\\
-			H^i&=H_0^ie^{i\left( k^ir_i-\omega t \right)}\\
-		\end{aligned}
-	\end{equation*}
-	If both $E_0^i,\ H_0^i\in\R^3$ are constant (real constant vectors), then the wave is said to be \textit{linearly polarized}.
-\end{dfn}
-\begin{dfn}[Polarizer]
-	A \textit{polarizer} is an optical element that generates linearly polarized light. One of such instrument is the Polaroid filter.\\
-	A polarizer is said to have two main axes, one transmission axis and one blocking axis. The transmission axis is the one that will let the component of the $E^i$ field pass, therefore by definition polarizing the light wave. If the polarizer is \emph{completely} transparent to the incoming light parallel to the transmission axis it's known as an \textit{ideal polarizer}
-\end{dfn}
-Consider now some randomly polarized light that passes through an ideal linear polarizer, and suppose that it arrives such that $E^i$ arrives at an angle $\theta$ with respect to the transmission axis. The transmitted magnitude then will simply be the projection of $E^i$ onto the axis.\\
-Called $\tau$ our axis, then
-\begin{equation*}
-	E_\tau=E\cos\theta
-\end{equation*}
-And since $I\propto E^2$, the transmitted intensity is
-\begin{equation*}
-	I_\tau=I\cos^2\theta
-\end{equation*}
-By the same reasoning as before, for unpolarized light then, since $\expval{\cos^2\theta}=1/2$ we have that, the transmitted intensity through this polarizer is exactly half the incoming intensity, i.e.
-\begin{equation*}
-	I_\tau=\frac{1}{2}I_u
-\end{equation*}
-\begin{dfn}[Partial Polarization]
-	A light wave is said to be \textit{partially polarized} if it's made by a mixture of polarized and unpolarized light. The \textit{degree of polarization} $P$ is defined as the ratio between the intensity of polarized light $I_p$ and the total intensity $I_T$ (the sum of the intensity of polarized and unpolarized light)
-	\begin{equation*}
-		P=\frac{I_p}{I_T}
-	\end{equation*}
-	For the special case of partial \emph{linear} polarization, it can be calculate as the difference between the maximum intensity minus the minimum intensity of light, normalized with respect to the total intensity
-	\begin{equation*}
-		P_{pl}=\frac{I_{max}-I_{min}}{I_{max}+I_{min}}
-	\end{equation*}
-	It's clear that $P\in[0,1]$, where $P=0$ indicates completely unpolarized light and $P=1$ indicates completely polarized light
-\end{dfn}
-\subsection{Circular and Elliptical Polarization}
-Consider two orthogonal waves $\psi_1,\ \psi_2$ with equal amplitudes $A_1=A_2$. Due to their orthogonality there's a $\pi/2$ phase shift between the two, and can be written as:
+Therefore, $\vec{k},\vec{E},\vec{H}$ are three mutually orthogonal vectors. By definition, then, $\vec{k}$ must be oriented parallel to the direction of motion.\\
+Also from the last three equations, taken the norm of the two and solved the equations for $E/H$ we have
 \begin{equation}
+	\frac{E}{H}=n\sqrt{\frac{\epsilon_0}{\mu_0}}=\frac{n}{Z_0}
+	\label{eq:impedancefs.waves}
+\end{equation}
+With $Z_0^2=\mu_0/\epsilon_0$ being the \textit{free space impedance} which has value of $Z_0\approx377\Omega$.
+Note also that by definition of the Poynting vector $\vec{S}$, we also have that $\vec{k}\parallel\vec{S}$, which implies that, if we define the irradiance as $I=\norm{\vec{S}}$, that:
+\begin{equation}
+	\vec{S}=I\frac{\vec{k}}{k}=I\hat{\vec{k}}
+	\label{eq:irradiance.waves}
+\end{equation}
+Or, using what we found before
+\begin{equation}
+	I=\frac{n}{2Z_0}E_0^2
+	\label{eq:irradiancevse.waves}
+\end{equation}
+For plane waves it's actually better if we take the time average of the fields using phasor notation (complex exponential notation) for the fields, we have
+\begin{equation*}
+	\expval{\vec{S}(t)}=\vec{S}=\real{\expval{\vec{E}_0e^{i\vec{k}\cdot\vec{r}-i\omega t}}}\times\real{\expval{\vec{H}_0e^{i\vec{k}\cdot\vec{r}-i\omega t}}}
+\end{equation*}
+Since $\real(z)=\frac{1}{2}(z+\cc{z})$ and the complex conjugate is distributive, the calculation boils down to simplifying the following expression
+\begin{equation*}
+	\frac{1}{4}\expval{\left( \vec{E}_0\times\vec{H}_0e^{2i\vec{k}\cdot\vec{r}-2i\omega t}+\cc{\vec{E}}_0\times\vec{H}_0=\vec{E}_0\times\cc{\vec{H}}_0+\cc{\vec{E}}_0\times\cc{\vec{H}}_0e^{-2i\vec{k}\cdot\vec{r}+2i\omega t}\right)}
+\end{equation*}
+Noting that the average value for the real part of the exponential is $0$, we have 
+\begin{equation}
+	\vec{S}=\frac{1}{2}\vec{E}_0\times\cc{\vec{H}}_0 
+	\label{eq:averagepoynting.waves}
+\end{equation}
+Where we omitted both the real part operator and the time average.
+\subsection{Polarization}
+The vectorial nature of waves comes up in most part with the phenomenon of \textit{polarization}, which is simply the ``favored'' direction of oscillation of the wave. Waves can also be non-polarized, as is the case for natural light, when there is no well defined oscillation direction.\\
+The simplest polarization state obtainable is \textit{linear polarization}. Setting $\vec{k}\parallel\hat{\vec{z}}$ we have $\vec{E},\vec{H}$ orthogonal and coplanar on the $xy$ plane.\\
+Linear polarization is then achieved when $\vec{E}$ oscillates with a constant angle from the chosen x axis. This can be expressed mathematically as:
+\begin{equation}
+	\vec{E}=E_x\hat{\vec{x}}+E_y\hat{\vec{y}}
+	\label{eq:linear.pol}
+\end{equation}
+Note how here, in general, $\vec{E}\in\R^2$.\\
+The instrument used to generate linearly polarized light is the \textit{linear polarizer}. This object is built in a way such that it transmits light only in one orientation. The associated axis is known as the \textit{transmission axis}.\\
+Chosen a 2D orthonormal reference system $\hat{\vec{t}},\hat{\vec{s}}$ in which the $t$ axis is parallel to the transmission axis, then, we must have
+\begin{equation*}
 	\begin{aligned}
-		\psi_1&=E_0\cos\left( kz-\omega t \right)\hat{x}^i
-		\psi_2&=E_0\sin\left( kz-\omega t \right)\hat{y}^i
+		\vec{E}_{in}&= E_t\hat{\vec{t}}+E_s\hat{\vec{s}}\\
+		\vec{E}_{out}&= E_t\hat{\vec{t}}
 	\end{aligned}
-	\label{eq:circpol2waves}
-\end{equation}
-Using the principle of superposition, then, the total field (i.e., total wave) is then
-\begin{equation}
-	E^i=E_0^i\left( \cos\left( kz-\omega t \right)\hat{x}^i+\sin\left( kz-\omega t \right)\hat{y}^i \right)
-	\label{eq:totfieldcircular}
-\end{equation}
-This is clearly a solution to the Maxwell equation $\square E^i=0$ and therefore can be seen as a valid electromagnetic wave, especially one which rotates around the $z$ axis with angular frequency $\omega$. The direction of rotation defines if it's a \textit{right circularly polarized wave} ($-y$) or a \textit{left circularly polarized wave} ($+y$).\\
-Using complex notation and noting that the $\pi/2$ shift can be defined with a multiplication by $i$ of the $y$ component, hence
-\begin{equation}
-	E^i=\left( \hat{x}^i\pm i\hat{y}^i \right)e^{i\left( kz-\omega t \right)}
-	\label{eq:circpol}
-\end{equation}
-The circular polarization is just a special case of an elliptical polarization, where $A_1\ne A_2$, where
-\begin{equation}
-	E_0^i=E_0\hat{x}^i+iE_1\hat{y}^i\quad\implies\quad E^i=E_0^ie^{i\left( kz-\omega t \right)}
-	\label{eq:complexwaveelpol}
-\end{equation}
-It's also clear how this notation generalizes polarization altogether, in fact, if $E_0^i$ is a real vector we get back our usual linear polarization that we treated before.\\
-A question arises now, what optical element can create elliptical polarization from a general light wave? The answer is \textit{quarter-wave plates}.
-\begin{dfn}[Quarter Wave Plate]
-	A \textit{quarter wave plate}, also known as a $\lambda/4$-\textit{plate} is an optical element made of two different refracting transparent crystals, which combined give a polarizer with two different transmission axes.\\
-	The axis with the highest refraction index ($n_1$) is known as the \textit{fast axis}, while the axist with the smallest refraction index ($n_2$), is known as the \textit{slow axis}.\\
-	The instrument is built such that the optical thickness ($nd$, where $d$ is the thickness), obeys the following relation
-	\begin{equation*}
-		n_1d-n_2d=\frac{\lambda_0}{4}
-	\end{equation*}
-	With $\lambda_0$ being the vacuum wavelength of the considered wave. Solving for $d$, we then have the quarter-wave plate relation
-	\begin{equation}
-		d=\frac{\lambda_0}{4(n_1-n_2)}
-		\label{eq:thicknessquarterwave}
-	\end{equation}
-
-\end{dfn}
-\subsection{Jones Calculus}
-Consider a general plane harmonic electromagnetic wave, i.e.
-\begin{equation}
-	E_0^i=E_{0x}\hat{x}^i+E_{0y}\hat{y}^i
-	\label{eq:generalplanewavejones}
-\end{equation}
-Since in the most general case $E_{0x},E_{0y}\in\Cf$ we might choose to use the $\hat{x}^i,\hat{y}^i$ basis and work directly in $\Cf^2$. We can define then the \textit{Jones Vector} as follows
-\begin{dfn}[Jones Vector]
-	We define a \textit{Jones vector} as a vector $v^i\in\Cf^2$ defined as follows:
-	\begin{equation}
-		\begin{pmatrix}
-			E_{0x}\\
-			E_{0y}
-		\end{pmatrix}=\begin{pmatrix}
-			\abs{E_{0x}}e^{i\phi_x}\\
-			\abs{E_{0y}}e^{i\phi_y}
-		\end{pmatrix}
-		\label{eq:jonesvector}
-	\end{equation}
-	Then, this vector is the most general way of defining a plane harmonic electromagnetic wave. As we have seen before, then we have
-	\begin{enumerate}
-	\item For linearly polarized waves in one direction (x or y):
-		\begin{equation}
-			A\begin{pmatrix}
-				1\\0
-			\end{pmatrix}\qquad A\begin{pmatrix}
-				0\\1
-			\end{pmatrix}
-			\label{eq:linearpoljones}
-		\end{equation}
-	\item For linearly polarized waves (45 degrees):
-		\begin{equation}
-			A\begin{pmatrix}
-				1\\1				
-			\end{pmatrix}
-			\label{eq:45poljones}
-		\end{equation}
-	\item For left-circularly polarized waves:
-		\begin{equation}
-			A\begin{pmatrix}
-				1\\i
-			\end{pmatrix}
-			\label{eq:lcpjones}
-		\end{equation}
-	\item For right-circularly polarized waves:
-		\begin{equation}
-			A\begin{pmatrix}
-				1\\-i
-			\end{pmatrix}
-			\label{eq:rcpjones}
-		\end{equation}
-	\end{enumerate}
-\end{dfn}
-This representation in terms of complex vectors is really useful for calculating the polarization (and amplitude) of the wave resulting from the superposition of two differently polarized waves.
-I.e.: suppose you have a RCP (Right Circularly Polarized) wave and a LCP (Left Circularly Polarized) wave with unitary amplitude in some units. After the superposition we get:
-\begin{equation*}
-	\begin{pmatrix}
-		1\\-i
-	\end{pmatrix}+\begin{pmatrix}
-		1\\i
-	\end{pmatrix}=2\begin{pmatrix}
-		1\\0
-	\end{pmatrix}
 \end{equation*}
-Then, RCP+LCP=x-Linear polarization.\\
-The action of optical elements can then be seen as the action of a matrix upon these vectors. Then, as an example, we can represent a linear polarizer on the x direction as:
+Since $E_t=E_{in}\cos\theta$ then the irradiance of the outgoing field is
 \begin{equation}
-	\begin{pmatrix}
-		1&0\\0&0
-	\end{pmatrix}
-	\label{eq:xpolarizerjones}
+	I_{out}=I_{in}\cos^2\theta
+	\label{eq:malus.pol}
 \end{equation}
-And so on for other optical elements.\\
-In general, we have:
-\begin{enumerate}
-\item Linear Polarizers
-	\begin{itemize}
-	\item Horizontal polarizers
-		\begin{equation}
-			\begin{pmatrix}
-				1&0\\0&0
-			\end{pmatrix}
-			\label{eq:horizontalpolarjones}
-		\end{equation}
-	\item Vertical polarizers
-		\begin{equation}
-			\begin{pmatrix}
-				0&0\\0&1
-			\end{pmatrix}
-			\label{eq:verticalpolarjones}
-		\end{equation}
-	\item $\pm45^{\circ}$ polarizers
-		\begin{equation}
-			\frac{1}{2}\begin{pmatrix}
-				1&\pm1\\\pm1&1
-			\end{pmatrix}
-			\label{eq:45polarjones}
-		\end{equation}
-	\end{itemize}
-\item $\lambda/4$ Plates
-	\begin{itemize}
-	\item Vertical fast axis
-		\begin{equation}
-			\begin{pmatrix}
-				1&0\\0&i
-			\end{pmatrix}
-			\label{eq:fastyjones}
-		\end{equation}
-	\item Horizontal fast axis
-		\begin{equation}
-			\begin{pmatrix}
-				1&0\\0&-i
-			\end{pmatrix}
-			\label{eq:fastxjones}
-		\end{equation}
-	\item $\pm45^\circ$ fast axis
-		\begin{equation}
-			\frac{1}{\sqrt{2}}\begin{pmatrix}
-				1&\pm i\\\pm i&1
-			\end{pmatrix}
-			\label{eq:fast45jones}
-		\end{equation}
-	\end{itemize}
-\item $\lambda/2$ Plates
-	\begin{itemize}
-	\item Horizontal or vertical fast axis
-		\begin{equation}
-			\begin{pmatrix}
-				1&0\\0&-1
-			\end{pmatrix}
-			\label{eq:lambda2jones}
-		\end{equation}
-	\end{itemize}
-\item Retarders
-	\begin{equation}
-		\begin{pmatrix}
-			e^{i\phi}&0\\0&e^{i\phi}
-		\end{pmatrix}
-		\label{eq:retarderjones}
-	\end{equation}
-\item Phase Changers
-	\begin{equation}
-		\begin{pmatrix}
-			e^{i\phi_x}&0\\
-			0&e^{i\phi_y}
-		\end{pmatrix}
-		\label{eq:phasechangerjones}
-	\end{equation}
-\item Circular Polarizers
-	\begin{itemize}
-	\item Left Circular Polarizer
-		\begin{equation}
-			\frac{1}{2}\begin{pmatrix}
-				1&-i\\i&1
-			\end{pmatrix}
-			\label{eq:lcircularpolarjones}
-		\end{equation}
-	\item Right Circular Polarizer
-		\begin{equation}
-			\frac{1}{2}\begin{pmatrix}
-				1&i\\-i&1
-			\end{pmatrix}
-			\label{eq:rcircularpoljones}
-		\end{equation}
-	\end{itemize}
-\end{enumerate}
-In general, for a train of optical devices $(A^i_j)_1,\cdots,(A^i_j)_n$, where $A_i$ are complex matrices, we have that the resulting wave $R^i$ will be simply the following product, given $I^i$ as our incident wave:
+This behavior is known as \textit{Malus' law}.\\
+In case that the incoming light isn't polarized and it can't be described with the previous decomposition, taken the time average, we get
+\begin{equation*}
+	I_{out}=\frac{1}{2}I_{in}
+\end{equation*}
+Due to the superposition principle, it's not hard to imagine a mixture of polarized and unpolarized light. The \textit{degree of polarization} $P$ of this light can be evaluated using Malus' law, and it will be equal to
 \begin{equation}
-	\prod_{\alpha=1}^n(A^i_j)_\alpha I^j=R^i
-	\label{eq:multipleoptdevjones}
+	P=\frac{I_{max}-I_{min}}{I_{max}+I_{min}}
+	\label{eq:degpol.pol}
 \end{equation}
-\subsection{Orthogonal Polarization}
-Given two waves $E_1^i,E_2^i\in\Cf^2$, they're said to be \textit{orthogonally polarized} if, the complex scalar product between the two is null.\\
-I.e.
+Or, also, as the fraction of polarized irradiance
 \begin{equation}
-	\langle E_1^i, E_2^j \rangle = E_1^i\cc{E}^2_i=0
-	\label{eq:orthpol}
+	P=\frac{I_{pol}}{I_{pol}+I_{unp}}
+	\label{eq:degpol2.pol}
 \end{equation}
-%%TODO diomerda che cazzo ci scrivo qui? Bastardo il signore 
+There is one more possible (general) state of polarization, in which the field is totally described as a complex vector. In this state the two components of the field are dephased by exactly $\phi=\pi/2$, adding the phase to the exponential, we get a new factor of $i$ on one of the two components.\\
+The field can then be described by a complex vector in the following way
+\begin{equation}
+	\vec{E}=E_0\hat{\vec{x}}+iE_1\hat{\vec{y}}
+	\label{eq:elliptical.pol}
+\end{equation}
+This configuration is known as \textit{elliptical polarization} or \textit{circular polarization} when $E_1=E_0$, i.e.
+\begin{equation}
+	\vec{E}=E_0(\hat{\vec{x}}+i\hat{\vec{y}})
+	\label{eq:circular.pol}
+\end{equation}
+This special polarization state has two version, called \textit{right hand} and \textit{left hand} polarization, depending on whether the dephasing between the components is $+i$ or $-i$. Left hand elliptical (circular) polarization is defined by a positive phase difference of $i$.
+\section{Reflection and Refraction}
+<++>
+\subsection{Snell's Law}
+\subsection{Fermat's Principle}
+\subsection{Fresnel Equations}
+\subsubsection{Fresnel Equations for Irradiance}
+\subsubsection{Brewster's Angle}
+\section{Total Internal Reflection}
+\subsection{Evanescent Waves}
+\subsection{Fiber Optics}
+\subsection{Fresnel's Rhomb}
 \end{document}
