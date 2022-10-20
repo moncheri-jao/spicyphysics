@@ -292,16 +292,584 @@ This configuration is known as \textit{elliptical polarization} or \textit{circu
 	\vec{E}=E_0(\hat{\vec{x}}+i\hat{\vec{y}})
 	\label{eq:circular.pol}
 \end{equation}
-This special polarization state has two version, called \textit{right hand} and \textit{left hand} polarization, depending on whether the dephasing between the components is $+i$ or $-i$. Left hand elliptical (circular) polarization is defined by a positive phase difference of $i$.
-\section{Reflection and Refraction}
-<++>
+This special polarization state has two version, called \textit{right hand} and \textit{left hand} polarization, depending on whether the dephasing between the components is $+i$ or $-i$. Left hand elliptical (circular) polarization is defined by a positive phase difference of $i$.\\
+The instrumentation used to produce elliptical or circular polarization is known as \textit{quarter wave plates}, optical devices which exhibit a special property known as \textit{birefringence}, i.e., they have two different refraction indexes, $n_f, n_s$ where the subscripts mean ``slow'' and ``fast'' because $n_f<n_s$. The objects are specially made in a way such that the indexes are disposed in two mutually orthogonal axes.\\
+The quarter wave denomination comes from the criterion used to choose the thickness of the slabs. In general, it depends from the wavelength of the beam that gets polarized with the following formula
+\begin{equation}
+	d=\frac{\lambda_0}{4(n_s-n_f)}
+	\label{eq:qwp.pol}
+\end{equation}
+Note that a quarter wave plate isn't enough to generate circularly polarized light. In order to make both components equal after the dephasing, it's  necessary to linearly polarize light at an angle of $\pi/4$, so that when it traverses the quarter wave plate it's perfectly diagonal between the axes.
+\subsection{Jones Calculus}
+Due to the vectorial nature of polarization it's not hard to imagine a new notation which uses the power of linear algebra.\\
+A generic wave will be described as follows
+\begin{equation}
+	\vec{E}=\begin{pmatrix}
+		E_{x}e^{i\phi_x}\\
+		E_ye^{i\phi_y}
+	\end{pmatrix}
+	\label{eq:jones.pol}
+\end{equation}
+This vector is known as a \textit{Jones vector}.\\
+Then, the two basic polarization states are, in general
+\begin{equation}
+	\vec{E}_{lin}=\begin{pmatrix}
+		A\\B
+	\end{pmatrix}=A\begin{pmatrix}
+		1\\0
+	\end{pmatrix}+B\begin{pmatrix}
+		0\\1
+	\end{pmatrix}
+	\label{eq:horizontal.jpol}
+\end{equation}
+Linear, when $A, B\in\R$, decomposed as a sum of horizontally and vertically polarized waves.\\
+\begin{equation}
+	\vec{E}=\begin{pmatrix}
+		A\\\pm iB
+	\end{pmatrix}=A\begin{pmatrix}
+		1\\0
+	\end{pmatrix}\pm B\begin{pmatrix}
+		0\\i
+	\end{pmatrix}
+	\label{eq:elliptical.jpol}
+\end{equation}
+Elliptical, with $A, B\in\Cf$ in general decomposed into a sum of dephased linearly polarized light. Circularly polarized light can be interpreted as a special case with $A=B$.
+All these polarization states can be treated with usual vector operations, and with it, it's possible to determine the final polarization state of two superimposed waves.\\
+The action of \textit{optically active objects} such as linear polarizers and waveplates, can then be described by multiples of rotation matrices, which act linearly on the polarization states. The general action of an object is then described by a $2\times2$ complex \textit{Jones matrices}.\\
+Using composition it's also possible to determine the action of multiple objects on the polarization state.\\
+Some common optical objects have the following matrix reprsentations (when these is more thae one written I'm writing different orientations of the fast/transmission axis [$0, \pi, \pi/4$])\\
+Linear polarizer:
+\begin{equation}
+	\begin{pmatrix}
+		1&0\\0&0
+	\end{pmatrix}\quad\begin{pmatrix}
+		0&0\\0&1
+	\end{pmatrix}\quad\frac{1}{2}\begin{pmatrix}
+		1&\pm1\\\pm1&1
+	\end{pmatrix}
+	\label{eq:linpol.jpol}
+\end{equation}
+Quarter wave plate:
+\begin{equation}
+	\begin{pmatrix}
+		1&0\\0&-i
+	\end{pmatrix}\quad\begin{pmatrix}
+		1&0\\0&i
+	\end{pmatrix}\quad\frac{1}{\sqrt{2}}\begin{pmatrix}
+		1&\pm i\\\pm i&1
+	\end{pmatrix}
+	\label{eq:qwp.jpol}
+\end{equation}
+Half wave plate:
+\begin{equation}
+	\begin{pmatrix}
+		1&0\\0&-1
+	\end{pmatrix}
+	\label{eq:hwp.jpol}
+\end{equation}
+Phase retarder:
+\begin{equation}
+	\begin{pmatrix}
+		e^{i\phi_x}&0\\0&e^{i\phi_y}
+	\end{pmatrix}
+	\label{eq:pr.jpol}
+\end{equation}
+Circular polarizer (quarter wave + diagonal polarizer):
+\begin{equation}
+	\frac{1}{2}\begin{pmatrix}
+		1&\pm i\\\mp i
+	\end{pmatrix}
+	\label{eq:qwp+lp.jpol}
+\end{equation}
+Another thing we can borrow from algebra and use it with Jones calculus is orthogonality and eigenstates. Two polarization states are said to be \textit{orthogonal} if
+\begin{equation}
+	\vec{E}_1\cdot\vec{E}_2=\begin{pmatrix}
+		\cc{A}&\cc{B}
+	\end{pmatrix}\begin{pmatrix}
+		C\\D
+	\end{pmatrix}=\cc{A}C+\cc{B}D=0
+	\label{eq:orth.jpol}
+\end{equation}
+A \textit{polarization eigenstate} instead is the eigenvector of a Jones matrix, i.e. the only thing that can change when light with this kind of polarization passes through the object is its phase and/or its amplitude.\\
+Note how, since Jones vectors require \textit{purely} polarized states, we cannot define nonpolarized light.
+\section{Boundary Conditions for Electromagnetic Waves}
 \subsection{Snell's Law}
+Consider a plane boundary separating two different optical media, with refraction indexes $n_1, n_2$. It's empirically proven from Huygens that the wave will be both transmitted and reflected at the boundary.\\
+These three waves will have the following exponential dependence
+\begin{equation*}
+	\begin{aligned}
+		e^{i\left( \vec{k}\cdot\vec{r}-\omega t \right)}\\
+		e^{i\left( \vec{k}_R\cdot\vec{r}-\omega t \right)}\\
+		e^{i\left( \vec{k}_T\cdot\vec{r}-\omega t \right)}
+	\end{aligned}
+\end{equation*}
+Where $\vec{k}_R, \vec{k}_T$ are respectively the wavevectors for the reflected and transmitted wave.\\
+Said, without loss of generality, $t=0$ at the boundary, due to the continuity of the field we must have
+\begin{equation*}
+	e^{i\vec{k}\cdot\vec{r}}=e^{i\vec{k}_R\cdot\vec{r}}=e^{i\vec{k}_T\cdot\vec{r}}
+\end{equation*}
+Writing in terms of $k_0$ which is the same, we have
+\begin{equation*}
+	\begin{aligned}
+		\vec{k}&= n_1\vec{k}_0\\
+		\vec{k}_R&= n_1\vec{k}_0\\
+		\vec{k}_T&= n_2\vec{k}_0
+	\end{aligned}
+\end{equation*}
+Said $\theta$ the incidence angle, $\theta_R$ the reflection angle and $\varphi$ the transmission angle, writing explicitly the norm of the scalar product, we get what's commonly known as \textit{Snell's law}
+\begin{equation}
+	\begin{aligned}
+		\sin\theta_R&= \sin\theta\\
+		n_1\sin\theta&= n_2\sin\varphi
+	\end{aligned}
+	\label{eq:snell.ref}
+\end{equation}
+The first one indicates that $\theta=\theta_R$, while the second can be rewritten as
+\begin{equation}
+	\sin\theta=n\sin\varphi
+	\label{eq:snell2.ref}
+\end{equation}
+Where $n=n_2/n_1=\sin\theta/\sin\varphi$ is the \textit{relative refraction index} of the medium.
 \subsection{Fermat's Principle}
+All of this can be mathematically explained using \textit{Fermat's principle}.\\
+Taken two points $A, B$, Fermat's principle states that light will travel in the path for which the traveling time will be minimized. Said $n\equiv n\left( \vec{r}(t) \right)$ we define the following functional
+\begin{equation}
+	t\left[ \vec{r} \right]=\int_{t_A}^{t_B}\frac{n\left( \vec{r}(t) \right)}{c}\dd^{}{t}
+	\label{eq:time.fermat}
+\end{equation}
+Where we used $\dd t=u\dd s$.\\
+We also define the \textit{optical path} as
+\begin{equation}
+	l_{AB}=\int_{A}^{B}n(s)\dd^{}{s}
+	\label{eq:optpath.ref}
+\end{equation}
+Suppose now that $A, B$ are in two different media with $n_A, n_B$ as refraction indexes. Putting ourselves in the coordinate system of the incidence point, with the $y$ axis parallel to the boundary, and with $A, B$ distant respectively $d_1, d_2$ from the origin, we have that the total optical path is
+\begin{equation*}
+	l=d_1+d_2=\sqrt{a^2+x^2}+\sqrt{b^2+(d-x)^2}
+\end{equation*}
+Where $a, b$ are the $y$ distances of the two points. Dividing by $n/c$ we have
+\begin{equation*}
+	t(x)=\frac{n_A}{c}\sqrt{a^2+x^2}+\frac{n_B}{c}\sqrt{b^2+(d-x)^2}
+\end{equation*}
+Applying the fundamental principle of the calculus of variations, we take the derivative and search for the extremal
+\begin{equation*}
+	\pdv{t}{x}=\frac{n_Ax}{c\sqrt{a^2+x^2}}-\frac{n_B(d-x)}{c\sqrt{b^2+(d-x)^2}}=\frac{n_Ax\sqrt{b^2+(d-x)^2}-n_B(d-x)\sqrt{a^2-x^2}}{c\sqrt{a^2+x^2}\sqrt{b^2+(d-x)^2}}=0
+\end{equation*}
+Since the denominator is always not zero, everything boils down to
+\begin{equation*}
+	n_A^2x^2\left[ b^2+(d-x)^2 \right]=n_B^2(a^2+x^2)(d-x^2)
+\end{equation*}
+Now, taken the same coordinate system as the previous section, we write
+\begin{equation*}
+	\begin{aligned}
+		x&= d_1\sin\theta\\
+		b&= d_2\cos\varphi\\
+		d-x&= d_2\sin\varphi\\
+		a^2+x^2&= d_1^2
+	\end{aligned}
+\end{equation*}
+Then, by substitution we get Snell's law for transmission
+\begin{equation*}
+	n_A^2d_1^2\sin^2\theta\left[ d_2^2\cos^2\varphi+d_2^2\sin^2\varphi \right]=n_Bd_1^2d_2^2\sin^2\varphi\implies n_A\sin\theta=n_B\sin\varphi
+\end{equation*}
+Putting $B$ in the same region as $A$ (so $n_B=n_A=n$, $\varphi\to\theta_R$) we have the reflection law
+\begin{equation}
+	d_1^2d_2^2\sin^2\theta=d_1^2d_2^2\sin^2\theta_R\implies\sin\theta=\sin\theta_R
+	\label{eq:snellfermat-rf.ref}
+\end{equation}
+%%TODO TiKz graphs
 \subsection{Fresnel Equations}
-\subsubsection{Fresnel Equations for Irradiance}
-\subsubsection{Brewster's Angle}
+For now we only determined part of the behavior of the waves, since we are still missing what happens to the amplitudes.\\
+Starting from equation \eqref{eq:maxwellktimes.waves} we rewrite the equations as
+\begin{equation}
+	\begin{aligned}
+		\vec{E}&= -\frac{1}{\epsilon\omega}\vec{k}\times\vec{H}\\
+		\vec{H}&= \frac{1}{\mu\omega}\vec{k}\times\vec{E}
+	\end{aligned}
+	\label{eq:maxwellktimes.ref}
+\end{equation}
+Now, the behavior at the boundary is described exactly from the boundary conditions (or jump conditions) of Maxwell's equations, therefore the polarization of the fields becomes important in the determination of the behavior! We will firstly consider cases where the $\vec{E}$ field is either parallel (p or $\pi$ polarization, from German Parallel) or transverse (s or $\sigma$ polarization, from German Senkrecht) to the \textit{incidence plane}, i.e. the plane where all three waves lay.\\
+Fresnel's idea was to find the ratio between the incoming amplitude and the reflected or transmitted wave. These ratios are known as \textit{Fresnel coefficients}, and are strongly dependent on wave polarization. They are indicated as $r, t$\\
+Consider firstly s polarization. The continuity relations are
+\begin{equation}
+	\begin{aligned}
+		\vec{E}\cdot\hat{\vec{t}}+\vec{E}_R\cdot\hat{\vec{t}}&= \vec{E}_T\cdot\hat{\vec{t}}\\
+		\vec{H}\cdot\hat{\vec{t}}-\vec{H}_R\cdot\hat{\vec{t}}&= \vec{H}_T\cdot\hat{\vec{t}}
+	\end{aligned}
+	\label{eq:spol-cont.ref}
+\end{equation}
+Calculating the dot products we have for $\vec{H}$
+\begin{equation*}
+	\begin{aligned}
+		\vec{H}\cdot\hat{\vec{t}}&= H\cos\theta\\
+		\vec{H}_R\cdot\hat{\vec{t}}&= -H_R\cos\theta\\
+		\vec{H}_T\cdot\hat{\vec{t}}&= H_T\cos\varphi
+	\end{aligned}
+\end{equation*}
+Therefore, using \eqref{eq:maxwellktimes.ref} we get the following system of equations
+\begin{equation}
+	\left\{ \begin{aligned}
+		E&+E_R= E_T\\
+		kE&\cos\theta-kE\cos\theta= k_TE_T\cos\varphi
+	\end{aligned}\right.
+	\label{eq:s-system.ref}
+\end{equation}
+Where $k=n_1k_0$ and $k_T=n_2k_0$.\\
+Dividing by $k_0$ then we get
+\begin{equation*}
+	\left\{\begin{aligned}
+		E&+E_R= E_T\\
+		n_1(E&-E_R)\cos\theta= n_2E_T\cos\varphi
+	\end{aligned}\right.
+\end{equation*}
+Substituting the first equation into the second and dividing by $E$ we have
+\begin{equation*}
+	\eval{\frac{E_R}{E}}_s=r_s=\frac{n_1\cos\theta-n_2\cos\varphi}{n_2\cos\varphi+n_1\cos\theta}
+\end{equation*}
+Using $n=n_2/n_1$ we have the first coefficient, $r_s$
+\begin{equation}
+	r_s=\frac{\cos\theta-n\cos\varphi}{\cos\theta+n\cos\varphi}
+	\label{eq:r_s1.ref}
+\end{equation}
+We can also write
+\begin{equation*}
+	E_R=E_T-E
+\end{equation*}
+Therefore
+\begin{equation*}
+	n_1(2E-E_T)\cos\theta=n_2E_T\cos\varphi
+\end{equation*}
+Rearranging and dividing by $E$
+\begin{equation*}
+	\eval{\frac{E_T}{E}}_s=t_s=\frac{2n_1\cos\theta}{n_1\cos\theta+n_2\cos\varphi}
+\end{equation*}
+Or
+\begin{equation}
+	t_s=\frac{2\cos\theta}{\cos\theta+n\cos\varphi}
+	\label{eq:t_s1.ref}
+\end{equation}
+Now, we switch to the orthogonal polarization state, $p$ polarization. Here, we have the same conditions for $\vec{H}$ as we had for $\vec{E}$ before and vice-versa, yielding
+\begin{equation*}
+	\left\{ \begin{aligned}
+		H&-H_R= H_T\\
+		E&\cos\theta+E_r\cos\theta=E_t\cos\varphi
+	\end{aligned}\right.
+\end{equation*}
+Which becomes, using $H=kE$
+\begin{equation*}
+	\left\{ \begin{aligned}
+		k&E-kE_R=k_TE_T\\
+		E&\cos\theta+E_R\cos\theta=E_T\cos\varphi
+	\end{aligned}\right.
+\end{equation*}
+Writing again $k=nk_0$ and dividing by $k_0$ we can write either
+\begin{equation*}
+	\begin{aligned}
+		E_T&= \frac{n_1}{n_2}(E-E_R)\\
+		E_R&= E-\frac{n_2}{n_1}E_T
+	\end{aligned}
+\end{equation*}
+Inserting the first of the two into the system we get, after dividing by $E$
+\begin{equation*}
+	\eval{\frac{E_R}{E}}_p=r_p=\frac{\cos\theta-\frac{n_1}{n_2}\cos\varphi}{-\frac{n_1}{n_2}\cos\varphi-\cos\theta}
+\end{equation*}
+Rearranging and inserting the relative refraction index
+\begin{equation}
+	r_p=\frac{\cos\varphi-n\cos\theta}{\cos\varphi+n\cos\theta}
+	\label{eq:r_p1.ref}
+\end{equation}
+Using the second instead we have
+\begin{equation*}
+	2E\cos\theta=E_T\left( \cos\varphi+\frac{n_2}{n_1}\cos\theta \right)
+\end{equation*}
+Which, after rearrangement, gives
+\begin{equation}
+	t_p=\frac{2\cos\theta}{\cos\varphi+n\cos\theta}
+	\label{eq:t_p1.ref}
+\end{equation}
+Therefore, reuniting the results obtained from both polarizations we have
+\begin{equation}
+	\begin{aligned}
+		r_s&= \frac{\cos\theta-n\cos\varphi}{\cos\theta+n\cos\varphi}\\
+		t_s&= \frac{2\cos\theta}{\cos\theta+n\cos\varphi}\\
+		r_p&= \frac{\cos\varphi-n\cos\theta}{\cos\varphi+n\cos\theta}\\
+		t_p&= \frac{2\cos\theta}{\cos\varphi+n\cos\theta}
+	\end{aligned}
+	\label{eq:rtsp.ref}
+\end{equation}
+Using Snell's law we can eliminate also the relative refraction index using $n=\sin\theta\csc\varphi$, giving
+\begin{equation}
+	\begin{aligned}
+		r_s&= \frac{\cos\theta-\sin\theta\cos\varphi\csc\varphi}{\cos\theta+\sin\theta\cos\varphi\csc\varphi}=\frac{\cos\theta\sin\varphi-\sin\theta\cos\varphi}{\cos\theta\sin\varphi+\sin\theta\cos\varphi}\\
+		t_s&= \frac{2\cos\theta}{\cos\theta+\sin\theta\cos\varphi\csc\varphi}=\frac{2\cos\theta\sin\varphi}{\cos\theta\sin\varphi+\sin\theta\cos\varphi}\\
+		r_p&= \frac{\cos\varphi-\sin\theta\cos\theta\csc\varphi}{\cos\varphi+\sin\theta\cos\varphi\csc\varphi}=\frac{\cos\varphi\sin\varphi-\sin\theta\cos\theta}{\cos\varphi\sin\varphi+\sin\theta\cos\theta}\\
+		t_p&= \frac{2\cos\theta}{\cos\varphi+\cos\theta\sin\theta\csc\varphi}=\frac{2\cos\theta\sin\varphi}{\cos\varphi\sin\varphi+\sin\theta\cos\theta}
+	\end{aligned}
+	\label{eq:fresnelpre.ref}
+\end{equation}
+Using the following trigonometric identities we can simplify things even more
+\begin{equation*}
+	\begin{aligned}
+		\sin\theta\cos\phi-\cos\theta\sin\varphi&= \sin(\theta-\varphi)\\
+		\sin\theta\cos\theta-\cos\varphi\sin\varphi&= \sin(\theta-\varphi)\cos(\theta+\varphi)\\
+		\cos\varphi\sin\varphi+\sin\theta\cos\theta&= \sin(\theta+\varphi)\cos(\theta-\varphi)
+	\end{aligned}
+\end{equation*}
+And in the end obtain what are known as \textit{Fresnel equations} for reflection and refraction of electromagnetic waves
+\begin{equation}
+	\begin{aligned}
+		r_s&= -\frac{\sin(\theta-\varphi)}{\sin(\theta+\varphi)}\\
+		t_s&= \frac{2\cos\theta\sin\varphi}{\sin(\theta+\varphi)}\\
+		r_p&= -\frac{\tan(\theta-\varphi)}{\tan(\theta+\varphi)}\\
+		t_p&= \frac{2\cos\theta\sin\varphi}{\sin(\theta+\varphi)\cos(\theta-\varphi)}
+	\end{aligned}
+	\label{eq:fresnel.ref}
+\end{equation}
+\subsubsection{Fresnel Equations for Irradiance and General Polarization}
+From equation \eqref{eq:irradiancevse.waves} we can define the \textit{luminous power of a beam} as 
+\begin{equation}
+	W=SI=\frac{n_iS}{2Z_0}E^2
+	\label{eq:lumpower.ref}
+\end{equation}
+Where $S$ is the surface of the cross-section of the beam.\\
+It's not hard to then generalize this concept to reflected and refracted beams. Inserting $n_1, n_2$ in the previous formula, where both indexes are defined exactly as before we get
+\begin{equation*}
+	\begin{aligned}
+		W&= \frac{n_1S}{2Z_0}E^2\\
+		W_R&= \frac{n_1S_R}{2Z_0}E_R^2\\
+		W_T&= \frac{n_2S_T}{2Z_0}E_T^2
+	\end{aligned}
+\end{equation*}
+With $S_R, S_T$ being the cross-sections of the respective beams.\\
+We define the \textit{reflectance} $R$ and the \textit{transmittance} $T$ as the ratio of incoming vs reflected/transmitted power
+\begin{equation}
+	\begin{aligned}
+		R&= \frac{W_R}{W}=\frac{n_1S_R}{2Z_0}\frac{2Z_0}{n_1S}r^2=r^2\\
+		T&= \frac{W_T}{W}=\frac{n_2S\cos\varphi}{2Z_0}\frac{2Z_0}{n_1S\cos\theta}t^2=\frac{n\cos\varphi}{\cos\theta}t^2\\
+	\end{aligned}
+	\label{eq:RT.ref}
+\end{equation}
+The polarization here can be either $p$ or $s$. In general tho, light can be also be polarized in some random direction which can be described by a mix of $p$ and $s$ polarizations.\\
+In the case of general polarization, we have
+\begin{equation*}
+	\begin{aligned}
+		\vec{E}&= E_s\hat{\vec{s}}+E_p\hat{\vec{p}}\\
+		\vec{E}_R&= r_sE_s\hat{\vec{s}}+r_pE_p\hat{\vec{p}}\\
+		\vec{E}_T&= t_sE_s\hat{\vec{s}}+t_pE_p\hat{\vec{p}}\\
+	\end{aligned}
+\end{equation*}
+Squaring and multiplying by $n_{i}/Z_{0}$ we get both $I_R$ and $I_T$
+\begin{equation*}
+	\begin{aligned}
+		I_{R}&= \frac{n_1S_R}{Z_0}\left( r_s^2I_s+r_p^2I_p \right)\\
+		I_T&= \frac{n_2S_T}{Z_0}\left( t_s^2I_s+t_p^2I_p \right)
+	\end{aligned}
+\end{equation*}
+Dividing by $I_0$ we have then
+\begin{equation}
+	\begin{aligned}
+		R&= \frac{I_R}{I_0}=r_s^2\frac{I_R}{I_0}+r_p^2\frac{I_T}{T_0}=R_s\frac{I_s}{I_0}+R_p\frac{I_p}{I_0}\\
+		T&= \frac{n\cos\varphi}{\cos\theta}\left( t_s^2\frac{I_s}{I_0}+t_p^2\frac{I_p}{I_0} \right)=T_s\frac{I_s}{I_0}+T_p\frac{I_p}{I_0}
+	\end{aligned}
+	\label{eq:RTgenpol.ref}
+\end{equation}
+\section{Special Angles}
+Taken the equations \eqref{eq:fresnel.ref} using simple mathematical analysis it's clear that there are some special angles for which there is some special behavior. These angles are known in literature as
+\begin{itemize}
+\item Brewster angle
+\item Near grazing incidence angle
+\item Normal incidence angle
+\end{itemize}
+\subsection{Brewster Angle}
+The first one is the so called \textit{Brewster angle}. Taken Fresnel's equations for the reflection coefficients
+\begin{equation*}
+	\begin{aligned}
+		r_s&= -\frac{\sin(\theta-\varphi)}{\sin(\theta+\varphi)}\\
+		r_p&= -\frac{\tan(\theta-\varphi)}{\tan(\theta+\varphi)}
+	\end{aligned}
+\end{equation*}
+It's clear that $r_s$ can never be $0$ for $\theta\in\left[ 0, \pi/2 \right]$, which is not the case for $r_p$. The angle, $\theta_B$, for which $r_p(\theta_B)=0$ is Brewster's angle.\\
+At this incidence angle, all light reflected is s-polarized. From the tangent formula we have
+\begin{equation*}
+	r_p(\theta_B)=0\implies\varphi=\frac{\pi}{2}-\theta_B
+\end{equation*}
+From Snell's law we have that
+\begin{equation*}
+	\sin\left(  \theta_B\right)=n\sin\left( \frac{\pi}{2}-\theta_B \right)=n\cos\left( \theta_B \right)
+\end{equation*}
+Therefore
+\begin{equation*}
+	n=\frac{\sin\theta_B}{\cos\theta_B}
+\end{equation*}
+Which gives
+\begin{equation}
+	\theta_B=\arctan(n)
+	\label{eq:brewster.ref}
+\end{equation}
+From the definition of relative index of refraction we can also say that
+\begin{equation}
+	\theta_B=\begin{dcases}
+		>\frac{\pi}{4} & n_1<n_2\\
+		\frac{\pi}{4} & n_1=n_2\\
+		<\frac{\pi}{4} & n_1>n_2
+	\end{dcases}
+	\label{eq:brewster-anal.ref}
+\end{equation}
+\subsection{Normal Incidence and Near Grazing Incidence}
+Another two special angles are at the limits of the interval, at $\theta=0$ (normal incidence) and $\theta=\pi/2$ (grazing incidence).\\
+At $\theta=0$ we have
+\begin{equation*}
+	\sin\varphi=0
+\end{equation*}
+I.e.
+\begin{equation}
+	\left\{ \begin{aligned}
+			r_s&= \frac{1-n}{1+n}\\
+			t_s&= \frac{2}{1+n}\\
+			r_p&= \frac{n-n^2}{n+n^2}=r_s\\
+			t_p&= \frac{2}{1+n}=t_s
+	\end{aligned}\right.
+	\label{eq:normalinc.ref}
+\end{equation}
+At normal incidence then, the polarization of the wave is irrelevant, and the transmitted/reflected waves' amplitude will depend only on the properties of the material.\\
+At $\theta=\pi/2$ instead we get
+\begin{equation*}
+	\sin\varphi=\frac{1}{n}\implies\cos\varphi=\frac{1}{n}\sqrt{n^2-1}
+\end{equation*}
+Which, in terms of Fresnel coefficients
+\begin{equation}
+	\left\{ \begin{aligned}
+			r_s&= -\frac{\sqrt{n^2-1}}{\sqrt{n^2-1}}=-1\\
+			r_p&= 1\\
+			t_s&= t_p=0
+	\end{aligned}\right.
+	\label{eq:grazinginc.ref}
+\end{equation}
+I.e. the wave is only reflected, and the difference between the two polarization states is only a phase shift of $\pi$.
 \section{Total Internal Reflection}
-\subsection{Evanescent Waves}
+For each angle of incidence between $0$ and $\pi/2$ it's possible to distinguish two kinds of reflection
+\begin{itemize}
+\item External reflection, when $n>1$
+\item Internal reflection, when $n<1$
+\end{itemize}
+This distinction is clearer if we rewrite $\cos\varphi$ in terms of $\sin\theta$, as follows from Snell's law
+\begin{equation*}
+	\cos\varphi=\frac{1}{n}\sqrt{n^2-\sin^2\theta}
+\end{equation*}
+It's then clear that in general, $\cos\varphi\in\Cf$, i.e. there exists an angle $\theta_c$ for which, when $\theta>\theta_c$ the cosine is complex. This angle is known as the \textit{critical angle}, defined by
+\begin{equation}
+	\sin\theta_c=n\implies\theta_c=\arcsin(n)
+	\label{eq:critang.tir}
+\end{equation}
+In the regime of $\theta\ge\theta_c$, all Fresnel coefficients are complex and, particularly, it can be proven that 
+\begin{equation}
+	\begin{aligned}
+		r_s\cc{r_s}&=r_p\cc{r_p}=1\\
+		t_s&= t_p=0
+	\end{aligned}
+	\label{eq:rt.tir}
+\end{equation}
+This gives the name to the regime that we're studying, \textit{total internal reflection}, or TIR as we'll call it. The nonzero Fresnel coefficients are then $r_s, r_p$, which can be written explicitly complex using $\sqrt{n^2-\sin^2\theta}=i\sqrt{\sin^2\theta-n^2}$
+\begin{equation}
+	\begin{aligned}
+		r_s&= \frac{\cos\theta-i\sqrt{\sin^2\theta-n^2}}{\cos\theta+i\sqrt{\sin^2\theta-n^2}}\\
+		r_p&= \frac{-n^2\cos\theta+i\sqrt{\sin^2\theta-n^2}}{n^2\cos\theta+i\sqrt{\sin^2\theta-n^2}}
+	\end{aligned}
+	\label{eq:rsrp.tir}
+\end{equation}
 \subsection{Fiber Optics}
+The main technological usage of TIR are fiber optics. These cables are built similarly to coaxial cables, where the cable (with refraction index $n_1$) is covered by a coating (with refraction index $n_2$) with materials which give $n=n_1/n_2<1$. In order to be in TIR regime, the beam must be incident at a particular angle, such that $\theta>\theta_c$. For purely technical reasons this angle is known as the \textit{acceptance angle} $\alpha$.\\
+Define an angle related to this $\alpha$ as:
+\begin{equation*}
+	\frac{\pi}{2}-\alpha'=\theta_c
+\end{equation*}
+From the definition of $\theta_c$ we have then
+\begin{equation*}
+	\cos\alpha'=n
+\end{equation*}
+And therefore, also
+\begin{equation*}
+	\sin\alpha'=\frac{1}{n_1}\sqrt{n_1^2-n_2^2}
+\end{equation*}
+We then define $\alpha$ as follows
+\begin{equation}
+	\sin\alpha=n_1\sin\alpha'=\sqrt{n_1^2-n_2^2}
+	\label{eq:accangsnell.tir}
+\end{equation}
+Which implies
+\begin{equation}
+	\alpha=\arcsin\left( \sqrt{n_1^2-n_2^2} \right)
+	\label{eq:accang.tir}
+\end{equation}
+\subsubsection{Evanescent Waves}
+Consider now the field inside a fiber optic cable (in TIR regime in general). The field inside the cable is the field transmitted from the first reflection, and is
+\begin{equation*}
+	\vec{E}_T(\vec{r}, t)=\vec{E}_Te^{i\vec{k}_T\cdot\vec{r}-i\omega t}
+\end{equation*}
+But, we have that 
+\begin{equation*}
+	\vec{k}_T\cdot\vec{r}=k_Tx\sin\varphi+k_Ty\cos\varphi
+\end{equation*}
+But, from Snell's law, and the fundamental equation of trigonometry, that
+\begin{equation*}
+	\cos\varphi=\frac{1}{n}\sqrt{n^2-\sin^2\theta}=\frac{i}{n}\sqrt{\sin^2\theta-n^2}
+\end{equation*}
+Where we considered that we are in TIR, i.e. $\theta>\theta_C$ and $\sin^2\theta>n^2$
+Therefore, said
+\begin{equation*}
+	\begin{aligned}
+		a&= \frac{k_T}{n}\sqrt{\sin^2\theta-n^2}\\
+		k_x&= \frac{k_T\sin\theta}{n}
+	\end{aligned}
+\end{equation*}
+Which, if inserted into the field equation, give
+\begin{equation}
+	\vec{E}_T(x, y, t)=\vec{E}_Te^{-a\abs{y}}e^{ik_xx-i\omega t}
+	\label{eq:evanescentwave.tir}
+\end{equation}
+Measuring the field along the $y$ axis, there's a part of the wave which decays exponentially, known as the \textit{evanescent wave}. Note that the evanescent wave decays really rapidly, in fact, for visible light, $a\propto10^6\ \mathrm{m^{-1}}$. It's clear that this wave will be really faint even at really close distances, and it's measurable only by really sensible detectors.
+\subsection{Phase Shift in TIR}
+One consequence of TIR is that, even if the amplitude of the wave isn't changed after each reflection ($\abs{r}=1$), the complex nature of the Fresnel coefficients adds in a phase on the wave.\\
+From basic complex analysis, since both $r_s, r_p\in\Cf$, we can write both the coefficients as a constant ($\abs{r}$) times a complex exponential, which will have the added phase as its argument. Therefore, in general
+\begin{equation*}
+	\begin{aligned}
+		r_s&= e^{-i\delta_s}=\frac{ae^{-i\alpha}}{ae^{i\alpha}}\\
+		r_p&= -e^{-i\delta_p}=-\frac{be^{-i\beta}}{be^{i\beta}}
+	\end{aligned}
+\end{equation*}
+Using the following fact
+\begin{equation*}
+	\tan(\theta)=\frac{\imaginary\left\{re^{-i\theta}\right\}}{\real\left\{re^{-i\theta}\right\}}
+\end{equation*}
+We can write, using equations \eqref{eq:rsrp.tir}, and noting that $\delta_s=2\alpha$, $\delta_p=2\beta$ that
+\begin{equation*}
+	\begin{aligned}
+		\tan(\alpha)&= \tan\left( \frac{\delta_s}{2} \right)=\frac{\sqrt{\sin^2\theta-n^2}}{\cos\theta}\\
+		\tan(\beta)&= \tan\left( \frac{\delta_p}{2} \right)=\frac{\sqrt{\sin^2\theta-n^2}}{n^2\cos\theta}
+	\end{aligned}
+\end{equation*}
+Which gives, as a relative phase difference $\Delta=\beta-\alpha$
+\begin{equation}
+	\tan\left( \frac{\delta_p-\delta_s}{2} \right)=\tan\left( \frac{\Delta}{2} \right)=\frac{\cos\theta\sqrt{\sin^2\theta-n^2}}{\sin^2\theta}
+	\label{eq:tanphdiff.tir}
+\end{equation}
+Which gives
+\begin{equation}
+	\Delta=2\arctan\left( \frac{\cos\theta\sqrt{\sin^2\theta-n^2}}{\sin^2\theta} \right)
+	\label{eq:phdiff.tir}
+\end{equation}
 \subsection{Fresnel's Rhomb}
+The results obtained from the previous section show that it's possible to polarize light using TIR and the right incidence angle. One optical instrument that serves this purpose is the so called \textit{Fresnel rhomb}, a literal transparent rhomb that transforms linearly polarized light to circularly polarized light.\\
+The rhomb has the two major sides inclined by 54 degrees (air-air). In this configuration, linearly polarized light at 45 degrees endures two total internal reflections and gets transmitted as circularly polarized light.\\
+For each reflection, in this configuration, we get
+\begin{equation*}
+	\Delta=\frac{\pi}{4}
+\end{equation*}
+Summed up for both reflections, we get a total phase change between $s$ and $p$ polarized light of
+\begin{equation*}
+	\Delta_{tot}=\frac{\pi}{2}
+\end{equation*}
+Which is what defines circular polarization.
+\section{Reflection Matrices}
+<++>
 \end{document}

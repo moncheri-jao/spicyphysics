@@ -9,15 +9,6 @@
 	end
 }
 \pgfmathdeclarefunction{Langevin}{1}{\edef\pgfmathresult{\directlua{tex.print("" .. langevin(#1))}}}
-\setmainfont[
-  	UprightFont=*,
- 	BoldFont=*,
- 	BoldFeatures={FakeBold=1},
- 	ItalicFont=*,
- 	ItalicFeatures={FakeSlant=0.2},
- 	BoldItalicFont=*,
- 	BoldItalicFeatures={FakeBold=1,FakeSlant=0.2},
-]{Frutiger_45_Light}
 \begin{document}
 \subfile{./title/title}
 \subfile{./title/frontispice}
@@ -46,8 +37,8 @@
 %\chapter{Relativistic Electrodynamics}
 \chapter{Electromagnetic Waves}
 \subfile{./chapters/light.tex}
-\chapter{Reflection and Refraction}
-\subfile{./chapters/reflection.tex}
+%\chapter{Reflection and Refraction}
+%\subfile{./chapters/reflection.tex}
 \chapter{Coherence and Interference}
 \subfile{./chapters/coherence.tex}
 \chapter{Diffraction}
