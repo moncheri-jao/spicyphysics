@@ -870,6 +870,105 @@ Summed up for both reflections, we get a total phase change between $s$ and $p$ 
 	\Delta_{tot}=\frac{\pi}{2}
 \end{equation*}
 Which is what defines circular polarization.
-\section{Reflection Matrices}
-<++>
+\section{Reflection and Transmission Matrices}
+As we saw before, polarization states can be described using a comfortable polarization basis. In the case of reflection and refraction this basis is obviously given by the versors $\hat{\vec{s}}$ and $\hat{\vec{p}}$, parallel to the perpendicular (s) or the parallel (p) direction with respect to the incidence plane. This system is obviously orthogonal, and the basis vectors are clearly described as
+\begin{equation}
+	\hat{\vec{p}}=\begin{pmatrix}
+		1\\0
+	\end{pmatrix}\qquad\hat{\vec{s}}=\begin{pmatrix}
+		0\\1
+	\end{pmatrix}
+	\label{eq:reflrefrbasis.rjon}
+\end{equation}
+A generally polarized wave therefore can be described as a linear composition of these two vectors, i.e.
+\begin{equation*}
+	\vec{E}=\begin{pmatrix}
+		A\\B
+	\end{pmatrix}=A\begin{pmatrix}
+		1\\0
+	\end{pmatrix}+B\begin{pmatrix}
+		0\\1
+	\end{pmatrix}=A\hat{\vec{p}}+B\hat{\vec{s}}
+\end{equation*}
+The reflection and the refraction of a beam, considered their linear behavior with respect to the generic wave, can then be described as a matrix. This matrix is 
+\begin{equation}
+	r^i_j=\begin{pmatrix}
+		-r_p&0\\
+		0&r_s
+	\end{pmatrix}
+	\label{eq:refmatrix.rjon}
+\end{equation}
+Analogously, the transmission matrix is
+\begin{equation}
+	t^i_j=\begin{pmatrix}
+		t_p&0\\
+		0&t_s
+	\end{pmatrix}
+	\label{eq:transmatrix.rjon}
+\end{equation}
+From these results it's possible to write the transmission and reflection matrices for special angles, especially for near grazing incidence and normal incidence.\\
+\begin{itemize}
+\item Normal incidence
+	\begin{equation}
+		r^i_j(0)=\frac{1-n}{1+n}\begin{pmatrix}
+			-1&0\\
+			0&1
+		\end{pmatrix}
+		\label{eq:rmatninc.rjon}
+	\end{equation}
+\item Near grazing incidence/grazing incidence
+	\begin{equation}
+		r^i_j\left( \frac{\pi}{2} \right)=\begin{pmatrix}
+			-1&0\\
+			0&1
+		\end{pmatrix}
+		\label{eq:rmatnginc.rjon}
+	\end{equation}
+\end{itemize}
+For TIR the results are slightly different, due to the complex nature of $r$. As we wrote before, we have
+\begin{equation*}
+	\begin{aligned}
+		r_s&= e^{-i\delta_s}\\
+		r_p&= -e^{-i\delta_p}
+	\end{aligned}
+\end{equation*}
+Therefore
+\begin{equation}
+	r^i_j=\begin{pmatrix}
+		-e^{-i\delta_p}&0\\
+		0&e^{-i\delta_s}
+	\end{pmatrix}=e^{-i\delta_p}\begin{pmatrix}
+		-1&0\\
+		0&e^{i\Delta}
+	\end{pmatrix}
+	\label{eq:rmattir.rjon}
+\end{equation}
+With this definition, the dephasement ensued after TIR is really vivid.\\
+Note that applying this matrix to a generally polarized wave $\vec{E}$ we have in general an elliptically polarized outgoing wave, as
+\begin{equation}
+	E_R^i=r^i_jE^j=e^{-i\delta_p}\begin{pmatrix}
+		-1&0\\
+		0&e^{i\Delta}
+	\end{pmatrix}\begin{pmatrix}
+		A\\B
+	\end{pmatrix}=e^{-i\delta_p}\begin{pmatrix}
+		-A\\Be^{i\Delta}
+	\end{pmatrix}
+	\label{eq:tireff.rjon}
+\end{equation}
+Note that there is a generic phase change outside the resulting wave (which doesn't affect the polarization state), while there's a dephasement on the second component, which depends directly on $\delta_p-\delta_s$, that factor, on the other hand, is the one that will change the polarization state into, generally, an elliptical state.\\
+In the most general case, we can define the \textit{Fresnel-Jones matrices}, which are the most general expression of reflection-refraction problems of polarized waves
+\begin{equation}
+	\begin{aligned}
+		r^i_j&= -\begin{pmatrix}
+		\tan\left( \theta-\varphi \right)\cot\left( \theta+\varphi \right)&0\\
+		0&\sin\left( \theta-\varphi \right)\csc\left( \theta+\varphi \right)
+		\end{pmatrix}\\
+		t^i_j&= \frac{2\cos\theta\sin\phi}{\sin\left( \theta+\varphi \right)}\begin{pmatrix}
+		\sec\left( \theta-\varphi \right)&0\\
+			0&1
+		\end{pmatrix}
+	\end{aligned}
+	\label{eq:fresneljones.rjon}
+\end{equation}
 \end{document}
