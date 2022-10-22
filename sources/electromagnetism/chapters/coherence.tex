@@ -26,15 +26,240 @@ This definition comes up directly when we evaluate the irradiance of the measure
 \end{equation*}
 Remembering that $\sqrt{\epsilon/\mu}=nZ_0^{-1}$, and rewriting $nE_i^2/Z_0=I_i$ we have that the total intensity measured is (in the general case with two different waves)
 \begin{equation}
-	I=I_1+I_2+2\sqrt{\frac{\mu}{\epsilon}I_1I_2}\cos\left( \vec{k}_1\cdot\vec{r}+\vec{k}_2\cdot\vec{r}+\phi_1-\phi_2 \right)
-	\label{eq:<+label+>}
-\end{equation}<++>
-\subsection{Young Experiment}
-\subsection{Michelson Interferometer}
+	I=I_1+I_2+2\sqrt{\frac{\mu}{\epsilon}I_1I_2}\cos\left( \vec{k}_1\cdot\vec{r}-\vec{k}_2\cdot\vec{r}+\phi_1-\phi_2 \right)
+	\label{eq:intwavesI.int}
+\end{equation}
+The last term, which depends on the root of the product of the intensities of the single waves, is called the \textit{interference term}. This term is the only of the three that depends on the ``angle'' $\theta$, defined as
+\begin{equation}
+	\Delta(\vec{r})=(\vec{k}_1-\vec{k}_2)\cdot\vec{r}+\phi_1-\phi_2
+	\label{eq:Deltar.int}
+\end{equation}
+This last interference term is clearly dependent on the polarization of the two waves. In fact, it can be exactly zero when the scalar product of the two fields of the single waves is zero. I.e. when their polarization is orthogonal.\\
+In laboratories, for obvious reasons we never measure the instantaneous intensity, but an average. Also, the interfering waves must not have the same frequencies and can come from different sources, therefore the total intensity we measure will instead be described by the following equation
+\begin{equation}
+	I=\expval{I}=\lim_{T\to\infty}\frac{1}{T}\sqrt{\frac{\epsilon}{\mu}}\int_{0}^{T}\left( \vec{E}_{(1)}+\vec{E}_{(2)} \right)\cdot\adj{(\vec{E}_{(1)}+\vec{E}_{(2)})}\dd^{}{t}
+	\label{eq:iexpval.int}
+\end{equation}
+The interference term $I_{int}$ is therefore defined as follows
+\begin{equation}
+	I_{int}=2\vec{E}_1\cdot\vec{E}_2\sqrt{\frac{\epsilon}{\mu}}\lim_{T\to\infty}\frac{1}{T}\int_{0}^{T}\cos\left( \left( \vec{k}_1-\vec{k}_2 \right)\cdot\vec{r}-(\omega_1-\omega_2)t +\phi_1-\phi_2\right)\dd^{}{t}
+	\label{eq:inttermreal.int}
+\end{equation}
+The integral at the end is zero only in a handful of cases, in fact
+\begin{equation}
+	I_{int}=0\implies\begin{cases}
+		\vec{E}_1\perp\vec{E}_2\\
+		\omega_1\ne\omega_2\\
+		\phi_1-\phi_2\ne\text{ const}
+	\end{cases}
+	\label{eq:casesnoint.int}
+\end{equation}
+\subsection{Double Slit Interferometer}
+The first experiment with interference was prepared by Thomas Young in the early 1800s. This experimental setup, better known as the \textit{double slit experiment} is set up, ideally, as a point source which emits a single wave; this wave then comes through two slits and then a detecting screen shows the interference pattern.\\
+In general we can say that the two sections of the experiment (one where lays the source, and one where lays the screen) have different refraction indexes $n_1\, n_2$, for better emphasizing this we write $\vec{k}=n\vec{k}_0$.
+Since the electromagnetic wave comes from a single source, we have to impose that the two wavelets coming out from the slits into the screen have the same color, i.e. $\omega_1=\omega_2=\omega$, therefore, the interference term will be
+\begin{equation*}
+	I_{int}=2\vec{E}_1\cdot\vec{E}_2\sqrt{\frac{\epsilon}{\mu}}\lim_{T\to\infty}\frac{1}{T}\int_{0}^{T}\cos\left( \vec{k}_0\left( n_1\vec{r}_1-n_2\vec{r}_2 \right)+\Delta\phi \right)\dd^{}{t}
+\end{equation*}
+Due to the different position of the two slits, and since their distance from the measuring point on the screen is not necessarily equal, we have that the two single wavelets will be described by two different $\vec{r}$ vectors.\\
+Now, since the two incoming wavelets are not necessarily parallel, we can write the following
+\begin{equation*}
+	\vec{E}_1\cdot\vec{E}_2=\sqrt{I_1I_2}\cos\delta
+\end{equation*}
+And therefore, in general, the intensity will be
+\begin{equation}
+	I=I_1+I_2+2\sqrt{I_1I_2}\cos\delta\cos\Delta
+	\label{eq:youngintesity.yint}
+\end{equation}
+Where we omitted the time average (as we will do going forward from now, for notational ease).\\
+Now, due to the origin of the two waves, we know that $I_1, I_2$ don't depend on time and are constants, but it's clear that depending on the position of the measuring point on the screen that $I_{min}\le I\le I_{max}$, all determined by the last cosine factor of the interference term.\\
+Since $-1\le\cos\Delta\le1$ we will have
+\begin{equation}
+	I=\begin{dcases}
+		I_{max}&\Delta=2m\pi\\
+		I_{min}&\Delta=(2m+1)\pi
+	\end{dcases}\qquad m\in\Z
+	\label{eq:imaximinyoung.yint}
+\end{equation}
+This result can be reproduced also thinking in strictly trigonometric terms. Said $L$ the distance from the slits to the screens and said $d$ the distance from the half-point between the slits and the measuring point on the screen, we have, called $x'$ the measuring point, that, firstly
+\begin{equation*}
+	I=I_0+2I_0\cos\Delta=I\left( 1+2\cos\Delta \right)=4I\cos^2\left( \frac{\Delta}{2} \right)
+\end{equation*}
+And then that
+\begin{equation}
+	\frac{\Delta}{2}\approxeq\frac{\pi d}{\lambda_0}\frac{x'}{L}
+	\label{eq:delta12approx.yint}
+\end{equation}
+I.e.
+\begin{equation*}
+	I_t=4I_0\cos^2\left( \frac{\pi d}{\lambda_0}\frac{x'}{L} \right)
+\end{equation*}
+Then, the maxima and minima of the intensity measured on the screen can be described all in terms of wavelength and distance from the screen, i.e.
+\begin{equation}
+	I=\begin{dcases}
+		I_{max}&\Delta=\frac{m\lambda_0}{d}\\
+		I_{min}&\Delta=\frac{\lambda_0}{2d}(2m+1)
+	\end{dcases}\qquad m\in\Z
+	\label{eq:itot.yint}
+\end{equation}
+\subsection{Michelson-Morley Interferometer}
+Another experiment demonstrating the interference of electromagnetic waves was made in the later years of the 1800s by Michelson and Morley. This experiment was of critical importance also in other branches, like mechanics, in fact it proved that without doubt there was no ether in space, but rather gave the foundation to the special relativistic Lorentz transformations.\\
+This experiment is composed by a point-like source, which passes through a \textit{beam splitter}, i.e. an optically active object which divides an incoming beam into two separate beams.\\
+This beam splitter is oriented in a way such that the two outgoing beams are orthogonal between each other, and after a \textit{different} distance for each ($d_1, d_2$) they meet again at the beam splitter, which aligns them back up again and sends them to a receiver.\\
+Said $d_i$ the optical path traveled by the two waves we have that
+\begin{equation*}
+	2d=2(d_1-d_2)
+\end{equation*}
+Then, the total intensity at the receiver will be
+\begin{equation}
+	I=4I_0\cos^2\left( \frac{\pi}{\lambda}2d \right)
+	\label{eq:michelsoninttot.mint}
+\end{equation}
+Then, as we did before with the double slit interferometer, we will have by finding the maximum and the minimum of the cosine
+\begin{equation}
+	I=\begin{dcases}
+		I_{max}&2d=m\lambda\\
+		I_{min}&2d=\left( m+\frac{1}{2} \right)\lambda
+	\end{dcases}\qquad m\in\Z
+	\label{eq:michelsonmaxint.mint}
+\end{equation}
+This kind of interferometer is still widely in use in the world of modern physics, in fact it's the same kind of interferometer used in LIGO and VIRGO experiments (albeit much more modern). These interferometers use arms long in the order of kilometers for detecting the slightest change in the interference pattern given by the oscillation of the optical path length at the passage of a gravitational wave. Here the point source chosen is a high-power laser.\\
+Another usage of the Michelson-Morley interferometer will see the light in the future with the launch of the LISA constellation of satellites, which will use huge distances for detecting the faintest gravitational waves.
 \section{Partial Coherence}
 \subsection{Correlation}
-\subsubsection{Visibility}
+It's time to consider the most generic case possible, and the nature of interference itself.\\
+Consider two beams coming from a point-like source $S$, with the same frequency and polarization. Chosen a point R on which the two beams rejoin after two different paths $l_1, l_2$, we know for a fact (since electromagnetic waves travel at a constant speed $u=c/n$), that one of the two beams will arrive at a later time at the point.\\
+Said $l_1<l_2$, $t$ being the time needed to cross the path long $l_1$ and $t+\tau$ being the time needed to cross the path $l_2$, we have
+\begin{equation}
+	\begin{aligned}
+		\vec{E}_{(1)}(t)&= \vec{E}_1e^{i\vec{k}\cdot\vec{r}-i\omega t+i\phi_1(t)}\\
+		\vec{E}_{(2)}(t+\tau)&= \vec{E}_2e^{i\vec{k}\cdot\vec{r}-i\omega t+i\phi_2(t+\tau)}
+	\end{aligned}
+	\label{eq:pcorre1e2.pcorr}
+\end{equation}
+Where we consider the randomness of phase by noting that it's time dependent.\\
+By definition of what we said so far, then 
+\begin{equation}
+	\tau=\frac{1}{u}\abs{l_2-l_1}=\frac{\Delta l}{u}
+	\label{eq:taudef.pcorr}
+\end{equation}
+And, therefore the intensity at the point R will then be defined by the usual equation
+\begin{equation*}
+	I=I_1+I_2+2Z\expval{\real\left\{ \vec{E}_1(t)\cdot\adj{\vec{E}}_2(t+\tau) \right\}}
+\end{equation*}
+\begin{dfn}[Correlation Function]
+	From the last equation it's possible to define a new integral function, which we will call the \textit{correlation function} or the \textit{mutual correlation}. This function is defined as a function of $\tau$, as follows
+	\begin{equation}
+		\Gamma_{12}(\tau)=\lim_{T\to\infty}\frac{1}{T}\sqrt{\frac{\epsilon}{\mu}}\int_{0}^{T}\vec{E}_1(t)\adj{\vec{E}}_2(t+\tau)\dd^{}{t}
+		\label{eq:correlationfunc.pcorr}
+	\end{equation}
+	From the definition, it's clear that
+	\begin{equation*}
+		\Gamma_{12}(\tau)=\sqrt{\frac{\epsilon}{\mu}}\expval{\vec{E}_{1}(t)\adj{\vec{E}}_{2}(t+\tau)}
+	\end{equation*}
+	We also define the \textit{autocorrelation function} as
+	\begin{equation}
+		\Gamma(\tau)=\Gamma_{ii}(\tau)=\sqrt{\frac{\epsilon}{\mu}}\expval{\vec{E}_i(t)\adj{\vec{E}}_i(t+\tau)}
+		\label{eq:autocorrelation.pcorr}
+	\end{equation}
+	Also, by substitution, we can say that
+	\begin{equation*}
+		\Gamma_{12}(\tau)=\frac{1}{2}I_{int}
+	\end{equation*}
+	And also that
+	\begin{equation*}
+		\begin{aligned}
+			\Gamma_{11}(0)&= I_1\\
+			\Gamma_{22}(0)&= I_2
+		\end{aligned}
+	\end{equation*}
+	Another useful function derived by the correlation function is the normalized version, known as the \textit{degree of correlation} $\gamma_{ij}(\tau)$.\\
+	It's defined as follows
+	\begin{equation}
+		\gamma_{ij}(\tau)=\frac{\Gamma_{ij}(\tau)}{\sqrt{\Gamma_{ii}(0)\Gamma_{jj}(0)}}
+		\label{eq:degreeofcorr.pcorr}
+	\end{equation}
+\end{dfn}
+From the previous definitions it's possible then to see how the interaction term depends on the correlation between the two waves, and specifically, on the phase difference between the two. Being $\gamma$ a complex function, we can write
+\begin{equation*}
+	\real\left\{ \gamma_{ij}(\tau) \right\}=\abs{\gamma}_{ij}(\tau)\cos\left( \Delta\phi_{ij} \right)
+\end{equation*}
+Then, the interaction term can be defined in the most general way as follows
+\begin{equation}
+	I_{int}=2\sqrt{I_1I_2}\abs{\gamma_{12}(\tau)}\cos\left( \Delta\phi_{12} \right)	
+	\label{eq:intterm-autocorr.pcorr}
+\end{equation}
+The definition of the autocorrelation as a normalized term of measure of the correlation of two waves, gives rise to the definitions of \textit{perfect incoherence}, \textit{partial coherence} and \textit{perfect coherence}, respectively when $\abs{\gamma_{12}}=1$, $\abs{\gamma_{12}}=0$ and $0<\abs{\gamma_{12}}<1$.\\
+Therefore, the range of interference is exactly in the set
+\begin{equation}
+	I_{int}\in\left[ -2\sqrt{I_1I_2}\abs{\gamma_{12}},\sqrt{I_1I_2}\abs{\gamma_{12}} \right]
+	\label{eq:interfrange.pcorr}
+\end{equation}
+\begin{dfn}[Visibility]
+	Another useful definition is the \textit{visibility of fringes} $\mathcal{V}$, a constant comprised between $0,1$, defined as the ratio of the difference of intensity between the peaks and the shadows of the interference pattern and the sum of the two intensities
+	\begin{equation}
+		V=\frac{I_{max}-I_{min}}{I_{max}+I_{min}}=\frac{2\sqrt{I_1I_2}\abs{\gamma_{12}(\tau)}}{I_1+I_2}
+		\label{eq:visibility.pcorr}
+	\end{equation}
+	Note also that if $I_1=I_2=I_0$, clearly
+	\begin{equation*}
+		\mathcal{V}=\abs{\gamma_{12}(\tau)}
+	\end{equation*}
+	Which implies that the maximum visibility will be obtained when the two waves are in the regime of \textit{total coherence}.
+\end{dfn}
 \subsection{Coherence Time}
+From what we have seen before, the degree of correlation is strictly tied to the signal and its properties, but especially to its phase.\\
+Consider a quasimonochromatic wave ($\Delta\omega\approx0$). The field is then described as follows
+\begin{equation}
+	\vec{E}(\vec{r},t)=\vec{E}_0(\vec{r})e^{-i\omega t+i\phi(t)}
+	\label{eq:quasimonochromaticwave.ctm}
+\end{equation}
+The phase function $\phi(t)$ is as we said before a random function of time. Physically, we can see this function as a composition of multiple Heaviside step functions, or, more clearly, it describes intervals of coherence ($\phi(t)=\text{ const}$) and instants of decoherence.\\
+Said $\tau_0$ the \textit{coherence time}, i.e. the time needed for $\phi(t)$ to change from one constant value to the other, we can begin to analyze the behavior of $\gamma(\tau)$ in different occasions.\\
+Since
+\begin{equation*}
+	\begin{aligned}
+		\vec{E}(\vec{r},t)&= \vec{E}_0(\vec{r})e^{-i\omega t}e^{i\phi(t)}\\
+		\vec{E}(\vec{r},t+\tau)&= \vec{E}_0(\vec{r})e^{-i\omega(t+\tau)}e^{i\phi(t+\tau)}
+	\end{aligned}
+\end{equation*}
+The scalar product of $\vec{E}(t)$ and $\vec{E}(t+\tau)$ is then (omitting the spatial dependence, since it does not interfere with our calculations)
+\begin{equation*}
+	\vec{E}(t)\cdot\adj{\vec{E}}(t+\tau)=E_0^2e^{-i\omega\tau}e^{i\left( \phi(t)-\phi(t+\tau) \right)}
+\end{equation*}
+Therefore, the degree of correlation depends only on the difference of the two phases
+\begin{equation*}
+	\gamma(\tau)=\frac{1}{\expval{E^2}}\expval{\vec{E}(t)\cdot\adj{\vec{E}}(t+\tau)}=e^{-i\omega\tau}\expval{e^{i(\phi(t))-\phi(\tau)}}
+\end{equation*}
+Since we defined $\phi(t)$ as a periodic (random) step function with a period of $\tau_0$, the expected value is
+\begin{equation}
+	\expval{\phi(t)-\phi(t+\tau)}=\begin{dcases}
+		0&\tau>\tau_0\ \vee\ 0<t<\tau_0-\tau\\
+		\Delta\phi&\tau_0-\tau<t<\tau_0
+	\end{dcases}
+	\label{eq:expvalphase.ctm}
+\end{equation}
+Or, in common words, it's zero if we're evaluating the coherence when $\phi(t+\tau)$ has changed already to another random value, or vice-versa when $\phi(t)$ has not yet reached the coherence time $\tau_0$. It's equal to a constant value $\Delta\phi$ only and only when we're checking in an interval which is not greater than the coherence time.\\
+Considering only the first interval of coherence, then 
+\begin{equation*}
+	\gamma(\tau)=\frac{e^{i\omega\tau}}{\tau_0}\left[ \int_{0}^{\tau_0-\tau}\dd^{}{t}+e^{i\Delta\phi}\int_{0}^{\tau_0}\dd^{}{t} \right]=\left( \frac{\tau_0-\tau}{\tau_0}+\frac{\tau}{\tau_0}e^{i\Delta\phi} \right)e^{i\omega\tau}
+\end{equation*}
+Or, evaluating the integrals we have, in general, for a single cycle (or, in common terms, in a single \textit{wave train}) the coherence is strictly tied to the coherence time $\tau_0$, with the equation
+\begin{equation}
+	\gamma(\tau)=\begin{dcases}
+		\frac{\tau_0-\tau}{\tau_0}e^{i\omega\tau}&\tau<\tau_0\\
+		0&\tau>\tau_0
+	\end{dcases}
+	\label{eq:correlationfuncwave.ctm}
+\end{equation}
+Note that, if we take the evaluation of the integral and check it's expectation value for $T\to\infty$, the expected value is zero, due to the random variation of phase $\Delta\phi$. Therefore, a wave will tend to decoherence for big periods.\\
+Note also that, since we're not considering two different waves, if there are no attenuation phenomena, the absolute value of the degree of correlation is the visibility of fringes, i.e. 
+\begin{equation}
+	\mathcal{V}=1-\frac{\tau}{\tau_0}
+	\label{eq:vis.ctm}
+\end{equation}
+Considered everything and evaluated the real part of what we found before<++> 
+%%TODO finish coherence time, for restarting check arrow in notes<++>
 \subsection{Coherence Length}
 \section{Coherence and Fourier Calculus}
 \subsection{Line Width}
