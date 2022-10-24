@@ -207,7 +207,7 @@ Therefore, the range of interference is exactly in the set
 	\end{equation*}
 	Which implies that the maximum visibility will be obtained when the two waves are in the regime of \textit{total coherence}.
 \end{dfn}
-\subsection{Coherence Time}
+\subsection{Coherence Time and Coherence Length}
 From what we have seen before, the degree of correlation is strictly tied to the signal and its properties, but especially to its phase.\\
 Consider a quasimonochromatic wave ($\Delta\omega\approx0$). The field is then described as follows
 \begin{equation}
@@ -242,12 +242,12 @@ Since we defined $\phi(t)$ as a periodic (random) step function with a period of
 Or, in common words, it's zero if we're evaluating the coherence when $\phi(t+\tau)$ has changed already to another random value, or vice-versa when $\phi(t)$ has not yet reached the coherence time $\tau_0$. It's equal to a constant value $\Delta\phi$ only and only when we're checking in an interval which is not greater than the coherence time.\\
 Considering only the first interval of coherence, then 
 \begin{equation*}
-	\gamma(\tau)=\frac{e^{i\omega\tau}}{\tau_0}\left[ \int_{0}^{\tau_0-\tau}\dd^{}{t}+e^{i\Delta\phi}\int_{0}^{\tau_0}\dd^{}{t} \right]=\left( \frac{\tau_0-\tau}{\tau_0}+\frac{\tau}{\tau_0}e^{i\Delta\phi} \right)e^{i\omega\tau}
+	\gamma(\tau)=\frac{e^{-i\omega\tau}}{\tau_0}\left[ \int_{0}^{\tau_0-\tau}\dd^{}{t}+e^{i\Delta\phi}\int_{0}^{\tau_0}\dd^{}{t} \right]=\left( \frac{\tau_0-\tau}{\tau_0}+\frac{\tau}{\tau_0}e^{i\Delta\phi} \right)e^{-i\omega\tau}
 \end{equation*}
 Or, evaluating the integrals we have, in general, for a single cycle (or, in common terms, in a single \textit{wave train}) the coherence is strictly tied to the coherence time $\tau_0$, with the equation
 \begin{equation}
 	\gamma(\tau)=\begin{dcases}
-		\frac{\tau_0-\tau}{\tau_0}e^{i\omega\tau}&\tau<\tau_0\\
+		\frac{\tau_0-\tau}{\tau_0}e^{-i\omega\tau}&\tau<\tau_0\\
 		0&\tau>\tau_0
 	\end{dcases}
 	\label{eq:correlationfuncwave.ctm}
@@ -258,16 +258,230 @@ Note also that, since we're not considering two different waves, if there are no
 	\mathcal{V}=1-\frac{\tau}{\tau_0}
 	\label{eq:vis.ctm}
 \end{equation}
-Considered everything and evaluated the real part of what we found before<++> 
-%%TODO finish coherence time, for restarting check arrow in notes<++>
-\subsection{Coherence Length}
+Considered everything and evaluated the real part of what we found before we have
+\begin{equation}
+	I=I_1+I_2+2\sqrt{I_1I_2}\real\left\{ \frac{\tau_0-\tau}{\tau_0}e^{-i\omega\tau} \right\}\quad\tau<\tau_0
+	\label{eq:intundertcoherence.ctm}
+\end{equation}
+Which, if we develop the last operation on the right becomes
+\begin{equation}
+	I=I_1+I_2+2\sqrt{I_1I_2}\left( 1-\frac{\tau}{\tau_0} \right)\cos(\omega\tau)\quad\tau<\tau_0
+	\label{eq:intcoherencecomplete.ctm}
+\end{equation}
+Noting that on the interference term we have the real part of the degree of self-correlation, we can say with ease that the interference pattern will be present only when $\tau$ is less than the coherence time $\tau_0$, therefore indicating that peak-shadow patterns only appear with coherent light.\\
+The parameters \textit{coherence length} and \textit{coherence time} are two intrinsic parameters of the wave, which indicate single coherent packets of light ,or \textit{wave trains}, where the first can be understood experimentally as the length of the wave train.\\
+Note that also, if $\Delta d>l_0=c\tau_0$, $\Delta\tau>\tau_0$, i.e. if the wave is non-coherent, then $I_{int}=0$, and the visibility of patterns is null ($\mathcal{V}=0$).
 \section{Coherence and Fourier Calculus}
-\subsection{Line Width}
-\subsection{Power Spectra}
-\subsubsection{Wiener-Khinchin Theorem}
+\subsection{Line Width and Power Spectrum}
+When dealing with electromagnetic waves it's important to note that in nature monochromatic sources \textit{do not} exist in general.\\
+Every single source that emits electromagnetic waves at some frequency $\omega_0$, has \textit{always} some spread around the emission frequency called the \textit{line width} $\Delta\omega$, given from dispersion.\\
+This line width is strictly tied to the coherence time $\tau_0$ of the source.\\
+Consider now a generic wave train $f(t)$ with coherence time $\tau_0$. Its time dependence is generally described by a complex exponential in the following way
+\begin{equation}
+	f(t)=\begin{dcases}
+		e^{-i\omega_0t}&-\frac{\tau_0}{2}<t<\frac{\tau_0}{2}\\
+		0&\abs{t}\ge\frac{\tau_0}{2}
+	\end{dcases}
+	\label{eq:trainwave.cfc}
+\end{equation}
+The study of this single wave train is way simpler in the $\omega$ space. Applying the Fourier transformation to our wave train we get
+\begin{equation*}
+	\hat{f}(\omega)=\fopr{f}(\omega)=\frac{1}{i(\omega-\omega_0)\sqrt{2\pi}}\left[ e^{i(\omega-\omega_0)\frac{\tau_0}{2}}-e^{-i(\omega-\omega_0)\frac{\tau_0}{2}} \right]
+\end{equation*}
+Noting the sine on the right, we have finally
+\begin{equation}
+	\hat{f}(\omega)=\sqrt{\frac{2}{\pi}}\frac{\sin\left[ (\omega-\omega_0)\frac{\tau_0}{2} \right]}{\omega-\omega_0}\qquad\abs{t}<\frac{\tau_0}{2}
+	\label{eq:ftrainwave.cfc}
+\end{equation}
+From this, we define the \textit{power spectrum} $\hat{F}(\omega)$ of the wave in $\omega$ space as
+\begin{equation*}
+	\hat{F}(\omega)=\abs{\hat{f}(\omega)}^2
+\end{equation*}
+Which, in for this train wave is
+\begin{equation}
+	\hat{F}(\omega)=\frac{2}{\pi}\frac{\sin^2\left[ (\omega-\omega_0)\frac{\tau_0}{2} \right]}{\omega-\omega_0}
+	\label{eq:trainwaveps.cfc}
+\end{equation}
+Now, in order to find the line width, we search for the zeroes of the power spectrum, which in this case are
+\begin{equation*}
+	\sin\left[ (\omega_k-\omega_0)\frac{\tau_0}{2} \right]=0\implies\omega_k=\frac{2k\pi}{\tau_0}+\omega_0
+\end{equation*}
+The distance between two consecutive orders of shadows ($\omega_k, \omega_{k+1}$), we have
+\begin{equation}
+	\Delta\omega=\frac{2\pi}{\tau_0}\implies\Delta\nu=\frac{1}{\tau_0}
+	\label{eq:linewidth.cfc}
+\end{equation}
+I.e., the line width is \textit{exactly} the inverse of the coherence time. Note that a perfectly coherent (ideal) electromagnetic wave must have an infinite coherence time, therefore the line width must be zero. This is obtained only if the power spectrum is a delta distribution around the emission frequency $\omega_0$
+\begin{equation*}
+	\hat{F}(\omega)=\delta\left( \omega-\omega_0 \right)
+\end{equation*}
+This result, gives us a way to experimentally measure the average coherence time and length of a wave. By definition we have
+\begin{equation}
+	\expval{\tau_0}=\frac{1}{\Delta\nu}\qquad\expval{l_0}=c\expval{\tau_0}=\frac{c}{\Delta\nu}
+	\label{eq:expectedcoherencetimelenght.cfc}
+\end{equation}
+Since $\Delta\nu/\nu=\Delta\lambda/\lambda$ we have
+\begin{equation*}
+	\Delta\nu=\frac{\Delta\lambda}{c\lambda^2}
+\end{equation*}
+I.e., if we pass from frequencies to wavelengths, we can estimate the coherence length with the following expression
+\begin{equation}
+	\expval{l_0}=\frac{\lambda^2}{\Delta\lambda}
+	\label{eq:coherencelength.cfc}
+\end{equation}
+\subsubsection{Power Spectra and Interference}
+Given some wave train, how can we find the interference pattern from the power spectrum? This comes easily as a result of the following theorem
+\begin{thm}[Wiener-Khinchin]
+	Given an electromagnetic wave with power spectrum $G(\omega)=\abs{g(\omega)}^2$, the autocorrelation function is given by
+	\begin{equation}
+		\Gamma(\tau)=\mathcal{\hat{F}}^{-1}\left[ G(\omega) \right](\tau)
+		\label{eq:wienerkhnstatement.cfc}
+	\end{equation}
+	I.e., the autocorrelation function of a wave is the inverse Fourier transform of the power spectrum
+\end{thm}
+\begin{proof}
+	Said $E(t)$ the inverse Fourier transform of $g(\omega)$, we have
+	\begin{equation*}
+		\Gamma(\tau)=\int_{\R}^{}E(t)\cc{E}(t+\tau)\dd^{}{t}=\frac{1}{2\pi}\int_{\R}^{}\left[ \int_{\R}^{}g(\omega)e^{-i\omega t}\dd^{}{\omega} \right]\cc{\left[ \int_{\R}^{}g(\omega')e^{-i\omega'(t+\tau)}\dd^{}{\omega'} \right]}\dd^{}{t}
+	\end{equation*}
+	Due to the independence of the variables, using Fubini's theorem on the exchange of integrals we can rewrite everything as follows
+	\begin{equation*}
+		\Gamma(\tau)=\frac{1}{2\pi}\iiint_{\R^3}g(\omega)\cc{g(\omega')}e^{-i(\omega-\omega')t}e^{i\omega'\tau}\dd\omega\dd\omega'\dd t
+	\end{equation*}
+	Integrating the first exponential with respect to $t$ it transforms exactly to a delta distribution, and therefore
+	\begin{equation*}
+		\Gamma(\tau)=\frac{1}{2\pi}\iint_{\R^2}g(\omega)\cc{g(\omega')}\delta(\omega-\omega')e^{i\omega'\tau}\dd\omega\dd\omega'
+	\end{equation*}
+	Applying the delta distribution on the integral in $\omega'$ we have then
+	\begin{equation*}
+		\Gamma(\tau)=\frac{1}{2\pi}\int_{\R}^{}g(\omega)\cc{g(\omega)}e^{i\omega\tau}\dd^{}{\omega}
+	\end{equation*}
+	Using $z\cc{z}=\abs{z}^2$ we obtain the power spectrum, and the theorem is proven
+	\begin{equation*}
+		\Gamma(\tau)=\frac{1}{2\pi}\int_{\R}^{}G(\omega)e^{i\omega\tau}\dd^{}{\omega}=\afopr{G(\omega)}(\tau)
+	\end{equation*}
+\end{proof}
 \section{Multiple Beam Interference}
-\subsection{Finesse and Airy Functions}
+\subsection{Laser Cavities}
+So far we treated only the interference of a single wave with itself and of two different waves (also the same wave split in two) interfering between each other.\\
+Now we will treat the case of multiple beams (or a single beam interfering with itself) interfering with each other. Experimentally it can be shown (with instruments like an etalon or a Fabry-Perot interferometer) that multiple beams interfering with each other \textit{will} show an interference pattern on a given screen.\\
+Consider a material thick $d$ with a refraction index $n_2$ and a single wave with amplitude $E_0$ incoming from outside the material at some angle $\theta$, where the outside has refraction index $n_1$. The result, as we know already, will be a reflection and a refraction.\\
+Said $t_1, r_1$ the Fresnel coefficient for $n_1\to n_2$ and $t_2, r_2$ the Fresnel coefficients $n_2\to n_2$ we have that, at the first reflection we will get a reflected beam $E_{r,1}$ with amplitude $r_1E_0$ and transmitted wave with amplitude $E_1=t_1E_0$. The transmitted wave will reach again the boundary of the material (on the other side) and the process will be repeated with a wave with amplitude $E_1$.\\
+At the end we will have a series of transmissions and reflections, with $n-$th term 
+\begin{equation}
+	\begin{aligned}
+		E_{T, n}&= t_1t_2r^{2n}_2E_0\\
+		E_{R, n}&= t_1t_2r^{2n+1}_2E_0
+	\end{aligned}
+	\label{eq:nthterm.mbi}
+\end{equation}
+On each reflection, there will be a phase shift equal to the wavenumber times the optical path traveled. For one process (\textit{two} reflections) we have that, if the reflection angle \textit{inside} the medium is $\theta$, the phase shift will be
+\begin{equation}
+	\delta=2kd\cos\theta=\frac{4n_2\pi}{\lambda_0}d\cos\theta
+	\label{eq:phaseshift.mbi}
+\end{equation}
+Where $\lambda_0$ is the vacuum wavelength. Considering \textit{every} reflection ($n\to\infty$) together with the phase shift we have that the final amplitude of the series of reflected waves from the material
+\begin{equation}
+	E_R=r_1E_0+t_1t_2r_2E_0e^{i\delta}\sum_{j=0}^{\infty}r^{2n}_2e^{in\delta}
+	\label{eq:reflectionseries.mbi}
+\end{equation}
+The infinite sum on the right is a convergent geometric sum, which gives the following final result for the amplitude of the last wave of the reflected series
+\begin{equation*}
+	E_R=E_0\left[ r_1+\frac{t_1t_2r_2e^{i\delta}}{1-r_2^2e^{i\delta}} \right]
+\end{equation*}
+It's provable that $r_1=-r_2$ and $t_1t_2=1-r_1^2$, then, rearranging the term on the right we have
+\begin{equation*}
+	E_R=E_0\left[ r_1-\frac{t_1t_2r_1e^{i\delta}}{1-r_1^2e^{i\delta}} \right]=E_0\left[ \frac{r_1\left( 1-r_1^2e^{i\delta} \right)-t_1t_2r_1e^{i\delta}}{1-r_1^2e^{i\delta}} \right]=E_0r_1\left[ \frac{1-(r_1^2+t_1t_2)e^{i\delta}}{1-r_1^2e^{i\delta}} \right]
+\end{equation*}
+Using $t_1t_2=T_1$ and $r_1^2=R_1$ and that $r_1^2+t_1t_2=1$ we can write that the final amplitude of the reflected series of waves is
+\begin{equation}
+	E_R=E_0r_1\frac{1-e^{i\delta}}{1-Re^{i\delta}}
+	\label{eq:refseriesamp.mbi}
+\end{equation}
+Or, using $R=\abs{E_R/E_0}^2$, we could also write that the reflection coefficient of the slab is
+\begin{equation*}
+	R=\abs{\frac{E_R}{E_0}}^2=R_1\frac{\abs{1-e^{i\delta}}^2}{\abs{1-Re^{i\delta}}}^2
+\end{equation*}
+Which, using $\abs{z}^2=z\cc{z}$ as usual for complex numbers, becomes
+\begin{equation*}
+	R=R_1\frac{(1-e^{i\delta})(1-e^{-i\delta})}{(1-Re^{i\delta})(1-Re^{-i\delta})}=2R\frac{1-\cos\delta}{1+R^2-2R\cos\delta}
+\end{equation*}
+Further simplifying, using
+\begin{equation*}
+	1-\cos\delta=2\sin^2\left( \frac{\delta}{2} \right)
+\end{equation*}
+We have
+\begin{equation*}
+	R=\frac{4R\sin\left( \frac{\delta}{2} \right)}{1+R^2-2R-4R\sin^2\left( \frac{\delta}{2} \right)}=\frac{4R}{(1-R)^2}\frac{\sin^2\left( \frac{\delta}{2} \right)}{1+\frac{4R}{(1-R)^2}\sin^2\left( \frac{\delta}{2} \right)}
+\end{equation*}
+Which, defined the \textit{Finesse coefficient} $F=\frac{4R}{(1-R)^2}$ becomes
+\begin{equation}
+	R=\frac{F\sin^2\left( \frac{\delta}{2} \right)}{1+F\sin^2\left( \frac{\delta}{2} \right)}
+	\label{eq:refcoefffinesse.mbi}
+\end{equation}
+The function on the right (divided by $F$) is known as the \textit{Airy function}.\\
+It's possible to find easily also the transmission coefficient of the slab $T$, using
+\begin{equation}
+	T=1-R=\frac{1}{1+F\sin^2\left( \frac{\delta}{2} \right)}, \qquad F=\frac{4(1-T)}{T^4}
+	\label{eq:transcoefffinesse.mbi}
+\end{equation}
+The peaks and the shadows of the image on the screen can be calculated by optimization calculus, using the function
+\begin{equation*}
+	I_R(\delta)=I_0F\frac{1}{1+F\sin^2\left( \frac{\delta}{2} \right)}=RI_0
+\end{equation*}
+Deriving with respect to delta then
+\begin{equation*}
+	\pdv{I_R}{\delta}=I_0F\frac{\sin\left( \frac{\delta}{2} \right)\cos\left( \frac{\delta}{2} \right)}{\left( 1+F\sin^2\left( \frac{\delta}{2} \right)^2 \right)}=0
+\end{equation*}
+Which implies that the maxima and minima of the intensity are at the following values of $\delta$
+\begin{equation}
+	\begin{dcases}
+		\delta_m=2m\pi&max\left\{ R \right\}\\
+		\delta_m'=(2m+1)\pi&\max\left\{ T \right\}
+	\end{dcases}
+	\label{eq:maximaminimaI.mbi}
+\end{equation}
+Remembering that $\delta$ is a function of the wavelength and optical path, we have
+\begin{equation*}
+	\delta(k)=2kd\cos(\theta), \quad\delta(\lambda)=\frac{4\pi d}{\lambda}\cos\theta, \quad\delta(\omega)=\frac{2\omega n}{c}d\cos\theta
+\end{equation*}
+Noting the dependence on the frequency of $\delta$, it's clear that the slab is useful for distinguishing between waves with different frequencies, as different frequencies will have different peaks, precisely, noting that at different \textit{peak orders}, defined by the whole number $m\in\Z$
+\begin{equation*}
+	\begin{aligned}
+		\omega_m=\frac{m\pi c}{dn}
+	\end{aligned}
+\end{equation*}
+And that, developing the transmission intensity around these peaks, i.e. at $\omega-\omega_m$, we have
+\begin{equation}
+	I_T=I_0T^2\frac{1}{T^2+4(1-T)\sin^2\left( \frac{dm}{\pi c}(\omega-\omega_m) \right)}\approxeq I_0\frac{\frac{\sigma^2}{4}}{\frac{\sigma^2}{4}+(\omega-\omega_m)^2}
+	\label{eq:transintdifffreq.mbi}
+\end{equation}
+Where $\sigma$ is a constant which depends only on the properties of the material
+\begin{equation*}
+	\frac{\sigma^2}{4}=\frac{4T^2c^2}{d^2n^2}\frac{1}{4(1-T)}
+\end{equation*}
+This is \textit{exactly} as if we studied the behavior of a cavity. Experimentally it can be interpreted as a \textit{laser cavity}.\\
+Summing for each transmission, and using the cavity limits $0\le m\le N-1$ noting that what we found is exactly the power spectrum of the cavity, from the Wiener-Khinchin theorem that the self correlation of the beam is simply the Fourier transform of the power spectrum, Therefore
+\begin{equation*}
+	\gamma(\tau)=c\sum_{m=0}^{N-1}\fopr{\frac{\frac{\sigma^2}{4}}{\frac{\sigma^2}{4}+(\omega-\omega_m)^2}}(\tau)=c\sum^{N-1}_{m=0}e^{\frac{\abs{\sigma}\tau}{2}}e^{i\omega_m\tau}
+\end{equation*}
+Which, after summation, gives
+\begin{equation}
+	\gamma(\tau)=ce^{\frac{\abs{\sigma}\tau}{2}}\frac{1-e^{iN\omega_m\tau}}{1-e^{i\omega_m\tau}}\quad c\in\Cf
+	\label{eq:selfcorrlasercavity.mbi}
+\end{equation}
+The visibility of fringes is simply $\mathcal{V}=\abs{\gamma}=\sqrt{\gamma\cc{\gamma}}$. Evaluating the parenthesis multiplications and writing the correct trigonometric functions we have (inglobating a $\sqrt{2}$ in a constant $k$
+\begin{equation}
+	\mathcal{V}(\tau)=ke^{\frac{\abs{\sigma}\tau}{2}}\sqrt{\frac{1-\cos(N\omega_m\tau)}{1-\cos(\omega_m\tau)}}=ke^{\frac{\abs{\sigma}\tau}{2}}\abs{\frac{\sin\left( \frac{N\omega_m\tau}{2} \right)}{\sin\left( \frac{\omega_m\tau}{2} \right)}}
+	\label{eq:visnonnorm.mbi}
+\end{equation}
+Normalizing everything, and using $\abs{\gamma(0)}=1$, we have $k=N^{-1}$, which gives finally
+\begin{equation}
+	\mathcal{V}(\tau)=\frac{e^{\frac{\abs{\sigma}\tau}{2}}}{N}\abs{\sin\left( \frac{N\omega_m\tau}{2} \right)\csc\left( \frac{\omega_m\tau}{2} \right)}
+	\label{eq:visibilitylasercavity.mbi}
+\end{equation}
 \subsection{Fabry-Perot Instruments}
+<++>
 \subsubsection{Resolution Power of Fabry-Perot Instruments}
 \subsubsection{Free Spectral Range}
 \end{document}
