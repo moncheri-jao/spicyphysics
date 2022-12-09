@@ -414,7 +414,12 @@ We have
 \begin{equation*}
 	R=\frac{4R\sin\left( \frac{\delta}{2} \right)}{1+R^2-2R-4R\sin^2\left( \frac{\delta}{2} \right)}=\frac{4R}{(1-R)^2}\frac{\sin^2\left( \frac{\delta}{2} \right)}{1+\frac{4R}{(1-R)^2}\sin^2\left( \frac{\delta}{2} \right)}
 \end{equation*}
-Which, defined the \textit{Finesse coefficient} $F=\frac{4R}{(1-R)^2}$ becomes
+Which, defined the \textit{Finesse coefficient} as
+\begin{equation}
+	F=\frac{4R}{(1-R)^2}
+	\label{eq:finesse.mbi}
+\end{equation}
+Becomes
 \begin{equation}
 	R=\frac{F\sin^2\left( \frac{\delta}{2} \right)}{1+F\sin^2\left( \frac{\delta}{2} \right)}
 	\label{eq:refcoefffinesse.mbi}
@@ -481,7 +486,150 @@ Normalizing everything, and using $\abs{\gamma(0)}=1$, we have $k=N^{-1}$, which
 	\label{eq:visibilitylasercavity.mbi}
 \end{equation}
 \subsection{Fabry-Perot Instruments}
-<++>
+Fabry-Perot interferometers utilize the results obtained from the study of multi-beam interference with broad sources of light. They're usually used to determine the frequency of waves.\\
+Their construction is similar to a laser cavity, where the slab gets substituted by two semi-transparent mirrors which replicate the cavity. In this case, since there is air inside these mirrors, we have
+\begin{equation*}
+	r_1=r_2=r, \quad t_1=t_2=t
+\end{equation*}
+As before, the path difference between the $n$-th and the $n+1$-th reflection is 
+\begin{equation*}
+	d=2nd\cos\theta
+\end{equation*}
+Therefore, the phase difference in a single double reflection is
+\begin{equation*}
+	\delta=\frac{4\pi d}{\lambda}\cos\theta
+\end{equation*}
+Hence, the final outgoing reflected and trasmitted amplitude are
+\begin{equation}
+	\left\{ \begin{aligned}
+			E_R&= rE_0+t^2E_0\sum_{n=0}^{\infty}r^{2n+1}e^{in\delta}\\
+			E_T&= t^2E_0\sum_{n=0}^{\infty}r^{2n}e^{in\delta}
+	\end{aligned}\right.
+	\label{eq:eretout.fpi}
+\end{equation}
+Noting that $r^2<1$ and that $r^2=R, \ t^2=T$, we have
+\begin{equation}
+	\begin{aligned}
+		E_T&= \frac{t^2E_0}{1-Re^{i\delta}}\\
+		I_T&= \frac{T^2I_0}{\abs{1-Re^{i\delta}}^2}
+	\end{aligned}
+	\label{eq:etitout.fpi}
+\end{equation}
+As with the laser cavity we have that $\abs{1-Re^{i\delta}}^2=(1-R)^2(1+F\sin^2(\delta/2))$, with $F$ being the finesse of the instrument, defined in \eqref{eq:finesse.mbi}.\\
+Considered also the absorbment of some of the intensity, i.e. noting that $R+T+A=1$, with $A$ being the absorption coefficient, and considering also that $r\in\Cf$ will bring a phase shift itself, precisely, for each reflection some value $\delta_r/2\in[0, 2\pi)$ we get that, writing $\Delta=\delta+\delta_r$ that firstly
+\begin{equation*}
+	\frac{T^2}{(1-R)^2}=\left( \frac{1-R-A}{1-R} \right)^2
+\end{equation*}
+And therefore, for our realistic interferometer
+\begin{equation}
+	I_T=I_0\left( 1-\frac{A}{1-R} \right)^2\frac{1}{1+F\sin^2\left( \frac{\Delta}{2} \right)}
+	\label{eq:realfinesse.fpi}
+\end{equation}
+As usual, we find the maxima of the Airy function, which correspond to
+\begin{equation}
+	\Delta=2N\pi=\frac{4\pi d}{\lambda}\cos\theta-\delta_r
+	\label{eq:maxima.fpi}
+\end{equation}
+The integer $N\in\N$ is known as the \textit{order of interference} of the beams, which indicates the optical distance difference of two beams with different $\lambda$.\\
+At this maxima we have
+\begin{equation}
+	I_{max}=\frac{T^2I_0}{(1-R)^2}=I_0\left( 1-\frac{A}{1-R} \right)^2
+	\label{eq:peakint.fpi}
+\end{equation}
+These instruments are used to measure the wavelength of a source with high precision. A real Fabry-Perot instrument takes the light coming from a broad source of light, collimates it towards the two mirrors described before and then with another lense collimates the outgoing rays to a single point in the measuring screen. There are two configurations for a Fabry-Perot instrument, one is the \textit{etalon} in which the mirrors are fixed in position, and another, known as the interferometer, where the mirrors can be moved in order to change the phase difference $\delta$ obtained by the multiple reflections.
 \subsubsection{Resolution Power of Fabry-Perot Instruments}
-\subsubsection{Free Spectral Range}
+In order to actually measure the wavelenghts (or frequencies) of the broad source in question, we gotta understand what it means to \textit{resolve} two lines in the interference pattern obtained.\\
+For a simpler evaluation, consider $A=\delta_r=0$, and call $\Gamma$ the line width at half height at the peak. Consider two lines, one at order $m$ and one at order $m+1$.\\
+In order to call the two peaks resolved, we employ \textit{Taylor's criterion}, which states that two lines are resolved if they, at maximum, intersecate at the half-height point, where the intensity is $I_0/2$. Therefore if $I=I_0/2$ at the half height point, we have then, using \eqref{eq:peakint.fpi}
+\begin{equation*}
+	\delta=2\pi m+\frac{\Gamma}{2}=\Delta
+\end{equation*}
+Where we moved from the peak of exactly half line width, bringing ourselves at the intersection point of the two lines.\\
+Applying the aforementioned criterion, we get then
+\begin{equation*}
+	\frac{I_0}{2}=\frac{T^2I_0}{1+F\sin^2\left( m\pi+\frac{\Gamma}{4} \right)}\implies\frac{1}{2}=\left( 1-\frac{A}{1-R} \right)^2\frac{1}{1+F\sin^2\left( m\pi+\frac{\Gamma}{4} \right)}
+\end{equation*}
+Imposing $A=0$, and noting that $m\pi+\Gamma/4<<1$ we have, after some algebraic juggling
+\begin{equation*}
+	1=F\sin^2\left( m\pi+\frac{\Gamma}{4} \right)\approx \frac{F\Gamma^2}{16}
+\end{equation*}
+Solving for gamma we get that a line will be resolved (for Taylor), \textit{if and only if} its line width is exactly equal to the following
+\begin{equation}
+	\Gamma=\frac{4}{\sqrt{F}}
+	\label{eq:linewidthres.fpi}
+\end{equation}
+I.e., if the maximas are at a distance $d_m>\Gamma$. It's clear that, due to the definition of finesse, the minimum resolution distance is tied only to the instrument and not to the properties of the wave
+\subsubsection{Spectral Resolution}
+The ``goodness'' of a measure with a Fabry-Perot instrument is evaluated with what is known as \textit{Resolving Power}, $RP$. This value is a pure number defined by the ratio of the measured wavelength (or frequency) of the measured wave with the smallest resolvable interval of wavelength (frequency) as
+\begin{equation}
+	RP=\frac{\lambda}{\Delta\lambda_{min}}=\frac{\nu}{\Delta\nu_{min}}=\frac{\omega}{\Delta\omega_{min}}
+	\label{eq:rp.fpi}
+\end{equation}
+It's clear that if the instrument can measure a smaller interval, then the resolution power will be greater.\\
+We can tie this value with what we wrote before noting that, close to the maximum of the line
+\begin{equation*}
+	\delta=\frac{4\pi d}{\lambda}\cos\theta=2\pi m\implies\frac{2d}{\lambda}\cos\theta=m\qquad m\in\Z
+\end{equation*}
+Or, in terms of only wavelengths 
+\begin{equation*}
+	m\lambda=2d\cos\theta
+\end{equation*}
+Differentiating, we can also say that
+\begin{equation*}
+	\begin{dcases}
+		m\Delta\lambda=2d\sin\theta\Delta\theta\\
+		\Delta\delta=\frac{4\pi d}{\lambda}\sin\theta\Delta\theta
+	\end{dcases}
+\end{equation*}
+Or, solving
+\begin{equation*}
+	2\pi\Delta\delta=2\pi m\frac{\Delta\lambda}{\lambda}=\frac{4}{\sqrt{F}}
+\end{equation*}
+Therefore, we have then
+\begin{equation}
+	\frac{\Delta\lambda}{\lambda}=\frac{\pi}{2m}\frac{1}{\sqrt{F}}
+	\label{eq:deltalonl.fpi}
+\end{equation}
+Which, inserted into the formula for the $RP$, we have that
+\begin{equation}
+	RP=\frac{\pi}{2}m\sqrt{F}
+	\label{eq:rp2.fpi}
+\end{equation}
+Therefore, the resolving power is also linearly dependent to the order of interference.\\
+Another important part of spectral analysis of waves using Fabry-Perot instruments is the distance between two maxima. This is commonly known as the \textit{Free Spectral Range} of the instrument.\\
+By definition, we have $\delta_m=2\pi m$
+\begin{equation}
+	\begin{aligned}
+		\delta_{m+1}-\delta_m&= 2\pi\\
+		4\pi d\left( \frac{1}{\lambda_{m+1}}-\frac{1}{\lambda_m} \right)\cos\theta&= 2\pi
+	\end{aligned}
+	\label{eq:fsrdef.fpi}
+\end{equation}
+The free spectral range, or $FSR$ is then defined
+\begin{equation*}
+	FSR=\frac{1}{\frac{1}{\lambda_{m+1}-\lambda_m}}=\frac{\lambda^2}{2d\cos\theta}
+\end{equation*}
+Since we're talking about maxima, we have that $m\lambda=2d\cos\theta$, which inserted into the previous equation gives
+\begin{equation}
+	FSR=\frac{\lambda}{m}
+	\label{eq:fsr.fpi}
+\end{equation}
+Therefore, the FSR gets smaller with higher orders
+Defining also the \textit{reflecting finesse} as
+\begin{equation}
+	\mathcal{F}=\frac{\pi}{2}\sqrt{F}
+	\label{eq:reffinesse.fpi}
+\end{equation}
+We can also redefine the RP as
+\begin{equation}
+	RP=m\mathcal{F}=m\pi\frac{\sqrt{R}}{1-R}
+	\label{eq:rprfin.fpi}
+\end{equation}
+Therefore tying closely the resolving power of the instrument to its physical properties.\\
+In general, then, given $m\in\Z$ the interference order of the wave in study, we can summarize what we wrote in maths as follows
+\begin{itemize}
+\item The resolving power (RP) is tied to the physical properties of the instrument and grows with $m$
+\item The distance between peaks (FSR) gets smaller with greater $m$
+\end{itemize}
+It's clear that even if the order of interference grows and with it the resolving power, the distance between peaks will reduce, and there will be a point where the peaks won't be resolved anymore. This fact sigillates etalons to a single specific group of measures, while interferometers can be used with a wider range of tests.\\
 \end{document}

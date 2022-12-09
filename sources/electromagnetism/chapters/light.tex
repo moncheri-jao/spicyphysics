@@ -971,4 +971,244 @@ In the most general case, we can define the \textit{Fresnel-Jones matrices}, whi
 	\end{aligned}
 	\label{eq:fresneljones.rjon}
 \end{equation}
+\section{Theory of Multilayer Films}
+The laws of reflection and refraction can be used in multiple ways in order to create special optically active instruments, like antireflecting lenses for glasses, highly-reflecting lenses, heat-reflecting or heat-transmitting surfaces and lenses which reflect only one specific wavelength of light.\\
+These peculiar instruments, which some of them are also really common (see antireflecting glasses or blue-light protection glasses) are made by superimposing various thin strata of material with different refraction indexes $n_i$.\\
+\subsection{Transfer Matrix}
+In order to study the physics behind, we'll start with only two layers, which separate an ``incoming'' zone with index $n_0$ from an ``outgoing'' zone with index $n_T$, with index $n_1$ in between.\\
+In this case, we will have, after applying simple logic and the idea of reflection and transmission of light:
+\begin{itemize}
+\item An incoming wave, \textit{outside} of the film, where the reflection index is some value $n_0$, and the wave is described by $(\vec{k},\vec{E},\vec{H})$
+\item A wave reflected from the first layer (it's still outside of the layer, hence the refraction index is $n_0$), described by $(\vec{k}_R,\vec{E}_R,\vec{H}_R)$
+\item A wave transmitted from the first layer, here the refraction index is $n_1$, described by $(\vec{k}_1,\vec{E}_1,\vec{H}_1)$
+\item A wave reflected from the second layer, (here the refraction index is \textit{still} $n_1$), described by $(\vec{k}_R',\vec{E}_R',\vec{H}_R')$
+\item A wave transmitted from the second layer, finally outside the film, where the refraction index is $n_T$ and the wave will be $(\vec{k}_T,\vec{E}_T,\vec{H}_T)$
+\end{itemize}
+If we choose, for ease of calculation, the origin at the first layer, the equations for this layer will be similar to what we saw before for a single reflection and refraction. The same goes for the second layer, remembering tho that after having traveled a distance $l$ we will have $E'=Ee^{ikl}$.\\
+Everything considered then we will have a system of four coupled equations in four unknowns, which we will separate into two coupled systems that represent the two different layers. We chose, for ease of calculation, to evaluate only normal reflection.
+\begin{equation}
+	\left\{ \begin{aligned}
+		E+E_R&= E_1+E_R'\\
+		n_0\left( E-E_R \right)&= n_1\left( E_1-E_R' \right)
+	\end{aligned}\right.
+	\qquad
+	\left\{ \begin{aligned}
+		E_1e^{ikl}+E_R'e^{-ikl}&= E_T\\
+		n_1\left( E_1e^{ikl}-E_R'e^{-ikl} \right)&= n_TE_T
+	\end{aligned}\right.
+	\label{eq:freq.mlt}
+\end{equation}
+Where we used $H_i=(\mu\omega)^{-1}n_ik_0E_i$ on the second equation of both systems.
+We begin by solving for the second layer. From the second equation we have
+\begin{equation*}
+	E_T=\frac{n_1}{n_T}\left( E_1e^{ikl}-E_R'e^{-ikl} \right)
+\end{equation*}
+Then, inserting it in the first equation
+\begin{equation*}
+	E_1e^{ikl}+E_R'e^{-ikl}=\frac{n_1}{n_T}\left( E_1e^{ikl}-E_R'e^{-ikl} \right)
+\end{equation*}
+Reuniting the terms with the same amplitude we get
+\begin{equation*}
+	\left( 1-\frac{n_1}{n_T} \right)E_1e^{ikl}=-\left( 1+\frac{n_1}{n_T} \right)E_R'e^{-ikl}
+\end{equation*}
+Or, developing the sum, multiplying by the inverse of the result on the left and on the right and dividing by $E_R'$, we have
+\begin{equation*}
+	\frac{E_1}{E_R'}=\frac{n_1+n_T}{n_1-n_T}e^{-2ikl}\qquad\frac{E_R'}{E_1}=\frac{n_1-n_T}{n_1+n_T}e^{2ikl}
+\end{equation*}
+Taken again the first equation of the second layer in \eqref{eq:freq.mlt} and dividing everything by $E_1$ and $E_R'$, we find ourselves a new solvable system
+\begin{equation*}
+	\left\{\begin{aligned}
+		e^{ikl}+\frac{E_R'}{E_1}e^{-ikl}&= \frac{E_T}{E_1}\\
+		\frac{E_1}{E_R'}e^{ikl}+e^{-ikl}&= \frac{E_T}{E_R'}
+	\end{aligned}\right.
+\end{equation*}
+Inserting what we found before we have, for the first equation
+\begin{equation*}
+	e^{ikl}+\left( \frac{n_1-n_T}{n_1+n_T}e^{2ikl} \right)e^{-ikl}=\frac{E_T}{E_1}
+\end{equation*}
+Or, solving by regrouping the exponentials
+\begin{equation*}
+	\frac{E_T}{E_1}=\frac{2n_1}{n_1+n_T}e^{ikl}
+\end{equation*}
+Analogously for the second equation we get
+\begin{equation*}
+	\frac{E_T}{E_R'}=\frac{2n_1}{n_1-n_T}e^{-ikl}
+\end{equation*}
+Rewriting $E_1, E_R'$ in terms of $E_T$, the whole system \eqref{eq:freq.mlt} becomes
+\begin{equation}
+	\left\{ \begin{aligned}
+		E+E_R&= E_1+E_R'\\
+		n_0\left( E-E_R \right)&= n_1\left( E_1-E_R' \right)
+	\end{aligned}\right.
+	\qquad
+	\left\{ \begin{aligned}
+			E_R'&= \frac{n_1-n_T}{2n_1}E_Te^{ikl}\\
+			E_1&= \frac{n_1+n_T}{2n_1}E_Te^{-ikl}
+	\end{aligned}\right.
+	\label{eq:almostsolved.mlt}
+\end{equation}
+Inserting the results of the second system into the first we get
+\begin{equation*}
+	\left\{ \begin{aligned}
+			E+E_R&= \left( \frac{n_1-n_T}{2n_1}e^{-ikl}+\frac{n_1-n_T}{2n_1}e^{ikl} \right)E_T
+			n_0\left( E+E_R \right)&= n_1\left( \frac{n_1-n_T}{2n_1}e^{-ikl}-\frac{n_1-n_T}{2n_1}e^{ikl} \right)E_T
+	\end{aligned}\right.
+\end{equation*}
+Regrouping on the right with respect to the refraction indexes we get on the first equation
+\begin{equation*}
+	E+E_R=\frac{1}{2n_1}\left[ n_1\left( e^{-ikl}+e^{ikl} \right)+n_T\left( e^{-ikl}-e^{ikl} \right) \right]E_T
+\end{equation*}
+Using the usual identities for sines and cosines and bringing in the factor on the left we get
+\begin{equation*}
+	E+E_R=\left( \cos(kl)-i\frac{n_T}{n_1}\sin(kl) \right)E_T
+\end{equation*}
+And analogously, for the second equation
+\begin{equation*}
+	n_0\left( E-E_R \right)=\left( -in_1\sin(kl)+n_T\cos(kl) \right)E_T
+\end{equation*}
+Remembering the definition of $r$ and $t$, we can rewrite the system in terms of both Fresnel parameters dividing by $E$
+\begin{equation}
+	\left\{ \begin{aligned}
+			1+r&= \left( \cos{kl}-i\frac{n_T}{n_1}\sin(kl) \right)t\\
+			n_0\left( 1-r \right)&= \left( -in_1\sin(kl)+n_T\cos(kl) \right)t
+	\end{aligned}\right.
+	\label{eq:trsystem.mlt}
+\end{equation}
+This system can clearly be rewritten in matrix terms as follows
+\begin{equation}
+	\begin{pmatrix}
+		1\\n_0
+	\end{pmatrix}+\begin{pmatrix}
+		1\\-n_0
+	\end{pmatrix}r=\begin{pmatrix}
+		\cos(kl)&-\frac{i}{n_1}\sin(kl)\\
+		-in_1\sin(kl)&\cos(kl)
+	\end{pmatrix}\begin{pmatrix}
+		1\\n_T
+	\end{pmatrix}t
+	\label{eq:transfermatrix.mlt}
+\end{equation}
+Here, the left hand side represent the discontinuity equations for the first layer, while the right hand side represents the discontinuity equations on the second layer. The matrix, known as the \textit{transfer matrix}, ``transfers'' the equation from the first boundary to the second, where the discontinuity equations are applied.\\
+Generalizing to multilayer films composed by $n$ layers, we can immediately find the transfer matrix of the whole system using simple matrix multiplication. Said $M^i_j$ the transfer matrix of this system, then we have, if the matrix of the $k-$th layer is $M^{i_k}_{j_k}$ that
+\begin{equation}
+	\prod_{k=1}^nM^{i_k}_{j_k}=M^i_j=\begin{pmatrix}
+		A&B\\C&D
+	\end{pmatrix}
+	\label{eq:generalmultilayermatrix.mlt}
+\end{equation}
+Therefore, the general Fresnel equation becomes
+\begin{equation}
+	\begin{pmatrix}
+		1\\n_0
+	\end{pmatrix}+\begin{pmatrix}
+		1\\-n_0
+	\end{pmatrix}r=\begin{pmatrix}
+		A&B\\C&D
+	\end{pmatrix}\begin{pmatrix}
+		1\\n_T
+	\end{pmatrix}t
+	\label{eq:generalfreq.mlt}
+\end{equation}
+This equation is readily solvable for both $r, t$. Rewriting everything as a system of two equations, we have
+\begin{equation*}
+	\left\{\begin{aligned}
+		1+r&= \left( A+Bn_T \right)t\\
+		n_0(1-r)&= \left( C+Dn_T \right)t
+	\end{aligned}\right.
+\end{equation*}
+From the first equation we get $r(t)$, which inserted in the second equation gives
+\begin{equation*}
+	2n_0-n_0\left( A+n_TB \right)t=(C+n_T)t
+\end{equation*}
+Which solved gives
+\begin{equation}
+	t=\frac{2n_0}{n_0A+n_0n_TB+n_TD+C}
+	\label{eq:tcoeff.mlt}
+\end{equation}
+Reinserting it into the first equation, we have also the result for $r$
+\begin{equation}
+	r=\frac{n_0A+n_0n_TB-n_TD-C}{n_0A+n_0n_TB+n_TD+C}
+	\label{eq:rcoeff.mlt}
+\end{equation}
+If the elements of the transmission matrix are known, then it's possible to find the reflectance and transmittance of the complete multilayer by remembering that $R=\norm{r}^2$, $T=\norm{t}^2$
+\subsection{Antireflecting Films}
+One of the applications of multilayer theory we indicated before are \textit{antireflecting films}, which are the reason that we can build and use antireflecting lenses in cameras and glasses, and for the watch enthusiasts, also have antireflecting sapphire crystals.\\
+Considering this real-world usage, we will suppose that the antireflecting film is placed over a glass (or sapphire) surface with refraction index $n_T$, and on the other side the light is immersed in air, with refraction index $n_0=1$, while the layer of antireflecting material has refraction index $n_1$.\\
+The transfer matrix of the system is
+\begin{equation*}
+	M^i_j=\begin{pmatrix}
+		A&B\\C&D
+	\end{pmatrix}=\begin{pmatrix}
+		\cos(kl)&-\frac{i}{n_1}\sin(kl)\\
+		-in_1\sin(kl)&\cos(kl)
+	\end{pmatrix}
+\end{equation*}
+The equation for the reflection coefficient is as before \eqref{eq:rcoeff.mlt}, which, after substituting the matrix elements and regrouping the common factor is
+\begin{equation*}
+	r=\frac{(1-n_T)\cos(kl)-i\left( \frac{n_T}{n_1}-n_1 \right)\sin(kl)}{(1+n_T)\cos(kl)-i\left( \frac{n_T}{n_1}+n_1 \right)\sin(kl)}
+\end{equation*}
+Multiplying and dividing both denominator and numerator we get the much simpler result
+\begin{equation}
+	r=\frac{n_1(1-n_T)\cos(kl)-i(n_T-n_1^2)\sin(kl)}{n_1(1+n_T)\cos(kl)-i(n_T+n_1^2)\sin(kl)}
+	\label{eq:rcoeff.arc}
+\end{equation}
+Now, here the reflectance is not necessarily $0$, but we can manipulate the parameters of the layer in order to get it to become null for the desired frequency.\\
+The easiest to mechanically manipulate is the thickness $l$ of the layer. In fact, if we take $l=\lambda/4$ we have
+\begin{equation}
+	kl=\frac{k\lambda}{4}=\frac{2\pi\lambda}{4\lambda}=\frac{\pi}{2}
+	\label{eq:whylambdafourths.arc}
+\end{equation}
+Inserting this awesome result we get for $r$ and $R$
+\begin{equation}
+	r=\frac{n_T-n_1^2}{n_T+n_1^2}, \qquad R=\frac{\left( n_T-n_1^2 \right)^2}{\left( n_T+n_1^2 \right)^2}
+	\label{eq:coolres.arc}
+\end{equation}
+Now, we have a constraint on $n_1$, i.e. the composition of the layer. In order to have $0$ reflectance at the chosen frequency $\lambda$ we must find a material such that
+\begin{equation}
+	n_1=\sqrt{n_T}
+	\label{eq:materialconstraint.arc}
+\end{equation}
+In common use for real-world application, like antireflecting glasses (i.e. $n_T\approx1.5$), is magnesium fluoride, where $n_{MgF_2}=n_1\approx1.35$. This combination doesn't respect precisely the previous constraint, but permits a reduction of the reflectance of the glasses by $99\%$. For negating completely the reflection of a chosen wavelength, multiple layers are used, where specifically they're alternated high-low reflectance films thick $\lambda/4$, with only 3 layers it's possible to block 3 different wavelengths. CHECK PROPERLY, I wrote $\lambda/4$ and not $\lambda_0/4$! It's not an error, the thickness depends directly on the material and its composition, since it also changes the refraction index, and therefore $\lambda$ \textit{will} differ.
+\subsection{High Reflectance Films}
+The opposite result of what we got with antireflecting films, is that of high-reflectance films, special films built by alternating layers thick $l=\lambda/4$ of high and low refracting indexes.\\
+Said $n_H$ the refraction index of the highly refracting material and $n_L$ the refraction index of the low-refracting material (obviously $n_H>n_L$) we have, since they're thick exactly $\lambda/4$, that the transfer matrix of such system is
+\begin{equation}
+	\left( M_{H/L} \right)^i_j=\begin{pmatrix}
+		0&-\frac{i}{n_{H/L}}\\
+		-in_{H/L}&0
+	\end{pmatrix}
+	\label{eq:hltransmatrix.hrf}
+\end{equation}
+For the first high-low couple of layers the transfer matrix is simply the product of the two
+\begin{equation*}
+	\left( M_{HL} \right)^i_j=\begin{pmatrix}
+		0&-\frac{i}{n_L}\\
+		-in_L&0
+	\end{pmatrix}\begin{pmatrix}
+		0&-\frac{i}{n_H}\\
+		-in_H&0
+	\end{pmatrix}=\begin{pmatrix}
+		-\frac{n_H}{n_L}&0\\
+		0&-\frac{n_L}{n_H}
+	\end{pmatrix}
+\end{equation*}
+Alternating $2N$ stacks of high-low reflectance layer, the transfer matrix is found simply using matrix powers, i.e.
+\begin{equation}
+	M^i_j=\left( M_{HL}^N \right)^i_j=\left( -1 \right)^N\begin{pmatrix}
+		\left( n_H/n_L \right)^N&0\\
+		0&\left( n_L/n_H \right)^N
+	\end{pmatrix}
+	\label{eq:hrftrans.hrf}
+\end{equation}
+From \eqref{eq:rcoeff.mlt} then, we have that the reflection coefficient for a high-reflectance film is, supposed for ease of calculation $n_0=n_T=1$
+\begin{equation}
+	r=\frac{\left( \frac{n_H}{n_L} \right)^N-\left( \frac{n_L}{n_H} \right)^N}{\left( \frac{n_H}{n_L} \right)^N+\left( \frac{n_L}{n_H} \right)^N}
+	\label{eq:rcoeff.hrf}
+\end{equation}
+Which gives a reflectance of
+\begin{equation}
+	R=\frac{\left( n_H^{2N}-n_L^{2N} \right)^2}{\left( n_H^{2N}+n_L^{2N} \right)}
+	\label{eq:reflect.hrf}
+\end{equation}
+The reflectance clearly goes to unity with $N\to\infty$, i.e., the more stacks we put the more the film reflects a specific frequency. In the case of layers of zinc sulfide ($\mathrm{ZnS}$, $n_H=2.3$) and magnesium fluoride ($\mathrm{MgF_2}$, $n_L=1.35$), with a stack of 8 layers (4 layers of each, or 4 couples of high-low layers), the reflectance is $R\simeq0.97$, which is higher than that of silver, in the visible range. A stack of 30 layers gives $R\gtrsim0.999$. The highly-reflected wavelenght band can be broadened by the simple combination of multiple thicknesses of the layers
 \end{document}
