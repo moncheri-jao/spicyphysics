@@ -1,23 +1,412 @@
 \documentclass[../electromagnetism.tex]{subfiles}
 \begin{document}
 \section{Fresnel-Kirchhoff Theory}
-\lipsum
 \subsection{Huygens Principle}
+The general idea behind the theory of diffraction comes from a simple fact. Given a sharp object, the shadow casted from it is not sharp as predicted from geometric optics.\\
+The smearing of the boundary of the shadow comes from a phenomenon known as \emph{diffraction}. It can be explained summarily with Huygens principle
+\begin{pri}[Huygens]
+	Given a generic wave, its propagation can be described by taking each point of the wavefront and counting it as a source of a spherical wave.\\
+	The sum of all the spherical wavelets will define the wave at a later time
+\end{pri}
+Counting all the wavelets when the wave encounters the object, we can see how they envelop the object and propagate around it, giving the smearing effect we see on the shadow.
+\subsection{Kirchhoff Integral Formula}
+Huygens' principle can be rewritten mathematically using Green's identities.\\
+Firstly, the chosen electromagnetic wave due to symmetry considerations can be approximated to a scalar function satisfying the following equation
+\begin{equation}
+	\square_u\psi=\frac{1}{u^2}\pdv[2]{\psi}{t}-\nabla^2\psi=0
+	\label{eq:dalamberteq.diff}
+\end{equation}
+By definition, $\psi\in C^2$ and it's said to be \textit{harmonic}. Taken a second harmonic function $\varphi$, then we have that Green's second identity holds
+\begin{equation}
+	\iiint_V\left( \psi\nabla^2\varphi-\varphi\nabla^2\psi \right)\dd^3x=\oiint_{\del V}\left( \psi\nabla\varphi\cdot\hat{\vec{n}}-\varphi\nabla\psi\cdot\hat{\vec{n}} \right)\dd^2s
+	\label{eq:green2.diff}
+\end{equation}
+A corollary of this identity comes in handy
+\begin{cor}
+	Given $f, g$ two harmonic functions, then
+	\begin{equation}
+		\oiint_{\del V}\left( f\nabla g\cdot\hat{\vec{n}}-g\nabla f\cdot\hat{\vec{n}} \right)\dd^2s=0
+		\label{eq:corgreen.diff}
+	\end{equation}
+\end{cor}
+It's clear then that the two functions $\psi,\varphi$ satisfy this corollary, helping us in our evaluations.\\
+Now, let's bring ourselves to a real case. Said $V$ a set containing the source of the wave $\psi$ and letting $\varphi$ be the spherical wavelets indicated by Huygens, described as follows
+\begin{equation}
+	\varphi(r, t)=\frac{\varphi_0}{r}e^{ikr-i\omega t}
+	\label{eq:huygenswavelets.diff}
+\end{equation}
+Said without loss of generality that the source of the wave $\psi$ is the point $\{r=0\}\in V$, i.e. we have
+\begin{equation*}
+	\lim_{r\to0}\psi(r, t)=\pm\infty
+\end{equation*}
+Or, in other terms, Green's second identity cannot be applied, since the function diverge at the origin.\\
+Said $\tilde{V}=V\setminus B_\epsilon(0)$ a new set which excludes a ball of radius $\epsilon>0$ around the origin, then, we can apply Green's identity and its corollary. Note also that 
+\begin{equation*}
+	\del\tilde{V}=\del V\setminus\del B_\epsilon(0)
+\end{equation*}
+Thus
+\begin{equation}
+	\iiint_{\tilde{V}}\psi\nabla^2\varphi-\varphi\nabla^2\psi\dd^3x=\oiint_{\del V}\psi\nabla\varphi\cdot\hat{\vec{n}}-\varphi\nabla\psi\cdot\hat{\vec{n}}\dd^2s-\oiint_{\del B_\epsilon(0)}\psi\nabla\varphi\cdot\hat{\vec{n}}-\varphi\nabla\psi\cdot\hat{\vec{n}}\dd^2s=0
+	\label{eq:greenidcor.diff}
+\end{equation}
+Using the previous definition to our spherical wavelets, we have by definition on our integral over the boundary of the sphere with radius $\epsilon$
+\begin{equation}
+	\varphi_0\oiint_{\del B_\epsilon(0)}(\cdots)\dd^2s=\varphi_0\iint_{4\pi}\left( \psi\eval{\pdv{r}}_\epsilon\left( \frac{e^{ikr-i\omega t}}{r} \right)-\frac{e^{ik\epsilon-i\omega t}}{\epsilon}\eval{\pdv{\psi}{r}}_\epsilon \right)\epsilon^2\dd\Omega
+	\label{eq:kint1.diff}
+\end{equation}
+Writing the derivative and evaluating the limit for $\epsilon\to0$, i.e. accounting for the source point, we get
+\begin{equation}
+	\lim_{\epsilon\to0}\iint_{4\pi}\left( \epsilon e^{ik\epsilon-i\omega t}\eval{\pdv{\psi}{r}}_\epsilon-\psi(\epsilon, t)\left( ik\epsilon e^{ik\epsilon-i\omega t}-e^{ik\epsilon-i\omega t} \right) \right)\dd\Omega=4\pi\psi(0, t)e^{-i\omega t}
+	\label{eq:resultneeded.diff}
+\end{equation}
+Which, inserted into the initial integral gives \textit{Kirchhoff's Integral Formula}, which relates the wave at the source with the wave at the boundary.
+\begin{equation}
+	\psi(0, t)=-\frac{e^{-i\omega t}}{4\pi}\oiint_{\del V}\frac{e^{ikr}}{r}\nabla\psi\cdot\hat{\vec{n}}-\hat{\vec{n}}\cdot\nabla\left( \frac{e^{ikr}}{r} \right)\psi(r, t)\dd^2s
+	\label{eq:kirchhoffintegral.diff}
+\end{equation}
+As usual, $I\propto\abs{\psi}^2$. In literature, the function $\psi$ is known as the ``disturbance''
 \subsection{Fresnel-Kirchhoff Integral}
+The Kirchhoff integral that we found before, we can describe generally the problem of wave propagation. The application of the same to the problem of diffraction was developed by Fresnel.\\
+Given a generic aperture $\Sigma$, a source $S$ distant $r'$ from it, with a measuring point $P$ on the other side of the aperture at a distance $r$, we take the set $V$ in a way such that its boundary is composed by the diffraction aperture $\Sigma$ and a semisphere of radius $R$ containing the measuring point $P$. We assume:
+\begin{itemize}
+\item $\psi$ and $\nabla\psi$ are negligible with respect to the integral on the aperture
+\item $\psi$ and $\nabla\psi$ are the same with or without the aperture
+\end{itemize}
+Then, on the aperture, the optical disturbance is described as follows
+\begin{equation*}
+	\psi(r', t)=\frac{\psi_0}{r'}e^{ikr'-i\omega t}
+\end{equation*}
+Then, said $\psi_P$ the wave at the point $P$, we have
+\begin{equation*}
+	\psi_P=-\frac{\psi_0e^{-i\omega t}}{4\pi}\oiint_{\del V}\left( \frac{e^{ikr}}{r}\nabla'\left( \frac{e^{ikr'}}{r'} \right)\cdot\hat{\vec{n}}-\frac{e^{ikr'}}{r'}\nabla\left( \frac{e^{ikr}}{r} \right)\cdot\hat{\vec{n}} \right)\dd^2s
+\end{equation*}
+Said $S$ the semispherical part of $\del V$, and noting that the integral on it vanishes for $R\to\infty$, and noting that on the aperture
+\begin{equation}
+	\begin{aligned}
+		\hat{\vec{n}}\cdot\nabla&= \cos(\hat{\vec{n}},\vec{r})\pdv{r}\\
+		\hat{\vec{n}}\cdot\nabla&= \cos(\hat{\vec{n}},\vec{r'})\pdv{r'}
+	\end{aligned}
+	\label{eq:obliquityder.diff}
+\end{equation}
+Where $\cos(. ,.)$ is the angle between the two vectors, we have, after applying $\del_r$
+\begin{equation}
+	\psi_P=-\frac{\psi_0e^{-i\omega t}}{4\pi}\iint_\Sigma\frac{e^{ik(r+r')}}{rr'}\left[ \left( ik-\frac{1}{r'} \right)\cos(\hat{\vec{n}},\vec{r'})-\left( ik-\frac{1}{r} \right)\cos(\hat{\vec{n}},\vec{r}) \right]\dd^2s
+	\label{eq:fresnelp1.diff}
+\end{equation}
+In the situation where $r, r'>>\lambda$ we can neglect the second order terms, and we get Fresnel-Kirchhoff's integral
+\begin{equation}
+	\psi_P=-\frac{ik\psi_0e^{-i\omega t}}{4\pi}\iint_\Sigma\frac{e^{ik(r+r')}}{rr'}\left( \cos(\vec{n},\vec{r}')-\cos(\vec{n},\vec{r}) \right)\dd^2s
+	\label{eq:fresnelkirchhoff.diff}
+\end{equation}
+This integral is the mathematical expression of Huygens' principle.\\
+This can be discerned by taking semicircular aperture with radius $r$, centered on the source of the wave $S$. Noting that $\cos(\hat{\vec{n}},\vec{r'})=-1$ we get 
+\begin{equation*}
+	\psi_P=\frac{ik}{4\pi}\iint_\Sigma\psi_\Sigma\frac{e^{ikr-i\omega t}}{r}\left( \cos(\hat{\vec{n}},\vec{r})+1 \right)\dd^2s
+\end{equation*}
+Where
+\begin{equation*}
+	\psi_\Sigma(r', t)=\frac{\psi_0e^{ikr'}}{r'}
+\end{equation*}
+This can be interpreted as seeing that the aperture generates spherical ``Huygens' wavelets'' at each point $\dd^2s$, s
+\begin{equation*}
+	\psi_H=\frac{1}{r}\psi_\Sigma e^{ikr-i\omega t}
+\end{equation*}
+Then, the KF integral becomes a summation of all these wavelets times a correction, known as the ``obliquity factor'' given by the cosine
+\begin{equation}
+	\psi_P(r, t)=\frac{ik}{4\pi}\iint_\Sigma\psi_H\left( \cos(\hat{\vec{n}},\vec{r})+1 \right)\dd^2s
+	\label{eq:huygensprinciple.diff}
+\end{equation}
+The imaginary unit that multiplies the integral, if written as a phasor, clearly indicates that there is also a phase shift of the wave after diffraction by $\pi/2$, which wasn't theorized by Huygens together with the obliquity factor.
 \subsection{Babinet Principle}
+Consider an aperture $A$ which produces a disturbance $\psi_P$ at some point $P$. Supposed that the aperture is described by two complementary apertures $A_1, A_2$, from the formula of the KF integral and the properties of integrals, we have that 
+\begin{equation*}
+	\psi_P=\psi_1+\psi_2
+\end{equation*}
+Where $\psi_i$ is the disturbance created by the i-th aperture. Then, if $\psi_P=0$, we have that the disturbance created by the two complementary apertures are equal and dephased by $\pi$ radians, while the irradiance is exactly the same.\\
+This principle is known as \textit{Babinet's principle}, and indicates how we can determine the pattern of an object. Given a spherical aperture, the pattern will be the same as for a spherical particle complementary to the aperture, plus a $\pi$ dephasing.
 \section{Fraunhofer Diffraction}
-\subsection{Single Slit Pattern}
-\subsection{Rectangular Aperture Pattern}
-\subsection{Circular Aperture Pattern}
-\section{Diffraction Gratings}
-\subsection{Double Slit Pattern}
-\subsection{Multiple Slit Pattern}
-\subsection{Resolving Power of a Grating}
-\section{Fresnel Diffraction}
-\subsection{Fresnel Zones}
-\subsubsection{Zone Plates}
+In general, it's not easy to solve the diffraction integral, thus it's usually approximated in two major categories: Fresnel and Fraunhofer diffraction:
+\begin{itemize}
+\item Fraunhofer diffraction, when the source and/or the measuring point are far away from the source (\textit{Far field approximation})
+\item Fresnel diffraction, when the source and/or the measuring point are close to the source (\textit{Close field approximation}
+\end{itemize}
+Consider the case of a source distant $d'$ and a measuring point distant $d$ from the aperture plane, respectively vertically displaced by $h, h'$ from the center of the aperture. If the aperture is long $\delta$ and the two points are respectively $r', r$ from the center of it, we have that the variation $\Delta$ of $r+r'$ is 
+\begin{equation}
+	\Delta=\sqrt{d^{'2}+(h'+\delta)^2}+\sqrt{d^2+(h+\delta)^2}-\sqrt{d^{'2}+h^{'2}}-\sqrt{d^2+h^2}
+	\label{eq:deltadef.diff}
+\end{equation}
+Approximating it to the second order, remembering that
+\begin{equation*}
+	\sqrt{1+x^2}\approx1+\frac{x^2}{2}+\order{x^3}
+\end{equation*}
+We have, at the second order
+\begin{equation}
+	\Delta\approx\left( \frac{h'}{d'}+\frac{h}{d} \right)\delta+\frac{1}{2}\left( \frac{1}{d'}+\frac{1}{d} \right)\delta^2
+	\label{eq:deltaapprox.diff}
+\end{equation}
+The term $\delta^2$ essentially describes the curvature of the wave, and it will be used for distinguishing between Fraunhofer and Fresnel diffraction.
+As we said before, the regime of Fraunhofer diffraction is obtained when the ``field is far away'', thus we can neglect the wave curvature and work only with purely plane waves. This is obtained when
+\begin{equation*}
+	\frac{1}{2}\left( \frac{1}{d'}+\frac{1}{d} \right)\delta^2<<\lambda
+\end{equation*}
+This same result can be obtained in the laboratory using a collimating lens and a focusing lens which will illuminate the aperture with a (obviously coherent) wave and focus the pattern on the focal plane.\\
+When the plane wave approximation is satisfied, we can easily say that
+\begin{itemize}
+\item The obliquity factor is approximately constant on $\Sigma$
+\item The factor $e^{ikr'}/r'$ is approximately constant on $\Sigma$
+\item The factor $1/r$ is approximately constant on $\Sigma$
+\end{itemize}
+Thus, taking out all the constants that multiply the integral as $C$, we have that the FK integral for Fraunhofer diffraction takes a really simple shape, as
+\begin{equation}
+	\psi_P=C\iint_\Sigma e^{ikr}\dd^2s
+	\label{eq:fraunhoferintegral.fradiff}
+\end{equation}
+\subsection{Single Slit Diffraction}
+Consider a narrow 1D slit wide $b$, then if we're in the Fraunhofer regime, with the source distant $r_0$ and the focal point placed at some inclination $\theta$ with respect of the wave, we have that, if $y$ is the distance from the center of the slit
+\begin{equation*}
+	\begin{aligned}
+		r&=y\sin\theta+r_0\\
+		\dd^2s&=L\dd y
+	\end{aligned}
+\end{equation*}
+Then
+\begin{equation}
+	\psi_P=C\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{iky\sin\theta+ikr_0}L\dd^{}{y}
+	\label{eq:singleslit.fradiff}
+\end{equation}
+Bringing outside $Le^{ikr_0}$ and incorporating it into the constant $C$, the integral can be easily calculated, giving
+\begin{equation*}
+	\psi_P\frac{LCe^{ikr_0}}{ik\sin\theta}\left( e^{\frac{1}{2}ikb\sin\theta}-e^{-\frac{1}{2}ikb\sin\theta} \right)
+\end{equation*}
+Expressing the exponentials as a sine, we have
+\begin{equation}
+	\psi_P=\frac{2LCe^{ikr_0}}{k}\frac{sin\left( \frac{1}{2}kb\sin\theta \right)}{\sin\theta}=\frac{2bLCe^{ikr_0}}{k}\sinc\left( \frac{1}{2}kb\sin\theta \right)=C'\sinc\beta
+	\label{eq:singleslit.fradiff}
+\end{equation}
+Where
+\begin{equation}
+	\begin{aligned}
+		\beta&=\frac{1}{2}kb\sin\theta\\
+		C'&=CbLe^{ikr_0}
+	\end{aligned}
+	\label{eq:defconstsingle.fradiff}
+\end{equation}
+Said $I_0=\abs{C'}^{2}=\abs{CbL}^2$, the irradiance of the single slit pattern is 
+\begin{equation}
+	I=I_0\sinc^2\beta
+	\label{eq:irradiance.fradiff}
+\end{equation}
+By the definition $I=I(\theta)$ and $I_0=I(0)$ is the maximum of our irradiance. The zeroes of the irradiance function happen instead when
+\begin{equation*}
+	\sinc^2(\beta)=0\implies\beta=\pm m\pi\qquad m\ge1
+\end{equation*}
+Or, expanding $\beta$ into its definition
+\begin{equation}
+	I(\theta)=0\implies\sin\theta=\frac{2m\pi}{kb}=m\frac{\lambda}{b}
+	\label{eq:zeroessingleslit.fradiff}
+\end{equation}
+I.e. for a given wavelenght $\lambda$ of light the width of the pattern changes inversely to the slit width $b$. Note also how $I_0\propto b^2$, and how the pattern we found is exactly the same pattern that we'd get from the interferometric evaluation
 \subsection{Rectangular Aperture}
-\subsection{Straightedge}
+For the rectangular aperture the evaluation of the integral is pretty much analogous. Said $b$ the width of the rectangle in the $y$ direction and $a$ the width in the $x$ direction, with the substitution
+\begin{equation*}
+	r=r_0+x\sin\varphi+y\sin\theta
+\end{equation*}
+Our integral becomes
+\begin{equation}
+	\psi_P=C\int_{-\frac{b}{2}}^{\frac{b}{2}}\int_{-\frac{a}{2}}^{\frac{a}{2}}e^{ikr_0+iky\sin\varphi+ikx\sin\theta}ab\dd^{}{x}\dd^{}{y}
+	\label{eq:squareapertureint.fradiff}
+\end{equation}
+Using Fubini's theorem and bringing out the constants, this integral is simply the product of two single slits
+\begin{equation}
+	\psi_P=Cabe^{ikr_0}\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{iky\sin\theta}\dd^{}{y}\int_{-\frac{a}{2}}^{\frac{a}{2}}e^{ikx\sin\varphi}\dd^{}{x}
+	\label{eq:doubleslitprod.fradiff}
+\end{equation}
+Which gives
+\begin{equation}
+	\psi_P=abCe^{ikr_0}\left( \frac{2\sin\left( \frac{1}{2}kb\sin\theta \right)}{k\sin\theta} \right)\left( \frac{2\sin\left( \frac{1}{2}ka\sin\varphi \right)}{k\sin\varphi} \right)=Cab\sinc\alpha\sinc\beta
+	\label{eq:squareslit.fradiff}
+\end{equation}
+Where
+\begin{equation*}
+	\begin{aligned}
+		\alpha&=\frac{1}{2}ka\sin\phi\\
+		\beta&=\frac{1}{2}kb\sin\theta
+	\end{aligned}
+\end{equation*}
+Said $I_0=I(0, 0)=\abs{Cab}$, the irradiance is
+\begin{equation}
+	I(\theta\varphi)=I_0\sinc^2\left( \frac{1}{2}ka\sin\varphi \right)\sinc^2\left( \frac{1}{2}kb\sin\theta \right)
+	\label{eq:irradiancesquare.fradiff}
+\end{equation}
+The diffraction pattern will be as one of two slits going on the $x$ and $y$ axes of the diffraction plane with a square maxima around $\theta=\varphi=0$, Thus
+\begin{equation}
+	\begin{aligned}
+		\alpha_z&=\pm n\pi\implies\sin\varphi=n\frac{\lambda}{a}\\
+		\beta_z&=\pm m\pi\implies\sin\theta=m\frac{\lambda}{b}
+	\end{aligned}
+	\label{eq:zeroessquare.fradiff}
+\end{equation}
+As for the single slit
+\subsection{Circular Aperture}
+For a circular aperture with radius $R$ the Fraunhofer integral is all but obvious. Said as usual
+\begin{equation*}
+	\begin{aligned}
+		r&=r_0+y\sin\theta\\
+		\dd^2s&=2\sqrt{R^2-y^2}\dd{y}
+	\end{aligned}
+\end{equation*}
+The integral is 
+\begin{equation}
+	\psi_P=2Ce^{ikr_0}\int_{-R}^{R}e^{ik\sin\theta}\sqrt{R^2-y^2}\dd^{}{y}
+	\label{eq:circapint.fradiff}
+\end{equation}
+With the substitution
+\begin{equation*}
+	\begin{aligned}
+		u&= \frac{y}{R}\\
+		\rho_k&= kR\sin\theta
+	\end{aligned}
+\end{equation*}
+The integral becomes a special integral solved by a Bessel function of the first order
+\begin{equation*}
+	\psi_P(\rho)=Ce^{ikr_0}\int_{-1}^{1}e^{i\rho u}\sqrt{1-u^2}\dd^{}{u}=2C\pi R\frac{J_1(\rho)}{\rho}
+\end{equation*}
+Said $I_0=I(0)=\abs{C\pi R}^2$, the irradiance describes an Airy disk from $\rho=0$ till the first zero, then concentric circles corresponding to the higher orders.\\
+From the irradiance function $I(\theta)$ defined as
+\begin{equation}
+	I(\theta)=I_0\frac{4J^2_1\left(kR\sin\theta\right)}{k^2R^2\sin^2\theta}
+	\label{eq:irradiancecircular.fradiff}
+\end{equation}
+We get that the first zero corresponds to
+\begin{equation*}
+	J_1(\rho_0)=0\implies\rho_0\approx3.832
+\end{equation*}
+Thus, expanding $\rho$ and said $D=2R$
+\begin{equation}
+	\sin\theta=1.22\frac{\lambda}{D}
+	\label{eq:diffractionlimit.fradiff}
+\end{equation}
+This is the dimension of the first peak, and it's therefore also what we'd use to determine if two diffraction patterns are resolved or not by an instrument with aperture diameter $D$. This value is commonly known as the \textit{diffraction limit} of the instrument at the given wavelength. Note that it's bigger than the diffraction limit of the single slit. Said $\Delta\theta$ the distance between the peaks of the two patterns, we define the \textit{Rayleigh criterion for resolution} as 
+\begin{equation}
+	\Delta\theta\ge D_L
+	\label{eq:rayleighcriterion.fradiff}
+\end{equation}
+As for our definition of diffraction limit $D_L$, it's clear then that
+\begin{equation}
+	D_L=\begin{dcases}
+		\frac{\lambda}{b}&\text{Single Slit, Rectangular Aperture}\\
+		1.22\frac{\lambda}{2R}&\text{Circular Aperture}
+	\end{dcases}
+	\label{eq:diffractionlimit.fradiff}
+\end{equation}
+\subsection{Multiple Slit Diffraction}
+\subsubsection{Double Slit Diffraction}
+Consider now two equal parallel slits long $b$, separated by a distance $h$. As for the problem of the single slit, it can be evaluated in one single dimension. In order to evaluate the Fraunhofer integral, we employ the same substitution we did for the single slit, noting tho that since the slits that we have to integrate over are two, and the integration set is
+\begin{equation*}
+	\Sigma=[0, b]\cup[h, h+b]
+\end{equation*}
+Therefore, we have
+\begin{equation}
+	\psi_P=Ce^{ikr_0}\int_{0}^{b}e^{iky\sin\theta}b\dd^{}{y}+Ce^{ikr_0}\int_{h}^{h+b}e^{iky\sin\theta}b\dd^{}{y}
+	\label{eq:doubleslitint.fradiff}
+\end{equation}
+Solving the integral we have
+\begin{equation*}
+	\psi_P=\frac{Cbe^{ikr_0}}{ik\sin\theta}\left( e^{ikb\sin\theta}-1 \right)\left( 1+e^{ikh\sin\theta} \right)
+\end{equation*}
+Writing
+\begin{equation*}
+	e^{ikh\sin\theta}+1=2e^{\frac{1}{2}kh\sin\theta}\cos\left( \frac{1}{2}kh\sin\theta \right),\qquad e^{ikb\sin\theta}-1=2ie^{\frac{1}{2}kb\sin\theta}\sin\left( \frac{1}{2}kb\sin\theta \right)
+\end{equation*}
+We have that the solution can be described as follows
+\begin{equation}
+	\psi_P(\theta)=2bCe^{ikr_0+ik\left( \frac{h}{2}+\frac{b}{2} \right)\sin\theta}\sinc\left( \frac{1}{2}kb\sin\theta \right)\cos\left( \frac{1}{2}kh\sin\theta \right)
+	\label{eq:doubleslitpsi.fradiff}
+\end{equation}
+Or, in term of irradiance
+\begin{equation}
+	I(\theta)=I_0\sinc^2\left( \frac{1}{2}kb\sin\theta \right)\cos^2\left( \frac{1}{2}kh\sin\theta \right)
+	\label{eq:patterndoubleslit.fradiff}
+\end{equation}
+This pattern is clearly a modulation of the single slit pattern. The maxima will be for
+\begin{equation}
+	\cos^2\left( \frac{1}{2}kh\sin\theta \right)=0\implies\sin\theta=\frac{2m\pi}{kh}=m\frac{\lambda}{h}
+	\label{eq:maximads.fradiff}
+\end{equation}
+\subsection{Diffraction Gratings}
+The previous idea can be developed further by creating an aperture made by $N$ equal slits, each long $b$ and distant $h$ between each other. The diffraction integral will then be a finite sum of single slit integrals, as follows
+\begin{equation}
+	\psi_P=Cbe^{ikr_0}\sum_{n=0}^N\int_{nh}^{nh+b}e^{iky\sin\theta}L\dd^{}{y}
+	\label{eq:diffractiongratingint.fradiff}
+\end{equation}
+The integral inside is easily solvable, giving
+\begin{equation*}
+	\psi_P(\theta)=\frac{Cbe^{ikr_0}}{ik\sin\theta}\left( e^{ikb\sin\theta}\sum_{n=0}^Ne^{iknh\sin\theta}-\sum_{n=0}^Ne^{iknh\sin\theta} \right)
+\end{equation*}
+Or, rewriting the right hand side and explicitly summing, we have
+\begin{equation*}
+	\psi_P(\theta)=\frac{Cbe^{ikr_0}}{ik\sin\theta}\left( e^{ikb\sin\theta}-1 \right)\frac{1-e^{ikNh\sin\theta}}{1-e^{ikh\sin\theta}}
+\end{equation*}
+Rewriting everything in terms of sines and cosines we have
+\begin{equation}
+	\psi_P(\theta)=2Cbe^{ikr_0}\sinc\left( \frac{1}{2}kb\sin\theta \right)\frac{\sin\left( \frac{1}{2}Nkh\sin\theta \right)}{\sin\left( \frac{1}{2}kh\sin\theta \right)}
+	\label{eq:gratingwave.fradiff}
+\end{equation}
+And in terms of irradiance
+\begin{equation}
+	I(\theta)=I_0\sinc^2\left( \frac{1}{2}kb\sin\theta \right)\frac{\sin^2\left( \frac{1}{2}Nkh\sin\theta \right)}{N^2\sin^2\left( \frac{1}{2}kh\sin\theta \right)}
+	\label{eq:irradiancegrating.fradiff}
+\end{equation}
+As before, we have a modulated single-slit pattern, where we normalized the result dividing by $N^2$
+\subsubsection{Resolving Power of a Diffraction Grating}
+As we have seen before, the diffraction pattern of a diffraction grating is given by the irradiance function \eqref{eq:irradiancegrating.fradiff}. The maximas are determined by the last factor, and the primary maxima are found for
+\begin{equation}
+	\frac{1}{2}kh\sin\theta=n\pi\implies\sin\theta=n\frac{\lambda}{h}
+	\label{eq:primarymaximadg.fradiff}
+\end{equation}
+Secondary maximas occur instead for
+\begin{equation}
+	\frac{1}{2}Nkh\sin\theta=\left( 2n+1 \right)\pi\implies\sin\theta=\frac{2n+1}{2N}\frac{\lambda}{h}
+	\label{eq:secondarymaximadg.fradiff}
+\end{equation}
+While minima occur for
+\begin{equation}
+	\frac{1}{2}Nkh\sin\theta=n\pi\implies\sin\theta=n\frac{\lambda}{Nh}
+	\label{eq:minimadg.fradiff}
+\end{equation}
+The angular distance between the peak and the minimum can be found via differentiation, noting that the argument of the sine at the numerator must be equal to $\pi$, therefore
+\begin{equation*}
+	\Delta\left( \frac{1}{2}Nkh\sin\theta \right)=\frac{1}{2}Nkh\cos\theta\Delta\theta=\pi
+\end{equation*}
+This implies that
+\begin{equation}
+	\Delta\theta=\frac{\lambda}{Nh}\sec\theta
+	\label{eq:minangledg.fradiff}
+\end{equation}
+Supposing that we have a big enough number of slits $N$ that we can approximate $\Delta\theta<\epsilon$, using the equation for primary maxima that we found before and differentiating with respect to $\lambda$ we have that, given the minimal difference of two wavelenghts $\Delta\lambda$, their angular separation will be the following
+\begin{equation}
+	\Delta\theta=n\frac{\Delta\lambda}{h}\sec\theta
+	\label{eq:minangsepwldg.fradiff}
+\end{equation}
+Since we already found the minimal angular separation between a peak and a minima, i.e. our diffraction limit for the grating, equating we have
+\begin{equation*}
+	\frac{n}{h}\Delta\lambda\sec\theta=\frac{\lambda}{Nh}\sec\theta\implies\frac{\lambda}{\Delta\lambda}=\frac{nNh}{h}\frac{\sec\theta}{\sec\theta}
+\end{equation*}
+By definition of resolving power $RP$, then 
+\begin{equation}
+	RP=\frac{\lambda}{\Delta\lambda}=nN
+	\label{eq:resolvingpowergrating.fradiff}
+\end{equation}
+This simple solution, clearly shows the power of using diffraction gratings. Their resolving power is directly proportional to the fringe order $n$ and to the number of slits in the grating $N$.
+\subsubsection{Types of Gratings}
+There are two major categories of gratings
+\begin{itemize}
+\item Transmission gratings (transparent)
+\item Reflection gratings (metallic)
+\end{itemize}
+They're both created by incising grooves on the chosen material. A typical grating usually has a groove density of $600\mathrm{grooves/mm}$ over $10$cm of length. Thus, the theoretical RP of this grating is $RP_T\simeq60000 n$. Practically, due to absorption and other non conservative effects the experimental RP is around $90\%$ the theoretical RP. The shape of the grooves is also important, e.g. if the grooves are sawtooth shaped, it's possible to make light appear at only one order $n$, increasing the efficiency of the grating. The essential requirement is to have grooves distanced by a fraction of wavelenght. Cheaper replicas can be built by plastic molding.\\
+Reflection gratings are usually made plane or concave, where concave reflection gratings make sure that light is precisely collimated.
+\section{Fresnel Diffraction}
 \section{Fourier Theory of Diffraction}
 \subsection{Apodization}
 \subsection{Spatial Filtering}
