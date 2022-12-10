@@ -1,6 +1,9 @@
 # Spicy Physics
 So here we are bois, this is the final publication of my work. I hope you'll like it.
 
+### UPDATE 10/12/2022
+Adding handwritten digital notes to the bunch, updating them with time together with the sources. Obviously the sources will be behind the handwritten notes. At this exact commit the pdf files end when the handwritten notes start. Enjoy!
+
 ### UPDATE 05/04/2022 
 I've begun developing the part of optics in electromagnetism.tex, it will need time but I'm pushing updates every time I write something new. I'm also studying for an exam in that subject so expect to see a lot of updates on that. The part on relativistic EM will be published sometime in the future when I'll manage to get some time, in the meanwhile enjoy those before I decide I fucking hate that part and I gotta rewrite it all in a single night. I'm open for suggestions or resources, if you have them.
 
