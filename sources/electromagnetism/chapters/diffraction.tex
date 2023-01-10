@@ -407,8 +407,133 @@ There are two major categories of gratings
 They're both created by incising grooves on the chosen material. A typical grating usually has a groove density of $600\mathrm{grooves/mm}$ over $10$cm of length. Thus, the theoretical RP of this grating is $RP_T\simeq60000 n$. Practically, due to absorption and other non conservative effects the experimental RP is around $90\%$ the theoretical RP. The shape of the grooves is also important, e.g. if the grooves are sawtooth shaped, it's possible to make light appear at only one order $n$, increasing the efficiency of the grating. The essential requirement is to have grooves distanced by a fraction of wavelenght. Cheaper replicas can be built by plastic molding.\\
 Reflection gratings are usually made plane or concave, where concave reflection gratings make sure that light is precisely collimated.
 \section{Fresnel Diffraction}
+Fresnel's approximation of the Kirchhoff-Fresnel (KF) integral simply evaluates the maximum distance difference of $r, r'$ to the second order, thus evaluating wave curvature. For this reason this approximation is known as the \textit{close field approximation}. Thus, at the aperture we have
+\begin{equation}
+	\Delta\approx\left( \frac{h'}{d'}+\frac{h}{d} \right)\delta+\frac{1}{2}\left( \frac{1}{d'}+\frac{1}{d} \right)\delta^2
+	\label{eq:fresnelapprox.diff}
+\end{equation}
+Due to the close field nature of Fresnel diffraction, it's easily observable in laboratories.
+\subsection{Fresnel Zones}
+Consider a plane aperture illuminated by a point source $S$, and suppose that the surface is perpendicular to the line connecting the source to the measuring point $P$. Consider a third point $Q$ on the surface, distant $R$ from the point where the line between $S$ and $P$ intersects the surface.\\
+Said $O$ the intersection point, we define
+\begin{equation*}
+	\begin{aligned}
+		\abs{SO}&= h'\\
+		\abs{OP}&= h\\
+		\abs{SQ}&= r\\
+		\abs{QP}&= r'
+	\end{aligned}
+\end{equation*}
+Thus, as before
+\begin{equation*}
+	r+r'=\sqrt{h^2+R^2}+\sqrt{h`^2+R^2}\approx h+h'+\frac{1}{2}\left( \frac{1}{h}+\frac{1}{h'} \right)R^2
+\end{equation*}
+Suppose now that we draw a sequence of values of $R$ and therefore multiple points $Q$ such that the difference of $r+r'$ that we'll indicate with $\Delta$, between a value and its successive is exactly
+\begin{equation*}
+	\Delta_{n, n+1}=\frac{1}{2}\lambda
+\end{equation*}
+By definition then
+\begin{equation*}
+	\Delta_{n, n+1}=\frac{1}{2}\left( \frac{1}{h}+\frac{1}{h'} \right)\left( R^2_{n+1}-R_n^2 \right)=\frac{1}{2}\lambda
+\end{equation*}
+Thus, evaluating everything, we have
+\begin{equation}
+	R^2_{n+1}-R^2_{n}=\lambda\left( \frac{1}{h}+\frac{1}{h'} \right)^{-1}=\lambda f
+	\label{eq:aperturefocallength.diff}
+\end{equation}
+Where $f$ is the aperture's ``focal length''. Noting that $R_0=0$, we get $R_1=\sqrt{\lambda f}$, and via induction, we get
+\begin{equation}
+	R_n=\sqrt{n\lambda f}
+	\label{eq:fresnelzones.diff}
+\end{equation}
+These radii define what are known as \textit{Fresnel zones}. Note that also, the area of these zones is constant. Said $A_n$ the area of the $n-$th zone we have
+\begin{equation}
+	A_n=\pi\left( R_{n+1}^2-R_n^2 \right)=\pi\lambda f=\pi R_1^2
+	\label{eq:fresnelzonesarea.diff}
+\end{equation}
+These zones are also quite small, in the optical range, i.e. $\lambda\approx600$ nm and $h=h'\approx60$ cm we get $R_1\approx4$ mm, note also that $R_n\propto\sqrt{n}$, therefore this radius grows relatively slowly. Just imagine that $R_{100}\approx4$ cm in this case.\\
+Noting that we can consider the total disturbance on the measuring point as the sum of the disturbances of the single zone, noting that for Babinet's principle there is a phase inversion of $\pi$, then, if $\Sigma$ contains $N$ zones we have
+\begin{equation}
+	\abs{\psi}=\sum^N_{n=1}(-1)^{n+1}\abs{\psi_n}
+	\label{eq:fresneldisturbance.diff}
+\end{equation}
+Therefore, if the zones contained are exactly $N$, we have
+\begin{equation*}
+	\abs{\psi_p}=\begin{dcases}
+		0&N\mod2=0\\
+		\sim\abs{\psi_1}&N\mod2=1
+	\end{dcases}
+\end{equation*}
+Considering also the obliquity factor in the KF integral we also must have
+\begin{equation*}
+	\abs{\psi_n}\le\abs{\psi_{n+1}}
+\end{equation*}
+Therefore, if we consider the case of no aperture ($\Sigma=\R^2$), the sum can be considered as an infinite sum
+\begin{equation}
+	\abs{\psi_p}=\sum_{n=1}^\infty(-1)^{n+1}\abs{\psi_n}=\frac{1}{2}\abs{\psi_1}+\left( \frac{1}{2}\abs{\psi_1}-\abs{\psi_2}-\frac{1}{2}\abs{\psi_3} \right)+\left( \frac{1}{2}\abs{\psi_3}-\abs{\psi_4}-\frac{1}{2}\abs{\psi_5} \right)+\cdots
+	\label{eq:infinitezones.diff}
+\end{equation}
+Therefore, considering that also $\abs{\psi_n}\approx\abs{\psi_{n+1}}$ for big values of $n$, the contributes inside the parentheses cancel out, therefore
+\begin{equation*}
+	\abs{\psi_p}=\frac{1}{2}\abs{\psi_1}
+\end{equation*}
+This indicates how a bright spot can be seen in the center. This is also true in general due to the relation of absolute values of adjacent zones, proving a conundrum posed by experimental evaluation, which have shown the existence of a bright central spot which wasn't explained by Fraunhofer diffraction. This spot is known as \textit{Arago's spot}.\\
+Another consideration can be made by evaluating the positioning of an object in front of the object. Using Babinet's principle again, we can evaluate the behavior of the shadow when the diffracting object is either offset or centered.\\
+When it's offset from the center, $\psi_p$ hardly changes, and higher contributions go quickly to zero, while if the object is centered, terms diminish at both ends and inside the shadow zone we get $I\approx0$, which it's what we usually expect from a shadow.\\
+\subsubsection{Zone Plates}
+This behavior can be ``harvested'' by using what's known as \textit{zone plates}, Physical objects which block specific contributions from Fresnel zones. As an example we can build a Fresnel plate which blocks only even zones, giving therefore
+\begin{equation}
+	\abs{\psi_p}=\sum_{n=1}^N\abs{\psi_{2n+1}}
+	\label{eq:zoneplatelens.diff}
+\end{equation}
+Which makes the plate act as a lens. This lens, if we evaluate its focal length $f$ as 
+\begin{equation*}
+	f=\frac{R_1^2}{\lambda}
+\end{equation*}
+We see that it behaves as a \emph{very} chromatic lens.
+\subsection{Rectangular Aperture}
+For evaluating the problem of diffraction from a rectangular aperture in close field regimes, we have in the coordinates $x, y$ of the rectangular aperture we have
+\begin{equation*}
+	R^2=x^2+y^2
+\end{equation*}
+Therefore
+\begin{equation*}
+	r+r'=h+h'+\frac{1}{2f}\left( x^2+y^2 \right)
+\end{equation*}
+The approximations applied to the KF integral are the following:
+\begin{enumerate}
+\item The obliquity is constant and approximately 1 on the aperture
+\item $(rr')^{-1}$ is approximately constant on the aperture
+\end{enumerate}
+Thus, the integral becomes
+\begin{equation}
+	\psi_P=C\iint_\Sigma e^{\frac{ik}{2f}\left( x^2+y^2 \right)}\dd^2s=C\int_{x_1}^{x_2}e^{ik\frac{x^2}{2f}}\dd^{}{x}\int_{y_1}^{y_2}e^{ik\frac{y^2}{2f}}\dd^{}{y}
+	\label{eq:fresnelkfsquare.diff}
+\end{equation}
+The integrals are better visualized with the following substitutions:
+\begin{equation*}
+	\left\{\begin{aligned}
+		u&= x\sqrt{\frac{k}{f\pi}}\\
+		v&= y\sqrt{\frac{k}{f\pi}}\\
+		\psi_0&= \frac{Cf\pi}{k}
+	\end{aligned}\right.
+\end{equation*}
+The result is the following integral
+\begin{equation}
+	\psi_P=\psi_0\int_{u_1}^{u_2}e^{\frac{i\pi u^2}{2}}\dd{u}\int_{v_1}^{v_2}e^{\frac{i\pi v^2}{2}}\dd^{}{v}
+	\label{eq:integralsquarefr.diff}
+\end{equation}
+The previous two integrals are known as \textit{Fresnel integrals}. Expanding the complex exponentials, we could write for each coordinate $u, v$
+\begin{equation}
+	\int_{0}^{s}e^{\frac{i\pi z^2}{2}}\dd^{}{z}=\int_{0}^{s}\cos\left( \frac{\pi z^2}{2} \right)\dd^{}{z}+i\int_{0}^{s}\sin\left( \frac{\pi z^2}{2} \right)\dd^{}{z}=C(s)+iS(s)
+	\label{eq:fresnelintegrals.diff}
+\end{equation}
+These two integral functions define a spiral, known as the \textit{Cornu spiral}. The solution to the square aperture problem will be a piece of the spiral corresponding to an appropriate interval $\Delta s$.\\
+\subsubsection{Single Slit and Straightedge}
+<++>
 \section{Fourier Theory of Diffraction}
 \subsection{Apodization}
 \subsection{Spatial Filtering}
 \subsection{Phase Gratings}
 \end{document}
+%08/01/2023 2h15m
