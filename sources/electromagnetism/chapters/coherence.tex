@@ -24,7 +24,7 @@ This definition comes up directly when we evaluate the irradiance of the measure
 \begin{equation*}
 	I=\sqrt{\frac{\mu}{\epsilon}}E^2=\sqrt{\frac{\epsilon}{\mu}}\left[ E_1^2+E_2^2+2\real\left\{ \vec{E}_{(1)}\cdot\vec{E}_{(2)} \right\} \right]
 \end{equation*}
-Remembering that $\sqrt{\epsilon/\mu}=nZ_0^{-1}$, and rewriting $nE_i^2/Z_0=I_i$ we have that the total intensity measured is (in the general case with two different waves)
+Remembering that $\sqrt{\epsilon/\mu}=nZ_0^{-1}$, and rewriting $nE_i^2/Z_0=I_i$ we have that the total irradiance measured is (in the general case with two different waves)
 \begin{equation}
 	I=I_1+I_2+2\sqrt{\frac{\mu}{\epsilon}I_1I_2}\cos\left( \vec{k}_1\cdot\vec{r}-\vec{k}_2\cdot\vec{r}+\phi_1-\phi_2 \right)
 	\label{eq:intwavesI.int}
@@ -35,7 +35,7 @@ The last term, which depends on the root of the product of the intensities of th
 	\label{eq:Deltar.int}
 \end{equation}
 This last interference term is clearly dependent on the polarization of the two waves. In fact, it can be exactly zero when the scalar product of the two fields of the single waves is zero. I.e. when their polarization is orthogonal.\\
-In laboratories, for obvious reasons we never measure the instantaneous intensity, but an average. Also, the interfering waves must not have the same frequencies and can come from different sources, therefore the total intensity we measure will instead be described by the following equation
+In laboratories, for obvious reasons we never measure the instantaneous irradiance, but an average. Also, the interfering waves must not have the same frequencies and can come from different sources, therefore the total irradiance we measure will instead be described by the following equation
 \begin{equation}
 	I=\expval{I}=\lim_{T\to\infty}\frac{1}{T}\sqrt{\frac{\epsilon}{\mu}}\int_{0}^{T}\left( \vec{E}_{(1)}+\vec{E}_{(2)} \right)\cdot\adj{(\vec{E}_{(1)}+\vec{E}_{(2)})}\dd^{}{t}
 	\label{eq:iexpval.int}
@@ -66,7 +66,7 @@ Now, since the two incoming wavelets are not necessarily parallel, we can write 
 \begin{equation*}
 	\vec{E}_1\cdot\vec{E}_2=\sqrt{I_1I_2}\cos\delta
 \end{equation*}
-And therefore, in general, the intensity will be
+And therefore, in general, the irradiance will be
 \begin{equation}
 	I=I_1+I_2+2\sqrt{I_1I_2}\cos\delta\cos\Delta
 	\label{eq:youngintesity.yint}
@@ -94,7 +94,7 @@ I.e.
 \begin{equation*}
 	I_t=4I_0\cos^2\left( \frac{\pi d}{\lambda_0}\frac{x'}{L} \right)
 \end{equation*}
-Then, the maxima and minima of the intensity measured on the screen can be described all in terms of wavelength and distance from the screen, i.e.
+Then, the maxima and minima of the irradiance measured on the screen can be described all in terms of wavelength and distance from the screen, i.e.
 \begin{equation}
 	I=\begin{dcases}
 		I_{max}&\Delta=\frac{m\lambda_0}{d}\\
@@ -110,7 +110,7 @@ Said $d_i$ the optical path traveled by the two waves we have that
 \begin{equation*}
 	2d=2(d_1-d_2)
 \end{equation*}
-Then, the total intensity at the receiver will be
+Then, the total irradiance at the receiver will be
 \begin{equation}
 	I=4I_0\cos^2\left( \frac{\pi}{\lambda}2d \right)
 	\label{eq:michelsoninttot.mint}
@@ -143,7 +143,7 @@ By definition of what we said so far, then
 	\tau=\frac{1}{u}\abs{l_2-l_1}=\frac{\Delta l}{u}
 	\label{eq:taudef.pcorr}
 \end{equation}
-And, therefore the intensity at the point R will then be defined by the usual equation
+And, therefore the irradiance at the point R will then be defined by the usual equation
 \begin{equation*}
 	I=I_1+I_2+2Z\expval{\real\left\{ \vec{E}_1(t)\cdot\adj{\vec{E}}_2(t+\tau) \right\}}
 \end{equation*}
@@ -196,7 +196,7 @@ Therefore, the range of interference is exactly in the set
 	\label{eq:interfrange.pcorr}
 \end{equation}
 \begin{dfn}[Visibility]
-	Another useful definition is the \textit{visibility of fringes} $\mathcal{V}$, a constant comprised between $0,1$, defined as the ratio of the difference of intensity between the peaks and the shadows of the interference pattern and the sum of the two intensities
+	Another useful definition is the \textit{visibility of fringes} $\mathcal{V}$, a constant comprised between $0,1$, defined as the ratio of the difference of irradiance between the peaks and the shadows of the interference pattern and the sum of the two intensities
 	\begin{equation}
 		V=\frac{I_{max}-I_{min}}{I_{max}+I_{min}}=\frac{2\sqrt{I_1I_2}\abs{\gamma_{12}(\tau)}}{I_1+I_2}
 		\label{eq:visibility.pcorr}
@@ -438,7 +438,7 @@ Deriving with respect to delta then
 \begin{equation*}
 	\pdv{I_R}{\delta}=I_0F\frac{\sin\left( \frac{\delta}{2} \right)\cos\left( \frac{\delta}{2} \right)}{\left( 1+F\sin^2\left( \frac{\delta}{2} \right)^2 \right)}=0
 \end{equation*}
-Which implies that the maxima and minima of the intensity are at the following values of $\delta$
+Which implies that the maxima and minima of the irradiance are at the following values of $\delta$
 \begin{equation}
 	\begin{dcases}
 		\delta_m=2m\pi&max\left\{ R \right\}\\
@@ -456,7 +456,7 @@ Noting the dependence on the frequency of $\delta$, it's clear that the slab is 
 		\omega_m=\frac{m\pi c}{dn}
 	\end{aligned}
 \end{equation*}
-And that, developing the transmission intensity around these peaks, i.e. at $\omega-\omega_m$, we have
+And that, developing the transmission irradiance around these peaks, i.e. at $\omega-\omega_m$, we have
 \begin{equation}
 	I_T=I_0T^2\frac{1}{T^2+4(1-T)\sin^2\left( \frac{dm}{\pi c}(\omega-\omega_m) \right)}\approxeq I_0\frac{\frac{\sigma^2}{4}}{\frac{\sigma^2}{4}+(\omega-\omega_m)^2}
 	\label{eq:transintdifffreq.mbi}
@@ -516,7 +516,7 @@ Noting that $r^2<1$ and that $r^2=R, \ t^2=T$, we have
 	\label{eq:etitout.fpi}
 \end{equation}
 As with the laser cavity we have that $\abs{1-Re^{i\delta}}^2=(1-R)^2(1+F\sin^2(\delta/2))$, with $F$ being the finesse of the instrument, defined in \eqref{eq:finesse.mbi}.\\
-Considered also the absorbment of some of the intensity, i.e. noting that $R+T+A=1$, with $A$ being the absorption coefficient, and considering also that $r\in\Cf$ will bring a phase shift itself, precisely, for each reflection some value $\delta_r/2\in[0, 2\pi)$ we get that, writing $\Delta=\delta+\delta_r$ that firstly
+Considered also the absorbment of some of the irradiance, i.e. noting that $R+T+A=1$, with $A$ being the absorption coefficient, and considering also that $r\in\Cf$ will bring a phase shift itself, precisely, for each reflection some value $\delta_r/2\in[0, 2\pi)$ we get that, writing $\Delta=\delta+\delta_r$ that firstly
 \begin{equation*}
 	\frac{T^2}{(1-R)^2}=\left( \frac{1-R-A}{1-R} \right)^2
 \end{equation*}
@@ -540,7 +540,7 @@ These instruments are used to measure the wavelength of a source with high preci
 \subsubsection{Resolution Power of Fabry-Perot Instruments}
 In order to actually measure the wavelenghts (or frequencies) of the broad source in question, we gotta understand what it means to \textit{resolve} two lines in the interference pattern obtained.\\
 For a simpler evaluation, consider $A=\delta_r=0$, and call $\Gamma$ the line width at half height at the peak. Consider two lines, one at order $m$ and one at order $m+1$.\\
-In order to call the two peaks resolved, we employ \textit{Taylor's criterion}, which states that two lines are resolved if they, at maximum, intersecate at the half-height point, where the intensity is $I_0/2$. Therefore if $I=I_0/2$ at the half height point, we have then, using \eqref{eq:peakint.fpi}
+In order to call the two peaks resolved, we employ \textit{Taylor's criterion}, which states that two lines are resolved if they, at maximum, intersecate at the half-height point, where the irradiance is $I_0/2$. Therefore if $I=I_0/2$ at the half height point, we have then, using \eqref{eq:peakint.fpi}
 \begin{equation*}
 	\delta=2\pi m+\frac{\Gamma}{2}=\Delta
 \end{equation*}

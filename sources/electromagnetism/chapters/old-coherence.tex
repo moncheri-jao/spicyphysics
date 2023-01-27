@@ -19,7 +19,7 @@ Where $\phi_1,\phi_2\in[0,2\pi]$ are two general phase factors.\\
 	\end{equation}
 	Where $k\in\R$ is a constant real number.
 \end{dfn}
-Getting back to our interference pattern, we have that the total field that will be measured must be a linear superposition of these two general field. Therefore, the measured total intensity $I$ is, (considering two linearly polarized waves, for ease of calculation))
+Getting back to our interference pattern, we have that the total field that will be measured must be a linear superposition of these two general field. Therefore, the measured total irradiance $I$ is, (considering two linearly polarized waves, for ease of calculation))
 \begin{equation*}
 	I=\norm{E}^2=\left( E_{(1)}^i+E_{(2)}^i \right)\cc{\left( E^{(1)}_i+E^{(2)}_i \right)}=E_1^2+E_2^2+2\real{\left(E_{(1)}^i\cc{E^{(2)}_i}\right)}
 \end{equation*}
@@ -27,12 +27,12 @@ Evaluating the third addendum on the previous expression, using the general wave
 \begin{equation*}
 	2\real{\left(E_{(1)}^i\cc{E_i^{(2)}}\right)}=2E^i_1E_i^2\real{e^{i(k_1^i-k_2^i)r_i+i(\phi_1-\phi_2)}}
 \end{equation*}
-Evaluating the right hand side of the previous equation, we have that the intensity will in general be calculated (for linearly polarized waves) as
+Evaluating the right hand side of the previous equation, we have that the irradiance will in general be calculated (for linearly polarized waves) as
 \begin{equation}
 	I=I_1+I_2+2E^i_1E_i^2\cos\left[ \left( k_1^i-k_2^i \right)r_i+i(\phi_1-\phi_2) \right]
-	\label{eq:intensityinterference}
+	\label{eq:irradianceinterference}
 \end{equation}
-Where $I_1$ and $I_2$ are the partial intensities of the single waves. The third term, is known as the \textit{interference term}, which, since it's comprised between $[-1,1]$, makes the intensity oscillate between $I_1+I_2\le I \le I_1+I_2$ depending on
+Where $I_1$ and $I_2$ are the partial intensities of the single waves. The third term, is known as the \textit{interference term}, which, since it's comprised between $[-1,1]$, makes the irradiance oscillate between $I_1+I_2\le I \le I_1+I_2$ depending on
 \begin{equation}
 	\theta(r^i)=i(k_1^i-k_2^i)r_i+i(\phi_1-\phi_2)
 	\label{eq:cosinterference}
@@ -46,14 +46,14 @@ Interference fringes can be obtained also through spatial variations, since the 
 Interference fringes also cannot appear in the case of two orthogonally polarized waves, because by definition their scalar product is zero, eliminating the interference term, independently from their mutual coherence.
 \subsection{Young's Double Slit Experiment}
 In 1802 dr. Young et al. managed to build an experiment which managed to show the interference pattern caused by the interference of two coherent electromagnetic waves.\\
-The experimental setup is pretty simple, a coherent source (point-like) $S$ emits a single electromagnetic wave, which passes through two slits $S_1$ and $S_2$, placing a detector (in case of light a simple wall is enough), it's possible to observe regular peaks of intensity.\\
+The experimental setup is pretty simple, a coherent source (point-like) $S$ emits a single electromagnetic wave, which passes through two slits $S_1$ and $S_2$, placing a detector (in case of light a simple wall is enough), it's possible to observe regular peaks of irradiance.\\
 Theoretically it all depends on the phase difference between the two waves that come out of each slit.\\
 Taken a random point $P$ on the screen, we can say that it will be at a distance $d_1$ from $S_1$ and $d_2$ from $S_2$. The phase difference will obviously depend on the difference of the two distances from the chosen point.\\
-For convenience, we search for the points of max intensity, (i.e., when $\cos\theta(r)=1$ and the interference term is the maximum possible). Due to coherence between the two fields, we can say without any problem that
+For convenience, we search for the points of max irradiance, (i.e., when $\cos\theta(r)=1$ and the interference term is the maximum possible). Due to coherence between the two fields, we can say without any problem that
 \begin{equation*}
 	\theta(r)=k^ir_i=k_0(d_2-d_1)
 \end{equation*}
-Hence, our intensity minimums will be 
+Hence, our irradiance minimums will be 
 \begin{equation*}
 	\max\left( I \right)=\left. I\right|_{\cos\theta(r)=1}\implies k_0(d_2-d_1)=\pm2n\pi,\quad n\in\N
 \end{equation*}
@@ -62,12 +62,12 @@ Remembering that $k_0=2\pi\lambda^{-1}$, we get the final simple result
 	\abs{d_2-d_1}=n\lambda
 	\label{eq:interfdist}
 \end{equation}
-I.e., the distance between the intensity peaks is strictly tied to the distance between the slits and the wavelength of the electromagnetic wave, where the successive peaks will always be at integer multiples of the wavelenght.\\
+I.e., the distance between the irradiance peaks is strictly tied to the distance between the slits and the wavelength of the electromagnetic wave, where the successive peaks will always be at integer multiples of the wavelenght.\\
 In general, for two slits distant $h$ between each other, chosen a reference frame for which the origin is the middle point between the two slits and the screen is distant $x$ from this, taken a general point $(x,y)$ on it we will have that
 \begin{equation*}
 	\abs{d_2-d_1}=\sqrt{x^2+\left( y+\frac{h}{2} \right)^2}+\sqrt{x^2+\left( y-\frac{h}{2} \right)^2}
 \end{equation*}
-Therefore, solving the previous equation, searching for the intensity peaks, we have, after a second order approximation that
+Therefore, solving the previous equation, searching for the irradiance peaks, we have, after a second order approximation that
 \begin{equation*}
 	\abs{d_2-d_1}\approx x\left( 1+\frac{1}{2x^2}\left( y+\frac{h}{2} \right)^2 \right)-x\left( 1+\frac{1}{2x^2}\left( y-\frac{h}{2} \right)^2 \right)\approx n\lambda
 \end{equation*}
@@ -83,7 +83,7 @@ It's known as a \emph{division of amplitude} interferometer, for the simple reas
 For building up this interferometer, the setup is a source of coherent electromagnetic waves, a beam splitter, two mirrors and a detector. Placed the beam splitter at the center of the setup, with one of the two mirrors $M_2$ placed at a distance $d_2$ from the splitter, and the other one, $M_1$ at a distance $d_1$ on the other transmission axis of the splitter. Opposite to the mirror there will be our detector $D$, which will measure the interference fringes caused by the interaction of the two beams when they end up interacting again before the reflection at the beam splitter.\\
 The observed fringes directly depend on the optical path of the two mirrors, which is modified by the simple motion of one of the two.\\
 This setup is equivalent to having two point-like sources distant $d=\abs{d_2-d_1}$ from each other, interfering and reaching a detector.\\
-Due to the two waves being ideally identical due to the inner workings of the beam splitter, (i.e., in this case $k_1=k_2$) the measured intensity at the detector will depend only on the phase shift induced by the optical distance traveled, and 
+Due to the two waves being ideally identical due to the inner workings of the beam splitter, (i.e., in this case $k_1=k_2$) the measured irradiance at the detector will depend only on the phase shift induced by the optical distance traveled, and 
 \begin{equation*}
 	I=I_1+I_2+2\sqrt{I_1I_2}\cos\left( \phi_1-\phi_2 \right)
 \end{equation*}
@@ -92,7 +92,7 @@ Again, the interference peaks will be when $\cos\left( \phi_1-\phi_2 \right)=1$,
 	\phi_1-\phi_2=k_0d=\frac{2\pi d}{\lambda}
 	\label{eq:interferencepeaksmichmorley}
 \end{equation}
-With intensity
+With irradiance
 \begin{equation}
 	I=I_1+I_2+2\sqrt{I_1I_2}
 	\label{eq:peakintmichmorley}
@@ -416,7 +416,7 @@ At the limit of infinite reflection, or, in practical terms approximating for ma
 	E_T=E_0t^2\sum_{j=0}^{\infty}r^{2j}e^{ij\delta}=\frac{E_0t^2}{1-r^2e^{i\delta}}
 	\label{eq:totalamplitudembi}
 \end{equation}
-In terms of intensity $I_T=\abs{E_T}^2$, and remembering that in general $r,t\in\Cf$, we have
+In terms of irradiance $I_T=\abs{E_T}^2$, and remembering that in general $r,t\in\Cf$, we have
 \begin{equation}
 	I_T=\abs{E_T}^2=\frac{I_0\abs{t}^4}{\abs{1-r^2e^{i\delta}}^2}
 	\label{eq:intmbibefore}
@@ -442,12 +442,12 @@ Defined the \emph{coefficient of Finesse} $F$ as
 	F=\frac{4R}{(1-R)^2}
 	\label{eq:finessecoefficient}
 \end{equation}
-We have that finally the total intensity of the different beams is 
+We have that finally the total irradiance of the different beams is 
 \begin{equation}
 	I_T=\frac{I_0T^2}{(1-R)^2}\frac{1}{1+F\sin^2\left( \frac{\Delta}{2} \right)}
-	\label{eq:intensityairymbi}
+	\label{eq:irradianceairymbi}
 \end{equation}
-The second factor on the product is known as Airy's function, which will define (up to an intensity coefficient) the interference lines observed from the convergence of all these beams. The physical meaning of the finesse coefficient then can be seen as a value defining the sharpness of the fringes. Note that, also, if $\Delta/2$ is a whole multiple of $\pi$, Airy's function will always be equal to one for all values of $F$. Keep this in mind since it will be an useful concept for when we'll treat the Fabry-Pérot interferometer and the concept of \emph{free spectral range} of a Fabry-Pérot interferometer (or etalon, depending on the experimental configuration).\\
+The second factor on the product is known as Airy's function, which will define (up to an irradiance coefficient) the interference lines observed from the convergence of all these beams. The physical meaning of the finesse coefficient then can be seen as a value defining the sharpness of the fringes. Note that, also, if $\Delta/2$ is a whole multiple of $\pi$, Airy's function will always be equal to one for all values of $F$. Keep this in mind since it will be an useful concept for when we'll treat the Fabry-Pérot interferometer and the concept of \emph{free spectral range} of a Fabry-Pérot interferometer (or etalon, depending on the experimental configuration).\\
 As it's clear from the shape of the function and the previous observation, we have that the condition for having the maximum of Airy's function is then
 \begin{equation*}
 	\frac{\Delta_{max}}{2}=N\pi
@@ -471,7 +471,7 @@ All the previous derivations hold if and only if we define the transmittance and
 		R&= \abs{r_1}\abs{r_2}=\sqrt{R_1R_2}
 	\end{aligned}
 \end{equation}
-Going back to our study of the intensity function for multi-beam interference, defined $\mathcal{I}=I_T/I_0$ then we have that the maximum and minimum values for intensity will be the following
+Going back to our study of the irradiance function for multi-beam interference, defined $\mathcal{I}=I_T/I_0$ then we have that the maximum and minimum values for irradiance will be the following
 \begin{equation}
 	\begin{aligned}
 		\mathcal{I}_{max}&= \frac{T^2}{(1-R)^2}\\
@@ -530,10 +530,10 @@ We continue by defining a fundamental concept in Fabry-Pérot instruments, the \
 \subsection{Resolution of Fabry-Pérot Instruments}
 We will now treat the resolution of interference fringes with Fabry-Pérot instruments.\\
 For simplicity in calculation we will consider a non-monochromatic wave for which the spectrum is composed by two exact frequencies $\omega,\omega_1$, and this spectrum will be studied with a Fabry-Pérot.\\
-Each frequency will contribute to the total intensity, therefore the fringe intensity pattern will be given by the sum of the two. Assuming that the initial intensity $I_0$ is the same for both, we get the total intensity as the sum of the two Airy functions
+Each frequency will contribute to the total irradiance, therefore the fringe irradiance pattern will be given by the sum of the two. Assuming that the initial irradiance $I_0$ is the same for both, we get the total irradiance as the sum of the two Airy functions
 \begin{equation}
 	I_T=\frac{I_0}{1+F\sin^2\left( \frac{\Delta}{2} \right)}+\frac{I_0}{1+F\sin^2\left( \frac{\Delta_1}{2} \right)}
-	\label{eq:intensityrfpi}
+	\label{eq:irradiancerfpi}
 \end{equation}
 As usual, the phase $\Delta$ is
 \begin{equation*}
@@ -546,8 +546,8 @@ Which, if we assume an almost-normal incidence of the electromagnetic wave to th
 		\Delta_1&= \frac{2\omega_1d}{c}+\delta_r+\order{\theta^3}
 	\end{aligned}
 \end{equation*}
-And here comes in our help what's known as Taylor's criterion, which states that two \textit{equal} lines are resolved if and only if the individual curves cross at the point of half intensity of each, for which then the intensity at the saddle is equal to exactly twice the initial intensity.\\
-Since we're exactly smack in the middle between the two single peaks, considered the range between the two $\Delta-\Delta_1$, the total intensity at this saddle will be the usual Airy function times $2I_0$ this time, considered at half range, i.e. at $(\Delta-\Delta_1)/2$, i.e.
+And here comes in our help what's known as Taylor's criterion, which states that two \textit{equal} lines are resolved if and only if the individual curves cross at the point of half irradiance of each, for which then the irradiance at the saddle is equal to exactly twice the initial irradiance.\\
+Since we're exactly smack in the middle between the two single peaks, considered the range between the two $\Delta-\Delta_1$, the total irradiance at this saddle will be the usual Airy function times $2I_0$ this time, considered at half range, i.e. at $(\Delta-\Delta_1)/2$, i.e.
 \begin{equation}
 	\left. I_T \right|_{\frac{\Delta-\Delta_1}{2}}=\frac{2I_0}{1+F\sin^2\left( \frac{\Delta-\Delta_1}{4} \right)}=I_0
 	\label{eq:saddleintfpir}
@@ -588,6 +588,6 @@ We also give a new definition for two elements often used when treating Fabry-P�
 		\label{eq:rpfcrossover}
 	\end{equation}
 	I.e., it's directly proportional to the reflecting finesse and the order of interference. Clearly, the resolving power can be made arbitrarily big simply by choosing higher interference orders. Note that by definition of N, this can be accomplished by increasing the mirror separation, which unfortunately reduces the free spectral range of the instrument.\\
-	Another idea for increasing the $RP$ is by increasing $\mathcal{F}$, bringing the reflectance closer and closer to $1$. There's a clear limit to this, in fact it's physically limited by the absorption of the used material, which reduces the intensity of the transmitted fringes.
+	Another idea for increasing the $RP$ is by increasing $\mathcal{F}$, bringing the reflectance closer and closer to $1$. There's a clear limit to this, in fact it's physically limited by the absorption of the used material, which reduces the irradiance of the transmitted fringes.
 \end{dfn}
 \end{document}

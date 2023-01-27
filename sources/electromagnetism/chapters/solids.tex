@@ -1,9 +1,1087 @@
 \documentclass[../electromagnetism.tex]{subfiles}
+\DeclareMathOperator{\cri}{\mathcal{N}}
 \begin{document}
 \section{The General Wave Equation}
+\subsection{Macroscopic Fields}
+The electromagnetic field at any given point of space is described by 4 quantities
+\begin{enumerate}
+\item $\dv{Q}{V}=\rho$, the volumetric density of charge
+\item $\dv{\vec{p}}{V}=\vec{P}$ dielectric polarization, also known as shearing polarization
+\item $\dv{\vec{m}}{V}=\vec{M}$ magnetization
+\item $\dv{\vec{j}}{V}+\frac{1}{c}\dv{V}\pdv{\vec{E}}{t}=\vec{J}$ total current density
+\end{enumerate}
+All these quantities can be considered as smooth with respect to the microscopic variations that we have due to the discrete composition of matter.\\
+Noting how the polarization is tied to the polarization charge density, and the magnetization is tied to the magnetization currents, we can modify Maxwell's equations as follows, where we will indicate the polarization charge density $\rho_P$ and the magnetization currents as $\vec{J}_m$, the flux of the polarization charges is here indicated with $\Phi_P$
+\begin{equation}
+	\left\{\begin{aligned}
+	\nabla\cdot\vec{E}&= \frac{1}{\epsilon_0}\left( \rho+\rho_P \right)\\
+	\nabla\times\vec{E}&= -\mu_0\pdv{\vec{B}}{t}\\
+	\nabla\cdot\vec{B}&= 0\\
+	\nabla\times\vec{B}&= \mu_0\vec{J}+\mu_0\vec{J}_m+\epsilon_0\mu_0\pdv{\vec{E}}{t}+\mu_0\dv{\Phi_P}{t}
+	\end{aligned}\right.
+	\label{eq:mwgeneral.sol}
+\end{equation}
+We then substitute the following two relations for $\rho_P, \vec{J}_m$
+\begin{equation}
+	\begin{aligned}
+		\rho_P&= -\nabla\cdot\vec{P}\\
+		\vec{J}_m&= \nabla\times\vec{M}
+	\end{aligned}
+	\label{eq:polmagrel.sol}
+\end{equation}
+Therefore, the equations become
+\begin{equation}
+	\left\{\begin{aligned}
+			\nabla\cdot\left( \vec{E}+\frac{1}{\epsilon_0}\vec{P} \right)&= \frac{\rho}{\epsilon_0}\\
+			\nabla\times\vec{E}&= -\mu_0\pdv{\vec{H}}{t}-\pdv{\vec{M}}{t}\\
+			\nabla\cdot\left( \vec{H}+\vec{M} \right)&= 0\\
+			\nabla\times\left( \mu_0\vec{H}+\vec{M} \right)&= \vec{J}+\pdv{t}\left( \epsilon_0\vec{E}+\vec{P} \right)
+	\end{aligned}\right.
+	\label{eq:modifiedmw.sol}
+\end{equation}
+Note that we will treat, for now, only linear media, therefore we can define two new quantities, i.e. the scalars $\epsilon=\epsilon_0(1+\chi_e)$ and $\mu=\mu_0(1+\chi_m)$.\\
+Remembering the relations between the vector fields $\vec{D},\vec{H}$ and the vector fields $\vec{E},\vec{B}$ we have, for linear media
+\begin{equation}
+	\begin{aligned}
+		\vec{D}&= \epsilon\vec{E}=\epsilon_0\vec{E}+\vec{P}\\
+		\vec{B}&= \mu\vec{H}=\mu_0\vec{H}+\vec{M}
+	\end{aligned}
+	\label{eq:bhedrel.sol}
+\end{equation}
+In general these relations are not scalar, but of tensorial nature, where the (electric/magnetic) permittivity $\chi$ is a rank 2 tensor, as we will see later with crystals.
+\subsection{The Wave Equation in Solids}
+For finding the general wave equation in solids we firstly proceed to understand how do solids work in general.\\
+For a neuter solid, we can assume that it is electrically neutral, therefore we can assume $\rho=0, \vec{M}=0$. Maxwell's equations are therefore modified to the following set of coupled PDEs
+\begin{equation}
+	\left\{\begin{aligned}
+			\epsilon_0\nabla\cdot\vec{E}&= -\nabla\cdot\vec{P}\\
+			\nabla\times\vec{E}&= -\mu_0\pdv{\vec{H}}{t}\\
+			\nabla\cdot\vec{H}&= 0\\
+			\nabla\times\vec{H}&= \vec{J}+\epsilon_0\pdv{\vec{E}}{t}+\pdv{\vec{P}}{t}
+	\end{aligned}\right.
+	\label{eq:mwelectricallyneutral.sol}
+\end{equation}
+Taking the curl of the second equation and the time derivative of the fourth, we get
+\begin{equation}
+	\nabla\times\nabla\times\vec{E}+\frac{1}{c^2}\pdv[2]{\vec{E}}{t}=-\mu_0\pdv{J}{t}-\mu_0\pdv[2]{\vec{P}}{t}
+	\label{eq:genwaveeq1.sol}
+\end{equation}
+Or, using the definition of the d'Alambertian, after applying the vector identity for the double curl
+\begin{equation*}
+	\nabla\left( \nabla\cdot\vec{E} \right)+\square\vec{E}=-\mu_0\pdv{\vec{J}}{t}-\mu_0\pdv[2]{\vec{P}}{t}
+\end{equation*}
+We could insert the first equation inside the first addendum, but we'll limit ourselves to the generic equation \eqref{eq:genwaveeq1.sol}.\\
+In that equation we define the right hand side as the \textit{source terms} for the electromagnetic wave $\vec{E}$. We will approximate the equation further later, noting that matter can be in general divided in two types of media (for what interests us right now)
+\begin{enumerate}
+\item Dielectric media (nonconducting)
+\item Conducting media
+\end{enumerate}
+\section{Waves in Dielectrics}
+We now begin to analyze the behavior of electromagnetic waves in dielectrics. By definition, dielectrics are non-conducting, therefore microscopically they can be identified with electrons tightly bound to the atoms, and therefore, with no freely moving electrons, we can say $\vec{J}=0$.\\
+The generic wave equation then becomes
+\begin{equation}
+	\nabla\times\nabla\times\vec{E}+\frac{1}{c^2}\pdv[2]{\vec{E}}{t}=-\mu_0\pdv[2]{\vec{P}}{t}
+	\label{eq:genwavedie.diesol}
+\end{equation}
+By definition of $\vec{P}$, we have that applying an electromagnetic field to the body, the electrons and the cores of the atom get displaced in opposite direction due to having opposite charge signs, generating microscopic dipole moment and therefore the polarization $\vec{P}$.\\
+Due to the boundedness of the electrons generating this dipole moment field, we can think that the force exerted on them is elastic. Said $K$ the elastic force constant for this rebound force and used Newton's second law we have that the general force applied is 
+\begin{equation*}
+	\vec{F}=-e\vec{E}=K\vec{r}
+\end{equation*}
+Where $\vec{r}$ is the displacement of the electron from the equilibrium state. We can also say, by definition of the polarization $\vec{P}$ and by the discreteness of the system, that if there are $N$ electrons with charges $-e$, the macroscopic polarization is
+\begin{equation*}
+	\vec{P}_s=Q_T\vec{r}=-Ne\vec{r}
+\end{equation*}
+Note: we're not yet considering dynamic fields, therefore $\vec{P}_s$ is the \textit{static} polarization.\\
+Putting the two equations together and solving for $\vec{r}$ in the first equation, we get the following result
+\begin{equation}
+	\vec{r}=-\frac{e}{K}\vec{E}\implies\vec{P}_s=-\frac{Ne^2}{K}\vec{E}
+	\label{eq:staticpol.diesol}
+\end{equation}
+We now ``turn on'' the time dependence of our wave. Due to the oscillation of $\vec{E}$ we know that $\vec{r}$ will also oscillate, with a damping given from the boundedness of the electrons.\\
+The force equation therefore becomes a \textit{damped harmonic oscillator}
+\begin{equation}
+	\vec{F}=m\dv[2]{\vec{r}}{t}+m\gamma\dv{\vec{r}}{t}+K\vec{r}=-e\vec{E}
+	\label{eq:dho.diesol}
+\end{equation}
+We solve this equation using the method of similarity, since we know already that $\vec{E}\propto e^{-i\omega t}$, thus, said $\vec{r}\propto e^{-i\omega t}$ we have
+\begin{equation*}
+	\dv{\vec{r}}{t}=-i\omega\vec{r}e^{-i\omega t}\qquad\dv[2]{\vec{r}}{t}=-\omega^2\vec{r}e^{-i\omega t}
+\end{equation*}
+Using the wholeness of the exponential in the complex plane, we get the following solution
+\begin{equation}
+	\left( m\omega^2+im\gamma\omega-K \right)\vec{r}=e\vec{E}
+	\label{eq:soldho.diesol}
+\end{equation}
+Solving for $\vec{r}$ and imposing that $\vec{P}=-Ne\vec{r}$ we have that the polarization is therefore the following
+\begin{equation*}
+	\vec{P}=\frac{Ne^2}{K-m\omega^2-im\gamma\omega}\vec{E}
+\end{equation*}
+Or, bringing outside $Ne^2/m$ and defining the \textit{effective resonance frequency} $\omega_0$ as follows
+\begin{equation}
+	\omega_0=\sqrt{\frac{K}{m}}
+	\label{eq:effresfreq.diesol}
+\end{equation}
+We have the final result for the dynamic polarization field
+\begin{equation}
+	\vec{P}=\frac{Ne^2}{m}\left( \frac{1}{\omega_0^2-\omega^2-i\gamma\omega} \right)\vec{E}
+	\label{eq:macrop.diesol}
+\end{equation}
+The effective resonance frequency $\omega_0$ we defined before clearly depends on the medium studied, since $K$ clearly varies with material.\\
+The name is not random, since for frequencies around $\omega_0$ we expect (and see) optical resonance, giving this frequency also the nickname of the \textit{natural frequency}.\\
+We can now plug the results on the general wave equation \eqref{eq:genwavedie.diesol}, getting the following PDE for our field (note that we indicate $c^2\epsilon_0=\mu_0^{-1}$
+\begin{equation}
+	\nabla\times\nabla\times\vec{E}+\frac{1}{c^2}\pdv[2]{\vec{E}}{t}+\frac{Ne^2}{c^2\epsilon_0 m}\left( \frac{1}{\omega_0^2-\omega^2-i\gamma\omega} \right)\pdv[2]{\vec{E}}{t}=0
+	\label{eq:diegenweq2.diesol}
+\end{equation}
+Using the fact that $\vec{E}\propto\vec{P}$ and $\nabla\cdot\vec{E}=0$ we can expand the double curl as $-\nabla^2\vec{E}$, getting the general wave equation in a dielectric
+\begin{equation}
+	\nabla^2\vec{E}=\left( 1+\frac{Ne^2}{m\epsilon_0}\frac{1}{\omega_0^2-\omega^2-i\gamma\omega} \right)\frac{1}{c^2}\pdv[2]{\vec{E}}{t}
+	\label{eq:geneq.diesol}
+\end{equation}
+\subsection{Resonant Frequency and Dispersion}
+From the previous equation, we can try to find a general solution in terms of plane waves
+\begin{equation}
+	\vec{E}=\vec{E}_0e^{i\kappa z-i\omega t}\qquad\kappa\in\Cf
+	\label{eq:solution.diesol}
+\end{equation}
+Noting that $\nabla^2\vec{E}=-\kappa^2\vec{E}$ and $\partial^2_t\vec{E}=-\omega^2\vec{E}$ we have that this plane wave is a solution if and only if 
+\begin{equation}
+	\kappa^2=\frac{\omega^2}{c^2}\left( 1+\frac{Ne^2}{m\epsilon_0}\frac{1}{\omega_0^2-\omega^2-i\gamma\omega} \right)
+	\label{eq:kappadef.diesol}
+\end{equation}
+Noting that $z^{-1}=\cc{z}\abs{z}^{-2}$ for complex numbers, we could rewrite
+\begin{equation*}
+	\frac{1}{\omega_0^2-\omega^2-i\gamma\omega}=\frac{\omega_0^2-\omega^2+i\gamma\omega}{\left( \omega_0^2-\omega^2 \right)^2+\gamma^2\omega^2}
+\end{equation*}
+Thus we can rewrite $\kappa^2$ as follows
+\begin{equation}
+	\kappa^2=\frac{\omega^2}{c^2}+\frac{Ne^2\omega^2}{m\epsilon_0c^2}\frac{\omega_0^2-\omega^2+i\gamma\omega}{\left( \omega_0^2-\omega^2 \right)^2+\gamma^2\omega^2}
+	\label{eq:kappadef2.diesol}
+\end{equation}
+From $\kappa$ we define the \textit{complex refraction index} $\mathcal{N}$ as follows
+\begin{equation}
+	\kappa=\frac{\omega}{c}\mathcal{N}
+	\label{eq:complexrefind.diesol}
+\end{equation}
+Using the explicitly complex form of $\kappa=k+i\alpha$, we can rewrite the wave solution as follows
+\begin{equation}
+	\vec{E}=\vec{E}_0e^{i\left( k+i\alpha \right)z-i\omega t}=\vec{E}_0e^{ikz-i\omega t}e^{-\alpha z}
+	\label{eq:diesol1.diesol}
+\end{equation}
+The exponential damping of the wave indicates the presence of \textit{absorption} in the medium. In fact, noting that $I\propto\norm{\vec{E}}^2$ we have
+\begin{equation*}
+	I\propto e^{-2\alpha z}
+\end{equation*}
+The coefficient $2\alpha=a$ is known as the \textit{absorption coefficient} of the medium.\\
+Going back to the definition of $\kappa$ \eqref{eq:kappadef2.diesol} we have that the square of the complex refraction index is
+\begin{equation}
+	\mathcal{N}^2=1+\frac{Ne^2}{m\epsilon_0}\frac{\omega_0^2-\omega^2+i\gamma\omega}{\left( \omega_0^2-\omega^2 \right)^2+\gamma^2\omega^2}
+	\label{eq:squarecri.diesol}
+\end{equation}
+Indicating $\mathcal{N}=n+i\eta$ and reusing the relationship between $\kappa$ and $\mathcal{N}$ \eqref{eq:complexrefind.diesol} we have
+\begin{equation}
+	\mathcal{N}=\frac{c}{\omega}\kappa\implies\frac{c}{\omega}\left( k+i\alpha \right)=n+i\eta
+	\label{eq:relations2.diesol}
+\end{equation}
+Separating real and imaginary parts and equating them we have
+\begin{equation}
+	\begin{aligned}
+		\real\left\{ \mathcal{N} \right\}&= \frac{c}{\omega}\real\left\{ \kappa \right\}=\frac{c}{\omega}k=n\\
+		\imaginary\left\{ \mathcal{N} \right\}&= \frac{c}{\omega}\imaginary\left\{ \kappa \right\}=\frac{c}{\omega}\alpha=\eta
+	\end{aligned}
+		\label{eq:relations3.diesol}
+\end{equation}
+\begin{enumerate}
+\item From the real part equality we get the usual relation between the \textit{real} refraction index and what we will call the wavenumber
+	\begin{equation*}
+		k=\frac{\omega}{c}n
+	\end{equation*}
+\item From the imaginary equality we get the relation between the absorption coefficient and the imaginary part of the complex refraction index
+	\begin{equation*}
+		\alpha=\frac{\omega}{c}\eta
+	\end{equation*}
+\end{enumerate}
+These relationships we found are not yet explicit. We can begin to try to find their explicit form by starting again from the square of the complex refraction index. Noting that
+\begin{equation*}
+	\mathcal{N}^2=n^2-\eta^2+2in\eta=1+\frac{Ne^2}{m\epsilon_0}\left( \frac{\omega_1^2-\omega^2}{\left( \omega_0^2-\omega^2 \right)^2+\gamma^2\omega^2}+i\frac{\gamma\omega}{\left( \omega_0^2-\omega^2 \right)^2+\gamma^2\omega^2} \right)
+\end{equation*}
+Equating real and imaginary parts again, we get a rather complex system of two equations which can be solved numerically
+\begin{equation}
+	\begin{aligned}
+		n^2-\eta^2&= 1+\frac{Ne^2}{m\epsilon_0}\frac{\omega_0^2-\omega^2}{\left( \omega_0^2-\omega^2 \right)^2+\gamma^2\omega^2}\\
+		2n\eta&= \frac{Ne^2}{m\epsilon_0}\frac{\gamma\omega}{\left( \omega_0^2-\omega^2 \right)^2+\gamma^2\omega^2}
+	\end{aligned}
+	\label{eq:dispersion.diff}
+\end{equation}
+It's clear that both $n$ and $\eta$ depend on frequency. This frequency dependence, especially for $n$, is known as \textit{dispersion}.\\
+Plotting the numerical solutions to the previous system we get two particular functional shapes for both $n$ and $\eta$.\\
+Centering ourselves around $\omega_0$ we can see that the absorption $\eta$ has a maximum for $\omega\approx\omega_0$, and $n>1$ for $\omega<\omega_0$.\\
+The peak of absorption of the dielectric indicates how transparent dielectrics have their resonant frequencies in the ultraviolet region of the electromagnetic spectrum, therefore shifting the absorption peak.\\
+For $n$, we can define two kinds of dispersion with respect to the natural frequency $\omega_0$. 
+\begin{enumerate}
+\item Normal dispersion, when $\omega\lesssim\omega_0$ and $n$ increases with increasing frequency
+\item Anomalous dispersion, when $\omega\gtrsim\omega_0$ and $n$ decreases with increasing frequency.
+\end{enumerate}
+In general tho, we have that $\lim_{\omega\to0}n(\omega)=1$ and $\lim_{\omega\to\infty}n(\omega)=1$.
+\subsection{Sellmeier Equation}
+All previous calculations are valid if and only if the electrons are bound \textit{equally} to their respective atom, which is impossible considering quantum mechanics.\\
+In general we might assume that each fraction of electrons $f_j$ has its resonant frequency $\omega_j$ and damping constant $\gamma_j$. We then modify the complex refraction index as follows
+\begin{equation}
+	\mathcal{N}^2=1+\frac{Ne^2}{m\epsilon_0}\sum_{j=0}^N\frac{f_j}{\omega_j^2-\omega^2-i\gamma_j\omega}
+	\label{eq:sellmeier1.diesol}
+\end{equation}
+The fractions $f_j$ are known as \textit{oscillator strengths}, due to their quantum harmonic origin.\\
+Note that by definition, we have that at limit frequencies
+\begin{equation}
+	\left\{ \begin{aligned}
+			\lim_{\omega\to0}\mathcal{N}^2\left( \omega \right)&= 1+\frac{Ne^2}{m\epsilon_0}\sum_{j=0}^N\frac{f_j}{\omega_j}=1+\chi_e\\
+			\lim_{\omega\to\omega}\mathcal{N}^2\left( \omega \right)&= \infty
+	\end{aligned}\right.
+	\label{eq:considerations1.diesol}
+\end{equation}
+And if we consider only the real part in the approximation $\gamma_j<<1$, we can derive a dispersion formula known as \textit{Sellmeier's equation}
+\begin{equation}
+	n^2=1+\frac{Ne^2}{m\epsilon_0}\sum_{j=0}^N\frac{f_j}{\omega_j^2-\omega^2}
+	\label{eq:sellmeier.diesol}
+\end{equation}
+This equation is related to Cauchy's dispersion relation
+\begin{equation}
+	n\left( \lambda \right)=A+\frac{B}{\lambda^2}
+	\label{eq:cauchydispersion.diesol}
+\end{equation}
+Note how Sellmeier's formula is more general in scope, while Cauchy's equation is directly retrieved via experimental considerations in the optical part of the spectrum
+\section{Waves in Conductors}
+We begin by reconsidering the general wave equation \eqref{eq:genwaveeq1.sol}. As we considered the electrons bound to the atoms when analyzing dielectrics, we consider conductors as practically the opposite. Here all electrons are not bound to the atoms but instead they're freely moving on the surface of the medium. Due to this, we can say that $\vec{P}\approx0$, and the wave equation we are going to consider is the following
+\begin{equation}
+	\nabla\times\nabla\times\vec{E}+\frac{1}{c^2}\pdv[2]{\vec{E}}{t}=-\mu_0\pdv{\vec{J}}{t}
+	\label{eq:metalweq.csol}
+\end{equation}
+We begin to find a solution by again considering a static field.\\
+We begin by noting that the velocity of the electron, is deeply tied to the current. For $N$ electrons we have
+\begin{equation}
+	\vec{J}=-Ne\vec{v}
+	\label{eq:current.csol}
+\end{equation}
+The force equation that these electron will follow is not anymore a damped harmonic oscillator, but can be instead considered as the equation of free motion minus a ``drag'' term given by the attraction by the atoms. Thus, we can write
+\begin{equation}
+	m\dv{\vec{v}}{t}-\frac{m}{\tau}\vec{v}=-e\vec{E}
+	\label{eq:forceeq.csol}
+\end{equation}
+Rewriting the velocity in terms of the current from equation \eqref{eq:current.csol} we have, after multiplying both sides by $Ne/m$
+\begin{equation}
+	\dv{\vec{J}}{t}+\tau^{-1}\vec{J}=\frac{Ne^2}{m}\vec{E}
+	\label{eq:odetosolve.csol}
+\end{equation}
+This equation has the associate homogeneous solution
+\begin{equation}
+	\vec{J}(t)=\vec{J}_0e^{-\frac{t}{\tau}}
+	\label{eq:odehom.csol}
+\end{equation}
+Here, the constant $\tau$ is known as the \textit{relaxation time} of the medium. The homogeneous solution is known technically as \textit{transient current}.\\
+We now consider the two outstanding cases: static and harmonic electric fields.\\
+In the first case the time derivative of the current is zero, and the force equation reduces to
+\begin{equation}
+	\tau^{-1}\vec{J}=\frac{Ne^2}{m}\vec{E}
+	\label{eq:staticsol1.csol}
+\end{equation}
+From Ohm's law we can also say that $\vec{J}=\sigma\vec{E}$, where $\sigma$ is the conductivity of the metal. Inserting into the previous equation, we have that in the case of a static field it is
+\begin{equation}
+	\sigma=\frac{Ne^2\tau}{m}
+	\label{eq:condstatic.csol}
+\end{equation}
+We now try to apply Ohm's law to the harmonic case. We begin by using the similarity method, therefore, we have
+\begin{equation*}
+	\pdv{\vec{J}}{t}=-i\omega\vec{J}
+\end{equation*}
+Therefore, the force equation implies, after substituting $\sigma$ in the right hand side 
+\begin{equation*}
+	\left( \tau^{-1}-i\omega \right)\vec{J}=\frac{\sigma}{\tau}\vec{E}
+\end{equation*}
+Solving for $\vec{J}$, we get the harmonic version of Ohm's law
+\begin{equation}
+	\vec{J}=\frac{\sigma}{\tau\left( \tau^{-1}-i\omega \right)}\vec{E}=\frac{\sigma}{1-i\omega\tau}\vec{E}
+	\label{eq:dynamicohm.csol}
+\end{equation}
+Note how the limit of zero frequency of this solution is exactly Ohm's law in its original form.\\
+\subsection{Skin Depth}
+We now begin to attack the equation \eqref{eq:metalweq.csol}. Noting that $\vec{P}=0$, we have that $\nabla\nabla\cdot\vec{E}=0$, and writing in terms of the d'Alambertian, the equation becomes way easier to solve
+\begin{equation}
+	\square\vec{E}=-\mu_0\pdv{\vec{J}}{t}
+	\label{eq:metaleq.csol}
+\end{equation}
+Applying the d'Alambertian to the generic plane wave solution we get 
+\begin{equation*}
+	\square\vec{E}=-\left( \frac{\omega^2}{c^2}+\kappa^2 \right)\vec{E}
+\end{equation*}
+And inserting \eqref{eq:dynamicohm.csol} on the right hand side after multiplying by $-\mu_0$ and deriving once with respect to time we have
+\begin{equation}
+	\square\vec{E}=-\frac{\mu_0\sigma}{1-i\omega\tau}\pdv{\vec{E}}{t}
+	\label{eq:pdetosolve.csol}
+\end{equation}
+And, therefore
+\begin{equation*}
+	\left( \kappa^2+\frac{\omega^2}{c^2} \right)\vec{E}=\frac{i\omega\mu_0\sigma}{1-i\omega\tau}\vec{E}
+\end{equation*}
+Rearranging the equation we have the definition of $\kappa^2$ in conductors
+\begin{equation}
+	\kappa^2=\left( \frac{\omega^2}{c^2}+\frac{i\omega\mu_0\sigma}{1+i\omega\tau} \right)
+	\label{eq:kappa.csol}
+\end{equation}
+As before, noting that $\kappa=k+i\alpha$, we begin analyzing this complex wavenumber in limit cases. Firstly, considering the case of $\omega\to0$, we have that Ohm's law applies again, and
+\begin{equation*}
+	\kappa_{LF}^2\approx i\omega\mu_0\sigma\implies\kappa_{LF}=\sqrt{i\omega\mu_0\sigma}=\sqrt{\frac{\omega\mu_0\sigma}{2}}\left( 1+i \right)
+\end{equation*}
+Clearly here we have $k=\alpha$
+\begin{equation}
+	k=\alpha=\sqrt{\frac{\omega\mu_0\sigma}{2}}
+	\label{eq:klf.csol}
+\end{equation}
+Also, considering the complex refraction index
+\begin{equation*}
+	\mathcal{N}_{LF}=\frac{c}{\omega}\sqrt{\frac{\omega\mu_0\sigma}{2}}(1+i)=\sqrt{\frac{\sigma}{2\omega\epsilon_0}}(1+i)
+\end{equation*}
+Which also gives
+\begin{equation}
+	n=\eta=\sqrt{\frac{\sigma}{2\omega\epsilon_0}}
+	\label{eq:nlf.csol}
+\end{equation}
+These results can be used to better analyze the behavior of waves in conductors. Considering the e-folding value of the wave amplitude in the medium, we have that it's deeply tied to $\alpha$. We define the depth of penetration of the wave in the conductor the \textit{skin depth} of the medium $\delta$, defined as follows
+\begin{equation}
+	\delta=\frac{1}{\alpha}=\sqrt{\frac{2}{\omega\mu_0\sigma}}
+	\label{eq:skindepthf.csol}
+\end{equation}
+Rewriting this in terms of vacuum wavelength $\lambda_0=2\pi c/\omega$ we have
+\begin{equation}
+	\delta=\sqrt{\frac{\lambda_0}{\pi c\mu_0\sigma}}
+	\label{eq:skindepth.csol}
+\end{equation}
+Note that this depth is inversely proportional to the square root of the conductivity, and explains why good conductors are highly opaque.
+\subsection{Plasma Frequency and Dispersion}
+We now analyze $\kappa$ at all frequencies. As before we have
+\begin{equation*}
+	\kappa^2=\frac{\omega^2}{c^2}+\frac{i\omega\mu_0\sigma}{1+i\omega\tau}
+\end{equation*}
+And 
+\begin{equation*}
+	\mathcal{N}^2=\frac{c^2}{\omega^2}\kappa^2=1+\frac{ic^2\mu_0\sigma}{\omega}\frac{1}{1+i\omega\tau}
+\end{equation*}
+As for dielectrics, here it's possible to (hardly) see a particular resonant frequency, known as the \textit{plasma frequency} $\omega_p$ defined as follows
+\begin{equation}
+	\omega_p=\sqrt{\frac{\mu_0\sigma c^2}{\tau}}=\sqrt{\frac{Ne^2\tau}{m}}\sqrt{\frac{\mu_0c^2}{\tau}}=\sqrt{\frac{Ne^2}{m\epsilon_0}}
+	\label{eq:plasmafreq.csol}
+\end{equation}
+Which lets us rewrite the complex refraction index as
+\begin{equation*}
+	\mathcal{N}=1-\frac{\omega_p^2}{\omega^2+i\omega\tau^{-1}}
+\end{equation*}
+Again, as with dielectrics, we rewrite the right hand side in a more explicitly complex way by rationalizing the fraction
+\begin{equation}
+	\mathcal{N}^2=1-\frac{\omega_p^2}{\omega^2+\tau^{-2}}+\frac{i}{\omega\tau}\frac{\omega_p^2}{\omega^2+\tau^{-2}}=n^2-\eta^2+2in\eta
+	\label{eq:rationalizedn.csol}
+\end{equation}
+Again, by equating imaginary and real parts we get the system we have to solve numerically for finding the dispersion relation, precisely we have
+\begin{equation}
+	\left\{ \begin{aligned}
+			\real\left\{ \mathcal{N}^2 \right\}&=n^2-\eta^2=1-\frac{\omega_p^2}{\omega^2+\tau^{-2}}\\
+			\imaginary\left\{ \mathcal{N}^2 \right\}&= 2n\eta=\frac{1}{\omega\tau}\frac{\omega_p^2}{\omega^2+\tau^{-2}}
+	\end{aligned}\right.
+	\label{eq:dispersionsystem.csol}
+\end{equation}
+Both optical parameters are clearly determined by three parameters: frequency $\omega$, plasma frequency $\omega_p$ and relaxation time $\tau$.\\
+In general we can get an idea of these parameters. For metals $\tau\propto10^{-13}$ s which corresponds to a resonance in infrared frequencies, and $\omega_p\propto10^{15}$ Hz, corresponding to visible and near ultraviolet resonances.\\
+These are quite important results, since (after solution and plotting of the two indexes) it shows how metals become transparent at high frequencies, since $\lim_{\omega\to\infty}\eta=0$.\\
+More generally we see how $n$ decreases up to the plasma frequency, while the absorption keeps decreasing indefinitely. At $\omega_p$ we have that $n=\eta$.
+\subsubsection{Waves in Semiconductors}
+For semiconductors and poor conductors, we can find a complex refraction index as the sum of the refraction index we found for conductors and dielectrics, which, precisely is
+\begin{equation}
+	\mathcal{N}^2_{SC}=\mathcal{N}^2_{C}+\mathcal{N}^2_{D}=1-\frac{\omega_p^2}{\omega^2+i\omega\tau^{-1}}+\frac{Ne^2}{m\epsilon_0}\sum_{j=0}^{N}\frac{f_j}{\omega^2_j-\omega^2-i\gamma_j\omega}
+	\label{eq:semiconductorn.scsol}
+\end{equation}
+All solution methods we found before are still valid, and we can derive, albeit with numerical methods, the values of $n$ and $\eta$.
+\section{Reflection and Refraction in Absorbing Media}
+Let $\psi$ be some electromagnetic wave which happens to be incident to some absorbing medium, with complex refraction index $\mathcal{N}=n+i\eta$ and absorption coefficient $\alpha$. The two things we must keep an eye on will then be %CHECK THE PREVIOUS SECTION	!!! (PORCO DIO)
+\begin{equation*}
+	\left\{ \begin{aligned}
+			\mathcal{N}&= n+i\eta\\
+			\pmb{\kappa}&= \vec{k}+i\pmb{\alpha}
+	\end{aligned}\right.
+\end{equation*}
+Suppose that the wave is coming from a non absorbing region from the left, with index $n_1$, and goes inside the absorbing region on the right with complex refraction index $\mathcal{N}$ on the right.\\
+We will have, as usual, three waves: the incident wave, the reflected wave and the transmitted wave, with the following exponential dependencies at the boundary:
+\begin{equation}
+	\left\{ \begin{aligned}
+			\psi_1&\propto e^{i\vec{k}_1\cdot\vec{r}}\\
+			\psi_R&\propto e^{i\vec{k}_R\cdot\vec{r}}\\
+			\psi_T&\propto e^{i\pmb{\kappa}\cdot\vec{r}}
+	\end{aligned}\right.
+	\label{eq:absorbingdep.rra}
+\end{equation}
+As usual, in the first region we will have $\vec{k}_1=\vec{k}_R$ and we get the usual law of reflection, while in the second region we must consider that $\pmb{\kappa}=\vec{k}+i\pmb{\alpha}$, therefore
+\begin{equation}
+	\vec{k}_1\cdot\vec{r}=\left( \vec{k}+i\pmb{\alpha} \right)\cdot\vec{r}\implies\begin{paligned}
+		\vec{k}_1\cdot\vec{r}=\vec{k}\cdot\vec{r}\\
+		\pmb{\alpha}\cdot\vec{r}=0
+	\end{paligned}
+	\label{eq:snell2.rra}
+\end{equation}
+Where we equated the real and imaginary part of the left hand side and right hand side.\\
+It's clear that $\vec{k}$ and $\pmb{\alpha}$ do not have the same direction. This kind of wave is known as non homogeneous wave. Note that $\pmb{\alpha}\cdot\vec{r}=0$ implies that $\pmb{\alpha}$ is perpendicular to the boundary.\\
+For non homogeneous waves we can define \textit{two} planes in the absorbing region: 
+\begin{enumerate}
+\item Phase planes, where $\vec{k}$ is constant
+\item Amplitude planes, where $\pmb{\alpha}$ is constant
+\end{enumerate}
+Denoting $\theta$ as our incidence angle and $\phi$ as the transmission angle we can get via phase matching at the boundary a ``Snell'' law. This law is clearly not exactly Snell's, since the absorbing nature of the medium makes $k$ actually depend on the transmission angle $\phi$. Precisely we have
+\begin{equation}
+	\vec{k}_1\cdot\vec{r}=k_1\sin\theta=\vec{k}(\phi)\sin\phi
+	\label{eq:snell3.rra}
+\end{equation}
+The functional relation $k(\phi)$ can be derived from the modified wave equation
+\begin{equation}
+	\nabla^2\vec{E}=\frac{\mathcal{N}^2}{c^2}\pdv[2]{\vec{E}}{t}
+	\label{eq:modweq.rra}
+\end{equation}
+Using $\nabla^2\vec{E}=(\pmb{\kappa}\cdot\pmb{\kappa})\vec{E}$ and $\partial_t\vec{E}=-i\omega\vec{E}$ we have
+\begin{equation*}
+	\left( \vec{k}+i\pmb{\alpha} \right)^2\vec{E}=\frac{\omega^2}{c^2}\mathcal{N}^2\vec{E}=k_0^2\mathcal{N}^2\vec{E}
+\end{equation*}
+Equating right hand side and left hand side after writing $\mathcal{N}^2=\left( n+i\eta \right)^2$ and writing the explicit squares, we have
+\begin{equation}
+	k^2-\alpha^2+2i\vec{k}\cdot\pmb{\alpha}=k_0^2\left( n^2-\eta^2+2in\eta \right)\implies\begin{paligned}
+		k^2-\alpha^2=k_0^2\left( n^2-\eta^2 \right)\\
+		k\alpha\cos\phi=k_0^2n\eta
+	\end{paligned}
+	\label{eq:funcrelkphi.rra}
+\end{equation}
+The solution to this system of equation is not immediate, but the result can be shown to be the following
+\begin{equation}
+	k\cos\phi+i\alpha=k_0\sqrt{\mathcal{N}^2-\sin^2\theta}
+	\label{eq:kphi.rra}
+\end{equation}
+For normal incidence $\sin\theta=0$, thus 
+\begin{equation*}
+	k\cos\phi+i\alpha=k_0\mathcal{N}
+\end{equation*}
+In a purely formal way we could also imagine to write ``Snell's law'' as the following relation
+\begin{equation}
+	\mathcal{N}=\frac{\sin\theta}{\sin\left( z \right)}\qquad\begin{paligned}
+		\theta\in[-\frac{\pi}{2}, \frac{\pi}{2}]\\
+		z\in\Cf
+	\end{paligned}
+	\label{eq:snellN.rra}
+\end{equation}
+From the previous definition, and with the help of this complex ``angle'', we can define the following
+\begin{equation}
+	\cos(z)=\sqrt{1-\frac{\sin^2\theta}{\mathcal{N}^2}}
+	\label{eq:zdef.rra}
+\end{equation}
+Therefore, inserting this into \eqref{eq:kphi.rra} we get
+\begin{equation}
+	\begin{aligned}
+		k\cos\phi+i\alpha&= k_0\mathcal{N}\sqrt{1-\frac{\sin^2\theta}{\mathcal{N}^2}}\\
+		k\cos\phi+i\alpha&= k_0\mathcal{N}\cos(z)
+	\end{aligned}
+	\label{eq:kphi1.rra}
+\end{equation}
+Thus
+\begin{equation}
+	\mathcal{N}=\frac{k\cos\phi+i\alpha}{k_0\cos(z)}
+	\label{eq:cir.rra}
+\end{equation}
+From the equations \eqref{eq:zdef.rra} and \eqref{eq:cir.rra}, it's possible to find the reflectance of the absorbent medium.\\
+We begin by noting that Maxwell's equations need to be appropriately modified to account for the previous results, and this can be done with the complex value $z$ we defined before.\\
+As usual, in the first region we have
+\begin{equation}
+	\begin{aligned}
+		\vec{H}&= \frac{1}{\mu_0\omega}\vec{k}_1\times\vec{E}\\
+		\vec{H}_R&= \frac{1}{\mu_0\omega}\vec{k}_{1}\times\vec{E}_R
+	\end{aligned}
+	\label{eq:region1.rra}
+\end{equation}
+While, in the second region we have
+\begin{equation}
+	\vec{H}_t=\frac{1}{\mu_0\omega}\pmb{\kappa}\times\vec{E}_T=\frac{1}{\mu_0\omega}\left( \vec{k}\times\vec{E}_T+i\pmb{\alpha}\times\vec{E}_T \right)
+	\label{eq:region2.rra}
+\end{equation}
+Evaluating the modulus of these equations and inserting them for the Senkrecht (s) and Parallel (p) polarization states, we get the two following systems of equations
+\begin{equation}
+	\begin{paligned}
+		E+E_R&= E_T\\
+		\left( H-H_R \right)\cos\theta&= H_T
+	\end{paligned}\qquad\begin{paligned}
+		H-H_R&= H_T\\
+		\left( E+E_R \right)\cos\theta&= E_T\cos(z)
+	\end{paligned}
+	\label{eq:sp-eq.rra}
+\end{equation}
+Which, after dividing by $E$ and inserting the relationship between $E$ and $H$, can be rewritten as follows
+\begin{equation}
+	\begin{paligned}
+		1+r_s&= t_s\\
+		k_0\left( 1-r_s \right)\cos\theta&= \left( k\cos\phi+i\alpha \right)t_s
+	\end{paligned}\qquad\begin{paligned}
+		k_0\left( 1-r_p \right)&= k_0\mathcal{N}t_p\\
+		\left( 1+r_p \right)\cos\theta&= t_p\cos(z)
+	\end{paligned}
+	\label{eq:rstp.rra}
+\end{equation}
+Starting from the equations for s polarization, we have that
+\begin{equation*}
+	(1-r_s)k_0\cos\theta=(1+r_s)(k\cos\phi+i\alpha)
+\end{equation*}
+Noting that on the right hand side we can substitute $k\cos\phi+i\alpha=k_0\mathcal{N}\cos(z)$, we have
+\begin{equation*}
+	(1-r_s)k_0\cos\theta=(1+r_s)k_0\mathcal{N}\cos(z)
+\end{equation*}
+Which, after distributing the product and solving for $r_s$ by simple division, we get
+\begin{equation}
+	r_s=\frac{\cos\theta-\mathcal{N}\cos(z)}{\cos\theta+\mathcal{N}\cos(z)}
+	\label{eq:rs.rra}
+\end{equation}
+From the equation $t_s=1+r_s$ we get the second result
+\begin{equation}
+	t_s=1+\frac{\cos\theta-\mathcal{N}\cos(z)}{\cos\theta+\mathcal{N}\cos(z)}=\frac{2\cos\theta}{\cos\theta+\mathcal{N}\cos(z)}
+	\label{eq:ts.rra}
+\end{equation}
+For p polarization the process for finding $r_p$ and $t_p$ is completely analogous to the non absorbing case. 
+\begin{equation*}
+	\begin{paligned}
+		\frac{1}{\mathcal{N}}\left( 1-r_p \right)&= t_p\\
+		(1+r_p)\cos\theta&= \frac{1}{\mathcal{N}}(1-r_p)\cos(z)
+	\end{paligned}
+\end{equation*}
+Thus, again
+\begin{equation*}
+	r_p\left( \cos\theta+\frac{1}{\mathcal{N}\cos(z)} \right)=\frac{1}{\mathcal{N}}\cos(z)-\cos\theta
+\end{equation*}
+Which gives
+\begin{equation}
+	r_p=\frac{\cos(z)-\mathcal{N}\cos\theta}{\cos(z)+\mathcal{N}\cos\theta}
+	\label{eq:rp.rra}
+\end{equation}
+Analogously, we have
+\begin{equation*}
+	t_p=\frac{1}{\mathcal{N}}(1-r_p)=\frac{1}{\mathcal{N}}\left( 1-\frac{\cos(z)-\mathcal{N}\cos\theta}{\cos(z)+\mathcal{N}\cos\theta} \right)
+\end{equation*}
+I.e.
+\begin{equation}
+	t_p=\frac{2\cos\theta}{\cos(z)+\mathcal{N}\cos\theta}
+	\label{eq:tp.rra}
+\end{equation}
+All reunited in one place, we have %corrected calculation error in t_p, there was a n over which elided with n below
+\begin{equation}
+	\begin{paligned}
+		r_s&= \frac{\cos\theta-\mathcal{N}\cos(z)}{\cos\theta+\mathcal{N}\cos(z)}\\
+		t_s&= \frac{2\cos\theta}{\cos\theta+\mathcal{N}\cos(z)}
+	\end{paligned}\qquad\begin{paligned}
+		r_p&= \frac{\cos(z)-\mathcal{N}\cos\theta}{\cos(z)+\mathcal{N}\cos\theta}\\
+		t_p&= \frac{2\cos\theta}{\cos(z)+\mathcal{N}\cos\theta}
+	\end{paligned}
+	\label{eq:rtsp.rra}
+\end{equation}
+As usual, it's possible to find the coefficients $R$ and $T$ with the usual evaluations.\\
+Note that for p polarization, if $\imaginary\left\{ \mathcal{N} \right\}\ne0$, also $r_p\ne0$, i.e. there is \textit{no Brewster angle in absorbing media}. Instead, we can define the \textit{principal angle of incidence} $\theta_1$, for which $r_p(\theta_1)=\min\left\{ r_p \right\}$.\\
+As can be imagined, non polarized light and light which is neither s nor p polarized gets transmitted in elliptical polarization. The complex index of refraction can then be evaluated by measuring the transmitted irradiance $I_T$ using \textit{ellipsometry}
+\subsection{Normal Incidence}
+In the case of normal incidence, we have as usual $\theta=\phi=0$, thus $r_p=r_s$, where
+\begin{equation}
+	r=\frac{1-\mathcal{N}}{1+\mathcal{N}}=\frac{1-n-i\eta}{1+n+i\eta}
+	\label{eq:rni.nra}
+\end{equation}
+Which implies
+\begin{equation}
+	R=\frac{(1-n)^2+\eta^2}{(1+n)^2+\eta^2}
+	\label{eq:refni.nra}
+\end{equation}
+Note that it's the same equation that we get in the non-absorbing case if $\eta=0$.\\
+Remembering that $R=R(\mathcal{N})$ and that $\mathcal{N}=\mathcal{N}(\omega)$, we have that in the low frequency limit
+\begin{equation}
+	\real\left\{ \mathcal{N} \right\}=\imaginary\left\{ \mathcal{N} \right\}=\sqrt{\frac{\sigma}{2\omega\epsilon_0}}
+	\label{eq:lowfreqni.nra}
+\end{equation}
+Thus, the reflectance at low frequencies becomes
+\begin{equation}
+	R=1-\frac{2}{n}=1-\sqrt{\frac{8\omega\epsilon_0}{\sigma}}
+	\label{eq:huygenrubens.nra}
+\end{equation}
+This formula is commonly known as the \textit{Huygens-Rubens formula}. Therefore, for frequency in the red part of the spectrum (big wavelengths), good conductors become better and better reflectors, as is the case for metals. As an example, we can see that for Cu, Ag, Au we have 
+\begin{equation*}
+	\begin{dcases}
+		R(\lambda)\approx1&\lambda\in\mathrm{NIR},\ (\lambda\approx1\ \mu\mathrm{m}-2\ \mu\mathrm{m})\\
+		R(\lambda)\approxeq1&\lambda\in\mathrm{FIR}, \ (\lambda\ge20\ \mu\mathrm{m}\\
+	\end{dcases}
+\end{equation*}
+\chapter{Optics of Crystals}
+\section{The Electric Susceptibility Tensor}
+The main property of crystalline matter, in the context of optics, is \textit{electrical anisotropy}. This indicates that the polarization produced by the application of an electric field to such matter is direction dependent.\\
+In crystals, there are usually two possible values of propagation velocity in a given direction, tied to mutually orthogonal polarization states. This property is better known as \textit{birefringence}, i.e. crystals are (usually) doubly refracting.\\
+Note tho how some crystals do not exhibit birefringence, as it's deeply tied to their symmetry. Cubic crystals like NaCl (table salt) \textit{do not} exhibit birefringence, while other kinds of crystals do exhibit it.\\
+A practical way to understand the physics behind this phenomenon is thinking that the lattice atoms bond like springs between each other, but with different strengths $K$, thus electron displacement when an electric field is applied is different in each bond direction, thus the dependence $\vec{P}(\vec{E})$ is not a relation of direct proportionality, but it's instead a \textit{tensorial relation}\footnote{here, we will use again the tensor notation we all love}.\\
+\begin{equation}
+	P^i=\epsilon_0\chi^i_jE_j
+	\label{eq:perel.cry}
+\end{equation}
+The tensor $\chi^i_j$ is the \textit{electric susceptibility tensor}. As usual we can again define the electric displacement field by substituting the constant $1$ with the Kronecker delta $\delta^i_j$
+\begin{equation}
+	D^i=\epsilon_0\left( \delta^i_j+\chi^i_j \right)E^j=\epsilon^i_jE_j
+	\label{eq:dietens.cry}
+\end{equation}
+We defined here $\epsilon^i_j$ as the \textit{dielectric tensor}, which is the tensorial equivalent of the constant $\epsilon$.\\
+For ordinary, non-absorbing crystals, the tensor $\chi^i_j$ is diagonalizable, and the eigenvalues define the principal susceptibilities of the crystal, each corresponding to a dielectric constant
+\begin{equation}
+	\left(\epsilon_r\right)_i=1+\chi_i
+	\label{eq:dieconst.cry}
+\end{equation}
+We thus modify the general wave equation in non-conducting dielectrics \eqref{eq:genwavedie.diesol} as follows
+\begin{equation}
+	\cpr{i}{j}{k}\partial^j\cpr{k}{l}{m}\partial^lE^m+\frac{1}{c^2}\pdv[2]{E^i}{t}=-\frac{\chi^i_j}{c^2}\pdv[2]{E^i}{t}
+	\label{eq:modgeneq.cry}
+\end{equation}
+\subsection{K-Surfaces}
+For solving the previous partial differential equation we impose the usual plane wave solution and shove it inside the partial differential equation. Therefore, as usual
+\begin{equation*}
+	\begin{paligned}
+		\pdv{x^j}&= ik_j\\
+		\pdv{t}&= -i\omega
+	\end{paligned}
+\end{equation*}
+And the partial differential equation becomes
+\begin{equation}
+	\cpr{i}{j}{k}k^j\cpr{k}{l}{m}k^lE^m+\frac{\omega^2}{c^2}E^i=-\frac{\omega^2}{c^2}\chi^i_jE^j
+	\label{eq:cryeqsol.cry}
+\end{equation}
+If the susceptibility tensor is diagonal, these become three coupled equations
+\begin{equation}
+	\begin{paligned}
+		\left( \frac{\omega^2}{c^2}-k_y^2-k_z^2 \right)E_x+k_xk_yE_y+k_xk_zE_z&= -\frac{\omega^2}{c^2}\chi^1_1E_x\\
+		\left( \frac{\omega^2}{c^2}-k_x^2-k_z^2 \right)E_y+k_yk_zE_z+k_yk_xE_x&= -\frac{\omega^2}{c^2}\chi^2_2E_y\\
+		\left( \frac{\omega^2}{c^2}-k_y^2-k_x^2 \right)E_z+k_zk_yE_y+k_zk_xE_x&= -\frac{\omega^2}{c^2}\chi^3_3E_z
+	\end{paligned}
+	\label{eq:coupledeqk.cry}
+\end{equation}
+In this configuration, the system is quite complex to solve, so for now, suppose that the wave is propagating inside the crystal in what we choose as the $x$ direction, thus $k_y=k_z=0$. The system becomes
+\begin{equation*}
+	\begin{paligned}
+		\frac{\omega^2}{c^2}E_x&= -\frac{\omega^2}{c^2}\chi^1_1\\
+		\left( \frac{\omega^2}{c^2}-k^2 \right)E_y&= -\frac{\omega^2}{c^2}\chi^2_2E_y\\
+		\left( \frac{\omega^2}{c^2}-k^2 \right)E_z&= -\frac{\omega^2}{c^2}\chi^3_3E_z	
+	\end{paligned}
+\end{equation*}
+The possible solutions are 2. Clearly $E^i\perp k^i$, but:
+\begin{enumerate}
+\item $E_y\ne0$, then $k_1=\sqrt{1+\chi^2_2}$
+\item $E_z\ne0$, then $k_2=\sqrt{1+\chi^3_3}$
+\end{enumerate}
+Since $\frac{\omega}{k}$ is the phase velocity of the wave, we can define \textit{two distinct phase velocities}
+\begin{equation}
+	\begin{paligned}
+		u_1&= \frac{c}{\sqrt{1+\chi^2_2}}\\
+		u_2&= \frac{c}{\sqrt{1+\chi^3_3}}
+	\end{paligned}
+	\label{eq:bipv.cry}
+\end{equation}
+More generally, we could write everything in terms of refraction indexes $n=\sqrt{1+\chi}$. For a diagonalizable susceptibility tensor we have at most 3 refraction indexes $n_i$, known as the \textit{principal refraction indexes}
+\begin{equation}
+	\begin{paligned}
+		n_1&= \sqrt{1+\chi^1_1}\\
+		n_2&= \sqrt{1+\chi^2_2}\\
+		n_3&= \sqrt{1+\chi^3_3}
+	\end{paligned}
+	\label{eq:prirefind.cry}
+\end{equation}
+These indexes come in handy to simplify equation \eqref{eq:coupledeqk.cry}.\\
+Taken back that system of equations, we have that in order to have non banal solutions, we must have that
+\begin{equation}
+	\det\begin{pmatrix}
+		\frac{n_1^2\omega^2}{c^2}-k_y^2-k_z^2&k_yk_z&k_zk_z\\
+		k_yk_x&\frac{n_2^2\omega^2}{c^2}-k_x^2-k_z^2&k_yk_z\\
+		k_zk_y&k_zk_y&\frac{n_3^2\omega^2}{c^2}-k_x^2-k_y^2
+	\end{pmatrix}\ne0
+	\label{eq:ksurf.cry}
+\end{equation}
+The result of this equation is a surface in $\R^3$, or to be precise, a surface in $\vec{k}$-space.\\
+We begin to solve for xy, therefore imposing $k_z=0$.\\
+Evaluating the determinant we get the following algebraic equation
+\begin{equation}
+	\left( \frac{n_3^2\omega^2}{c^2}-k_x^2-k_y^2 \right)\left[ \left( \frac{n_1^2\omega^2}{c^2}-k_y^2 \right)\left( \frac{n_2^2\omega^2}{c^2}-k_x^2 \right)-k_x^2k_y^2 \right]=0
+	\label{eq:ksurfpol.cry}
+\end{equation}
+The solutions are two, which clearly are
+\begin{equation*}
+	\begin{paligned}
+		&k_x^2+k_y^2= n_3^2\frac{\omega^2}{c^2}\\
+		&\left( \frac{n_1\omega}{c} \right)^2\left( \frac{n_2\omega}{c} \right)^2-k_y^2\left( \frac{n_2\omega}{c} \right)^2-k_x\left( \frac{n_1\omega}{c} \right)^2= 0
+	\end{paligned}
+\end{equation*}
+The first solution is already clear, and it's a circle with radius $n_3\omega/c$. The second can be made clearer dividing by $\frac{n_1^2\omega^2}{c^2}\frac{n_2^2\omega^2}{c^2}$. The resulting equation is that of an ellipse
+\begin{equation*}
+	\frac{k_x^2}{\frac{n_2^2\omega^2}{c^2}}+\frac{k_y^2}{\frac{n_1^2\omega^2}{c^2}}=1
+\end{equation*}
+Analogous equations can be derived for the planes $xz$ and $yz$.\\
+The two surfaces, which we will call $C_{1}$ and $Ce_2$, are then simply the following sets in $\vec{k}-$space
+\begin{equation}
+	\begin{paligned}
+		C_1=&\left\{ k_x^2+k_y^2=\left( \frac{n_3\omega}{c} \right)^2 \right\}\\
+		Ce_2=&\left\{ \left( \frac{c}{n_2\omega} \right)^2k_x^2+\left( \frac{c}{n_1\omega} \right)^2k_y^2=1 \right\}
+	\end{paligned}
+	\label{eq:ksurf.cry}
+\end{equation}
+Solving also for the other planes we finally get the complete solution as a sphere $S_1$ and an ellipsoid $E_2$.\\
+The $\vec{k}$ then lays on both surfaces, which together form an \textit{inner spherical sheet} and an \textit{outer ellipsoidal sheet}. The two different possible values that $k$ can take then define the two different orthogonal polarizations of $\vec{E}$, with two different phase velocities.\\
+Said $z$ the propagation direction of the electromagnetic wave and said $\hat{\pmb{\chi}}_1,\hat{\pmb{\chi}}_2$ the two principal directions of the crystal in the $xy$ plane, we have then that a wave with generic polarization gets decomposed in the following two components
+\begin{equation}
+	\vec{E}(\vec{r}, t)=\left( \vec{E}\cdot\hat{\pmb{\chi}}_1 \right)e^{i\vec{k}_1\cdot\vec{r}-i\omega t}+\left( \vec{E}\cdot\hat{\pmb{\chi}}_2 \right)e^{i\vec{k}_2\cdot\vec{r}-i\omega t}
+	\label{eq:wavein.cry}
+\end{equation}
+Each $\vec{k}_i$ corresponds to one of the two possible refraction indexes, defined as before
+\begin{equation*}
+	n_1=\sqrt{1+\chi^1_1}\qquad n_2=\sqrt{1+\chi^2_2}
+\end{equation*}
+Where $\chi^1_1$ and $\chi^2_2$ are the eigenvalues of $\chi^i_j$.\\
+We can also see that the two phase surfaces $S_1, E_2$ have \textit{nonzero intersection}. Said $OP=S_1\cap E_2$ the set of these intersections, if we define axes passing through the origin and these points, we see that $\vec{k}_1=\vec{k}_2$ in these points. These axes are known as the \textit{optical axes of the crystal}. Here, we also have $u_1=u_2$ and therefore we have \textit{no} birefringence.\\
+In general, we can determine wether a crystal is birefringent or not by looking at the eigenvalues of the $\chi^i_j$ tensor.\\
+With this categorization, we can define three kinds of crystals
+\begin{enumerate}
+\item Isotropic crystals, $\chi^1_1=\chi^2_2=\chi^3_3=\chi$ and the crystal \textit{is not} birefringent
+	\begin{equation}
+		\chi^i_j=\begin{pmatrix}
+			\chi&0&0\\
+			0&\chi&0\\
+			0&0&\chi
+		\end{pmatrix}\qquad n=\sqrt{1+\chi}
+		\label{eq:isotropic.cry}
+	\end{equation}
+	Due to the non birefringent nature of isotropic crystals we have that there is only one optical axis. Cubic crystals fall into this category
+\item Uniaxial crystals, here only two of the three eigenvalues are equal $\chi_1=\chi^1_1=\chi^2_2\ne\chi^3_3=\chi_2$ and the crystal exhibits birefringence.
+	\begin{equation}
+		\chi^i_j=\begin{pmatrix}
+			\chi_1&0&0\\
+			0&\chi_1&0\\
+			0&0&\chi_2
+		\end{pmatrix}\qquad n_O=\sqrt{1+\chi_1}, \quad n_E=\sqrt{1+\chi_2}
+		\label{eq:uniaxial.cry}
+	\end{equation}
+	This kind of crystal has only one optical axis. The two possible refraction indexes are known as the \textit{ordinary} refraction index $n_O$ and the \textit{extraordinary} refraction index $n_E$, due to the presence of only two refraction indexes, two subcategories of uniaxial crystals can be defined
+	\begin{itemize}
+	\item Positive uniaxial crystals, with $n_E>n_O$
+	\item Negative uniaxial crystals, with $n_O>n_E$
+	\end{itemize}
+	Trigonal, tetragonal and hexagonal crystals fall in this category.
+\item Biaxial crystals, here all eigenvalues are different, and the crystal exhibits birefringence
+	\begin{equation}
+		\chi^i_j=\begin{pmatrix}
+			\chi_1^1&0&0\\
+			0&\chi_2^2&0\\
+			0&0&\chi_3^3
+		\end{pmatrix}\qquad n_1=\sqrt{1+\chi_1^1}, \quad n_2=\sqrt{1+\chi_2^2}, \quad n_3=\sqrt{1+\chi^3_3}
+		\label{eq:biaxial.cry}
+	\end{equation}
+	This kind of crystal has two optical axes. Triclinic, monoclinic and orthorombic crystals fall into this category
+\end{enumerate}
+In terms of phase surfaces, we have that isotropic crystals only have the sphere, biaxial crystals have the sphere and the ellipsoid together and the uniaxial crystal has the sphere and a \textit{revolution ellipsoid}. in general, we have that for positive uniaxial crystals the sphere is contained inside the ellipsoid, while if for negative uniaxial crystals the ellipsoid is instead contained in the sphere.
+\subsection{Phase Velocity Surface}
+We can rephrase what we found before in terms of phase velocities. We know that by definition $k=\omega/u$, and $\vec{k}=\vec{u}\omega/u^2$, where the second is the vectorial counterpart to the previous statement. From this, it's possible to write the determinant \eqref{eq:ksurf.cry} in terms of phase velocities
+\begin{equation}
+	\det\begin{pmatrix}
+		n_1^2\frac{u^4}{c^2}-u_y^2-u_z^2&u_xu_y&u_xu_z\\
+		u_yu_x&n_2^2\frac{u^4}{c^2}-u_x^2-u_z^2&u_yu_z\\
+		u_zu_x&u_zu_y&n_3^2\frac{u^4}{c^2}-u_y^2-u_x^2
+	\end{pmatrix}
+	\label{eq:phaseveldet.cry}
+\end{equation}
+Solving in a way completely analogous to what we found for the k-surfaces, we find as a solution circles and fourth degree ovals. For the xy planes the two equations define the two following surfaces
+\begin{equation}
+	\begin{aligned}
+		&\left\{ u_x^2+u_y^2=\frac{c^2}{n_3^2} \right\}\\
+		&\left\{ \frac{u_x^2}{n_3^2}+\frac{u_y^2}{n_1^2}=\frac{u^4}{c^2} \right\}
+	\end{aligned}
+	\label{eq:phasevelsur.cry}
+\end{equation}
+These two surfaces are \textit{reciprocal} of the two k-surfaces and are known as the \textit{phase velocity surfaces}
+\subsection{Ray Velocity Surface}
+Due to the anisotropic nature of crystals it's clear that $\vec{k}$ is not parallel to the Poynting vector $\vec{S}=\vec{H}\times\vec{E}$, since in general $\vec{k}$ is not parallel to $\vec{E}$.\\
+In the case of a beam of light in a generic crystal we can still use the vector $\vec{k}$ in order to define the planes of constant phase, but its direction is not anymore parallel to the direction of propagation of the wave.\\
+Calling $\theta$ the angle between $\vec{k}$ and $\vec{S}$, i.e.
+\begin{equation}
+	\theta=\arccos\left( \frac{\vec{S}\cdot\vec{k}}{\norm{Sk}} \right)
+	\label{eq:rayvelang.cry}
+\end{equation}
+We can define the \textit{ray velocity} $\vec{v}$ which will define the real direction of the ray.
+\begin{equation}
+	v=\frac{u}{\cos\theta}
+	\label{eq:rayvel.cry}
+\end{equation}
+From this definition, we can see how it's possible to define a \textit{ray velocity surface}.\\
+We begin to rewrite the equations in terms of the electric displacement vector
+\begin{equation*}
+	D^i=\epsilon_0\left( \delta^i_j+\chi^i_j \right)E^j
+\end{equation*}
+Substituting the definition into the wave equation we have
+\begin{equation*}
+	\cpr{i}{j}{k}k^j\cpr{k}{l}{m}k^lE^m=-\frac{\omega^2}{c^2\epsilon_0}D^i
+\end{equation*}
+Using the properties of the Levi-Civita symbol we have
+\begin{equation*}
+	k^i\left( k^jE_j \right)-k^2E^i=-\frac{\omega^2}{c^2\epsilon_0}D^i
+\end{equation*}
+Since $k^iD_i=0$ by definition of $D^i$, we can multiply both sides by $D^i$, getting\footnote{For clarity I switched back again to the boldface vector notation}
+\begin{equation}
+	k^2\vec{D}\cdot\vec{E}=\frac{\omega^2}{c^2\epsilon_0}D^2
+	\label{eq:raysured.cry}
+\end{equation}
+Using $u=\omega/k$ and that the vector $\vec{D}$ and $\vec{E}$ are separated by $\theta$ as we defined before, due to their tensorial relationship through $\chi^i_j$. We can write then
+\begin{equation}
+	\vec{D}\cdot\vec{E}=ED\cos\theta=\frac{u^2}{c^2\epsilon_0}D^2
+	\label{eq:ecd.cry}
+\end{equation}
+Putting ourselves in the coordinate system of the crystal, i.e. we rotate into the eigenbasis of $\chi^i_j$, we have that
+\begin{enumerate}
+\item \begin{equation*}
+		\epsilon^i_j=1+\chi^i_j=\begin{pmatrix}
+			n_1^2&0&0\\
+			0&n_2^2&0\\
+			0&0&n_3^2
+		\end{pmatrix}
+	\end{equation*}
+\item \begin{equation*}
+		D^i=\epsilon^i_jE^j\implies D^i=\epsilon_0n_{(j)}^2E^i
+	\end{equation*}
+\end{enumerate}
+Thus, the ray velocity surface can then be written in terms of $\vec{D}$ as the solution of the following set of equations
+\begin{equation}
+	\begin{paligned}
+		\left( \frac{c^2}{n_1^2}-v^2_x-v^2_z \right)D_x+v_xv_yD_y+v_xv_zD_z&= 0\\
+		v_yv_xD_x+\left( \frac{c^2}{n_2^2}-v_x^2-v_z^2 \right)D_y+v_yv_{z}D_z&= 0\\
+		v_zv_xD_z+v_zv_yD_y+\left( \frac{c^2}{n_3^2}-v_x^2-v_y^2 \right)D_z&= 0
+	\end{paligned}
+	\label{eq:systemtosolve.cry}
+\end{equation}
+As usual, the solution can be found as the roots of the determinant of the associated matrix. Taken the determinant for only one of the three possible planes thanks to symmetry relations, we find again the double surfaces
+\begin{equation}
+	\begin{aligned}
+		&\left\{ v_x^2+v_y^2=\frac{c^2}{n_3^2} \right\}\\
+		&\left\{ n_1^2v_x^2+n_2^2v_y^2=c^2 \right\}
+	\end{aligned}
+	\label{eq:surfacesrv.cry}
+\end{equation}
+These surfaces are again a sphere and an ellipse, but these define the \textit{ray axes} of the crystal, using again origin and intersection of the surfaces.
+\section{Birefringence}
+We now treat mathematically the concept of birefringence. Consider a wave inside a birefringent crystal transmitting through one of the boundaries of the crystal. Due to having two possible values for $k$ we must consider two transmitted waves, this ones are the waves that will create the double image that we see in the process of birefringence.\\
+Called the incoming wave $\left( \vec{k},\vec{E},\vec{H} \right)$ and the two transmitted waves $\left( \vec{k}_1,\vec{E}_1,\vec{H}_1 \right)$ and $\left( \vec{k}_2,\vec{E}_2,\vec{H}_2 \right)$ we have at the boundary
+\begin{equation*}
+	\begin{paligned}
+		k_2\sin\phi_2&= k\sin\theta\\
+		k_1\sin\phi_1&= k\sin\theta
+	\end{paligned}
+\end{equation*}
+This, as we saw already before, might look like a version of Snell's law for crystals. This is not the case, remember, since $k_{i}$ depends directly on $\phi_{i}$.\\
+This changes if and only if we're treating an uniaxial crystal. Said $\phi_O$ and $\phi_E$ the ordinary and extraordinary transmission angles, noting that the ordinary wavevector $\vec{k}_O$ is by definition on the spherical phase surface, i.e.
+\begin{equation*}
+	\norm{\vec{k}_O}=n_O^2\frac{\omega^2}{c^2}
+\end{equation*}
+We have, just for the ordinary wave, again Snell's law
+\begin{equation}
+	\sin\theta=n_O\sin\phi_O
+	\label{eq:ordinarysnell.cry}
+\end{equation}
+This doesn't hold for $\vec{k}_E$, since it lays on the phase ellipsoid.\\
+In general though, we can say that
+\begin{itemize}
+\item For positive uniaxial crystals $n_O<n_E$
+	\begin{equation*}
+		\phi_E\le\phi_O
+	\end{equation*}
+\item For negative uniaxial crystals $n_E<n_O$
+	\begin{equation*}
+		\phi_E\ge\phi_O
+	\end{equation*}
+\end{itemize}
+This feature of uniaxial crystals can be used in order to create \textit{polarizing prisms}. Consider the same wave as before, coming from inside an uniaxial crystal, and hitting the boundary. Suppose that the optical axis is perpendicular to the plane of incidence.\\
+Here, if $\vec{E}_E$ is the extraordinary wave and $\vec{E}_O$ is the ordinary wave we have that they are respectively parallel and perpendicular to the optical axis.\\
+We can distinguish even more these two crystals if we have either \textit{positive} or \textit{negative} uniaxial crystals.\\
+For negative crystals, where $\phi_E\ge\phi_O$ and $n_E\ge n_O$, we have that Snell holds for the ordinary angle, and
+\begin{equation}
+	n_E<\frac{1}{\sin\theta}<n_O
+	\label{eq:tire.bir}
+\end{equation}
+This is the condition for total internal reflection for the ordinary wave! Therefore what happens, is that the ordinary wave gets totally reflected, while the extraordinary wave gets transmitted. Since the extraordinary wave is \textit{parallel} to the optical axis, we get a \textit{completely} polarized wave on the direction of the optical axis.
+\section{Optical Activity}
+In general, birefringent material that acts on polarization via the rotation of the polarization plane, is known as \textit{optically active}. If a polarized wave travels a path long $l$ inside such media, its polarization plane will get rotated by an angle $\theta\propto l$.\\
+It's possible to define a \textit{specific rotatory power} $\delta$ for this kind of medium, which indicates the amount of rotation per unit length.\\
+These objects are divided in two categories depending on the handedness of the rotation applied to the polarization plane:
+\begin{itemize}
+\item Levorotatory
+\item Dextrorotatory
+\end{itemize}
+This phenomena can be explained supposing that this media is anisotropic, and has a ``right'' and a ``left'' refraction indexes $n_R$ and $n_L$. Using Jones' vectors, specifically in the circular polarization basis, we can say that a wave in such medium will can be written in terms of the following basis
+\begin{equation}
+	\begin{aligned}
+		\ket{RCP}&= \begin{pmatrix}
+			1\\-i
+		\end{pmatrix}e^{ik_Rz-i\omega t}\\
+		\ket{LCP}&= \begin{pmatrix}
+			1\\i
+		\end{pmatrix}e^{ik_Lz-i\omega t}
+	\end{aligned}
+	\label{eq:rlbasis.bir}
+\end{equation}
+Suppose that we shine into this material a linearly polarized wave $\ket{k}$, where
+\begin{equation*}
+	\ket{k}=\begin{pmatrix}
+		1\\0
+	\end{pmatrix}
+\end{equation*}
+In the previous basis this wave can be represented as follows
+\begin{equation*}
+	\ket{k}=\frac{1}{2}\left( \ket{RCP}+\ket{LCP} \right)
+\end{equation*}
+After traveling a distance $l$, a dephasement is introduced to both left and right components, precisely, the wave will be described as follows
+\begin{equation}
+	\ket{k(l)}=\frac{1}{2}e^{ik_Rl}\ket{RCP}+\frac{1}{2}e^{ik_Ll}\ket{LCP}=\frac{1}{2}e^{\frac{1}{2}i\left( k_R+k_L \right)l}\left( e^{\frac{1}{2}i\left( k_R-k_L \right)l}\ket{RCP}+e^{-\frac{1}{2}i\left( k_R-k_L \right)l}\ket{LCP} \right)
+	\label{eq:afterl.bir}
+\end{equation}
+Introducing the two following angles
+\begin{equation*}
+	\begin{paligned}
+		\psi&= \frac{l}{2}\left( k_R+k_L \right)\\
+		\theta&= \frac{l}{2}\left( k_R-k_L \right)
+	\end{paligned}
+\end{equation*}
+We have that 
+\begin{equation}
+	\ket{k(l)}=\frac{1}{2}e^{i\psi}\left( e^{i\theta}\ket{RCP}+e^{-i\theta}\ket{LCP} \right)=e^{i\psi}\begin{pmatrix}
+		\cos\theta\\
+		\sin\theta
+	\end{pmatrix}
+	\label{eq:rotation.bir}
+\end{equation}
+Dropping the general phase at the beginning, we see that the end result is a linearly polarized wave that has been rotated by an angle $\theta$.\\
+Writing $\theta$ in terms of $n_R, n_L$ we have
+\begin{equation}
+	\theta=\frac{l\omega}{2c}\left( n_R-n_L \right)=\frac{\pi l}{\lambda_0}\left( n_R-n_L \right)\implies\delta=\frac{\pi}{\lambda_0}\left( n_R-n_L \right)
+	\label{eq:rotationpower.bir}
+\end{equation}
+Where $\delta$ is again our specific rotatory power. Note that this will also depend implicitly on wavelength due to dispersion in the material.
+\subsection{Susceptibility Tensor of Optically Active Media}
+Given an optically active medium, it's clear that if $E_x$ and $E_y$ get rotated, the susceptibility tensor will be similar to a rotation matrix, i.e. with off-diagonal imaginary values. Precisely, such tensor will take the following matricial form 
+\begin{equation}
+	\chi^i_j=\begin{pmatrix}
+		\chi^1_1&i\chi_{12}&0\\
+		-i\chi_{12}&\chi^2_2&0\\
+		0&0&\chi^3_3
+	\end{pmatrix}
+	\label{eq:optacttensor.bir}
+\end{equation}
+For a wave traveling through the medium along the $z$ axis, we have
+\begin{equation}
+	\begin{paligned}
+		\left( \frac{\omega^2}{c^2}-k^2 \right)E_x&= -\frac{\omega^2}{c^2}\left( \chi^1_1+i\chi^2_1E_y \right)\\
+		\left( \frac{\omega^2}{c^2}-k^2 \right)E_y&= -\frac{\omega^2}{c^2}\left( \chi^2_2E_y-i\chi_{12}E_x \right)\\
+		\frac{\omega^2}{c^2}E_z&= -\frac{\omega^2}{c^2}E_z
+	\end{paligned}
+	\label{eq:tosolveopt.bir}
+\end{equation}
+The last equation gives the banal solution $E_z=0$, while the other two can be solved by finding the roots of the following polynomial
+\begin{equation}
+	\det\begin{pmatrix}
+		\frac{\omega^2}{c^2}\left( 1+\chi^1_1 \right)-k^2&i\frac{\omega^2}{c^2}\chi_{12}\\
+		-i\frac{\omega^2}{c^2}\chi_{12}&\frac{\omega^2}{c^2}\left( 1+\chi^2_2 \right)-k^2
+	\end{pmatrix}=0
+	\label{eq:polroots.bir}
+\end{equation}
+The equation to solve is a biquadratic equation with $k$ as a parameter
+\begin{equation}
+	k^4-k^2\frac{\omega^2}{c^2}\left( 1+\chi^2_2+\chi^1_1 \right)-\frac{\omega^4}{c^4}\left( \chi_{12}^2-\left( 1+\chi^1_1 \right)\left( 1+\chi^2_2 \right) \right)=0
+	\label{eq:poltosolve.bir}
+\end{equation}
+Which, has solutions for
+\begin{equation}
+	k=\frac{\omega}{c}\sqrt{1+\chi^1_1\pm\chi_{12}}
+	\label{eq:kval.poltosolve.bir}
+\end{equation}
+Solving again for $\vec{E}$ we get 
+\begin{equation}
+	E_x=\pm iE_y
+	\label{eq:rlcpsol.bir}
+\end{equation}
+Where the sign depends on the chirality (handedness) of the polarization of the wave.\\
+Remembering also that $\frac{\omega}{c}k=n$ we also have that the right and left refraction indexes are
+\begin{equation}
+	\begin{paligned}
+		n_R&= \sqrt{1+\chi^1_1+\chi_{12}}\\
+		n_L&= \sqrt{1+\chi^1_1-\chi_{12}}
+	\end{paligned}
+	\label{eq:nrnlopt.bir}
+\end{equation}
+Thus, the specific rotatory power $\delta$ is
+\begin{equation}
+	\delta=\frac{\pi}{\lambda_0}\left( n_R-n_L \right)\approx\frac{\chi_{12}\pi}{n_O\lambda_o}
+	\label{eq:srpopt.bir}
+\end{equation}
+\subsubsection{The Special Case of Quartz}
+A cool example of an object which is both birefringent and optically active is \textit{quartz}. Solving the algebraic equation for finding the k-surfaces of this material, we find that the ellipsoid and the sphere have a null intersection. The separation between the surfaces depends directly on $\chi_{12}$, therefore it becomes also a measure of the specific rotatory power
+\section{Magneto-optic and Electro-optic Effects}
+\subsection{Faraday Rotations}
+If an isotropic dielectric is immersed in a magnetic field, and a beam of \textit{nearly} polarized light is sent through the material in the direction of the field, we can measure a rotation of the polarization plane of the wave, i.e. the magnetic field activates the dielectric.\\
+This was first discovered in 1845 by Faraday, which saw that the amount of rotation of the polarization plane is proportional to the magnetic field intensity and the distance traveled in the medium.\\
+Said $V$ a proportionality constant, then we have
+\begin{equation}
+	\theta=VBl
+	\label{eq:verdetfaraday.eop}
+\end{equation}
+The constant $V$ is commonly known as the \textit{Verdet constant}.\\
+The physical explanation of this effect comes from the application of the force equation to bound electrons.\\
+Said $B$ the magnetic field intensity, then we have that the force equation for the bound electrons is as follows
+\begin{equation}
+	m\dv[2]{\vec{r}}{t}+K\vec{r}=-e\vec{E}-e\vec{v}\times\vec{B}
+	\label{eq:feqfaraday.eop}
+\end{equation}
+Again, using the similarity method and supposing an harmonic solution $\vec{r}\propto e^{i\omega t}$ we have
+\begin{equation}
+	K\vec{r}-m\omega^2\vec{r}=i\omega e\vec{r}\times\vec{B}-e\vec{E}
+	\label{eq:solfaraday.eop}
+\end{equation}
+Using again $\vec{P}=-Ne\vec{r}$ we have
+\begin{equation}
+	\left( K-m\omega^2 \right)\vec{P}=Ne^2\vec{E}-i\omega e\vec{P}\times\vec{B}
+	\label{eq:solpfaraday.eop}
+\end{equation}
+Rewriting $P^i=\epsilon_0\chi^i_jE^j$, we have that the susceptibility tensor must be similar to the tensor for optically active media. Writing for ease of notation $\omega_0=\sqrt{K/m}$ the natural resonance frequency of the dielectric and $\omega_c=eB/m$ the cyclotron frequency, the tensor will have the following components
+\begin{equation}
+	\begin{paligned}
+		\chi^1_1&= \frac{Ne^2}{m\epsilon_0}\left( \frac{\omega_0^2-\omega^2}{\left( \omega_0^2-\omega^2 \right)^2-\omega^2\omega_c^2} \right)\\
+		\chi^3_3&= \frac{NeP 2}{m\epsilon_0}\left( \frac{1}{\omega_0-\omega^2} \right)\\
+		\chi_{12}&= \frac{Ne^2}{m\epsilon_0}\left( \frac{\omega\omega_c}{\left( \omega_0^2-\omega^2 \right)^2-\omega^2\omega^2_c} \right)
+	\end{paligned}
+	\label{eq:faradayeotensor.eop}
+\end{equation}
+Although a dielectric becomes optically active when a $\vec{B}$ field is applied, the birefringent effects are minimal unless $\omega\approx\omega_0$, in what's known as the \textit{Voigt effect}.
+\subsection{Kerr Effect}
+As we said before, when a magnetic field is applied to a dielectric, the medium becomes optically active, but not birefringent (unless the frequency is in the proximity of the optical resonance frequency).\\
+Consider now an optically isotropic substance placed in a strong $\vec{E}$ field, it has been observed in 1875 by Kerr that the substance becomes birefringent. This effect is observed in both gases and liquids.\\
+The main idea of explanation of this effect comes from the alignment of molecules along the direction of the electric field, making the material behave like an uniaxial crystal, where the optical axis is determined by the direction of the field.\\
+The strength of the effect is proportional to $E^2$, where if we indicate $n_{\parallel}, n_{\perp}$ as respectively the refraction index in the direction parallel and perpendicular to the electric field, we have that
+\begin{equation}
+	n_{\parallel}-n_{\perp}=KE^2\lambda_0
+	\label{eq:kerreffect.eop}
+\end{equation}
+The constant $K$ is known as the \textit{Kerr constant}.
+\subsection{Other Magneto-optic and Electro-optic Effects}
+Other effects of the same branch as these are
+\begin{itemize}
+\item Cotton Moutton effect: It's the magnetic analog of the Kerr effect in liquids. The alignment of the molecules is here given by the magnetic field $\vec{B}$, and we also have that the strength of the effect is proportional to the square of the field $B^2$.
+\item Pockels effect: For some birefringent crystals the indexes of refraction $n_i$ are affected by the strengths of the fields $E, B$.
+\end{itemize}
+%\section{Non-Linear Effects}
 <++>
-\section{Dispersion and Absorption}
-\section{Propagation in Conducting Media}
-\section{Propagation in Crystals}
-\subsection{Birefrengence}
 \end{document}
+%%TODO 12/01/2023 54m24s
+%%TODO 13/01/2023 57m41s
+%%TODO 14/01/2023 2h12m49s
+%%TODO 15/01/2023 15m57s
+%%TODO 16/01/2023 32m23s
+%%TODO 17/01/2023 1h43m25s
+%%TODO 18/01/2023 1h42m33s
+%%TODO 19/01/2023 1h11m35s
+%%TODO 20/01/2023 19m22s<+time+>

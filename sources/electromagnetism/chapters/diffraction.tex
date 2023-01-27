@@ -529,11 +529,140 @@ The previous two integrals are known as \textit{Fresnel integrals}. Expanding th
 	\label{eq:fresnelintegrals.diff}
 \end{equation}
 These two integral functions define a spiral, known as the \textit{Cornu spiral}. The solution to the square aperture problem will be a piece of the spiral corresponding to an appropriate interval $\Delta s$.\\
+In the case of no aperture, i.e. $\Sigma=\R^2$, we have
+\begin{equation}
+	\begin{aligned}
+		\lim_{s\to\infty}C(s)=\lim_{s\to\infty}S(s)&= \frac{1}{2}\\
+		\lim_{s\to-\infty}C(s)=\lim_{s\to-\infty}S(s)=-\frac{1}{2}
+	\end{aligned}
+	\label{eq:limitscornu.diff}
+\end{equation}
+We obtain the result for an unperturbed wave
+\begin{equation}
+	\psi_P=\psi_0\left( 1+i \right)^2=2i\psi_0
+	\label{eq:unperturbedsquarefresnel.diff}
+\end{equation}
+Therefore, indicating $\psi_1=\psi_0\left( 1+i \right)^2$ for the general finite case, i.e. for a square aperture we get
+\begin{equation}
+	\psi_P=\frac{\psi_1}{\left( 1+i \right)^2}\left( C(u)+iS(u) \right)_{u_1}^{u_2}\left( C(v)+iS(v) \right)^{v_2}_{v_1}
+	\label{eq:fresnelsquare.diff}
+\end{equation}
 \subsubsection{Single Slit and Straightedge}
-<++>
+Fresnel diffraction from a long slit can be treated using the equations we found before for the 2D square aperture, constrained to a single dimension.\\
+Taken $u\in\R$ and $v\in[v_1, v_2]$, integrating and using the limits we found before we get
+\begin{equation}
+	\psi_P=\frac{\psi_1}{1+i}\left( C(v)+iS(v) \right)_{v_1}^{v_2}
+	\label{eq:fresnelsingleslit}
+\end{equation}
+The straightedge is the limiting case of the single slit for which $v_1=-\infty$, therefore
+\begin{equation}
+	\psi_P=\frac{\psi_1}{1+i}\left( C(v_2)+iS(v_2) \right)+\frac{1}{2}\psi_1
+	\label{eq:straighthedgefresnel.diff}
+\end{equation}
 \section{Fourier Theory of Diffraction}
+Consider the case of Fraunhofer (far field) again, in the most general case of a generic aperture $\Sigma$ which might also have generic transmission properties (phase retardation etc\ldots).\\
+All rays leaving $\Sigma$ in a generic direction which we will specify with the director cosines $\hat{\vec{r}}=(\alpha, \beta, \gamma)$, towards a measuring point in the screen which we will call $P$. Therefore, we can say approximately that
+\begin{equation*}
+	P=\left( X, Y \right)\simeq\left( L\alpha, L\beta \right)
+\end{equation*}
+Where $L$ is the distance between the aperture and the screen and $(X, Y)$ are the coordinates of the screen, note that we assume that the angles are small in according to the far field approximation, so $\alpha\approx\tan\alpha, \beta\approx\tan\beta$. Also we assume $\gamma\approx1$. Said Q a point on the aperture, with coordinates $(x, y)=\vec{R}$. Said $\hat{\vec{n}}$ the associated versor of $\vec{R}$ we have $\hat{\vec{n}}=\hat{\vec{r}}$ we have that in a small movement of the point $Q$
+\begin{equation*}
+	\delta r=\vec{R}\cdot\hat{\vec{n}}=\alpha x+\beta y=x\frac{X}{L}+y\frac{Y}{L}
+\end{equation*}
+The KF integral of this configuration is then
+\begin{equation}
+	\psi\left( X, Y \right)=\iint_\Sigma e^{ik\delta r}\dd^2s=\iint_\Sigma e^{\frac{ik}{L}\left( xX+yY \right)}\dd^2s
+	\label{eq:kf.fdiff}
+\end{equation}
+This works for a uniform aperture $\Sigma$.\\
+For a non uniform aperture we must introduce an aperture function $g(x, y)$ defined in a way such that $g(x, y)\dd x\dd y$ is the amplitude of the diffracted wavelet by a surface element $\dd^2s$. Thus, introducing the following substitution $(\mu(X), \nu(Y))$ which we will call the ``spatial frequency''
+\begin{equation}
+	\begin{aligned}
+		\mu&= \frac{kX}{L}\\
+		\nu&= \frac{kY}{L}
+	\end{aligned}
+	\label{eq:spatfreq.fourier}
+\end{equation}
+The KF integral becomes a 2 dimensional Fourier transform of the aperture function
+\begin{equation}
+	\psi(\mu, \nu)=\iint_\Sigma g(x, y)e^{i\left( \mu x+\nu y \right)}\dd{x}\dd{y}
+	\label{eq:ftaperture.fourier}
+\end{equation}
+Written differently, we can say that the image, aka the diffraction pattern $\psi$ is the Fourier pair of the aperture function $g$.\\
+Consider now a 1D infinite grating, for simplicity. The aperture function can be described as an infinite sum of step functions as follows
+\begin{equation}
+	g_{dg}(y)=\sum_{n=0}^\infty g_n\cos(n\nu_0y)\qquad\nu_0=\frac{2\pi}{h}
+	\label{eq:gratingaperturefn.fdiff}
+\end{equation}
+Its Fourier transform is the diffraction pattern that we already know for the gratings, where the higher order maxima correspond to Fourier components with $n>1$ of $g(y)$
 \subsection{Apodization}
+The process of \textit{apodization} (a-pod-ization - to remove the feet) is the process of modification of the aperture function such that the energy is redistributed in the diffraction pattern. It's employed for reducing the irradiance of secondary maxima of the wave.\\
+Consider a single slit, here the aperture function is the set indicator function, which we will indicate with $\chi$. For a slit long $b$ we have
+\begin{equation}
+	g(y)=\chi_{\left[ -b/2, b/2 \right]}(y)
+	\label{eq:slitfn.fdiff}
+\end{equation}
+The Fourier transform of this function is obvious, and after a quick integration we get
+\begin{equation}
+	\fopr{g(y)}(\nu)=b\sinc\left( \frac{1}{2}\nu b \right)=\psi(\nu)
+	\label{eq:slitpatt.fdiff}
+\end{equation}
+Note that this is exactly what we found before in far field regimes.\\
+Suppose that now we apodize $g$, making it a new function, as an example
+\begin{equation*}
+	g_A(y)=\cos\left( \frac{\pi y}{b} \right)\qquad y\in\left[ -\frac{b}{2}, \frac{b}{2} \right]
+\end{equation*}
+Remembering that
+\begin{equation*}
+	\cos\left( \frac{\pi y}{b} \right)=\frac{1}{2}\left( e^{\frac{i\pi y}{b}}+e^{-\frac{i\pi y}{b}} \right)
+\end{equation*}
+And then integrating using the linearity of the integral, plus a couple power rules we get the apodized diffraction pattern
+\begin{equation*}
+	\psi_A(\nu)=\frac{1}{2}\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{iy\left( \nu+\frac{\pi}{b} \right)}+e^{iy\left( \nu-\frac{\pi}{b} \right)}\dd^{}{y}=\frac{b}{b\nu-\pi}\sin\left[ \frac{1}{2}\left( \nu b-\pi \right) \right]+\frac{b}{b\nu+\pi}\sin\left[ \frac{1}{2}\left( \nu b+\pi \right) \right]
+\end{equation*}
+Or, using trigonometric identities, we could write
+\begin{equation}
+	\psi_A(\nu)=\cos\left( \frac{1}{2}\nu b \right)\left( \frac{b}{b\nu-\pi}+\frac{b}{b\nu+\pi} \right)
+	\label{eq:apodizedslit.fdiff}
+\end{equation}
+The apodized $\psi_A(\nu)$ is clearly smaller than the original unapodized function for higher frequencies.\\
+Apodization techniques are usually used on telescope apertures, permitting that dimmer objects can be seen next to brighter objects, which clearly helps in the observation of binary systems, or even in this day and age, exoplanets.
 \subsection{Spatial Filtering}
+Consider again the previous setup, suppose that the $xy$ plane ($\Sigma$) is the location of a \textit{coherently} illuminated object which is imaged by some optical system like a lens, and then imaged again on the focal plane of the lens. Said $\mu, \nu$ the plane of the optical system and $XY$ the plane of the image, we have that $g(x, y)$ is simply our object. The shadow casted on the $XY$ plane, which we will call $\tilde{g}(x, y)$, is the Fourier transform of the optical disturbance $\psi$ on the lens ($\mu, \nu)$. Or
+\begin{equation}
+	S\longrightarrow g(x, y)\longrightarrow \fopr{g}=\psi(\mu, \nu)\longrightarrow\fopr{\psi}=\tilde{g}(X, Y)
+	\label{eq:what.fdiff}
+\end{equation}
+If all $(\mu, \nu)$ are transmitted equally by the optical system, then $\tilde{g}\propto g$ and the image is a precise representation of the object. This is clearly only possible for a finite aperture, thus some spatial frequencies get limited.\\
+Optical phenomena like aberrations, defects, etc\ldots result in a modified $\psi$. This modification can be incorporated via a \textit{transfer function} $T$, such that the modified $\psi$, which we will call $\psi'$ is obtained by multiplication
+\begin{equation}
+	\psi'(\mu, \nu)=T(\mu, \nu)\psi(\mu, \nu)
+	\label{eq:transfer.fdiff}
+\end{equation}
+The image function obtained, $g'$, will then be the Fourier transform of $T\psi$, and the integration limits are determined by the function T. The transfer function can be modified by placing screens and apertures on the $(\mu, \nu)$ plane (the lens). This procedure is known as \textit{spatial filtering} due to its parallels to electrical filters.\\
 \subsection{Phase Gratings}
+A phase grating is an object composed by 2 high-low refraction index strata which are perfectly transparent.\\
+The aperture function of such object is
+\begin{equation}
+	g(y)=e^{i\phi(u)}
+	\label{eq:phasegrating.fdiff}
+\end{equation}
+Where $\phi(y)$ is a periodic step function with height $\Delta\phi=kz\Delta n$, where $z$ is the thickness and $\Delta n=n_H-n_L$ is the difference of refraction index between the two strata.\\
+If $\Delta\phi<<1$ we can approximate the exponential to
+\begin{equation*}
+	g(y)\approx1+i\phi(y)
+\end{equation*}
+Thus, the optical disturbance is
+\begin{equation}
+	\psi(\nu)=\int_{-\frac{b}{2}}^{\frac{b}{2}}e^{i\nu y}\dd^{}{y}+i\int_{-\frac{b}{2}}^{\frac{b}{2}}\phi(y)e^{i\nu y}\dd^{}{y}=\real{\psi}+i\imaginary{\psi}
+	\label{eq:phasegrating.pattern}
+\end{equation}
+Indicating the real part with $\psi_1$ and the imaginary part with $\psi_2$, we have that the first function is the whole object diffraction pattern, and the second function is the diffraction pattern of the function $\phi$. By definition the two function are dephased by $\pi/2$.\\
+Phase gratings are used in the phase contrast method together with phase plates which shift $\psi_2$ by an another $\psi/2$.\\
+A \textit{phase plate} is a transparent glass plate whose thickness is $z=z_{plate}+\frac{1}{4}\lambda$. The thicker section is on the optical object plane $(\mu, \nu)$. The phase plate applies a parity transformation on the function, which makes the image function a sum of the Fourier transform of both.\\
+Phase contrast works then like a phase modulated signal getting transformed to an amplitude modulated signal through this parity transform
+%EOC
 \end{document}
-%08/01/2023 2h15m
+%%TODO 08/01/2023 2h15m
+%%TODO 10/01/2023 36m20s
+%%TODO 11/01/2023 1h09m48s
