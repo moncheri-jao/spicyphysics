@@ -1,0 +1,385 @@
+\documentclass[../electromagnetism.tex]{subfiles}
+\begin{document}
+\section{General Description}
+The laser, an abbreviation of \textit{light amplification by means of stimulated emission of radiation}, are objects that are capable to emit coherent electromagnetic radiation up to frequencies of $10^9$ Hz. Their behavior comes from the laws of quantum mechanics themselves and they were known already before the 1950s, these lasers emitted microwave radiation and therefore are known as \textit{masers}.\\
+The first laser was a He-Ne laser built at Bell laboratories. At around the same time ruby lasers were developed. Both emit coherent light in the red, while the He-Ne laser also emits light in the infrared spectrum.\\
+Since these two lasers we managed to develop various kinds of lasers which emit at different frequencies.\\
+In general lasers work as optical oscillators which have an amplifying medium inside the resonator, also known as laser cavity.\\
+The amplification of light is achieved via means of external excitation. The oscillation in the cavity can be seen as a standing wave.\\
+The final output is an intense beam of highly monochromatic light, which can be used in various fields.
+\section{Stimulated Emission}
+The physical explanation of the inner workings of a laser starts from quantum mechanics itself.\\
+Consider a quantum system with energy levels $n=1, 2, 3,\cdots$ with associated energies $E_n$ and level populations $N_n$. If the system is at thermal equilibrium at some temperature $T$ we can evaluate the ratio of population of two levels using Boltzmann statistics.\\
+Said $\beta=\left( k_BT \right)^{-1}$ and considered the first two levels we have
+\begin{equation}
+	\frac{N_2}{N_1}=\frac{e^{-\beta E_2}}{e^{-\beta E_1}}=e^{-\beta\left( E_2-E_1 \right)}
+	\label{eq:levelpop.se}
+\end{equation}
+Since we're working with photons we have $E_2-E_1=\hbar\omega$, therefore
+\begin{equation}
+	\frac{N_2}{N_1}=e^{-\beta\hbar\omega}
+	\label{eq:touse.se}
+\end{equation}
+Where $\omega_{12}$ is the difference of frequency between the second and the first level.\\
+Said $\rho(\omega)$ the radiation density at a given frequency and $B_{12}, B_{21}$ the stimulated emission and stimulated absorption coefficients, we have that the rate of change per unit time of population of the first or the second level is
+\begin{equation}
+	\begin{paligned}
+		\dv{N_1}{t}&= N_1B_{12}\rho(\omega)\\
+		\dv{N_2}{t}&= N_2B_{21}\rho(\omega)
+	\end{paligned}
+	\label{eq:stimulated.se}
+\end{equation}
+Including also the spontaneous emissions from the levels we also add
+\begin{equation}
+	\dv{N_2}{t}=N_2A_{21}
+	\label{eq:spontaneous.se}
+\end{equation}
+At thermal equilibrium the total amount of population changes must equalize, i.e.
+\begin{equation}
+	N_2A_{21}+N_2B_{21}\rho(\omega)=N_1B_{12}\rho(\omega)
+	\label{eq:thermaleq.se}
+\end{equation}
+Solving for the radiation density we have 
+\begin{equation}
+	\rho(\omega)=\frac{A_{21}}{B_{21}}\frac{1}{\frac{N_1B_{12}}{N_2B_{21}}-1}
+	\label{eq:density.se}
+\end{equation}
+Using \eqref{eq:touse.se} and noting that $\rho(\omega)$ must follow Planck's blackbody formula, thus
+\begin{equation}
+	\rho(\omega)=\frac{\hbar\omega^3}{4\pi^3c^2}\frac{1}{e^{\beta\hbar\omega}-1}=\frac{A_{21}}{B_{21}}\frac{1}{\frac{B_{12}}{B_{21}}e^{\beta\hbar\omega}-1}\implies\begin{paligned}
+		\frac{A_{21}}{B_{21}}&= \frac{\hbar\omega^3}{4\pi^3c^2}\\
+		B_{12}&=B_{21}
+	\end{paligned}
+	\label{eq:bbody.se}
+\end{equation}
+Note that we can also define the ratio between spontaneous and stimulated emission is the following
+\begin{equation*}
+	\frac{SE}{E}=\frac{B_{21}}{A_{21}}\rho(\omega)=\frac{1}{e^{\beta\hbar\omega}-1}
+\end{equation*}
+What it indicates is that the actual spontaneous emission is really small for visible light at ordinary temperatures for the sources $10^2\mathrm{ K}<T<10^3\mathrm{ K}$.\\
+This also indicates how actually the majority of radiation is actually spontaneous random emission, thus also incoherent. We will use light amplification in order to amplify the amount of coherent stimulated radiation.
+\subsection{Light Amplification}
+Consider a medium in which radiation passes through. Suppose that its atoms have random energy levels $E_n$. We will consider a two level system only in this case, where $E_1<E_2$. The equations which will regulate spontaneous absorption and emissions are the usual \eqref{eq:stimulated.se}.\\
+Since $B_{21}=B_{12}$ we will have more stimulated emission if and only if the higher level $E_2$ is more populated than the lower level $E_1$. This process is known as \textit{population inversion}.\\
+If our radiation beam passes multiple times inside this medium we will get a steady gain of power of the beam thanks to the addition of stimulated emission of radiation.\\
+The stimulated radiation will have the same phase dependency of the initial beam, and therefore the final result will be highly coherent. 
+\subsubsection{Gain}
+In order to quantify this energy gain, consider a beam which propagates in a medium where population inversion is possible. For a collimated beam the spectral radiation density $\rho(\omega)$ is tied to the irradiance $I(\omega)$ in the interval $\left[ \omega, \omega+\Delta\omega \right]$ with the following relation
+\begin{equation}
+	\rho(\omega)\Delta\omega=I_\omega\frac{\Delta\omega}{c}
+	\label{eq:rhoirrrel.se}
+\end{equation}
+Including in this the results we found for stimulated absorption and emission we get
+\begin{subequations}
+	\begin{equation}
+		B_{12}\rho(\omega)\Delta N_1=\frac{B_{12}}{c}I(\omega)\Delta N_1\\
+		\label{eq:up.se}
+	\end{equation}
+	\begin{equation}
+		B_{21}\rho(\omega)\Delta N_2=\frac{B_{21}}{c}I(\omega)\Delta\omega
+		\label{eq:down.se}
+	\end{equation}
+	\label{seq:updownirr.se}
+\end{subequations}
+For each transition \eqref{eq:up.se} we get one quanta less of energy ($\Delta E=-\hbar\omega$), but we get plus one quanta for each \eqref{eq:down.se} transition.\\
+Thus, for unit time we have
+\begin{equation}
+	\pdv{\rho}{\omega}\Delta\omega=\hbar\omega\left( B_{21}\Delta N_2-B_{12}\Delta N_1 \right)\rho(\omega)
+	\label{eq:unittimerho.se}
+\end{equation}
+But, since $c^{-1}\dd{t}=\dd{x}$, we have, using \eqref{eq:rhoirrrel.se}
+\begin{equation}
+	\pdv{I}{x}=\frac{\hbar\omega}{c}\left( \frac{\Delta N_2}{\Delta\omega}-\frac{\Delta N_1}{\Delta\omega} \right)B_{21}I(\omega, x)
+	\label{eq:iperunitlength.se}
+\end{equation}
+This result indicates that per unit length of travel inside the amplifying medium, we will get an increase of irradiance equal to
+\begin{equation}
+	\pdv{\log\left( I \right)}{x}=\frac{\hbar\omega}{c\Delta\omega}B_{21}\left( \Delta N_2-\Delta N_1 \right)
+	\label{eq:fracinc.se}
+\end{equation}
+Via integration of \eqref{eq:fracinc.se} we have
+\begin{equation}
+	I(\omega, x)=I_0e^{\alpha_\omega x}
+	\label{eq:gain.se}
+\end{equation}
+The constant $\alpha_\omega$ is known as the \textit{gain constant}, which is specific to the system. By definition
+\begin{equation}
+	\alpha_\omega=\frac{\hbar\omega}{c\Delta\omega}B_{21}\left( \Delta N_2-\Delta N_1 \right)
+	\label{eq:gainconstant.se}
+\end{equation}
+Due to line broadening, this value is actually taken at the center of the spectral line. Said the spectral thickness $\Gamma\approx\Delta\omega$, this result is correct up to a numerical constant $c=\order{ 10^{0} }$. Approximating also $\Delta N_i\approx N_i$ we have that the maximum possible value the gain constant is
+\begin{equation}
+	\alpha_{\omega, max}=\frac{\hbar\omega}{c\Delta\omega}B_{12}\left( N_2-N_1 \right)
+	\label{eq:maxgain.se}
+\end{equation}
+Using the fact also that
+\begin{equation*}
+	\frac{A_{21}}{B_{12}}=\frac{\hbar\omega^3}{4\pi^3c^2}
+\end{equation*}
+We have that
+\begin{equation}
+	\alpha_{\omega, max}\approx\frac{\hbar\omega}{c\Delta\omega}\frac{4\pi^3c^2}{\hbar\omega^3}A_{21}=\frac{2\pi^3c}{\omega^2\Delta\omega}A_{21}\left( N_2-N_1 \right)
+	\label{eq:a21alpha.se}
+\end{equation}
+Or, in terms of wavelength
+\begin{equation}
+	\alpha_{\omega, max}\approx\frac{2\pi^3c\lambda^2}{\Delta\omega}A_{21}\left( N_2-N_1 \right)
+	\label{eq:a21alphalambda.se}
+\end{equation}
+\subsubsection{Gain Curve}
+In order to determine the dependency between gain and the frequency of the wave we need to consider the effect of \textit{line broadening}. Considering a nonzero temperature we have that atoms in thermal motion will have a Gaussian dependency of their velocities.\\
+Considering the isotropy of the system we can consider only the motion on the $x$ direction
+\begin{equation}
+	P(v_x)\Delta v_x=\sqrt{\frac{m\beta}{2\pi}}e^{-\frac{1}{2}m\beta v_x^2}\Delta v_x
+	\label{eq:gaussianvel.se}
+\end{equation}
+Due to Doppler effect, the atoms will absorb and emit photon radiation in this direction at a slightly different frequency $\omega$ than the natural resonant frequency $\omega_0$, thus
+\begin{equation}
+	\frac{\omega-\omega_0}{\omega_0}=\frac{v_x}{c}
+	\label{eq:doppler.se}
+\end{equation}
+Substituting it into the Boltzmann equation for velocity we have that atoms in a given energy state $\ket{i}$ will absorb and emit radiation with the following probability density function
+\begin{equation}
+	P(\omega)\Delta\omega=\frac{c}{\omega_0}e^{-\frac{\beta mc^2}{2\omega_0^2}(\omega-\omega_0)^2}\Delta\omega
+	\label{eq:probomega.se}
+\end{equation}
+This implies then that
+\begin{equation}
+	\Delta N_i=\sqrt{\frac{\beta mc^2}{2\pi}}N_ie^{-\frac{\beta mc^2}{2\omega_0^2}(\omega-\omega_0)^2}\frac{\Delta\omega}{\omega_0}
+	\label{eq:variationpop.se}
+\end{equation}
+Considering again the previous simpler two level approximation, we have that after substituting the values for $\Delta N_1, \Delta N_2$
+\begin{equation*}
+	\alpha_\omega=\frac{\hbar\omega_0}{c\delta\omega}\sqrt{\frac{\beta mc^2}{2\pi}}(N_2-N_1)e^{-\frac{\beta mc^2}{2\omega_0^2}(\omega-\omega_0)^2}\frac{B_{21}}{\omega_0}\Delta\omega
+	\label{eq:gainconst.se}
+\end{equation*}
+Simplifying we have
+\begin{equation}
+	\alpha_\omega=\frac{\hbar B_{21}}{c}\sqrt{\frac{\beta mc^2}{2\pi}}\left( N_2-N_1 \right)e^{-\frac{\beta mc^2}{2\omega_0^2}(\omega-\omega_0)^2}
+	\label{eq:gainconst.se}
+\end{equation}
+Clearly, the variation of the gain constant follows a Gaussian curve centered on the resonant frequency $\omega_0$. Setting the exponential equal to $\frac{1}{2}$ we get the half width half maximum line width $\Gamma_{\frac{1}{2}}$, thus
+\begin{equation*}
+	e^{-\frac{\beta mc^2}{2\omega_0^2}(\omega-\omega_0)^2}=\frac{1}{2}\implies\left( \omega-\omega_0 \right)^2=\frac{2\omega_0^2\log(2)}{\beta mc^2}
+\end{equation*}
+Which, taken the square root gives $\Gamma_{\frac{1}{2}}$
+\begin{equation}
+	\Gamma_{\frac{1}{2}}=\frac{1}{2}\Gamma=\omega_0\sqrt{\frac{2\log(2)}{\beta mc^2}}
+	\label{eq:linewidthalpha.se}
+\end{equation}
+This implies that the maximum value is
+\begin{equation}
+	\alpha_{\omega, max}=\frac{1}{2}\frac{\lambda_0}{\Delta\omega}\sqrt{\frac{\log(2)}{\pi}}\left( N_2-N_1 \right)A_{21}
+	\label{eq:maxgaindoppler.se}
+\end{equation}
+\subsection{Experimental Production of Population Inversions}
+\begin{itemize}
+\item Photon excitation, also known as \textit{optical pumping}
+\item Electron excitation
+\item Inelastic atomic collisions
+\item Chemical reactions
+\end{itemize}
+For optical pumping, an external light source is employed for producing a high population in non-ground state levels in the laser medium via selective absorption. This method is used in solid state lasers, like ruby lasers.\\
+Direct electron excitation are used instead in gas lasers, like argon lasers. Here the laser medium carries itself the discharge current.\\
+In inelastic atomic collisions the electric discharge is used in a way such that two different elements $A, B$ transfer the excitation via collision. The general reaction of excitation transfer is as follows
+\begin{equation*}
+	A^\star+B\to A+B^\star
+\end{equation*}
+If $B^\star$ is metastable, it will have a population inversion and subsequent laser transition. The He-Ne laser uses this process, where the excited helium transfers the excitation to the neon atoms, which will undergo laser transition.\\
+Chemical lasers instead use chemical reactions which leave a molecule or an atom in an excited state, like HF lasers, which use the following reaction
+\begin{equation}
+	\mathrm{H}_2+\mathrm{F}_2\to2\mathrm{HF}^{\star}\to2\mathrm{HF}+\gamma
+	\label{eq:hflasertrans.pi}
+\end{equation}
+\section{Optical Resonators}
+\subsection{Laser Oscillations}
+The optical cavity of a laser, known as the resonator, is composed by two mirrors that can be either plane or curved, where inside the amplifying the medium. If a sufficient population inversion is reached, the radiation gets amplified and establishes itself as a standing wave between the mirrors. The energy is coupled to the resonator via partially transmitting mirrors.\\
+The plane resonator works in a similar way to Fabry-Perot interferometers.\\
+The emitted result is equally spread bands with a free spectral range of
+\begin{equation}
+	\omega_{n+1}-\omega_n=\frac{\pi c}{d}
+	\label{eq:fsr.ores}
+\end{equation}
+Where $c$ is the speed of light and $d$ is the distance between the mirrors.\\
+The frequencies we get are known as \textit{longitudinal and transverse modes} of the resonator. Oscillations can occur at one or more frequencies depending on the spacing of modes. Usually the standing waves oscillate at multiple modes. If high spectral purity is needed, it's possible to fine tune the laser parameters in order to get single mode oscillation. The inherent line width $\Gamma$ is then determined by the so called \textit{quality factor} $Q$ of the resonator.\\
+In general $\Gamma\propto1$ Hz, but it's in practice possible to obtain $\Gamma\propto10^3$ Hz, depending on thermal and mechanical stability of the system.\\
+\subsubsection{Oscillation Threshold}
+In the amplifying medium, as we said before, we have
+\begin{equation*}
+	I(\omega, x)=I_{0,\omega}e^{\alpha_\omega x}
+\end{equation*}
+Suppose that we have a standing wave, as for a cavity. At every passage there will be a loss of energy due to scattering, reflections etc. In order to have laser oscillations, we need that the gain is higher than the loss. Said $\delta$ the amount of loss, we have
+\begin{equation*}
+	I(\omega, x)-I_{0, \omega}\ge\delta I(\omega)
+\end{equation*}
+If the cavity is long $l$, then, after a passage we have
+\begin{equation*}
+	I_{0, \omega}\left( e^{2\alpha_\omega l}-1 \right)\ge\delta I(\omega, x)
+\end{equation*}
+If $2\alpha_\omega l<<1$  we can approximate by power series, which implies
+\begin{equation}
+	2\alpha_\omega l\ge\delta
+	\label{eq:gaincond.ores}
+\end{equation}
+When the condition is satisfied the oscillation grows in irradiance till it gets into equilibrium with the loss. Note that $\delta$ is independent of the irradiation itself.\\
+When the gain is at equilibrium with the oscillation, the system is said to incur in \textit{hole burning}. Here the line profile looks like an inverted harmonic oscillator, known as the \textit{Lorentz profile}. The line width of this profile is inversely proportional to the radiative lifetime of the element.\\
+If $\Gamma_L\ge\Gamma$ all atoms are said to be in \textit{communication with the oscillating laser mode}. This process is known as \textit{homogeneous broadening}. If $\Gamma_L<\Gamma$ only a fraction of atoms participate in a given laser mode, and this process is known as \textit{inhomogeneous broadening}
+\subsection{Resonator Stability}
+In order to talk about the stability of the oscillation, we have to firstly discuss about optical resonators themselves.\\
+In general, the spatial modes of electromagnetic radiation in a closed cavity can be described by 3 integers, related to the standing wave pattern.\\
+For lasers, the cavity is not closed. Here the resonator still supports a standing wave known as a \textit{quasi-mode}. Part of the energy of the mode will spill around the mirror and is then loss via diffraction, the \textit{diffraction loss} of the resonator is really important in low frequency lasers like He-Ne lasers, with a gain per pass of a few percent.\\
+Consider now the wave itself which we will call $\psi$, and call the coordinates on the two mirrors $(x, y)$ and $(x', y')$. If $\psi(x, y), \psi(x', y')$ are the complex amplitudes, then using KF theory we have
+\begin{equation}
+	\psi'(x', y')=-\frac{ik}{4\pi}\iint_{L}^{}\psi(x, y)\frac{e^{ikr}}{r}(1+\cos\theta)\dd^{2}{x}
+	\label{eq:kflaser.res}
+\end{equation}
+Where we indicated the cavity with $L$. Taken a point on the first mirror with respect to the second mirror, we have using trigonometry
+\begin{equation*}
+	\begin{paligned}
+	r&= \sqrt{d^2+(x'-x)^2+(y'-y)^2}\\
+	\cos\theta&= \frac{d}{r}
+	\end{paligned}
+\end{equation*}
+Where we indicated with $d$ the distance between the centers of the two mirrors.\\
+Considering a pair of identical mirrors, at equilibrium we must have $\psi'\propto\psi$, therefore
+\begin{equation}
+	\gamma\psi(x', y')=\iint_{L}^{}\psi(x, y)K(x, y, x', y')\dd^{2}{x}
+	\label{eq:kernel.res}
+\end{equation}
+This is what's known as an \textit{integral equation} with eigenvalue $\gamma$ and kernel $K$. With simple comparison, we have that
+\begin{equation*}
+	K(x, y, x', y')=-\frac{ik}{4\pi r}e^{ikr}(1+\cos\theta)
+\end{equation*}
+Noting that $\gamma\in\Cf$, for each mode $\psi_n$, we will have an associated phase shift of $\arg\left( \gamma_n \right)$.\\
+Since the irradiation of a mode can be evaluated as $\norm{\psi_n}^2$, we can write the general diffraction energy loss formula
+\begin{equation}
+	\delta_D=\frac{I_n-I_{loss}}{I_n}=1-\norm{\gamma_n}^2
+	\label{eq:diffloss.res}
+\end{equation}
+Going back to the definition of the kernel, by comparison we can also find the Fraunhofer diffraction kernel as
+\begin{equation}
+	K_F(x, y, x', y')=Ce^{-ik(xx'+yy')}
+	\label{eq:fraunhoferkern.res}
+\end{equation}
+This is as usual, the kernel of a 2D Fourier transform. If we evaluate the integrals, in the most general case we will get a composition of Hermite polynomials and a Gaussian. The generic state will then be defined as
+\begin{equation}
+	\ket{TEM}_{npq}=H_p\left( \frac{\sqrt{2}x}{w} \right)H_q\left( \frac{\sqrt{2}y}{w}e^{-\frac{x^2+y^2}{w}} \right)
+	\label{eq:temstate.res}
+\end{equation}
+Where $w$ is a weight, $p, q$ are the transverse mode numbers and $n$ is the longitudinal mode number.\\
+Generally, resonators are made by the following typologies of mirrors:
+\begin{itemize}
+\item Plane parallel mirrors
+\item Plane concave mirrors
+\item Confocal mirrors
+\end{itemize}
+The most common are the latter. Confocal resonators are the by far the easier to collimate, needing only $0.25$ degrees of precision, while the others need a collimation precision of around 1 arcsec.\\
+The diffractive loss of the system is evaluated in terms of the Fresnel number $N_F$, defined in terms of mirror curvature $r$ and separation $d$ as follows
+\begin{equation}
+	N_F=\frac{r^2}{\lambda d}
+	\label{eq:fresnelnr.res}
+\end{equation}
+A resonator is said to be \textit{stable} only if $N_F>1$, which means that after one reflection the beam stays collimated with the optic axis of the mirrors.\\
+Note that the diffractive losses are negligible in a confocal resonator when $N_F>1$, making this configuration the most efficient of the three.\\
+\subsubsection{Spot Size}
+Let's go back a bit and check the weight parameter $w$ we introduced before when talking about transverse modes.\\
+We have that the e-folding distance of the radiation is exactly $\sqrt{x^2+y^2}=w$, therefore
+\begin{equation*}
+	\sqrt{x^2+y^2}=r\implies I=e^{-2}
+\end{equation*}
+The parameter $w$ is then known as the \textit{spot size} of the mode $\ket{TEM}_{0, 0}$, which is the dominant oscillation mode. In general, it depends on the longitudinal distance from the midpoint $z$ and the wavelength $\lambda$ as follows
+\begin{equation}
+	w^2(z)=w_0^2+\left( \frac{\lambda z}{\pi w_0} \right)^2
+	\label{eq:spotsize.res}
+\end{equation}
+Here, $w_0$ is a parameter indicating the spot size at the center, and it depends on the distance of the two mirrors and their curvature $R$
+\begin{equation}
+	w_0^2=\frac{\lambda}{\pi}\sqrt{\frac{d}{2}\left( R-\frac{d}{2} \right)}
+	\label{eq:centerspot.res}
+\end{equation}
+Also, we can define the radius of curvature of the wave in terms of the parameters of the resonator
+\begin{equation}
+	r_c=z+\frac{d}{4z}\left( 2R-d \right)
+	\label{eq:wavecurvature.res}
+\end{equation}
+With these formulas, for a confocal resonator, where $R=d$, we have
+\begin{equation}
+	\begin{paligned}
+		w_{0l}&= \sqrt{\frac{\lambda d}{2\pi}}\\
+		w&= \sqrt{\frac{\lambda d}{\pi}}
+	\end{paligned}
+	\label{eq:confocalspot.res}
+\end{equation}
+In this special configuration we have that, at the mirrors $r_c=R$ and $w$ has its maximum, and at the center $r_c=0$ and $w$ reaches its minimum. Clearly, if we substitute symmetric wavefronts with mirrors with $r_c=R$ we get again a confocal resonator.
+\section{Laser Typologies}
+\subsection{Gas Lasers}
+In gas lasers, the optical cavity is created by two external mirrors, coated by multilayer films needed for getting high reflectivity $R$ at the desired $\lambda$. These mirrors are in confocal configuration.\\
+The gas chamber is fitted with two Brewster windows for obtaining the maximum transparency for highly p-polarized light. The external excitation can be provided by
+\begin{itemize}
+\item AC/DC electrodes
+\item Electrodeless HF discharges
+\item High voltage pulses
+\end{itemize}
+The simplest and most efficient way is through electrodes, with AC being the simplest, and DC the most advantageous for continuous lasers
+\subsubsection{He-Ne Lasers}
+In He-Ne lasers, in order to get the laser transition, helium atoms are excited via electron collisions. The populations of the $\ket{ {}^3S }, \ket{ {}^1S }$ states then build up thanks to dipole selection rules, and, we have also that
+\begin{equation*}
+	\begin{aligned}
+		E_{ {}^1S }^{\mathrm{He}}&= E_{ 3s }^{\mathrm{Ne}}\\
+		E_{ {}^1S }^{\mathrm{He}}&= E_{ 2s }^{\mathrm{Ne}}
+	\end{aligned}
+\end{equation*}
+Giving a high probability of energy transfer. Since also $E^{\mathrm{Ne}}_{3s}>E_{3p}^{\mathrm{Ne}}$ and $E^{\mathrm{Ne}}_{2s}>E^{\mathrm{Ne}}_{2p}$ with a sufficient buildup of population, an inversion is possible.\\
+The optimal pressure for obtaining the laser transition is $p\approx1$ atm, with a concentration ratio of helium and neon is of 7 moles of helium per mole of neon.\\
+The laser transitions are
+\begin{equation}
+	\begin{dcases}
+		\ket{3s}\to\ket{2p}&\lambda\approxeq632.8\ \mathrm{mm}\\
+		\ket{3s}\to\ket{3p}&\lambda\approxeq339\ \mathrm{\mu m}\\
+		\ket{2s}\to\ket{2p}&\lambda\approxeq1.1523\ \mathrm{\mu m}\\
+	\end{dcases}
+	\label{eq:lasertrans.hene}
+\end{equation}
+The first one is the prevalent transition, and emits photons in red, while the other two emit IR photons.\\
+\subsubsection{Other Gas Lasers}
+Electric discharges in pure gases and mixtures produce laser transitions at wavelengths between the far infrared and the ultraviolet parts of the spectrum.\\
+All noble gases exhibit laser behavior, zinc, cadmium, mercury, lead and other metals exhibit laser behavior with pulsed discharges, together with the halogens.\\
+It's also possible to build gaseous molecular lasers with $\mathrm{N}_2$.
+\subsection{Optically Pumped Solid State Lasers}
+In solid state lasers, the optically active atoms are embedded in crystals or glasses. The solid is usually made as a cylindrical rod, polished and coated in order to behave like a resonator, or either provided with external mirrors.\\
+The pumping is achieved with external light sources like high intensity lamps.
+\subsubsection{Ruby Lasers}
+In ruby lasers specifically, the rod is made of synthetic sapphire doped with $0.05\%$ dichromium trioxide. Here the chromium substitutes the aluminum in the lattice.\\
+During pumping the chromium excites from the ground state $A^4$ to the states ${}^3T_1$ and ${}^4T_2$ which decay via \textit{rapid radiationless transition} \textit{RRLT} to the excited level ${}^2E$ from which a population inversion can happen with $\lambda=6934$ \AA.
+\subsection{Dye Lasers}
+Stimulated emission in liquids was first observed in 1966 at IBM labs using dye solutions pumped with a ruby laser first, and then with a fast flash lamp.\\
+The organic compounds that were used are \textit{fluorescine} and \textit{rhodamine}, and the population inversion was obtained exciting the molecules to the fluorescence states. Due to the broad band of possible states, the frequency of dye lasers can be tuned with prisms, gratings and interferometers placed inside the cavity, permitting the construction of lasers at various frequencies.
+\subsection{Semiconductor Diode Lasers}
+The most compact laser possible is the \textit{diode laser}, also known by the name of \textit{injection laser}.\\
+In the simplest configuration possible, the diode laser is composed by a P-N junction provided by a doped crystal like gallium arsenide. When a forward bias is applied to the diode, electrons are injected into the P side of the junction, and holes are formed in the N section.\\
+The electron-hole interaction results in \textit{recombination radiation}. This radiation, if the current is high enough, can produce a population inversion in the system. The laser action is then produced at the junction boundary. The action layer is quite small ($d\sim1\ \mu m$), and the gallium arsenide crystals behave as partially reflective mirrors, creating a resonator cavity.\\
+The emitted wavelength is between 830 and 850 nm
+\section{Q-Switching and Mode Locking}
+In high power pumped lasers, the laser action begins when the population inversion transition density reaches the threshold where the gain exceeds the loss in the amplifying medium.\\
+The inverse of the loss per cycle is known as the \textit{resonant Q} of the cavity, hence by definition, a higher $Q$ implies a lower density of population inversions.\\
+It's possible to delay laser oscillations via \textit{Q switching} in the cavity, using shutters known as \textit{Q switches}.\\
+The Q switch is closed at the beginning of the pump cycle when the population inversion density is lower, and opened again when it's at the maximum.\\
+Q switches can be created using the rotation of the mirrors around an axis perpendicular to the optical axis, electro-optic shutters created with Pockel cells and using saturable absorbents, dyes which become transparent when strongly irradiated, creating a passive Q switch.\\
+With Q switching it's possible to create gigawatt and terawatt laser pulses, which can then be used for high energy projects, such as laser fusion.\\
+Another method of laser manipulation is \textit{mode locking}. Given a nonlinear absorbent like a bleachable dye, placed inside the resonator cavity, it's possible to modify the laser output to short regular pulses. The time interval between pulses is a whole fraction of the cycle time, where for each pulse the radiation is bunched up into narrow packets that bounce back and forth in the cavity.\\
+A Fourier analysis shows that the spectrum consists of discrete frequencies separated by exactly the pulse frequency.\\
+In a round trip, the travel time is
+\begin{equation*}
+	\tau=2\frac{d}{u}=2\frac{nd}{c}
+\end{equation*}
+With $d$ the mirror spacing. The frequency is then separated by
+\begin{equation*}
+	\nu_B=\frac{1}{\tau}=\frac{u}{2d}=\frac{c}{2nd}
+\end{equation*}
+Here, the resulting modes are coherent, and the laser is said to be \textit{mode or phase locked}. The pulse line width is $\Gamma\propto\Delta\nu^{-1}$, and the total bandwidth is occupied by coherent modes. For $N$ modes, we have that the pulse width is $\frac{1}{N}$ the pulse interval, creating very short multimode pulses.\\
+In gas lasers these mode locked pulses are limited to a few ns pulses, whereas it's possible to have 3 ps pulses in dye or neodymium-glass lasers. These short pulses are thick around 1 mm, and can be considered as energy sheets traveling at the speed of light.
+\end{document}
+%%TODO 20/01/2023 1h0m20s
+%%TODO 21/01/2023 1h55m07s
+%%TODO 22/01/2023 i forgor (around 2h)
+%%TODO 23/01/2022 1h13m53s <+time+>

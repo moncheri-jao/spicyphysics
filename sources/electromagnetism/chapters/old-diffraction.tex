@@ -1,0 +1,404 @@
+\documentclass[../electromagnetism.tex]{subfiles}
+\begin{document}
+\section{Helmholtz Equation}
+The basis for understanding diffraction, comes obviously from Maxwell's equations.\\
+Suppose that we`re in a medium for which there are no \textit{free} charges and no currents whatsoever ($M^i=0$). Since in the most general case we treat non-monochromatic waves, we propose an Ansatz. Given any field (E,B,H.D), it can be decomposed in \textit{phasors} (complex exponentials), times an amplitude part that in general depends from frequency $\omega$.\\
+Therefore, for any given $\omega$ we have
+\begin{equation}
+	E^i(x^i,t)=E_\omega(x^i)e^{i\omega t}
+	\label{eq:phasorAnsatz}
+\end{equation}
+Where $E_\omega^i$ are the so-called monochromatic components of the fields, and $\epsilon_\omega(x^i)=\epsilon_0\left( 1+\chi_\omega(r) \right)$ is the dielectric permittivity.\\
+Then, Maxwell's equation become, remembering that $D=\epsilon(x,t)E$ and $\mu_0H=B$ ($D_\omega=\epsilon_\omega(x^i)E_\omega$ and $\mu_0H_\omega=B_\omega$ with our Ansatz) in this case, 
+\begin{equation*}
+	\begin{dcases}
+		\del_iD^i= 0\\
+		\del_iH^i= 0\\
+		\cpr{i}{j}{k}\del^jE^k=-\mu_0\del_tH^i\\
+		\cpr{i}{j}{k}\del^jH^k=\del_tD^i
+	\end{dcases}
+\end{equation*}
+The ``time-independent'' monochromatic version then becomes
+\begin{equation}
+	\begin{dcases}
+		\del_iE^i_\omega= -\frac{E^i_\omega\del_i\epsilon_\omega}{\epsilon_\omega}=-2E^i_\omega\del_i\log(n_\omega)\\
+		\del_iH^i_\omega= 0\\
+		\cpr{i}{j}{k}\del^jE^k_\omega=-i\omega\mu_0H_\omega^i\\
+		\cpr{i}{j}{k}\del^jH^k_\omega=i\omega\epsilon_\omega E_\omega^i
+	\end{dcases}
+	\label{eq:timweq}
+\end{equation}
+Where we defined the usual refraction index as follows
+\begin{equation*}
+	n_\omega(x^i)=\sqrt{\frac{\epsilon_\omega(x^i)}{\epsilon_0}}
+\end{equation*}
+Now, solving only for $E_\omega^i$, using the properties of the $\cpr{i}{j}{k}$ symbol, we get the following partial differential equation
+\begin{equation}
+	\del_j\del^jE^i_\omega+2\del_j\left( E^i_\omega\del_i\log(n_\omega) \right)+\omega^2\mu_0\epsilon_\omega E^i_\omega=0
+	\label{eq:firsthemholtz}
+\end{equation}
+We can rewrite $\epsilon_\omega\mu_0\omega^2=\omega^2/c^2n_\omega^2=k_0^2n_\omega^2=k^2$, and imposing that the refraction index varies slowly ($\Delta n_\omega/n_\omega<<1$), we get \textit{Helmholtz's equation}, a time-independent counterpart to the usual wave equation, which can also be seen as an eigenvalue problem of the Laplace operator
+\begin{equation}
+	\del^j\del_jE^i_\omega+k_0^2n_\omega E^i_\omega=0
+	\label{eq:helmholtzeq}
+\end{equation}
+\subsection{Normal Modes of the Electric Field}
+The solution of this differential equation isn't straightforward in general sets, so we begin to impose another Ansatz. Given the monochromatic field $E_\omega$, we suppose that the solutions will be exponential solutions depending on the wavevector $k^i$, as follows
+\begin{equation*}
+	E_\omega^i(x^i)=E_{\vb{k}}^ie^{-ik^ix_i}
+\end{equation*}
+It's clear that in order to satisfy Gauss' equation we must have
+\begin{equation*}
+	\del_iE^i_\omega=-ik_iE^i_{\vb{k}}e^{-ik^ix_i}=0\implies k_iE^i_\omega=0
+\end{equation*}
+This clearly means that the direction of propagation of the waves is parallel to the wavevector, i.e. we have transverse propagation. Supposing that this direction coincides with the direction of the $z$ axis, we can propose a new notation.
+\begin{equation*}
+	\begin{aligned}
+		x^i&=(r_\perp^\alpha,z)\\
+		k^i&=(k_\perp^\alpha,k_z)
+	\end{aligned}
+\end{equation*}
+Where $\alpha=1,2$. Rewriting $k_z$ in terms of $k_\perp$ we have
+\begin{equation*}
+	k^2=k_\perp^2+k_z^2\implies\quad k_z=\sqrt{k^2-k_\perp^2}
+\end{equation*}
+Which gives us a constraint on $k$, as
+\begin{equation*}
+	k\ge k_\perp
+\end{equation*}
+Note that there exist values for which $k_z\in\Cf$, they'll be treated later. Therefore, the general solution is
+\begin{equation}
+	E^i_\omega(x^i)=E_{\vb{k}_\perp}^ie^{-ik^i_\perp r_{i,\perp}-iz\sqrt{k^2-k^2_\perp}}
+	\label{eq:generalparaxialsol}
+\end{equation}
+This is our well known plane wave propagation formula. A similar formula for $H^i_\omega$ can be retrieved by applying the same manipulations to Maxwell's equations, and the resulting Helmholtz equation will describe a field which vibrates in a direction orthogonal to $E$.
+The complete monochromatic solution to Helmholtz's equation will then be a superposition of every solution with $k_\perp\le k$
+\begin{equation}
+	E^i(x^i,t)=\iint_{k_\perp\le k}E^i_{\vb{k}_\perp}(\omega)e^{i\omega t-ik^i_{\perp}r_{i,\perp}-iz\sqrt{k^2-k^2_\perp}}\dd[2]{k_\perp}
+	\label{eq:completesol}
+\end{equation}
+As we said, in general $k\in\Cf$ and the solutions found are said to be \textit{evanescent modes}. All other solutions where $k\in\R$ are said to be \textit{radiation modes}. Therefore, the integral can be extended without problems to all the possible values of $k_\perp$, i.e. $\R^2$
+\section{Scalar Diffraction Theory}
+\subsection{Green's Functions and Kirchhoff Diffraction}
+The previous section deals with Helmholtz's equation and its general solution. Usually tho, in real world application the using that solution is counterproductive, as it's not always readily integrable.\\
+Looking again at Helmholtz's equation, it's clear that it's a set of three \textit{uncoupled} partial differential equations. Said $u(r)$ as the generic component of the field, the equation is
+\begin{equation}
+	\del^i\del_iu(r)+k^2u(r)=0
+	\label{eq:helmholtzsdt}
+\end{equation}
+Now, let's say we want to solve it in some particular (compact) set $V$, which has a random shape.\\
+Due to the improbable boundary conditions we could choose in order to fit our problem inside the chosen set, we use \textit{Green's functions}, for which, a solution $u(r)$ can then be expressed as follows, for some differential equation $\hat{L}h=f$
+\begin{equation*}
+	h(x)=\int G(x-x_0)f(x_0)\dd{x_0}
+\end{equation*}
+Here $G$ is Green's function for the differential operator $\hat{L}$, i.e. a function such that $\hat{L}G=\delta_{x_0}$, where $\delta_{x_0}=\delta(x-x_0)$ is Dirac's delta distribution.\\
+Going back to our partial differential equation, if the source point of the electromagnetic waves is $r_0\in V\subset\R^3$, the field $u(r)$ diverges at $r_0$, so it's a good idea to remove an infintesimal ball of radius $\epsilon$ from the set, i.e. we define a new set 
+\begin{equation*}
+	\tilde{V}=V\setminus B_\epsilon(r_0)
+\end{equation*}
+This differential equation doesn't properly follow what we wrote before about Green's functions, since here Green's function would just be a solution of the problem, since
+\begin{equation*}
+	\hat{L}G=\left( \del^i\del_i+k^2 \right)G(r)=0
+\end{equation*}
+Therefore, Green's function is not unique. We will choose the simplest solution, i.e. a spherical wave emitting from $r_0$
+\begin{equation}
+	G(r-r_0)=\frac{e^{ik(r-r_0)}}{\abs{r-r_0}}
+	\label{eq:freespacegrf}
+\end{equation}
+We can now use Green's theorem for finding a really important relation
+\begin{equation}
+	\iiint_{\tilde{V}}\left(u(r)\del^i\del_iG-G(r-r_0)\del^i\del_iu\right)\dd[3]{x}=-\iiint_{\tilde{V}}\left( uk^2G-uk^2G \right)\dd[3]{x}=0
+	\label{eq:gthmwaves}
+\end{equation}
+Where we applied Helmholtz's equation on the integral.\\
+But also, for Green's theorem, said $\del\tilde{V}=\del V\cup\del B_\epsilon(r_0)$, then
+\begin{equation}
+	\oiint_{\del\tilde{V}}\left( u(r)\del_iG-G(r-r_0)\del_iu \right)\hat{n}^i\dd[2]{s}=\oiint_{\del V\cup\del B_\epsilon(r_0)}\left( u(r)\del_iG-G(r-r_0)\del_iu \right)\hat{n}^i\dd[2]{s}=0
+	\label{eq:gthmdiff}
+\end{equation}
+Or, using the properties of integrals and measures
+\begin{equation}
+	\oiint_{\del B_\epsilon(r_0)}\left( u(r)\del_iG-G(r-r_0)\del_iu \right)\hat{n}^i\dd[2]{s}=-\oiint_{\del V}\left( u(r)\del_iG-G(r-r_0)\del_iu \right)\hat{n}^i\dd[2]{s}=0
+	\label{eq:solkirchalm}
+\end{equation}
+The propagation problem now just reduced to calculating the integral on the left, which is analytically solvable. In $\del B_\epsilon(r_0)$ it's clear that for our formulation of the problem $\hat{n}^i=-\hat{r}^i$, and therefore, 
+\begin{equation*}
+	\pdv{G}{n}=\del_rG=-\left( ik-\frac{1}{\abs{r-r_0}} \right)\frac{e^{ik(r-r_0)}}{\abs{r-r_0}}
+\end{equation*}
+Therefore, Substituting into both integrals this result, and integrating on the left and sending $\epsilon\to0$ (basically, going to $r_0$), we have
+\begin{equation*}
+	\lim_{\epsilon\to0}\left[ 4\pi\epsilon^2\left( u(r_0)\left( \frac{1}{\epsilon}-ik \right)\frac{e^{ik\epsilon}}{\epsilon}-\hat{r}^i\del_iu(r_0)\frac{e^{ik\epsilon}}{\epsilon} \right) \right]=4\pi u(r_0)
+\end{equation*}
+I.e., the integral on the ball collapses to a constant times the field evaluated at the source. Fixing everything together we get \emph{Kirchhoff-Helmholtz's integral theorem}
+\begin{equation}
+	u(r_0)=\frac{1}{4\pi}\oiint_{\del V}\left( \pdv{u}{n}G(r-r_0)-\pdv{G}{n}u(r) \right)\dd[2]{s}
+	\label{eq:kirchhoffhelmholtz.diff}
+\end{equation}
+This theorem, clearly states that, at any point $r_0\in V$, $u(r)$ can be determined only in terms of its boundary values. Writing explicitly Green's function, we have
+\begin{equation}
+	u(r_0)=\frac{1}{4\pi}\oiint_{\del V}\left( \pdv{u}{n}\frac{e^{ik(r-r_0)}}{\abs{r-r_0}}-u(r)\left( ik-\frac{1}{\abs{r-r_0}} \right)\frac{e^{ik(r-r_0)}}{\abs{r-r_0}} \right)\dd[2]{s}
+	\label{eq:kirchhoff-expl.diff}
+\end{equation}
+\subsection{Fresnel-Kirchhoff Diffraction Formula}
+Since, as we calculated before, the wave at some point is defined from the values of the same at the boundary, we need to specify those.\\
+Suppose that there's an opaque infinite wall with an aperture $\Sigma$. In order to evaluate the diffracted field we need to choose a useful surface $\del V$ over which we will perform the integration.\\
+Chosen a point $r_0$ at which we will evaluate the field, we take $\del V=S_1+S_R$, where $S_1$ is a plane just after the aperture, and $S_R$ is a spherical cap of radius R centered in $r_0$.\\
+On $S_R$, we have that, if $R\to\infty$
+\begin{equation}
+	\eval{\pdv{G}{n}}_{S_R}=\left( ik-\frac{1}{R} \right)\frac{e^{ikR}}{R}\approx ikG(r-r_0)
+	\label{eq:greenapprox.kdiff}
+\end{equation}
+Then
+\begin{equation*}
+	\iint_{S_R}\left( G(r-r_0)\pdv{u}{n}-u(r)\pdv{G}{n} \right)\dd[2]{s}\simeq\iint_{S_R}G(r-r_0)\left( \pdv{u}{n}-iku(r) \right)\dd[2]{s}
+\end{equation*}
+Written $\dd[2]{s}=R^2\dd\Omega$, with $\Omega$ being the solid angle, we have that due to the functional shape of $G$, the function $\abs{RG(r-r_0)}$ is uniformly bounded, which implies that the integral vanishes only if 
+\begin{equation}
+	\lim_{R\to\infty}\left[ R\left( \pdv{u}{n}-iku(r) \right) \right]=0
+	\label{eq:sommerfieldcon.diff}
+\end{equation}
+I.e., if the field $u(r)$ vanishes as dast as a diverging wave. This condition is known as \explain{Sommerfield radiation condition}, and \emph{guarantees} that we're dealing only with outgoing waves from $\Sigma$ and not incoming. Note that this is clearly respected for spherical scalar waves.\\
+We're left with only one integral now, which is the following
+\begin{equation}
+	u(r_0)=\frac{1}{4\pi}\iint_{S_1}\left( G(r-r_0)\pdv{u}{n}-u(r)\pdv{G}{n} \right)\dd[2]{s}
+	\label{eq:screenint.kdiff}
+\end{equation}
+We now proceed to have two assumptions on the boundary behavior of $u$. 
+\begin{enumerate}
+\item The values at the aperture of $u$ are the same \emph{with or without} the screen.
+\item The values of $u$ at the opaque wall is identically $0$.
+\end{enumerate}
+Then, the integral can be approximated to the following
+\begin{equation}
+	u(r_0)=\frac{1}{4\pi}\iint_{\Sigma}\left( G(r-r_0)\pdv{u}{n}-u(r)\pdv{G}{n} \right)\dd[2]{s}
+	\label{eq:kirchhapprox.kdiff}
+\end{equation}
+This approximation holds \textit{only} if $\lambda>>d$, with $d$ being the distance from the aperture. If this is true, we can again use the approximation \eqref{eq:greenapprox.kdiff}, and obtain the following simplified integral
+\begin{equation*}
+	u(r_0)=\frac{1}{4\pi}\iint_{\Sigma}\frac{e^{ik(r-r_0)}}{\abs{r-r_0}}\left( \pdv{u}{n}-u(r)\frac{\hat{n}^ir_i}{\abs{r-r_0}} \right)\dd[2]{s}
+\end{equation*}
+We suppose that $u(r)$ is a spherical wave coming from a secondary source $r_1$ with amplitude $A$, for which holds $\lambda>>d_1$, with $d_1$ being the distance from the source to the aperture, then, if we write $r'$ as the distance between the source and the screen and $r$ the distance between the source and the observation point, we have firstly that
+\begin{equation*}
+	\begin{dcases}
+		u(r)=\frac{A}{r'}e^{ikr'+i\omega t}\\
+		\pdv{u}{n}\simeq\frac{ikA}{r'}e^{ikr'+i\omega t}
+	\end{dcases}
+\end{equation*}
+Then we have that
+\begin{equation*}
+	u(r_0)=\frac{ikAe^{i\omega t}}{4\pi}\iint_{\Sigma}\frac{e^{ik(r+r')}}{rr'}\left( \frac{r^{'i}\hat{n}_i}{r'}-\frac{r^i\hat{n}_i}{r} \right)\dd[2]{s}
+\end{equation*}
+Rewriting the scalar products on the right as $\cos(\hat{n},r)$, i.e. the cosines angles between the two vectors in question, we get, remembering that $k=2\pi/\lambda$
+\begin{equation}
+	u(r_0)=\frac{Ae^{i\omega t}}{2i\lambda}\iint_\Sigma \frac{e^{ik(r+r')}}{rr'}\left( \cos(\hat{n},r)-\cos(\hat{n},r') \right)\dd[2]{s}
+	\label{eq:fresnelkirchhoff.diff}
+\end{equation}
+This integral is known as the \explain{Fresnel-Kirchhoff diffraction formula}. Note how this is a mathematical version of Huygens' principle, which states that a wavefront is generated at each point of it by spherical waves.\\
+What we see in this integral is exactly that, the measured field at $r_0$ can be seen simply as a superposition of spherical waves times a correction factor, called \explain{obliquity}, which corrects the calculation in case of waves that do not arrive frontally to the aperture.\\
+It's also important to note that if we switch the observer with the source and vice-versa, the result doesn't change. This is well known as \explain{Helmholtz's reciprocity theorem}.
+\subsection{Rayleigh-Sommerfeld Diffraction}
+Another formulation of diffraction comes from Rayleigh and Sommerfeld, which idea comes from the fact that if we chose a wave that, on $\Sigma$ has $\del_nu=u=0$, then, being $u$ harmonic, it must be zero everywhere. Therefore it's clear that Kirchhoff's formulation of diffraction, even though it's precise in predicting diffraction patterns, it still implies in its boundary condition that there is no field before the aperture.\\
+Sommerfeld then, in order to solve this problem imposing a different choice of Green's function.\\
+Supposed that
+\begin{enumerate}
+\item Scalar theory holds, i.e. $\Delta n_\omega/n_\omega<<1$ (dispersion is negligible)
+\item $u(r),G(r)$ satisfy Helmholtz's equation
+\item Sommerfeld's radiation condition holds, i.e. $\lim_{R\to\infty}R\left( \pdv{u}{n}-iku(r) \right)=0$
+\end{enumerate}
+We can choose a Green's function such that either $G(r)$ or its normal derivative are equal to zero on $S_1$, so that we don't have to impose conditions on both $u$ and its normal derivative.\\
+Suppose then that $G(r)$ is generated at the observation point, and there is a secondary source mirrored at the other side of the screen. Assuming that the wavelength of the waves emitted by these two sources are equal, we can say for sure that their phases are shifted by $\pi$ or they're in phase. Thus, chosen the Green's function with a phase difference of $\pi$, we have
+\begin{equation}
+	G_{-}(r)=\frac{1}{\abs{r-r_0}}e^{ik(r-r_0)}-\frac{1}{\abs{r-\tilde{r}_0}}e^{ik(r-\tilde{r})}
+	\label{eq:gminus.rsdiff}
+\end{equation}
+It's clear that $G(\Sigma)=0$, hence the Kirchhoff integral reduces to the first Rayleigh-Sommerfeld solution
+\begin{equation}
+	u_I(r_0)=-\frac{1}{4\pi}\iint_{\Sigma}u(r)\pdv{G_{-}}{n}\dd[2]{s}
+	\label{eq:irs.rsdiff}
+\end{equation}
+With our definition, if again $d>>\lambda$ we have that $G_-(r)\approx0$ everywhere, and
+\begin{equation}
+	\pdv{G_-}{n}\approx2ik\cos\left( \hat{n},r \right)\frac{e^{ik(r-r_0)}}{\abs{r-r_0}}
+	\label{eq:gnorm-.rsdiff}
+\end{equation}
+If we chose the Green's function with no phase difference between the imaginary source and the observation point, we'd have
+\begin{equation}
+	G_{+}(r)=\frac{1}{\abs{r-r_0}}e^{ik(r-r_0)}+\frac{1}{\abs{r-\tilde{r}_0}}e^{ik(r-\tilde{r})}
+	\label{eq:gplus.rsdiff}
+\end{equation}
+Which implies that now the normal derivative vanishes on $\Sigma$, and the second Rayleigh-Sommerfeld solution is
+\begin{equation}
+	u_{II}(r)=\frac{1}{4\pi}\iint_{\Sigma}G_+(r)\pdv{u}{n}\dd[2]{s}
+	\label{eq:iirs.rsdiff}
+\end{equation}
+Taken the Fresnel-Kirchhoff diffraction formula \eqref{eq:fresnelkirchhoff.diff}, it's pretty easy to get back the two Rayleigh-Sommerfeld solutions by simple substitution.\\
+Given that $d>>\lambda$ and $\tilde{d}>>\lambda$, with $\tilde{d}$ being the distance of the imaginary source from the aperture, we have that in this approximation, called $G_K(r)$ the Kirchhoff-Fresnel Green's function
+\begin{equation}
+	\begin{dcases}
+		\pdv{G_-}{n}=2ik\cos(\hat{n},r)\frac{e^{ik(r-r_0)}}{\abs{r-r_0}}=2\pdv{G_K}{n}\\
+		G_+(r)=2\frac{e^{ik(r-\tilde{r}_0}}{\abs{r-\tilde{r_0}}}=2G_K(r)
+	\end{dcases}
+	\label{eq:grfrsapprox.diff}
+\end{equation}
+Which implies that
+\begin{equation}
+	\begin{dcases}
+		u_I(r_0)=\frac{1}{i\lambda}\iint_\Sigma\frac{u(r)}{\abs{r-r_0}}e^{ik(r-r_0)}\cos(\hat{n},r)\dd[2]{s}\\
+		u_{II}(r_0)=\frac{1}{2\pi}\iint_\Sigma\frac{1}{\abs{r-\tilde{r}_0}}\pdv{u}{n}e^{ik(r-\tilde{r}_0)}\cos(\hat{n},\tilde{r})\dd[2]{s}
+	\end{dcases}
+	\label{eq:rsdformulas.rsdiff}
+\end{equation}
+Which, for a diverging spherical wave become
+\begin{equation}
+	\begin{dcases}
+		u_I(r_0)=\frac{Ae^{i\omega t}}{i\lambda}\iint_\Sigma\frac{e^{ik(r+r')}}{rr'}\cos(\hat{n},r)\dd[2]{s}\\
+		u_{II}(r_0)=\frac{iAe^{i\omega t}}{\lambda}\iint_{\Sigma}\frac{e^{ik(r+r')}}{rr'}\cos{\hat{n},r}\dd[2]{s}
+	\end{dcases}
+	\label{eq:sphwave.rsdiff}
+\end{equation}
+Note that if we compare the two theories, and define an \textit{obliquity} factor $\psi(\theta,\theta')$ as
+\begin{equation}
+	\psi(\theta,\theta')=\begin{dcases}
+		\psi_K=\frac{1}{2}\left( \cos(\theta)-\cos(\theta') \right)\\
+		\psi_I=\cos\theta\\
+		\psi_{II}=-\cos\theta'
+	\end{dcases}
+	\label{eq:obliquity.diff}
+\end{equation}
+The two theories converge, where Kirchhoff theory is the mathematical average of the two. In this situation the general diffraction integral is written as
+\begin{equation}
+	u(r_0)=\frac{Ae^{i\omega t}}{i\lambda}\iint_\Sigma\frac{e^{ik(r+r')}}{rr'}\psi(\theta,\theta')\dd[2]{s}
+	\label{eq:diffint-ob.diff}
+\end{equation}
+It's also important to note that, in order to work properly, both Rayleigh-Sommerfeld solutions need that the source and/or the measuring point are far away from the aperture (d>>\lambda), also known as \textit{far field approximation}, for which we can consider that the waves are \textit{plane} and not spherical, thing that we cannot avoid with Kirchhoff's formulation.\\
+Also, Rayleigh-Sommerfeld theory needs planar diffraction screens, which is not always the case.\\
+\subsection{Non-monochromatic Case}
+Considered Rayleigh-Sommerfeld theory in the case of non-monochromatic waves $u(r,t)$, the first thing that comes to mind is firstly decomposing the wave into monochromatic components and then superimpose all the components into an integral. It's clear that this integral is actually a Fourier transform of the field.
+\begin{equation*}
+	u(r,t)=\int_{\R}\hat{u}(r,\nu)e^{2\pi i\nu t}\dd{t}
+\end{equation*}
+Where $\hat{u}$ is $u$'s transform.\\
+Introducing a parity transformation in frequency space $\nu\to-\nu$, and said $r_0$ and $r_1$ respectively the distances from the measuring point and from the source to the screen, we get from \eqref{eq:fresnelkirchhoff.diff} that, using $\lambda\nu=c/n=u$, $k=2\pi/\lambda=2\pi\nu/u$
+\begin{equation}
+	\hat{u}(r_0,-\nu)=-\frac{i\nu}{u}\int_{\R} \hat{u}(r_1,-\nu)\frac{e^{-2\pi i\nu\frac{r-r_0}{u}}}{\abs{r-r_0}}\cos(\hat{n},r)\dd[2]{s}
+	\label{eq:ftrans-nmn.diff}
+\end{equation}
+Therefore, integrating with respect to time
+\begin{equation}
+	u(r_0,t)=\iint_\Sigma\frac{\cos(\hat{n},r)}{2\pi u\abs{r-r_0}}\int_{\R} -2\pi i\nu\hat{u}(r_1,-\nu)e^{-2\pi i\nu\left( t-\frac{r-r_0}{u} \right)}\dd{t}\dd[2]{s}
+	\label{eq:nmwavealmost.diff}
+\end{equation}
+Since the measuring point and the source aren't moving, using the properties of the Fourier transform, we can say that, the time integral is just the derivative of a transform, where, if we indicate the Fourier inverse operator as $\hat{\mathcal{F}}^{-1}$, gives
+\begin{equation}
+	u(r_0,t)=\frac{1}{2\pi u}\iint_\Sigma\pdv{t}\hat{\mathcal{F}}^{-1}\left[ \hat{u} \right]\left( t-\frac{r-r_0}{u} \right)\frac{\cos(\hat{n},r)}{\abs{r-r_0}}\dd[2]{s}
+	\label{eq:part1-hf.diff}
+\end{equation}
+Writing explicitly the transform as it's defined, we then  have
+\begin{equation}
+	u(r_0,t)=\frac{1}{2\pi u}\iint_\Sigma\eval{\pdv{u}{t}}_{t=t_r}\frac{\cos(\hat{n},r)}{\abs{r-r_0}}\dd[2]{s}
+	\label{eq:huygensfresnel-nm.diff}
+\end{equation}
+Where we evaluate the time derivative at the retarded time $t_r=t-r/u$, therefore also conserving causality.
+\section{Fresnel Diffraction}
+Let's put ourselves again in the paraxial case, and assume that there are two planes, one containing the observed diffraction pattern, with coordinates $(x,y)$, and another one containing the aperture, with coordinates $(\xi,\eta)$. Using Rayleigh-Sommerfeld's first solution and imposing the paraxial approximation, for which, since we chose $z$ as our direction of propagation, we could say, called $\theta$ our inclination angle, with respect to $z$
+\begin{equation*}
+	u(r_0)=\frac{z}{i\lambda}\iint_{\Sigma}u(r_{01})\frac{e^{ikr_{01}}}{r_{01}^2}\dd{\xi}\dd{\eta}
+\end{equation*}
+Where we have
+\begin{equation}
+	r_{01}=\sqrt{z^2+(x-\xi)^2+(y-\eta)^2}
+	\label{eq:ro1.huydiff}
+\end{equation}
+It's clear, that in order to have this approximation work we need two approximations
+\begin{enumerate}
+\item Scalar theory
+\item $r_{01}>>\lambda$
+\end{enumerate}
+The third approximation comes from the definition of $r_{01}$ itself. Approximating the power series to the first order, in order to count for the slight curvature of the waves, we have
+\begin{equation}
+	r_{01}\approx z\left( 1+\frac{1}{2}\left[ \left( \frac{x-\xi}{z} \right)^2+\left( \frac{y-\eta}{z} \right)^2 \right] \right)=z+\frac{1}{2z}\left( x-\xi \right)^2+\frac{1}{2z}\left( y-\eta \right)^2
+	\label{eq:fresnelapprox}
+\end{equation}
+The choice of keeping first order factors is based on the exponential factor itself. In fact, since $k\propto\lambda^{-1}$, for wavelengths of visible light, we have
+\begin{equation*}
+	kr_{01}\propto\frac{r_{01}}{\lambda}\propto10^7
+\end{equation*}
+Therefore, rendering the approximation invalid. It should be noted tho that for a far field approximation we can say without problems that the term $r_{01}$ at the denominator is approximately equal to $z$, while at the exponential we have to keep the first order. Then
+\begin{equation*}
+	\begin{dcases}
+		r_{01}^{-1}\approx z^{-1}\\
+		e^{ikr_{01}}\approx e^{ikz}e^{\frac{ik}{2z}\left[ (x-\xi)^2+(y-\eta)^2 \right]}
+	\end{dcases}
+\end{equation*}
+Fixing everything, and noting that since in this approximation the contributions come only from the aperture, we rewrite the Rayleigh-Sommerfeld integral as follows
+\begin{equation}
+	u(x,y)=\frac{e^{ikz}}{i\lambda z}\iint_{\R^2}u(\xi,\eta)e^{\frac{ik}{2z}\left[ (x-\xi)^2+(y-\eta)^2 \right]}\dd{\xi}\dd{\eta}
+\end{equation}
+Where $u(\xi,\eta)$ is the so called \explain{aperture function}.\\
+Note that if we define the \textit{kernel} $h(x,y)$ as follows
+\begin{equation}
+	h(x,y)=\frac{e^{i\left( kz+\omega t \right)}}{i\lambda z}e^{\frac{ik}{2z}\left[ (x-\xi)^2+(y-\eta)^2 \right]}
+	\label{eq:kernel.fresnel}
+\end{equation}
+Then, the field measured at the screen is simply the convolution between the aperture function and the kernel
+\begin{equation}
+	u(x,y)=u(\xi,\eta)\ast h(x.y)
+	\label{eq:convolutionfn.fresnel}
+\end{equation}
+Working again on the expression inside the integral, it's possible to expand the squares and bring outside all common factors, yielding
+\begin{equation*}
+	\frac{ik}{2z}\left[ (x-\xi)^2+(y-\eta)^2 \right]=\frac{ik}{2z}(x^2+y^2)+\frac{ik}{2z}(\xi^2+\eta^2)-\frac{ik}{z}\left( x\xi+y\eta \right)
+\end{equation*}
+And the integral for a monochromatic source becomes
+\begin{equation}
+	u_\omega(x.y)=\frac{e^{i(kz+\omega t)}e^{\frac{ik}{2z}\left( x^2+y^2 \right)}}{i\lambda z}\iint_{\R^2}\left[ u(\xi,\eta)e^{\frac{ik}{2z}(\xi^2+\eta^2)} \right]e^{-\frac{2\pi i}{\lambda z}(x\xi+y\eta)}\dd{\xi}\dd{\eta}=\frac{e^{i(kz+\omega t)}e^{\frac{ik}{2z}\left( x^2+y^2 \right)}}{i\lambda z}\fopr{u(\xi,\eta)e^{\frac{ik}{2z}(\xi^2+\eta^2)}}(x,y)
+	\label{eq:fouriertrans.fresnel}
+\end{equation}
+Which then describes the observed pattern as a bidimensional Fourier transform of the aperture function times a quadratic phase factor.\\
+This integral is known as the \textit{Fresnel diffraction integral}. Remember that this integral is valid only and only if:
+\begin{enumerate}
+\item Scalar theory holds
+\item The screen is at many wavelengths of distance from the aperture
+\item The second order terms in the square root power expansion can be neglected
+\end{enumerate}
+The third condition is satisfied, only if, expanding the root to the second order, as 
+\begin{equation}
+	ikr_{01}\approx ikz+\frac{ik}{2z}\left[ (x-\xi)^2+(y-\eta)^2 \right]+\frac{ik}{8z^3}\left[ (x-\xi)^2+(y-\eta)^2 \right]^2
+	\label{eq:expapprox.fresnel}
+\end{equation}
+And, the last term is negligible, i.e., in terms of wavelength
+\begin{equation}
+	\frac{\pi}{4\lambda z^3}\left[ (x-\xi)^2+(y-\eta)^2 \right]^2<<1\implies z^3>>\frac{\pi}{4\lambda}\left[ (x-\xi)^2+(y-\eta)^2 \right]^2
+	\label{eq:fresnel.approx}
+\end{equation}
+As an example, for a circular aperture of diameter $1$ cm, an observation region of size $1$ cm and electromagnetic waves with wavelenghts of $0.5\ \mu$m, the distance $z>>25$cm for rendering this approximation valid. This can be reduced by imposing that the second order terms are adiabatic invariants for the integral. This approximation is also known as the \textit{near field approximation} for this reason.
+\subsection{Fresnel Zones and Zone Plates}
+<++>
+\section{Fraunhofer Diffraction}
+Fraunhofer diffraction imposes an even stricter approximation on the exponential, by ditching completely the first order terms, therefore, if
+\begin{equation}
+	z>>\frac{k}{2}\left( \xi^2+\eta^2 \right)
+	\label{eq:fraunhoferregime.fraun}
+\end{equation}
+Then the integral gets even more simplified, and the resulting diffracted field becomes the exact Fourier transform of the aperture function $u(\xi,\eta)$, i.e., said $\nu_x=x/(\lambda z)$ and $\nu_y=y/(\lambda z)$, we have
+\begin{equation*}
+	u(x,y)=\frac{e^{i(kz-\omega t)}e^{\frac{ik}{2z}(x^2+y^2)}}{i\lambda z}\fopr{u}(\nu_x,\nu_y)
+\end{equation*}
+Or, explicitly
+\begin{equation}
+	u(x,y)=\frac{e^{i(kz-\omega t)}e^{\frac{ik}{2z}(x^2+y^2)}}{i\lambda z}\iint_{\Sigma}u(\xi,\eta)e^{-\frac{2\pi i}{\lambda z}\left( x\xi+y\eta \right)}\dd{\xi}\dd{\eta}
+	\label{eq:fraunhoferint.fraun}
+\end{equation}
+This approximation, due to its zeroth order nature is known as the \textit{far field approximation}, in fact, if we wanted to use this approximation with electromagnetic waves with wavelength of $0.6\ \mu$m (red light) and an aperture width of $2.5$ cm the observation distance $z>>1600$m. Another less stringent condition is the so called \textit{antenna designer's formula}, for which, given an aperture of linear dimension $D$, the Fraunhofer approximation will be valid for
+\begin{equation}
+	z>\frac{2D^2}{\lambda}
+	\label{eq:antennista.fraun}
+\end{equation}
+Still, also with this, in the previous case $z>2000$m, but the requirement is less stringent.
+%TODO Fraunhofer and Fresnel diffraction examples of calculation, diffraction gratings
+\section{Examples of Fraunhofer Diffraction Integrals}
+\subsection{Single Slit}
+\subsection{Rectangular Aperture}
+\subsection{Circular Aperture}
+\subsection{Diffraction Gratings}
+\end{document}

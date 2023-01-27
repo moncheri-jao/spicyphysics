@@ -1,0 +1,307 @@
+\documentclass[../electromagnetism.tex]{subfiles}
+\begin{document}
+\section{Reflection and Refraction}
+\subsection{Snell's Law}
+The experimental effect of reflection and refraction can be studied in two ways mainly:
+\begin{enumerate}
+\item Using wave mechanics
+\item Using electromagnetism
+\end{enumerate}
+The first treatment is pretty simple to guess. Experimentally, what we see is an incoming (incident) wave coming from a place with some refraction index $n_1$, passing through a boundary plane, before reaching the second place where there is a new different refraction index $n_2\ne n_1$. Experimentally we might consider the final result as three waves, $\psi$, the incident wave, $\psi_{rr}$, the refracted wave, and $\psi_{re}$, the reflected wave.\\
+Being all these waves, we can write them in terms of solutions to the wave equation in absence of sources, complex exponentials.\\
+Ignoring the amplitude factor we have
+\begin{equation}
+	\begin{aligned}
+		\psi(x^i,t)&= e^{i\left( k^ix_i-\omega t \right)}\\
+		\psi_{rr}(x^i,t)&= e^{i\left( k^i_{rr}x_i-\omega t \right)}\\
+		\psi_{re}(x^i,t)&= e^{i\left( k^i_{re}x_i-\omega t \right)}
+	\end{aligned}
+	\label{eq:snellwaves}
+\end{equation}
+Since $\omega t$ is the same for every wave (as it should) we must have
+\begin{equation*}
+	k^ix_i=k^i_{rr}x_i=k^i_{re}x_i
+\end{equation*}
+And, if we put ourselves in the reference frame of the incidence plane (perpendicular to the boundary plane between the two zones), calling the angle of incidence $\theta$, the angle of reflection $\theta'$ and the angle of refraction $\phi$, this condenses to
+\begin{equation}
+	k\sin\theta=k_{re}\sin\theta'=k_{rr}\sin\phi
+	\label{eq:snellsines}
+\end{equation}
+By definition, $k$ and $k_{re}$ are traveling in the same medium with $n_1$ as the refraction index, hence $k=k_{re}$ and we get through the previous equality 
+\begin{equation*}
+	\theta'=\theta
+\end{equation*}
+We're left with a single equation then
+\begin{equation*}
+	k\sin\theta=k_{rr}\sin\phi
+\end{equation*}
+By definition of $k$, we can also say
+\begin{equation*}
+	\frac{k_{rr}}{k}=\frac{\omega/u_2}{\omega/u}=\frac{\omega n_2}{c}\frac{c}{\omega n_1}=\frac{n_2}{n_1}=n
+\end{equation*}
+I.e., the ratio between the modulus of the wavevector of the incoming wave and the modulus of the wavevector of the refracted wave is equal to the ratio of the two refraction indexes, aso known as the \textit{average refraction index} $n$.\\
+Combining it all we get \textit{Snell's law}
+\begin{equation}
+	\sin\phi=n\sin\theta
+	\label{eq:snelllaw}
+\end{equation}
+\subsection{Fresnel Equations}
+Snell's law can let us calculate with ease the reflection and refraction angles, but by definition it doesn't convey any information about the magnitudes of the waves. For this, we need electromagnetic theory.\\
+Using the second equation of \eqref{eq:eigenmaxwell} we know that the magnetic vectors are orthogonal both to the electric and wavevector fields, and they're equal to
+\begin{equation}
+	H^i=\frac{1}{\mu\omega}\cpr{i}{j}{k}k^jE^k
+	\label{eq:magvecfresnel}
+\end{equation}
+Consider now two possible cases.
+\begin{enumerate}
+\item TE polarization (or S, $\sigma$ polarization), where the $E^i$ field is perpendicular to the incidence plane
+\item TM polarization (or P, $\pi$ polarization), where the $H^i$ field is perpendicular to the incidence plane (hence $E^i$ is parallel to the plane)
+\end{enumerate}
+Considering the two section as dielectrics, it's possible to use the boundary conditions for $E$ and $H$, and knowing how the normal and tangential components behave while passing through the plane we can have more information on the amplitude of the two resulting waves (reflected and refracted).\\
+For TE (S, $\sigma$) polarization we therefore have, remembering that the tangential component of the electric field is conserved 
+\begin{equation}
+	\left\{ \begin{aligned}
+			E+E_{re}&=E_{rr}\\
+			H_{re}\cos\theta-H\cos\theta&=-H_{rr}\cos\phi\\
+			-kE\cos\theta+k_{re}E_{re}\cos\theta&=-k_{rr}E_{rr}\cos\phi
+	\end{aligned}\right.
+	\label{eq:TEpoleqn}
+\end{equation}
+While for TM (P, $\pi$) polarization, we have
+\begin{equation}
+	\left\{ \begin{aligned}
+			H-H_{re}&=H_{rr}\\
+			E\cos\theta+E_{re}\cos\theta&=E_{rr}\cos\phi\\
+			kE-k_{re}E_{re}&=k_{rr}E_{rr}
+	\end{aligned}\right.
+	\label{eq:TMpoleqn}
+\end{equation}
+Solving the system of equations, we can define \textit{four} coefficients, two for TE polarization and one for TM polarization. Indicating them as $t_{s/p}$ and $r_{s/p}$ (respectively s/p-polarization transmission coefficient and s/p-reflection coefficient), as the ratio of the irradiance of the transmitted/reflected electric field with the initial incident field, i.e.
+\begin{equation}
+	\begin{aligned}
+		t_s&=\left( \frac{E_{rr}}{E} \right)_{TE}&r_s=\left( \frac{E_{re}}{E} \right)_{TE}\\
+		t_p&= \left( \frac{E_{rr}}{E} \right)_{TE}&r_p=\left( \frac{E_{re}}{E} \right)_{TM}
+	\end{aligned}
+	\label{eq:rtfirstdef}
+\end{equation}
+Solving the equations, we get for the $r$ coefficient
+\begin{equation}
+	\begin{aligned}
+		r_s&= \frac{\cos\theta-n\cos\phi}{\cos\theta+n\cos\phi}\\
+		r_p&= \frac{\cos\phi-n\cos\theta}{n\cos\theta+\cos\phi}
+	\end{aligned}
+	\label{eq:rsrpgeneral}
+\end{equation}
+Where, as usual, $n=n_2/n_1$ is the average refraction index.\\
+A special case comes from \emph{normal incidence}, i.e. when $\theta=\phi=0$. The two coefficients become
+\begin{equation}
+	r_s=r_p?\frac{1-n}{1+n}
+	\label{eq:normalincidencersrp}
+\end{equation}
+It's clear now, since $n$ can be also greater than one, that two main cases must exists, one where $n<1$ and therefore the phase mustn't change, and one where $n>1$, where phase must change by $\pi$. It's easy to believe this is true in the realm of complex numbers, where we can write $e^{i\pi}=-1$, which gives the aforementioned phase change by $\pi$. The second case, where $n>1$ will be treated with more detail later in the section on \textit{total internal reflection}.\\
+With these coefficients, using Snell's law, we can get \textit{Fresnel's equations}, which give us a way to calculate the amplitudes of the electromagnetic waves which get reflected/refracted. Hence, using $n=\sin\theta/sin\phi$ and cleaning up what we get via trigonometric identities, we have
+\begin{equation}
+	\begin{aligned}
+		r_s&= -\frac{\sin(\theta-\phi)}{\sin(\theta+\phi)}\\
+		t_s&= \frac{2\cos\theta\sin\phi}{\sin(\theta+\phi)}\\
+		r_p&= -\frac{\tan(\theta-\phi)}{\tan(\theta+\phi)}\\
+		t_p&= \frac{2\cos\theta\sin\phi}{\sin(\theta+\phi)\cos(\theta-\phi)}
+	\end{aligned}
+	\label{eq:fresneleqs}
+\end{equation}
+Or, by eliminating $\phi$ using Snell's law
+\begin{equation}
+	\begin{aligned}
+		r_s&= \frac{\cos\theta-\sqrt{n^2-\sin^2\theta}}{\cos\theta+\sqrt{n^2-\sin^2\theta}}\\
+		r_p&= \frac{\sqrt{n^2-\sin^2\theta}-\cos\theta}{\cos\theta-\sqrt{n^2-\sin^2\theta}}
+	\end{aligned}
+	\label{eq:fresneleq2}
+\end{equation}
+Defined these coefficients, for what we have already said about irradiance and by the shape of these coefficients, we can define a new parameter as follows
+\begin{dfn}[Reflectance]
+	Given the reflection coefficients (for s or p polarization) we define the \emph{reflectance} as the fraction of light energy that gets reflected, i.e.
+	\begin{equation}
+		\begin{aligned}
+			R_s&= \abs{r_s}^2=\abs{\frac{E_{re}}{E}}^2_{TE}\propto I_r^{TE}\\
+			R_p&= \abs{r_p}^2=\abs{\frac{E_{re}}{E}}^2_{TM}\propto I_r^{TM}
+		\end{aligned}
+		\label{eq:reflectancedef}
+	\end{equation}
+	For normal incidence, therefore, it just reduces to the following
+	\begin{equation}
+		R_s=R_p=\left( \frac{n-1}{n+1} \right)^2
+		\label{eq:normalincidencereflectance}
+	\end{equation}
+\end{dfn}
+%%TODO reflection/refraction - TIR. Check whether to follow syllabus and COMPILE THE SYLLABUS on your notebook. Also: διαβαζει ελλινηκά και νορβεγκενικά ντήο κάνε
+\section{Total Internal Reflection}
+\subsection{External and Internal Reflection}
+Going back to our two possible cases of outcome for reflection in normal incidence, we can define the following
+\begin{enumerate}
+\item Internal reflection, for $n>1$
+\item External reflection, for $n<1$
+\end{enumerate}
+It's clear from Fresnel's equations that when $n>1$, all values of $\theta$ are possible and both $r$ and $t$ coefficients are real, while for $n<1$ there exists a $\theta_c$, known as the \emph{critical angle} for which $\sin\theta_c=n$, where for $\theta<\theta_c$ transmission \textit{can happen}.\\
+For $\theta>\theta_c$ the coefficients $r_s,r_p\in\Cf$ and trasmission \textit{doesn't happen}, since it cannot. Here, in this case, since $\sin\theta>n$, we get
+\begin{equation}
+	\begin{aligned}
+		r_s&= \frac{\cos\theta-i\sqrt{\sin^2\theta-n^2}}{\cos\theta+i\sqrt{sin^2\theta-n^2}}\\
+		r_p&= \frac{i\sqrt{sin^2\theta-n^2}-n^2\cos\theta}{n^2\cos\theta+i\sqrt{\sin^2\theta-n^2}}
+	\end{aligned}
+	\label{eq:complexreflectioncoeff}
+\end{equation}
+Note that, by definition then:
+\begin{equation}
+	R_s=R_p=\cc{r}_sr_s=\cc{r}_pr_p=1
+	\label{eq:totalreflectiondef}
+\end{equation}
+Also, if it wasn't clear, the critical angle can be calculated with ease as follows
+\begin{equation}
+	\theta_c=\arcsin(n)
+	\label{eq:criticalangle}
+\end{equation}
+Hence we are in a regime of so called \textit{total reflection}, or, to be precise, \textit{total internal reflection}, which we will call \emph{TIR} for ease.\\
+It's possible to use TIR experimentally for transmitting light through continous fibers (see fiber optics), and create \emph{light circuits}.\\
+Consider a single fiber as a solid cylindrical dielectric, immersed in a medium for which $n_{ext}<n_{int}$. We find ourselves in the case of $n<1$, and if the angle of incidence of light to the fiber optic $\alpha$ follows $\alpha>\theta_c$, the light is trapped inside the dielectric in a regime of TIR.\\
+By definition, then
+\begin{equation}
+	\alpha=\arcsin\left( \sqrt{n_{int}^2-n_{ext}^2} \right)
+	\label{eq:tircable}
+\end{equation}
+\subsection{Brewster Angle}
+For p (or TM) polarization, there exists another ``critical angle'' for which $r_p=0$. From the Fresnel formula in TIR regime for $r_p$, this angle, known as \textit{Brewster angle} or \textit{polarization angle} $\theta_B$ is defined as
+\begin{equation}
+	\theta_B=\arctan(n)
+	\label{eq:brewsterangle}
+\end{equation}
+For $\theta=\theta_B$ all unpolarized light gets refracted with TE (or s) polarization. ($r_p=0$, there is no polarization)\\
+A cool application of this principle is the \emph{Brewster window}, an optical element for which the incoming light is incident at $\theta=\theta_B$ on some glass plate with two parallel faces. No light gets reflected, and what gets refracted is TE polarized.
+\subsection{Evanescent Wave}
+Although the electromagnetic wave in TIR regime gets reflected completely, there exists an electromagnetic field beyond the boundary of TIR, this field defines what's known as the \emph{evanescent wave}. Consider the mathematical function which defines a refracted (transmitted) wave:
+\begin{equation*}
+	E_t^i=E_{rr}^ie^{i(k_{rr}^ir-\omega t)}
+\end{equation*}
+Choosing a reference system with the x axis orthogonal to the transmission axis we have
+\begin{equation*}
+	k^i_{rr}r_i=k_{rr}x\sin\phi-k_{rr}y\cos\phi
+\end{equation*}
+Using Snell's law for writing $\cos\phi$ in terms of $\sin\theta$ we have, simplifying $k_{rr}$ to $k$
+\begin{equation}
+	k^ir_i=kx\sin\phi-iky\sqrt{\frac{\sin^2\theta}{n^2}-1}
+	\label{eq:tirewavincrefsys}
+\end{equation}
+Inserting it back to our transmitted $E$ field, we get, given the following definitions
+\begin{equation*}
+	\left\{ \begin{aligned}
+			\alpha&= k\sqrt{\frac{\sin^2\theta}{n}-1}\\
+			k_1&= \frac{k}{n}\sin\theta
+	\end{aligned}\right.
+\end{equation*}
+An evanescent wave decaying on the $y$ direction
+\begin{equation}
+	E_t^i=E^i_{rr}e^{-\alpha\abs{y}}e^{i(k_1x-\omega t)}
+	\label{eq:evanescentwave}
+\end{equation}
+\subsection{Phase Changes}
+In the case of TIR, as we implied before, the complex nature of the reflection coefficients imply a phase change in function of the incidence angle.\\
+By definition in TIR $\abs{r_s}=\abs{r_p}=1$, and since $r_s,r_p\in\Cf$, by definition of complex angle we write both in terms of complex exponentials as follows
+\begin{equation}
+	\left\{ \begin{aligned}
+			r_s&= e^{i\delta_s}=\frac{ae^{-i\alpha}}{ae^{i\alpha}}\\
+			r_p&= e^{i\delta_p}=\frac{be^{-i\beta}}{be^{i\beta}}
+	\end{aligned}\right.
+	\label{eq:redefrsrptir}
+\end{equation}
+The arguments of the two complex numbers, $\delta_s,\delta_p$, for how we defined them are exactly equal to $2\alpha$ and $2\beta$ for how we defined them.\\
+In terms of tangents, we have therefore
+\begin{equation*}
+	\begin{aligned}
+		\tan\alpha&= \tan\frac{\delta_s}{2}\\
+		\tan\beta&= \tan\frac{\delta_p}{2}
+	\end{aligned}
+\end{equation*}
+Defining the tangent in terms of $r$ and its complex conjugate we have, since
+\begin{equation*}
+	\begin{aligned}
+		z+\cc{z}&=2\real(z)\\
+		z-\cc{z}&= 2i\imaginary(z)
+	\end{aligned}
+\end{equation*}
+That
+\begin{equation}
+	\begin{aligned}
+		\tan\alpha&= \frac{\imaginary(r_s)}{\real(r_s)}=\frac{\sqrt{\sin^2\theta-n^2}}{\cos\theta}\\
+		\tan\beta&= \frac{\imaginary(r_p)}{\real(r_p)}=\frac{\sqrt{\sin^2\theta-n^2}}{n^2\cos\theta}
+	\end{aligned}
+	\label{eq:tanalphabeta1}
+\end{equation}
+Defining the \emph{phase difference} $\Delta$ as follows
+\begin{equation*}
+	\Delta=\delta_p-\delta_s
+\end{equation*}
+We have
+\begin{equation}
+	\tan\Delta=\frac{\cos\theta\sqrt{\sin^2\theta-n^2}}{\sin^2\theta}
+	\label{eq:phasedifference}
+\end{equation}
+%%TODO Fresnel rhomb. Add later in second passage of chapter? [ it will happen, be afraid ]
+%\subsubsection{Fresnel Rhomb}
+\section{Reflection Matrix}
+Using Jones calculus in the regime of reflection and refraction, we can imagine the s and p polarization components of the electromagnetic wave as a basis for $\Cf^2$, with the most general vector given by $(p,s)$. Here we can define a (isotropic) \emph{reflection matrix} $R^i_j$ as:
+\begin{equation}
+	R^i_j=\begin{pmatrix}
+		-r_p&0\\
+		0&r_s
+	\end{pmatrix}
+	\label{eq:reflectionmatrix}
+\end{equation}
+And a \emph{transmission matrix} $T^i_j$ analogously as
+\begin{equation}
+	T^i_j=\begin{pmatrix}
+		t_p&0\\
+		0&t_s
+	\end{pmatrix}
+	\label{eq:transmissionmatrix}
+\end{equation}
+In the various regimes of reflection this matrix can be more or less complex.\\
+Taken the case of normal incidence, as we saw we have
+\begin{equation*}
+	r_s=r_p=\frac{1-n}{1+n}
+\end{equation*}
+And therefore
+\begin{equation}
+	R^i_j=\frac{1-n}{1+n}\begin{pmatrix}
+		-1&0\\
+		0&1
+	\end{pmatrix}
+	\label{eq:normalincidencereflection}
+\end{equation}
+For what's known as \emph{near grazing incidence} (i.e. when $r_p=r_s$ for external reflection and $r_p=-r_s$ for internal reflection) we have
+\begin{equation}
+	R^i_j=\pm\delta^i_j
+	\label{eq:neargrazingincidencematrix}
+\end{equation}
+While for TIR, where $r_s=e^{i\delta_s}$ and $r_p=e^{i\delta_p}$, we have
+\begin{equation*}
+	R^i_j=\begin{pmatrix}
+		e^{-i\delta_p}&0\\
+		0&e^{-i\delta_s}
+	\end{pmatrix}
+\end{equation*}
+Note that, when a vector gets reflected in TIR regime, we have the following result:
+\begin{equation}
+	\begin{pmatrix}
+		A'\\B'
+	\end{pmatrix}=\begin{pmatrix}
+		e^{-i\delta_p}&0\\
+		0&e^{-i\delta_s}
+	\end{pmatrix}\begin{pmatrix}
+		A\\B
+	\end{pmatrix}=e^{-i\delta_p}\begin{pmatrix}
+		A\\Be^{i\Delta}
+	\end{pmatrix}
+	\label{eq:phasechangeinTIRcalc}
+\end{equation}
+I.e., the p component of the (generally elliptically polarized wave) gets a phase change by exactly $\Delta=\delta_p-\delta_s$
+%%TODO mannaggia a cristo si godo
+\end{document}
