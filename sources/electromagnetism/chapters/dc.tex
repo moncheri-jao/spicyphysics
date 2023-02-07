@@ -1,0 +1,53 @@
+\documentclass[../electromagnetism.tex]{subfiles}
+\begin{document}
+\section{Basic Laws}
+\subsection{Kirchhoff Laws}
+Consider a finite cable as a cylinder. Said $V$ our cylinder we have that if the charge distribution $\rho$ doesn't change with time, due to the charge continuity equation we also must have that the divergence of the volumetric charge density doesn't change, therefore
+\begin{equation*}
+	\nabla\cdot\vec{J}=\pdv{\rho}{t}=0
+\end{equation*}
+Integrating on the cylinder therefore
+\begin{equation*}
+	\iiint_V\nabla\cdot\vec{J}\dd^3{x}=\oiint_S\vec{J}\cdot\ver{n}\dd^2{s}=0
+\end{equation*}
+Where $S$ is the surface of the cylinder. It's clear that $S=S_1\cup S_2\cup S_3$ where $S_1,S_2$ are the two surfaces at the ends of the cylinder and $S_3$ is the tube itself.\\
+By definition, since the normal of the tube is orthogonal to $\vec{J}$ that
+\begin{equation*}
+	\oiint_S\vec{J}\cdot\ver{n}\dd^2{s}=\iint_{S_1}\vec{J}\cdot\ver{n}_1\dd^2{s}+\iint_{S_2}\vec{J}\cdot\ver{n}_2\dd^2{s}
+\end{equation*}
+Thus, remembering that the current $I$, when $\partial_t\rho=0$, is exactly defined as the flux of $\vec{J}$, that 
+\begin{equation*}
+	I=\iint_S\vec{J}\cdot{n}\dd^2{s}
+\end{equation*}
+And therefore, said $i_1$ and $i_2$ the currents flowing through the surface 1 and 2, that
+\begin{equation}
+	I=i_1+i_2=0
+	\label{eq:kirchhoffintro.dc}
+\end{equation}
+This indicates that the current in a circuit is \textit{surface independent}.\\
+\begin{dfn}[Node]
+	A node is the point of convergence of multiple conductors. Taken a surface $S$ that contains the node, then 
+	\begin{equation*}
+		\oiint_S\vec{J}\cdot\ver{n}\dd^2{s}=0
+	\end{equation*}
+\end{dfn}
+By definition of node then, it's possible to define the following law
+\begin{thm}[First Kirchhoff Law]<++>
+\end{thm}<++>
+\section{Resistors}
+\subsection{Substitution Principle}
+\subsection{Multiple Generators}
+\subsection{Tripolar Configurations}
+\section{Nodal and Mesh Analysis}
+\subsection{Nodal Analysis}
+\subsection{Mesh Analysis}
+\section{Equivalent Circuits}
+\subsection{Thevenin Theorem}
+\subsection{Norton Theorem}
+\subsection{Real Generators}
+\section{Capacitors and Inductors}
+\subsection{Definitions}
+\subsection{Capacitor Circuits}
+\subsection{Inductor Circuits}
+\end{document}
+%47/139 pg
