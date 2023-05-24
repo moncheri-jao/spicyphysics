@@ -1,4 +1,169 @@
 \documentclass[../electromagnetism.tex]{subfiles}
 \begin{document}
-<++>
+\section{Variable Current Circuits}
+\subsection{RC Circuit in DC}
+Let's begin to consider what happens when currents aren't anymore constant in time but instead are variable. The simplest possible circuit that we can imagine with variable currents (but with a continuous source) is the following one
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) node[cute spdt down, rotate=180](sw){};
+		\draw (sw.out 1) -- ++(0, -4) node[ground](gr){};
+		\draw (sw.in) to[R, l=$R$, v=$V_R$] ++(2, 0) to[C, l=$C$, i=$I_C(t)$, v=$V_C(t)$] ++(0, -4) |- (gr);
+		\draw (sw.out 2) -- ++(-4, 0) to[dcvsource, l=$V$, i=$I$] ++(0, -4) |- (gr);
+	\end{circuitikz}
+	\caption{Diagram of a circuit which charges a capacitor with DC current and then lets it discharge freely to ground}
+	\label{fig:chargedisC.ac}
+\end{figure}
+If we consider two time frames, one when the switch is on the other configuration and charges the capacitor, till a time $t_0$, when the capacitor is fully charged, and then gets switched and the charged capacitor discharges on the ground, we have, during the charge of the capacitor
+\begin{equation*}
+	V=V_R+V_C=RI+\frac{Q}{C}=R\dv{Q}{t}+\frac{C}{C}
+\end{equation*}
+Where we used the following identities
+\begin{equation*}
+	\begin{paligned}
+		C&= \frac{Q}{V_C}\\
+		I&= \dv{Q}{t}
+	\end{paligned}
+\end{equation*}
+Solving for the current we have
+\begin{equation*}
+	RC\dv{Q}{t}=CV-Q
+\end{equation*}
+And solving this ordinary differential equation between $t=0$ and $t=t_0$ we get
+\begin{equation*}
+	log\left( \frac{CV-Q}{CV-Q(0)} \right)=-\frac{t}{RC}
+\end{equation*}
+Which after solving for $Q$ becomes, noting that at $t=0$ we have $Q(0)=0$
+\begin{equation}
+	Q(t)=CV\left( 1-e^{-\frac{t}{RC}} \right)
+	\label{eq:chargeC.ac}
+\end{equation}
+We define the \textit{relaxation time of the circuit} $\tau=RC$, and after substituting the solution into the definition of the capacitance and solving for $V_C$ we have
+\begin{equation}
+	V_C(t)=V\left( 1-e^{-\frac{t}{\tau}} \right)
+	\label{eq:vccdischarge.ac}
+\end{equation}
+If we solve for $V_R$, noting that $V_R=RI=R\dot{Q}$ we get that the voltage at the poles of the resistor at a time $t$ is
+\begin{equation}
+	V_R(t)=\frac{RCV}{\tau}e^{-\frac{t}{\tau}}=Ve^{-\frac{t}{\tau}}
+	\label{eq:chargecaprv.ac}
+\end{equation}
+The circuit is said to be stable when $t\gtrsim4\tau$, so that we can assume the capacitor as fully charged.\\
+We can now analyze the case when the capacitor is discharging, i.e. when the switch is flipped and the resistance and capacitor are isolated, and the circuit is practically the following
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) node[ground](gr){};
+		\draw (gr) -- ++(4, 0) to[C, l=$C$, i=$I_C(t)$, v=$V_C(t)$] ++(0,4) to[R, l=$R$, v=$V_R(t)$] ++(-4, 0) |- (gr);
+	\end{circuitikz}
+	\caption{Diagram of the discharge of the capacitor $C$}
+	\label{fig:dischargeconf.ac}
+\end{figure}
+Here, since we're directly connected to ground, we must have $V=0$, thus
+\begin{equation*}
+	I(t)R+V_C(t)=0
+\end{equation*}
+Thus, through substitution we have
+\begin{equation*}
+	R\dv{Q}{t}=-\frac{Q(t)}{C}\implies Q(t)=Q(0)e^{-\frac{t}{RC}}
+\end{equation*}
+But $Q(0)=CV$m and thus
+\begin{equation}
+	\begin{paligned}
+		Q(t)&= CVe^{-\frac{t}{\tau}}\\
+		V_C(t)&=\frac{Q(t)}{C}Ve^{-\frac{t}{\tau}}\\
+	\end{paligned}
+	\label{eq:chargecondfinal.ac}
+\end{equation}
+\subsection{RC Circuit in AC}
+Consider now the same circuit using an alternate voltage source $V(t)$. Consider the special case where this source is an harmonic source, as
+\begin{equation*}
+	V(t)=V_0\cos\left( \omega t \right)
+\end{equation*}
+The circuit diagram is the following
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV=$V$, v=$V(t)$] ++(0, 3) to[R, l=$R$] ++(4, 0) to[C, l=$C$, v=$V_C(t)$] ++(0, -3) -- (0, 0); 
+	\end{circuitikz}
+	\caption{Alternate current version of the resistor-capacitor circuit treated in the previous section}
+	\label{fig:accapacitordis.ac}
+\end{figure}
+As we have already saw before, we have
+\begin{equation*}
+	\begin{paligned}
+		V_C&= \frac{Q}{C}\\
+		V_R&= R\dv{Q}{t}\\
+	\end{paligned}
+\end{equation*}
+Thus, the \textit{characteristic differential equation of the circuit} is 
+\begin{equation*}
+	V(t)-R\dv{Q}{t}-\frac{Q}{C}=0
+\end{equation*}
+Or, noting that
+\begin{equation*}
+	\frac{Q}{C}=V_C\implies Q=CV_C\implies R\dv{Q}{t}=RC\dv{V_C}{t}
+\end{equation*}
+We have
+\begin{equation}
+	V(t)-RC\dv{V_C(t)}{t}-V_C(t)=0
+	\label{eq:rcchargechareq.ac}
+\end{equation}
+Substituting the functional expression of $V(t)$, we get a not-so-difficult first order differential equation
+\begin{equation}
+	RC\dv{V_C}{t}+V_C(t)=V_0\cos(\omega t)
+	\label{eq:eqtosolvercdis.ac}
+\end{equation}
+We solve it by searching a solution via the similarity method, i.e. supposing that $V_{C}(T)\propto\cos(\omega t)$. Said $V_{0C}$ the proportionality constant we get, adding a generic phase
+\begin{equation*}
+	\dv{V_C}{t}=-\omega V_{0C}\sin\left( \omega t+\varphi \right)
+\end{equation*}
+This is better expressed using phasor notation, which is built using Euler's identity. Keeping in mind that we actually measure the real part of this complex function, i.e. $V_C^{(M)}(t)=\real\left\{ V_{C}(t) \right\}$, we get by deriving and plugging back into the differential equation
+\begin{equation*}
+	V_C(t)+RC\dv{V_C}{t}=V_{0C}e^{i\omega t+i\varphi}+i\omega RCV_{0C}e^{i\omega t+i\varphi}=V_0e^{i\omega t}
+\end{equation*}
+Solving, we have
+\begin{equation*}
+	\left( 1+i\omega RC \right)V_{0C}e^{i\varphi}=V_0\implies V_{0C}e^{i\varphi}=\frac{1-i\omega RC}{1+\left( RC\omega \right)^2}V_0
+\end{equation*}
+And therefore, substituting $\tau=RC$
+\begin{equation}
+	V_{0C}(t)e^{i\varphi}=\left( \frac{1}{1+\left( \tau\omega \right)^2}-\frac{i\omega \tau}{1+\left( \tau\omega \right)^2} \right)V_0
+	\label{eq:solutionrcac.ac}
+\end{equation}
+Or, in terms of measured voltages
+\begin{equation}
+	V_{C}^{(M)}=\frac{V_0}{1+\omega^2\tau^2}\cos\left( \omega r+\arctan\left( -\omega\tau \right) \right)
+	\label{eq:measuredvoltrc.ac}
+\end{equation}
+Note that this solution is strongly dependent on the frequency $\omega$ of the input voltage, in fact, we specifically have, ignoring the phase $\varphi=\arctan\left( -\omega\tau \right)$
+\begin{equation}
+	\begin{paligned}
+		\lim_{\omega\to0}V_{0C}(\omega)&= V_0\\
+		\lim_{\omega\to\infty}V_{0C}(\omega)&= 0\\
+	\end{paligned}
+	\label{eq:filterbehaviorrc.ac}
+\end{equation}
+This behavior clearly shows that the voltage is nonzero only when $\omega<\omega_R$, with $\omega_R$ being the resonance frequency. This type of circuit is widely known as a \textit{low pass filter}, i.e. a circuit which permits the passage of voltage only to a limit \textit{resonant} frequency <++>
+%%TODO corrente in RC AC come inizio GOL
+\subsection{Generalized Ohm Law}
+\subsection{Transfer Functions}
+\section{RC, RL Circuits}
+\subsection{Low Pass Filters}
+\subsection{High Pass Filters}
+\subsection{Integrator and Derivator Circuits}
+\section{RLC Circuits}
+\subsection{Overdamping}
+\subsection{Critical Damping}
+\subsection{Oscillatory Damping}
+\section{Power in AC Circuits}
+\section{Three-phase Generators}
+\section{Diodes}
+\subsection{Semiconductor Diodes}
+\subsection{Zener Diodes}
+\section{Transmission Lines}
+\subsection{Electromagnetic Kirchhoff Laws}
+\subsection{Telegrapher's Equations}
+\subsection{Non-dissipative Solution}
+\section{Coaxial Cables}
 \end{document}

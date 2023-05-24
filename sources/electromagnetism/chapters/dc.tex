@@ -1,53 +1,722 @@
 \documentclass[../electromagnetism.tex]{subfiles}
 \begin{document}
-\section{Basic Laws}
-\subsection{Kirchhoff Laws}
-Consider a finite cable as a cylinder. Said $V$ our cylinder we have that if the charge distribution $\rho$ doesn't change with time, due to the charge continuity equation we also must have that the divergence of the volumetric charge density doesn't change, therefore
+\section{Basic Components and Laws}
+\subsection{Resistors, Capacitors and Inductors}
+An electric circuit is an interconnection of components in a closed loop of conductors, where current flows.\\
+The simplest possible circuit is composed by a simple dcvsource in a closed loop of cables. Circuits are described graphically via technical diagram as the following one for a simple dcvsource in a closed loop
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0,0) to[dcvsource] (0,4) -- (4,4) -- (4,0) -- (0,0);
+	\end{circuitikz}
+	\label{fig:dcvsource.dc}
+	\caption{Simple closed loop dcvsource}
+\end{figure}
+Other components which we will treat in this chapter are resistors $R$, capacitors $C$ and inductors (aka coils) $L$. They are described by the following drawings
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0,0) to[R, o-o] (0,2)
+		node[right] at (0.25,1) {R};
+		\draw (2,0) to[C, o-o] (2,2)
+		node[right] at (2.50,1) {C};
+		\draw (4,0) to[L, o-o] (4,2)
+		node[right] at (4.25,1) {L};
+	\end{circuitikz}
+	\caption{From right to left: a resistance, a capacitor and an inductor} 
+	\label{fig:basiccomponents.dc}
+\end{figure}
+These components can be inserted in circuits in various ways, creating different effects which will be studied using the basic laws that we can obtain from classical electromagnetism
+\subsection{Ohm's Law}
+Ohm's law is one of the basic laws of circuit analysis. The derivation is simple enough, and has already been treated before, but just as a refresher it will be re-derived here and then rewritten in more familiar terms.\\
+A metal can be summarized in electromagnetism as a sea of free electrons roaming freely on its surface, moving at speed $v$. These electrons will collide with each other, and the average distance of free travel before a collision (aka \textit{mean free path}) is defined as follows
 \begin{equation*}
-	\nabla\cdot\vec{J}=\pdv{\rho}{t}=0
+	\lambda=\tau v
 \end{equation*}
-Integrating on the cylinder therefore
+Where the quantity $\tau$ has dimensions of time, and is known as the \textit{relaxation time} of the metal.\\
+Using Coulomb's force law together with Newton's second law we get that the acceleration $a$ is 
 \begin{equation*}
-	\iiint_V\nabla\cdot\vec{J}\dd^3{x}=\oiint_S\vec{J}\cdot\ver{n}\dd^2{s}=0
+	a=-\frac{e}{m}E
 \end{equation*}
-Where $S$ is the surface of the cylinder. It's clear that $S=S_1\cup S_2\cup S_3$ where $S_1,S_2$ are the two surfaces at the ends of the cylinder and $S_3$ is the tube itself.\\
-By definition, since the normal of the tube is orthogonal to $\vec{J}$ that
+And therefore, the average velocity is
 \begin{equation*}
-	\oiint_S\vec{J}\cdot\ver{n}\dd^2{s}=\iint_{S_1}\vec{J}\cdot\ver{n}_1\dd^2{s}+\iint_{S_2}\vec{J}\cdot\ver{n}_2\dd^2{s}
+	\expval{v}=a\tau=-\frac{e\tau}{m}E
 \end{equation*}
-Thus, remembering that the current $I$, when $\partial_t\rho=0$, is exactly defined as the flux of $\vec{J}$, that 
+Also, by definition we have that the total current density is $-Nev$, i.e. 
 \begin{equation*}
-	I=\iint_S\vec{J}\cdot{n}\dd^2{s}
+	J=\frac{Ne^2\tau}{m}E
 \end{equation*}
-And therefore, said $i_1$ and $i_2$ the currents flowing through the surface 1 and 2, that
+Which gives us the static version of Ohm's law
 \begin{equation}
-	I=i_1+i_2=0
-	\label{eq:kirchhoffintro.dc}
+	\vec{J}=\sigma\vec{E}, \qquad \sigma=\frac{Ne^2\tau}{m}
+	\label{ohm1.dc}
 \end{equation}
-This indicates that the current in a circuit is \textit{surface independent}.\\
-\begin{dfn}[Node]
-	A node is the point of convergence of multiple conductors. Taken a surface $S$ that contains the node, then 
+With $\sigma$ being the conductivity of the metal.\\
+For an homogeneous linear metallic cable with section $S$ we can say without much doubt that the conductivity $\sigma$ doesn't depend on the electric field, and with a simple calculation, we can say that, if the cable is long $l$
+\begin{equation*}
+	V=\int_l\vec{E}\cdot\ver{t}\dd l=El, \qquad I=\iint_S\vec{J}\cdot\ver{n}\dd^2s=JS
+\end{equation*}
+Substituting we get
+\begin{equation*}
+	I=\frac{\sigma S}{l}V
+\end{equation*}
+\begin{dfn}[Resistance]
+	We define the resistance $R$ of a conductor the amount of resistivity per surface times its length, i.e.
 	\begin{equation*}
-		\oiint_S\vec{J}\cdot\ver{n}\dd^2{s}=0
+		R=\frac{l}{\sigma S}=\frac{\rho}{S}l
 	\end{equation*}
+	The resistance is measured in \textit{ohms} $\Omega$
 \end{dfn}
-By definition of node then, it's possible to define the following law
-\begin{thm}[First Kirchhoff Law]<++>
-\end{thm}<++>
-\section{Resistors}
-\subsection{Substitution Principle}
-\subsection{Multiple Generators}
-\subsection{Tripolar Configurations}
-\section{Nodal and Mesh Analysis}
-\subsection{Nodal Analysis}
-\subsection{Mesh Analysis}
-\section{Equivalent Circuits}
+The previous definition gives us the well known Ohm's law for circuit analysis
+\begin{equation}
+	V=RI
+	\label{eq:ohmcircuits.dc}
+\end{equation}
+The electronic component which is tied to this quantity is the \textit{resistor}. Resistors with a resistance values comprised between $0.01\ \Omega$ and $10^{12}\ \Omega$ can be found commercially, with power ratings between $1/8$ W and $250$ W with a precision in between $0.005\%$ and $20\%$.\\
+The cheapest resistors are made using a carbon mix, and they guarantee a resistance $\pm5\%$ from the nominal value.\\
+Note that in real world applications, external factors can influence the resistance of components and circuits, changing the final, actual, resistance value. Here's a short list:
+\begin{itemize}
+\item Welding induces a permanent change in resistance values of around $2\%$ of the nominal value
+\item Vibrations (2G) and shocks (100G) induce permanent changes of around $2\%$ of the nominal value
+\item Humidity (95\% at 40 degrees C) induce a temporary change of the value between 6 and 10\%
+\item Temperature changes from:
+	\begin{itemize}
+	\item 25 to -15 degrees C change real resistance values from 2.5\% deviation to 4.5\% deviation
+	\item 25 to 85 degrees C induce changes between 3.3\% to 5.9\%
+	\end{itemize}
+\end{itemize}
+Other defects in resistors which change the resistance value are parasitic inductances at high frequencies, noise at low frequencies and defects in the mix.\\
+A higher priced but more precise kind of resistors are metallic film resistors, which guarantee tolerances of around 1\% and oscillations around the nominal value of less than 0.1\%.\\
+\subsection{Ideal Generators}
+An ideal generator is an object which provides a voltage $V$ or a current $I$ to the circuit. Ideal generators are generators for which their resistance is zero.\\
+There are two types of generator, as it was hinted before: voltage and current generators.\\
+A voltage generator is an energy source which keeps the voltage $V$ constant between its poles, independently from the load.\\
+A current generator is slightly more complex. It varies the voltage between its poles in order to keep the current $I$ constant. Diagrams for both generators follow
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 2) to[dcvsource, l=$V$] (5, 2) -- (5, 0) to[R, l=$R$] (0, 0) -- (0,2);
+	\end{circuitikz}
+	\caption{Ideal voltage generator connected to a resistance}
+	\label{fig:idealvoltagegen.dc}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 2) to[dcisource, l=$I$] (5, 2) -- (5, 0) to[R, l=$R$] (0, 0) -- (0,2);
+	\end{circuitikz}
+	\caption{Ideal current generator connected to a resistance}
+	\label{fig:idealcurrentgen.dc}
+\end{figure}
+\section{Simple Circuits}
+We are now ready to attack the first and simplest examples of circuits in the realm of circuit analysis. The simplest possible circuit is one composed from resistances connected in series to an ideal generator.\\
+Consider this simple circuit
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 2) to[dcvsource, l=$V$] (6, 2) to[short, -, i=$I$] (6, 0) to[R, l=$R_1$] (4, 0) to[R, l=$R_2$] (2, 0) to[R, l=$R_3$] (0, 0) -- (0, 2);
+	\end{circuitikz}
+	\caption{Simple circuit composed by an ideal voltage generator connected in series to three resistors $R_1, R_2, R_3$} %diviso quattro!
+	\label{fig:rserie.dc}
+\end{figure}
+We have using Ohm's law that the voltage drop at each resistor is exactly
+\begin{equation*}
+	V_i=R_iI
+\end{equation*}
+And since the voltage at each side of the generator is equal to $V$, we must have
+\begin{equation*}
+	V=\sum_iV_i=I\sum_iR_i=R_s
+\end{equation*}
+The value $R_s$ is the total resistance of the circuit and it's therefore known as the \textit{equivalent resistance} of the circuit, for a series of resistors.\\
+We now see the same problem, but for a circuit composed by a voltage generator and three resistances connected in parallel, as in the following scheme
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 3) to[dcvsource, l=$V$] (0, 0);
+		\draw (0, 3) -- (6, 3);
+		\draw (6, 0) -- (0, 0);
+		\draw (2, 0) to[R, l=$R_1$] (2,3);
+		\draw (4, 0) to[R, l=$R_2$] (4,3);
+		\draw (6, 0) to[R, l=$R_3$] (6,3);
+		\draw (0, 1) to[short, -, i=$I$] (0, 0); 
+		\draw (2, 0) to[short, -, i=$I_1$] (2, 0.75); 
+		\draw (4, 0) to[short, -, i=$I_2$] (4, 0.75); 
+		\draw (6, 0) to[short, -, i=$I_3$] (6, 0.75); 
+	\end{circuitikz}
+	\caption{Circuit with three resistors connected in parallel to a voltage source}
+	\label{fig:parallelres.dc}
+\end{figure}
+From Ohm's law we deduce that the voltage must be the same and equal to $V$ for each resistor, thus, using again Ohm's law we can find the unknown current drops on each resistor. We have
+\begin{equation*}
+	I_i=\frac{V}{R_i}
+\end{equation*}
+And, since the total current is $I$ and must remain constant, we get 
+\begin{equation*}
+	I=\sum_iI_i=V\sum_i\frac{1}{R_i}
+\end{equation*}
+We define the equivalent resistance for parallel resistors then as follows
+\begin{equation*}
+	\frac{1}{R_p}=\sum_i\frac{1}{R_i}=\left( \frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3} \right)=\frac{R_1+R_2+R_3}{R_1R_2R_3}
+\end{equation*}
+Thus, finally
+\begin{equation}
+	V=R_pI=\frac{R_1R_2R_3}{R_1+R_2+R_3}I
+	\label{eq:parallelsum.dc}
+\end{equation}
+We consider now a more complicate case of a circuit with resistors connected both in parallel and in series, like the one in the next figure
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 3) to[dcvsource, l=$V$] (0, 0);
+		\draw (0, 2) to[short, -, i=$I$] (0,3);
+		\draw (0,3) to[R, l=$R_1$] (3,3);
+		\draw (3,3) to[R, l=$R_3$] (3, 0);
+		\draw (3, 0.75) to[short, -, i=$I_3$] (3, 0);
+		\draw (3,3) to[R, l=$R_4$] (6,3);
+		\draw (6,3) to[short, -, i=$I_4$] (6, 2);
+		\draw (6, 2) to[short, -, i=$I_5$] (5.25, 2) to[R, l=$R_5$] (5.25, 0);
+		\draw (6, 2) to[short, -, i_=$I_6$] (6.75, 2) to[R, l=$R_6$] (6.75, 0);
+		\draw (6.75, 0) -- (3, 0) to[R, l=$R_2$] (0, 0);
+	\end{circuitikz}
+	\caption{Complex circuit with multiple resistors connected both in parallel and in series}
+	\label{fig:parser.dc}
+\end{figure}
+This circuit is also known as a \textit{network}, and in order to simplify it we use the formulas we defined before.\\
+\begin{itemize}
+\item The current passing through the resistor $R_1$ and $R_2$ must be the same
+\item The voltage between $R_5$ and $R_6$ is the same
+\end{itemize}
+We define then the two following equivalent resistance, reducing the problem
+\begin{equation*}
+	R_{s1}=R_1+R_2\qquad \frac{1}{R_{p1}}=\frac{1}{R_5}+\frac{1}{R_6}
+\end{equation*}
+The reduced intermediate circuit is then
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 3) to[dcvsource, l=$V$] (0, 0);
+		\draw (0, 3) to[R, l=$R_{s1}$] (3,3);
+		\draw (3,3) to[R, l=$R_3$] (3, 0);
+		\draw (3,3) to[R, l=$R_4$] (6,3) to[R, l=$R_{p_1}$] (6, 0) -- (0, 0);
+	\end{circuitikz}
+	\caption{The previous circuit after the first iteration of simplification}
+	\label{fig:1stiterationnet.dc}
+\end{figure}
+We proceed the analysis by simplifying further this circuit, noting that
+\begin{itemize}
+\item $R_{p1}$ and $R_4$ are connected in series
+\item The series between $R_4$ and $R_{p1}$ is connected in parallel to $R_3$
+\end{itemize}
+Thus
+\begin{equation*}
+	R_{s2}=R_4+R_{p1}=R_4+\frac{R_5R_6}{R_5+R_6}
+\end{equation*}
+And, therefore
+\begin{equation*}
+	R_{p2}=\left(\frac{1}{R_{s2}}+\frac{1}{R_3}\right)^{-1}=\frac{R_{s2}R_3}{R_{s2}+R_3}=R_3\frac{R_4+\frac{R_5R_6}{R_5+R_6}}{R_3+R_4+\frac{R_5R_6}{R_5+R_6}}
+\end{equation*}
+The circuit now can then be simplified to this one
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0,3) to[dcvsource, l=$V$] (0, 0);
+		\draw (0,3) to[R, l=$R_{s1}$] (3,3) to[R, l=$R_{p2}$] (6,3) -- (6, 0) -- (0, 0); 
+	\end{circuitikz}
+	\caption{Second iteration of the simplification of the circuit}
+	\label{fig:2nditerationnet.dc}
+\end{figure}
+Finally, the total resistance $R_T$ is simply the series sum of the previous two, giving the following result
+\begin{equation*}
+	R_T=R_{s1}+R_{p2}=R_1+R_2+R_3\frac{R_4+\frac{R_5R_6}{R_5+R_6}}{R_3+R_4+\frac{R_5R_6}{R_5+R_6}}
+\end{equation*}
+This is the total or equivalent resistance of the circuit, i.e. if we reconstruct the circuit as only the generator and a single resistance with value $R_T$, we will get a completely equivalent circuit.
+\subsection{Kirchhoff Laws}
+The previous considerations work almost every time, but they tend to end up in tedious and long calculations. Here the geometry and topology of the circuit come in handy.
+We give two main definitions
+\begin{dfn}[Node]
+	A circuit node is a point in which multiple conductors converge
+\end{dfn}
+\begin{dfn}[Mesh]
+	A mesh is a closed path starting and ending in one single node
+\end{dfn}
+With the previous two definitions, every circuit, independently from its complexity, can be considered as the union of multiple nodes and meshes. Two theorems come in help for our calculations
+\begin{thm}[First Kirchhoff Law]
+	The sum of currents entering and exiting each node is zero, in formulas, for a node $k$, we have if we indicate positive currents the one entering the node and with negative currents the ones exiting the node, we have
+	\begin{equation}
+		\sum_i I_{i}^{(k)}=0
+		\label{eq:1stkirchhoff.dc}
+	\end{equation}
+	Consider the following part of a random circuit
+	\begin{figure}[H]
+		\centering
+		\begin{circuitikz}
+			\draw (0, 3) to[short, *-, i=$I_0$] (0, 0) to[short, -*, i=$I_1$] (-3, 0);
+			\draw (3, 0) to[short, -*, i=$I_3$] (0, 0);
+			\node[below] at (0, 0) {$k$};
+		\end{circuitikz}
+		\label{fig:1kirchhoff.dc}
+	\end{figure}
+	Here, from Kirchhoff's first law, we get that
+	\begin{equation*}
+		I_0+I_3-I_1=0
+	\end{equation*}
+\end{thm}
+\begin{thm}[Second Kirchhoff Law]
+	The sum of voltages in every mesh is equal to zero. This is the direct consequence of Ohm's law applied to the first theorem. Consider the following simple circuit:
+	\begin{figure}[H]
+		\centering
+		\begin{circuitikz}
+			\draw (0, 0) to[dcvsource, l=$V$] (0, 3) to[short, -, i=$I$] (3, 3) to[generic, l=$V_1$] (3, 0) -- (0, 0);
+			\draw (3, 3) to[short, -o] (4, 3);
+			\draw (3, 0) to[short, -o] (4, 0);
+		\end{circuitikz}
+		\label{fig:2kirchoff.dc}
+	\end{figure}
+	From Ohm's law we have that $V_1=RI_i$, thus 
+	\begin{equation*}
+		\sum V_i=0
+	\end{equation*}
+\end{thm}
+Consider now a real example, like the following circuit
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 4) to[R, l=$R_1$] (0, 2) to[dcvsource, l=$V_1$] (0, 0);
+		\draw (0,4) to[short, -*, i=$I_1$] (2, 4) to[short, i=$I_3$] (4,4) to[R, l=$R_3$] (4, 0) -- (0, 0);
+		\node[above] at (2,4) {$A$};
+		\draw (2, 4) to[R, l=$R_1$] (2, 2) to[dcvsource, l=$V_2$] (2, 0);
+		\draw[->] (1.5, 2) -- (1.5,3.6);
+		\node[left] at (1.5, 2.8) {$I_2$};
+	\end{circuitikz}
+	\caption{A slightly more complex circuit with multiple voltage sources}
+	\label{fig:complexcirckirchhoff.dc}
+\end{figure}
+This circuit is quite complex to solve with only Ohm's law, but it's directly solvable using Kirchhoff laws. Firstly we choose what's the ``positive`` direction of current, which we choose it as the clockwise direction.\\
+On the mesh on the left we must have, using the second Kirchhoff law
+\begin{equation*}
+	V_1-V_2=R_1I_1-R_2I_2
+\end{equation*}
+And at the node $A$, we have
+\begin{equation*}
+	I_1+I_2-I_3=0
+\end{equation*}
+At the second mesh on the right, instead we have
+\begin{equation*}
+	V_2=I_2R_2+I_3R_3
+\end{equation*}
+We now have a system we can solve, which is the following
+\begin{equation*}
+	\left\{\begin{aligned}
+		V_1-V_2&= R_1I_1-R_2I_2\\
+		I_1+I_2-I_3&= 0\\
+		V_2&= I_2R_2+I_3R_3
+	\end{aligned}\right.
+\end{equation*}
+Solving the second equation for $I_3$ and inserting it in the first equation we have
+\begin{equation*}
+	\left\{\begin{aligned}
+		V_2&= I_2R_2+\left( I_1+I_2 \right)R_3=\left( R_3+R_2 \right)I_2+R_3I_1
+		V_1-V_2&= R_1I_1-R_2I_2
+	\end{aligned}\right.
+\end{equation*}
+Substituting the first equation into the second one we get then
+\begin{equation*}
+	V_1-V_2=R_1I_1-\frac{R_2}{R_2+R_3}\left( V_2-I_1R_3 \right)
+\end{equation*}
+After some juggling and rearrangement we can get to the final result, which we will omit
+\section{Special Configurations}
+\subsection{Voltage Dividers}
+Consider the following circuit, known as a \textit{voltage divider}
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0,3) to[dcvsource, l=$V$] (0, 0);
+		\draw (0,3) to[short, i=$I$] (4,3) to[R, *-*, l=$R_1$] (4,1.5) to[vR, -*, l=$R_2$] (4, 0) -- (0, 0);
+		\draw (4,1.5) to[short, -*] (6,1.5) node[right] {$A$};
+		\draw (4, 0) to[short, -*] (6, 0) node[right] {$B$};
+		\draw (6,1.5) to[open, v^<=$V_{AB}$] (6, 0);
+	\end{circuitikz}
+	\caption{A voltage divider with a \textit{variable resistor} $R_2$}
+	\label{fig:voltagedivider.dc}
+\end{figure}
+In this circuit we want to know the voltage at the ends of $R_2$, i.e. $V_{AB}$. We can calculate it in two ways.
+Using Ohm's law we must have
+\begin{equation*}
+	V=V_1+V_2=R_1I+R_2I
+\end{equation*}
+Thus
+\begin{equation*}
+	I=\frac{V}{R_1+R_2}\implies V_{AB}=R_2I_2=\frac{R_2}{R_1+R_2}V
+\end{equation*}
+Or using Kirchhoff's laws, we have
+\begin{equation*}
+	\begin{paligned}
+		I_1-I_2&= 0\\
+		V&= I_1R_1+I_2R_2
+	\end{paligned}
+\end{equation*}
+Solving we get the exact previous result.\\
+Note how with the previous result, the value of $V_{AB}$ is deeply tied to the value of the resistance $R_2$, thus we can reduce the outgoing voltage by changing the resistor. Note that $V_{AB}$ is $50\%\ V$ only when $r_1=R_2$
+\subsection{Wheatstone Bridge}
+A particular case of the voltage divider is known as the \textit{Wheatstone bridge}
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 4) to[R, l=$R_0$] (0, 2) to[dcvsource, l=$V$] (0, 0);
+		\draw (0,4) to[short, i=$I$] (4,4) node[above] {$A$} to[R, l=$R_3$] (6, 2) node[right] {$D$};
+		\draw (4,4) to[R, l_=$R_4$] (2, 2) node[left] {$B$};
+		\draw (2, 2) to[R, l=$R$] (6, 2);
+		\draw (2, 2) to[R, l_=$R_1$] (4, 0);
+		\draw (6, 2) to[R, l=$R_2$] (4, 0) -- (0, 0);
+		\node[below] at (4, 0) {$C$};
+	\end{circuitikz}
+	\caption{Diagram of a Wheatstone bridge}
+	\label{fig:wheatstonebridge.dc}
+\end{figure}
+The idea of this circuit is to regulate the current flow between the nodes $B$ and $D$. The shape of the circuit makes it seem more complex than it actually is, but it's possible to redraw it as two voltages dividers as follows
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 4) to[R, l=$R_0$] (0, 2) to[dcvsource, l=$V$] (0, 0);
+		\draw (0, 4) to[short, i=$I$] (4, 4) node[above] {$A$} -- (6, 4) node[above] {$A$};
+		\draw (4,4) to[R, l=$R_4$] (4, 2) to[R, l=$R$] (6, 2) node[right] {$D$};
+		\draw (6,4) to[R, l=$R_3$] (6, 2) to[R, l=$R_2$] (6, 0) node[below] {$C$};
+		\draw (4, 2) to[R, l=$R_1$] (4, 0);
+		\node[left] at (4, 2) {$B$};
+		\node[below] at (4, 0) {$C$};
+		\draw (6, 0) -- (0, 0);
+	\end{circuitikz}
+	\caption{Redrawing of the Wheatstone bridge as two voltage dividers connected in parallel}
+	\label{fig:wheatstonevd.dc}
+\end{figure}
+The final objective of this bridge is to balance resistances in a way such that $I_{BD}=0$. From the previous diagram, where the circuit has been redrawn as a voltage dividers gives us the answer to this problem, without making systems using Kirchhoff's law.\\
+We have
+\begin{equation*}
+	\begin{paligned}
+		V_{BC}&= R_1I_1=\frac{R_1}{R_1+R_4}V\\
+		V_{DC}&= R_2I_2=\frac{R_2}{R_2+R_3}V\\
+		I_{BD}&= \frac{V_{BD}}{R}\\
+		V_{BD}&= V_{BC}-V_{DC}
+	\end{paligned}
+\end{equation*}
+Thus
+\begin{equation*}
+	I_{BD}=\frac{V}{R}\left( \frac{R_1}{R_1+R_4}-\frac{R_2}{R_2+R_3} \right)
+\end{equation*}
+Solving for $I_{BD}=0$ we have
+\begin{equation}
+	R_1R_3=R_2R_4
+	\label{eq:balandcedwheatstone.dc}
+\end{equation}
+When this condition is satisfied, the bridge is said to be \textit{balanced}.\\
+The Wheatstone bridge can be used to measure the resistance value of a resistor using a variable resistor ($R(x)$) and three equal resistances on the bridge, the setup is described with the following diagram
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 4) to[R, l=$R_0$] (0, 2) to[dcvsource, l=$V$] (0, 0);
+		\draw (0,4) to[short, i=$I$] (4,4) node[above] {$A$} to[R, l=$R$] (6, 2) node[right] {$D$};
+		\draw (4,4) to[R, l_=$R$] (2, 2) node[left] {$B$};
+		\draw (2, 2) to[R, l=$R_5$] (6, 2);
+		\draw (2, 2) to[vR, l_=$R(x)$] (4, 0);
+		\draw (6, 2) to[R, l=$R$] (4, 0) -- (0, 0);
+		\node[below] at (4, 0) {$C$};
+	\end{circuitikz}
+	\caption{Diagram of a Wheatstone bridge in a setup which we can use for evaluating the resistance value}
+	\label{fig:wheatstonebridge.dc}
+\end{figure}
+We have to make sure that the resistance $R_5>>R$ in order to be sure that there is basically no current flowing through the poles $B, D$, so that
+\begin{equation*}
+	V_{BD}(x)=V\left( \frac{R(x)}{R(x)+R}-\frac{1}{2} \right)\approx\frac{V}{4R}\left( R(x)-R \right)
+\end{equation*}
+We will easily find the resistance value by variating $R(x)$ until $R(x_0)=R$ and thus the bridge is balanced and $V_{BD}=0$. Clearly this evaluation is really sensible, and permits a very precise evaluation of the value of the unknown resistance $R$
+\subsection{Superposition Principle of Circuits}
+Another very useful principle for evaluating circuits is the \textit{superposition principle}. It states simply that for circuits with more than one source, the total current flow $I$ is equal to the sum of the currents of the circuits with only one source. This is a direct derivation from the Kirchhoff theorems. Take as an example the circuit \eqref{fig:complexcirckirchhoff.dc}, it can be divided in these two circuits
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 4) to[R, l=$R_1$] (0, 2) to[dcvsource, l=$V_1$] (0, 0) -- (3, 0) to[R, l=$R_2$] (3, 4) -- (0,4);
+		\draw (3, 0) -- (6, 0) to[R, l=$R_3$] (6,4) -- (3,4);
+		\draw (7, 4) to[R, l=$R_1$] (7, 0) -- (10, 0);
+		\draw (10, 4) to[R, l=$R_2$] (10, 2) to[dcvsource, l=$V_2$] (10, 0);
+		\draw (10, 0) -- (13, 0) to[R, l=$R_3$] (13,4) -- (7,4);
+	\end{circuitikz}
+	\caption{The two circuits which summed give back the circuit \eqref{fig:complexcirckirchhoff.dc}}
+	\label{fig:supprinc.dc}
+\end{figure}
+If we call the current passing through $R_3$ $I_3$, we must have
+\begin{equation*}
+	I_3=I_{3a}+I_{3b}
+\end{equation*}
+Calling the first circuit $a$ and the second $b$, we can use Kirchhoff to find
+\begin{equation*}
+	\begin{paligned}
+		V_2&= V_3\qquad I_2R_2=I_{3a}R_3\\
+		I_1&= \frac{V_1}{R_{eq}}\\
+		I_1-I_2-I_{3a}&= 0
+	\end{paligned}
+\end{equation*}
+The equivalent resistance $R_{eq}$ is simply the one obtained by $R_2, R_3$ connected in parallel and the resistor $R_1$ connected in series to the two parallel resistors, thus
+\begin{equation*}
+	R_{eq, a}=R_1+\frac{R_2R_3}{R_2+R_3}
+\end{equation*}
+Noting that the second circuit is equal to the first but $R_1$ is switched to $R_2$ we have
+\begin{equation*}
+	R_{eq, b}=R_2+\frac{R_1R_3}{R_1+R_3}
+\end{equation*}
+Solving for $I_3$ for either of the two gives
+\begin{equation*}
+	\begin{paligned}
+		I_{3a}&= \frac{R_2}{R_3}I_2\\
+		I_1&= \frac{V_1}{R_{eq, a}}\\
+		\frac{V_1}{R_{eq, a}}&= \left( 1+\frac{R_2}{R_3} \right)I_2
+	\end{paligned}
+\end{equation*}
+\begin{equation*}
+	I_{3a}=\frac{R_2V_1}{R_2+R_3}\frac{1}{R_1+\frac{R_2R_3}{R_2+R_3}}
+\end{equation*}
+And therefore, with the previous trick, we have
+\begin{equation*}
+	I_3=I_{3a}+I_{3b}=\frac{R_2V_1}{R_2+R_3}\frac{R_2+R_3}{R_1\left( R_2+R_3 \right)+R_3R_2}+\frac{R_1V_2}{R_2+R_3}\frac{R_1+R_3}{R_2\left( R_1+R_3 \right)+R_1R_3}
+\end{equation*}
+\section{Thevenin and Norton Theorems}
 \subsection{Thevenin Theorem}
+All previous considerations can be synthesized into two theorems that can be used to reduce complex resistor-source networks to simple single source - single resistor circuits. The first theorem is the \textit{Thevenin theorem}
+\begin{thm}[Thevenin theorem]
+	Given an electrical network containing only voltage sources, current sources and resistors can be replaced at its terminals by an equivalent ideal voltage source $V_{Th}$ connected in series to a resistance $R_{Th}$.\\
+	\begin{itemize}
+	\item The equivalent voltage $V_{Th}$ is the voltage between the \textit{short circuited} terminals
+	\item The equivalent resistance $R_{Th}$ is obtained evaluating the equivalent resistance when
+		\begin{itemize}
+		\item All ideal voltage sources are substituted by a short circuit (cable)
+		\item All ideal current sources are replaced by an open circuit
+		\end{itemize}
+	\item The current flowing between the two chosen terminals will be simply calculated by using Ohm's law
+	\end{itemize}
+\end{thm}
+Let's take as an example this circuit with two sources and evaluate the Thevenin equivalent circuit at the terminals $A, B$
+\begin{figure}[H]
+	\centering
+		\begin{circuitikz}
+			\draw (0, 1) to[dcvsource, l=$V_1$] (0, 0);
+			\draw (1.5, 1) to[dcvsource, l=$V_2$] (1.5, 0);
+			\draw (3, 0) to[R, l=$R_3$] (3,3) -- (4,3) to[open, o-o, v^=$V_{Th}$] (4, 0) -- (0, 0);
+			\draw (0,1) to[R, l=$R_1$] (0, 3);
+			\draw (1.5,1) to[R, l=$R_2$] (1.5, 3);
+			\draw (0, 3) -- (3,3);
+
+			\draw (9, 0) to[R, l=$R_3$] (9,3) -- (10,3) to[open, o-o, v^=$R_{Th}$] (10, 0) -- (6, 0);
+			\draw (6, 0) to[R, l=$R_1$] (6, 3);
+			\draw (7.5, 0) to[R, l=$R_2$] (7.5, 3);
+			\draw (6, 3) -- (9,3);
+		\end{circuitikz}
+		\caption{Example circuit, on the right with two voltage sources (for finding $V_{Th}$) and on the right with the two sources shorted in order to find $R_{Th}$}
+	\label{fig:theveninex.dc}
+\end{figure}
+The solution is trivial and has already been discussed, thus we gloss over to the general application of the theorem. Consider an unknown network with two open dipoles, thanks to this theorem we can \textit{always} say that its behavior at the dipoles can always be approximated to a single voltage source $V_{Th}$ connected in series with a resistor $R_{Th}$, and defined the impedance $G=R^{-1}$ we can use Kirchhoff for finding
+\begin{equation}
+	\begin{paligned}
+		I_{Th}&= \sum_iG_iV_i-GV=\frac{V_{Th}}{R_{Th}}\\
+		V_{Th}&= \sum_i\frac{G_i}{G}V_i-\frac{I_{Th}}{G}
+	\end{paligned}
+	\label{eq:theveninsol.dc}
+\end{equation}
+\subsubsection{Voltage Divider with Thevenin}
+We can see the power of this theorem directly by re-evaluating the voltage divider in the following configuration
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 4) to[dcvsource, l=$V_1$] (0, 0);
+		\draw (0, 4) -- (5, 4) to[R, l=$R_1$] (5, 2) -- (6.5, 2) to[R, l=$R$, i=$I_R$] (6.5, 0) -- (0, 0);
+		\draw (5, 2) to[R, l=$R_2$] (5, 0) node[below left] {$C$};
+		\node[left] at (5, 2) {$B$};
+	\end{circuitikz}
+	\caption{Voltage divider with a connected resistor $R$}
+	\label{fig:thevenindivider.dc}
+\end{figure}
+We want to find $I_R$. How do we proceed?\\
+We begin by shorting $V_1$ and opening the circuit at the connection with $R$, thus obtaining the following circuit
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) -- (0, 4) to[short, i=$I$] (5, 4) to[R, v=$IR_1$, l=$R_1$] (5, 2) -- (6, 2) to[open, o-o, v^={$V_{Th}$}] (6, 0) -- (0, 0);
+		\draw (5, 2) to[R, l=$R_2$, v=$IR_2$] (5, 0);
+		\node[right] at (6, 2) {$B$};
+ 		\node[right] at (6, 0) {$C$};
+	\end{circuitikz}
+	\caption{First application of the Thevenin theorem to the previous circuit}
+	\label{fig:vdivthevenin.dc}
+\end{figure}
+We have
+\begin{equation*}
+	I=\frac{V_1}{R_1+R_2}\implies V_{BC}=IR_2=\frac{R_2}{R_1+R_2}V_1=V_{Th}
+\end{equation*}
+From the same circuit, we have
+\begin{equation*}
+	R_{Th}=\left( \frac{1}{R_1}+\frac{1}{R_2} \right)^{-1}=\frac{R_1R_2}{R_1+R_2}
+\end{equation*}
+Thus, having found the Thevenin equivalent voltage and the Thevenin equivalent resistance that
+\begin{equation*}
+	I_R=\frac{V_{Th}}{R+R_{Th}}=\frac{R_2V_1}{RR_1+RR_2+R_1R_2}
+\end{equation*}
+\subsubsection{Wheatstone Bridge with Thevenin}
+Another good example for showing the power of the Thevenin theorem is solving the Wheatstone bridge using it. The circuit we are looking at is the following
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) -- (0, 3) -- (4, 3) to[R, l_=$R_4$] (2.5,1.5) -- (3.5, 1.5) to[open, o-o,v=$V_{Th}$] (4.5, 1.5) -- (5.5,1.5) to[R, l_=$R_3$] (4, 3);
+		\draw (2.5, 1.5) to[R, l_=$R_1$] (4, 0) -- (0, 0);
+		\draw (4, 0) to[R, l_=$R_2$] (5.5,1.5);
+	\end{circuitikz}
+	\caption{Thevenin theorem application to the Wheatstone bridge}
+	\label{fig:wheatstonethevenin.dc}
+\end{figure}
+As before, this circuit if divided in two is simply two voltage dividers, where
+\begin{equation*}
+	\begin{paligned}
+		V_{th,1}&= \frac{R_1V}{R_1+R_4}\\
+		V_{th,2}&= \frac{R_2V}{R_2+R_3}\\
+		R_{th,1}&= \frac{R_3R_1}{R_1+R_3}\\
+		R_{th, 2}&= \frac{R_4R_2}{R_2+R_4}
+	\end{paligned}
+\end{equation*}
+Considering the current flow we have
+\begin{equation*}
+	V_{Th}=V_{th,2}-V_{th,1}=V\left( \frac{R_1}{R_1+R_4}-\frac{R_2}{R_2+R_3} \right)
+\end{equation*}
+Solving for $R_{Th}$ we have
+\begin{equation*}
+	R_{Th}=R_{th, 1}+R_{th, 2}=\frac{R_3R_1}{R_1+R_3}+\frac{R_4R_2}{R_2+R_4}
+\end{equation*}
+Which implies
+\begin{equation*}
+	I_{Th}=\frac{V_{Th}}{R+R_{Th}}\implies V_{Th}\ne0\iff R_1R_3\ne R_2R_4
+\end{equation*}
+Which is the usual condition for having a non-balanced Wheatstone bridge.
 \subsection{Norton Theorem}
-\subsection{Real Generators}
-\section{Capacitors and Inductors}
-\subsection{Definitions}
-\subsection{Capacitor Circuits}
-\subsection{Inductor Circuits}
+The second theorem which lets us simplify circuits into simple ideal source-resistor networks is the \textit{Norton theorem}, which states
+\begin{thm}[Norton]
+	Every linear circuit containing only resistors and sources can be simplified to a single circuit composed by a single current source connected in parallel to an equivalent resistance $R_{No}$.\\
+	If we consider a random circuit with two open poles we have that
+	\begin{itemize}
+	\item $I_{No}$ is the current obtained by shorting the poles
+	\item $R_{No}$ is the equivalent resistance obtained by shorting voltage sources and opening current sources
+	\end{itemize}
+\end{thm}
+As stated this theorem is directly dual to the Thevenin theorem, noting that, if we consider the following diagram
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (-1, 0) to[dcisource, l=$I_{No}$] (-1, 3) to[short, i=$I_{No}$] (3, 3);
+		\draw (3, 3) to[R, l=$R$, i=$I_R$] (3, 0);
+		\draw (1.5, 3) to[R, l=$R_{No}$, i=$I_{R_{No}}$] (1.5, 0);
+		\draw (-1, 0) -- (3, 0);
+	\end{circuitikz}
+	\caption{Norton equivalent circuit with a load $R$}
+	\label{fig:nortoneqtoth.dc}
+\end{figure}
+We have then
+\begin{equation*}
+	\begin{paligned}
+		I_{R_{No}}R_{No}&= RI_R\implies I_{R_{No}}=\frac{R}{R_{No}}I_R\\
+		I_{No}&= I_{R_{No}}+I_R=\left(\frac{R}{R_{No}}+1\right)I_R
+	\end{paligned}
+\end{equation*}
+But
+\begin{equation*}
+	V_{Th}=I_{No}R_{No}=\left( R+R_{No} \right)I_R
+\end{equation*}
+Therefore
+\begin{equation*}
+	I_R=\frac{V_{Th}}{R+R_{No}}
+\end{equation*}
+This finally implies
+\begin{equation}
+	\begin{paligned}
+		R_{Th}&= R_{No}\\
+		V_{Th}&= I_{No}R_{No}\\
+		I_{No}&= \frac{V_{Th}}{R_{Th}}
+	\end{paligned}
+	\label{eq:nortondual.dc}
+\end{equation}
+\section{Real Generators}
+A \textit{real} generator is a current or voltage source with two poles, one positive and one negative, and can be described, in the case of a voltage generator, using the Thevenin theorem as in the following diagram
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 4) to[dcvsource, l=$V$] (0, 0);
+		\draw (0, 4) to[R, l=$\rho$] (3,4) -- (5,4) to[open, o-o , v^=$V$] (5, 0) -- (0, 0);
+		\node[above right] at (5, 4) {$+$};
+		\node[below right] at (5, 0) {$-$};
+		\draw (-1, -1) rectangle (3, 5);
+	\end{circuitikz}
+	\caption{Real voltage generator, here $R_{th}=\rho$ and $V=V_{th}$}
+	\label{fig:realvolt.dc}
+\end{figure}
+The equivalent Thevenin resistance is known as the \textit{internal resistance}. A particularity of real voltage generator is that, if we connect a load $R$ to the two poles we have
+\begin{equation*}
+	\pdv{V}{I}\ne0
+\end{equation*}
+For Thevenin, also
+\begin{equation*}
+	\begin{paligned}
+		I&= \frac{V}{R+\rho}\\
+		V_R&= RI=\frac{R}{R+\rho}V
+	\end{paligned}
+\end{equation*}
+For a current generator instead we have the same setup we'd get from Norton's theorem
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[dcisource, l=$I$] (0, 4) -- (2,4);
+		\draw (2, 0) to[R, l=$\rho$] (2,4) -- (5,4) to[open, o-o , v^=$V$] (5, 0) -- (0, 0);
+		\node[above right] at (5, 4) {$+$};
+		\node[below right] at (5, 0) {$-$};
+		\draw (-1, -1) rectangle (3, 5);
+	\end{circuitikz}
+	\caption{Real current generator, here $R_{No}=\rho$ and $I=I_{No}$}
+	\label{fig:realvolt.dc}
+\end{figure}
+Both generators can be approximated to ideal generators when $\rho<<R$, with $R$ being the resistance of the connected load
+\subsection{Joule Effect}
+The main effect of real generators is \textit{Joule effect}. Considering a simple battery, there's a energy conversion from chemical energy to electric energy, and part of it gets dissipated both in the internal resistance of the source and of the load as thermal energy.\\
+The work done by the source is
+\begin{equation*}
+	\dd W=V\dd Q=VI\dd t
+\end{equation*}
+Where we used $\dd Q=I\dd t$\\
+The power $P$ is by definition the time derivative of work, thus
+\begin{equation}
+	P=\dv{W}{t}=VI
+	\label{eq:power.dc}
+\end{equation}
+Thanks to this definition, we can define the power dissipated in the load $R$ as
+\begin{equation*}
+	P_R=V_RI_R
+\end{equation*}
+Where
+\begin{equation*}
+	\begin{paligned}
+		V_R&= \frac{R}{R+\rho}V\\
+		I_R&= \frac{V}{R+\rho}
+	\end{paligned}
+\end{equation*}
+Thus
+\begin{equation*}
+	P_R=\frac{RV^2}{\left( \rho+R \right)^2}
+\end{equation*}J
+The dissipated power is clearly dependent on the resistance of the load, thus we can optimize the impedance through optimization methods. We have
+\begin{equation*}
+	\pdv{P_R}{R}=V^2\frac{\rho-R}{\left( \rho+R \right)^2}
+\end{equation*}
+Finding the maximal extreme of the first derivative we get that it's true only if and only if $R=\rho$.\\
+When the load resistance has this particular value, it's said to be \textit{impedance matched}. Here, we have
+\begin{equation*}
+	\max{P_R}=\frac{V^2}{4\rho}
+\end{equation*}
+Note that an impedance matched load is doesn't correspond to the maximum impedance. We can imagine to define a power transfer efficiency as $\eta$, where
+\begin{equation}
+	\eta=\frac{P_R}{P_{source}+P_R}=\frac{R}{R+\rho}
+	\label{eq:geneff.dc}
+\end{equation}
+Note that $\eta\approx1$ if and only if $R>>\rho$.
 \end{document}
-%47/139 pg
