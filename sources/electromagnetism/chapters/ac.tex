@@ -1,6 +1,6 @@
 \documentclass[../electromagnetism.tex]{subfiles}
 \begin{document}
-\section{Variable Current Circuits}
+\section{RC Filters}
 \subsection{RC Circuit in DC}
 Let's begin to consider what happens when currents aren't anymore constant in time but instead are variable. The simplest possible circuit that we can imagine with variable currents (but with a continuous source) is the following one
 \begin{figure}[H]
@@ -75,7 +75,7 @@ But $Q(0)=CV$m and thus
 	\end{paligned}
 	\label{eq:chargecondfinal.ac}
 \end{equation}
-\subsection{RC Circuit in AC}
+\subsection{RC Circuit in AC, Low Pass Filters}
 Consider now the same circuit using an alternate voltage source $V(t)$. Consider the special case where this source is an harmonic source, as
 \begin{equation*}
 	V(t)=V_0\cos\left( \omega t \right)
@@ -144,26 +144,562 @@ Note that this solution is strongly dependent on the frequency $\omega$ of the i
 	\end{paligned}
 	\label{eq:filterbehaviorrc.ac}
 \end{equation}
-This behavior clearly shows that the voltage is nonzero only when $\omega<\omega_R$, with $\omega_R$ being the resonance frequency. This type of circuit is widely known as a \textit{low pass filter}, i.e. a circuit which permits the passage of voltage only to a limit \textit{resonant} frequency <++>
-%%TODO corrente in RC AC come inizio GOL
-\subsection{Generalized Ohm Law}
-\subsection{Transfer Functions}
-\section{RC, RL Circuits}
-\subsection{Low Pass Filters}
-\subsection{High Pass Filters}
-\subsection{Integrator and Derivator Circuits}
+This behavior clearly shows that the voltage is nonzero only when $\omega<\omega_R$, with $\omega_R$ being the resonance frequency. This type of circuit is widely known as a \textit{low pass filter}, i.e. a circuit which permits the passage of voltage only to a limit \textit{resonant} frequency.\\
+We now might want to see how does the current behave in this circuit. We have
+\begin{equation*}
+	I(t)=\dv{Q}{t}\implies I(t)=C\dv{V_C}{t}=i\omega V_{0C}e^{i\omega t +i\varphi}=i\omega CV_{C}(t)
+\end{equation*}
+Thus
+\begin{equation}
+	\begin{paligned}
+		V_C(t)e^{i\varphi_V}&= \frac{V_0}{1+i\omega\tau}e^{i\omega t}\\
+		I(t)e^{i\varphi_I}&= \frac{i\omega CV_0}{1+i\omega\tau}e^{i\omega t}
+	\end{paligned}
+	\label{eq:current+voltrc.ac}
+\end{equation}
+we can evaluate easily the phase of the current, and we have
+\begin{equation*}
+	\varphi_I=\arctan\left( \frac{1}{\omega\tau} \right)
+\end{equation*}
+Thus it's clear that the phases of current and voltage are different, and precisely we have that since
+\begin{equation*}
+	\tan\left( \varphi_I-\varphi_V \right)=\frac{\tan\varphi_I-\tan\varphi_V}{1+\tan\varphi_V\tan\varphi_I}=\frac{\frac{1}{\omega\tau}+\omega\tau}{1-\frac{\omega\tau}{\omega\tau}}=\infty
+\end{equation*}
+Thus $\varphi_I-\varphi_V=\frac{\pi}{2}$
+\subsubsection{Generalized Ohm Law}
+From what we saw before, we can imagine to compile a new \textit{generalized Ohm law}, which works also with different components and variable currents.\\
+From what we saw before, we have for a resistor-capacitor circuit
+\begin{equation*}
+	I(t)=i\omega CV_C(t)
+\end{equation*}
+From $V=RI$ we can define the \textit{capacitor impedance} $Z_C$ as follows
+\begin{equation}
+	V_C(t)=Z_CI(t)\implies Z_C=\frac{1}{i\omega C}
+	\label{eq:capacitorimped.gol}
+\end{equation}
+Let's consider now an inductor $L$. From Lenz's law we have
+\begin{equation*}
+	V_L(t)=L\dv{I_L}{t}=i\omega LI_L
+\end{equation*}
+Thus, again from $V=RI$ we get
+\begin{equation}
+	Z_L=i\omega L
+	\label{eq:inductorimpedance}
+\end{equation}
+Thanks to this considerations we can say that for circuits containing only resistors, capacitors and inductors in alternate current we have $V=ZI$, where
+\begin{equation}
+	\begin{paligned}
+		Z_R&= R\\
+		Z_{C}&= \frac{1}{i\omega C}\\
+		Z_{L}&= i\omega L
+	\end{paligned}
+	\label{eq:impedances.gol}
+\end{equation}
+Consider now the classic voltage divisor, where instead of having resistor we install a generic component which can be either a resistor, a capacitor or an inductor, connected as follows
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV, l=$V_{in}(t)$] ++(0, 3) -- ++(4, 0) to[generic, l=$Z_1$] ++(0, -2) node[left](o1){} to[generic, l=$Z_2$] ++(0, -2) node[](o2){} -| (0, 0);
+		\draw (o1) -- ++(2, 0) to[open, o-o, v^=$V_{out}$] ++(0, -2) -| (o2);
+	\end{circuitikz}
+	\caption{A generic voltage-divider like circuit in alternate current}
+	\label{fig:vdiv.gol}
+\end{figure}
+Since we already know that the impedances $Z$ work exactly as do the resistances, we get
+\begin{equation}
+	V_{out}(t)=\frac{Z_2}{Z_1+Z_2}V_{in}(t)
+	\label{eq:acvoltdiv.gol}
+\end{equation}
+If we suppose $Z_1$ as a normal resistor and $Z_2$ as some capacitor, using the previous formulas we get
+\begin{equation}
+	V_{out}(t)=\frac{\frac{1}{i\omega C}}{R+\frac{1}{i\omega C}}V_{in}(t)=\frac{1}{1+i\omega RC}V_{in}(t)
+	\label{eq:voltagepartitorc.gol}
+\end{equation}
+Note that this is \textit{exactly} the RC circuit we solved before at length.
+\subsection{CR Circuit, High Pass Filters}
+The previous section can be used to immediately solve the CR circuit, since it has the exact same shape as this voltage divider, as in the following diagram
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV, l=$V_{in}(t)$] ++(0, 3) -- ++(4, 0) to[C, l=$C$, v=$V_C(t)$] ++(0, -2) node[left](o1){} to[R, l=$R$, v=$V_R(t)$] ++(0, -2) node[](o2){} -| (0, 0);
+		\draw (o1) -- ++(2, 0) to[open, o-o, v^=$V_{out}$] ++(0, -2) -| (o2);
+	\end{circuitikz}
+	\caption{A CR circuit in an alternate current regime}
+	\label{fig:crcirc.ac}
+\end{figure}
+From what we wrote before, using the generalized Ohms law we find immediately that
+\begin{equation*}
+	V_{out}(t)=\frac{R}{R+Z_C}V_{in}(t)=\frac{i\omega RC}{i\omega RC+1}V_{in}(t)
+\end{equation*}
+We find immediately that the phase is
+\begin{equation*}
+	\varphi_V=\arctan\left( \frac{\imaginary V_{out}(t)}{\real V_{out}(t)} \right)=\arctan\left( \frac{1}{\omega RC} \right)
+\end{equation*}
+Considering also the ratio of voltage between the input and output 
+\begin{equation*}
+	\frac{V_{out}}{V_{in}}=\frac{\omega RC}{\sqrt{1+\left( \omega RC \right)^2}}
+\end{equation*}
+It's clear that for low frequencies, specifically for $\omega<<\omega_c=\tau^{-1}$ the ratio between these voltages goes quickly to zero. This behavior is typical of the so-called \textit{high pass filters}
+\section{RL Filters}
+Thanks to what we have defined before, finding the behavior of RL and LR circuits is almost immediate. Consider firstly a LR circuit, as in the following diagram
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV, l=$V_{in}(t)$] ++(0, 3) -- ++(4, 0) to[L, l=$L$, v=$V_L(t)$] ++(0, -2) node[left](o1){} to[R, l=$R$, v=$V_R(t)$] ++(0, -2) node[](o2){} -| (0, 0);
+		\draw (o1) -- ++(2, 0) to[open, o-o, v^=$V_{out}$] ++(0, -2) -| (o2);
+	\end{circuitikz}
+	\caption{A LR circuit}
+	\label{fig:lrfilter.ac}
+\end{figure}
+The solution is almost immediate, in fact we have
+\begin{equation}
+	V_{out}(t)=\frac{Z_R}{Z_L+Z_R}V_{in}(t)=\frac{R}{i\omega L+R}V_{in}(t)=\frac{1}{1+i\omega\tau}V_{in}(t)
+	\label{eq:voutlrfilter.ac}
+\end{equation}
+Where we defined the relaxation time of the circuit $\tau$ as 
+\begin{equation}
+	\tau_{RL}=\frac{R}{L}
+	\label{eq:relaxtimerl.ac}
+\end{equation}
+The input-output voltage ratio is then
+\begin{equation}
+	\frac{V_{out}}{V_{in}}=\frac{1}{1+i\omega\tau}
+	\label{eq:vinoutrl.ac}
+\end{equation}
+Which clearly indicates this circuit as a \textit{low pass filter}.\\
+For a RL circuit, as in the following diagram instead
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV, l=$V_{in}(t)$] ++(0, 3) -- ++(4, 0) to[R, l=$R$, v=$V_R(t)$] ++(0, -2) node[left](o1){} to[L, l=$L$, v=$V_L(t)$] ++(0, -2) node[](o2){} -| (0, 0);
+		\draw (o1) -- ++(2, 0) to[open, o-o, v^=$V_{out}$] ++(0, -2) -| (o2);
+	\end{circuitikz}
+	\caption{A LR circuit}
+	\label{fig:lrfilter.ac}
+\end{figure}
+As before, we have
+\begin{equation}
+	V_{out}=\frac{Z_L}{Z_L+Z_R}V_{in}(t)=\frac{i\omega L}{i\omega L+R}V_{in}(t)
+	\label{eq:voutrl.ac}
+\end{equation}
+The ratio of outgoing voltage is then clearly dependent on $\omega$ and thus this circuit is a \textit{high pass filter}
+\section{Integrator and Derivator Circuits}
+A special behavior of filters is to output a voltage which is proportional to either the derivative or the integral of the input voltage.\\
+\subsection{Integrator Circuits}
+We begin by considering a RC circuit. We must have that
+\begin{equation*}
+	V_{in}(t)=V_{C}(t)+V_R(t)
+\end{equation*}
+But, if
+\begin{equation*}
+	\abs{V_C(t)}<<\abs{V_R(t)}
+\end{equation*}
+Then 
+\begin{equation*}
+	V_{in}(t)\approx V_{R}(t)=RI(t)\implies I(t)=\frac{1}{R}V_{in}(t)
+\end{equation*}
+Thus, the outgoing voltage, $V_{out}(t)=V_C(t)$ is
+\begin{equation}
+	V_{out}(t)=\frac{1}{C}\int_{0}^{t}I(t)\dd^{}{t}=\frac{1}{RC}\int_{0}^{t}V_{in}(t)\dd^{}{t}=\frac{1}{\tau}\int_{0}^{t}V_{in}(t)\dd^{}{t}
+	\label{eq:outgoingrc.int}
+\end{equation}
+Due to this, RC circuits are \textit{integrators}.\\
+Another example of integrator circuit is the LR circuit. As before, we must have
+\begin{equation*}
+	V_{in}(t)=V_{R}(t)+V_{L}(t)
+\end{equation*}
+When $\abs{V_R(t)}<<V_{L}(t)$, we have that $V_{out}=V_R$
+\begin{equation*}
+	V_{in}(t)\approx V_L(t)=L\dv{I}{t}
+\end{equation*}
+And therefore
+\begin{equation}
+	V_{R}(t)=RI(t)=\frac{R}{L}\int_{0}^{t}V_{in}(t)\dd^{}{t}+RI(0)=\frac{1}{\tau}\int_{0}^{t}V_{in}(t)\dd^{}{t}+RI(0)
+	\label{eq:outgoinglr.int}
+\end{equation}
+\subsection{Derivator Circuits}
+Consider now the previous circuits with components inverted. In the first case we will have the CR circuit, where, if 
+\begin{equation*}
+	\abs{V_R(t)}<<\abs{V_C(t)}
+\end{equation*}
+We have that the input voltage is approximately equal to the capacitor voltage, thus
+\begin{equation*}
+	V_{in}(t)\approx V_C(t)=\frac{1}{C}\int_{0}^{t}I(t)\dd^{}{t}
+\end{equation*}
+This clearly implies that
+\begin{equation*}
+	\dv{V_{in}}{t}=\frac{1}{C}I(t)
+\end{equation*}
+Which, consequently, implies that the outgoing voltage will be proportional to this derivative, in fact, since $V_{out}\approx V_R$ with these conditions
+\begin{equation}
+	V_R(t)=RI(t)=RC\dv{V_{in}}{t}=\tau\dv{V_{in}}{t}
+	\label{eq:croutput.der}
+\end{equation}
+The evaluation is similar in the RL circuit, where, when
+\begin{equation*}
+	\abs{V_L(t)}<<\abs{V_R(t)}\implies V_{in}(t)\approx V_R, \qquad V_{out}\approx V_L
+\end{equation*}
+we have
+\begin{equation*}
+	V_{in}(t)=RI(t)\implies I(t)=\frac{1}{R}V_{in}(t)
+\end{equation*}
+Which, consequently implies
+\begin{equation}
+	V_{L}(t)=L\dv{I}{t}=\frac{L}{R}\dv{V_{in}}{t}=\tau\dv{V_{in}}{t}
+	\label{eq:lroutput.der}
+\end{equation}
+Thus RL circuits behave as derivator circuits, as do CR circuits.\\
+In general we have that:
+\begin{itemize}
+\item Low pass filters (RC, LR circuits) behave as voltage integrators
+\item High pass filters (CR, RL circuits) behave as voltage derivators
+\end{itemize}
+The more is the frequency in the band of frequencies passed by the filter, the more the circuit behaves like an integrator or a derivator
 \section{RLC Circuits}
-\subsection{Overdamping}
-\subsection{Critical Damping}
-\subsection{Oscillatory Damping}
-\section{Power in AC Circuits}
-\section{Three-phase Generators}
+\subsection{RLC Circuit in Series}
+A special kind of filter is the RLC circuit, described in the following diagram
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV, l=$V(t)$, i=$I(t)$] ++(0, 4) to[L, l=$L$, v=$V_L(t)$, v=$V_L(t)$] ++(5, 0) to[R, l=$R$, v=$V_R(t)$] ++(0, -2) to[C, v=$V_C(t)$, l=$C$] ++(0, -2) -| (0, 0);
+	\end{circuitikz}
+	\caption{RLC Filter diagram}
+	\label{fig:rlcdiagram.ac}
+\end{figure}
+Remembering that the voltages are
+\begin{equation*}
+	\begin{paligned}
+		V_R(t)&= RI(t)\\
+		V_L(t)&= L\dv{I}{t}\\
+		V_C(t)&= \frac{1}{C}\int_{0}^{t}I(t)\dd^{}{t}
+	\end{paligned}
+\end{equation*}
+Thus, due to Kirchhoff's mesh law, we have that the voltage $V(t)$ must be equal to the sum of these three, and deriving with respect to $t$ in order to change the integro-differential equation into a second order differential equation, we have
+\begin{equation}
+	\dv{V}{t}=L\dv[2]{I}{t}+R\dv{I}{t}+\frac{1}{C}I(t)
+	\label{eq:rlccircode.ac}
+\end{equation}
+We can solve this equation with the usual techniques of ordinary differential equation theory, thus searching for the sum of an homogeneous solution and a particular solution. For the homogeneous equation we have
+\begin{equation}
+	\begin{paligned}
+		L\dv[2]{I}{t}+R\dv{I}{t}+\frac{1}{C}I(t)&= 0\\
+		L\lambda^2+R\lambda+\frac{1}{C}\lambda&= 0
+	\end{paligned}
+	\label{eq:rlchomo.ac}
+\end{equation}
+Solving the equation and the characteristic polynomials we reach that
+\begin{equation*}
+	\lambda=-\frac{R}{2L}\pm\sqrt{\left( \frac{R}{2L} \right)^2-\frac{I}{LC}}
+\end{equation*}
+Which implies
+\begin{equation}
+	I(t)=I_{\pm}e^{-\frac{Rt}{2L}\pm t\sqrt{\left( \frac{R}{2L} \right)^2-\frac{1}{LC}}}
+	\label{eq:currentrlc.ac}
+\end{equation}
+We simplify everything by substitution with the following parameters
+\begin{equation*}
+	\begin{paligned}
+		a&= \frac{R}{2L}\\
+		b&= \sqrt{\left( \frac{R}{2L} \right)^2-\frac{1}{LC}}
+	\end{paligned}
+\end{equation*}
+We can rewrite the current as the simple function
+\begin{equation}
+	I(t)=I_+e^{-(a-b)t}+I_-e^{-(a+b)t}
+	\label{eq:simpleirlc.ac}
+\end{equation}
+We get the following cases
+\begin{equation}
+	\begin{dcases}
+		\left( \frac{R}{2L} \right)^2>\frac{1}{LC}& b\in\R\\
+		\left( \frac{R}{2L} \right)^2>\frac{1}{LC}& b=0\\
+		\left( \frac{R}{2L} \right)^2>\frac{1}{LC}& b\in\Cf
+	\end{dcases}
+	\label{eq:cases}
+\end{equation}
+We can now begin to evaluate the transient response of the circuit
+\subsubsection{Overdamped Response}
+The first case that we will consider is when $b\in\R$, $b\ne 0$, the circuit with these conditions is said to be \textit{overdamped}. For physical reasons we can say immediately that $I(0)=0$, thus, imposing Cauchy conditions to the current solution and the characteristic equation of the circuit we have
+\begin{equation*}
+	\begin{paligned}
+		I(0)=I_{+}+I_{-}= 0\\
+		RI(0)+L\left.\dv{I}{t}\right|_{t=0}+\frac{q_0}{C}&= 0
+	\end{paligned}
+\end{equation*}
+Deriving the homogeneous solution we have
+\begin{equation*}
+	\begin{aligned}
+		\dv{I}{t}&= I_+\left( b-a \right)e^{-(a-b)t}-I_{-}(a+b)e^{-(a+b)t}\\
+		\left.\dv{I}{t}\right|_{t=0}&= I_{+}(b-a)-I_{-}(a+b)=2bI
+	\end{aligned}
+\end{equation*}
+Where we considered that $I_{-}=-I_{+}=I_0$. Inserting it into the equation we get
+\begin{equation*}
+	2LbI_0=-\frac{q_0}{C}\implies I_0=-\frac{q_0}{2bLC}
+\end{equation*}
+Indicating the \textit{natural frequency} of the circuit $\omega_0$ as
+\begin{equation}
+	\omega_0=\sqrt{\frac{1}{LC}}
+	\label{eq:natfreq.rlc}
+\end{equation}
+We have finally, remembering that $I(t)=I_0f(t)$
+\begin{equation*}
+	I(t)=-\frac{q_0\omega_0^2}{2b}e^{-at}\left( e^{bt}-e^{-bt} \right)
+\end{equation*}
+Substituting the exponentials with the hyperbolic sine function we get
+\begin{equation}
+	I(t)=-\frac{q_0\omega_0^2}{b}e^{-at}\sinh(bt)=-\frac{q_0\omega_0^2}{\sqrt{\left( \frac{R}{2L} \right)^2-\frac{1}{LC}}}e^{-\frac{R}{2L}t}\sinh\left( t\sqrt{\left( \frac{R}{2L} \right)^2-\frac{1}{LC}} \right)
+\label{eq:overdamped.rlc}
+\end{equation}
+\subsubsection{Critically Damped Response}
+The second case is when $b=0$, i.e. when the circuit is \textit{critically damped}. Going back to the definition of $a, b$ we have that $b=0$ implies
+\begin{equation*}
+	\left( \frac{R}{2L} \right)^2=\frac{1}{LC}
+\end{equation*}
+Thus, considered the characteristic polynomial of the differential equation
+\begin{equation*}
+	L\lambda^2+R\lambda+\frac{1}{C}\lambda=0
+\end{equation*}
+Which, has solutions 
+\begin{equation*}
+	\lambda_{12}=a\pm b
+\end{equation*}
+Thus, being $b=0$ with this circuit response, the solution to the polynomial is a degenerated single solution with an algebraic multiplicity of 2, $\lambda=a$, thus the homogeneous solution for the current is
+\begin{equation}
+	I(t)=I_1e^{-\frac{R}{2L}t}+tI_2e^{-\frac{R}{2L}t}=\left( I_1+tI_2 \right)e^{-at}
+	\label{eq:critdampIho.rlc}
+\end{equation}
+Imposing the initial condition $I(0)=0$ we then get
+\begin{equation*}
+	I(0)=I_1=0\implies I(t)=tI_2e^{-at}\qquad I_2=I_0
+\end{equation*}
+And
+\begin{equation*}
+	\left.\dv{I}{t}\right|_{t=0}=\left.\left( 1-at \right)I_0e^{-at}\right|_{t=0}=I_0
+\end{equation*}
+We have then 
+\begin{equation*}
+	LI_0=-\frac{q_0}{C}\implies I_0=-\frac{q_0}{LC}=-q_0\omega_0^2
+\end{equation*}
+Thus, the current function in a critically damped RLC is
+\begin{equation}
+	I(t)=I_0te^{-at}=-q_0\omega_0^2te^{-at}=-q_0\omega_0^2te^{-\frac{R}{2L}t}
+	\label{eq:criticaldamp.rlc}
+\end{equation}
+\subsubsection{Damped Oscillatory Response}
+The last case is the \textit{damped oscillatory regime}, i.e. when
+\begin{equation*}
+	\left( \frac{R}{2L} \right)^2<\omega_0^2\implies \lambda_{\pm}=-a\pm ib
+\end{equation*}
+We have an oscillatory solution to the current.\\
+Imposing the Cauchy condition $I(0)=0$ we have
+\begin{equation*}
+	I(0)=I_{+}+I_{-}=0\implies I_{+}=-I_{-}
+\end{equation*}
+Thus, since
+\begin{equation*}
+	I(t)=\left( I_{+}e^{ibt}+I_{-}e^{-ibt} \right)e^{-at}
+\end{equation*}
+We get
+\begin{equation*}
+	I(t)=I_0e^{-at}\left( e^{ibt}-e^{-ibt}\right)=2i I_0e^{-at}\sin(bt)
+\end{equation*}
+Noting that
+\begin{equation*}
+	I_0=-\frac{q_0}{2bLC}=-\frac{q_0\omega_0^2}{2b}
+\end{equation*}
+We get the final solution for the current in an RLC circuit in damped oscillatory conditions
+\begin{equation}
+	I(t)=-\frac{i\omega_0^2q_0}{b}e^{-at}\sin\left( bt \right)=-\frac{i\omega_0^2q_0}{\sqrt{\left( \frac{R}{2L} \right)^2-\frac{1}{LC}}}e^{-\frac{R}{2L}t}\sin\left( t\sqrt{\left( \frac{R}{2L} \right)^2-\frac{1}{LC}} \right)
+	\label{eq:oscillatorydampedI.rlc}
+\end{equation}
+Note that although the current is harmonic in this configuration, there's still Joule dissipation on the resistor $R$.
+\subsection{General Solution in AC Regimes}
+We can now evaluate the general solution to the circuit equation with a sinusoidal voltage source. The equation we need to solve is
+\begin{equation*}
+	\dv{V}{t}=L\dv[2]{I}{t}+R\dv{I}{t}+\frac{I}{C}
+\end{equation*}
+Where
+\begin{equation*}
+	\begin{paligned}
+		V(t)&= V_0e^{i\omega t+i\varphi_V}\\
+		I(t)&= I_0e^{i\omega t+i\varphi_I}
+	\end{paligned}
+\end{equation*}
+Substituting into the equation we get
+\begin{equation*}
+	i\omega V_0e^{i\varphi_V}=-\omega^2LI_0e^{i\varphi_I}+i\omega Re^{i\varphi_I}+\frac{I_0}{\omega_0C}e^{i\varphi_I}
+\end{equation*}
+Rearranging the equation and multiplying both sides by $e^{-i\varphi_I}$ we have
+\begin{equation}
+	V_0e^{i\left( \varphi_V-\varphi_I \right)}=\left[ R+\left(i\omega L-\frac{1}{i\omega C}  \right) \right]I_0=Z_{RLC}I_0
+	\label{eq:solutionrlc.rlc}
+\end{equation}
+We get the values for $I_0$ and $\varphi=\varphi_V-\varphi_I$
+\begin{equation}
+	\begin{paligned}
+		I_0&= \frac{V}{\abs{Z_{RLC}}}=\frac{V_0}{\sqrt{R^2+\left( \omega L-\frac{1}{\omega C} \right)^2}}V_0\\
+		\varphi&= \arctan\left[ \frac{1}{R}\left( \omega L-\frac{1}{\omega C} \right) \right]
+	\end{paligned}
+	\label{eq:rlcfinal.rlc}
+\end{equation}
+Note how $Z_{RLC}$ is exactly what we'd get from the generalized ohm law, and that also $Z_{RLC}\in\Cf$ in general.\\
+Also $Z_{RLC}\in\R$ only in the special resonant case of $\omega=\omega_0$, where $Z_{RLC}=R$ and $\varphi=0$
+\subsection{Quality Factor}
+\begin{dfn}[Quality Factor]
+In order to understand better the behavior of the RLC circuit we can define a parameter, known as the \textit{quality factor} as follows
+\begin{equation}
+	Q_0=\frac{\omega_0 L}{R}=\frac{1}{R}\sqrt{\frac{L}{C}}
+	\label{eq:qualityfactor.rlc}
+\end{equation}
+\end{dfn}
+Thus, the current we evaluated previously can be rewritten as follows
+\begin{equation}
+	I_0=\frac{V_0}{\sqrt{1+Q_0^2\left( \frac{\omega^2-\omega_0^2}{\omega\omega_0} \right)^2}}
+	\label{eq:i0quality.rlc}
+\end{equation}
+It's clear that only some frequencies will pass through the filter, defining the RLC circuit as a \textit{band pass filter}. Note that the closer is the quality factor to infinity, the more selective the filter is\\
+\begin{dfn}[Bandwidth]
+	We define the \textit{bandwidth} $\Delta\omega$ of the RLC band pass filter as the distance between the points of the frequency response where
+	\begin{equation}
+		I_{\Delta\omega}=\frac{1}{\sqrt{2}}I_{max}
+		\label{eq:bandwidthcond.rlc}
+	\end{equation}
+	It's clear then that the bandwidth depends on the quality factor of the circuit
+\end{dfn}
+In order to evaluate the bandwidth of the filter we begin by finding where $I/I_0$ is equal to $1/\sqrt{2}$ Thus, we have
+\begin{equation*}
+	\frac{I}{I_0}=\frac{1}{\sqrt{2}}=\frac{1}{\sqrt{1+Q_0^2\left( \frac{\omega^2-\omega_0^2}{\omega\omega_0} \right)^2}}
+\end{equation*}
+Clearly we must solve 
+\begin{equation*}
+	Q_0^2\left( \frac{\omega^2-\omega_0^2}{\omega\omega_0} \right)^2=1
+\end{equation*}
+Thus, we have
+\begin{equation*}
+	\frac{\omega^2-\omega_0^2}{\omega\omega_0}=\pm\frac{1}{Q_0}\implies\omega^2-\omega_0^2\mp\frac{\omega\omega_0}{Q_0}=0
+\end{equation*}
+Solving for $\omega$ in order to find the intersections we get
+\begin{equation}
+	\omega=\pm\frac{\omega_0}{2Q_0}\pm\sqrt{\left( \frac{\omega_0}{2Q_0} \right)^2+\omega_0}
+	\label{eq:freqsolbandwidth.rlc}
+\end{equation}
+Imposing only positive solutions, since $\omega>0$ \textit{always} we get that the bandwidth is 
+\begin{equation}
+	\Delta\omega=\omega_2-\omega_1=\frac{\omega_0}{Q_0}=\frac{R}{L}
+	\label{eq:bandwidth.rlc}
+\end{equation}
+For commercial filters we have that $Q_0\propto10^2$. For getting higher quality factors expensive components are needed, like inductors composed by superconductors
+\subsection{Ohm's Law and RLC Circuits}
+\subsubsection{RLC in Series}
+We can use Ohm's law in order to evaluate RLC circuits and find all the parameters we need. We start with an RLC circuit in series, with a resistor $R$ as the circuit load, as in the following diagram
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV, l=$V_G(t)$] (0, 2) to[R, l=$R_G$] (0, 4) to[R, l=$R_L$] (2, 4) to[L, l=$L$] (4, 4) to[C, l=$C$] (6, 4) -- (7, 4) to[open, o-o, v^=$V_{out}(t)$] (7, 0) -| (0, 0);
+		\draw (6, 4) to[R, l=$R$] (6, 0);
+	\end{circuitikz}
+	\caption{RLC circuit with a real generator and a real inductor, every component is connected in series to a load $R$}
+	\label{fig:rlcseriesohm.rlc}
+\end{figure}
+Since everything is in series we have that the equivalent impedance of the circuit is $Z_{eq}$ is
+\begin{equation*}
+	Z_{eq}=Z_G+Z_L+Z_C
+\end{equation*}
+Where $Z_G$ and $Z_L$ are respectively the \textit{total} impedances of the generator and inductor. Thus
+\begin{equation}
+	Z_{eq}=R_G+\left( R_L+i\omega L \right)+\frac{1}{i\omega C}
+	\label{eq:zeqseries.rlc}
+\end{equation}
+Thanks to $V=ZI$ we have
+\begin{equation}
+	I(t)=\frac{V_{out}(t)}{Z}=\frac{V_G(t)}{R_G+R_L+i\left( \omega L-\frac{1}{\omega C} \right)}
+	\label{eq:currentseriesrlc.rlc}
+\end{equation}
+Writing $R_0=R_L+R_G$ we can evaluate from the previous expression the quality factor, as
+\begin{equation*}
+	Q_s=\frac{\omega_0 L}{R_0}=\frac{1}{R_G+R_L}\sqrt{\frac{L}{C}}
+\end{equation*}
+Looking back to the current expression, we can also write the voltage on the inductor and capacitor, where
+\begin{equation*}
+	\begin{paligned}
+		V_C(t)&= Z_CI(t)=\frac{Z_C}{Z_{eq}}V_G(t)=\frac{1}{i\omega C}\frac{V_G(t)}{R_G+R_L+i\left( \omega L+\frac{1}{\omega C} \right)}\\
+		V_L(t)&= Z_LI(t)=\frac{Z_L}{Z_{eq}}V_G(t)=i\omega L\frac{V_G(t)}{R_G+R_L+i\left( \omega L+\frac{1}{\omega C} \right)}
+	\end{paligned}
+\end{equation*}
+Thus, evaluating the ratio between the measured output and input voltage, we have  that
+\begin{equation*}
+	\begin{paligned}
+		\frac{V_C^M}{V_G^M}&= \frac{1}{\omega C}\frac{1}{\sqrt{R^2}+\left( \omega L-\frac{1}{\omega C} \right)^2}\\
+		\frac{V_L^M}{V_G^M}&= \frac{\omega L}{\sqrt{R^2+\left( \omega L-\frac{1}{\omega C} \right)^2}}
+	\end{paligned}
+\end{equation*}
+When at resonance, i.e. when $\omega=\omega_0$, then we have
+\begin{equation*}
+	\frac{V_C^M}{V_G^M}=\frac{V_L^M}{V_G^M}=Q_s\implies V_C^M=V_L^M=Q_sV_G^M
+\end{equation*}
+Being $Q>1$, we also have that both $V_C^M, V_C^M>V_G$ and we are actually measuring a higher voltage on the two components.\\
+Remember that $\varphi_C=-\varphi_L$, therefore \textit{there is no current flow on the load}.
+\subsubsection{RLC in Parallel}
+We now consider the dual version of the RLC circuit in series, the RLC circuit in parallel, which has the following diagram
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 4) to[sV, l=$V_G(t)$, i=$I(t)$] (0, 0);
+		\draw (0, 4) -- (8, 4) to[open, o-o, v^=$V_{out}(t)$] (8, 0) -- (0, 0);
+		\draw (3, 4) to[L, l=$L$, i=$I_L(t)$] (3, 0);
+		\draw (5, 4) to[C, l=$C$, i=$I_C(t)$] (5, 0);
+		\draw (7, 4) to[R, l=$R$, i=$I_R(t)$] (7, 0);
+	\end{circuitikz}
+	\caption{RLC circuit in parallel}
+	\label{fig:RLCparallel.rlc}
+\end{figure}
+The evaluation is completely analogue, we just gotta remember that
+\begin{equation}
+	\frac{1}{Z_{eq}}=\frac{1}{Z_R}+\frac{1}{Z_C}+\frac{1}{Z_L}=\frac{1}{R}+i\left( \omega C-\frac{1}{\omega L} \right)
+\end{equation}
+Which therefore implies
+\begin{equation}
+	I(t)=\frac{V_G(t)}{Z_{eq}}=\left[ \frac{1}{R}ì\left( \omega C-\frac{1}{\omega L} \right) \right]V_G(t)
+\end{equation}
+And, thus
+\begin{equation*}
+	I_0^M=V_G^M\sqrt{\frac{1}{R^2}+\left( \omega C-\frac{1}{\omega L} \right)^2}
+\end{equation*}
+And the phase of the current will be
+\begin{equation}
+	\varphi=\arctan\left[ R\left( \omega C-\frac{1}{\omega L} \right) \right]
+\end{equation}
+\section{Transfer Functions}
+Thanks to the circuits being linear, for which the superposition theorem holds, we can imagine to write the output of two circuits combined using some function.
+\begin{dfn}[Transfer Function]
+	Given two circuits $C_1$ and $C_2$, said $V_{i1}$, $V_{o1}$ and $V_{i2}$, $V_{o2}$ the input and output voltages of the two circuits, we can define a \textit{transfer function} of the two as
+	\begin{equation}
+		\begin{aligned}
+			T_{1}(\omega)&= \frac{V_{i1}}{V_{o1}}\\
+			T_{2}(\omega)&= \frac{V_{i2}}{V_{o2}}
+		\end{aligned}
+		\label{eq:transferfuncdef.trf}
+	\end{equation}
+	These functions completely describe the behavior of the two circuits.\\
+	Note that when we connect the two circuits
+	\begin{equation*}
+		T_{12}\ne T_1T_2
+	\end{equation*}
+	Since the connection of the second circuit to the first induces a modification of the response of the circuits at the connection point. If this modification is $V_x(\omega)$, we can tho write
+	\begin{equation}
+		T_{12}=\frac{V_{o2}}{V_{x}}\frac{V_x}{V_{i1}}
+		\label{eq:transferfunc2.trf}
+	\end{equation}
+\end{dfn}
+<++>
 \section{Diodes}
 \subsection{Semiconductor Diodes}
+\subsubsection{Rectifier Circuits}
 \subsection{Zener Diodes}
 \section{Transmission Lines}
 \subsection{Electromagnetic Kirchhoff Laws}
 \subsection{Telegrapher's Equations}
-\subsection{Non-dissipative Solution}
-\section{Coaxial Cables}
+%\section{Coaxial Cables}     
+%\section{Three-phase Generators}
 \end{document}
