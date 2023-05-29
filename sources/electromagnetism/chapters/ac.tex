@@ -692,14 +692,404 @@ Thanks to the circuits being linear, for which the superposition theorem holds, 
 		\label{eq:transferfunc2.trf}
 	\end{equation}
 \end{dfn}
-<++>
+This can be in general be computed by using the formula of the voltage divider. Suppose to have two circuits connected one after the other. If the equivalent impedance of the first circuit is $Z_{i1}$, the input voltage $V_{i1}$, with equivalent output voltage $V_{o1}$ and output impedance $Z_{o1}$ and the second circuit has an equivalent output voltage $V_{o2}$ with equivalent impedance $Z_{o2}$, we get that
+	\begin{equation*}
+		V_{i2}=\frac{Z_{i2}}{Z_{i2}+Z_{o1}}V_{o1}
+	\end{equation*}
+	Thus
+	\begin{equation*}
+		T_{12}=\frac{V_{o2}}{V_{i1}}=\frac{V_{o2}}{V_{i2}}\frac{V_{i2}}{V_{i1}}=\frac{V_{o2}}{V_{i2}}\frac{Z_{i2}}{Z_{i2}+Z_{o1}}\frac{V_{o1}}{V_{i1}}
+	\end{equation*}
+	Substituting the first equation into the second we get
+	\begin{equation}
+		T_{12}=\frac{Z_{i2}}{Z_{i2}+Z_{o1}}T_2T_1
+		\label{eq:transferfunc2circ.trf}
+	\end{equation}
+Let's see this in practice by connecting an RC circuit to a CR circuit as follows
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (-1, 0) to[open, o-o, v^=$V_{i1}$] (-1, 4) to[R, l=$R_1$] (2, 4) -- (4, 4) to[open, *-*] (4, 0) -- (-1, 0);
+		\draw (2, 4) to[C, l=$C_1$] (2, 0);
+		\draw (4, 0) to[open, v_=$V_x$] (4, 4) to[C, l=$C_2$] (6, 4) -- (8,4) to[open, o-o, v^=$V_{o2}$] (8, 0) -- (4, 0);
+		\draw (6, 4) to[R, l=$R_2$] (6, 0);
+	\end{circuitikz}
+	\caption{Cascade connection of a RC and CR circuit}
+	\label{fig:rccr.trf}
+\end{figure}
+As for before we have
+\begin{equation*}
+	V_x=\frac{Z_{i2}}{Z_{i1}+Z_{i2}}V_{i1}
+\end{equation*}
+Where $Z_{i2}$ is the equivalent impedance of $C_2, R_2$ and $C_1$. Thus
+\begin{equation*}
+	Z_{i2}=\frac{1}{i\omega C_1}+R_2+\frac{1}{i\omega C_2}
+\end{equation*}
+Thus, re-inputting it into the previous equation we have
+\begin{equation*}
+	V_x=\frac{V_{i1}}{1+i\omega R_1C_1+\frac{R_1}{R_2+\frac{1}{i\omega C_2}}}
+\end{equation*}
+But we also have
+\begin{equation*}
+	V_{o2}=\frac{R_2}{R_2+Z_{C2}}V_{x}=\frac{i\omega C_2R_2}{1+i\omega C_2R_2}V_x
+\end{equation*}
+Thus
+\begin{equation*}
+	V_{o2}=\frac{i\omega C_2R_2}{1+i\omega C_2R_2}\frac{V_{i1}}{1+i\omega R_1C_1+\frac{i\omega C_2R_1}{1+i\omega C_2R_2}}
+\end{equation*}
+Which then implies
+\begin{equation}
+	T(\omega)=\frac{i\omega C_2R_2}{\left( 1+i\omega C_2R_2 \right)\left( 1+i\omega R_1C_1 \right)+i\omega C_2R_1}
+	\label{eq:trfrccr.tfr}
+\end{equation}
+\section{Dissipated Power in AC}
+Consider a simple capacitor connected to an ideal voltage generator in an alternate current regime
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV, l=$V(t)$] ++(0, 3) -- ++(4, 0) to[C, l=$C$, i=$I(t)$] ++(0, -3) -- (0, 0);
+	\end{circuitikz}
+	\caption{Simple circuit in AC regime}
+	\label{fig:simpleac.pow}
+\end{figure}
+The dissipated power in this sinusoidal regime is as usual 
+\begin{equation}
+	P(t)=V(t)I(t)
+	\label{eq:powerac.pow}
+\end{equation}
+Thus, using Ohm's law
+\begin{equation*}
+	V(t)=ZI(t)=\frac{I(t)}{i\omega C}\implies I(t)=i\omega CV(t)
+\end{equation*}
+Note that in this special case, being the current a perfectly imaginary number we will have $\varphi_I=\frac{\pi}{2}$.\\
+Since $V(t)$ is sinusoidal, we have that $P(t)$ can be positive or negative depending on which phase of the cycle we are in. When $P(t)>0$ we are giving power to the capacitor, i.e. charging the capacitor, and vice versa when it's negative.\\
+In general we must then have, if the current and voltage are in phase
+\begin{equation}
+	\expval{P}=\frac{1}{T}\int_{0}^{T}V(t)I(t)\dd^{}{t}=\frac{\omega}{2\pi}\int_{0}^{\frac{\omega}{2\pi}}V_0I_0\sin\left( \omega t \right)\cos\left( \omega t \right)\dd^{}{t}=0
+	\label{eq:inphase.pow}
+\end{equation}
+But, when current and voltage \textit{are not} in phase, we have
+\begin{equation*}
+	\cos\left( \omega t+\varphi_I \right)\cos\left( \omega t \right)=\cos^2\left( \omega t \right)\cos\left( \varphi_I \right)+\sin\left( \omega t \right)\cos\left( \omega t \right)\sin\left( \varphi_I \right)
+\end{equation*}
+Thus
+\begin{equation*}
+	\expval{P}=\frac{V_0I_0}{T}\cos\left( \varphi_I \right)\int_{0}^{T}\cos^2\left( \omega t \right)\dd^{}{t}
+\end{equation*}
+Integrating in one period we have
+\begin{equation}
+	\expval{P}=\frac{V_0I_0}{2}\cos\left( \varphi_I \right)
+	\label{eq:exppownphase.pow}
+\end{equation}
+If we define $I_{eff}=I_0/\sqrt{2}$, $V_{eff}=V_0/\sqrt{2}$ as the \textit{effective} current and voltage, we have
+\begin{equation}
+	\expval{P}=V_{eff}I_{eff}\cos\left( \varphi_I \right)
+	\label{eq:peff.pow}
+\end{equation}
+The cosine of the current phase is known as the \textit{power factor}.\\
+For circuits which are purely active the real part of the impedance is zero, and with it the power factor, thus
+\begin{equation*}
+	\expval{P}_{active}=0
+\end{equation*}
+Note tho that being $I(t)\ne0$ inside the generator, there will be dissipated power in $R$ thanks to Joule dissipation
+\subsection{Quality Factor as a Measure of Dissipated Energy}
+Consider the definition of the quality factor $Q_0$. We have
+\begin{equation*}
+	Q_0=\omega_0\frac{L}{R}
+\end{equation*}
+We can write, at resonance $\omega_0=\frac{2\pi}{T_0}$, thus with some algebraic play we have
+\begin{equation*}
+	Q_0=\frac{2\pi}{T}\frac{L}{R}\frac{I_0^2/2}{I_0^2/2}=\frac{2\pi}{T}\frac{2}{RI_0^2}\frac{LI^2_0}{2}
+\end{equation*}
+We immediately recognize the two following quantities
+\begin{equation*}
+	\begin{aligned}
+		\frac{1}{2}LI_0^2&= E_{M}\\
+		\frac{1}{2}RI_0^2&= P_J
+	\end{aligned}
+\end{equation*}
+I.e. the magnetic energy inside the inductor, and the dissipated power in the resistor via Joule effect. Thus
+\begin{equation}
+	Q_0=\frac{2\pi}{T}\frac{E_M}{P_J}=2\pi\frac{E_M}{E_J}
+	\label{eq:energylossratio.qfe}
+\end{equation}
+Thus, the quality factor $Q_0$ can be seen as $2\pi$ times the energy inside the resonator (the inductor) and the dissipated energy in the resistor.
 \section{Diodes}
 \subsection{Semiconductor Diodes}
-\subsubsection{Rectifier Circuits}
+In electronics we can find circuit components which are not linear. These nonlinear components have as a main factor that $I\not\propto V$, thus, components for which Ohm's law doesn't work.\\
+One special kind of nonlinear component is the \textit{diode}. The most common types of diodes use Silica or Germanium component, both tetravalent semi-metals.\\
+In order to ease the conduction in these elements, their crystalline structure is \textit{doped} with impurities e.g., for silica
+\begin{itemize}
+\item Phosphorus doping, adding one valence electron
+\item Gallium doping, removing one valence electron, i.e. adding one \textit{hole} 
+\end{itemize}
+This doping elements are added in very small parts, usually 1 part per million, but still manage to increase the conductivity of the silica structure by an order of $10^2$.\\
+In diodes, in order to obtain these particular structures, a \textit{junction} is created between two doped semiconductors. This junction is known as a \textit{NP} or \textit{PN} junction, representing the connection of:
+\begin{itemize}
+\item N crystals, doped mainly with P, As, An, i.e. doped with pentavalent atoms
+\item P crystals, doped mainly with B, Ga, In, i.e. doped with trivalent atoms
+\end{itemize}
+The connection between these crystals inside a diode creates an electric dipole field between the two junctions, thus generating an electric potential $\varphi$.\\
+The extra electrons in the N crystal manage to jump the potential, going towards the P crystal if and only if $E_{e^-}>\varphi$.\\
+These electrons are in thermal equilibrium, thus we can use Boltzmann statistics in order to evaluate them.\\
+We want to find the number of electrons with energy $\dd E$. Indicating $\beta=\frac{1}{kT}$ we have
+\begin{equation*}
+	\dd N=e^{-\beta E}\dd R
+\end{equation*}
+Thus
+\begin{equation}
+	N\left( E_{e^-}>\varphi \right)=C\int_{\varphi}^{\infty}e^{-\beta E}\dd^{}{E}=\frac{C}{\beta}e^{-\beta\varphi}
+	\label{eq:electronsjumpn.dio}
+\end{equation}
+The probability of having electrons with energies greater than $\varphi$ that actually manage to jump is then, if $N_T$ is the total number of electrons
+\begin{equation}
+	P\left( jump \right)=\frac{N\left( E_{e^-}>\varphi \right)}{N_T}=e^{-\beta\varphi}
+	\label{eq:jumpprob.dio}
+\end{equation}
+And thus, the current between the junction is $I_{NP}\propto P\left( jump \right)$.\\
+At equilibrium we will have $I_{NP}=I_{PN}$. 
+\subsection{Voltage Rectifiers}
+We now begin to evaluate diodes inside of circuits. Consider a diode connected to some battery, which will add a new electric field $\vec{E}'$. If the battery has a voltage $V$, we will have, inside the junctions
+\begin{equation}
+	E_{e^-}'=\varphi-e\abs{V}
+	\label{eq:endiodirectpol.dio}
+\end{equation}
+Thus, the diode will be \textit{directly polarized}, and
+\begin{equation}
+	\begin{aligned}
+		I_{NP}&= Ae^{-\beta\left( \varphi-e\abs{V} \right)}\\
+		I_{PN}&= Ae^{-\beta\varphi}
+	\end{aligned}
+	\label{eq:directpolcurrs.dio}
+\end{equation}
+The total current between the junctions is then
+\begin{equation}
+	I_{e^-}=I_{NP}-I_{PN}=Ae^{-\beta\varphi}\left( e^{\beta e\abs{V}}-1 \right)
+	\label{eq:totcurr}
+\end{equation}
+This direct polarization can inverted, thus obtaining for the circuit
+\begin{equation}
+	I=I_0\left( e^{-\beta eV}-1 \right)
+	\label{eq:diodecurr.dio}
+\end{equation}
+This can be used for building \textit{rectifiers}.\\
+There are two main kinds of rectifiers, \textit{half-wave rectifiers}, and \textit{bridge rectifiers}. A half-wave rectifier is built as follows
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[sV, l=$V_{in}(t)$] (0, 3) to[D] (5, 3) to[open, o-o, v^=$V_{out}(t)$] (5, 0) -- (0, 0);
+		\draw (4, 3) to[R, l=$R$] (4, 0);
+	\end{circuitikz}
+	\caption{Half-wave rectifier}
+	\label{fig:hwrect.dio}
+\end{figure}
+In this circuit we will have
+\begin{equation}
+	\begin{aligned}
+		V_{in}(t)&\propto\sin\left( \omega t \right)\\
+		V_{out}(t)&\propto\begin{dcases}
+			\sin(\omega t)&V_{in}(t)>0\\
+			0&V_{out}(t)<0
+		\end{dcases}
+	\end{aligned}
+	\label{eq:hwrectvolt.dio}
+\end{equation}
+Thus, as output, we will get only the positive half-wave of the input voltage.\\
+A bridge rectifier instead creates with a good approximation DC current from an AC source, and they're built as follows
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[D, l=$4$] (-2, 2) to[D, l=$1$] (0, 4) node[left](b+){};
+		\draw (0, 0) to[D, l_=$3$] (2, 2) to[D, l_=$2$] (0, 4);
+		\draw (-2, 2) to[sV, l=$V_{in}(t)$] (2, 2);
+		\draw (0, 4) -- (6, 4) to[open, o-o, v^=$V_{out}$] (6, 0) -- (0, 0);
+		\draw (5, 4) to[R, l=$R$] (5, 0);
+	\end{circuitikz}
+	\caption{Bridge full-wave rectifier}
+	\label{fig:voltbridge.dio}
+\end{figure}
+In this circuit, we have diodes 1 and 3 in \textit{inverse polarization}, thus working as PN components, while diodes 2 and 4 are directly polarized, i.e. NP components.\\
+As for the voltage, we will have
+\begin{equation}
+	V_{out}\propto V_{in}(t)
+	\label{eq:bridgeout.dio}
+\end{equation}
 \subsection{Zener Diodes}
+For common diodes, exists a voltage $V_{B}$, also known as \textit{breakdown voltage}, for which there is \textit{full ionization} of the crystal junction, thus destroying the component.\\
+A special type of diode built in order to sustain $V>V_B$ is the \textit{Zener diode}, which is used usually to stabilize DC voltages, in circuits like the following
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[dcvsource, l=$V$] (0, 3) to[R, l=$R$] (5, 3) to [open, o-o, v^=$V_{B}$] (5, 0) -- (0, 0);
+		\draw (4, 0) to[zzD, l=$Z_D$] (4, 3);
+	\end{circuitikz}
+	\caption{DC Stabilizer circuit with a Zener diode $Z_D$}
+	\label{fig:zenerstab.dio}
+\end{figure}
+Zener diodes are also used to limit sinusoidal voltages, with a \textit{clipping effect} at $V_{-}=-0.6$ V and $V_{+}=V_B$
 \section{Transmission Lines}
 \subsection{Electromagnetic Kirchhoff Laws}
+The need to transport voltages and currents between long distances, creates a major problem.\\
+Since relativity holds, the signal never travels faster than the speed of light $c$, adding a delay and a phase shift, which are negligible if and only if $\omega<< 1$ GHz.\\
+These kinds of circuits are known as \textit{transmission lines}, and are indicated in circuits as follows
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\draw (0, 0) to[R, l=$Z_G$] (0, 2) to[sV, l=$V_{in}(t)$] (0, 4) -- (2, 2) to[TL, l=$Z_0$] (3, 2) -- (5, 4) to[generic, l=$Z_L$] (5, 0) -- (3, 2); 
+		\draw (0, 0) -- (2, 2);
+	\end{circuitikz}
+	\caption{Diagram of a transmission line $Z_0$ connecting a real generator to a generic load $Z_L$}
+	\label{fig:trasline.tra}
+\end{figure}
+The component $Z_0$, known as a \textit{transmission line}, can be schematized as follows
+\begin{figure}[H]
+	\centering
+	\begin{circuitikz}
+		\node[above left] at (0, 0) {$B$};
+		\node[above left] at (0, 3) {$A$};
+		\node[above right] at (9, 3) {$A$};
+		\node[above right] at (9, 0) {$B$};
+		\draw (0, 0) to[open, *-*] (0, 3) to[R, l=$R_A$] (2, 3) to[L, l=$L_A$] (4, 3) -- (9, 3) to[open, *-*, v^=$V_{AB}$] (9, 0);
+		\draw (0, 0) to[R, l=$R_B$] (2, 0) to[L, l=$L_B$] (4, 0) -- (9, 0);
+		\draw (6, 0) to[C, l=$C$] (6, 3);
+		\draw (8, 0) to[R, l=$G$] (8, 3);
+		\draw[<->, dashed] (0, -0.5)  -- (9, -0.5);
+		\node[below] at (4.5, -0.5) {$\dd x$};
+	\end{circuitikz}
+	\caption{Approximation of a piece of transmission line long $\dd x$}
+	\label{fig:dxtrans.tra}
+\end{figure}
+Using mesh calculus we can write
+\begin{equation}
+	\begin{paligned}
+		\dd V_A&= -R_AI(x, t)\dd x-L_A\pdv{I}{t}\dd x\\
+		\dd V_B&= R_BI(x, t)\dd x+L_B\pdv{I}{t}\dd x
+	\end{paligned}
+	\label{eq:voltdiff.tra}
+\end{equation}
+Thus
+\begin{equation*}
+	\pdv{V}{x}=-\left( R_B+R_A \right)I(x, t)-(L_A+L_B)\pdv{I}{t}
+\end{equation*}
+We define 
+\begin{equation}
+	\begin{paligned}
+		R_u\dd x&= R_A+R_B\\
+		L_u\dd x&= L_A+L_B
+	\end{paligned}
+	\label{eq:rulu.tra}
+\end{equation}
+And thus, we get a set of coupled differential equations for voltage and currents
+\begin{equation}
+	\begin{paligned}
+		\pdv{V}{x}&= -\left( R_u+L_u\pdv{x}\right)I(x, t)\\
+		\pdv{I}{x}&= -\left( G_u+C_u\pdv{t}\right)V(x, t)
+	\end{paligned}
+	\label{eq:teleq.tra}
+\end{equation}
+Where we indicated with $G_u$ the admittance of the line and with $C_u$ the capacitance\\
+The operators inside the parentheses are known as the \textit{unitary impedance operator} $\hat{Z}_u$ and the \textit{unitary admittance operator} $\hat{Y}_u$
 \subsection{Telegrapher's Equations}
-%\section{Coaxial Cables}     
+In general, transmissions lines are used with sinusoidal voltage sources.\\
+From the system of equations we can write, by deriving with respect to $x$ both equations
+\begin{equation*}
+	\begin{paligned}
+		\pdv[2]{V}{x}&= \hat{Z}_u\hat{Y}_uV(x, t)\\
+		\pdv[2]{I}{x}&= \hat{Z}_u\hat{Y}_uI(x, t)
+	\end{paligned}
+\end{equation*}
+And considering that since $V\propto e^{i\omega t}$ we have 
+\begin{equation*}
+	\begin{paligned}
+		\pdv{V}{t}&= i\omega V(x, t)\\
+		\pdv{I}{t}&= i\omega I(x, t)
+	\end{paligned}
+\end{equation*}
+And using the approximation 
+\begin{equation*}
+	\begin{paligned}
+		\hat{Z}_u&\approx R+i\omega L\\
+		\hat{Y}_u&\approx G+i\omega C
+	\end{paligned}
+\end{equation*}
+We can write the equations as two second order uncoupled partial differential equations, known as the \textit{Telegraphist equations}
+\begin{equation}
+	\begin{paligned}
+		\pdv[2]{V}{x}&= \gamma^2V(x, t)\\
+		\pdv[2]{I}{x}&= \gamma^2I(x, t)
+	\end{paligned}
+	\label{eq:telegraphist.tra}
+\end{equation}
+The solution of these equations can be found by searching for the following solution
+\begin{equation*}
+	V(x)=A_1e^{-\gamma x}+A_2e^{\gamma x}, \quad A_i=a_ie^{i\varphi_i}, \quad Z_0=z_0e^{i\psi}
+\end{equation*}
+Where we omitted the time dependency of the voltage, it being $e^{i\omega t}$.\\
+We define also
+\begin{equation*}
+	\gamma=\alpha+i\beta=\sqrt{R+i\omega L}\sqrt{G+i\omega C}=\sqrt{\hat{Z}_u\hat{Y}_u}
+\end{equation*}
+With this definition of $\gamma$ and the two complex amplitudes $A_i$ we have
+\begin{equation*}
+	V(x)=a_1e^{-i\left( \beta-\varphi_1 \right)}e^{-\alpha x}+a_2e^{i\left(\beta+\varphi_2 \right)}
+\end{equation*}
+Multiplying both sides by the time dependence and finding the measured voltage along the line, we get
+\begin{equation}
+	V_M(x, t)=\real\left\{ V(x, t) \right\}=a_1e^{-\alpha x}\cos\left( \omega t-\beta x+\varphi_1 \right)+a_2e^{\alpha x}\cos\left( \omega t+\beta x+\varphi_2 \right)
+	\label{eq:measvolt.tra}
+\end{equation}
+This is clearly a wavefunction, thus, taken the solution at constant phase we have
+\begin{equation}
+	\omega-\beta\pdv{x}{t}=0\implies\pdv{x}{t}=\frac{\omega}{\beta}=u
+	\label{eq:phasevel.tra}
+\end{equation}
+Which is the \textit{phase velocity} of the voltage wave inside the transmission line. Note that by definition, we have that the phase velocity is the imaginary part of $\gamma$, i.e. 
+\begin{equation*}
+	u=\imaginary\left\{ \gamma \right\}
+\end{equation*}
+\subsubsection{Non Dissipative Solution}
+If we consider the ideal case of a non-dissipating transmission line, i.e. $R_u=G_u=0$, the solution is clearly way simpler, but especially we get
+\begin{equation}
+	\gamma=i\omega\sqrt{LC}=\frac{i\omega}{\tau}
+	\label{eq:nondissgamma.tra}
+\end{equation}
+Where $\tau$ is again the relaxation time for the LC oscillator in the line. Since also $\beta=\omega\tau$ we have that the phase velocity of the wave will be the \textit{inverse} of this relaxation time
+\begin{equation}
+	u_{ND}=\frac{1}{\tau}
+	\label{eq:nondissphasevel.tra}
+\end{equation}
+\subsection{Coaxial Cables}     
+A great example of transmission line used every day in laboratories and houses is the \textit{coaxial cable}.\\
+A coaxial cable can be imagined as a conductive cable covered by an insulating cladding.\\
+Considering the moving currents inside the conductor, we have thanks to Maxwell's equations
+\begin{equation*}
+	\begin{paligned}
+		\nabla\cdot\vec{B}&= 0\\
+		\nabla\times\vec{B}&= \mu\vec{J}
+	\end{paligned}
+\end{equation*}
+From the second equation we get that the magnetic induction field around the conductive section of the cable is
+\begin{equation*}
+	\oint_{\del C}\vec{B}\cdot\ver{t}\dd l=2\pi rB=\mu I\implies B(r)=\frac{\mu}{2\pi r}I
+\end{equation*}
+And thus, thanks to the first equation of the two
+\begin{equation*}
+	\oiint_{C}\vec{B}\cdot\vec{n}\dd^2s=\frac{\mu lI}{2\pi}\log\left( \frac{b}{a} \right)
+\end{equation*}
+Where $a, b$ are the internal and external radii of the insulating cladding and $l$ the length of the cable.\\
+Note that also, by definition
+\begin{equation}
+	L_u=\frac{L}{l}=\frac{1}{l}\frac{\Phi}{LI}=\frac{\mu}{2\pi}\log\left( \frac{b}{a} \right)
+\end{equation}
+For the capacitance of the coaxial cable it's even easier. Using the formula for the capacitance of a cylinder we have
+\begin{equation}
+	C_u=\frac{C}{l}=\frac{2\pi\epsilon}{\log\left( \frac{b}{a} \right)}
+	\label{eq:unitcapac.coax}
+\end{equation}
+Then, $\gamma$ is easily calculable as
+\begin{equation}
+	\gamma=\sqrt{L_uC_u}=\sqrt{\mu\epsilon}=\frac{n}{c}
+	\label{eq:gamma.coax}
+\end{equation}
 %\section{Three-phase Generators}
 \end{document}
