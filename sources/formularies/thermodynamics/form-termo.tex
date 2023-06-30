@@ -1,0 +1,258 @@
+\documentclass{aa}
+\usepackage{amsmath, physics, float}
+\title{Formulary of Thermodynamics}
+\abstract{}{Small sample of important and useful equations in Classical Thermodynamics}{\LaTeXe and class notes}{A nice two-column paper with formulas}{}
+\begin{document}
+\maketitle
+\subsection{Notation}
+$E>0$ energy getting \textit{absorbed} by the system in POV\\
+$E<0$ energy getting \textit{emitted}/\textit{discarded} by the system in POV\\
+Thus: $Q=U+W$ (IUPAC notation)
+\section{Constants and non-SI Units}
+\subsection{non-SI Units}
+\begin{itemize}
+\item atmosphere, pressure: $1\ \mathrm{ atm}=101325\ \mathrm{ Pa}$
+\item mercury millimeters, pressure: $1\ \mathrm{ mmHg}=133.32\ \mathrm{ Pa}$
+\item calorie, energy: $1\ \mathrm{ cal}=4.187\ \mathrm{ J}$
+\item big calorie, energy: $1\ \mathrm{ Cal}=1\ \mathrm{kcal}=4186.799\ \mathrm{ J}$
+\item liters, volume: $1\ \mathrm{ l}=1\cdot10^{-3}\ \mathrm{ m^3}$
+\end{itemize}
+\subsection{Constants}
+\begin{itemize}
+\item $R$, ideal gas constant: $R=8.314\ \mathrm{\frac{J}{mol\cdot K}}=0.0821\ \mathrm{\frac{l\cdot atm}{mol\cdot K}}$
+\item $k_B$, Boltzmann constant: $k_B=1,38065\cdot10^{-23}\ \mathrm{\frac{J}{K}}$
+\item $N_A$, Avogadro number: $N_A=6.022\cdot10^{23}\ \mathrm{\frac{1}{mol}}$
+\item $\sigma$, Stefan-Boltzmann constant: $\sigma=5.6704\cdot10^{-8}\ \mathrm{\frac{W}{m^2K^4}}$
+\end{itemize}
+\section{Principles}
+\subsection{Zeroth Principle}
+Given two thermodynamic systems $A$ and $B$, isolated from each other and in contact through diathermal walls to a thermodynamic system $C$, then, said $T$ the temperature
+\begin{equation}
+	T_B=T_C\ \vee\ T_A=T_C\implies T_A=T_B
+\end{equation}
+\subsection{First Principle}
+Internal energy $U$, heat $Q$, work $W$
+\begin{equation}
+	\delta Q = \dd U + \delta W
+\end{equation}
+\subsection{Second Principle}
+Entropy $S$, reversible transformation
+\begin{equation}
+	\delta Q=T\dd S
+\end{equation}
+Entropy of the universe $S_{\Omega}$, surroundings (ambient) entropy $S_a$, $Q_a$ ambient heat (with sign) [if $Q_{abs}$ is the heat absorbed from the system in study, then $Q_a=-Q_{abs}]$
+\begin{equation}
+	\Delta S_{\Omega}=\Delta S+\Delta S_a=\int\frac{1}{T}\delta Q+\frac{Q_a}{T_a}\ge0
+\end{equation}
+\section{Ideal Gases}
+Equation of state, $p$ pressure, $V$ volume, $R=8.314\ \mathrm{ J/K}$, $T$ temperature, $N$ particle number
+\begin{equation}
+	pV = nRT = Nk_BT
+\end{equation}
+$n$ number of moles, $N$ number of molecules, $M$ molecular mass
+\begin{equation}
+	n=\frac{m}{M}=\frac{N}{N_A}
+\end{equation}
+In reversible transformations
+\begin{equation}
+	\dd U=n c_v\dd T
+\end{equation}
+\section{Calorimetry}
+Specific heats for monoatomic gases:
+\begin{itemize}
+\item $c_v$, specific heat at constant volume, $c_v=\frac{3}{2}R$
+\item $c_p$, specific heat at constant pressure, $c_p=\frac{5}{2}R$
+\item $\gamma$, heat capacity ratio, $\gamma=\frac{c_p}{c_v}$
+\end{itemize}
+Note that
+\begin{equation}
+	c_p=c_v+R
+\end{equation}
+For n-atomic gases:
+\begin{equation*}
+	c^{(n)}=c+\frac{n}{2}R
+\end{equation*}
+For an ideal calorimeter, with $m_{w}$ mass of water at $T_w$ temperature and $c_w$ specific heat, a substance with mass $m_x$ and temperature $T_x$, then, with $T_{eq}$ the equilibrium temperature
+\begin{equation}
+	c_x=\frac{m_wc_w\left( T_{w}-T_{eq} \right)}{m_x\left( T_{eq}-T_{x} \right)}
+\end{equation}
+For a calorimeter of mass $m_1$, with $m_2$ mass of water, then the equivalent mass is 
+\begin{equation}
+	m^\star=\frac{m_2\left( T_w-T_{eq} \right)}{\left( T_1-T_{eq} \right)}-m_1
+\end{equation}
+The equilibrium temperature is
+\begin{equation}
+	T_{eq}=\frac{\left( m_w+m^\star \right)c_wT_w+m_xc_xT_x}{m_xc_x+\left( m_w+m^\star \right)c_w}
+\end{equation}
+For solids:
+\begin{equation}
+	Q_s=mc_s\Delta T
+\end{equation}
+Where
+\begin{equation}
+	c_s=3R
+	\label{eq:dulong}
+\end{equation}
+Therefore
+\begin{equation}
+	\Delta S_s= mc_s\log\left( \frac{T_B}{T_A} \right)
+\end{equation}
+\subsection{Phase Changes}
+For phase changes, $\lambda$ latent heat, $m$ mass
+\begin{equation}
+	Q=m\lambda
+\end{equation}
+For pressure $p$
+\begin{equation}
+	p(T)=p_0e^{\frac{m\lambda}{R}\left( \frac{1}{T}-\frac{1}{T_0} \right)}
+\end{equation}
+\section{Transformations}
+Transformation $A\to B$:
+\begin{itemize}
+\item Isobaric: $p_A=p_B$\\
+\item Isochoric: $V_A=V_B$\\
+\item Isothermal: $T_A=T_B$\\
+\item Adiabatic: $p_AV_A^\gamma=p_BV_B^\gamma$, $T_AV_A^{\gamma-1}=T_BV_B^{\gamma-1}$\\
+\item Free expansion (irreversible): $T_A=T_B$, $Q_{AB}=0$
+\end{itemize}
+Differentials from the first law
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Transformation&$\delta Q$&$\delta W$&$\dd U$\\
+		\hline
+		Isobaric&$n c_p\dd T$&$nR\dd T$&$nc_v\dd T$\\
+		\hline
+		Isochoric&$nc_v\dd T$&$0$&$nc_v\dd T$\\
+		\hline
+		Isothermal&$\frac{nRT}{V}\dd V$&$\frac{nRT}{V}\dd V$&$0$\\
+		\hline
+		Adiabatic&$0$&$-nc_v\dd T$&$nc_v\dd T$\\
+		\hline
+		Polytropic&$n\left( \frac{R}{1-\alpha}+c_v \right)\dd T$&$\frac{nR}{1-\alpha}\dd T$&$nc_v\dd T$\\
+		\hline
+	\end{tabular}
+	\label{tab:difftra}
+\end{table}
+Entropy variations
+\begin{itemize}
+\item Isobaric: $\Delta S=nc_p\log\left( \frac{T_B}{T_A} \right)=nc_p\log\left( \frac{V_B}{V_A} \right)$\\
+\item Isochoric: $\Delta S=nc_v\log\left( \frac{T_B}{T_A} \right)=nc_v\log\left( \frac{p_B}{p_A} \right)$\\
+\item Isothermal: $\Delta S=nR\log\left( \frac{V_B}{V_A} \right)=-nR\log\left( \frac{p_B}{p_A} \right)$\\
+\item Adiabatic: $\Delta S=0$
+\item Free expansion (irr):\\ $\Delta S=nR\log\left( \frac{V_B}{V_A} \right)=-nR\log\left( \frac{p_B}{P_A} \right)$
+\end{itemize}
+\section{Thermodynamic Cycles}
+Cycle efficiencies, $Q_{abs}$ heat absorbed by the machine, $Q_{em}$ heat emitted by the machine
+\begin{itemize}
+\item $\eta$, efficiency: $\eta=\frac{\abs{W}}{\abs{Q_{abs}}}$
+\item $\mathrm{COP}_f$, coefficient of prestation (cooling):\\ $\mathrm{COP}_f=\frac{\abs{Q_{ass}}}{\abs{W}}$
+\item $\mathrm{COP}_p$, coefficient of prestation (heating):\\ $\mathrm{COP}_p=\mathrm{COP}_f+1=\frac{\abs{Q_{em}}}{\abs{W}}$
+\end{itemize}
+Table of cycles, $T_{min}/T_{max}$ low/high heat reservoir temperature, $r=\frac{V_{max}}{V_{min}}$ compression ratio, $r_p=\frac{p_{max}}{p_{min}}$
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Cycle&Transformations&$\eta$\\
+		\hline
+		Carnot&2 adiabats, 2 isotherms&$1-\frac{T_{min}}{T_{max}}$\\
+		\hline
+		Otto&2 adiabats, 2 isochores&$1-{r^{1-\gamma}}$\\
+		\hline
+		Diesel&2 adiabats, 1 isochor, 1 isotherm&\\
+		\hline
+		Brayton&2 adiabats, 2 isobars&$1-{r_p^{\frac{1-\gamma}{\gamma}}}$\\
+		\hline
+		Stirling&2 isotherms, 2 isochors&\\
+		\hline
+	\end{tabular}
+	\label{tab:cycles}
+\end{table}
+\section{Heat Transfer}
+\subsection{Conduction}
+$\kappa$ thermal conductivity, $S$ surface area, $t$ time
+\begin{equation}
+	\frac{Q}{St}=q=-\kappa\dv{T}{x}
+\end{equation}
+\subsection{Convection}
+$h=\kappa/x$
+\begin{equation}
+	\frac{Q}{St}=q=h\Delta T
+\end{equation}
+For multiple surfaces
+\begin{equation}
+	h=\frac{1}{\frac{1}{h_1}+\cdots+\frac{1}{h_n}}
+\end{equation}
+\subsection{Irradiation}
+Energy $E$, $\sigma$ Stefan Boltzmann constant, $\varepsilon$ emittivity
+\begin{equation}
+	\frac{1}{S}\dv{E}{t}=\sigma\varepsilon T^4
+\end{equation}
+\section{Kinetic Theory}
+Energy equipartition
+\begin{equation}
+	E= \frac{3}{2}Nk_BT
+\end{equation}
+Average velocities, $M$ molecular mass, $m$ particle mass, $S_p$ particle cross sectional surface
+\begin{itemize}
+\item $\expval{v}$, average velocity: $\expval{v}=\sqrt{\frac{8k_BT}{\pi m}}=\sqrt{\frac{8RT}{\pi M}}$\\
+\item $v_{qm}$, square root mean velocity: $v_{qm}=\sqrt{\frac{3k_BT}{m}}=\sqrt{\frac{3RT}{M}}$\\
+\item $v_{m}$, most probable velocity: $v_{m}=\sqrt{\frac{2k_BT}{m}}=\sqrt{\frac{2RT}{M}}$\\
+\item $v_{rel}$, relative velocity: $v_{rel}=\sqrt{\frac{16k_BT}{\pi m}}=\sqrt{\frac{16RT}{\pi M}}=\sqrt{2}\expval{v}$\\
+\item $Z$, number of collisions per second: $Z=\frac{N}{V}\expval{v}S_p$\\
+\item $\lambda$, mean free path: $\lambda=\frac{\expval{v}}{Z}$
+\end{itemize}
+\section{Fundamental Equations}
+\subsection{Van der Waals Equation of State}
+$a$ pressure correction parameter, $b$ volume correction parameter
+\begin{equation}
+	\left( p+a\frac{n^2}{V^2} \right)\left( V-nb \right)=nRT
+\end{equation}
+\subsection{Potentials}
+Gibbs energy $G$, enthalpy $H$, free energy $F$, internal energy $U$
+\begin{equation}
+	\dd G=\dd U+\dd\left( pV \right)-T\dd S=\dd H-T\dd S=\dd F+\dd\left( pV \right)
+\end{equation}
+\subsection{Maxwell Relations}
+\begin{equation}
+	\begin{aligned}
+		\left( \pdv{T}{V} \right)_S&= -\left( \pdv{p}{S} \right)_V\\
+		\left( \pdv{T}{p}\right)_S&= \left( \pdv{V}{S} \right)_p\\
+		\left( \pdv{p}{T} \right)_V&= \left( \pdv{S}{V} \right)_T\\
+		\left( \pdv{V}{T} \right)_p&= -\left( \pdv{S}{p} \right)_T
+	\end{aligned}
+\end{equation}
+\subsection{TdS Equations}
+First $T\dd S$
+\begin{equation}
+	T\dd S=nc_v\dd T+T\left( \pdv{p}{T} \right)_V\dd V
+\end{equation}
+Second $T\dd S$
+\begin{equation}
+	T\dd S= nc_p\dd T-T\left( \pdv{V}{T} \right)_p\dd p
+\end{equation}
+Third $T\dd S$
+\begin{equation}
+	T\dd S=nc_v\left( \pdv{T}{p} \right)_V\dd p+nc_p\left( \pdv{T}{V} \right)_p\dd V
+\end{equation}
+\subsection{Energy Equations}
+First energy equation
+\begin{equation}
+	\left( \pdv{U}{V} \right)_T=T\left( \pdv{p}{T} \right)_V-p
+\end{equation}
+Second energy equation
+\begin{equation}
+	\left( \pdv{U}{p} \right)_T=-T\left( \pdv{V}{T} \right)_p-p\left( \pdv{V}{p} \right)_T
+\end{equation}
+\subsection{Cp-Cv Equations}
+First $c_p-c_v$ equation
+\begin{equation}
+	c_p-c_v=-T\left( \pdv{V}{T} \right)^2_p\left( \pdv{p}{V} \right)_T
+\end{equation}
+Second $c_p-c_v$ equation
+\begin{equation}
+\frac{c_p}{c_v}=\gamma=\frac{\left( \pdv{p}{V} \right)_S}{\left(\pdv{p}{V}\right)_T}
+\end{equation}
+\end{document}
