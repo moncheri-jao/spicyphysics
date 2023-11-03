@@ -1,0 +1,1108 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\section{Basic Notions}
+\begin{dfn}[Compound]
+	A \emph{compound} is a chemical object (molecule, ion, etc\ldots) composed by different chemical elements. The composition of a compound is defined and constant, and its properties are defined by the chemical elements that it's made of and their bonds.\\
+	Compounds can be formed by both molecules and ions.
+\end{dfn}
+\begin{thm}[Dalton]
+	Given a chemical process between two compounds A and B, if we fix the amount of one of the two components and the final amount of the resultant compound, the amount of the other compound needed is always an integer multiple of the fixed amount of the other element.
+\end{thm}
+\begin{dfn}[Atomic Number and Mass Number]
+	The \emph{atomic number} $Z$ is defined as the amount of protons in an atom. If we have $N$ neutrons, the \emph{mass number} $A$ is defined as follows
+	\begin{equation}
+		A=Z+N
+		\label{eq:massnumber.chem}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Neutral Atom]
+	A \emph{neutral atom} is defined as an atom where the number of electrons is equal to the atomic number $Z$.
+\end{dfn}
+\begin{dfn}[Isotope]
+	Given an element with fixed $Z$, if we have more (or less) neutrons than protons, we call the element an \emph{isotope}. All isotopes have the same $Z$, but a different mass number $A$, also all isotopes have the same chemical properties of the ``father'' element.
+\end{dfn}
+\begin{dfn}[Dalton Mass]
+	We define an \emph{unit of atomic mass} (uma) or \emph{Dalton} as $1/12$ of the mass of Carbon-12
+	\begin{equation}
+		1\ \mathrm{uma}=\frac{1}{12}m\left( \mathrm{ {}^{12}C} \right)=1.66054\cdot10^{-27}\mathrm{kg}
+		\label{eq:dalton.chem}
+	\end{equation}
+	We can also define the relative mass of an element as
+	\begin{equation}
+		m_{rel}=\frac{m}{m_{uma}}
+		\label{eq:relmass.chem}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Relative Abundance, Atomic Mass]
+	We define the \emph{relative abundance} of an isotope as the fraction of atoms of a given isotope. From this we define the atomic mass as the weighted average of the isotope masses, with the abundances as weights 
+	\begin{equation}
+		M_A=\sum_{i=1}^N\frac{m_{\%}}{100}m_i
+		\label{eq:atomicmass.chem}
+	\end{equation}
+\end{dfn}
+Another quantity which is used mainly in chemistry is the molarity of a solution. Given a solution with volume $V$ and $n$ moles of solvent, we define the \emph{molar concentration} $M$ also known as \emph{molarity}
+\begin{equation}
+	M=\frac{n}{V}
+	\label{eq:molarity.chem}
+\end{equation}
+For an element $A$ it's commonly indicated with $[A]$.
+\section{Chemical Nomenclature}
+The huge number of possible compounds gives rise to the necessity of building a comfortable and useful way of naming compounds, which eases their distinction.\\
+The first step is recognizing that the names of the elements give the root of the compound name, like \textit{Hydrogen bromide} or \textit{Sodium bicarbonate}. After that, it's important to distinguish the \textit{class} and \textit{category} of the compound.\\
+The two main categories of compounds are
+\begin{enumerate}
+\item Binary compounds
+\item Ternary compounds
+\end{enumerate}
+Binary compounds include the following classes:
+\begin{itemize}
+\item Basic oxides, composed by a metal and oxygen
+\item Acid oxides, composed by a non metal and oxygen
+\item Hydrides, composed by hydrogen and a metal or a non metal (excluding sulfur and halogens)
+\item Hydroacids, composed by hydrogen with sulfur or a halogen
+\item Binary salts, composed by a metal and a non metal
+\end{itemize}
+Ternary compounds include the following classes:
+\begin{itemize}
+\item Hydroxides, composed by oxygen, a metal and hydrogen
+\item Oxyacids, composed by hydrogen, a non metal and oxygen
+\item Ternary salts, composed by hydrogen, a non metal and oxygen
+\end{itemize}
+Independently from the subdivisions we also have a set of prefixes in order to indicate the amount of atoms there will be in a given formula, in order, we have
+\begin{enumerate}
+\item \textit{Mono-}, usually omitted
+\item \textit{Di-} or \textit{Bi-}
+\item \textit{Tri-}
+\item \textit{Tetra-}
+\item \textit{Penta-}
+\item \textit{Hepta-}
+\item \textit{Hexa-}
+\item \textit{Hepta-}
+\end{enumerate}
+In chemistry, it's useful to define a new quantity, in order to better grasp how compounds are formed, and with how many atoms they are formed, this quantity is known as \emph{electronegativity}. 
+\begin{dfn}[Electronegativity]
+	Electronegativity quantifies the amount of electrons that an atom uses (in excess or in defect) with respect to the ground state configuration. It follows some basic rules:
+	\begin{itemize}
+	\item Hydrogen ($\mathrm{H}$) has always $E_n=1$, except when it's in a hydride, then $E_n=-1$
+	\item Oxygen ($\mathrm{O}$) has always $E_n=-2$, except in \textit{peroxides} where $E_n=-1$ and \textit{superoxides} where $E_n=-\frac{1}{2}$ and in the compound $\mathrm{OF_2}$ where $E_n=2$
+	\item For an unbound atom $E_n=0$
+	\item In metals $E_n>0$. Metals of the $i-$th group have $E_n=i$, $i=1,2,3$
+	\item In a molecule, $\sum_iE_{ni}=0$
+	\item Charged ions have $E_n=q$, where $q$ is their charge. If the ion is polyatomic this continues to hold
+	\item Halogens (group 7), always have $E_n=-1$, except when bound to $\mathrm{O}, \mathrm{F}$, where $E_n>0$
+	\end{itemize}
+\end{dfn}
+\subsection{Binary Compounds}
+\subsubsection{Basic Oxides}
+The nomenclature for oxides works as follows:
+\begin{itemize}
+\item It always keeps the word \textit{oxide}
+\item When elements can have more than one oxidation state $E_n$, a suffix \textit{-ic} for the max value and \textit{-ous} for the min value
+\end{itemize}
+Therefore, we can build immediately a simple example table using all the previous rules, also including the traditional nomenclature. 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		Compound&Traditional&IUPAC\\
+		\hline
+		$\mathrm{Na_2O}$&Sodium oxide&Sodium oxide\\\hline
+		$\mathrm{FeO}$&Ferrous oxide&Iron oxide\\\hline
+		$\mathrm{Fe_2O_3}$&Ferric oxide&Diiron trioxide\\\hline
+		$\mathrm{CuO}$&Cuprous oxide&Copper oxide\\\hline
+		$\mathrm{Cu_2O}$&Cupric oxide&Dicopper oxide\\\hline
+		$\mathrm{PbO}$&Plumbous oxide&Lead oxide\\\hline
+		$\mathrm{PbO_2}$&Plumbic oxide&Lead dioxide\\\hline
+	\end{tabular}
+	\caption{Basic oxide nomenclature}
+	\label{tab:oxides.chem}
+\end{table}
+\subsubsection{Acid Oxides/Anhydrides}
+For anhydrides the rules are basically the same, but when we have more than two possible oxidation states we add the ``ipo-/-ous'' prefix/suffix for the lowest possible oxidation number and ``per-/-ic'' prefix/suffix 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		Compound&Traditional&IUPAC\\\hline
+		$\mathrm{CO}$&Carbonious anhydride&Carbon oxide\\\hline
+		$\mathrm{CO_2}$&Carbonic anhydride&Carbon dioxide\\\hline
+		$\mathrm{N_2O_3}$&Nitrous anhydride&Dinitrogen trioxide\\\hline
+		$\mathrm{N_2O_5}$&Nitric anhydride&Dinitrogen pentoxide\\\hline
+		$\mathrm{P_2O_3}$&Phosphoric anhydride&Diphosphorus trioxide\\\hline
+		$\mathrm{P_2O_5}$&Phosphorous anhydride&Diphosphorous pentoxide\\\hline
+		$\mathrm{Cl_2O}$&Ipochlorous anhydride&Dichlorine oxide\\\hline
+		$\mathrm{Cl_2O_3}$&Chlorous anhydride&Dichlorine trioxide\\\hline
+		$\mathrm{Cl_2O_5}$&Chloric anhydride&Dichlorine pentoxide\\\hline
+		$\mathrm{Cl_2O_7}$&Perchloric anhydride&Dichlorine heptoxide\\\hline
+	\end{tabular}
+	\caption{Anhydride nomenclature}
+	\label{tab:anhydrides.chem}
+\end{table}
+\subsubsection{Hydracids}
+For hydracids the nomenclature slightly differs between IUPAC and traditional nomenclature, in the traditional nomenclature, the compounds get the adjective \textit{acid} and the prefix \textit{hydro-}, while in the IUPAC nomenclature they get the \textit{-ane} suffix. The traditional nomenclature is the most used with this class of compounds
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		Compound&Traditional&IUPAC\\\hline	
+		$\mathrm{HF}$&Hydrofluoric acid&Fluorane/Hydrogen fluoride\\\hline
+		$\mathrm{HCl}$&Hydrochloric acid&Chlorane/Hydrogen chloride\\\hline	
+		$\mathrm{HBr}$&Hydrogen bromide&Bromane/Hydrogen bromide\\\hline	
+		$\mathrm{HI}$&Hydrogen iodide&Iodane/Hydrogen iodide\\\hline
+		$\mathrm{H_2S}$&Hydrogen sulfide&Dihydrogen sulfide\\\hline	
+	\end{tabular}
+	\caption{Hydracid nomenclature}
+	\label{tab:hudracid.chem}
+\end{table}
+\subsubsection{Hydrides}
+For hydrides the traditional and IUPAC nomenclatures differ particularly, due to the existence of multiple compounds of common use, like ammonia, which has already its common name.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		Compound&Traditional&IUPAC\\\hline
+		$\mathrm{NaH}$&Sodium hydride&Sodium hydride\\\hline
+		$\mathrm{CaH_2}$&Calcium hydride&Calcium dihydride\\\hline
+		$\mathrm{AlH_3}$&Aluminum hydride&Aluminum trihydride\\\hline
+		$\mathrm{NH_3}$&Ammonia&Nitrogen trihydride\\\hline
+		$\mathrm{PH_3}$&Phosphine&Phosphor trihydride\\\hline
+		$\mathrm{AsH_3}$&Arsine&Arsenic trihydride\\\hline
+		$\mathrm{CH_4}$&Methane&Carbon tetrahydride\\\hline
+		$\mathrm{SiH_4}$&Silane&Silicium tetrahydride\\\hline
+		$\mathrm{B_2H_6}$&Diborane&Diboron hexahydride\\\hline
+	\end{tabular}
+	\caption{Hydrides nomenclature}
+	\label{tab:hydrides.chem}
+\end{table}
+\subsubsection{Peroxides}
+Peroxides follow the same rules of oxides, with an added \textit{per-} suffix, as with $\mathrm{H_2O_2}$, \textit{hydrogen peroxide}
+\subsubsection{Binary Salts}
+Same rules as for hydracids, without \textit{per} and \textit{ipo} prefixes. 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		Compound&Traditional&IUPAC\\\hline
+		$\mathrm{NaCl}$&Sodium chloride&Sodium chloride\\\hline
+		$\mathrm{Na_2S}$&Sodium sulfide&Disodium sulfide\\\hline
+		$\mathrm{CaI_2}$&Calcium iodide&Calcium diiodide\\\hline
+		$\mathrm{AlF_3}$&Aluminum fluoride&Aluminum trifluoride\\\hline
+		$\mathrm{FeCl_2}$&Ferrous chloride&Iron dichloride\\\hline
+		$\mathrm{FeCl_3}$&Ferric chloride&Iron trichloride\\\hline
+		$\mathrm{CsBr}$&Cesium bromide&Cesium bromide\\\hline
+	\end{tabular}
+	\caption{Binary salts}
+	\label{tab:binary.chem}
+\end{table}
+\subsubsection{Hydroxides}
+Same as oxides, but with \textit{hydroxide} instead of oxide. Note that hydroxide ions go in groups
+\subsubsection{Oxyacids}
+The rules for naming oxyacids are the same used for anhydrides, but with the term \textit{acid} substituting the term anhydride. In the IUPAC naming standard instead, the quantitative prefixes are followed by the infix \textit{-osso-} and the suffix \textit{-ic} and the oxidation number of the metal written between parentheses in roman numerals, as in the following table
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		Compound&Traditional&IUPAC\\\hline
+		$\mathrm{H_2CO_3}$&Carbonic acid&Trioxocarbonic acid(IV)\\\hline
+		$\mathrm{HNO_2}$&Nitrous acid&Dioxonitric acid(III)\\\hline
+		$\mathrm{HNO_3}$&Nitric acid&Trioxonitric acid(IV)\\\hline
+		$\mathrm{H_2SO_3}$&Sulfurous acid&Trioxosulfuric acid(IV)\\\hline
+		$\mathrm{H_2SO_4}$&Sulfuric acid&Tetraoxosulfuric acid(IV)\\\hline
+		$\mathrm{HClO}$&Ipoclorous acid&Ossocloric acid(I)\\\hline
+		$\mathrm{HClO_2}$&Chlorous acid&Dioxocloric acid(III)\\\hline
+		$\mathrm{HClO_3}$&Chloric acid&Trioxochloric acid(V)\\\hline
+		$\mathrm{HClO_4}$&Perchloric acid&Tetraoxochloric acid(VII)\\\hline
+		$\mathrm{HBrO_3}$&Bromic acid&Trioxobromic acid(V)\\\hline
+		$\mathrm{HIO}$&Ipoiodous acid&Ossoiodic acid(I)\\\hline
+	\end{tabular}
+	\caption{Oxyacids}
+	\label{tab:oxyacids.chem}
+\end{table}
+\subsubsection{Ions - Acid Radicals}
+Acid radicals are what remains of an oxyacid after a partial or total loss of the hydrogens composing the acid molecule. For obvious reasons, the total negative charge of this ion will be equal to the amount of lost hydrogens.\\
+In traditional nomenclature we have
+\begin{itemize}
+\item \textit{acid} becomes \textit{ion}
+\item For monoatomic ions: there is only one suffix, \textit{-ide}
+\item For polyatomic ions:
+	\begin{itemize}
+	\item \textit{-ous} becomes \textit{-ite}
+	\item \textit{-ic} becomes \textit{-ate}
+	\end{itemize}
+\end{itemize}
+As in the following table
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		Acid&Radical&Traditional name\\\hline
+		$\mathrm{HCl}$&$\mathrm{Cl^-}$&Chloride ion\\\hline
+		$\mathrm{H_2S}$&$\mathrm{S^{2-}}$&Sulfide ion\\\hline
+		$\mathrm{H_2SO_4}$&$\mathrm{SO_4^{2-}}$&Sulphate ion\\\hline
+		$\mathrm{H_2SO_4}$&$\mathrm{HSO_4^-}$&Hydrogensulfate ion\\\hline
+		$\mathrm{H_2CO_3}$&$\mathrm{CO_3^{2-}}$&Carbonate ion\\\hline
+		$\mathrm{H_{2}CO_3}$&$\mathrm{HCO_3}$&Hydrogencarbonate ion\\\hline
+		$\mathrm{HClO}$&$\mathrm{ClO^-}$&Ipochlorite ion\\\hline
+		$\mathrm{HClO_2}$&$\mathrm{ClO_2^-}$&Chlorite ion\\\hline
+		$\mathrm{HClO_3}$&$\mathrm{ClO_3^{-}}$&Chlorate ion\\\hline
+		$\mathrm{HClO_4}$&$\mathrm{ClO_4^-}$&Perchlorate ion\\\hline
+		$\mathrm{H_3PO_4}$&$\mathrm{PO_4^{3-}}$&Phosphate ion\\\hline
+		$\mathrm{H_3PO_4}$&$\mathrm{HPO_4^{2-}}$&Hydrogenphosphate ion\\\hline
+		$\mathrm{H_3PO_4}$&$\mathrm{H_2PO_{4}^-}$&Dihydrogenphosphate ion\\\hline
+		$\mathrm{HNO_3}$&$\mathrm{NO_2^-}$&Nitrite ion\\\hline
+		$\mathrm{HNO_4}$&$\mathrm{NO_3^-}$&Nitrate ion\\\hline
+	\end{tabular}
+	\caption{Ions}
+	\label{tab:ions.chem}
+\end{table}
+For positive ions (cations), the nomenclature follows closely the rules for oxides and hydroxides by substituting the term oxide or hydroxide with the term ion. Another nomenclature is the \textit{stock} nomenclature for cations, which indicates in roman numerals the amount of positive charges.\\
+Some ions are special in this regard, and these are some special ions of hydrogen:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c}
+		Ion&Traditional\\\hline
+		$\mathrm{H^+}$&Hydrogenium ion\\\hline
+		$\mathrm{H_3O^+}$&Oxonium ion\\\hline
+		$\mathrm{NH_4^+}$&Ammonium ion\\\hline
+	\end{tabular}
+	\caption{Special cations}
+	\label{tab:cationsh.chem}
+\end{table}
+\subsection{Ternary Salts}
+Ternary salts are the most complex compounds we're gonna treat, and are composed by a metallic cation and a polyatomic anion (acid radical).\\
+In traditional nomenclature the salt name is given by the attributes of the acid radical with suffixes and prefixes, followed by the name of the cation with the -ic/-ous suffixes, depending on the oxidation numbers
+\section{Chemical Reactions}
+Every chemical species is unequivocally represented by a unique formula. There are three possible formulas for a compound:
+\begin{dfn}[Minimal/Empirical Formula]
+	The minimal, or empirical formula is a kind of chemical notation which represents a compound with the atomic symbols of the elements composing the aggregate, indicating the number of atoms present in the molecular composition with a number below.\\
+	An example of this is the commonly known formula for water $\mathrm{H_2O}$
+\end{dfn}
+\begin{dfn}[Structure Formula]
+	The structure formula is another unique way of describing a chemical species. The structure formula arranges the atoms in space and shows the molecular structure of the molecule studied
+\end{dfn}
+Note that in ionic compounds the cation \textit{always comes before the anion}.
+\subsection{Acids and Bases}
+\begin{dfn}[Arrhenius Acids]
+	An arrhenius acid is a substance which cedes hydrogenium cations, while bases are substances which cede hydroxide $\mathrm{OH^-}$ ions. We can then define 
+	\begin{itemize}
+	\item Binary acids
+		\begin{equation*}
+			\mathrm{HCl}_{(aq)}\to\mathrm{H^+}_{(aq)}+Cl^-_{(aq)}
+		\end{equation*}
+	\item Ternary acids
+		\begin{equation*}
+			\mathrm{HNO_3}_{(aq)}\to\mathrm{H^+}_{(aq)}+\mathrm{NO_3^-}_{(aq)}
+		\end{equation*}
+	\end{itemize}
+\end{dfn}
+\begin{dfn}[Brønsted-Lowry Acids]
+	Acids, as defined by Brønsted and Lowry get two additional categories, as \textit{weak acids} and \textit{strong acids}. The difference between the two is given again by how they \textit{dissociate} in water, but more specifically, we have
+	\begin{itemize}
+	\item Strong monoprotic acids
+		\begin{equation*}
+			\mathrm{HCl}_{(aq)}+\mathrm{H_2O}_{(l)}\to\mathrm{H_3O^+}_{(aq)}+\mathrm{Cl^-}_{(aq)}
+		\end{equation*}
+	\item Strong polyprotic acids
+		\begin{equation*}
+			\mathrm{H_2SO_4}_{(aq)}\to2\mathrm{H^+}+\mathrm{SO_4^-}_{(aq)}
+		\end{equation*}
+	\item Weak monoprotic acids
+		\begin{equation*}
+			\mathrm{HF}\longleftrightarrow\mathrm{H^+}+\mathrm{F^-}
+		\end{equation*}
+		Or also
+		\begin{equation*}
+			\mathrm{HNO_2}\longleftrightarrow\mathrm{H^+}+\mathrm{NO_2^-}
+		\end{equation*}
+	\end{itemize}
+	From this definition of acid, we have also the appearance of the \textit{conjugated bases}. For any given acid there will be defined a basic compound which differs only by one hydrogenium ion.\\
+	As an example, we have that 
+	\begin{itemize}
+	\item Hydrochloric acid is the conjugated acid of the chloride ion
+	\item Water is the conjugated basis of the oxonium ion
+	\end{itemize}
+	An easier way of understanding this definition is that strong acids are completely soluble in aqueous solutions. Those which do not completely dissolve are then weak acids and weak bases
+\end{dfn}
+\subsection{Chemical Formulas}
+\begin{mtd}[Determination of the Chemical Formula]
+	Given the percent abundance of the elements creating compound (obtained empirically), it's possible to find the molecular formula of the compound via the following method:\\
+	Suppose that we have a recombination reaction where two elements $\mathrm{A}$ and $\mathrm{B}$ combine into the composite $\mathrm{AB}$. If we have $\%_A$ and $\%_B$ abundances, after converting them into moles we have
+	\begin{equation*}
+		n_B\ (\mathrm{mol})=\frac{\%_A\ (g)}{M_A\ (g/mol)}\qquad n_B\ (\mathrm{mol})=\frac{\%_B\ (g)}{M_B\ (g/mol)}
+	\end{equation*}
+	Then, if the compound is $\mathrm{A_xB_y}$ we have
+	\begin{equation*}
+		\alpha=\left\lfloor\frac{\max\left( n_A, n_B \right)}{\min\left( n_A, n_B \right)}\right\rceil
+	\end{equation*}
+	The minimal formula will then be 
+	\begin{equation*}
+		\mathrm{A_\alpha B}, \qquad\text{or}\qquad\mathrm{AB_\alpha}
+	\end{equation*}
+	Depending whether $n_A\ge n_B$ or vice versa.\\
+	Supposing that $n_A>n_B$, the complete formula will then be obtained noting that
+	\begin{equation*}
+		M_{A_\alpha B}=\alpha M_A+M_B
+	\end{equation*}
+	If the molar mass of the experimental compound is known, being $\tilde{M}$, we can find a multiplier $\mu$ as
+	\begin{equation*}
+		\mu=\left\lfloor\frac{\tilde{M}}{M_{A_\alpha B}}\right\rceil
+	\end{equation*}
+	The full chemical formula will be then
+	\begin{equation*}
+		\mathrm{A_{\mu\alpha}B_{\mu}}
+	\end{equation*}
+\end{mtd}
+\subsection{Redox Reactions}
+All chemical reactions can be reduced into 6 categories, depending on the reaction type
+\begin{itemize}
+\item Synthesis reactions, aka recombination reactions
+	\begin{equation*}
+		\mathrm{A}+\mathrm{B}\to\mathrm{AB}
+	\end{equation*}
+\item Decomposition reactions
+	\begin{equation*}
+		\mathrm{AB}\to\mathrm{A}+\mathrm{B}
+	\end{equation*}
+\item Dissociation reactions
+	\begin{equation*}
+		\mathrm{AB}\to\mathrm{A^+}+\mathrm{B^+}
+	\end{equation*}
+\item Exchange reactions
+	\begin{equation*}
+		\mathrm{AB}+\mathrm{CD}\to\mathrm{AD}+\mathrm{CB}
+	\end{equation*}
+\item Redox reactions, where a substance in the reagents accepts electrons and one loses them
+\item Combustion reactions
+	\begin{equation*}
+		\mathrm{CH_4}+\mathrm{O_2}\to\mathrm{CO_2}+2\mathrm{H_2O}
+	\end{equation*}
+\end{itemize}
+The kind of reactions which we're gonna treat with more care are redox reactions, where electrons gets exchanged between the reactants.\\
+The electron transfer happens from a compound that cedes electrons (\textit{reducing agent}) and one that accepts these electrons  (\textit{oxidizing agent}). Essentially, the reaction can be divided in two, an oxidation and a reduction, although physically they are simultaneous.\\
+Remembering that mass is conserved, all chemical equations have to be balanced, indicating the numbers of moles needed of the reagents and the number of moles obtained in the resultants. This is known as \textit{stoichiometric balancing}. For redox reactions, if they don't happen in an aqueous solution, this balancing can be obtained by simply balancing the masses.
+\begin{exe}
+	Given the following redox reaction of propane, find the correct equation via stoichiometric balancing
+	\begin{equation}
+		\mathrm{C_3H_8}_{(g)}+\mathrm{O_2}_{(g)}\to\mathrm{CO_2}_{(g)}+\mathrm{H_2O}_{(g)}
+	\end{equation}
+\end{exe}
+\begin{sol}
+	We have two ways to solve the problem: using a system of equations, or slowly balancing the masses, since the redox is not in an aqueous solution.\\
+	We choose the second path, and we immediately see that we have one compound containing carbon on both sides, thus, we have
+	\begin{equation*}
+		\mathrm{C_3H_8}_{(g)}+\mathrm{O_2}_{(g)}\to3\mathrm{CO_2}_{(g)}+\mathrm{H_2O}_{(g)}
+	\end{equation*}
+	We then proceed by balancing the hydrogen atoms
+	\begin{equation*}
+		\mathrm{C_3H_8}_{(g)}+\mathrm{O_2}_{(g)}\to3\mathrm{CO_2}_{(g)}+4\mathrm{H_2O}_{(g)}
+	\end{equation*}
+	And lastly the oxygen atoms
+	\begin{equation}
+		\mathrm{C_3H_8}_{(g)}+5\mathrm{O_2}_{(g)}\to3\mathrm{CO_2}_{(g)}+4\mathrm{H_2O}_{(g)}
+	\end{equation}
+\end{sol}
+This is valid only in case the reaction doesn't happen in an aqueous solution. Let's consider an example of reaction in an aqueous solution and develop a new method for balancing the equation.
+\begin{mtd}[Semireaction Method]
+	Consider the following redox in an aqueous solution
+	\begin{equation}
+		\mathrm{SnCl_2}_{(aq)}+\mathrm{HNO_3}_{(aq)}+\mathrm{HCl}_{(aq)}\to\mathrm{SnCl_4}_{(aq)}+\mathrm{N_2O}_{(g)}+\mathrm{H_2O}_{(l)}
+		\label{eq:semiexp.chem}
+	\end{equation}
+	We begin by dissociating every compound in the composing ions and find which of those gets oxidized and which gets reduced.\\
+	We see immediately that in order for the reaction to work we must have that 
+	\begin{itemize}
+	\item Strontium oxidized
+	\item The nitrate ion gets reduced
+	\end{itemize}
+	We can then write two semireactions for the two ions
+	\begin{equation*}
+		\begin{aligned}
+			\mathrm{Sn^{2+}}&\to\mathrm{Sn^{4+}}\\
+			\mathrm{NO_3^-}&\to\mathrm{N_2O}
+		\end{aligned}
+	\end{equation*}
+	Before balancing the masses we have to check whether the reaction is happening in acid or basic environment.\\
+	Using Arrhenius' definition of acid we immediately see that the reaction is acid, thus we balance the two ionic equations by adding $\mathrm{H^+}$ to the reactants and $\mathrm{H_2O}$ to the products, while also balancing charges at the same time, by adding electrons
+	\begin{equation*}
+		\begin{aligned}
+			\mathrm{Sn^{2+}}&\to\mathrm{Sn^{4+}}+2e^-\\
+			10\mathrm{H^{+}}+8e^-\mathrm{2NO_3^-}&\to\mathrm{N_2O}+5\mathrm{H_2O}
+		\end{aligned}
+	\end{equation*}
+	We now proceed to multiply by a coefficient which lets us sum the two semireactions and cross out all the added electrons. We immediately note that multiplying the first row by 4 is enough to accomplish this task, thus
+	\begin{equation*}
+		\begin{aligned}
+			4\mathrm{Sn^{2+}}&\to4\mathrm{Sn^{4+}}+8e^-\\
+			8e^-+10\mathrm{H^+}+2\mathrm{NO_3^-}&\to\mathrm{N_2O}+5\mathrm{H_2O}
+		\end{aligned}
+	\end{equation*}
+	Adding them up and rebalancing if needed, we get the \textit{ionic form} of reaction \label{eq:semiexp.chem}
+	\begin{equation*}
+		4\mathrm{Sn^{4+}}+10\mathrm{H^{+}}+2\mathrm{NO_3^-}\to4\mathrm{Sn^{4+}}+\mathrm{N_2O}+5\mathrm{H_2O}
+	\end{equation*}
+	Recombining the compounds and checking the stoichiometric coefficients of the compounds we have the fully balanced equation
+	\begin{equation}
+		4\mathrm{SnCl_2}+2\mathrm{HNO_3}+8\mathrm{HCl}\to4\mathrm{SnCl_4}+\mathrm{N_2O}+5\mathrm{H_2O}
+	\end{equation}
+\end{mtd}
+\subsection{Stoichiometry}
+The importance of balancing the stoichiometric coefficient lays directly on the fact that they indicate the molar proportions of the compounds acting in the reaction. As an example consider the reaction between phosphorus and chlorine, generating phosphorus trichloride in the following way
+\begin{equation}
+	\mathrm{P_4}_{(s)}+6\mathrm{Cl_2}_{(g)}\to4\mathrm{PCl_3}_{(l)}
+	\label{eq:pcl3.chem}
+\end{equation}
+This equation means that for consuming all the phosphorus in the reaction we need 6 times as much moles of chlorine
+\begin{eg}[Phosphorus Trichloride]
+	Suppose that we have $m_P=1.45$ g and we want to know how much phosphorus trichloride is produced if we consume all the phosphorus.\\
+	Noting that $M_P=30.794$ g/mol, we have
+	\begin{equation*}
+		n_P=\frac{1.45}{4*30.794}\text{ mol}=0.01170\ \mathrm{mol}
+	\end{equation*}
+	This means that we will need $n_{Cl}=0.07022$ mol, which corresponds to $4.98$ g.\\
+	Since all the phosphorus gets consumed, we have that the limiting reactant in this situation is phosphorus itself. We have that for a mole of phosphorus consumed, 4 of phosphorus trichloride are produced, which in this case is
+	\begin{equation*}
+		n_{PCl_4}=4n_{P}=0.04680\ \mathrm{mol}
+	\end{equation*}
+	The molar mass of the product is
+	\begin{equation*}
+		M_{PCl_3}=M_{P}+3M_{Cl}=137.3\ \mathrm{g/mol}
+	\end{equation*}
+	Thus we get $6.43$ g of product
+\end{eg}
+The calculation is better made by creating a table with the initial and final amounts of all products indicated in moles, simply because the reagents won't be used wholly in every reaction.
+\begin{eg}[Limiting Reagent]
+	Consider again the previous reaction, but this time we have 1.45 g of phosphorus reacting with 3.50 g of chlorine. The amount of moles of chlorine is 0.04937 mol, which is less than what we need to burn through all the phosphorus, making chlorine the limiting reagent of the reaction.\\
+	We want now to calculate the amount of phosphorus that will remaein unused in the reaction. We begin by building the table that we described before
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c|c|c|c|c}
+			&$\mathrm{P_4}$&$\mathrm{Cl_2}$&$\mathrm{PCl_4}$\\\hline
+			IS&0.01170&0.04937&0\\\hline
+			FS&$x$&0&$y$\\\hline
+		\end{tabular}
+		\caption{Stoichometric table}
+		\label{tab:pcl4tab.chem}
+	\end{table}
+	As before, for 1 mol of phosphorus we need 6 mol of chlorine, which means that the amount of phosphorus that will react is 1/6 the amount we have, precisely 0.008228 mol. By simple subtraction we can find the amount of phosphorus that remains after the reaction, i.e. 0.003472 mol.\\
+	With the same logic we have that the amount of phospohorus trichloride produced is 6/4 the amount of chlorine that we have, thus we produce 0.03291 mol, or 4.52 g.\\
+	The updated and completed stoichometric table is
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c|c|c|c|c}
+			&$\mathrm{P_4}$&$\mathrm{Cl_2}$&$\mathrm{PCl_4}$\\\hline
+			IS&0.01170&0.04937&0\\\hline
+			FS&0.003472&0&0.03291\\\hline
+		\end{tabular}
+		\caption{Completed stoichiometric table}
+		\label{tab:pcl4comp.chem}
+	\end{table}
+\end{eg}
+\begin{exe}[Combustion of Glucose]
+	Consider the combustion of glucose
+	\begin{equation}
+		\mathrm{C_6H_{12}O_6}_{(s)}+\mathrm{O_2}_{(g)}\to\mathrm{CO_2}_{(g)}+\mathrm{H_2O}_{(l)}
+		\label{eq:glucosecomb.chexe}
+	\end{equation}
+	Balance the equation and calculate how many grams of oxigen are needed for burning completely 25.0 g of glucose
+\end{exe}
+\begin{sol}
+	We begin by balancing the equation. We see immediately that we have 8 oxigen atoms on the left and 3 on the right, while we have 12 hydrogen atoms on one side and two on the other side. Balancing hydrogen and carbon simultaneously we get 18 oxygens, and thus the balanced equation is
+	\begin{equation*}
+		\mathrm{C_6H_{12}O_6}_{(s)}+6\mathrm{O_2}_{(g)}\to6\mathrm{CO_2}_{(g)}+6\mathrm{H_2O}_{(l)}
+	\end{equation*}
+	Since
+	\begin{equation*}
+		M_{gl}=6M_C+12M_H+6M_O=180.156\ \mathrm{g/mol}
+	\end{equation*}
+	We have, initially
+	\begin{equation*}
+		n_{gl}=\frac{m_{gl}}{M_{gl}}=0.1388\ \mathrm{mol}
+	\end{equation*}
+	Using the previous formula we have that for burning a mole of glucose we need 6 moles of oxygen, thus
+	\begin{equation*}
+		n_{O_2}=6n_{gl}=0.8328\ \mathrm{mol}
+	\end{equation*}
+	Which corresponds to 
+	\begin{equation}[H]
+		m_{O_2}=2M_{O}n_{O_2}=12M_{O}n_{gl}=26.65\ \mathrm{g}
+		\label{eq:glucoseexsol.chexe}
+	\end{equation}
+	We have now found the first data needed to compile our table
+	\begin{table}
+		\centering
+		\begin{tabular}{c|c|c|c|c|}
+			&$\mathrm{C_6H_{12}O_6}$&$\mathrm{O_2}$&$\mathrm{CO_2}$&$\mathrm{H_2O}$\\\hline
+			IS&0.1388&0.8328&0&0\\\hline
+			FS&0&0&?&?\\\hline
+		\end{tabular}
+		\caption{Glucose combustion stoichiometric table}
+		\label{tab:gburn.chexe}
+	\end{table}
+	The glucose - carbon dioxide rate is exactly the same as the one between glucose and oxygen, thus the amount of carbon dioxide produced is known. We can do the same for water, but we can also use mass conservation in order to find the amount of water produced.\\
+	The completed table will then be
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c|c|c|c|c|}
+			&$\mathrm{C_6H_{12}O_6}$&$\mathrm{O_2}$&$\mathrm{CO_2}$&$\mathrm{H_2O}$\\\hline
+			IS&0.1388&0.8328&0&0\\\hline
+			FS&0&0&0.8328&0.8328\\\hline
+		\end{tabular}
+		\caption{Completed table for the combustion of glucose}
+		\label{tab:gburncomp.chexe}
+	\end{table}
+	The moles can be easily converted into grams then.
+\end{sol}
+\begin{mtd}[Stoichiometric Table]
+	The previous method can be easily generalized. Consider a (balanced) chemical reaction as the following, where without loss of generality we will have only two reagents and two products:
+	\begin{equation*}
+		a\mathrm{A}+b\mathrm{B}\to c\mathrm{C}+d\mathrm{D}
+	\end{equation*}
+	Supposing that we want to consume all the composite $\mathrm{A}$ we will need then
+	\begin{equation*}
+		n_{B}=\frac{b}{a}n_{A}
+	\end{equation*}
+	And the amounts of products generated in the reaction are
+	\begin{equation*}
+		\begin{aligned}
+			n_{C}&= \frac{c}{a}n_A\\
+			n_{D}&= \frac{d}{a}n_A
+		\end{aligned}
+	\end{equation*}
+	And the table will simply be
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c|c|c|c|c|}
+			&$\mathrm{A}$&$\mathrm{B}$&$\mathrm{C}$&$\mathrm{D}$\\\hline
+			IS&$n_A$&$\frac{b}{a}n_A$&0&0\\\hline
+			FS&0&0&$\frac{c}{a}n_A$&$\frac{d}{a}n_A$\\\hline
+		\end{tabular}
+		\caption{Table for the stoichiometric analysis of a reaction where there's no limiting reagent}
+		\label{tab:nolim.chem}
+	\end{table}
+	In case that we have an excess of composite $\mathrm{A}$, or a deficit of the composite $\mathrm{B}$, i.e when
+	\begin{equation*}
+		n_B<\frac{b}{a}n_A=n_{lim}
+	\end{equation*}
+	For mass conservation then we must have that the amount that rea
+	\begin{equation*}
+		n_A^{f}=n_A-\frac{a}{b}n_B=n_A-n_A^r
+	\end{equation*}
+	Which modifies the table into the following one
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c|c|c|c|c|}
+			&$\mathrm{A}$&$\mathrm{B}$&$\mathrm{C}$&$\mathrm{D}$\\\hline
+			IS&$n_A$&$n_B$&0&0\\\hline
+			FS&$n_A-\frac{a}{b}n_B$&0&$\frac{c}{a}n_A^r$&$\frac{d}{a}n_A^r$\\\hline
+		\end{tabular}
+		\caption{Table for the stoichiometric analysis of a reaction with a limiting agent}
+		\label{tab:nolim.chem}
+	\end{table}
+\end{mtd}
+\section{Molecular Bonding and Structure}
+\subsection{The Periodic Table}
+The periodic table is the pinnacle of modern chemistry. The table lists all known elements in a way such that the periodic properties of the elements can be quickly seen and understood, and compacted in an ordered table of \emph{groups} (columns) and \emph{periods} (rows). The physical details of these properties will be treated later in depth in the atomic physics part, but it's clear by simply considering purely classical electromagnetism, that there must be a total charge $Z$ of an atom, but also an effective charge $Z^\star$ due to screening processes between electrons.\\
+Other periodic properties which are well ordered in the periodic table are the ionization energy of atoms and \textit{electronic affinity}, a purely chemical idea which gives a quantification to the capacity of an atom to accept electrons. In the same way we can define the \textit{electronegativity} $\chi$ of an atom as the capacity of forming bonds with other elements. All these properties have their own preferred direction of growth in the table, specifically
+\begin{itemize}
+\item Atomic radius grows going down along a column (group) and decreases going left along a row (period)
+\item Electron affinity grows along periods going right and decreases going down along a group
+\item Ionization energy grows and decreases exactly in the same way as electron affinity
+\item the metallic characteristics of elements grow going left along a period and down along a group, i.e. moving diagonally from left to right
+\end{itemize}
+Each group of the periodic table can be seen to have similar properties of the elements in it, letting us define special categories for the elements sharing the same group.\\
+In the modern periodic table, we have 18 groups:
+\begin{itemize}
+\item 8 ``A'' main groups
+\item 10 ``B'' transitional groups
+\end{itemize}
+The groups are indicated with roman numerals, going from I to VIII. We are interested mainly in the A category of groups. Specifically, the elements of these groups will get a special name.
+\begin{itemize}
+\item Group IA: Hydrogen and Alkali metals. Also known in physics as ``hydrogenoid'' atoms.
+\item Group IIA: Alkaline Earths
+\item Group IIIA: Triels
+\item Group IVA: Tetrels
+\item Group VA: Pnictogens or Pentels
+\item Group VIA: Chalcogens
+\item Group VIIA: Halogens
+\item Group VIIIA: Noble gases
+\end{itemize}
+\subsection{Molecular Bonding}
+In order to have chemistry in itself, we must have molecules, and the only way to get them is via \textit{molecular bonds}. There are three types of bonding in general:
+\begin{enumerate}
+\item Metallic bonds
+\item Covalent bonds
+\item Ionic bonds
+\end{enumerate}
+\begin{dfn}[Lewis Structures]
+	If we consider firstly covalent bonding, one of the best ways to grasp graphically and conceptually how electrons get shared between atoms in the molecule is using \emph{Lewis structures}. These structures are formed by drawing as many dots as the \textit{valence electrons} (outer shell electrons which participate in the bond), drawn sequentially going around each side of the symbol, and indicating the bonds as solid lines connecting the electrons of the bonding atoms.\\
+	A rule of thumb for understanding how many lines we can make is the \emph{octet rule}, which states that every element bonds in order to reach the same amount of chemical reactivity of the noble gases of the VIIIA group. As an example, for completing the octet rule, fluorine $\mathrm{F}$ only needs \textit{one} electron from another substance, as in HF.\\
+	More generally, in order to properly draw a Lewis diagram we need to take into account 5 simple rules
+	\begin{enumerate}
+	\item Determine the central atom, generally the one with the smallest electron affinity
+	\item Determine the total amount of valence electrons
+	\item Dispose the remaining atoms around the central element and create bonds by putting electronic couples between each bonding atom and the central one
+	\item Dispose the electrons in a way that the peripheral atoms satisfy the octet rule
+	\item If the central atom didn't satisfy the octet rule, create multiple bonds between it and the peripherals atoms
+	\end{enumerate}
+\end{dfn}
+Molecules with the same amount of external electrons have the same Lewis structure and are said to be \emph{isoelectronic}.\\
+From Lewis structures we can define the \emph{formal charge} of a molecule, i.e. the electrostatic charge that an atom would have in a molecule if the electrons are uniformly distributed between atoms.\\
+Said $N_{ve^-}$ the number of valence electrons and $N_{be^-}$ the number of bonding electrons and with $N_{lp}$ the amount of \emph{lone pairs} (unbounded couples of electrons), we have 
+\begin{equation}
+	Q_F=N_{ve^-}-N_{lp}-\frac{1}{2}N_{be^-}
+	\label{eq:formalcharge.chem}
+\end{equation}
+For having a well defined molecule with charge $Q$, each atom must have $Q_{F, i}$ such that
+\begin{equation}
+	Q=\sum_iQ_{F, i}
+	\label{eq:charfprop.chem}
+\end{equation}
+Examples of Lewis structures are the following
+\begin{figure}[H]
+	\centering
+	\chemfig{C(-H)(-[::90]H)(-[:270]H)(-[:180]H)}\qquad\chemfig{\charge{90=\:}{N}(-[:180]H)(-[:270]H)-\charge{90=\:}{N}(-H)(-[:270]H)}\qquad\chemfig{\charge{90=\:}{O}(-[:180]H)(-[:270]H)(-H)}
+	\caption{Lewis structure for methane $\mathrm{CH_4}$, hydrazine $\mathrm{N_2H_4}$ and oxonium $\mathrm{H_3O^+}$}
+	\label{fig:lewis.chem}
+\end{figure}
+\subsubsection{Resonance and Exceptions to the Octet Rule}
+It's possible to find molecules for which there are two valid Lewis structures. This was explained by Pauli as \textit{resonance}, i.e. we have a superposition between two possible structures, creating a \emph{resonance hybrid} structure.\\
+An example of resonant structure is ozone $\mathrm{O_3}$, in which there are two possible position of a double bond between the central oxygen and one of the two external oxygen atoms, the two possible diagrams are
+\begin{figure}[H]
+	\centering
+	\chemfig{\charge{90=\:, 270=\:}{O}=\charge{90=\:}{O}-\charge{90=\:, 270=\:, 0=\:}{O}}\qquad\chemfig{\charge{90=\:, 270=\:, 180=\:}{O}-\charge{90=\:}{O}=\charge{90=\:, 270=\:}{O}}
+	\caption{Ozone resonant hybrid Lewis formula}
+	\label{fig:ozone.chem}
+\end{figure}
+Other particularities are the exceptions to the octet rule, found in elements from the third period and onward, where the central atoms form composite with more than eight electrons. These elements are called \emph{hypervalent composites}.\\
+Another case of violation of the octet rule is found in a small class of compounds which have an uneven number of electron in the valence shell. In these cases, on the central atom remains a single unpaired electron.\\
+These compounds are highly reactive and get the name of \emph{free radicals}. An example of one of these compounds is nitrogen dioxide $\mathrm{NO_2}$
+\begin{figure}[H]
+	\centering
+	\chemfig{\charge{90=\.}{N}(=[:210]\charge{120=\:, 300=\:}{O})(-[:330]\charge{45=\:, 225=\:, 315=\:}{O})}\qquad\chemfig{\charge{90=\.}{N}(-[:210]\charge{120=\:, 210=\:, 300=\:}{O})(=[:330]\charge{45=\:, 225=\:}{O})}
+	\caption{Resonant hybrid structure of nitrogen dioxide}
+	\label{fig:no2.chem}
+\end{figure}
+\subsubsection{VSEPR Model}
+Lewis structures are fundamental in the description of molecular structure using the \emph{Valence Shell Electron Pair Repulsion}, which states that the best spatial disposition of the atoms in the molecule is the one that minimizes the electrostatic repulsion between the electron pairs. With a single table we can indicate all these rules easily, when we indicate with $X_n$ the numbers of bound atoms and with $E_n$ the number of lone pairs on the central atom.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Composition&Structure&Planar Angles&Vertical Angles&Example Compound\\\hline
+		$\mathrm{AX_2}$&Linear&$180^\circ$&//&$\mathrm{BeCl_2}, \mathrm{CO_2}$\\\hline
+		$\mathrm{AX_2E}$&Bent&$120^\circ\ (119^\circ)$&//&$\mathrm{NO_2^-}, \mathrm{SO_2}$\\\hline
+		$\mathrm{AX_2E_2}$&Bent&$109.5^\circ\ (104.48^\circ)$&//&$\mathrm{H_2O}, \mathrm{OF_2}$\\\hline
+		$\mathrm{AX_2E_3}$&Linear&$180^\circ$&//&$\mathrm{XeF_2}, \mathrm{I_3^-}$\\\hline
+		$\mathrm{AX_3}$&Trigonal Planar&$120^\circ$&//&$\mathrm{BF_3}, \mathrm{SO_3}$\\\hline
+		$\mathrm{AX_3E}$&Trigonal Pyramidal&$109.5^\circ\ (106.8^\circ)$&//&$\mathrm{NH_3}, \mathrm{PCl_3}$\\\hline
+		$\mathrm{AX_3E_2}$&T-Shaped&$180^\circ\ (175^\circ)$&$90^\circ\ (87.5^\circ)$&$\mathrm{ClF_3}, \mathrm{BrF_3}$\\\hline
+		$\mathrm{AX_4}$&Tetrahedral&$120^\circ$&$109.5^\circ$&$\mathrm{CH_4}, \mathrm{XeO_4}$\\\hline
+		$\mathrm{AX_4E}$&Seesaw&$180^\circ$&$120^\circ$&$\mathrm{SF_4}$\\\hline
+		$\mathrm{AX_4E_2}$&Square Pyramidal&$180^\circ$&$90^\circ$&$\mathrm{XeF_4}$\\\hline
+		$\mathrm{AX_5}$&Trigonal Bipyramidal&$120^\circ$&$90^\circ$&$\mathrm{PCl_5}$\\\hline
+		$\mathrm{AX_5E}$&Square Pyramidal&$90^\circ$&$90^\circ$&$\mathrm{ClF_5}, \mathrm{BrF_5}$\\\hline
+		$\mathrm{AX_5E_2}$&Pentagonal Planar&$72^\circ$&$144^\circ$&$\mathrm{XeF_5^-}$\\\hline
+		$\mathrm{AX_6}$&Octahedral&$90^\circ$&$90^\circ$&$\mathrm{SF_6}$\\\hline
+		$\mathrm{AX_6E}$&Pentagonal Pyramidal&$72^\circ$&$90^\circ$&$\mathrm{XeOF_5^-}, \mathrm{IOF_5^{2-}}$\\\hline
+		$\mathrm{AX_7}$&Pentagonal Bipyramidal&$72^\circ$&$90^\circ$&$\mathrm{IF_7}$\\\hline
+		$\mathrm{AX_8}$&Square Antiprismatic&//&//&$\mathrm{IF_8^-}, \mathrm{XeF_8^{2-}}$\\\hline
+		$\mathrm{AX_9}$&Tricapped Trigonal Prismatic&//&//&$\mathrm{ReH_9^{2-}}$\\\hline
+	\end{tabular}
+	\caption{VSEPR table for determining the molecular structure of compounds from their Lewis structure}
+	\label{tab:vsepr.chem}
+\end{table}
+Note that the presence of multiple bonds doesn't change the molecular geometry, since double bonds occupy the same amount of space of single bonds.
+\subsubsection{Bond Polarity and Bond Order}
+There are two main types of covalent bond
+\begin{itemize}
+\item Homopolar bonds
+\item Heteropolar bond
+\end{itemize}
+The determination of the kind of bond we're facing can be made by checking the difference in electronegativity between the two atoms considered, and if
+\begin{equation*}
+	\Delta\chi\begin{dcases}
+		=0&\text{Homopolar}\\
+		\ne0&\text{Heteropolar}
+	\end{dcases}
+\end{equation*}
+In the second case the charge imbalance can be indicated in the structure diagram with $\delta^{\pm}$ indicating the partial charge of the atoms.\\
+Note that in the special case of
+\begin{equation*}
+	0.4\le\Delta\chi\le1.7
+\end{equation*}
+The bond is known as a covalent polar bond.\\
+We can also define the bond order of a bond as the number of bond between equal atoms. It's calculated with the following technique
+\begin{itemize}
+\item For each $n-$ple bond add $n$
+\item Divide by the number of participating atoms
+\end{itemize}
+\subsubsection{Intermolecular Forces}
+Being molecules particularly small and electrically charged, we have to consider a class of intermolecular forces, known as \textit{Van der Waals forces} which permit the creation of weakly bound structures only via electrostatic interaction.\\
+Van der Waals forces can be of two kinds:
+\begin{enumerate}
+\item Ion-dipole interaction
+\item Dipole-dipole interaction
+\end{enumerate}
+The first kind of interaction is found when a polar compound gets close to an ionic compound, like water. This is really common in aqueous ionic solutions. When an ion gets hydrated, it also liberates energy as \textit{hydration enthalpy}.\\
+Dipole dipole interactions are instead found in interactions between polar molecules, due to the presence of an electric dipole generated from the electron imbalance between the atoms. A particular case of molecular dipole interaction is given by \textit{hydrogen bonds}, where hydrogen forms a ionic bond with a strongly electronegative atom. Two molecules of this kind then form a strong dipole-dipole interaction which creates the bonds.\\
+Hydrogen bonding explains the numerous peculiarities of water, like the strong solvent power.\\
+Dipole-dipole interactions can also happen between polar and non-polar compounds via electrostatic repulsion of the electrons of the non-polar molecule, creating an electric dipole. The bigger is the non-polar molecule and higher is its polarizability.\\
+A special case of induced dipoles is \emph{London dispersion interaction}, where the polarized molecules interact weakly.
+\section{Thermochemistry}
+The branch of thermodynamics interested in the study of chemical reactions is \textit{thermochemistry}. Here, the most used potentials are enthalpy and the Gibbs' free energy.\\
+Remembering the definition of enthalpy we have that in chemical reactions, being isobaric processes, we have
+\begin{equation}
+	\Delta H=Q\begin{dcases}
+		>0&\textit{endothermic reaction}\\
+		<0&\textit{exothermic reaction}
+	\end{dcases}
+	\label{eq:enthalpy.chem}
+\end{equation}
+The terms \emph{endothermic} and \emph{exothermic} come directly from the direction of heat flow from (to) the surroundings, considering the reaction as our thermodynamic system.\\
+In order to standardize and define properly enthalpy variations, a \textit{standard atmosphere} for measuring, where
+\begin{equation}
+	T_0=25\mathrm{^\circ C}=298.15\ \mathrm{K}, \qquad p_0=1\ \mathrm{bar}\approx1\ \mathrm{atm}
+	\label{eq:standardatm.chem}
+\end{equation}
+In this precise state chemists measure enthalpy variations for the different chemical processes that can happen.\\
+The additivity of enthalpy and its extensive nature, we can say, that for a generic reaction of multiple elements with formation enthalpy $\Delta H^0_f$, we define the reaction enthalpy via Hess' law
+\begin{equation}
+	\Delta H^0_r=\sum_{prod}c_i\Delta H^0_{f, i}-\sum_{rea}d_i\Delta H^0_{f, i}
+	\label{eq:hesslaw.chem}
+\end{equation}
+Where $c_i, d_i$ are the stoichiometric coefficients of each compound.\\
+\begin{eg}[Combustion of Methane]
+	Consider as an example the combustion of methane, with the following chemical reaction
+	\begin{equation}
+		\mathrm{CH_4}_{(g)}+2\mathrm{O_2}_{(g)}\to\mathrm{CO_2}_{(g)}+2\mathrm{H_2O}_{(l)}
+		\label{eq:methanecomb.tch}
+	\end{equation}
+	By Hess' law, the combustion enthalpy will then be
+	\begin{equation}
+		\Delta H^0_{comb}=\Delta H_f^0\left( CO_2 \right)+2\Delta H_f^0\left( H_2O \right)-\Delta H^0_f\left( CH_4 \right)
+		\label{eq:enthalpymethane.tch}
+	\end{equation}
+	Note that since oxygen is in its stable form, its formation enthalpy in standard atmosphere is taken to be 0.
+\end{eg}
+Since in chemistry we're usually dealing with first order phase changes, it's also really useful to redefine Hess' law in terms of the Gibbs' free energy as
+\begin{equation}
+	\Delta G^0_r=\sum_{prod}c_i\Delta G_{f, i}^0-\sum_{rea}d_i\Delta G^0_{f, i}
+	\label{eq:hessgibbs.tch}
+\end{equation}
+Always remember that the formation enthalpy and Gibbs free energy of a single element are always 0.
+\subsection{Equilibrium in Gases}
+Consider a system in thermal and chemical equilibrium, with the following equilibrium formula
+\begin{equation}
+	a\mathrm{A}_{(g)}+b\mathrm{B}_{(g)}\longleftrightarrow c\mathrm{C}_{(g)}+d\mathrm{D}_{(g)}
+	\label{eq:chemeq.chem}
+\end{equation}
+Considered the molar concentrations of each element to the power of their corresponding stoichiometric coefficient, we have that the ratio of the product concentrations and the reagent concentrations is constant, and known as the \emph{equilibrium constant} $\kappa_C$. Thus, for the previous generic case 
+\begin{equation}
+	\kappa_{c}=\frac{\left[ \mathrm{C} \right]^c\left[ \mathrm{D} \right]^d}{\left[ \mathrm{A} \right]^a\left[ \mathrm{B} \right]^b}
+	\label{eq:kappac.tch}
+\end{equation}
+For gaseous equilibrium, the equilibrium constant is defined in terms of the partial pressure of each gas. It's tied to the previous definition via the ideal gas law as 
+\begin{equation}
+	\kappa_p=\frac{p_C^cp_D^d}{p_A^ap_B^b}=\kappa_c\left( RT \right)^{c+d-a-b}
+\label{eq:kckprel.tch}
+\end{equation}
+Thanks to its definition, we can define two scenarios
+\begin{enumerate}
+\item $\kappa_c>>1$, the equilibrium is moved towards the products, i.e. when the mix reaches equilibrium the molar concentrations of products are greater than those of the reagents
+\item $\kappa_c<<1$ the equilibrium is moved towards the reagents.
+\end{enumerate}
+The equilibrium constant is used to determine the direction of equilibrium of a reaction which is not in equilibrium, and to calculate the final equilibrium concentrations given some initial conditions.\\
+Given the same reaction as before, together with an initial condition on the concentrations we can calculate the reaction quotient $Q_c(t)$. Considered a fixed generic time $t$ we have
+\begin{equation}
+	Q_c=\frac{\left[ \mathrm{C} \right]^c_t\left[ \mathrm{D} \right]^d_t}{\left[ \mathrm{A} \right]^a_i\left[ \mathrm{B} \right]^b_t}
+	\label{eq:qfactor.tch}
+\end{equation}
+Note that, at equilibrium $Q(t_{eq})=\kappa_C$!.\\
+Therefore, by the same logic as before
+\begin{enumerate}
+\item $Q_c<\kappa_c$ the reaction is not in equilibrium and it will tend to create products, i.e. ``\textit{move right}''
+\item $Q_c>\kappa_c$ the reaction will tend to create reagents i.e. ``\textit{move left}''
+\item $Q_c=\kappa_c$ the reaction is in equilibrium
+\end{enumerate}
+Chemicaj equilibrium, due to the nature of matter can be of two different kinds
+\begin{enumerate}
+\item Homogeneous, if all the participating compounds are in the same phase
+\item Heterogeneous, if the compounds are in different phases
+\end{enumerate}
+For a heterogeneous equilibrium, the concentrations of pure liquids and solids are omitted, since they don't contribute to the gaseous equilibrium.\\
+Equilibrium can be perturbed only via variations of temperature, pressure or by a variation of concentrations. In the case of a variation of temperature, we can use the following theorem
+\begin{thm}[Le Chatelier]
+	A system in equilibrium will respond to a perturbation in a way such the changes are minimized.\\
+	In terms of enthalpy, we have 
+	\begin{enumerate}
+	\item $\Delta H^0>0$, the reaction is endothermic and the equilibrium moves right, i.e. $\Delta\kappa>0$
+	\item $\Delta H^0<0$, the reaction is exothermic and the equilibrium moves left, i.e. $\Delta\kappa<0$
+	\end{enumerate}
+	A quick way to summarize everything, we can use the relationship between $\kappa$ and the Gibbs' free energy to check what happens after a variation of temperature.
+	\begin{equation}
+		\Delta G^0=-RT\log\kappa
+		\label{eq:chatelier.chem}
+	\end{equation}
+    Using thermodynamics we can derive what's known as the \emph{Van 't Hoff equation}.
+From the definition of the standard Gibbs free energy, we have
+\begin{equation}
+        \Delta G^0=\Delta H^0-T\Delta S^0
+\end{equation}
+    Combined with the previous equation we have that 
+    \begin{equation}
+        -RT\log{\kappa}=\Delta H^0-T\Delta S^0
+    \end{equation}
+    Dividing by $-RT$ and then derivind with respect to temperature, we get the final equation that we can use to determine the variation of the equilibrium constant.
+The evaluation is immediate, giving
+    \begin{equation}
+         \dv{\log\kappa}{T}=\frac{\Delta H^0}{RT^2}
+    \end{equation} 
+	In case of a pressure variation, equilibrium will move towards the direction where moles of gas are the least, while it will go the opposite way for a variation of volume
+\end{thm}
+\subsection{Equilibrium in Aqueous Solutions}
+In order to define equilibrium in aqueous solutions we need to define two things:
+\begin{dfn}[Electrolyte]
+	An \emph{electrolyte} is a substance that dissolves in water producing ions. A non-electrolyte is defined analogously as an element soluble in water that \textit{doesn't} produce ions
+\end{dfn}
+An electrolyte can either be an ion or a molecule, and can be both strong or weak depending on how much it dissolves in water.\\
+A special example is water, it itself is a weak electrolyte, with the following dissociation reaction, known as the \emph{self ionization reaction of water}
+\begin{equation}
+	2\mathrm{H_2O}_{l}\longleftrightarrow\mathrm{H_3O^+}_{aq}+\mathrm{OH^-}_{aq}
+	\label{eq:waterdiss.chem}
+\end{equation}
+The ``wet'' equilibrium constant is then determined by considering only the elements in an aqueous solution, ignoring liquids, solids and gases. For the dissociation of water, we have
+\begin{equation}
+	\kappa_w=\left[ \mathrm{H_3O^+} \right]\left[ \mathrm{OH^-} \right]=1.0\cdot10^{-14}
+	\label{eq:waterkw.chem}
+\end{equation}
+Remembering the Brønsted-Lowry definition of acid, we have that water can then behave as both a base and an acid, getting the title of \emph{anfiprotic}.\\
+Note that
+\begin{enumerate}
+\item The conjugate basis of a strong acid is a weak basis
+\item The conjugate basis of a weak acid has strength depending on the strength of the acid
+\item The conjugate acid of a strong basis is a very weak basis
+\item The conjugate acid of a weak basis has strength depending on the basis
+\end{enumerate}
+We can define then an \textit{acid and basic equilibrium constant} as
+\begin{equation}
+	\begin{paligned}
+		\kappa_A&= \frac{\left[ \mathrm{H_3O^+} \right]\left[ \mathrm{A}^- \right]}{\left[ \mathrm{HA} \right]}\\
+		\kappa_B&= \frac{\left[ HB^+ \right]\left[ OH^- \right]}{\left[ B \right]}
+	\end{paligned}
+	\label{eq:kab.chem}
+\end{equation}
+Where $\mathrm{A}, \mathrm{B}$ are our generic acid and base. The bigger is the equilibrium constant, the stronger is the base/acid. Note that polyprotic acids will have more than one constant since they can donate more than one proton. Obviously, the more protons does the acid donate and the more the constant reduces.
+\begin{dfn}[pH and pOH]
+	For qualitatively determining the acidity of a solution, we can calculate the \emph{pH}, defined as follows
+	\begin{equation}
+		pH=-\log_{10}\left[ \mathrm{H_3O^+} \right]=-\log_{10}\left[ H^+ \right]
+	\label{eq:ph.chem}
+	\end{equation}
+	Analogously, we define the \emph{pOH} as
+	\begin{equation}
+		pOH=-\log_{10}\left[ OH^- \right]
+		\label{eq:poh.chem}
+	\end{equation}
+	And the \emph{$p\kappa_w$} as
+	\begin{equation}
+		p\kappa_w=-\log_{10}\kappa_w=pH+pOH=14
+		\label{eq:pkw.chem}
+	\end{equation}
+	A solution is then
+	\begin{itemize}
+	\item Acid, if $pH<7$ or $pOH>7$
+	\item Basic, if $pH>7$ or $pOH<7$
+	\item Neutral, if $pH=pOH=7$
+	\end{itemize}
+\end{dfn}
+\begin{mtd}[Calculation of the pH of a Solution]
+	Suppose that we have a solution of $\mathrm{CH_3COOH}$ (acetic acid), where $\left[ \mathrm{CH_3COOH} \right]=0.100\ \mathrm{M}$, the dissociation reaction is the following
+	\begin{equation}
+		\mathrm{CH_3COOH}_{(aq)}+\mathrm{H_2O}_{(l)}\longleftrightarrow\mathrm{CH_3COO^-}_{(aq)}+\mathrm{H_3O^+}_{(aq)}
+		\label{eq:ch3cooh.chem}
+	\end{equation}
+	Being acetic acid a weak acid, only a small part is dissociated in water. In fact, we have
+	\begin{equation*}
+		\kappa_A=\frac{\left[ \mathrm{H_3O^+} \right]\left[ \mathrm{CH_3COO^-} \right]}{\left[ CH_3COOH \right]}\simeq1.80\cdot10^{-5}<<1
+	\end{equation*}
+	For evaluating the reaction and finding the pH of the solution we write the stoichiometric table of the reaction, in terms of the concentrations of the various species
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c|c|c|c|c|}
+			&$\mathrm{CH_3COOH}$&$\mathrm{H_2O}$&$\mathrm{CH_3COO^-}$&$\mathrm{H_3O^+}$\\\hline
+			IS&$0.100$&/&0&0\\\hline
+			FS&$100-x$&/&$x$&$x$
+		\end{tabular}
+		\caption{Stoichiometric table for the dissociation of acetic acid}
+		\label{tab:ch3cooh.chem}
+	\end{table}
+	Since $\kappa_A$ is known, we can write a second order equation in terms of the concentrations of acetic acid and oxonium
+	\begin{equation*}
+		\kappa_A=\frac{x^2}{0.100-x}\approx\frac{x^2}{0.100}
+	\end{equation*}
+	The solution is immediate if we approximate for a weak acid, therefore
+	\begin{equation*}
+		x=\sqrt{0.100\kappa_A}=0.0013\ \mathrm{M}\implies pH=\log_{10}x=2.87
+	\end{equation*}
+	The general method is then, given a dissociation reaction for a weak Brønsted acid ($\kappa_A<<1$) and concentration $c_A$
+	\begin{equation}
+		\kappa_A=\frac{x^2}{c_A-x}
+		\label{eq.acidka.chem}
+	\end{equation}
+	When the acid is really weak ($c_A>100\kappa_A$), then $x<<c_A$, and the solution is straightforward
+	\begin{equation*}
+		x=\sqrt{c_A\kappa_A}\implies pH=-\log_{10}\left( \sqrt{c_A\kappa_A} \right)
+	\end{equation*}
+	For a weak Brønsted basis the process will be similar, although we need to take into account that the $\kappa_B$ gives us the concentration of $OH^-$. Thus, due to the completely analogous process and calculation we get, with a basis concentration of $c_B$
+	\begin{equation}
+		\kappa_B=\frac{x^2}{c_B-x}
+		\label{eq:basiskb.chem}
+	\end{equation}
+	If the basis is really weak, i.e. $c_B<100\kappa_B$ we can again approximate the denominator to $c_B$, and therefore, the concentration of $\left[ OH^- \right]=x$ ions is
+	\begin{equation*}
+		x=\sqrt{c_B\kappa_B}\implies pOH=-\log_{10}\left( c_B\kappa_B \right)
+	\end{equation*}
+	For recovering the pH of the solution we use the definition of $p\kappa_w$, and get
+	\begin{equation*}
+		pH=14-pOH
+	\end{equation*}
+	Note that for polyprotic acids and bases, the process must be repeated each time (just note that the $\kappa$ is different each time), although for evaluating the pH only the first constant is used.
+\end{mtd}
+\section{Acid-Base Reactions}
+\subsection{Saline Hydrolysis}
+Acids and bases are not the only elements that have acidic or basic properties in water. There exists a relation between weak acids and bases for which when a salt is dissolved in water, it dissociates into either an acid or a basis in water, giving rise to a acid-base reaction.\\
+Note that if we dissolve a \textit{strong} acid and a \textit{strong} base, the formed salt will have the conjugated ions of the two dissolved elements, which will dissociate again. A common example reaction is the one between hydrochloric acid and sodium hydroxide, which will form sodium chloride (table salt). The reaction is the following
+\begin{equation}
+	\mathrm{HCl}_{(aq)}+\mathrm{NaOH}_{(aq)}\to\mathrm{NaCl}_{(aq)}+\mathrm{H_2O}_{(l)}\to\mathrm{Na^+}_{(aq)}+\mathrm{Cl^-}_{(aq)}
+	\label{eq:tablesalt.chem}
+\end{equation}
+The strength of the chloride ion and sodium cation is almost null, and therefore the final pH will be the one of water, i.e. $pH=7$. This reasoning is valid \textit{only} for strong acids and strong bases. If we introduce a perturbation on the concentration of hydrogenium or hydroxide, we will have a change in pH in either direction, in a reaction known as (acid/basic) saline hydrolysis.\\
+A good example reaction is the one which generates ammonium ions from ammonium chloride
+\begin{eg}[Ammonium Chloride in an Acqueous Solution]
+	The dissociation of ammonium chloride follows this reaction
+	\begin{equation*}
+		\mathrm{NH_4Cl}_{(s)}\to\mathrm{NH_4^+}+\mathrm{Cl^-}_{(aq)}
+	\end{equation*}
+	Since ammonium chloride is basic, we have that ammonium is the conjugated acid in the reaction. It will react again with water creating ammonia, in the following reaction
+	\begin{equation*}
+		\mathrm{NH_4^+}_{(aq)}+\mathrm{H_2O}_{(l)}\longleftrightarrow\mathrm{NH_3}_{(aq)}+\mathrm{H_3O^+}_{(aq)}
+	\end{equation*}
+	Having ceded a proton to water, we've seen why ammonium is acid, because it also increases the concentration of oxonium cations. The pH will get then lower than $7$ and we're looking at an acid saline hydrolysis. Here we have two acid-base reactions
+	\begin{equation*}
+		\begin{aligned}
+			\mathrm{NH_3}+\mathrm{H_2O}&\longleftrightarrow\mathrm{NH_4^+}+\mathrm{OH^-}\\
+			\mathrm{NH_4^+}+\mathrm{H_2O}&\longleftrightarrow\mathrm{NH_3}+\mathrm{H_3O^+}
+		\end{aligned}
+	\end{equation*}
+	Clearly, the greater is $\kappa_A$ the smaller $\kappa_B$ will be, corresponding to our previous consideration on the strength of acids and bases.\\
+\end{eg}
+In general, for this kind of reactions we will have that 
+\begin{equation}
+	\kappa_A\kappa_B=\left[ \mathrm{H_3O^+} \right]\left[ \mathrm{OH^-} \right]=\kappa_w
+	\label{eq:kappaabw.chem}
+\end{equation}
+Thus explaining why strong acids combined with strong bases will give rise to a neuter solution.\\
+Note that, as an example for table salt, the opposite reaction is \textit{not} possible. If everything is calculated out one sees that $\kappa_A\to\infty$, making the dissolution reaction \textit{not reversible}.
+\subsubsection{Common Ion Effect}
+If we try to calculate the pH of an aqueous solution obtained via mixing 200 ml of acetic acid 0.200 M and 100 ml of hydrochloric acid 0.150 M, after writing the reactions and remembering that $\kappa_A=1.80\cdot10^{-5}$ we have
+\begin{equation*}
+	\begin{aligned}
+		V_{acetic}&= 0.200\ \mathrm{l}\qquad\left[ \mathrm{CH_3COOH} \right]=0.200\ \mathrm{M}\\
+		V_{hydrochloric}&= 0.100\ \mathrm{l}\qquad\left[ \mathrm{HCl} \right]=0.150\ \mathrm{M}
+	\end{aligned}
+\end{equation*}
+The calculation of the amount of moles of each compound is straightforward and gives $n=0.0400$ mol for acetic acid and $n=0.0150$ mol for hydrochloric acid.\\
+The new concentrations after mixing the two compounds are
+\begin{equation*}
+	\begin{aligned}
+		\left[ \mathrm{CH_3COOH} \right]&= 0.133\ \mathrm{M}\\
+		\left[ \mathrm{HCl} \right]&= 0.0500\ \mathrm{M}
+	\end{aligned}
+\end{equation*}
+Being both acids, we have to write separately the two dissociation reactions, as
+\begin{equation}
+	\begin{aligned}
+		\mathrm{CH_3COOH}_{(aq)}+\mathrm{H_2O}_{(l)}\longleftrightarrow\mathrm{H_3O^+}_{(aq)}+\mathrm{CH_3COO^-}\\
+		\mathrm{HCl}_{(aq)}+\mathrm{H_2O}_{(l)}\to\mathrm{H_3O^+}_{(aq)}+\mathrm{Cl^-}_{(aq)}
+	\end{aligned}
+	\label{eq:ch3coohhcl.chem}
+\end{equation}
+The two reactions have both as product a mole of oxonium, thus making it a \emph{common ion}. This means that
+\begin{equation}
+	\left[ \mathrm{H_3O^+} \right]=\left[ \mathrm{H_3O^+} \right]_{\mathrm{HCl}}
+	\label{eq:commonion.chem}
+\end{equation}
+This simply because hydrochloric acid is a stronger acid than acetic acid. Note that due to Le Chatelier's theorem we have that the strong acid dissociation will perturb the weak acid dissociation moving the equilibrium towards the reagents.
+\subsection{Buffer Solutions}
+A special kind of reactions containing acid-base couples are \emph{buffer solutions}, in which the adding of strong acids and strong bases \textit{does not variate the pH of the solution}.\\
+In order to keep the pH stable it's \textit{necessary} to have a base and his conjugated acid in the same solution in similar quantities.\\
+Suppose now that we let acetic acid react with sodium hydroxide (a strong basis) and we add to it a mole more of acid than the base.\\
+The reaction is
+\begin{equation}
+	\mathrm{CH_3COOH}_{(aq)}+\mathrm{NaOH}_{(aq)}\to\mathrm{CH_3COONa}_{(aq)}+\mathrm{H_2O}_{(l)}
+	\label{eq:ch3coona.chem}
+\end{equation}
+The products of the reaction are sodium acetate and water. Due to acetic acid being a weak acid it will be present in the solution together with the conjugated basis in similar quantities, creating a buffer solution.\\
+Buffer solutions can be created by
+\begin{itemize}
+\item Weak acid in solution with their conjugated basis, e.g. acetic acid ($\mathrm{CH_3COOH}$) and sodium acetate ($\mathrm{CH_3COONa}$)
+\item Weak bases in solution with their conjugated acida, e.g. ammonia and ammonium chloride
+\item Solution of mixed polyprotic acids, e.g. phosphoric acid and dihydrogen phosphate, or bicarbonate and carbonate
+\end{itemize}
+Concentrating ourselves only on the reaction between a weak acid and a salt containing his conjugated basis we have three reactions in water:
+\begin{enumerate}
+\item Salt dissociation
+\item Acid dissociation
+\item Basic saline hydrolysis
+\end{enumerate}
+In terms of chemical formulas we have
+\begin{equation}
+	\begin{aligned}
+		\mathrm{CH_3COONa}_{(aq)}&\to\mathrm{Na^+}_{(aq)}+\mathrm{CH_3COO^-}_{(aq)}\\
+		\mathrm{CH_3COOH}_{(aq)}+\mathrm{H_2O}_{(l)}&\longleftrightarrow\mathrm{H_3O^+}_{(aq)}+\mathrm{CH_3COO^-}_{(aq)}\\
+		\mathrm{CH_3COO^-}_{(aq)}+\mathrm{H_2O}_{(l)}&\longleftrightarrow\mathrm{CH_3COOH}_{(aq)}+\mathrm{OH^-}_{(aq)}
+	\end{aligned}
+	\label{eq:ch3coohbuffer.chem}
+\end{equation}
+What's happening here is that we have a double common ion effect, moving the equilibrium reactions to the left and leaving unchanged the two initial configurations. The pH will then be evaluated only using the acid dissociation.\\
+Knowing that for acetic acid we have $\kappa_A=1.80\cdot10^{-5}$, we can find the oxonium concentration from the definition of $\kappa_A$, thus
+\begin{equation*}
+	\left[ \mathrm{H_3O^+} \right]=\kappa_A\frac{\left[ \mathrm{CH_3COOH} \right]}{\left[ \mathrm{CH_3COO^-} \right]}
+\end{equation*}
+Which indicates that the oxonium concentration is completely determined by the acid strength and by the (initial) concentrations of the acid and of the conjugated salt.\\
+The capacity to block pH variations of these solutions is known as buffering power. The max buffering power is when the acid-base couple has exactly the same concentration. The variability field is instead the interval of pH for which the buffer is efficient. Usually the efficiency is around 1 unit of pH from the p$\kappa_A$ of the acid
+\subsection{Solubility}
+The solubility $S$ is the maximum concentration possible of a compound dissolved in water at a given fixed temperature. It's measured in mol/l of also g/l.\\
+It's deeply tied to the concentration of ions dissociated from the saline compound, via the stoichiometric coefficients of the dissociation reaction. Many compounds are not really soluble, and the equilibrium of the concentrations of the ions and the undissolved salt is known as a \emph{saturated solution}. The reaction in question is of the following kind
+\begin{equation}
+	\mathrm{M_nX_m}_{(s)}\longleftrightarrow n\mathrm{M^{m+}}+m\mathrm{X^{n-}}
+	\label{eq:saturationreac.chem}
+\end{equation}
+The equilibrium constant will depend on temperature and on the amount of solid remaining, It's indicated as $\kappa_{ps}$ and is known as the \emph{solubility product}.\\
+\begin{equation}
+	\kappa_{ps}=\left[ \mathrm{M^{m+}} \right]^n\left[ \mathrm{X^{n-}} \right]^m
+	\label{eq:kps.chem}
+\end{equation}
+The solubility is then defined as the ion concentration divided by their stoichiometric coefficient
+\begin{equation}
+	S=\frac{1}{n}\left[ \mathrm{M^{m+}} \right]^n=\frac{1}{n}\left[ \mathrm{X^{n-}} \right]^m
+	\label{eq:sol.chem}
+\end{equation}
+At constant temperature it's influenced by the common ion effect, the pH of the solution and eventual reactions in the solution.
+\subsubsection{Variations of pH}
+Consider the dissolution reaction of iron sulfide in water. Sulfates are usually not easily dissolvable salts, in fact, for this reaction
+\begin{equation*}
+	\mathrm{FeS}_{(s)}\longleftrightarrow\mathrm{Fe^{2+}}_{(aq)}+\mathrm{S^{2-}}_{(aq)}
+\end{equation*}
+The solubility product is
+\begin{equation*}
+	\kappa_{ps}=5.0\cdot10^{-18}
+\end{equation*}
+Adding an acid like hydrochloric acid we see that the sulfide ion will react with the free protons creating hydrogen sulfide ion and dihydrogen sulfide. Being the second in the gaseous phase it will be ceded to the ambient, reducing the concentration of sulfur. For the Le Chatelier theorem the reaction will move to the right, increasing the solubility product and thus dissolving completely the salt.
+\subsubsection{Common Ion Effect in Dissolutions}
+Since the solubility product depends only on temperature, and must be always defined then, we have that the solubility of a not really soluble salt must get smaller when it encounters a common ion effect.\\
+Considering the generic case \eqref{eq:saturationreac.chem} and the generic definition of the solubility product, we can determine a $Q$ factor (reaction quotient) which will give us more knowledge on the reaction. We have:
+\begin{equation}
+	Q_s=\frac{\left[ \mathrm{M^{m+}} \right]^n\left[ \mathrm{X^{n-}} \right]^m}{\left[ \mathrm{M_nX_m} \right]}
+	\label{eq:solutionrcoeff.chem}
+\end{equation}
+Its values can be interpreted as follows
+\begin{itemize}
+\item $Q_s>\kappa_{ps}$, the solution is oversaturated and precipitation will follow
+\item $Q_s=\kappa_{ps}$, the solution is saturated
+\item $Q_s<\kappa_{ps}$, the solution is unsaturated and the salt will continue to dissolve
+\end{itemize}
+\end{document}

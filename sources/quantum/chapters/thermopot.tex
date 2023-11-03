@@ -1,0 +1,332 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\chapter{Thermodynamic Potentials}
+\section{Maxwell Relations}
+By looking at the differential relationship that includes the second and the first law of thermodynamics, if we count that the thermodynamic variables $(p, V, T)$ are deeply tied by the equation of state, we might imagine to construct new exact differentials using \textit{Legendre transforms}.\\
+\begin{dfn}[Legendre Transform]
+	Given a smooth enough scalar field $f:\R^n\to\R$, which satisfies the equation (without loss of generality $n=2$)
+	\begin{equation*}
+		\dd f=u\dd x+v\dd y
+	\end{equation*}
+	Can be \emph{Legendre-transformed} into a new function $g(u, y)$, called the \emph{characteristic function}, which satisfies
+	\begin{equation*}
+		\dd g=-x\dd u+v\dd y
+	\end{equation*}
+	The transformation can be obtained from the differentials themselves noting that:
+	\begin{equation*}
+		u\dd x=\dd\left( ux \right)-x\dd u\\
+	\end{equation*}
+	We have then
+	\begin{equation*}
+		\dd g=u\dd x+v\dd y-\dd\left( ux \right)
+	\end{equation*}
+	I.e.
+	\begin{equation}
+		\dd g=\dd f-\dd\left( ux \right)\implies g=f-ux
+		\label{eq:legtrans.pot}
+	\end{equation}
+	An example of Legendre transforms in physics is given by the derivation of the Hamiltonian function from the Lagrangian of a system
+\end{dfn}
+The reduction to two variables immediately jumps to eye as something already seen before in thermodynamics. We can therefore think to define \textit{multiple} characteristic functions for describing thermodynamic systems.\\
+We begin from the internal energy. We know that $U$ has natural variables $\left( S, V \right)$, thus its use is convenient only when dealing with changes in volume and entropy.\\
+We might want to define a new characteristic function in terms of pressure and entropy via a Legendre transform. This function is known as \emph{enthalpy}.
+\begin{dfn}[Enthalpy]
+	Given the internal energy of a system as
+	\begin{equation*}
+		\dd U = T\dd S-p\dd V
+	\end{equation*}
+	We can define the \textit{enthalpy} $H$ as the Legendre transform of $U$ with respect to $p$, thus
+	\begin{equation}
+		\dd H =\dd U + \dd\left( pV \right)=T\dd S+V\dd p
+		\label{eq:enthalpy.pot}
+	\end{equation}
+\end{dfn}
+Another convenient characteristic function is given by the Legendre transform of $U$ with respect to $T$, known as the \textit{free energy}, or the \textit{Helmholtz free energy}
+\begin{dfn}[Helmholtz Free Energy]
+	Given the internal energy of a system, we define the \textit{Helmholtz free energy} $F$ as the Legendre transform of the internal energy with respect to temperature
+	\begin{equation}
+		\dd F=\dd U-\dd\left( TS \right)=-S\dd T-p\dd V
+		\label{eq:hemholtzfree.pot}
+	\end{equation}
+\end{dfn}
+The same approach can be repeated with enthalpy, obtaining the \textit{Gibbs free energy}
+\begin{dfn}[Gibbs Free Energy]
+	Given the enthalpy function, if we apply a Legendre transform with respect to the temperature $T$, we get the \textit{Gibbs Free Energy} $G$ as
+	\begin{equation}
+		\dd G=\dd H - \dd\left( TS \right)=-S\dd T+V\dd p
+		\label{eq:gibbsfree.pot}
+	\end{equation}
+\end{dfn}
+All these potentials are deeply tied, and one can be recovered from another one through sequences of Legendre transforms, with respect to temperature, pressure, entropy and volume.\\
+In general, explicitly writing the natural variables of each potential, we can put them all together in a system
+\begin{equation}
+	\begin{paligned}
+		\dd U\left( S, V \right)&= T\dd S-p\dd V\\
+		\dd H\left( S, p \right)&= T\dd S+V\dd p\\
+		\dd F\left( T, p \right)&= -S\dd T-p\dd V\\
+		\dd G\left( T, V \right)&= -S\dd T+V\dd p
+	\end{paligned}
+	\label{eq:potentials.pot}
+\end{equation}
+Being potentials also includes the fact that these are all \textit{exact differentials}, which we remember in the following definition.\\
+\begin{dfn}[Exact Differential]
+	Given a differential form $\omega$, defined as
+	\begin{equation*}
+		\omega=A(x, y)\dd x+B\left( x, y \right)\dd y
+	\end{equation*}
+	It's said to be \emph{closed} if and only if $\dd \omega=0$, where
+	\begin{equation*}
+		\dd\omega = \left( \pdv{A}{y}-\pdv{B}{y} \right)\dd x\dd y=0
+	\end{equation*}
+	It's \emph{exact} if and only if exists a potential function $f\in C^2$ such that
+	\begin{equation*}
+		\dd f=\omega\implies{}\begin{paligned}
+			\pdv{f}{x}&= A(x, y)\\
+			\pdv{f}{y}&= B(x, y)
+		\end{paligned}
+	\end{equation*}
+	An exact differential form is necessarily closed, since $\dd\omega=\dd^2f=0$ by definition of the differential operator.\\
+	Note that then, also
+	\begin{equation*}
+		\pdv[2]{f}{x}{y}=\pdv{A}{y}=\pdv{B}{x}=\pdv[2]{f}{y}{x}\\
+	\end{equation*}
+	Thanks to Schwartz's theorem for $C^2$ functions, we know already that the two mixed derivatives are necessarily equal.
+\end{dfn}
+The previous statements lets us find what are known as the \textit{Maxwell relations} between the thermodynamic variables. We have
+\begin{equation}
+	\begin{paligned}
+		\dd U&= T\dd S-p\dd V\implies{}\left( \pdv{T}{V} \right)_S=-\left( \pdv{p}{S} \right)_V\\
+		\dd H&= T\dd S+V\dd p\implies{}\left( \pdv{T}{p} \right)_S=\left( \pdv{V}{S} \right)_p\\
+		\dd F&= -S\dd T-p\dd V\implies{}\left( \pdv{S}{V} \right)_T=\left( \pdv{p}{T} \right)_V\\
+		\dd G&= -S\dd T+V\dd p\implies{}\left( \pdv{S}{p} \right)_T=-\left( \pdv{V}{T} \right)_p
+	\end{paligned}
+	\label{eq:maxwellequations.pot}
+\end{equation}
+Also:
+\begin{equation}
+	\begin{paligned}
+		p&= -\left( \pdv{U}{V} \right)_S=\left( \pdv{F}{V} \right)_T\\
+		V&= \left( \pdv{H}{p} \right)_S=\left( \pdv{G}{p} \right)_T\\
+		T&= \left( \pdv{U}{S} \right)_V=\left( \pdv{H}{S}\right)_p\\
+		S&= -\left( \pdv{F}{T}\right)_V=\left( \pdv{G}{T} \right)_p
+	\end{paligned}
+	\label{eq:thermovar.pot}
+\end{equation}
+\subsection{$T\dd S$ Equations}
+The previous findings help us find new constitutive equations for entropy, called the $T\dd S$ equations. From the internal energy we have that
+\begin{equation}
+	\dd S=\frac{1}{T}\left( \dd U + p\dd V\right)
+	\label{eq:natvars.tds}
+\end{equation}
+Which implies that the natural variables of entropy are volume and temperature. Thus
+\begin{equation*}
+	T\dd S=T\left( \pdv{S}{T} \right)_V\dd T+T\left( \pdv{S}{V} \right)_T\dd V=\slashed\dd Q
+\end{equation*}
+By definition and the application of the third Maxwell relation, we get
+\begin{equation*}
+	\begin{paligned}
+		T\left( \pdv{S}{T} \right)_V&= \left( \frac{\slashed\dd Q}{\dd T} \right)=C_V\\
+		\left( \pdv{S}{V} \right)_T&= \left( \pdv{p}{T} \right)_V
+	\end{paligned}
+\end{equation*}
+All combined into the previous equation, we get the \textit{first $T\dd S$ equation}.
+\begin{equation}
+	\boxed{T\dd S=C_V\dd T+T\left( \pdv{p}{T} \right)_V\dd V}
+	\label{eq:1.tds}
+\end{equation}
+If we repeat the same process that we had done in \eqref{eq:natvars.tds}, but instead we use the enthalpy, we have
+\begin{equation}
+	\dd S=\frac{1}{T}\left( \dd H-V\dd p \right)
+	\label{eq:natvars2.tds}
+\end{equation}
+Thus the natural variables become $T, p$ and we have
+\begin{equation*}
+	T\dd S=T\left( \pdv{S}{T} \right)_p\dd T+T\left( \pdv{S}{p} \right)_T\dd p=\slashed\dd Q
+\end{equation*}
+And therefore, by definition of specific heat and using the fourth Maxwell relation, we have
+\begin{equation*}
+	\begin{paligned}
+		T\left( \pdv{S}{T} \right)_p&= \left( \frac{\slashed\dd Q}{\dd T} \right)_p=C_p\\
+		\left( \pdv{S}{p} \right)_T&= -\left( \pdv{V}{T} \right)_p
+	\end{paligned}
+\end{equation*}
+Which, combined give the \textit{second $T\dd S$ equation}
+\begin{equation}
+	\boxed{T\dd S=C_p\dd T-T\left( \pdv{V}{T} \right)_p\dd p}
+	\label{eq:2.tds}
+\end{equation}
+A third can be obtained by writing $S$ as a function of $(p, V)$, giving us
+\begin{equation*}
+	T\dd S=T\left( \pdv{S}{p} \right)_V\dd p+T\left( \pdv{S}{V} \right)\dd V=\slashed\dd Q
+\end{equation*}
+Considering (reversible) isobaric and isochoric processes we have
+\begin{equation*}
+	\begin{paligned}
+		T\left( \pdv{S}{V} \right)_p\left( \pdv{V}{T} \right)_p&= \left(\frac{\slashed\dd Q}{\dd T}\right)_p=C_p\\
+		T\left( \pdv{S}{p} \right)_V\left( \pdv{p}{T} \right)_V&= \left( \frac{\slashed\dd Q}{\dd T} \right)_V=C_V
+	\end{paligned}
+\end{equation*}
+Resulting in the \textit{third $T\dd S$ equation}
+\begin{equation}
+	\boxed{T\dd S=C_V\left( \pdv{T}{p} \right)_V\dd p+C_p\left( \pdv{T}{V} \right)_p\dd V}
+	\label{eq:3.tds}
+\end{equation}
+\subsection{Internal Energy Equations}
+Following the same idea we had previously, we can write a set of equations for the internal energy. We have in general that for a hydrostatic system
+\begin{equation*}
+	\dd U = T\dd S-p\dd V
+\end{equation*}
+If we derive with respect to the volume $V$ we have
+\begin{equation*}
+	\left( \pdv{U}{V} \right)_T=T\left( \pdv{S}{V} \right)_T-p
+\end{equation*}
+Using the third Maxwell relation we have the \textit{first internal energy equation}
+\begin{equation}
+	\boxed{\left( \pdv{U}{V} \right)_T=T\left( \pdv{p}{T} \right)_V-p}
+	\label{eq:1.iee}
+\end{equation}
+Deriving with respect to pressure we get instead
+\begin{equation*}
+	\left( \pdv{U}{p} \right)_T=T\left( \pdv{S}{p} \right)_T-p\left( \pdv{V}{p} \right)_T
+\end{equation*}
+Using the fourth Maxwell relation we immediately get the \textit{second internal energy equation}
+\begin{equation}
+	\boxed{\left( \pdv{U}{p}\right)_T=-T\left( \pdv{V}{T} \right)_p-p\left( \pdv{V}{p} \right)_T}
+	\label{eq:2.iee}
+\end{equation}
+\subsection{Heat Capacity Equations}
+From the $T\dd S$ equations it's possible to find two new equations with respect to the heat capacities of the gas. Equating the first two $T\dd S$ equations we have
+\begin{equation*}
+	C_p\dd T-T\left( \pdv{V}{T} \right)_p\dd p=C_V\dd T+T\left( \pdv{p}{T} \right)_V\dd V
+\end{equation*}
+This implies that
+\begin{equation*}
+	\left( C_p-C_V \right)\dd T=T\left[ \left( \pdv{p}{T} \right)_V\dd p+\left( \pdv{V}{T} \right)_p\dd V \right]
+\end{equation*}
+Thanks to the equation of state we can see $T$ as a function of $(p, V)$, and by solving the previous equatoin with respect to $\dd T$ and expressing explicitly the differential we have
+\begin{equation*}
+	\begin{paligned}
+		\left( \pdv{T}{p} \right)_V&= \frac{T}{C_p-C_V}\left( \pdv{p}{T} \right)_V\\
+		\left( \pdv{T}{V} \right)_p&= \frac{T}{C_p-C_V}\left( \pdv{V}{T} \right)_p
+	\end{paligned}
+\end{equation*}
+Solving and noting that, thanks to the implicit variable theorem we have
+\begin{equation*}
+	\left( \pdv{p}{T} \right)_V=-\left( \pdv{V}{T} \right)_p\left( \pdv{p}{V} \right)_T
+\end{equation*}
+We get the first of the two \textit{heat capacity equations}
+\begin{equation}
+	\boxed{C_p-C_V}=T\left( \pdv{V}{T} \right)_p^2\left( \pdv{p}{V} \right)
+	\label{eq:1.cpcv}
+\end{equation}
+From the $T\dd S$ equation we also get that in an isoentropic process, (i.e. they're both zero) we must have
+\begin{equation*}
+	\begin{paligned}
+		C_p\dd T&= T\left( \pdv{V}{T} \right)_p\dd p\\
+		C_V\dd T&= -T\left( \pdv{p}{T} \right)_V\dd V
+	\end{paligned}
+\end{equation*}
+Solving for $\gamma=C_p/C_V$ we have
+\begin{equation*}
+	\gamma=-\left( \pdv{V}{T} \right)_p\left( \pdv{T}{p} \right)_V\left( \pdv{p}{V} \right)_S
+\end{equation*}
+Which, rearranged gives the \textit{second heat capacity equation}
+\begin{equation}
+	\boxed{\gamma=-\left( \pdv{V}{p} \right)_T\left( \pdv{p}{V} \right)_S}
+	\label{eq:2.cpcv}
+\end{equation}
+\section{Real Gases}
+\subsection{Van der Waals Equation}
+So far we have treated only \textit{ideal} gases, in the low pressure limit and without interaction between the particles, which are considered point-like.\\ 
+This clearly isn't enough to describe real gases, which have interactions between themselves and are not point-like. A solution was devised by \textit{Johannes Diderik van der Waals}, which in his studies he started from the Lennard-Jones potential to describe molecular interactions and build from there an equation of state for real gases.\\
+The Lennard Jones potential is found empirically as 
+\begin{equation}
+	U_{LJ}(r)=U_0\left[ \alpha_1\left( \frac{1}{r} \right)^{12}-\alpha_2\left( \frac{1}{r} \right)^6 \right]
+	\label{eq:lennardjones.real}
+\end{equation}
+With $\alpha_1$ and $\alpha_2$ as parameters which depend on the gas. It's possible to build from it two parameters, $a, b$ known as the \textit{Van der Waals parameters} in order to apply corrections to pressure and volume.\\
+We begin by considering molecules as hard spherical shells, which occupy some volume $V_0$, thus, for $n$ moles of this gas, we can apply a correction to the volume of the gas as
+\begin{equation}
+	V_R=\left( V-nb \right)
+	\label{eq:realvol.real}
+\end{equation}
+And, considering the attractive forces between molecules, we can also find a correction for pressure, which will be higher at the center of the gas
+\begin{equation}
+	p_R=p+a\left( \frac{n}{V} \right)^2
+	\label{eq:realp.real}
+\end{equation}
+Inserting it into the equation of state, we have
+\begin{equation}
+	p_RV_R=\left[ p+a\left( \frac{n}{V} \right)^2 \right]\left( V-nb \right)=nRT
+	\label{eq:vanderwaals.real}
+\end{equation}
+Which is the \textit{Van der Waals equation of state}, useful for describing the thermodynamic behavior of real gases. This equation has also critical points (saddles) for pressure and volume. After doing some optimization calculus on $p(V)$ we find
+\begin{equation}
+	\begin{paligned}
+		p_C&= \frac{a}{27b^2}\\
+		V_C&= 3nb\\
+		T_C&= \frac{8a}{27Rb}
+	\end{paligned}
+	\label{eq:critpoints.real}
+\end{equation}
+At these critical points the gas undergoes a \textit{phase transition} and changes state of matter. In phase transitions more than one state exists in the system, and the Van der Waals equation is ill-equipped for treating systems with more than one coexisting phase
+\subsection{Phase Transitions}
+Phase transitions are one of the most commonly known thermodynamic behaviors, just imagine the freezing ice outside in the winter or boiling water in order to cook some pasta or brew a nice hot tea.\\
+Phase transitions of any kind show experimentally a really particular behavior: during a phase transition the temperature is constant.\\
+The most known types of phase transition are:
+\begin{enumerate}
+\item Fusion, as in ice melting inside a drink
+\item Solidification, as when water becomes ice
+\item Sublimation, as when dry ice evaporates at room temperature
+\item Deposition, as when a gas leaves a solid trace in a container
+\item Vaporization, as when water reaches the boiling point and becomes a vapor
+\end{enumerate}
+Since temperature is constant in each of these transitions, the heat produced must also be constant and proportional to the amount of mass undergoing the transition. This heat is known as \textit{latent heat}, and it's describable simply as
+\begin{equation}
+	Q_l=m\lambda
+	\label{eq:latentheat.pt}
+\end{equation}
+Where $\lambda$ is a constant which depends on the type of transition and the substance.\\
+Consider now a system undergoing a transition from one state to another, thus at a fixed temperature $T_{pt}$. If we have a fraction of substance $x$ in the final phase we might say that, if we denote the phases as $i, f$, then being entropy and volume extensive coordinates, we have
+\begin{equation*}
+	\begin{paligned}
+		\Delta S&= n\left( 1-x \right)S_i+nxS_f\\
+		\Delta V&= n\left( 1-x \right)V_i+nxV_f		
+	\end{paligned}
+\end{equation*}
+The latent heat entropy is defined as
+\begin{equation}
+	\lambda=T\Delta S= T\left( S_f-S_i \right)
+	\label{eq:latentheat.pt}
+\end{equation}
+The best suited thermodynamic potential for the description is the Gibbs free energy, for which must hold $G_i=G_f$. Therefore
+\begin{equation*}
+	-S_i\dd T+V_i\dd p=-S_f\dd T+V_f\dd p\implies{}\left( V_i-V_f \right)\dd p=\left( S_i-S_f \right)\dd T
+\end{equation*}
+We immediately recognize the latent heat divided by the transition temperature on the right, and thus, writing everything in terms of the derivative of pressure with respect to temperature, we get the so called \emph{Clausius Clapeyron equation}
+\begin{equation}
+	\dv{p}{T}=\frac{m\lambda}{T\Delta V}
+	\label{eq:cc.pt}
+\end{equation}
+This equation is integrable after imposing some approximations.\\
+Firstly consider vaporization of a liquid or the sublimation of a solid. Clearly $V_f>>V_i$, thus $\Delta V\approx V_f$, and said
+\begin{equation*}
+	V_f=\frac{nRT}{p}
+\end{equation*}
+We have
+\begin{equation}
+	\dv{\log(p)}{T}=\frac{m\lambda_{v}}{RT^2}
+	\label{eq:ccevdiff.pt}
+\end{equation}
+Which, integrated and solved for $p(T)$ gives
+\begin{equation}
+	p(T)=p_0e^{-\frac{m\lambda_{v}}{R}\left( \frac{1}{T}-\frac{1}{T_{v}} \right)}
+	\label{eq:ccev.pt}
+\end{equation}
+In case of solidification of a liquid this approximation doesn't hold anymore, but being $\Delta V$ approximately fixed and constant we can directly integrate and obtain again from \eqref{eq:cc.pt}
+\begin{equation}
+	p(T)=p_0+\frac{m\lambda_s}{\Delta V}\log\left( \frac{T}{T_{s}} \right)
+	\label{eq:ccsol.pt}
+\end{equation}
+From these equations is possible to draw the critical isotherms in a $p-T$ plane and describe multiple phases of a substance. It's also possible to define a surface, which comprises all the relations between the thermodynamic variables, known as the $pVT$ surface. Slices of this surface will then give the $p-V$, $p-T$ and $V-T$ planes which can be used to schematize different phenomena.
+\end{document}

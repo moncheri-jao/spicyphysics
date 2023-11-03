@@ -1,0 +1,522 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\chapter{Thermal Engines and Entropy}
+\section{Engines}
+\subsection{Heat-Work Conversion}
+From the first principle of thermodynamics it's easy to understand how work of \textit{any} kind can be converted to heat and vice-versa.\\
+Suppose that we have two heat reservoirs at temperatures $T_1<T_2$. We might construct a cyclical process between these two sources, which we will call a \emph{thermodynamic cycle}. For any cycle we can define the following quantities
+\begin{itemize}
+\item The total amount of heat absorbed by the system $\abs{Q_{abs}}$
+\item The total amount of heat rejected by the system $\abs{Q_{rej}}$
+\item The total work done by the system $\abs{W}$
+\end{itemize}
+From these quantities we can define the \textit{thermal efficiency} of the cycle as
+\begin{equation}
+	\eta=\abs{\frac{W}{Q_{abs}}}
+	\label{eq:efficiency.eng}
+\end{equation}
+From the first law we have 
+\begin{equation*}
+	\begin{aligned}
+		\Delta U&= Q_T+W_T\\
+		Q_T&= \abs{Q_{abs}}-\abs{Q_{rej}}\\
+		W_T&= \abs{W}\\
+		\eta&= \abs{\frac{W}{Q_{abs}}}
+	\end{aligned}
+\end{equation*}
+We immediately notice that the first equation must be equal to zero. In fact, $\dd U$ is an exact differential, and therefore in \textit{any} cyclic transformation it's equal to zero. Mathematically, we have
+\begin{equation*}
+\oint_\gamma\dd U=U\left( \gamma(A) \right)-U\left( \gamma(A) \right)=0
+\end{equation*}
+Plugging in the second and the third equations into the first one, we must have
+\begin{equation}
+	\begin{aligned}
+		\abs{W}&= \abs{Q_{abs}}-\abs{Q_{rej}}\\
+		\eta&= 1-\abs{\frac{Q_{rej}}{Q_{abs}}}
+	\end{aligned}
+	\label{eq:etaonlyq.eng}
+\end{equation}
+It's clear now how a $100\%$ conversion of heat into work makes little sense. In order to have $\eta=1$ we must have $Q_{rej}=0$, and we'll prove later that this \textit{is not} possible.
+\subsection{Stirling Engine}
+We begin to try to harness, physically, the power of the first (and what will become the second) principle of thermodynamics by building \textit{thermal engines}. There are two main kinds of engines:
+\begin{itemize}
+\item External combustion engines, when the heat sources are outside the system
+\item Internal combustion engines, when the system itself performs the combustion
+\end{itemize}
+The simplest engine, in terms of ease of construction, is the \emph{Stirling engine}. This engine is an external combustion engine which converts heat from fuel to mechanical work, through the usage of hot air.\\
+In a $pV$ diagram, the cycle that the hot air makes is described by two isotherms, one at the combustion temperature $T_H$ and one at a lower temperature $T_L$. The cycle is completed by two isochoric processes.
+The processes between the equilibrium points of the system are
+\begin{itemize}
+\item $A\to B$ Isothermal compression of the gas in contact with the low temperature reservoir at $T_L$, here the system rejects heat $Q_{AB}$
+\item $B\to C$ Isochoric heating of the gas. Here the gas heats up while in contact with the hot reservoir, absorbing heat $Q_{BC}$
+\item $C\to D$ Isothermal expansion of the gas in contact with the hot reservoir at $T_H$. The gas absorbs heat $Q_{CD}$
+\item $D\to A$ Isochoric cooling of the gas. Here the gas is in contact with the cold reservoir and rejects heat $Q_{DA}$
+\end{itemize}
+We have, by definition 
+\begin{equation}
+	\begin{aligned}
+		\abs{Q_H}&= \abs{Q_{H1}}+\abs{Q_{H2}}\\
+		\abs{Q_L}&= \abs{Q_{L1}}+\abs{Q_{L2}}
+	\end{aligned}
+	\label{eq:heatsstr.eng}
+\end{equation}
+Quick spoiler: thanks to the first law of thermodynamics these heats are \textit{explicitly calculable}. From the first principle we have that in the isochoric heating and cooling we must have $\slashed\dd W=0$, $\slashed\dd Q=\dd U$
+\begin{equation*}
+	\slashed\dd Q_{BC}=\slashed\dd Q_{DA}=C_V\dd T\\
+\end{equation*}
+Thus, integrating on these two transformations we get
+\begin{equation*}
+	\begin{paligned}
+		Q_{BC}&= C_V\left( T_H-T_L \right)\\
+		Q_{DA}&= -C_V\left( T_H-T_L \right)
+	\end{paligned}
+\end{equation*}
+On the isothermal compression and expansion instead we have, from the first principle $\dd U=0$, and thus $\slashed\dd Q=p\dd V$. Using the equation of state of ideal gases for writing the explicit functional relationship between $p$ and $V$, we have
+\begin{equation}
+	\begin{paligned}
+		Q_{CD}&= nRT_H\int_{C}^{D}\frac{1}{V}\dd^{}{V}=nRT_H\log\left( \frac{V_D}{V_C} \right)\\
+		Q_{AB}&= nRT_L\int_{A}^{B}\frac{1}{V}\dd^{}{V}=nRT_L\log\left( \frac{V_B}{V_A} \right)=-nRT_L\log\left( \frac{V_D}{V_C} \right)
+	\end{paligned}
+	\label{eq:heatsstirling.eng}
+\end{equation}
+After indicating the \textit{volumetric compression ratio} $r$ as
+\begin{equation}
+	r=\frac{V_{max}}{V_{min}}=\frac{V_C}{V_B}=\frac{V_D}{V_A}
+	\label{eq:compressionratio.eng}
+\end{equation}
+We have
+\begin{equation}
+	\begin{paligned}
+		Q_{abs}&= Q_{BC}+Q_{CD}=nc_V\left( T_H-T_L \right)+nRT_H\log\left( r \right)\\
+		Q_{rej}&= Q_{DA}+Q_{AB}=-\left[ nc_V\left( T_H-T_L \right)+nRT_L\log\left( r \right) \right]
+	\end{paligned}
+	\label{eq:heatsstirlingcomp.eng}
+\end{equation}
+Thus
+\begin{equation}
+	\eta=1-\abs{\frac{Q_{rej}}{Q_{abs}}}=1+\frac{Q_{rej}}{Q_{abs}}=1-\frac{nc_V\left( T_L-T_H \right)-nRT_L\log\left( r \right)}{nc_V\left( T_H-T_L \right)+nRT_H\log\left( r \right)}
+	\label{eq:etastirling.eng}
+\end{equation}
+Which, rearranging, becomes
+\begin{equation}
+	\boxed{\eta_S=\frac{R\left( T_H-T_L \right)\log\left( r \right)}{c_V\left( T_H-T_L \right)+RT_H\log\left( r \right)}}
+	\label{eq:stirling.eng}
+\end{equation}
+\subsection{Internal Combustion Engines}
+\subsubsection{Otto Engine}
+The first internal combustion engine that we will treat is the \textit{Otto engine}, commonly known as the \textit{four-stroke} engine. The gas makes a cycle which might seem similar to the Stirling cycle, but this is quickly disproved by noting that the two isothermal processes are substituted by two adiabatic processes. Since during an adiabatic process $Q=0$, we must have that the heat absorbed and rejected by the system must come from the isochoric processes.\\
+The heats in these two transformations are
+\begin{equation*}
+	\begin{paligned}
+		Q_{BC}&= nc_V\left( T_C-T_B \right)\\
+		Q_{DA}&= nc_V\left( T_A-T_D \right)
+	\end{paligned}
+\end{equation*}
+Using the equation of state and the adiabatic process equation, we have
+\begin{equation}
+	\begin{paligned}
+		pV&= nRT\\
+		pV^\gamma&= \kappa
+	\end{paligned}\implies TV^{\gamma-1}=\kappa
+	\label{eq:tvad.eng}
+\end{equation}
+Thus
+\begin{equation}
+	\begin{paligned}
+		T_CV_C^{\gamma-1}&= T_DV_D^{\gamma-1}\\
+		T_AV_A^{\gamma-1}&= T_BV_B^{\gamma-1}
+	\end{paligned}\implies{}\begin{paligned}
+		\frac{T_C}{T_D}&= \left( \frac{V_D}{V_C} \right)^{\gamma-1}\\
+		\frac{T_A}{T_B}&= \left( \frac{V_B}{V_A} \right)^{\gamma-1}=\left( \frac{V_C}{V_D} \right)^{\gamma-1}
+	\end{paligned}
+	\label{eq:tempsvols.eng}
+\end{equation}
+Indicated again the compression ratio
+\begin{equation*}
+	r=\frac{V_D}{V_C}
+\end{equation*}
+We get
+\begin{equation}
+	\begin{paligned}
+		\frac{T_C}{T_D}&= r^{\gamma-1}\\
+		\frac{T_A}{T_B}&= r^{1-\gamma}=\frac{T_D}{T_C}
+	\end{paligned}
+	\label{eq:reltemps.eng}
+\end{equation}
+Thus
+\begin{equation*}
+	\eta_O=1+\frac{Q_{DA}}{Q_{BC}}=1+\frac{T_A-T_D}{T_C-T_B}=1+\frac{T_B\frac{T_D}{T_C}-T_D}{T_C-\frac{T_C}{T_B}T_A}
+\end{equation*}
+After some algebra for rearranging the terms, we get
+\begin{equation*}
+	\eta_O=1+\frac{T_B}{T_A}\frac{\frac{T_D}{T_C}\left(1-T_C  \right)}{\frac{T_C}{T_D}\left( T_D-1 \right)}=1+\frac{T_D}{T_C}\frac{1-T_C}{T_D-1}
+\end{equation*}
+After again some algebra, we get for the Otto engine the following efficiency
+\begin{equation}
+	\eta_O=1-\frac{1}{r^{\gamma-1}}
+	\label{eq:ottoeff.eng}
+\end{equation}
+\subsubsection{Diesel Engine}
+The Diesel engine is another example of internal combustion engine. It's also a four-stroke engine, but the cycle is different from the previous. We have
+\begin{enumerate}
+\item $A\to B$ The gas undergoes an adiabatic compression until combustion starts
+\item $B\to C$ Isobaric expansion of the gas after combustion, the gas absorbs $Q_{BC}$ from the hot reservoir
+\item $C\to D$ Adiabatic expansion of the gas
+\item $D\to A$ Isochoric cooling of the gas, the gas rejects $Q_{DA}$ to the cold reservoir
+\end{enumerate}
+The heats can be calculated immediately, and we have
+\begin{equation}
+	\begin{paligned}
+		Q_{abs}&= Q_{BC}= nc_p\left( T_C-T_B \right)\\
+		Q_{rej}&= Q_{DA}= nc_V\left( T_A-T_D \right)
+	\end{paligned}
+	\label{eq:dieselheats.eng}
+\end{equation}
+From the adiabatic compression and expansion we get similarly to the Otto engine
+\begin{equation*}
+	\begin{paligned}
+		T_AV_A^{\gamma-1}&= T_BV_B^{\gamma-1}\\
+		T_CV_C^{\gamma-1}&= T_DV_D^{\gamma-1}
+	\end{paligned}\implies{}\begin{paligned}
+		\frac{T_A}{T_B}&= \left( \frac{V_B}{V_A} \right)^{\gamma-1}\\
+		\frac{T_C}{T_D}&= \left( \frac{V_D}{V_C} \right)^{\gamma-1}
+	\end{paligned}
+\end{equation*}
+For the efficiency we have, since the parts of the cycle where the gas absorbs and rejects heat are two and two only, we can write immediately
+\begin{equation}
+	\eta_D=1+\frac{Q_{DA}}{Q_{BC}}=1-\frac{c_p\left( T_D-T_A \right)}{c_V\left( T_C-T_B \right)}
+	\label{eq:effdiesel1.eng}
+\end{equation}
+After defining the \emph{combustion ratio} $r_c$ and the compression ratio $r$ defined as follows
+\begin{equation}
+	\begin{paligned}
+		r_c&= \frac{V_C}{V_B}\\
+		r&= \frac{V_A}{V_B}
+	\end{paligned}
+	\label{eq:compratiosdis.eng}
+\end{equation}
+We have, after some tedious algebra
+\begin{equation}
+	\eta_D=1-\frac{1}{r^{\gamma-1}}\left( \frac{r_c^{\gamma-1}-1}{r_c-1} \right)
+	\label{eq:dieseleff.eng}
+\end{equation}
+\subsubsection{Brayton Engine}
+Another particular type of engine is the \emph{Brayton engine}, this engine cycle is used in turbojet engines and in turbines in general. This cycle is also particular and works with adiabatic and isobaric transformations as follows
+\begin{enumerate}
+\item $A\to B$ Adiabatic compression of the gas until the combustion point
+\item $B\to C$ Isobaric expansion of the ignited gas, $Q_{BC}$ gets absorbed from the hot reservoir
+\item $C\to D$ Adiabatic expansion of the gas
+\item $D\to A$ Isobaric compression of the gas, $Q_{DA}$ gets rejected to the cold reservoir
+\end{enumerate}
+As before, it's straightforward to calculate the rejected and absorbed heat, and we have
+\begin{equation}
+	\begin{paligned}
+		Q_{abs}&= Q_{BC}=nc_p\left( T_C-T_B \right)\\
+		Q_{rej}&= Q_{DA}=-nc_p\left( T_D-T_A \right)
+	\end{paligned}
+	\label{eq:heatsbrayton.eng}
+\end{equation}
+Without calculating for the temperature coordinates, since the calculation is similar to the previous one, after defining the \emph{pressure compression ratio} $r_p$ as
+\begin{equation}
+	r_p=\frac{p_C}{p_B}
+	\label{eq:pressurecompratio}
+\end{equation}
+We get for the efficiency of the Brayton cycle
+\begin{equation}
+	\eta_B=1-\frac{1}{r_p^{\frac{\gamma-1}{\gamma}}}
+	\label{eq:braytoneff.eng}
+\end{equation}
+\subsection{Carnot Engine}
+The most important, and the simplest engine is the one created by \textit{Sadi Carnot}. This cycle is composed by four transformations between two heat reservoirs at temperatures $T_H>T_L$. The cycle goes as follows
+\begin{enumerate}
+\item $A\to B$ The gas undergoes an isothermal expansion in contact with the hot reservoir at $T_H$, absorbs $Q_{AB}$
+\item $B\to C$ Adiabatic expansion of the gas
+\item $C\to D$ Isothermal compression of the gas in contact with the cold reservoir at $T_L$, rejects $Q_{CD}$
+\item $D\to A$ Adiabatic expansion of the gas
+\end{enumerate}
+We have, by definition, that the rejected and absorbed heats are
+\begin{equation}
+	\begin{paligned}
+		Q_{abs}&= Q_{AB}=nRT_H\int_{A}^{B}\frac{1}{V}\dd^{}{V}=nRT_H\log\left( \frac{V_B}{V_A} \right)\\
+		Q_{rej}&= Q_{CD}=nRT_L\int_{C}^{D}\frac{1}{V}\dd^{}{V}=-nRT_L\log\left( \frac{V_D}{V_C} \right)
+	\end{paligned}
+	\label{eq:carnotheats.eng}
+\end{equation}
+From the two adiabatic processes we get
+\begin{equation}
+	\begin{paligned}
+		T_HV_B^{\gamma-1}&= T_LV_C^{\gamma-1}\\
+		T_LV_D^{\gamma-1}&= T_HV_A^{\gamma-1}
+	\end{paligned}\implies{}\frac{T_L}{T_H}=\left( \frac{V_A}{V_D} \right)^{\gamma-1}=\left( \frac{V_B}{V_C} \right)^{\gamma-1}
+	\label{eq:tempcoordcarnot.eng}
+\end{equation}
+Defined the compression ratio
+\begin{equation*}
+	r=\frac{V_A}{V_B}=\frac{V_D}{V_C}
+\end{equation*}
+We have, for the efficiency of the Carnot cycle
+\begin{equation}
+	\eta_C=1+\frac{T_L\log\left( \frac{V_D}{V_C} \right)}{T_H\log\left( \frac{V_B}{V_A} \right)}=1+\frac{T_L}{T_H}\frac{\log(r)}{\log\left( \frac{1}{r} \right)}=1-\frac{T_L}{T_H}
+	\label{eq:carnoteff.eng}
+\end{equation}
+The fact that the efficiency of an ideal Carnot cycle depends \textit{only} on the temperature of the two reservoirs is an extremely important condition that we will derive after defining irreversibility and the second law of thermodynamics.
+\section{Second Law of Thermodynamics}
+The second law of thermodynamics can now be derived from empirical facts. The experience of scientists with engines and work-heat conversion made sure that some fundamental conditions could be written down.\\
+The first one is the so called \textit{Clausius statement of the second law of thermodynamics}
+\begin{thm}[Clausius Statement]
+	It's not possible to transfer heat from a cold reservoir to a hot reservoir without introducing work in the system, i.e. it's not possible to build a refrigerator which transfers heat without work
+\end{thm}
+Another statement, which was a more \textit{operative} statement, was written down by Kelvin and Planck
+\begin{thm}[Kelvin-Planck Statement]
+	It's not possible to build a thermal engine for which $W=Q$, i.e. it's not possible to build a machine which converts heat from a hot source to work without rejecting heat to a cold source
+\end{thm}
+These statements are equivalent, and it's demonstrable as follows
+\begin{proof}
+	Suppose that the Clausius refrigerator exists, then we will have that if there's a cold source at $T_1$ and a hot source at $T_2$, this engine will extract $Q_2$ from the cold source and reject $Q_2$ to the hot source.\\
+	Suppose that now we connect in parallel another machine which extracts $Q_1$ from the hot source at $T_1$ and rejects $Q_2$ to the cold source at $T_2$. Calculating the total heat transfer from the two heat reservoirs we will have
+	\begin{equation}
+		\begin{paligned}
+			Q_H&= Q_2-Q_1\\
+			Q_L&= Q_2-Q_2=0
+		\end{paligned}
+		\label{eq:2nd1stproof.2}
+	\end{equation}
+	These two connected machines complete a thermodynamic cycle, thus we will have
+	\begin{equation*}
+		W=Q_2-Q_1, \qquad Q_L=0
+	\end{equation*}
+	But, this machine is exactly a Kelvin-Planck machine, since it's converting 100\% of the heat taken form the hot source into work, without rejecting heat to the cold source.\\
+	Let's work the other way around and suppose that a Kelvin-Planck machine exists. This machine will take $Q_1$ from a hot source at $T_1$ and converts it all into work. Suppose that we connect in parallel a refrigerator, which takes $Q_2$ from the cold source at $T_2$ and with the work of the KP machine rejects $Q_1+Q_2$ to the hot source.\\
+	If we again check the total heat transfer between the reservoirs we have that
+	\begin{equation}
+		\begin{paligned}
+			Q_H&= \left( Q_1+Q_2 \right)-Q_1=Q_2\\
+			Q_L&= -Q_2
+		\end{paligned}
+		\label{eq:2nd2ndproof.2}
+	\end{equation}
+	Thus, the two connected machines behave like a Clausius refrigerator, taking $Q_2$ from a hot source and rejecting $Q_2$ to the hot source, without any work.\\
+\end{proof}
+It's clear that these two statements are therefore equal, even if they look different. These statements are what's called the \emph{second law of thermodynamics}, which can be summarized in
+\begin{itemize}
+\item Heat flow from a cold to a hot source is possible \textit{if and only if} work is done on the system
+\item Spontaneous heat flow can happen only from a hot source to a cold one
+\item It's impossible to have a machine with 100\% efficiency
+\end{itemize}
+\subsection{Reversibility and Irreversibility}
+From the second law of thermodynamics it's clear that \textit{not all processes are equal}, and especially \textit{not all processes are reversible}. Irreversibility is a fundamental part of nature, and it can be divided into two main kinds of irreversibility:
+\begin{itemize}
+\item External irreversibility
+\item Internal irreversibility
+\end{itemize}
+In order to understand what irreversibility really is, we need to define \textit{reversibility}
+\begin{dfn}[Reversible Process]
+	Consider a process from a state $A$ to a state $B$. If during this process $Q$ heat is transferred and $W$ heat is transferred, it's said to be \emph{reversible} if and only if going back from $B$ to $A$ $-Q$ heat gets transferred and $-W$ work is done
+\end{dfn}
+Consider now some isothermal mechanical transformations, like the irregular stirring of a viscous fluid or the inelastic deformation of a solid in contact with a heat reservoir. For a complete restoration to the initial state we must have that $Q$ heat must be extracted from the reservoir and completely transformed into work, which is a violation of the Kelvin-Planck statement.\\
+If the same process is made in a thermally insulated container, there must be a rise in temperature $T$, thus $\Delta U\ne0$. In the backwards process we will have $Q=\Delta U$ which is completely converted into work, again violating Kelvin-Planck, therefore, all processes exhibiting dissipative effects are \textit{irreversible} and work gets dissipated into internal energy. These are examples of \emph{external mechanical irreversibility}.\\
+If we have a process that transforms internal energy into mechanical energy and then again into internal energy, like a free expansion or the snapping of a stretched wire, we're looking at a case of \emph{internal irreversibility}. Take the free or Joule expansion. There will be a change of state from $A=\left( V_i, T \right)$ to $B=\left( V_f, T \right)$. For a complete restoration of the system till the first state we must have an isothermal compression till the volume $V_i$, where there is no friction, hence the transformation is quasi-static and work is made from an external machine.\\
+Since $W<0$, we have $Q<0$ and therefore $Q=-W$, which is again a violation of Kelvin-Planck, making this process irreversible.\\
+Consider now instead a finite transfer of heat between a system and a reservoir, with temperature difference $\Delta T$. Suppose that we have conduction from the system to the reservoir if $T_r<T_s$. In order to have a reversible process, for transferring heat back to the system from the reservoir we must have a self-acting device between the two temperatures, i.e. a Clausius refrigerator, violating the second law.\\
+This is known as a process exhibiting \textit{external thermal irreversibility}.\\
+The same can be said with chemical process. We have that all chemical reactions which involve a change of structure \textit{must} be irreversible. More generally, all spontaneous natural processes are irreversible.\\
+In general we can define again reversibility as
+\begin{dfn}[Reversible Process]
+	A process is said to be \emph{reversible} if and only if thermodynamic equilibrium conditions are satisfied and there are no dissipative phenomena, i.e.
+	\begin{enumerate}
+	\item It's a quasi static process
+	\item There is no energy dissipation
+	\end{enumerate}
+	Therefore, it's an \textit{ideal} process.
+\end{dfn}
+\subsection{Carnot Theorem and Absolute Temperature}
+One of the main consequences of the second law of thermodynamics is what's known as the \emph{Carnot theorem}
+\begin{thm}[Carnot]
+	No heat engine can have an efficiency higher than its Carnot equivalent
+\end{thm}
+\begin{proof}
+	Given an engine working between two reservoirs at temperatures $T_H>T_L$, we define the \textit{Carnot equivalent engine} as the engine with the same efficiency as the Carnot machine
+	\begin{equation*}
+		\eta_C=1-\frac{T_L}{T_H}=\abs{\frac{W}{Q_H}}
+	\end{equation*}
+	The Carnot engine will hence absorb $Q_H$ from the hot reservoir, perform work $\abs{W}$ and reject $\abs{Q_{C}}=\abs{Q_H}-\abs{W}$ to the cold reservoir.\\
+	Consider now a second engine which performs the same amount of work, but absorbs $\abs{Q_H'}$ from the hot reservoir and rejects $\abs{Q_C}=\abs{W}-\abs{Q_H'}$ heat to the cold reservoir
+	\begin{equation*}
+		\eta=\abs{\frac{W}{Q_H'}}
+	\end{equation*}
+	I.e. it will absorb $Q_H'$ from the same hot reservoir.\\
+	Let's assume that $\eta>\eta_C$, thus 
+	\begin{equation*}
+		\abs{\frac{W}{Q_H'}}>\abs{\frac{W}{Q_H}}\implies{}\abs{Q_H}>\abs{Q_H'}
+	\end{equation*}
+	Now suppose that we reverse the Carnot engine and take in the work $\abs{W}$ produced by the second machine. We will have that the total rejected heat to the cold source will be
+	\begin{equation*}
+		Q_{rej}=\left( \abs{Q_H}-\abs{W} \right)-\left( \abs{Q_H'}-\abs{W} \right)=\abs{Q_H}-\abs{Q_H'}
+	\end{equation*}
+	Since in order to have $\eta>\eta_C$ we must have $\abs{Q_H}>\abs{Q_H'}$ we have that $Q_{rej}>0$, and the complete machine is a Clausius refrigerator which transfers $\abs{Q_H}-\abs{Q_H'}$ from a cold to a hot reservoir without performing work, therefore in order to have the second law of thermodynamics hold we also must have, for \textit{any} machine
+	\begin{equation}
+		\eta\le\eta_C
+		\label{eq:carnottheorem.2nd}
+	\end{equation}
+\end{proof}
+\begin{cor}[Equality of Carnot Efficiencies]
+	All Carnot engines, working between two reservoirs, have the same efficiency $\eta$.
+\end{cor}
+\begin{proof}
+	Suppose that we have two Carnot engines with $\eta_1$ being the efficiency of the first and $\eta_2$ being the efficiency of the second.\\
+	Suppose that the engine 1 is driving the engine 2 backwards. Thus
+	\begin{equation*}
+		\eta_1\le\eta_2
+	\end{equation*}
+	If we reverse both engines, we will then have engine 2 driving engine 1 backwards, i.e.
+	\begin{equation*}
+		\eta_2\le\eta_1
+	\end{equation*}
+	Therefore, since the reservoirs are the same, the only way to support both statements is that
+	\begin{equation}
+		\eta_1=\eta_2
+	\end{equation}
+\end{proof}
+This theorem and its corollary are \textit{fundamental} for defining an \textit{absolute temperature scale}, also known as the \textit{thermodynamic temperature}. We have proven that due to the second law of thermodynamics
+\begin{enumerate}
+\item All (reversible) Carnot engines working between two reservoirs are \textit{equal}
+\item The efficiency of any Carnot machine working between $T_2<T_1$ is \textit{always}
+	\begin{equation*}
+		\eta_{12}=1-\frac{T_2}{T_1}
+	\end{equation*}
+\end{enumerate}
+From the definition of efficiency itself, we also have
+\begin{equation*}
+	\eta=1-\abs{\frac{Q_2}{Q_1}}\propto\varphi\left( T_1, T_2 \right)
+\end{equation*}
+With $\varphi(T_1, T_2)$ being a random, smooth enough function of the temperatures of the two reservoirs.\\
+Solving for the heats we have
+\begin{equation*}
+	\abs{\frac{Q_1}{Q_2}}=\frac{1}{1-\varphi\left( T_1, T_2 \right)}=f\left( T_1, T_2 \right)
+\end{equation*}
+Where $f$ is another smooth enough, random, function of the temperatures only. We have therefore found that heat (as we thought before) depends only on temperature.\\
+In order to better determine the functional shape of $f$, we take three temperatures $T_1>T_2>T_3$ and plug three Carnot machines working between them, then
+\begin{equation*}
+	\begin{aligned}
+		\abs{\frac{Q_1}{Q_2}}&= f\left( T_1, T_2 \right)\\
+		\abs{\frac{Q_1}{Q_3}}&= f\left( T_1, T_3 \right)\\
+		\abs{\frac{Q_3}{Q_2}}&= f\left( T_3, T_2 \right)
+	\end{aligned}
+\end{equation*}
+From the second and the third equation it's then possible to see that
+\begin{equation}
+	\abs{\frac{Q_1}{Q_2}}=f\left( T_1, T_2 \right)=\frac{f\left( T_1, T_3 \right)}{f\left( T_2, T_3 \right)}=\frac{\psi\left( T_1 \right)}{\psi\left( T_2 \right)}=\frac{T_1}{T_2}
+	\label{eq:abstemp.2nd}
+\end{equation}
+Note how the constraint on $f$ imposes that it must be a different function of a single variable, which, for the pleasure of everyone can just be taken to be the \textit{absolute} temperature of the reservoir.\\
+This temperature can be calculate to give, at the triple point of water, the already well known value of 
+\begin{equation}
+	T_{TP}=273.16\ \mathrm{K}
+	\label{eq:kelvindef.2nd}
+\end{equation}
+The units there are the usual Kelvins of thermodynamics.
+\subsection{Entropy}
+All the previous statements, albeit bulky in words, can be ``shortened'' mathematically with the introduction of a new quantity, known as the (thermodynamic) \emph{entropy function}. Suppose again that we have a generic engine with efficiency $\eta_G$ working between two reservoirs at \textit{absolute} temperatures $T_C<T_H$.\\
+Due to Clausius' theorem we will have
+\begin{equation*}
+	\eta_G=1+\frac{Q_C}{Q_H}\le1-\frac{T_C}{T_H}=\eta_C
+\end{equation*}
+With $\eta_C$ being the efficiency of a Clausius engine working between the same two reservoirs.\\
+Rearranging, we will get
+\begin{equation}
+	\frac{Q_L}{T_L}+\frac{Q_H}{T_H}\le0
+	\label{eq:clausius.ent}
+\end{equation}
+And, imagining the presence of infinite reservoirs between the two temperatures, we can generalize everything to an integral
+\begin{equation}
+	\int_{C}^{H}\frac{\slashed\dd Q}{T}=S_H-S_C\le0
+	\label{eq:entropyintegral.ent}
+\end{equation}
+Thanks to the fundamental theorem of calculus we have defined a primitive function $S$, known as \textit{entropy}.\\
+By definition, then, the absolute temperature becomes an \emph{integrating factor} for the inexact differential $\slashed\dd Q$, as was the pressure the integrating factor for work.\\
+We thus have
+\begin{equation}
+	\slashed\dd Q=T\dd S
+	\label{eq:entropyder.ent}
+\end{equation}
+Suppose now that we have two generic equilibrium states $A$ and $B$. If we perform a reversible transformation from $A$ to $B$ and vice versa we will have
+\begin{equation}
+	\oint\dd S=\int_A^B\frac{\slashed\dd Q}{T}-\int_A^B\frac{\slashed\dd Q}{T}=0
+	\label{eq:entropyrev.ent}
+\end{equation}
+I.e., in a \textit{reversible} cycle the total entropy will always be equal to zero. The equality is clear, since we have \textit{defined} the cycle reversible, i.e., from \eqref{eq:clausius.ent} considering the two points we have chosen and the reversibility of the transformation, we must choose the equality instead of them being less than 0.\\
+It's important to note that the equality \label{eq:entropyder.ent} holds \textit{if and only if} the process in study is \textit{reversible}. It does not hold for irreversible processes, albeit it's still possible to define an entropy function even in that case.\\
+Consider now this special case, where the process $A$ to $B$ is irreversible, while the process $B$ to $A$ is reversible.\\
+We will have in the full cycle
+\begin{equation*}
+	\oint\frac{\slashed\dd Q}{T}=\int_{A}^{B}\frac{\slashed\dd Q}{T}-\int_A^B\dd S<0
+\end{equation*}
+Where we used the equality \eqref{eq:entropyder.ent} in the reversible part. Indicating the result of that integral simply as $\Delta S$, we will have that, thanks to the generality of the irreversible path chosen between $A$ and $B$, that \textit{entropy increases in irreversible paths}
+\begin{equation}
+	\Delta S>\int\frac{\slashed\dd Q}{T}>0
+	\label{eq:increaseofentropy.ent}
+\end{equation}
+All statements can be simply written in a single equation as
+\begin{equation}
+	\Delta S\ge\int\frac{\slashed\dd Q}{T}
+	\label{eq:entropy.ent}
+\end{equation}
+Consider now the two separate processes that the system performs and the surrounding environment performs. Said $\Delta S_{surr}$ as the entropy variation of the surroundings and $\Delta S_{sys}$ the one of the system, thanks to the definition of system and surroundings we can define the entropy variation of the universe, $\Delta S_\Omega$, and therefore
+\begin{equation}
+	\boxed{\Delta S_{\Omega}=\Delta S_{surr}+\Delta S_{sys}\ge0}
+	\label{eq:universeentinc.ent}
+\end{equation}
+For irreversible transformations, this reduces to the \textit{principle of increase of the entropy of the universe}. This is the mathematical formulation of the second law of thermodynamics.\\
+With these definitions we can rewrite the first law of thermodynamics in a way that includes the second law. Imposing \eqref{eq:entropyder.ent} we get
+\begin{equation}
+	\boxed{\dd U = T\dd S - \slashed\dd W}
+	\label{eq:1+2.2nd}
+\end{equation}
+Which, considering only ideal gases and thermodynamic work, becomes
+\begin{equation}
+	\boxed{\dd U = T\dd S - p\dd V}
+	\label{eq:1+2ig.2nd}
+\end{equation}
+It's clear that then, the ``natural'' variables of internal energy are entropy and volume
+\begin{equation*}
+	U_{nat}=U(S, V)
+\end{equation*}
+\subsubsection{TS Diagrams}
+The definition of entropy as a state variable lets us design a new kind of thermodynamic diagram, known as the \emph{T-S diagram}.\\
+For the definition of the functional relations that get drawn on this diagram, for an ideal gas, we can calculate the generic functional dependency of entropy with respect to pressure, volume and temperature.\\
+Rewriting the relationship \eqref{eq:1+2ig.2nd} in terms of entropy, we have
+\begin{equation*}
+	T\dd S=\dd U+p\dd V
+\end{equation*}
+Which can directly be integrated after taking into account the equation of state $pV=nRT$ and $\dd U=nc_V\dd T$.\\
+\begin{equation*}
+	\Delta S(T, V)=nc_V\int_{A}^{B}\frac{1}{T}\dd^{}{T}+nR\int_{A}^{B}\frac{1}{V}\dd^{}{V}=nc_V\log\left( \frac{T_B}{T_A} \right)+nR\log\left( \frac{V_B}{V_A} \right)
+\end{equation*}
+In terms of the other two combinations of state variables, we have after algebraic manipulation of the differentials, remembering that:
+\begin{equation*}
+	\begin{paligned}
+		p\dd V&= \dd\left( pV \right)-V\dd p\\
+		\dd\left( pV \right)&= nR\dd T
+	\end{paligned}
+\end{equation*}
+We have that entropy can be rewritten as follows
+\begin{equation*}
+	T\dd S=n\left( c_V+R \right)\dd T-V\dd p=nc_p\dd T-V\dd p
+\end{equation*}
+Or, also, noting that
+\begin{equation*}
+	T=\frac{pV}{nR}\implies\dd T=\frac{1}{nR}\left( p\dd V+V\dd p \right)
+\end{equation*}
+Entropy can be rewritten again as
+\begin{equation*}
+	\dd S= \frac{nc_V}{p}\dd p+\frac{nc_p}{V}\dd V
+\end{equation*}
+The integration of the previous differential forms are trivial. One thing to note is that in the case of an adiabatic and reversible transformation (isoentropic), we will have \textit{by definition}
+\begin{equation*}
+	\dd S = 0
+\end{equation*}
+for the second law of thermodynamics, is important to remember that when the process is \textit{irreversible} the previous equation does not hold anymore, since $\dd S\ne\slashed\dd Q$ at that point, and we will have
+\begin{equation*}
+	\dd S > 0
+\end{equation*}
+\end{document}
