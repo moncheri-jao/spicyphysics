@@ -1,0 +1,191 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	A canonical system can be seen as two systems, where the first one is much smaller and embedded into the second. Both system interact between each other by transferring energy. In order to work better we begin by constructing the density operator for such system.\\
+		The Hamiltonian for this kind of system will then be the following
+		\begin{equation}
+			\opr{\ham}=\opr{\ham}_1+\opr{\ham}_2
+			\label{eq:canonicalhamiltonian}
+		\end{equation}
+		We now want to find the density operator for the first system, with Hamiltonian $\opr{\ham}_1$.\\
+		Let $P_1$ be the probability that the subsystem 1 is in a state $\ket{n}$ with energy eigenvalue $E^{(1)}_n$, then using the microcanonical distribution for the total system we find
+		\begin{equation}
+			P_1=\qsum_{\{\ket{n}_2\}}\frac{1}{\Omega_{1,2}(E)\delta}=\frac{\Omega_2(E-E_n^{(1)})}{\Omega_{1,2}(E)}
+			\label{eq:probabilityfirstsystemgc}
+		\end{equation}
+		In case that the system 2 is much bigger than the system 1 (which is our case), we can expand the logarithm of $\Omega_2(E-E_n^{(1)})$, therefore
+		\begin{equation}
+			P_{1}\approx\frac{\Omega_2(E-\tilde{E}_1)}{\Omega_{1,2}(E)}e^{\frac{\tilde{E}_1-E_n^{(1)}}{k_BT}}=\frac{1}{Z}e^{-\frac{E_n^{(1)}}{k_BT}}
+			\label{eq:probabilitysystem1approx}
+		\end{equation}
+		The factor $Z$ is called the \textit{partition function} of the system, and it's calculated as
+		\begin{equation*}
+			Z=\frac{\Omega_{1,2}(E)}{\Omega_2(\tilde{E}_2)}e^{-\frac{\tilde{E}_1}{k_BT}}
+		\end{equation*}
+		Or, directly as
+		\begin{equation}
+			Z=\sum_ne^{-\frac{E_n^{(1)}}{k_BT}}=\trace_1e^{-\frac{\opr{\ham}_1}{k_BT}}
+			\label{eq:canonicalpartitionfunction}
+		\end{equation}
+		The canonical density operator is then given by the following calculation
+		\begin{equation}
+			\dopr_C=\sum_nP_1\ket{n}\bra{n}=\frac{1}{Z}\sum_ne^{-\frac{E_n^{(1)}}{k_BT}}\ket{n}\bra{n}=\frac{1}{Z}e^{-\frac{\opr{\ham}_1}{k_BT}}
+			\label{eq:canonicaldensityoperator}
+		\end{equation}
+		A second route which is both valid in the classical and quantum world is given as follows.\\
+		We can write the following equality
+		\begin{equation}
+			\dopr_C=\trace_2\dopr_{MC}=\trace_2\left( \frac{\opr{\delta}\left( \opr{\ham}_1+\opr{\ham}_2-E \right)}{\Omega_{1,2}(E)} \right)=\frac{\Omega_2(E-\opr{\ham}_1)}{\Omega_{1,2}(E)}
+			\label{eq:canonicaloperator}
+		\end{equation}
+		Approximating, we get
+		\begin{equation}
+			\dopr_C\approx\frac{\Omega_2(E-\tilde{E}_1)}{\Omega_{1,2}(E)}e^{\frac{\tilde{E}_1-\opr{\ham}_1}{k_BT}}
+			\label{eq:canonicaloperatorapprox}
+		\end{equation}
+		With this definition of density operator, the expected value for an observable in the subsystem 1 is then given as follows
+		\begin{equation}
+			\expval{\opr{A}}=\trace_1\trace_2\dopr_{MC}\opr{A}=\trace_1\dopr_C\opr{A}
+			\label{eq:expvalcanonical}
+		\end{equation}
+		If we transform the quantum traces to integrals in the classical case, we can then define the \textit{partition function} of the system
+		\begin{equation}
+			Z=\int_{}^{}e^{-\frac{\ham_1(q_1,p_1)}{k_BT}}\diff{\Gamma_1}
+			\label{eq:partitionfunction}
+		\end{equation}
+		With the $\sum\leftrightarrow\int$ substitution the expected value of an observable is then given, obviously, by
+		\begin{equation}
+			\expval{A(q_1,p_1)}=\int_{}^{}\rho_C(q_1,p_1)A(q_1,p_1)\diff{\Gamma_1}
+			\label{eq:expectedvalue}
+		\end{equation}
+		\section{Entropy of the Canonical Ensemble}
+		From the definition of the microcanonical Von Neumann entropy we can define the entropy of the canonical ensemble as follows
+		\begin{equation}
+			S_C=-k_B\expval{\log\dopr_C}=\frac{1}{T}\expval{\opr{\ham}}+k_B\log\left( Z \right)
+			\label{eq:canonicalentropy}
+		\end{equation}
+		Supposing that $\dopr$ corresponds to a different distribution with the same average energy, we then can define the following inequality
+		\begin{equation}
+			S[\dopr]=-k_B\trace(\dopr\log\dopr)\le k_B\trace(\dopr\log\dopr_C)=\frac{1}{T}\expval{\opr{\ham}}+k_B\log(Z)=S_C
+			\label{eq:canonicalentropydisuguagliance}
+		\end{equation}
+		I.e. the canonical ensemble has the greatest entropy of all ensembles $\dopr$ with the same average energy $\expval{\dopr}$.
+		\section{The Virial Theorem and the Equipartition Theorem}
+		\begin{thm}[Classical Virial Theorem]
+			For a system with Hamiltonian $\ham=T+V$, the following relation holds true
+			\begin{equation}
+				\expval{q^ii\partial_jV}=k_BT\delta_j^i
+				\label{eq:virialtheoremclassical}
+			\end{equation}
+		\end{thm}
+		\begin{proof}
+			Let's consider a classical system with coordinates $x_i=(q^ii,p_i)$, and we calculate the average value of the quantity $x^i\partial_j\ham$. We have
+			\begin{equation*}
+				\expval{x^i\partial_j\ham}=\frac{1}{Z}\int_{}^{}x_i\partial_j\ham e^{-\frac{\ham}{k_BT}}\diff{\Gamma}
+			\end{equation*}
+			Applying an integration by part we obtain
+			\begin{equation}
+				\expval{x^i\partial_j\ham}=-\frac{k_BT}{Z}\int_{}^{}x^i\partial_je^{-\frac{\ham}{k_BT}}\diff{\Gamma}=k_BT\delta_{j}^i
+				\label{eq:virialtheoremcomplete}
+			\end{equation}
+			Applying this with the spatial coordinates $q_i$, we obtain what was searched with the theorem.
+		\end{proof}
+%		For evaluating this theorem in the quantum case, we write the following Hamiltonian
+%		\begin{equation}
+%			\opr{\ham}=\sum_i\frac{\opr{p}_{ij}^2}{2m}+\sum_iV(\opr{x}_{ij}-\tilde{\opr{x}}_{ij})+\frac{1}{2}\sum_{ik}v(\opr{x}_{ij}-\opr{x}_{kl})
+%			\label{eq:virialtheorem}
+%		\end{equation}
+%		It follows from this Hamiltonian that
+		\section{Thermodynamic Quantities in the Canonical Ensemble}
+		\subsection{Equivalence of the Canonical and Microcanonical Macroscopic Ensembles}
+		We start this section by stating the equivalence of the canonical and microcanonical ensembles for macroscopic systems. We have in this case that if $E_1$ is the most probable energy, we have
+		\begin{equation}
+			\expval{E}=E_1
+			\label{eq:canonicalequvalence}
+		\end{equation}
+		We start by rewriting the canonical partition functions in terms of the width of the most probable energy eigenvalue $E_1$ which we defined before. We have
+		\begin{equation}
+			Z=\frac{\Omega_{1,2}(E)}{\Omega_1(E_1)\Omega_2(E-E_1)}\Omega_1(E_1)e^{-\frac{E_1}{k_BT}}=\frac{\Omega_1(E_1)}{\omega(E_1)}e^{-\frac{E_1}{k_BT}}
+			\label{eq:newpartitionfunction}
+		\end{equation}
+		We have tho that
+		\begin{equation*}
+			\omega(E_1)\sim \frac{1}{\sqrt{N_1}}e^{-\frac{3(\tilde{E}_1-E_1)^2}{4N_1E_1}}
+		\end{equation*}
+		With $N_1$ as a normalization factor. From this we can write the partition function as
+		\begin{equation}
+			Z=\Omega(E_1)e^{-\frac{E_1}{k_BT}}\sqrt{N_1}
+			\label{eq:partitionfunctionequivalencenew}
+		\end{equation}
+		Evaluating now the canonical entropy, we have
+		\begin{equation}
+			S_C=\frac{1}{T}\left( \expval{E}-E_1+k_BT\log(\Omega_1(E_1)) \right)=S_{MC}(E_1)
+			\label{eq:entropyequivalence}
+		\end{equation}
+		So, basically the entropy of a canonical ensemble is equal to that of the microcanonical ensemble with energy $E_1=\expval{E}$. In both ensembles, then, one obtains the same identical results.
+		\subsection{Thermodynamic Quantities}
+		In these calculations, we'll leave all the indexes 1, referring to the small system inside the heat bath.\\
+		By definition, we write $\beta=(k_BT)^{-1}$, and our canonical density operator becomes
+		\begin{equation}
+			\dopr_C=\frac{e^{\beta\opr{\ham}}}{Z}
+			\label{eq:canonicalmatrix}
+		\end{equation}
+		Where
+		\begin{equation}
+			Z=\trace e^{-\beta\opr{\ham}}
+			\label{eq:partitionfunctioncanonicalthermodynamics}
+		\end{equation}
+		We also define the \textit{free energy} $F$ as follows
+		\begin{equation}
+			F=-k_BT\log Z
+			\label{eq:freeenergy}
+		\end{equation}
+		From the definition of entropy we have
+		\begin{equation}
+			S_C=\frac{1}{T}\left( \expval{E}+k_B\log Z \right)
+			\label{eq:entropy}
+		\end{equation}
+		Where
+		\begin{equation}
+			\expval{E}=\expval{\opr{\ham}}=-\pdv{\beta}\log(Z)=k_BT^2\pdv{T}\log(Z)
+			\label{eq:energyaverage}
+		\end{equation}
+		And last but not least, pressure
+		\begin{equation}
+			P=-\expval{\pdv{\opr{\ham}}{V}}=k_BT\pdv{V}\log(Z)
+			\label{eq:pressurecanonical}
+		\end{equation}
+		From this last definition of energy, it follows
+		\begin{equation}
+			F=\expval{E}-TS_C
+			\label{eq:freeenergy2}
+		\end{equation}
+		Taking its total differential and evaluating, we get
+		\begin{equation}
+			\begin{aligned}
+				\diff{F}&=-\frac{1}{T}\left( \expval{E}+k_BT\log(Z) \right)\diff{T}+\expval{\pdv{\opr{\ham}}{V}}\diff{V}\\
+				\diff{F}&=-S_C\diff{T}-P\diff{V}
+			\end{aligned}
+			\label{eq:freenergy3}
+		\end{equation}
+		\subsection{Heat}
+		In order to define the statistical meaning of \textit{heat transfer} we need to begin with the average value of energy.
+		\begin{equation}
+			\expval{E}=\expval{\opr{\ham}}=\trace(\dopr\opr{\ham})
+			\label{eq:expvaleheat}
+		\end{equation}
+		In general, we have $\expval{E}=\sum_ip_iE_i$ with $E_i$ as our energy eigenstate and $p_i$ its associated variable.\\
+		Since
+		\begin{equation*}
+			\diff{\expval{E}}=\sum_iE_i\diff{p_i}+\sum_ip_i\diff{E_i}
+		\end{equation*}
+		And
+		\begin{equation*}
+			\diff{\expval{E}}=T\diff{S}+\expval{\pdv{\opr{\ham}}{V}}\diff{V}
+		\end{equation*}
+		We obtain, from the definition $\diff{Q}=T\diff{S}$
+		\begin{equation}
+			\diff{Q}=\sum_iE_i\diff{p_i}
+			\label{eq:heatdiff}
+		\end{equation}
+		This defines the heat variation as a redistribution of the occupation probabilities of the $i$-th state $\ket{i}$
+\end{document}

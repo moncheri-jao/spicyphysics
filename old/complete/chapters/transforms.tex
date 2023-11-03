@@ -1,0 +1,79 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Common Fourier Transforms}
+In this appendix, you'll find a table of some particular Fourier transforms that might pop up in Fourier calculus, and might also be helpful for calculating more complex transforms.\\
+Note that
+\begin{equation}
+	\fou[f](\lambda)=\int_\R f(x)e^{-i\lambda x}\diff x
+\end{equation}
+\\
+\begin{center}
+\begin{equation*}
+	\begin{Vmatrix}
+		f(x) &\text{Conditions}& \fou[f](\lambda) \\
+		\hline\\
+		\1_{[-a,a]}(x) && \dfrac{2\sin(\lambda a)}{\lambda} \\
+		\\\hline\\
+		 \mathrm{rect}(x) && \mathrm{sinc}(\lambda/2\pi) \\
+		\\\hline\\
+		 \mathrm{tri}(x) && \mathrm{sinc}^2(\lambda/2\pi) \\
+		\\\hline\\
+		 \mathrm{sinc}(x) && \mathrm{rect}(\lambda/2\pi) \\
+		\\\hline\\
+		\cos(x)\1_{[-a,a]} && \dfrac{\sin[(\lambda+1)a]}{\lambda+1}+\dfrac{\sin[(\lambda-1)a]}{\lambda-1} \\
+		\\\hline
+	\end{Vmatrix}
+\end{equation*}
+\begin{equation*}
+	\begin{Vmatrix}
+		f(x) & \text{Conditions} & \fou[f](\lambda) \\
+		\hline\\
+		e^{-\abs{x}} & & \dfrac{2a}{\lambda^2+a^2} \\
+		\\\hline\\
+		H(x)e^{-ax} & a>0 & \dfrac{1}{a+i\lambda}\\
+		\\\hline\\
+		H(ax)e^{-ax} && \dfrac{\sgn(a)}{a+i\lambda} \\
+		\\\hline\\
+		\dfrac{1}{a^2+x^2} && \dfrac{\pi}{a}e^{-a\abs{\lambda}} \\
+		\\\hline\\
+		\dfrac{1}{a^2x^2+bx+c} & \beta=\dfrac{\sqrt{4ac-b^2}}{2\abs{a}}>0 & \dfrac{\pi}{\beta a} e^{-\beta\abs{\lambda}+i\frac{\lambda}{2a}}  \\
+		\\\hline\\
+		\dfrac{1}{(x^2+1)^2} & & \dfrac{\pi}{2}e^{-\abs{\lambda}}(\abs{\lambda}+1) \\
+		\\\hline\\
+		\dfrac{1}{1+x^4}&& \pi e^{-\frac{\abs{\lambda}}{\sqrt{2}}}\sin\left(\frac{\lambda}{2}+\frac{\pi}{4}\right) \\
+		\\\hline\\
+		e^{-ax^2} && \sqrt{\dfrac{\pi}{a}}e^{-\frac{\lambda^2}{4a}} \\
+		\\\hline\\
+		e^{ix^2} && \sqrt{\dfrac{\pi}{2}}(1+i)e^{-\frac{i\lambda^2}{4}}\\
+		\\\hline\\
+		e^{-ix^2}&&\sqrt{\dfrac{\pi}{2}}(1-i)e^{\frac{i\lambda^2}{4}}\\
+		\\\hline\\
+		\cos(x^2) & &\sqrt{\pi}\cos\left[ \frac{\lambda^2-\pi}{4} \right] \\
+		\\\hline\\
+		\sin(x^2)  && -\sqrt{\pi}\sin\left[ \frac{\lambda^2-\pi}{4} \right] \\
+		\\\hline\\
+		\sech(x)&&\pi\sech\left( \dfrac{\pi\lambda}{2} \right)
+		\\\hline\\
+		\dfrac{e^{-\frac{x^2}{2}}}{\sqrt{\sqrt{\pi}2^nn!}}H_n(x) && \dfrac{(-i)^n\sqrt{2\pi}e^{\frac{\lambda^2}{2}}}{\sqrt{\sqrt{\pi}2^nn!}}H_n(\lambda) \\
+		\\\hline
+	\end{Vmatrix}
+\end{equation*}
+%\begin{equation*}
+%	\centering
+%	\begin{matrix}
+%		f(x) & \fou[f](\lambda) & \text{Conditions}\\
+%		\hline\\
+%	\end{matrix}
+%\end{equation*}
+\end{center}
+\vskip3\baselineskip
+Remember that:
+\begin{equation}
+	\left\{\begin{aligned}
+		&\sinc\left( \frac{x}{2\pi} \right)=\frac{2}{x}\sin\left( \frac{x}{2} \right)\\
+		&\rect(x)=\1_{[-\frac{1}{2},\frac{1}{2}]}(x)\\
+		&\tri(x)=\max\left\{ 1-\abs{x},0 \right\}\\
+		&\sech(x)=\frac{1}{\cosh(x)}
+	\end{aligned}\right.
+\end{equation}
+\end{document}

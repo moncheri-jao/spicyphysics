@@ -1,0 +1,502 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Tensors and $k$-forms}
+\subsection{Basic Definitions, Tensor Product and Wedge Product}
+%{\centering\fontsize{40}{50}{\selectfont\bfseries\textit{DIO CANE}\par}}
+\begin{dfn}[Multilinear Functions, Tensors]
+	Let $\V$ be a real vector space, and take $\V^k=\V\times\cdots\times\V$ $k-$times. A function $T:\V^k\fto\R$ is called \textit{multilinear} if $\forall i=1,\cdots,k,\ \forall a\in\R,\ \forall v,w\in\V$
+	\begin{equation}
+		T(v_1,\cdots,av_i+w_i,\cdots,v_k)=aT(v_1,\cdots,v_i,\cdots,v_k)+T(v_1,\cdots,w_i,\cdots,v_k)
+		\label{eq:multilinearapp}
+	\end{equation}
+	A multilinear function of this kind is called \textit{k-tensor} on $\V$. The set of all $k-$tensors is denoted as $\mathcal{T}^k(\V)$ and is a real vector space.\\
+	The tensor $T$ is usually denoted as follows
+	\begin{equation}
+		T_{\mu_1\ldots\mu_k}
+		\label{eq:ktensordef}
+	\end{equation}
+	Where each index indicates a slot of the multilinear application $T(-,\cdots,-)$
+\end{dfn}
+\begin{dfn}[Tensor Product]
+	Let $S\in\mathcal{T}^k(V),T\in\mathcal{T}^l(\V)$, we define the \textit{tensor product} $S\otimes T\in\mathcal{T}^{k+l}(\V)$ as follows
+	\begin{equation}
+		(S\otimes T)(v_1,\cdots,v_k,v_{k+1},\cdots,v_{k+l})=S(v_1,\cdots,v_k)T(v_{k+1},\cdots,v_{k+l})
+		\label{eq:tensorprod}
+	\end{equation}
+	This product has the following properties
+	\begin{equation}
+		\begin{aligned}
+			\left( S_1+S_2 \right)\otimes T&=S_1\otimes T+S_2\otimes T\\
+			S\otimes(T_1+T_2)&=S\otimes T_1+S\otimes T_2\\
+			(aS)\otimes T&=S\otimes(aT)=a(S\otimes T)\\
+			(S\otimes T)\otimes U&= S\otimes(T\otimes U)=S\otimes T\otimes U
+		\end{aligned}
+		\label{eq:properties}
+	\end{equation}
+	If $S=S_{\mu_1\ldots\mu_k}$ and $T=T_{\mu_{k+1}\ldots\mu_{k+l}}$ we have
+	\begin{equation}
+		(S\otimes T)_{\mu_1\ldots\mu_k\mu_{k+1}\ldots\mu_{k+l}}=S_{\mu_1\ldots\mu_k}T_{\mu_{k+1}\ldots\nu_{k+l}}
+		\label{eq:tensorprodein}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Dual Space]
+	We define the \textit{dual space} of a real vector space $\V$ as the space of all \textit{linear functionals} from the space to the field over it's defined, and it's indicated with $\V^{\star}$. I.e. let $\varphi^\mu\in\V^{\star}$, then $\varphi^\mu:\V\fto\R$.\\
+	It's easy to see how $\V^{\star}=\tpwr^1(\V)$.
+\end{dfn}
+\begin{thm}
+	Let $\mathcal{B}=\{v_{\mu_1},\cdots,v_{\mu_n}\}$ be a basis for the space $\V$, and let $\mathcal{B}^{\star}:=\{\varphi^{\mu_1},\cdots,\varphi^{\mu_n}\}$ be the basis of the dual space, i.e. $\varphi^\mu v_\nu=\delta^\mu_\nu\ \forall\varphi^\mu\in\mathcal{B}^\star,\ v_\mu\in\mathcal{B}$, then the set of all k-fold tensor products has basis $\mathcal{B}_\tpwr$, where
+	\begin{equation}
+		\mathcal{B}_\tpwr:=\{\varphi^{\mu_1}\otimes\cdots\otimes\varphi^{\mu_k},\ \forall i=1,\cdots,n\}
+		\label{eq:tensorbasis}
+	\end{equation}
+\end{thm}
+\begin{thm}[Linear Transformations on Tensor Spaces]
+	If $f^\mu_\nu:\V\fto\W$ is a linear transformation, $f^\nu_\mu\in\mathcal{L}(\V,\W)$, one can define a linear transformation $f^\star:\tpwr^k(W)\fto\tpwr^k(V)$ as follows
+	\begin{equation*}
+		f^\star T(v_{\mu_1},\cdots,v_{\mu_k})=T(f^\mu_\nu v_{\mu_1},\cdots,f_\nu^\mu v_{\mu_k})
+	\end{equation*}
+\end{thm}
+\begin{thm}
+	If $g$ is an inner product on $\V$ (i.e. $g:\V\times\V\fto\R$, with the properties of an inner product), there is a basis $v_{\mu_1},\cdots,v_{\mu_n}$ of $\V$ such that $g(v_\mu,v_\nu)=g_{\mu\nu}=g_{\nu\mu}=g(v_\nu,v_\mu)=\delta_{\mu\nu}$. This basis is called \textit{orthonormal} with respect to $T$. Consequently there exists an isomorphism $f^\mu_\nu:\R^n\fto[\sim]\V$ such that
+	\begin{equation}
+		g(f^\mu_\nu x^\nu,f^\mu_\nu y^\nu)=x_\mu y^\mu=g_{\mu\nu}x^\mu y^\nu
+	\end{equation}
+	I.e.
+	\begin{equation}
+		f^\star g(\cdot,\cdot)=g_{\mu\nu}
+	\end{equation}
+\end{thm}
+\begin{dfn}[Alternating Tensor]
+	Let $\V$ be a real vector space, and $\omega\in\tpwr^k(\V)$. $\omega$ is said to be \textit{alternating} if
+	\begin{equation}
+		\begin{aligned}
+			\omega(v_{\mu_1},\cdots,v_{\mu_i},\cdots,v_{\mu_j},\cdots,v_{\mu_k})&=-\omega(v_{\mu_1},\cdots,v_{\mu_j},\cdots,v_{\mu_i},\cdots,v_{\mu_k})\\
+			\omega(v_{\mu_1},\cdots,v_{\mu_i},\cdots,v_{\mu_i},\cdots,v_{\mu_k})&=0
+		\end{aligned}
+		\label{eq:alternatingtensor}
+	\end{equation}
+	Or, compactly
+	\begin{equation}
+		\begin{aligned}
+			\omega_{\mu\ldots\nu\ldots\gamma\ldots\sigma}&=-\omega_{\mu\ldots\gamma\ldots\nu\ldots\sigma}\\
+			\omega_{\mu\ldots\nu\ldots\nu\ldots\gamma}&=0
+		\end{aligned}
+		\label{eq:alttensein}
+	\end{equation}
+	The space of all alternating $k-$tensors on $\V$ is indicated as $\Lambda^k(\V)$, and we obviously have that $\Lambda^k(\V)\subset\tpwr^k(\V)$.\\
+	We can define an application $\alt:\tpwr^k(\V)\fto\Lambda^k(\V)$ as follows
+	\begin{equation}
+		\alt(T)(v^\mu_1,\cdots,v^\mu_k)=\frac{1}{k!}\sum_{\sigma\in\Sigma_k}\sgn(\sigma)T(v^\mu_{\sigma(1)},\cdots,v^\mu_{\sigma(k)})
+		\label{eq:alternating}
+	\end{equation}
+	With $\sigma=(i,j)$ a permutation and $\Sigma_k$ the set of all permutations of natural numbers $1,\cdots,k$
+	Compactly, we define an operation on the indices, indicated in square brackets, called the \textit{antisymmetrization} of the indices inside the brackets.\\
+	This definition is much more general, since it lets us define a partially antisymmetric tensor, i.e. antisymmetric on only some indices.
+	\begin{equation}
+		\alt(T_{\mu_1\ldots\mu_k})=\frac{1}{k!}T_{[\mu_1\ldots\mu_k]}
+		\label{eq:antisymmbra}
+	\end{equation}
+	As an example, for a $2-$tensor $a_{\mu\nu}$ we can write
+	\begin{equation}
+		a_{[\mu\nu]}=\frac{1}{2}\left( a_{\mu\nu}-a_{\nu\mu} \right)=\tilde{a}_{\mu\nu}\in\Lambda^2(\V)
+		\label{eq:2tensorantisymmbra}
+	\end{equation}
+	This is valid for general tensors. If we define a $k-$tensor over the product repeated $k$ times for $\V$ and $k$ for its dual space $\V\times\cdots\V\times\V^\star\times\cdots\times\V^\star$, we can define the space $\tpwr^{k}(\V\times\V^\star)=\W$. Let the basis for this space be the following
+	\begin{equation*}
+		\mathcal{B}_{\W}:=\{v_{\mu_1}\otimes\cdots\otimes v_{\mu_k}\otimes\varphi^{\nu_1}\otimes\cdots\otimes\varphi^{\nu_k}\}
+	\end{equation*}
+	Then an element $\mathcal{Y}$ of the space $\W$ can be written as follows
+	\begin{equation*}
+		\mathcal{Y}(v_{\mu_1},\cdots,v_{\mu_k},\varphi^{\nu_1},\cdots,\varphi^{\nu_k})=\mathcal{Y}^{\nu_1\ldots\nu_k}_{\mu_1\ldots\mu_k}
+	\end{equation*}
+	We can define a new element $Y\in\Lambda^k(\V\times\V^\star)$ using the antisymmetrization brackets
+	\begin{equation*}
+		Y^{\nu_1\ldots\nu_k}_{\mu_1\ldots\mu_k}=\mathcal{Y}^{[\nu_1\ldots\nu_k]}_{[\mu_1\ldots\mu_k]}
+	\end{equation*}
+	We can define also partially antisymmetric parts as follows
+	\begin{equation*}
+		R^{\nu_1\ldots\nu_k}_{\mu_1\ldots\mu_k}=\mathcal{Y}^{\nu_1\ldots[\nu_i\nu_{i+1}]\ldots\nu_k}_{\mu_1\ldots[\mu_{l}\mu_{l+1}]\ldots\mu_k}=\frac{1}{4!}\left( \mathcal{Y}^{\nu_1\ldots\nu_i\nu_{i+1}\ldots\nu_k}_{\mu_1\ldots\mu_{l}\mu_{l+1}\ldots\mu_k}-\mathcal{Y}^{\nu_1\ldots\nu_{i+1}\nu_{i}\ldots\nu_k}_{\mu_1\ldots\mu_{l}\mu_{l+1}\ldots\mu_k}+\mathcal{Y}^{\nu_1\ldots\nu_i\nu_{i+1}\ldots\nu_k}_{\mu_1\ldots\mu_{l}\mu_{l+1}\ldots\mu_k}-\mathcal{Y}^{\nu_1\ldots\nu_i\nu_{i+1}\ldots\nu_k}_{\mu_1\ldots\mu_{l+1}\mu_{l}\ldots\mu_k} \right)
+	\end{equation*}
+	Note how the indexes in the expressions with the label $i$ and $l$ simply got switched, and in the new definition, the tensor $R$ is antisymmetric in both the \textit{covariant} (lower) indexes $\mu_l,\mu_{l+1}$ and in the \textit{contravariant} (upper) indexes $\nu_i,\nu_{i+1}$, where obviously $i,l\le k$
+\end{dfn}
+\begin{thm}
+	Let $T\in\tpwr^k(\V)$ and $\omega\in\Lambda^k(\V)$. Then
+	\begin{equation}
+		\begin{aligned}
+			T_{[\mu_1\ldots\mu_k]}&\in\Lambda^k(\V)\\
+			\omega_{[\mu_1\ldots\mu_k]}&=\omega_{\mu_1\ldots\mu_k}\\
+			T_{[[\mu_1\ldots\mu_k]]}&=T_{[\mu_1\ldots\mu_k]}
+		\end{aligned}
+		\label{eq:propalt}
+	\end{equation}
+\end{thm}
+\begin{dfn}[Wedge Product]
+	Let $\omega\in\Lambda^k(\V),\ \eta\in\Lambda^l(\V)$. In general $\omega\otimes\eta\notin\Lambda^{k+l}(\V)$, hence we define a new product, called the \textit{wedge product}, such that $\omega\wedge\eta\in\Lambda^{k+l}(\V)$
+	\begin{equation}
+		\omega_{\mu_1\ldots\mu_k}\wedge\eta_{\nu_1\ldots\nu_k}=\frac{(k+l)!}{k!l!}\omega_{[\mu_1\ldots\mu_k}\eta_{\nu_1\ldots\nu_l]}
+		\label{eq:wedgreprod}
+	\end{equation}
+	With the following properties\\
+	$\forall\omega,\omega_1,\omega_2\in\Lambda^k(\V),\ \forall\eta,\eta_1,\eta_2\in\Lambda^l(\V),\ \forall a\in\R,\forall f^\star\in\mathcal{L}:\tpwr^k(\V)\fto\tpwr^l(\V)\ \forall\theta\in\Lambda^m(\V)$
+	\begin{equation}
+		\begin{aligned}
+			(\omega_1+\omega_2)\wedge\eta&=\omega_1\wedge\eta+\omega_2\wedge\eta\\
+			\omega\wedge(\eta_1+\eta_2)&=\omega\wedge\eta_1+\omega\wedge\eta_2\\
+			(\omega\wedge\eta)\wedge\theta&=\omega\wedge(\eta\wedge\theta)\\
+			a\omega\wedge\eta&=\omega\wedge a\eta=a(\omega\wedge\eta)\\
+			\omega\wedge\eta&=(-1)^{kl}\eta\wedge\omega\\
+			f^\star(\omega\wedge\eta)&=f^\star(\omega)\wedge f^\star(\eta)
+		\end{aligned}
+		\label{eq:wedgeprod}
+	\end{equation}
+\end{dfn}
+%{\noindent\fontsize{42}{30}{\selectfont\bfseries rifallo porcodeddio, da qui in poi\par}}
+\begin{thm}
+	The set
+	\begin{equation}
+		\{\varphi^{\mu_1}\wedge\cdots\wedge\varphi^{\mu_k},\ k<n\}\subset\Lambda^k(\V)
+		\label{eq:basislambdabig}
+	\end{equation}
+	Is a basis for the space $\Lambda^k(\V)$, and therefore
+	\begin{equation*}
+		\dim(\Lambda^k(\V))=\begin{pmatrix}n\\k\end{pmatrix}=\frac{n!}{k!(n-k)!}
+	\end{equation*}
+	Where $\dim(\V)=n$.\\
+	Therefore, $\dim(\Lambda^n(\V))=1$
+\end{thm}
+\begin{thm}
+	Let $v_{\mu_1},\cdots,v_{\mu_n}$ be a basis for $\V$, and take $\omega\in\Lambda^n(\V)$, then, if $w_\mu=a_\mu^\nu v_\nu$
+	\begin{equation}
+		\omega(w_{\mu_1}\cdots w_{\mu_n})=\det_{\mu\nu}(a^\mu_\nu)\omega(v_{\mu_1},\ldots,v_{\mu_n})
+		\label{eq:determinant1}
+	\end{equation}
+	Or using the basis representation of a vector $t^\mu=t^\mu w_\mu=t^\mu a_\mu^\nu v_\nu$ we have
+	\begin{equation}
+		\omega_{\mu_1\ldots\mu_n}t^{\mu_1}\cdots t^{\mu_n}=\det_{\mu\nu}(a^\mu_\nu)\omega_{\nu_1\ldots\nu_n}t^{\nu_1}\cdots t^{\nu_n}
+		\label{eq:determinant2}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Define $\eta_{\mu_1\ldots\mu_n}\in\tpwr^n(\R^n)$ as
+	\begin{equation*}
+	\eta_{\mu_1\ldots\mu_n}a^{\mu_1}_{\nu_1}a^{\mu_2}_{\nu_2}\cdots a^{\mu_n}_{v_n}=\omega_{\mu_1\ldots\mu_n}a^{\mu_1}_{\nu_1}\cdots a^{\mu_n}_{\nu_n}
+	\end{equation*}
+	Hence $\eta\in\Lambda^n(\R^n)$ so $\eta=\lambda\det(\cdot)$ for some $\lambda$, and
+	\begin{equation*}
+		\lambda=\eta_{\mu_1\ldots\mu_n}e^{\mu_1}\cdots e^{\mu_n}=\omega_{\mu_1\ldots\mu_n}v^{\mu_1}\cdots v^{\mu_n}
+	\end{equation*}
+\end{proof}
+\subsection{Volume Elements and Orientation}
+\begin{dfn}[Orientation]
+	The previous theorem shows that a $\omega\in\Lambda^n(\V),\ \omega\ne0$ splits the bases of $\V$ in two disjoint sets.\\
+	Bases for which $\omega(\mathcal{B}_v)>0$ and for which $\omega(\mathcal{B}_w)<0$. Defining $w^{\mu}=a^\mu_\nu v^\nu$ we have that the two bases belong to the same group iff $\det_{\mu\nu}(a^\mu_\nu)>0$. We call this the \textit{orientation} of the basis of the space. The \textit{usual orientation} of $\R^n$ is
+	\begin{equation*}
+		[e_\mu]
+	\end{equation*}
+	Given another two basis of $\R^n$ we can define (taking the first two examples)
+	\begin{equation*}
+		\begin{aligned}
+			&[v_\mu]\\
+			-&[w_\mu]
+		\end{aligned}
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Volume Element]
+	Take a vector space $\V$ such that $\dim(\V)=n$ and it's equipped with an inner product $g$, such that there are two bases $(v^{\mu_1},\cdots,v^{\mu_n}),\ (w^{\mu_1},\cdots,w^{\mu_n})$ that satisfy the \textit{orthonormality condition} with respect to this scalar product
+	\begin{equation}
+		g_{\mu\nu}v^{\mu_i} v^{\nu_j}=g_{\sigma\gamma}w^{\sigma_i} w^{\gamma_j}=\delta_{ij}
+		\label{eq:boncond}
+	\end{equation}
+	Then
+	\begin{equation*}
+		\omega_{\mu_1\ldots\mu_n}v^{\mu_1}\cdots v^{\mu_n}=\omega_{\mu_1\ldots\mu_n}w^{\mu_1}\cdots w^{\mu_n}=\det_{\mu\nu}(a^\mu_\nu)=\pm 1
+	\end{equation*}
+	Where
+	\begin{equation*}
+		w^\mu=a^\mu_\nu v^\nu
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\exists!\omega\in\Lambda^n(\V)\st\exists![w^{\mu_1},\cdots,w^{\mu_n}]=O
+	\end{equation*}
+	Where $O$ is the \textit{orientation} of the vector space.
+\end{dfn}
+\begin{dfn}[Cross Product]
+	Let $v^\mu_1,\cdots,v^\mu_n\in\R^{n+1}$ and define $\varphi_\nu w^\nu$ as follows
+	\begin{equation*}
+		\varphi_\nu w^\nu=\det\begin{pmatrix}v^{\mu_1}\\\vdots\\v^{\mu_n}\\w^\nu\end{pmatrix}
+	\end{equation*}
+	Then $\varphi\in\Lambda^1(\R^{n+1})$, and
+	\begin{equation*}
+		\exists!z^\mu\in\R^{n+1}\st z^\mu w_\mu=\varphi_\nu w^\nu
+	\end{equation*}
+	$z^\mu$ is called the \textit{cross product}, and it's indicated as
+	\begin{equation*}
+		z^\mu=v^{\nu_1}\times\cdots\times v^{\nu_n}=\epsilon^{\mu}_{\ \nu_1\ldots\nu_n}v^{\nu_1}\cdots v^{\nu_n}
+	\end{equation*}
+\end{dfn}
+\section{Tangent Space and Differential Forms}
+\begin{dfn}[Tangent Space]
+	Let $p\in\R^n$, then the set of all pairs $\{\derin{(p,v^\mu)}v^\mu\in\R^n\}$ is denoted as $T_{p}\R^n$ and it's called the \textit{tangent space} of $\R^n$ (at the point. This is a vector space defining the following operations
+	\begin{equation*}
+		(p,av^\mu)+(p,aw^\mu)=\left(p,a(v^\mu+w^\mu)\right)=a(p,v^\mu+w^\mu)\quad\forall v^\mu,w^\mu\in\R^n,\ a\in\R
+	\end{equation*}
+\end{dfn}
+\begin{rmk}
+	If a vector $v^\mu\in\R^n$ can be seen as an arrow from $0$ to the point $v$, a vector $(p,v^\mu)\in T_p\R^n$ can be seen as an arrow from the point $p$ to the point $p+v$. In concordance with the usual notation for vectors in physics, we will write $(p,v^\mu)=v^\mu$ directly, or $v^\mu_p$ when necessary to specify that we're referring to the vector $v^\mu\in T_p\R^n$. The point $p+v$ is called the \textit{end point} of the vector $v^\mu_p$.
+\end{rmk}
+\begin{dfn}[Inner Product in $T_p\R^n$]
+	The \textit{usual inner product} of two vectors $v^\mu_p,w^\mu_p\in T_p\R^n$ is defined as follows
+	\begin{equation}
+		\begin{aligned}
+			\spr{\cdot}{\cdot}_p:&T_p\R^n\times T_p\R^n\fto\R\\
+			v^\mu_pw_\mu^p&=v^\mu w_\mu=k
+		\end{aligned}
+		\label{eq:tanscalarprod}
+	\end{equation}
+	Analogously, one can define the usual orientation of $T_p\R^n$ as follows
+	\begin{equation*}
+		[(e^{\mu_1})_p,\cdots,(e^{\mu_n})_p]
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Vector Fields, Again]
+	Although we already stated a definition for a vector field, we're gonna now state the actual precise definition of vector field\\
+	Let $p\in\R^n$ be a point, then a function $f^\mu(p):\R^n\fto T_p\R^n$ is called a vector field, if $\forall p\in A\subseteq\R^n$ we can define
+	\begin{equation}
+		f^\mu(p)=f^\mu(p)(e_\mu)_p
+		\label{eq:correctvectorfield}
+	\end{equation}
+	Where $(e_\mu)_p$ is the canonical basis of $T_p\R^n$\\
+	All the previous \textit{(and already stated)} considerations on vector fields hold with this definition.
+\end{dfn}
+\begin{dfn}[Differential Form]
+	Analogously to vector fields, one can define $k-$forms on the tangent space. These are called \textit{differential (k-)forms} and ``live'' on the space $\Lambda^k(T_p\R^n)$.\\
+	Let $\varphi^{\mu_1}_p,\cdots,\varphi^{\mu_k}_p\in\left(T_p\R^n\right)^{\star}$ be a basis on such space, then the differential form $\omega\in\Lambda^k\left( T_p\R^n \right)$ is defined as follows
+	\begin{equation}
+		\omega_{\mu_1\ldots\mu_k}(p)=\omega_{\mu_1\ldots\mu_k}\varphi^{[\mu_1}_p\cdots\varphi^{\mu_k]}_p\to\sum_{i_1<\ldots<i_k}\omega_{i_1\ldots i_k}(p)\varphi_{i_1}(p)\wedge\cdots\wedge\varphi_{i_k}(p)
+		\label{eq:differentialformdef}
+	\end{equation}
+	A function $f:T_p\R^n\fto\R$ is defined as $f\in\Lambda^0(T_p\R^n)$, or a $0-$form. In general, so, we can write without incurring in errors
+	\begin{equation}
+		f(p)\omega=f(p)\wedge\omega=f(p)\omega_{\mu_1\ldots\mu_k}
+		\label{eq:funcdifform}
+	\end{equation}
+\end{dfn}
+\subsection{External Differentiation, Closed and Exact Forms}
+\begin{dfn}[Differential]
+	Now we will omit that we're working on a point $p\in\R^n$ and we'll use the usual notation.\\
+	Let $f:T_p\R^n\fto\R$ be a smooth (i.e. continuously differentiable) function, where $f\in C^\infty$, then, using operatorial notation we have that $\del_\mu f(v)\in\Lambda^1(\R^n)$, therefore, with a small modification, we can define
+	\begin{equation}
+		\diff f(v^\nu_p)=\del_\mu f(v^\nu)
+		\label{eq:differential1}
+	\end{equation}
+	It's obvious how $\diff x^\mu(v^\nu_p)=\del_\nu x^\mu(v^\nu)=v^\mu$, therefore $\diff x^\mu$ is a basis for $\Lambda^1(T_p\R^n)$, which we will indicate as $\diff x^\mu$, therefore $\forall\omega\in\Lambda^k(T_p\R^n)$
+	\begin{equation}
+		\omega_{\mu_1\ldots\mu_k}=\omega_{\mu_1\ldots\mu_k}\diff x^{[\mu_1}\cdots\diff x^{\mu_k]}\to\sum_{i_1<\ldots<i_k}\omega_{i_1\ldots i_k}(p)\diff x^{i_1}\wedge\cdots\wedge\diff x^{i_k}
+		\label{eq:difform2}
+	\end{equation}
+	Basically, the vectors $\diff x^\mu$ are the \textit{dual basis} with respect to the canonical basis $(e_\mu)_p$
+\end{dfn}
+\begin{thm}
+	Since $\diff f(v^\nu_p)=\del_\nu f(v^\nu)$ we have, expressing the differential of a function with the basis vectors,
+	\begin{equation}
+		\diff f=\pdv{f}{x^\mu}\diff x^\mu=\del_\mu f\diff x^\mu
+		\label{eq:funcdiff}
+	\end{equation}
+\end{thm}
+%{\fontsize{20}{30}{\selectfont\bfseries DA QUI, GLI INDICI CAZZO\par}}
+%{\fontsize{30}{30}{\selectfont$\centering\mathfrak{porcoddio}$}}
+\begin{dfn}
+	Having defined a smooth linear transformation $f^\mu_\nu:\R^n\fto\R^m$, it induces another linear transformation $\del_{\gamma}f^\mu_\nu:\R^n\fto\R^m$, which with some modifications becomes the application $(f_\star)^\mu_\nu:T_p\R^n\fto T_{f(p)}\R^m$ defined such that
+	\begin{equation}
+		(f_\star)^\mu_\nu(v^\nu)=\left(\derin[f(p)]{\diff f}\right)^\mu_\nu(v^\nu)
+		\label{eq:fstarlowsmooth}
+	\end{equation}
+	Which, in turn, also induces a linear transformation $f^\star:\Lambda^k(T_{f(p)}\R^m)\fto\Lambda^k(T_p\R^n)$, defined as follows. Let $\omega_p\in\Lambda^k(\R^m)$, then we can define $f^\star\omega\in\Lambda^k(T_{f(p)}\R^n)$ as follows
+	\begin{equation}
+		(f^\star\omega_p)(v_{\mu_1},\ldots,v_{\mu_k})=\omega_{f(p)}\left( (f_\star)^{\mu_1}_{\nu_1}v_{\mu_1},\cdots,(f_\star)^{\mu_k}_{\nu_k}v_{\mu_k}\right)
+		\label{eq:fstaromega}
+	\end{equation}
+	(Just remember that in this way we are writing explicitly the chosen base, watch out for the indexes!)
+\end{dfn}
+\begin{thm}
+	Let $f:\R^n\fto\R^m$ be a smooth function, then
+	\begin{enumerate}
+	\item $(f^\star)^\mu_\nu(\diff x^\nu)=\diff f=\partial_\nu f^\mu\diff{x^\nu}$
+	\item $f^\star(\omega_1+\omega_2)=f^\star\omega_1+f^\star\omega_2$
+	\item $f^\star(g\omega)=(g\circ f)f^\star\omega$
+	\item $f^\star(\omega\wedge\eta)=f^\star\omega\wedge f^\star\eta$
+	\item $f^\star\left( h\diff x^{[\mu_1}\cdots\diff x^{\mu_n]} \right)=h\circ f\det_{\mu\nu}(\partial_\nu f^\mu)\diff x^{[\mu_1}\cdots\diff x^{\mu_n]}$
+	\end{enumerate}
+\end{thm}
+\begin{dfn}[Exterior Derivative]
+	We define the operator $\diff$ as an operator $\Lambda^k(T_p\V)\fto[\diff]\Lambda^{k+1}(T_p\V)$ for some vector space $\V$. For a differential form $\omega$ it's defined as follows
+	\begin{equation}
+		(\diff\omega)_{\nu\mu_1\ldots\mu_k}=\del_{[\nu}\omega_{\mu_1\ldots\mu_k]}
+		\label{eq:exteriorderivative}
+	\end{equation}
+	This, using the classical mathematical notation can be written as follows
+	\begin{equation}
+		\begin{aligned}
+			\diff{\omega}&=\sum_{i_1<\ldots<i_k}\diff{\omega_{i_1,\ldots,i_k}}\wedge\diff{x^{i_1}}\wedge\cdots\wedge\diff{x^{i_k}}\\
+			\diff{\omega}&=\sum_{i_1<\ldots<i_k}\sum_{j=1}^n\pdv{x^j}\omega_{i_1,\ldots,i_k}\diff{x^j}\wedge\diff{x^{i_1}}\wedge\cdots\wedge\diff{x^{i_k}}
+		\end{aligned}
+		\label{eq:diffdform}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Properties of $d$]
+	\begin{enumerate}
+	\item $\diff(\omega+\eta)=\diff\omega+\diff\eta$
+	\item $\diff(\omega\wedge\eta)=\diff\omega\wedge\eta+(-1)^k\omega\wedge\diff\eta$ for $\omega\in\Lambda^k(\V),\ \eta\in\Lambda^l(\V)$
+	\item $\diff\diff\omega=\diff^2\omega=0$
+	\item $f^\star(\diff\omega)=\diff(f^\star\omega)$
+	\end{enumerate}
+\end{thm}
+\begin{dfn}[Closed and Exact Forms]
+	A form $\omega$ is called \textit{closed} iff
+	\begin{equation}
+		\diff\omega=0
+		\label{eq:closedform}
+	\end{equation}
+	It's called exact iff
+	\begin{equation}
+		\omega=\diff\eta
+		\label{eq:exactform}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Let $\omega$ be an exact differential form. Then it's closed
+\end{thm}
+\begin{proof}
+	The proof is quite straightforward. Since $\omega$ is exact we can write $\omega=\diff\rho$ for some differential form $\rho$, therefore
+	\begin{equation*}
+		\diff\omega=\diff\diff\rho=\diff^2\rho=0
+	\end{equation*}
+	Hence $\diff\omega=0$ and $\omega$ is closed.
+\end{proof}
+\begin{eg}
+	Take $\omega\in\Lambda^1(\R^2)$, where it's defined as follows
+	\begin{equation}
+		\omega_\mu=p\diff x+q\diff y
+		\label{eq:omega}
+	\end{equation}
+	The external derivative will be of easy calculus by remembering the mnemonic rule $\diff\to\del_\mu\wedge\diff x^\mu$, or also as $\del_{[\nu}$ then we have
+	\begin{equation*}
+		\diff\omega_{\mu\nu}=\del_{[\nu}\omega_{\mu]}
+	\end{equation*}
+	But
+	\begin{equation*}
+		\del_\nu\omega_\mu=\begin{pmatrix}
+			\del_1\omega_1&\del_1\omega_2\\
+			\del_2\omega_1&\del_2\omega_2
+		\end{pmatrix}_{\mu\nu}
+	\end{equation*}
+	And
+	\begin{equation*}
+		\del_{[\nu}\omega_{\mu]}=\frac{1}{2}(\del_\nu\omega_\mu-\del_\mu\omega_\nu)=\frac{1}{2}(\del\omega-\trans{\del\omega})
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\diff\omega_{\mu\nu}=\frac{1}{2}\begin{pmatrix}
+			0&\del_xq-\del_yp\\
+			\del_yp-\del_xq&0
+		\end{pmatrix}_{\mu\nu}
+	\end{equation*}
+	Which, expressed in terms of the basis vectors of $\Lambda^2(\R^2)$, $\diff x\wedge\diff y$, we get
+	\begin{equation}
+		\diff\omega=\frac{1}{2}(\del_xq-\del_yp)\diff x\wedge\diff y+\frac{1}{2}(\del_yp-\del_xq)\diff y\wedge\diff x=(\del_xq-\del_yp)\diff x\wedge\diff y
+		\label{eq:finalexamplecdfm}
+	\end{equation}
+	Therefore
+	\begin{equation}
+		\diff\omega=0\iff\del_xq-\del_yp=0
+		\label{eq:exactformeex}
+	\end{equation}
+\end{eg}
+\begin{dfn}[Star Shaped Set]
+	A set $A$ is said to be \textit{star shaped with respect to a point} $a$ iff $\forall x\in A$ the line segment $[a,x]\subset A$
+\end{dfn}
+\begin{lem}[Poincaré's]
+	Let $A\subset\R^n$ be an open star shaped set, with respect to 0. Then every closed form on $A$ is exact
+\end{lem}
+%\fontsize{70}{90}{\selectfont\textbf{dio bestia\par}
+%HO FINITO IL CAPITOLO PORCODEDDIO
+\section{Chain Complexes and Manifolds}
+\subsection{Singular $n-$cubes and Chains}
+\begin{dfn}[Singular $n-$cube]
+	A \textit{singular n-cube} is an application $c:[0,1]^n\fto A\subset\R^n$. In general. A singular $0$-cube is a function $f:\{0\}\fto A$ and a singular $1-$cube is a curve.
+\end{dfn}
+\begin{dfn}[Standard $n-$cube]
+	We define a \textit{standard n-cube} as a function $I^n:[0,1]^n\fto\R^n$ such that $I^n(x^\mu)=x^\mu$.
+\end{dfn}
+\begin{dfn}[Face]
+	Given a standard $n-$cube $I^n$ we define the $(i,\alpha)-$face of the cube as
+	\begin{equation}
+		I_{(i,\alpha)}^n=(x^1,\cdots,x^{i-1},\alpha,x^i,\cdots,x^{n-1})\quad\alpha=0,1
+		\label{eq:iaface}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Chain]
+	Given $n$ $k-$cubes $c_i$, we define a \textit{n-chain} $s$ as follows
+	\begin{equation}
+		s=\sum_{i=1}^na_ic_i\quad a_i\in\R
+		\label{eq:chain}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Boundary]
+	Given an $n-$cube $c_i$ we define the \textit{boundary} as $\del c_i$. For a standard $n-$cube we have
+	\begin{equation}
+		\del I^n=\sum_{i=1}^n\sum_{\alpha=0,1}(-1)^{i+\alpha}I^n_{(i,\alpha)}
+		\label{eq:boundarysncube}
+	\end{equation}
+	For a $k-$chain $s$ we define
+	\begin{equation}
+		\del s=\del(\sum_ia_ic_i)=\sum_ia_i\del c_i
+		\label{eq:chainboundary}
+	\end{equation}
+	Where $\del s$ is a $(k-1)$-chain
+\end{dfn}
+\begin{thm}
+	For a chain $c$, we have that $\del\del c=\del^2c=0$
+\end{thm}
+\subsection{Manifolds}
+\begin{dfn}[Manifold]
+	Given a set $M\subset\R^n$, it is said to be a \textit{k-dimensional manifold} if $\forall x^\mu\in M$ we have that
+	\begin{enumerate}
+	\item $\exists U\subset\R^k$ open set $x^\mu\in U$ and $V\subset\R^n$ and $\varphi$ a diffeomorphism such that $U\simeq V$ and $\varphi\left( U\cap M \right)=V\cap\left( \R^k\times\{0\} \right)$, i.e. $U\cap M\simeq\R^k\cap\{0\}$
+	\item $\exists U\subset\R^k$ open and $W\subset\R^k$ open, $x^\mu\in U$ and $f:W\fto\R^n$ a diffeomorphism
+		\begin{enumerate}
+		\item $f(W)=M\cap U$
+		\item $\rank\left( f \right)=k\ \forall x^\mu\in W$
+		\item $f^{-1}\in C(f(W))$
+		\end{enumerate}
+	\end{enumerate}
+	The function $f$ is said to be a \textit{coordinate system in} $M$
+\end{dfn}
+\begin{dfn}[Half Space]
+	We define the \textit{k-dimensional half space} $\mathbb{H}^k\subset\R^k$ as
+	\begin{equation}
+		\mathbb{H}^k:=\left\{ \derin{x^\mu\in\R^k}x^i\ge0 \right\}
+		\label{eq:halfspacerk}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Manifold with Boundary]
+	A \textit{manifold with boundary} (MWB) is a manifold $M$ such that, given a diffeomorphism $h$, an open set $U\supset M$ and an open set $V\subset\R^n$
+	\begin{equation}
+		h\left( U\cap V \right)=V\cap\left( \mathbb{H}^k\cap\{0\} \right)
+		\label{eq:manifoldwb}
+	\end{equation}
+	The set of all points that satisfy this forms the set $\del M$ called the \textit{boundary of} $M$
+\end{dfn}
+\begin{dfn}[Tangent Space]
+	Given a manifold $M$ and a coordinate set $f$ around $x^\mu\in M$, we define the \textit{tangent space of} $M$ \textit{at} $x^\mu\in M$ as follows
+	\begin{equation}
+		f:W\subset\R^k\fto\R^n\implies f_{\star}\left( T_x\R^k \right)=T_xM
+		\label{eq:tangentspaceman}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Vector Field on a Manifold]
+	Given a vector field $f^\mu$ we identify it as a vector field on a manifold $M$ if $f^\mu(x^\nu)\in T_xM$. Analogously we define a $k-$differential form
+\end{dfn}
+% \emph{E M P T Y}
+\end{document}

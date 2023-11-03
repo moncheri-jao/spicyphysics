@@ -1,0 +1,273 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	In this chapter we will derive with quantum statistical mechanics, all the thermodynamic properties of non interacting quantum gases of fermions and bosons.
+	We begin by defining the grand potential for $N$ non interacting and non relativistic particles confined inside a box with volume $V=L^3$. The Hamiltonian of the system is
+	\begin{equation}
+		\opr{\ham}=\sum_{i=1}^N\frac{\opr{p}_i^2}{2m}
+		\label{eq:nqpartham}
+	\end{equation}
+	Applying periodic boundary conditions to the associated differential equation we obtain the following solution
+	\begin{equation}
+		\bra{x_i}\ket{p_i}=\phi_{p_i}(x_i)=\frac{1}{\sqrt{V}}e^{\frac{ip_ix^i}{\hbar}}
+		\label{eq:manyparticlesolution}
+	\end{equation}
+	Where
+	\begin{equation}
+		p_i=\frac{2\pi\hbar}{L}\nu_i
+		\label{eq:momentummanyparticle}
+	\end{equation}
+	Where we have $\nu_i\in\mathbb{Z}$. The single particle energy $\epsilon_p$ will be, obviously
+	\begin{equation}
+		\epsilon_p=\frac{p^2}{2m}
+		\label{eq:singlefreeparticleenergy}
+	\end{equation}
+	Now, if we consider particle spin, we find ourselves in a particular situation. As we have seen in the chapter for identical particles, we have that a multi-particle factorisable eigenket of the Hamiltonian \eqref{eq:nqpartham} can then be written as follows
+	\begin{equation}
+		\ket{p_1,\cdots,p_N}=\mathcal{N}\sum_{P}(\pm1)^{P}\opr{P}\bigotimes_{i=1}^N\ket{p_i}
+		\label{eq:fermionbosondef}
+	\end{equation}
+	Where $\opr{P}$ is the permutation operator, with eigenvalue $1^P$ and normalization $\mathcal{N}=(\prod_iN!n_{p_i}!)^{-1/2}$ for bosons, and eigenvalue $(-1)^P$ and normalization $\mathcal{N}=(N!)^{-1/2}$ for fermions.
+	For an $N$-particle system, we can define the particle number as follows
+	\begin{equation}
+		N=\sum_pn_p
+		\label{eq:partnumber}
+	\end{equation}
+	And the energy eigenvalue as follows
+	\begin{equation}
+		E(\{n_p\})=\sum_pn_p\epsilon_p
+		\label{eq:energyeigenvalue}
+	\end{equation}
+	Therefore, the grand canonical partition funtion will be the following
+	\begin{equation}
+		\begin{aligned}
+			Z_G&=\sum_{N=0}^{\infty}\sum_{\{n_p\}}e^{-\beta(E(\{n_p\})-\mu N}=\sum_{\{n_p\}}e^{-\beta\sum_pn_p(\epsilon_p-\mu)}=\\
+			&=\prod_p\sum_{n_p}e^{-\beta n_p(\epsilon_p-\mu)}
+		\end{aligned}
+		\label{eq:grandcanonidealqgas1}
+	\end{equation}
+	Therefore, summing and considering the difference between bosons and fermions
+	\begin{equation}
+		Z_G=\prod_p\sum_{n_p}e^{-\beta n_p(\epsilon_p-\mu)}=
+			\begin{dcases}
+				\prod_p\frac{1}{1-e^{-\beta(\epsilon_p-\mu)}}&m_s\in\mathbb{Z}\\
+				\prod_p(1+e^{-\beta(\epsilon_p-\mu)})&m_s\in\mathbb{F}:=\left\{m_s\in\mathbb{Q}\left|m_s=\frac{n}{2},\ n\in\mathbb{Z}\right.\right\}
+			\end{dcases}
+		\label{eq:idealqgasgrandcanon}
+	\end{equation}
+	From this we van calculate directly the grand potential
+	\begin{equation}
+		\Phi=-\frac{1}{\beta}\log(Z_G)=\pm\frac{1}{\beta}\sum_p\log\left( 1\mp e^{-\beta(\epsilon_p-\mu)} \right)
+		\label{eq:grandpotential}
+	\end{equation}
+	With the upper sign referring to bosons and vice versa for fermions.\\
+	The average particle number will then be
+	\begin{equation}
+		N=-\pdv{\Phi}{\mu}=\sum_p\frac{1}{e^{\beta(\epsilon_p-\mu)}\mp1}=\sum_pn(\epsilon_p)
+		\label{eq:averageparticlenumberiqg}
+	\end{equation}
+	The last function $n(\epsilon_p)$ is called the Bose-Einstein distribution (for bosons) or the Fermi-Dirac distributions (for fermions). From this, we can find that it's actually the \textit{average occupation number} of a state $\ket{\cc{\alpha}}$. In order to obtain this result we need to calculate the expectation value of $n_{\cc{\alpha}}$.
+	\begin{equation}
+		\expval{n_{\cc{\alpha}}}=\trace(\dopr_Gn_{\cc{\alpha}})=\frac{\sum_{\{n_p\}}n_{\cc{\alpha}}e^{-\beta\sum_pn_p(\epsilon_p-\mu)}}{\sum_{\{n_p\}}e^{-\beta\sum_pn_p(\epsilon_p-\mu)}}=-\pdv{x}\log\left( \sum_ne^{-nx} \right)=n(\epsilon_{\cc{\alpha}})
+		\label{eq:avgoccn}
+	\end{equation}
+	From the grand potential we then get the energy of the quantum gas
+	\begin{equation}
+		E=\left( \pdv{(\Phi\beta)}{\beta} \right)_{\mu\beta}=\sum_p\epsilon_pn(\epsilon_p)
+		\label{eq:internalenergy}
+	\end{equation}
+	Considering that free particles can be considered as being confined to a space $\Delta=2\pi\hbar V^{-1}\to\infty$, we can choose to approximate the sum over the discrete $p$ to an integral for large volumes, using the following substitution
+	\begin{equation}
+		\sum_{\vec{p}}[\cdot]\to\frac{gV}{(2\pi\hbar)^3}\int[\cdot]\diff[3]{p}
+		\label{eq:sumsubstitution}
+	\end{equation}
+	Where $g$ is the degeneracy factor\\
+	Using this approximation for calculating the number of particles $N=\sum_pn_p(\epsilon_p)$, we get
+	\begin{equation}
+		\begin{aligned}
+			N&=\frac{gV}{(2\pi\hbar)^3}\int n(\epsilon_p)\diff[3]{p}=\frac{gV}{2\pi^2\hbar^3}\int_0^{\infty}n(\epsilon_p)p^2\diff{p}\\
+			&=\frac{gV}{2\pi^2\hbar^3}\int_{0}^{\infty}\frac{p^2}{e^{\beta(\epsilon-\mu)}\mp1}\diff{p}=\frac{gVm^{\frac{3}{2}}}{\pi^2\hbar^3\sqrt{2}}\int_{0}^{\infty}\frac{\sqrt{\epsilon}}{e^{\beta(\epsilon-\mu)}}\diff{\epsilon}
+		\end{aligned}
+		\label{eq:particlenumberintegral}
+	\end{equation}
+	Where we substituted in the energy eigenvalue density. Defining the specific volume $v=V/N$ and substituting $x=\beta\epsilon$, we get
+	\begin{equation}
+		\frac{1}{v}=\frac{2g}{\lambda^3\sqrt{\pi}}\int_{\mathbb{R}_+}\frac{\sqrt{x}}{e^xz^{-1}\mp1}=\frac{g}{\lambda^3}\begin{dcases}g_{3/2}(z)&s\in\mathbb{Z}\\f_{3/2}(z)&s=\frac{n}{2},\ n\in\mathbb{Z}\end{dcases}
+		\label{eq:specificvolume}
+	\end{equation}
+	Where $g_s,f_s$ are the generalized $\zeta-$functions, which are defined and analyzed in the mathematical appendix.\\
+	From this, taking the grand partition function, we have that
+	\begin{equation}
+		\begin{aligned}
+			\Phi&=\pm\frac{gV}{\beta(2\pi\hbar)^3}\int_{}^{}\log(1\mp e^{-\beta(\epsilon-\mu)})\diff[3]{p}\\
+			&=\pm\frac{gVm^{\frac{3}{2}}}{\beta\pi^2\hbar^3\sqrt{2}}\int_{0}^{\infty}\log(1\mp e^{\beta(\epsilon-\mu)})\sqrt{\epsilon}\diff{\epsilon}
+		\end{aligned}
+		\label{eq:grandcanonintegral}
+	\end{equation}
+	Integrating by parts and remembering that $PV=-\Phi$ we get
+	\begin{equation}
+		-\Phi=PV=\frac{gm^{\frac{3}{2}}V\sqrt{2}}{3\pi^2\hbar^3}\int_{0}^{\infty}\frac{\epsilon^{\frac{3}{2}}}{e^{\beta(\epsilon-\mu)}\mp1}\diff{\epsilon}=\frac{gV}{\beta\lambda^3}\begin{dcases}g_{\frac{5}{2}}(z)\\f_{\frac{5}{2}}(z)\end{dcases}
+		\label{eq:fermigasstateeq}
+	\end{equation}
+	We also can obtain the energy $E$ of the system as follows
+	\begin{equation}
+		E=\frac{gVm^{\frac{3}{2}}}{\pi^2\hbar^3\sqrt{2}}\int_{'}^{\infty}\frac{\epsilon^{\frac{3}{2}}}{e^{\beta(\epsilon-\mu)}\mp1}
+		\label{eq:energyfermigas}
+	\end{equation}
+	A quick comparison with the equation \eqref{eq:fermigasstateeq}, gives the same relation that we got for the classical ideal gas
+	\begin{equation}
+		PV=\frac{2}{3}E
+		\label{eq:fermigasrelation}
+	\end{equation}
+	From the homogeneity of $\Phi$ in $T,\mu$ we can derive from the previous equations other relations, as follows
+	\begin{equation}
+		\begin{aligned}
+			P&=-\frac{\Phi}{V}=-T^{\frac{5}{2}}\phi\left( \frac{\mu}{T} \right)\\
+			N&=VT^{\frac{3}{2}}n\left( \frac{\mu}{T} \right)\\
+			S&=-\pdv{\Phi}{T}=VT^{\frac{3}{2}}s\left( \frac{\mu}{T} \right)\\
+			\frac{S}{N}&=\frac{s}{n}
+		\end{aligned}
+		\label{eq:additionalrelationsfermigas}
+	\end{equation}
+	For an adiabatic expansion, i.e. setting $S=\alpha,\ \mu/T=\beta,\ VT^{\frac{3}{2}}=\gamma,\ PT^{-\frac{5}{2}}=\delta$, with $\alpha,\beta,\gamma,\delta\in\R$, we get the adiabatic equation for an ideal quantum gas
+	\begin{equation}
+		PV^{\frac{5}{3}}=\eta\in\R
+		\label{eq:adiabaticequationidealqg}
+	\end{equation}
+	Note how this differs from the classical version, since $c_p/c_v\ne5/3$
+	\section{Degenerate Fermi Gas}
+	Let's consider now the ground state of $N$ fermions. It will correspond to a fermion gas at temperature $T=0$K. In this situation, every single particle state will be occupied $g$ fold, thus all momenta inside a sphere of radius $p_F$ (the maximum momentum possible, the \textit{Fermi momentum}) will be occupied.\\
+	The number of particles therefore will be
+	\begin{equation}
+		N=g\qsum_{\{\ket{p}\}}1=\frac{gV}{(2\pi\hbar)^3}\int_{}^{}\Theta(p_F-p)\diff[3]{p}=\frac{gVp_F^3}{6\pi^2\hbar^3}
+		\label{eq:particlenumbfermigas}
+	\end{equation}
+	Therefore, using the particle density $n=N/V$ we get our Fermi momentum
+	\begin{equation}
+		p_F=\hbar\sqrt[3]{\frac{6\pi^2n}{g}}
+		\label{eq:fermimomentum}
+	\end{equation}
+	From this, we get the \textit{Fermi Energy}
+	\begin{equation}
+		\epsilon_{p_F}=\frac{p_F^2}{2m}=\frac{\hbar^2}{2m}\left( \frac{6\pi^2n}{g} \right)^{\frac{2}{3}}
+		\label{eq:fermienergy}
+	\end{equation}
+	The ground state energy, from these relations, will therefore be
+	\begin{equation}
+		E=\frac{gV}{(2\pi\hbar)^3}\int_{}^{}\frac{p^2}{2m}\Theta(p_F-p)\diff[3]{p}=\frac{gVp_F^5}{20m\pi^2\hbar^3}=\frac{3}{5}N\epsilon_F
+		\label{eq:gsfermigas}
+	\end{equation}
+	Using what we found in the previous section, we find that the pressure of such gas will be the following
+	\begin{equation}
+		P=\frac{2}{5}\epsilon_Fn=\frac{\hbar^2n^{\frac{5}{2}}}{5m}\left( \frac{6\pi^2}{g} \right)^{\frac{2}{3}}
+		\label{eq:fermigaspressure}
+	\end{equation}
+	\subsection{Complete Degeneracy Limit}
+	Having calculated the thermodynamic properties of a quantum gas of fermions in the case of complete degeneracy (i.e., $T=0$), we can start calculating the same properties in the \textit{limit} of complete degeneracy, i.e. for $T\to0$. It's easy to demonstrate that here $\mu\to\epsilon\to\epsilon_F$ and therefore
+	\begin{equation}
+		\begin{aligned}
+			\Phi&=-N\epsilon_F^{-\frac{3}{2}}\int_{0}^{\infty}n(\epsilon)\epsilon^{\frac{3}{2}}\diff{\epsilon}\\
+			N&=\frac{3}{2}N\epsilon_F^{-\frac{3}{2}}\int_{0}^{\infty}n(\epsilon)\epsilon^{\frac{1}{2}}\diff{\epsilon}
+		\end{aligned}
+		\label{eq:limitgpptn}
+	\end{equation}
+	From this, knowing already the solution of these integrals, as discussed in appendix \eqref{app:zeta}, we can solve these integrals approximately in the limit $\beta\mu\to\infty$, and deduce some approximated conclusions for what happens thermodynamically in a Fermi gas for really low temperatures.\\
+	We begin writing our integrals (called \textit{Sommerfield integrals}) as a sum of two integrals as follows
+	\begin{equation}
+		I=\int_{0}^{\mu}f(\epsilon)\diff{\epsilon}+\int_{0}^{\infty}f(\epsilon)\left( n(\epsilon)-\Theta(\mu-\epsilon) \right)\diff{\epsilon}
+		\label{eq:Sommerfieldint1}
+	\end{equation}
+	Using a $x-$substitution with $x=\beta(\epsilon-\mu)$, extending the integral's domain over the whole real line, and Taylor approximating the function $f(\epsilon)$ around $\mu$, we get
+	\begin{equation}
+		\begin{aligned}
+			I&=\int_{0}^{\mu}f(\epsilon)\diff{\epsilon}+\int_{\R}^{}\left( \frac{1}{e^x+1}-\Theta(-x) \right)\sum_{k=0}^{\infty}\frac{\beta^{-(k+1)}}{k!}\left.\pdv[k]{f}{x}\right|_{x=\mu}x^k\diff{x}\\
+				&=\int_{0}^{\mu}f(\epsilon)\diff{\epsilon}+2\sum_{k=0}^{\infty}\frac{\beta^{-(k+1)}}{k!}\pdv[k]{f}{\mu}\int_{0}^{\infty}\frac{x^k}{e^{x}+1}\diff{x}
+		\end{aligned}
+		\label{eq:sommapprox}
+	\end{equation}
+	Applying this approximation till $\order{T^4}$ we can write for the integrals \eqref{eq:limitgpptn}
+	\begin{equation}
+		\begin{aligned}
+			\mu&=\epsilon_F\left( 1-\frac{\pi^2}{12\beta^2}+\order{T^4} \right)\\
+			\Phi&=-\frac{2}{5}N\epsilon_F\left( 1+\frac{5\pi^2}{12\beta^2\epsilon_F^2}+\order{T^4} \right)
+		\end{aligned}
+		\label{eq:approximatedsolution}
+	\end{equation}
+	Using $P=-\Phi/V$ we obtain immediately the energy of such gas
+	\begin{equation}
+		E=\frac{3}{2}PV=\frac{3}{5}N\epsilon_F\left( 1+\frac{5\pi^2}{12\epsilon_F^2\beta^2}+\order{T^4} \right)
+		\label{eq:internalfermigas}
+	\end{equation}
+	And introducing the Fermi temperature as $T_F=\epsilon_F/k_B$ we get the heat capacity of this gas as
+	\begin{equation}
+		C_V=Nk_B\frac{\pi^2T}{2T_F}
+		\label{eq:heatcapacityFermi}
+	\end{equation}
+	\section{Bose-Einstein Condensation}
+	After having studied the Fermi gas, we begin studying a Boson gas at low temperatures, which has a particular behavior called \textit{Bose-Einstein condensation}. This gas has $s=0$ and $g=1$. Due to this, in the ground state all the non-interacting bosons occupy the lowest single particle state.\\
+	In the previous sections, we found that for the particle density we have
+	\begin{equation}
+		\frac{\lambda}{v}=g_{\frac{3}{2}}(z)
+		\label{eq:particledensity}
+	\end{equation}
+	This function has a maximum for a value of fugacity $z=1$, and it's equal to $g_{\frac{3}{2}}(1)=\zeta(\frac{3}{2})=2.612$. Thanks to this we can define a characteristic temperature $T_c$, which has the following value
+	\begin{equation}
+		\beta_c^{-1}=\frac{2\pi\hbar^2}{m(v\zeta(\frac{3}{2}))^{\frac{2}{3}}}
+		\label{eq:characteristictemp}
+	\end{equation}
+	In this case, we have that the limit $\sum_p\to\int\diff[3]{p}$ isn't anymore a good approximation for $z\to1$, since the term $p=0$ diverges for $z=1$. Treating it separately, we get for the particle number
+	\begin{equation}
+		N=\frac{1}{z^{-1}-1}+\sum_{p\ne0}n(\epsilon_p)\to\frac{1}{z^{-1}-1}+\frac{V}{(2\pi\hbar)^3}\int_{}^{}n(\epsilon_p)\diff[3]{p}
+		\label{eq:bosonpnumb}
+	\end{equation}
+	Therefore, for bosons we get, in terms of generalized $\zeta-$functions and characteristic temperature
+	\begin{equation}
+		\begin{aligned}
+			N&=\frac{1}{z^{-1}-1}+\frac{Nv}{\lambda^3}g_{\frac{3}{2}}(z)\\
+			N&=\frac{1}{z^{-1}-1}+N\left( \frac{T}{T_c} \right)^{\frac{3}{2}}\frac{g_{\frac{3}{2}}(z)}{g_{\frac{3}{2}}(1)}
+		\end{aligned}
+		\label{eq:bosonparticlen}
+	\end{equation}
+	This can be seen as a sum of the number of particles in the ground state $N_0$ and the number of particles in excited states $N_e$, where
+	\begin{equation}
+		\begin{aligned}
+			N_0&=\frac{1}{z^{-1}-1}\\
+			N_e&=N\left( \frac{T}{T_c} \right)^{\frac{3}{2}}\frac{g_{\frac{3}{2}}(z)}{g_{\frac{3}{2}}(1)}
+		\end{aligned}
+		\label{eq:particlenumbergses}
+	\end{equation}
+	We have that for $T>T_c$, $N$ yields a value of $z<1$, hence $N_0$ is finite and can be neglected with respect to $N$. For $T<T_c$ we have $z=1-\order{N^{-1}}$, and when $z\to1$, setting $z=1$ in $N_e$, we obtain
+	\begin{equation}
+		N_0=N\left( 1-\left( \frac{T}{T_c} \right)^{\frac{3}{2}} \right)
+		\label{eq:zeq1bosongas}
+	\end{equation}
+	And defining the \textit{condensate fraction} $\nu$ as follows
+	\begin{equation}
+		\nu=\lim_{N\to\infty}\frac{N_0}{N}
+		\label{eq:condensatefrac}
+	\end{equation}
+	We get, in summary, what's called the \textit{Bose-Einstein Condensation}, for which, at $T<T_c$ the ground state at $p=0$ is macroscopically occupied.
+	\begin{equation}
+		\nu=\begin{dcases}
+			0&T>T_c\\
+			1-\left( \frac{T}{T_c} \right)^{\frac{3}{2}}&T<T_c
+		\end{dcases}
+		\label{eq:condensatefracval}
+	\end{equation}
+	Evaluating the other thermodynamic quantities, we get the pressure of a Bose gas as
+	\begin{equation}
+		P=\begin{dcases}
+			\frac{1}{\beta\lambda^3}g_{\frac{5}{2}}(z)&T>T_c\\
+			\frac{1}{\beta\lambda}\zeta\left( \frac{5}{2} \right)=\frac{1}{\beta\lambda^3}1.342&T<T_c
+		\end{dcases}
+		\label{eq:bosegaspressure}
+	\end{equation}
+	And, therefore, entropy has the following expression
+	\begin{equation}
+		S=\pdv{PV}{T}=\begin{dcases}
+			Nk_B\left( \frac{5v}{2\lambda^3}g_{\frac{5}{2}}(z)-\log(z) \right)&T>T_c\\
+			Nk_B\frac{5}{2}\left( \frac{T}{T_c} \right)^{\frac{3}{2}}\frac{g_{\frac{5}{2}}(1)}{g_{\frac{3}{2}}(1)}
+		\end{dcases}
+		\label{eq:entropybose}
+	\end{equation}
+	%vedi se fare i gas esempio (forse si)  <++>
+\end{document}

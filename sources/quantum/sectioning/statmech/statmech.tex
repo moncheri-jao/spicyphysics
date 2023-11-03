@@ -1,0 +1,26 @@
+\documentclass{book}
+\usepackage{fancypages}
+\usepackage{sapienza}
+\begin{document}
+\subfile{./title/title}
+\subfile{./title/frontispice}
+\tableofcontents
+%\chapter{Thermodynamical systems}
+	\subfile{./chapters/thermosystems.tex}
+%\chapter{Heat}
+	\subfile{./chapters/thermoheat.tex}
+%\chapter{2nd principle}
+	\subfile{./chapters/thermo2nd.tex}
+%\chapter{Phase Transitions}
+	\subfile{./chapters/thermopot.tex}
+\chapter{Introduction to Thermostatistics}
+	\subfile{./chapters/15-msintro}
+\chapter{Microcanonical Ensemble}
+	\subfile{./chapters/16-microcanonical}
+\chapter{Canonical Ensemble}
+	\subfile{./chapters/17-canonical}
+\chapter{Grand Canonical Ensemble}
+	\subfile{./chapters/18-grandcanonical}
+\chapter{Ideal Quantum Gases}
+	\subfile{./chapters/idealquantumgas}
+\end{document}

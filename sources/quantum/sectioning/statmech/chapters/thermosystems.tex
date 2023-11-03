@@ -1,0 +1,347 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\chapter{Thermodynamic Systems}
+\section{Temperature}
+\subsection{Macroscopic and Microscopic Systems}
+The study of any branch of natural science \textit{must} begin with the definition of \textit{system}
+\begin{dfn}[System]
+	A \textit{system} is a finite region of space containing matter inside a closed surface, known as the \textit{wall}.\\
+	Everything outside of the system, even other systems, that are in interaction with the system are known as the \textit{surroundings} of the system.\\
+	A system is said to be \textit{closed} if there's no matter flux between itself and its surroundings.\\
+	The set of the system, surroundings and all the rest is known as \textit{universe}, and it's usually indicated with $\Omega$.
+\end{dfn}
+All systems can be studied with two points of view
+\begin{enumerate}
+\item A microscopic point of view (molecular or less)
+\item A macroscopic point of view (human scale or more)
+\end{enumerate}
+Taking as our example system the cylinder chamber of a car, we can define the following \textit{macroscopic coordinates}, i.e. descriptors of the system in a macroscopic point of view
+\begin{enumerate}
+\item Mass of gas contained
+\item Volume of the chamber
+\item Pressure of the gas
+\item Temperature of the gas
+\end{enumerate}
+These coordinates are \textit{macroscopic} also because
+\begin{itemize}
+\item Do not involve assumptions about the structure of matter, fields or radiation
+\item Are low in number
+\item Are fundamental
+\item Can be, generally, directly measured
+\end{itemize}
+If we instead consider a system from the microscopic point of view, we can define the system as
+\begin{enumerate}
+\item $N$ particles with energy states $E_i$
+\item Particle interactions with fields and through collisions
+\end{enumerate}
+And more.\\
+Microscopic systems that can be considered isolated or embedded in other systems are known as \textit{ensemble systems}. In microscopic systems, the equilibrium state is defined as the state with the highest probability, i.e. the state which will have a higher occupation number or \textit{population}.\\
+In general, microscopic coordinates
+\begin{enumerate}
+\item Consider the structure of matter, fields and radiation
+\item Are many in number
+\item Are described by mathematical models and usually not directly measurable
+\item Must be calculated using the previous models
+\end{enumerate}
+In the study of thermodynamics, in the next chapter or two, we will use the macroscopic description. The major difference with the other branches of science lays in the fact that in thermodynamics, a macroscopic quantity is always present and defined, known as \textit{temperature}.\\
+Generally, in thermodynamics the quantities chosen are known as \textit{thermodynamic coordinates}, which are macroscopic coordinates that determine the internal state of the system. Systems for which thermodynamic coordinates can be defined are known as \textit{thermodynamic systems}
+\subsection{Zeroth Law of Thermodynamics}
+Consider a thermodynamic system $A$, for which we can define two independent coordinates, $(X, Y)$, the first being a generalized force and the other being a generalized displacement. We define:
+\begin{dfn}[Equilibrium State]
+	A state for which the coordinates $(X, Y)$ are constant as long as the external conditions don't change, is known as an \textit{equilibrium state}
+\end{dfn}
+Equilibrium states \textit{depend on proximity of other systems and nature of the boundary}, if we put $A$ in contact with another system $B$ with coordinates $(X', Y')$ we then can define two types of walls:
+\begin{dfn}[Adiabatic Walls]
+	If the walls between the system $A$ and $B$ are \textit{adiabatic}, then the equilibrium states are \textit{independent} and possible for each value of $(X, Y)$ and $(X', Y')$
+\end{dfn}
+\begin{dfn}[Diathermal Walls]
+	If the walls between the system $A$ and $B$ are \textit{diathermal}, the equilibrium states of the two systems aren't independent anymore, and thus are defined only for a set of coordinates $(X, Y, X', Y')$
+\end{dfn}
+We subsequently define 
+\begin{dfn}[Thermal Equilibrium]
+	Thermal equilibrium is defined as the state achieved by two or more systems, characterized by a restricted amount of values of system coordinates, after being put in contact through a diathermal wall.
+\end{dfn}
+From the definition of thermal equilibrium, an important law follows
+\begin{law}[0th Law of Thermodynamics]
+	Suppose that two thermodynamic systems $A$ and $B$ are separated by an adiabatic wall and simultaneously in contact with a third system $C$ through a diathermal wall. It follows that if:
+	\begin{itemize}
+	\item $A$ is in thermal equilibrium with $C$
+	\item $B$ is in thermal equilibrium with $C$
+	\end{itemize}
+	Then, $A$ must be in thermal equilibrium with $B$
+\end{law}
+Suppose that now that the system $A$ and $B$ are at equilibrium with each other at some coordinates $(X_A, Y_A)$ and $(X_B, Y_B)$. If we remove the system $A$, the system $B$ will undergo a change of state to coordinates $(X_2, Y_2)$ which must be in thermal equilibrium with the state $(X_B, Y_B)$. It must follow then that there's a quantity, known as \textit{temperature}, which remains constant during this transformation, thus:
+\begin{dfn}[Temperature]
+	We define the \textit{temperature} as the property in common between states in thermal equilibrium. A change of state with constant temperature (i.e. in \textit{thermal equilibrium}) is known as an \textit{isothermal transformation} or an \textit{isothermal process}.\\
+	Temperature \textit{must} be a scalar quantity, and it's usually indicated with $T$. For each possible value of $T$ there exists a defined family of isothermal processes.
+\end{dfn}
+\subsection{Temperature Measurements}
+In order to define a \textit{temperature scale}, we choose a thermodynamic system for which are known its properties, known as the \textit{thermometer}, and define a set of empirical rules for assigning a value of $T$ for each isotherm.\\
+Suppose that the system is well described by the generalized force $X$ and the generalized displacement $Y$. Then, for defining a temperature scale we will
+\begin{itemize}
+\item Choose a convenient path in the $(X, Y)$ plane, like $Y=const$. Then, since one of the two quantities is fixed, we must have that if the system undergoes an isothermal process, we must have that
+	\begin{equation*}
+		\theta=\theta(X)
+	\end{equation*}
+	Where $\theta$ is our temperature scale
+\item We suppose, arbitrarily, that $\theta(X)\propto X$, thus
+	\begin{equation*}
+		\theta_A(X)=aX
+	\end{equation*}
+\end{itemize}
+The scale that we defined previously has, in particular, that
+\begin{equation*}
+	\lim_{X\to0}\theta_A(X)=0
+\end{equation*}
+I.e. it's an \textit{absolute} temperature scale. Examples of absolute scales are the \textit{Kelvin} and \textit{Rankine} temperature scales.\\
+Experimentally, the standard gas for thermometric evaluations is molecular hydrogen $\mathrm{H}_2$.\\
+For most thermodynamic scales, being $Y=const$ completely arbitrary, it's convenient to define $Y=Y_1=const$ as the \textit{triple point} of water, it being the point in which liquid water, ice and vapor exist in the same place and time. This point is measured to be at a temperature of 
+\begin{equation*}
+	T_{TP}=0.01^\circ\mathrm{C}=273.16\mathrm{ K}
+\end{equation*}
+From the absolute arbitrary temperature scale we have defined before, defined $X_{TP}$ the coordinate at which we have the triple point, we have
+\begin{equation*}
+	\theta_A(X_{TP})=aX_{TP}=273.16\mathrm{ K}\implies a=\frac{273.16\mathrm{ K}}{X_{TP}}
+\end{equation*}
+Thus, in general, an absolute thermometric scale can be defined as follows
+\begin{equation}
+	\theta_A(X)=273.16\frac{X}{X_{TP}}\mathrm{ K}
+	\label{eq:absolutescale.temp}
+\end{equation}
+Thus, it's possible to define this scale in terms of pressures (generalized forces) or volumes (generalized displacements), using the triple point coordinates as reference point.
+\subsubsection{Temperature Scales}
+The most common temperature scales are two in the metric system of units and two in the imperial system. If we use the definition \eqref{eq:absolutescale.temp} for the Kelvin scale, we have
+\begin{dfn}[Celsius Temperature Scale]
+	Defined by Anders Celsius (SWE), used in the metric system of units
+	\begin{equation*}
+		T\left( ^\circ C \right)=T\left( K \right)-273.15
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Rankine Temperature Scale]
+	Absolute temperature scale defined by William Rankine (UK), used in the imperial system of units
+	\begin{equation*}
+		T\left( R \right)=\frac{9}{5}T\left( K \right)
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Fahrenheit Temperature Scale]
+	Temperature scale define by Daniel G. Fahrenheit (GER), used in the imperial system of units
+	\begin{equation*}
+		T\left( ^\circ F \right)=\frac{9}{5}T\left( R \right)-459.67
+	\end{equation*}
+\end{dfn}
+With these definitions we can find conversions between these scales, and for commonly used scales like Fahrenheit and Celsius we get the following conversion formula
+\begin{equation}
+	T\left( ^\circ F \right)=\frac{9}{5}R\left( ^\circ C \right)+32
+	\label{eq:ftoc.temp}
+\end{equation}
+Note that the Celsius temperature scale has the same dimensions of intervals of the Kelvin scale, thus, a temperature difference in Celsius degrees is the same in Kelvins. Thanks to future concepts, the Kelvin scale will be defined as the absolute scale of temperature, since it's tied to energetic properties of the system itself.
+\section{Thermodynamic Equilibrium}
+\subsection{Definition of Equilibrium}
+Given a thermodynamic system $A$, \textit{any} change of coordinates defines a \textit{change of state} for the system.\\
+A non-influenced system is known as an \textit{isolated system}, but these kinds of systems aren't important in the study of classical thermodynamics, since these systems can't be studied macroscopically.\\
+There are various kinds of equilibrium, namely
+\begin{itemize}
+\item Mechanical equilibrium: equilibrium of forces in the system
+\item Chemical equilibrium: the system is in mechanical equilibrium and it doesn't undergo in spontaneous chemical reactions
+\item Thermal equilibrium: the system is in mechanical and chemical equilibrium, and there is no change of coordinates when the system is separated from its surroundings via a diathermal wall
+\item Thermodynamic equilibrium: the system is in mechanical, chemical, thermal equilibrium contemporaneously
+\end{itemize}
+Note that for having thermodynamic equilibrium, all the previously stated equilibriums must be satisfied, and the system doesn't undergo in changes of state.\\
+In fact, if a system is not in mechanical equilibrium then the system is in a \textit{non equilibrium state} and therefore thermodynamic coordinates cannot be defined, and so goes for the other equilibriums. Specifically, when the system is in \textit{thermodynamic} equilibrium, it \textit{does not} change state, note instead how instead \textit{thermal} equilibrium is defined via changes of state, since in order for a system to be defined in thermal equilibrium undergoes an \textit{isothermal} change of state, but still a change of state.
+\subsection{Thermodynamic Relationships at Equilibrium}
+Given any mole of gas, it's experimentally verifiable that if:
+\begin{itemize}
+\item Fixed volumes and temperature imply that the pressure can't be chosen
+\item Fixed pressure and temperature imply that the volume can't be chosen
+\item Fixed pressure and volume imply that the temperature can't be chosen
+\end{itemize}
+Clearly, if we use these three coordinates to describe a thermodynamic system, only one of the two can be chosen.\\
+These relations were found empirically by Gay-Lussac and Boyle.\\
+The first experiment, done by Gay-Lussac deals with the relationship between $V$ and $T$. It has been found that, heating a solid with linear length $l_0$ at rest, that
+\begin{equation}
+	l(T)=l_0+\sum_{i=1}^\infty a_il_0\Delta T^i
+	\label{eq:thermalexp.temp}
+\end{equation}
+With $a_i$ being numerical coefficients depending on the material composition of the system. For small temperature variations $\Delta T$, it can be said that
+\begin{equation}
+	l(T)\simeq l_0+al_0\Delta T
+	\label{eq:firstorderexp.temp}
+\end{equation}
+Here $a$, is known as the \textit{linear thermal dilatation coefficient}. In general $a>0$, but in nature materials with $a<0$ are found, one of these is water, and all oxides.\\
+Keeping the first order approximation, and using $V_0=l_0^3$, we can say
+\begin{equation}
+	V(T)\simeq l_0^3\left( 1+3a\Delta T \right)=V_0\left( 1+\beta\Delta T \right)
+	\label{eq:volexp.temp}
+\end{equation}
+The coefficient $\beta=3a$ is the \textit{volumetric thermal dilatation coefficient}. This experiment, when repeated with fluids, thanks to their incompressibility, gives 
+\begin{thm}[First Law of Gay-Lussac]
+	Given a fluid with volumetric compressibility $\beta$, contained in a volume $V_0$, when undergoing a change of temperature $\Delta T$ expands or contracts following this equation
+	\begin{equation}
+		V(T)=V_0\left( 1+\beta\Delta T \right)
+		\label{eq:gaylussac1c.temp}
+	\end{equation}
+	If we define the absolute zero of the kelvin scale as the temperature such that $V(T_0)=0$, we get
+	\begin{equation}
+		V(T)=V_0\frac{T}{T_0}
+		\label{eq:gaylussac1k.temp}
+	\end{equation}
+\end{thm}
+If the volume is kept constant and instead the variation of pressure is measured, we have
+\begin{thm}[Second Law of Gay-Lussac]
+	Given a fluid with compressibility $\beta$, if it undergoes a change of temperature at constant volume, the pressure will follow this equation
+	\begin{equation}
+		p\left( T \right)=p_0\left( 1+\beta\Delta T \right)
+		\label{eq:gaylussac2c.temp}
+	\end{equation}
+	If we use the kelvin scale as defined before, we get
+	\begin{equation}
+		p\left( T \right)=p_0\frac{T}{T_0}
+		\label{eq:gaylussac2k.temp}
+	\end{equation}
+\end{thm}
+Both these laws were derived empirically through experimentation, and give the behavior of volume and pressure with respect to changes of temperature. One might ask what happens when temperature is constant, and that's what has been found by Boyle
+\begin{thm}[Boyle's Law]
+	Given a fluid undergoing pressure and volume changes in thermal equilibrium, then
+	\begin{equation}
+		pV=p_0V_0
+		\label{eq:boylelaw.temp}
+	\end{equation}
+\end{thm}
+Note that if a gas verifies all the previous laws, we have
+\begin{equation}
+	pV=\frac{p_0V_0}{T_0}T
+	\label{eq:eqstate.temp}
+\end{equation}
+This equation gives the empirical dependencies of the three thermodynamic coordinates, $\left( p, V, T \right)$ and is for this known as the \textit{equation of state}.\\
+If we also consider that the volume of the gas is $V\propto n$, where $n$ are the \textit{moles} of gas, one has
+\begin{equation}
+	pV=nRT
+	\label{eq:idealgaslaw.temp}
+\end{equation}
+Where $R=8.31\mathrm{ J/Kmol}$ is a conversion constant known as the \textit{gas constant}.\\
+All previous experiments considered that we specifically had what's called a \textit{hydrostatic system}, i.e. a system which has
+\begin{itemize}
+\item Uniform pressure
+\item Constant mass
+\item Surface, gravitational and electromagnetic effects can be considered negligible
+\end{itemize}
+\subsection{Thermodynamic Diagrams}
+The previous relations can be used to determine what are known as \textit{thermodynamic diagrams}, which permit the graphical description of changes of state in a thermodynamic system.\\
+As we saw, of the three coordinates $(p, V, T)$ only two are independent. Thanks to this, we can define 2D Cartesian planes which have as coordinates either $pV$, $pT$, $VT$. We could also define a surface, known as the $pVT$ surface, which describes \textit{all} the possible configurations of the system, ``extruding'' the $pV$, $pT$ and $VT$
+\subsubsection{$pV$ Diagrams}
+Consider now an empirical case of water in thermal equilibrium at $94^\circ\mathrm{C}$ in a vessel of $2\mathrm{m}^3$. If the vessel is sealed and there's \textit{no air}, it's seen that water is in equilibrium with its vapor. It's notable how, if we map all the possible $pV$ transformations of water, the diagram will be divided in three zones by what are known as \textit{critical isotherms}.\\
+These isotherms all coincide in a special point, known as the \textit{critical point}. An image of such diagram follows
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics{}
+%	\caption{todo}
+%	\label{fig:todo}
+%\end{figure}
+%%TODO ADD FIGURE
+\subsubsection{$pT$ Diagrams}
+Pressure-temperature diagrams, are instead useful for defining phase transition isotherms of the system. Considering water again, three main curves can be defined between the states of matter. These curves are known as
+\begin{itemize}
+\item Fusion curve
+\item Sublimation curve
+\item Vaporization curve
+\end{itemize}
+In the first one, along the curve, the set of states described are states of solid-liquid equilibrium, in the second curve solid-vapor equilibrium and liquid-vapor equilibrium.\\
+At the intersection of these three lines we find the \textit{triple point}. It's important to remember that this point is represented only in this diagram as a point, while in others is instead a curve.
+\subsection{Differential Changes of State}
+In order to properly define a mathematical framework for describing the thermodynamic of substances, we have to rewrite differential calculus in a way which is physically significant.\\
+Suppose that in a $pV$ diagram, a substance undergoes a really small transition to another equilibrium state. If the volume changes by a differential $\dd V$ and the pressure by a differential $\dd p$, we \textit{must} have
+\begin{itemize}
+\item For any volume $V$, we have $\dd V<<V$, but $\dd V$ is big enough to be considered macroscopic
+\item For any pressure $p$, and consequent molecular perturbations to pressure $\delta p_{mol}$, we must have
+	\begin{equation*}
+		\delta p_{mol}<<\dd p<<p
+	\end{equation*}
+\end{itemize}
+With these considerations, both volume and pressure can be considered as mathematically continuous functions between the two equilibrium states.\\
+Remembering that of $\left( p, V, T \right)$ only two of the three are independent, we can define the differentials of these quantities, since
+\begin{equation*}
+	\begin{paligned}
+		p&= p\left( V, T \right)\\
+		V&= V\left( p, T \right)\\
+		T&= T\left( p, V \right)
+	\end{paligned}
+\end{equation*}
+Thus
+\begin{equation}
+	\begin{paligned}
+		\dd p&= \tpdv{p}{V}{T}\dd V+\tpdv{p}{T}{V}\dd T\\
+		\dd V&= \tpdv{V}{p}{T}\dd p+\tpdv{V}{T}{p}\dd T\\
+		\dd T&= \tpdv{T}{p}{V}\dd p+\tpdv{T}{V}{p}\dd V\\
+	\end{paligned}
+	\label{eq:thermodiff.temp}
+\end{equation}
+Where, as a subscript of the parentheses, we indicated which of the coordinates is kept constant.\\
+For volume specifically, we can define two things in particular
+\begin{enumerate}
+\item Volumetric expansivity $\beta$ as
+	\begin{equation}
+		\beta=\frac{1}{V}\tpdv{V}{T}{p}
+		\label{eq:volumeexp.temp}
+	\end{equation}
+\item Isothermal compressibility $\kappa$
+	\begin{equation}
+		\kappa=-\frac{1}{V}\tpdv{V}{p}{T}
+		\label{eq:isothcomp.temp}
+	\end{equation}
+\end{enumerate}
+Therefore, the differential changes of volume can be described as follows
+\begin{equation}
+	\dd\log\left( V \right)=\beta\dd T-\kappa\dd p
+	\label{eq:volchange.temp}
+\end{equation}
+\section{Work}
+In general, we can define two kinds of work that can be made by a system, or that the system can be subjected to:
+\begin{itemize}
+\item External work, which is the one exerted from the system to the surroundings
+\item Internal work, which is the one exerted from one part of the system to another
+\end{itemize}
+In general, we are only interested in \textit{external work} in our macroscopic treatment.\\
+Consider now a hydrostatic system contained in a piston chamber with adiabatic walls. By definition, if the piston has surface $S$, we define the pressure as
+\begin{equation}
+	p=\frac{F}{S}
+	\label{eq:presshyd.work}
+\end{equation}
+We now consider an \textit{infinitesimal} displacement of the piston, with force $\vec{F}$. The amount of work is then, as usual
+\begin{equation}
+	\slashed{\dd} W = \vec{F}\cdot\dd\vec{r}
+	\label{eq:workinf.work}
+\end{equation}
+Thus, if the piston moves along the $x$ axis
+\begin{equation}
+	\slashed{\dd}W=pS\dd x=p\dd V
+	\label{eq:workthermo.work}
+\end{equation}
+This work is commonly known as \textit{thermodynamic work} and shouldn't be confused with \textit{other} kinds of work that might be done from external forces, aka \textit{mechanical work}.\\
+The main question that pops to mind is how is actually infinitesimal work defined in a thermodynamic system. The action of the piston itself creates instability, and thus even in an infinitesimal displacement the gas isn't anymore in mechanical equilibrium, even for a small amount of time. An approximation is made in order to make calculations possible, i.e. the \textit{quasi-static approximation}, defined as follows
+\begin{dfn}[Quasi Static Process]
+	A quasi static process is an infinitesimal thermodynamic transformation. Specifically, a quasi static process is one such that the system is always in a neighborhood of an equilibrium configuration, thus it can be thought as always being in an equilibrium state. This approximation thus renders our previous calculations valid.
+\end{dfn}
+The ``\textit{d slashed}'' differential operator is there to indicate one thing and one thing only: work is \textit{path dependent}, as already seen in any course in classical mechanics.\\
+Note that in literature, the previous definition of work tends to differ by a minus sign. It's just a convention which simply indicates the sign of work depending whether it's made \textit{on} or \textit{by} the system. In our case, if the system is making work \textit{on} the surroundings, like when it expands, we have $W>0$ and vice versa.\\
+The path dependence of work makes its calculation not always immediate. Thanks to the existence of the state equation, we can tho define a relationship $p(V)$ which basically makes the pressure an integrating factor for work.
+\subsection{Quasi-static Processes}
+Let's start to consider now quasi static processes in ideal gases. We already know that for an ideal gas the equation of state holds, which is 
+\begin{equation*}
+	pV=nRT
+\end{equation*}
+We can then define the implicit dependence $p(V, T)$ as
+\begin{equation*}
+	p(V, T)=\frac{nRT}{V}
+\end{equation*}
+In the special case of \textit{isothermal} processes (constant $T$), we can then integrate the work differential and obtain
+\begin{equation}
+	W_{T}=nR\int_{V_A}^{V_B}\frac{1}{V}\dd^{}{V}=nR\log\left( \frac{V_B}{V_A} \right)
+	\label{eq:isot.work}
+\end{equation}
+For an \textit{isobaric} process ($p$ is constant), the integration is trivial and gives
+\begin{equation}
+	W_p=p\left( V_B-V_A \right)
+	\label{eq:isob.work}
+\end{equation}
+Another special case to consider is when the case study is composed by multiple hydrostatic systems in thermal equilibrium, separated by a diathermal wall. In this general case, work is additive thanks to its definition, and the total work of the composite system is none other than the sum of the work of the single component systems
+\end{document}

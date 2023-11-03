@@ -1,0 +1,328 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	\section{Perturbation Theory}
+	Since most problems in quantum mechanics can't be solved directly, there are various methods in order to approximate the results. In perturbation theory, we have two main problems and two cases: time-independent and time-dependent perturbations with or without degeneration. As a first approach, we will consider nondegenerate and time independent perturbations.
+	\subsection{Rayleigh-Schrödinger Perturbation Theory, Nondegenerate Case}
+	Let $\opr{\ham}$ be our non directly solvable Hamiltonian, divisible in a sum of a solvable Hamiltonian $\opr{\ham}_0$ and a perturbation $\opr{V}$.
+	\begin{equation}
+		\opr{\ham}=\oham_0+\opr{V}
+		\label{eq:pertham1}
+	\end{equation}
+	For $\oham_0$ we already know the solution of the secular equation, and we label them as follows
+	\begin{equation}
+		\oham_0\ket{n_0}=E_n^{(0)}\ket{n_0}
+		\label{eq:phsec0}
+	\end{equation}
+	Where the $0$ should be seen strictly as a label, otherwise told.\\
+	The full secular equation will then be the following
+	\begin{equation}
+		\oham\ket{n}=\left( \oham_0+\opr{V} \right)\ket{n}=E_n\ket{n}
+		\label{eq:phsec}
+	\end{equation}
+	It is customary to have $\opr{V}'=\lambda\opr{V}$, where $0\le\abs{\lambda}\le1$ is a parameter that can be manipulated in order to see the effect of the perturbation.\\
+	A nice example on how this works is given by a two state system, defined as follows
+	\begin{equation}
+		\begin{aligned}
+			\oham_0&=E_1^{(0)}\ket{1_0}\bra{1_0}+E_2^{(0)}\ket{2_0}\bra{2_0}\\
+			\opr{V}&=\lambda V_{12}\ket{1_0}\bra{2_0}+\lambda V_{21}\ket{2_0}\bra{1_0}
+		\end{aligned}
+		\label{eq:toytheoryham}
+	\end{equation}
+	In matrix representation, our Hamiltonian will then be the following
+	\begin{equation}
+		\ham_{ij}=\begin{pmatrix}
+			E^{(0)}_1&\lambda V_{12}\\
+			\lambda V_{21}&E^{(0)}_2
+		\end{pmatrix}
+		\label{eq:twolevel}
+	\end{equation}
+	Since it must be (obviously) an Hermitian operator, we have $V_{12}=V_{21}$
+	Calculating the eigenvalues is simple, and we get
+	\begin{equation}
+		E_{1,2}=\frac{E_1^{(0)}+E_2^{(0)}}{2}\pm\sqrt{\frac{(E_1^{(0)}-E_2^{(0)})^2}{4}+\lambda^2V_{12}^2}
+		\label{eq:eigenperthamtoy}
+	\end{equation}
+	Since we are considering perturbations tied to a parameter, if $\lambda\abs{V_{12}}<<\abs{E_1^{(0)-E_2^{(0)}}}$ we can approximate the square root with a power series, obtaining the following result
+	\begin{equation}
+		\begin{aligned}
+			E_1&=E_1^{(0)}+\frac{\lambda^2\abs{V_{12}}^2}{E_1^{(0)}-E_2^{(0)}}\\
+			E_2&=E_2^{(0)}+\frac{\lambda^2\abs{V_{12}}^2}{E_2^{(0)}-E_1^{(0)}}
+		\end{aligned}
+		\label{eq:phtoyeigenv}
+	\end{equation}
+	Which are the perturbation-corrected eigenvalues.\\
+	Now it's simpler to grasp the \emph{formal} development of the theory. We take our two secular equations \eqref{eq:phsec0} and \eqref{eq:phsec}, and rename the difference of eigenvalues found in the approximation \eqref{eq:phtoyeigenv} as follows $\Delta_n=E_n-E_n^{(0)}$.\\
+	Our new approximate Schrödinger equation can then be written as follows
+	\begin{equation}
+		\left( E_n^{(0)}-\opr{\ham}_0 \right)\ket{n}=\left( \lambda\opr{V}-\Delta_n \right)\ket{n}
+		\label{eq:formaldefschr}
+	\end{equation}
+	And now here a little precaution: $E_n^{(0)}-\opr{\ham}_0$ and $\lambda\opr{V}-\Delta_n$ \underline{\emph{are operators}}, and must be treated as such.\\
+	Back to our perturbation theory, we see right away that inverting the operator on the left isn't the way to go. It may act both on $\ket{n_0},\ket{n}$, and therefore it's inverse is ill-defined, but the right hand side comes to our rescue, and we can impose the following condition as an Ansatz
+	\begin{equation}
+		\bra{n_0}\left( \lambda\opr{V}-\Delta_n \right)\ket{n}=0
+		\label{eq:rhsopcond}
+	\end{equation}
+	Now, we want to define properly the inverse of the operator on the left hand side, and we start by using a \textit{complementary projection operator} $\opr{\phi}_n$ defined as follows
+	\begin{equation}
+		\opr{\phi}_n=1-\ket{n_0}\bra{n_0}=\sum_{k\ne n}\ket{k_0}\bra{k_0}
+		\label{eq:compprojop}
+	\end{equation}
+	Now, in order to well-define the inverse operator we simply apply a projection beforehand
+	\begin{equation}
+		\frac{1}{E_n^{(0)}-\opr{\ham}_0}\opr{\phi}_n=\sum_{k\ne n}\frac{1}{E_n^{(0)}-E_k^{(0)}}\ket{k_0}\bra{k_0}
+		\label{eq:invlhsopr}
+	\end{equation}
+	From the Ansatz \eqref{eq:rhsopcond} we have, evidently
+	\begin{equation*}
+		\left( \lambda\opr{V}-\Delta_n \right)\ket{n}=\opr{\phi}_n\left( \lambda\opr{V}-\Delta_n \right)\ket{n}
+	\end{equation*}
+	So everything looks set up and fine, and it's tempting to find the perturbed eigenstates simply by inverting the first operator, but it simply doesn't work. Why? First of all, for $\lambda\to0$ we \emph{must} have $\ket{n}\to\ket{n_0}$, and $\Delta_0$, secondly because we need to add the solution to the homogeneous equation, hence, finally, we get the following result, naming this solution $c_n\ket{n}$
+	\begin{equation}
+		\ket{n}=c_n(\lambda)\ket{n_0}+\frac{1}{E_n^{(0)}-\opr{\ham}_0}\opr{\phi}_n\left( \lambda\opr{V}-\Delta_n \right)\ket{n}
+		\label{eq:kncnk0invphivkn}
+	\end{equation}
+	Where we have $c_n(\lambda)\to1$ for $\lambda\to0$, and $c_n(\lambda)=\bra{n_0}\ket{n}$.\\
+	Simplifying the successive equations, we put $c_n(\lambda)=\bra{n_0}\ket{n}=1$ as our normalization condition, effectively removing a common multiplicative factor that appears. Then, easing the notation, we get
+	\begin{equation}
+		\ket{n}=\ket{n_0}+\frac{\opr{\phi}_n}{E_n^{(0)}-\opr{\ham}_0}\left( \lambda\opr{V}-\Delta_n \right)\ket{n}
+		\label{eq:ketnfin}
+	\end{equation}
+	We also note that, from \eqref{eq:rhsopcond} that
+	\begin{equation}
+		\Delta_n=\lambda\bra{n_0}\opr{V}\ket{n}
+		\label{eq:Deltan}
+	\end{equation}
+	Now everything is set. What we are searching depends only on the equations \eqref{eq:ketnfin} and \eqref{eq:Deltan}, and using the ``smallness'' of $\lambda$ we approximate everything using power series, hence
+	\begin{equation}
+		\begin{aligned}
+			\ket{n}&=\sum_{k=0}^{\infty}\lambda^k\ket{n_k}\\
+			\Delta_n&=\sum_{k=0}^{\infty}\lambda^k\Delta_n^{(k)}
+		\end{aligned}
+		\label{eq:powerseriesapproxdkn}
+	\end{equation}
+	So, in order to evaluate the energy shift up to an order $\order{\lambda^N}$ it's sufficient to equate the coefficients of the powers of $\lambda$, putting simply the following condition $\Delta_n^{(N)}=\bra{n_0}\opr{V}\ket{n_{N-1}}$. It's evident how we need to know $\ket{n_k}$ only up to $\order{\lambda^{N-1}}$. Adding all this in \eqref{eq:powerseriesapproxdkn}, we get
+	\begin{equation*}
+		\ket{n_0}+\lambda\ket{n_1}+\cdots=\ket{n_0}+\frac{\opr{\phi}_n}{E_n^{(0)}-\opr{\ham}_0}\left( \lambda\opr{V}-\lambda\Delta_n^{(1)}-\cdots \right)\left( \ket{n_0}+\lambda\ket{n_1}+\cdots \right)
+	\end{equation*}
+	Therefore, for $\order{\lambda}$ we will get the following (remembering that $\opr{\phi}_n\Delta^{(1)}_n\ket{n_0}=0$)
+	\begin{equation}
+		\ket{n_1}=\frac{\opr{\phi}_n}{E_n^{(0)}-\opr{\ham}_0}\opr{V}\ket{n_0}
+		\label{eq:order1ptt}
+	\end{equation}
+	For $\order{\lambda^2}$ it gets trickier. Firstly we use the definition of $\Delta_n^{(2)}$, where
+	\begin{equation*}
+		\Delta_n^{(2)}=\bra{n_0}\opr{V}\frac{\opr{\phi}_n}{E_n^{(0)}-\opr{\ham}_0}\opr{V}\ket{n_0}
+	\end{equation*}
+	Plugging it into the power series approximation up to order $2$, we get therefore
+	\begin{equation}
+		\begin{aligned}
+			\ket{n_2}&=\frac{\opr{\phi}_n}{E_n^{(0)}-\opr{\ham}_0}\opr{V}\frac{\opr{\phi}_n}{E_n^{(0)}-\opr{\ham}_0}\ket{n_0}-\\
+			&-\frac{\opr{\phi}_n}{E_n^{(0)}-\opr{\ham}_0}\bra{n_0}\opr{V}\ket{n_0}\frac{\opr{\phi}_n}{E_n^{(0)}-\opr{\ham}_0}\opr{V}\ket{n_0}
+		\end{aligned}
+		\label{eq:order2ptt}
+	\end{equation}
+	Defining $\opr{\Phi}=\opr{\phi}/(E_n^{(0)}-\opr{\ham}_0)$, we get the previous equations compacted
+	\begin{equation}
+		\begin{aligned}
+			\ket{n_1}&=\opr{\Phi}\opr{V}\ket{n_0}\\
+			\ket{n_2}&=\opr{\Phi}\opr{V}\opr{\Phi}\opr{V}\ket{n_0}-\opr{\Phi}\expval{\opr{V}}_0\opr{\Phi}\opr{V}\ket{n_0}
+		\end{aligned}
+		\label{eq:compact}
+	\end{equation}
+	It's evident that there is a trend in how next-order perturbations can be found, in this not-so-simple pattern.\\
+	Written explicitly, it's evident how this works
+	\begin{equation*}
+		\begin{aligned}
+			\ket{n}=\ket{n_0}&+\lambda\sum_{k\ne n}\frac{V_{kn}}{E_n^{(0)}-E_k^{(0)}}\ket{k_0}+\lambda^2\sum_{k\ne n}\sum_{l\ne n}\frac{V_{kl}V_{ln}}{(E_n^{(0)}-E_k^{(0)})(E_n^{(0)}-E_l^{(0)})}\ket{k_0}-\\
+			&-\lambda^2\sum_{k\ne n}\frac{V_{nn}V_{kn}}{(E_n^{(0)}-E_k^{(0)})^2}\ket{k_0}+\cdots
+		\end{aligned}
+	\end{equation*}
+	\subsection{Rayleigh-Schrödinger Perturbation Theory, Degenerate Case}
+	What we have defined so far, fails when the eigenstates we perturb are degenerate, since we supposed that there was only one well-defined eigenvalue $E_n^{(0)}$ for each eigenket.\\
+	Let's now suppose that we have a system, for which there is a $g$-fold degeneracy, hence there are $g$ unperturbed eigenkets $\ket{m_0}$ for one single $E_D^{(0)}$ eigenvalue. Let's define the degenerate eigenspace as $D:=\left\{\ket{m_0}\in\hilbert\left|\ \opr{\ham}\ket{m_0}=E_D^{(0)}\ket{m_0},\ m=1,\cdots,g\right.\right\}$. In general, the perturbation breaks the degeneracy, forming a new set of eigenkets $\ket{l}$ that do not coincide with the unperturbed set $\ket{l_0}$, although we can use the following projection
+	\begin{equation*}
+		\ket{l_0}=\sum_{\ket{m}\in D}\bra{m_0}\ket{l_0}\ket{m_0}
+	\end{equation*}
+	Let's rewrite the Schrödinger equation for the new states $\ket{l}$, and define the projections $\opr{\pi}_0=\ket{m_0}\bra{m_0}$ and its coprojection $\opr{\pi}_1=\1-\opr{\pi}_0$. The Schrödinger equation then becomes
+	\begin{equation}
+		\left( E-\opr{\ham}_0-\lambda\opr{V} \right)\ket{l}=\left( E-E_D^{(0)}-\lambda\opr{V} \right)\left( \opr{\pi}_0\ket{l}+\opr{\pi}_1\ket{l} \right)=0
+		\label{eq:schreqdegeig}
+	\end{equation}
+	We separate the equation \eqref{eq:schreqdegeig} multiplying on the left firstly by $\opr{\pi}_0$ and then by $\opr{\pi}_1$
+	\begin{equation}
+		\begin{aligned}
+			\left( E-E_D^{(0)}-\lambda\opr{\pi}_0\opr{V} \right)\opr{\pi}_0\ket{l}-\lambda\opr{\pi}_0\opr{V}\opr{\pi}_1\ket{l}&=0\\
+			\left( E+\opr{\ham}_0-\lambda\opr{\pi}_1\opr{V} \right)\opr{\pi}_1\ket{l}-\lambda\opr{\pi}_1\opr{V}\opr{\pi}_0\ket{l}&=0
+		\end{aligned}
+		\label{eq:newschreqdegeig}
+	\end{equation}
+	From this equation we can then solve for $\opr{\pi}_1\ket{l}$ and $\opr{\pi}_0\ket{l}$
+	\begin{equation}
+		\begin{aligned}
+			&\opr{\pi}_1=\opr{\pi}_1\frac{\lambda}{E-\opr{\ham}_0-\lambda\opr{\pi}_1\opr{V}\opr{\pi}_1}\opr{\pi}_1\opr{V}\opr{\pi}_0\ket{l}\\
+			&\left( E-E_D^{(0)}-\lambda\opr{\pi}_0\opr{V}\opr{\pi}_0-\lambda^2\opr{\pi}_0\opr{V}\opr{\pi}_1\frac{1}{E-\opr{\ham}_0\lambda\opr{V}}\opr{\pi}_1\opr{V}\opr{\pi}_0 \right)\opr{\pi}_0\ket{l}=0
+		\end{aligned}
+		\label{eq:projsoldegschr}
+	\end{equation}
+	The general approximation to $\order{\lambda^n}$ will be given from the following general expression
+	\begin{equation*}
+		\opr{\pi}_1\ket{l_1}=\sum_{\ket{k}\notin D}\frac{V_{kl}}{E_D^{(0)}-E_k^{(0)}}\ket{k_0}
+	\end{equation*}
+	And, henceforth, in order to solve for $\order{\lambda}$, we get the following equation
+	\begin{equation}
+		\left( E-E_D^{(0)}-\lambda\opr{\pi}_0\opr{V}\opr{\pi}_0 \right)\opr{\pi}_0\ket{l_0}=0
+		\label{eq:firstorderdegenerate}
+	\end{equation}
+	The energy shifts $\Delta^{(1)}$ will then be the diagonal elements of the perturbation $\bra{l_0}\opr{V}\ket{l_0}$\\
+	We can immediately ask why a $\lambda^2$ appears in \eqref{eq:projsoldegschr}. This is given simply by the substitution we made in order to get the equation, but we already know that the energy shift at the first order is $E_i^{(1)}=E_D^{(0)}+\lambda v_i$, where $v_i$ are the eigenvalues of the operator $\opr{\pi}_0\opr{V}\opr{\pi}_0$. We assume that the degeneracy is completely resolved after the application of the perturbation, hence we get $E_i^{(1)}=\lambda(v_i-v_j)\ne0$. Since there isn't anymore degeneration in this system, we solve using nondegenerate Rayleigh-Schrödinger perturbation theory, obtaining the corrections
+	\begin{equation}
+		\opr{\pi}_0\ket{l^1_i}=\lambda\sum_{j\ne i}\frac{\opr{\pi}_0}{v_j-v_i}\ket{l_j^0}\bra{l_j^0}\opr{V}\opr{\pi}_1\frac{1}{E_D^{(0)}-\opr{\ham}_0}\opr{\pi}_1\opr{V}\ket{l_i^0}
+		\label{eq:correctionsdegeigenkets}
+	\end{equation}
+	Since $\opr{\pi}_0\ket{l_j^0}$ are eigenvectors of $\opr{V}$ we get that the energy shift at the second order is simply
+	\begin{equation}
+		\Delta_l^{(2)}=\sum_{k\notin D}\frac{\abs{V_{kl}}^2}{E_D^{(0)}-E_k^{(0)}}
+		\label{eq:deg2ordshift}
+	\end{equation}
+	\section{Variational Methods}
+	Approximating through variational methods is done when searching for approximate ground states energies $E_0$ when exact values aren't available.\\
+	We start to ``guess''  the ground state by defining a trial ket $\ket{\sla{0}}$. We then define the following
+	\begin{equation}
+		\expval{\opr{\ham}}=\frac{\bra{\sla{0}}\opr{\ham}\ket{\sla{0}}}{\braket{\sla{0}}}
+		\label{eq:slashed0ket}
+	\end{equation}
+	\begin{thm}
+		There exists an upper bound to $E_0$, hence
+		\begin{equation*}
+			\expval{\opr{\ham}}\ge E_0
+		\end{equation*}
+	\end{thm}
+	\begin{proof}
+		We can expand $\ket{\sla{0}}$ as follows
+		\begin{equation*}
+			\ket{\sla{0}}=\sum_{k=0}^{\infty}\ket{k}\bra{k}\ket{\sla{0}}
+		\end{equation*}
+		Where, $\opr{\ham}\ket{k}=E_k\ket{k}$, hence it's an exact eigenket.\\
+		We can write $E_k=E_k-E_0+E_0$ and evaluating $\expval{\opr{\ham}}$ we have
+		\begin{equation*}
+			\expval{\opr{\ham}}=\frac{\sum_{k=0}^{\infty}\abs{\bra{k}\ket{\sla{0}}}^2E_k}{\sum_{k=0}^{\infty}\abs{\bra{k}\ket{\sla{0}}^2}}=
+			\frac{\sum_{k=0}^{\infty}\abs{\bra{k}\ket{\sla{0}}}^2\left( E_k-E_0 \right)}{\sum_{k=0}^{\infty}\abs{\bra{k}\ket{\sla{0}}^2}}+E_0\ge E_0
+		\end{equation*}
+		Obviously, the equality is given iff $\ket{\sla{0}}$ is the exact ground eigenket
+	\end{proof}
+	This method is really powerful, since for even a poor trial ket we have $\bra{k}\ket{\sla{0}}\sim\order{\epsilon}$ and $\expval{\opr{\ham}}-E_0\sim\order{\epsilon^2}$.\\
+	Another way to say this is saying that if we variate $\ket{\sla{0}}$, the Hamiltonian will be stationary with respect to $\delta\ket{\sla{0}}$.\\
+	This method doesn't say what shape does the ket $\ket{\sla{0}}$ has, hence we must guess them, using the system as a guide.\\
+	Practically, it's much more useful to define a parameter vector $\lambda_i$ which will appear in the considered eigenket, and then find the minimum of $\expval{\opr{\ham}}$, imposing the following equation
+	\begin{equation}
+		\pdv{\expval{\opr{\ham}}}{\lambda_i}=0
+		\label{eq:extremalvarmethod}
+	\end{equation}
+	\section{Time Dependent Perturbation Theory}
+	\subsection{Dirac Interaction Picture}
+	Let's begin considering a time dependent Hamiltonian that can be split in two parts
+	\begin{equation}
+		\opr{\ham}(t)=\opr{\ham}_0+\opr{V}(t)
+		\label{eq:timedephampert}
+	\end{equation}
+	Where one piece is time independent and the other is time dependent. We suppose that $\opr{\ham}_0$ is exactly solvable.\\
+	Let's suppose that at $t=0$ the state ket is given by the following relation
+	\begin{equation}
+		\ket{\alpha}=\sum_nc_n(0)\ket{n}
+		\label{eq:statekettimedeppert}
+	\end{equation}
+	Where $\ket{n}$ is the eigenvalue of $\opr{\ham}_0$.\\
+	Our objective is to find some $c_n(t)$ such that
+	\begin{equation}
+		\ket{\alpha(t)}=\sum_nc_n(t)e^{-\frac{iE_nt}{\hbar}}\ket{n}
+		\label{eq:findthiskettdpt}
+	\end{equation}
+	Now, in order to simplify our problem, we define the \textit{Dirac picture}, or \textit{Interaction picture}, where, having considered our Hamiltonian, we have
+	\begin{equation}
+		\ket{\alpha(t)}_I=e^{\frac{i\opr{\ham}_0t}{\hbar}}\ket{\alpha(t)}_S
+		\label{eq:intpicturetdp}
+	\end{equation}
+	The observables in this picture will be defined as follows, in particular, for our perturbation $\opr{V}$, we have
+	\begin{equation}
+		\opr{V}_I=e^{\frac{i\opr{\ham}_0t}{\hbar}}\opr{V}e^{-\frac{i\opr{\ham}_0t}{\hbar}}
+		\label{eq:Vintpictdpt}
+	\end{equation}
+	Remembering the relation between Schrödinger and Heisenberg picture, we have that
+	\begin{equation}
+		\begin{aligned}
+			\ket{\alpha}_H&=e^{\frac{i\opr{\ham} t}{\hbar}}\ket{\alpha(t_0)}_S\\
+			\ket{\alpha(t_0)}_S&=e^{-\frac{i\opr{\ham} (t-t_0)}{\hbar}}\ket{\alpha}\\
+			\opr{A}_H&=e^{\frac{i\opr{\ham} t}{\hbar}}\opr{A}e^{-\frac{i\opr{\ham} t}{\hbar}}
+		\end{aligned}
+		\label{eq:schrtoheisrep}
+	\end{equation}
+	Hence, we have that the Dirac interaction picture will satisfy the following time dependent Schrödinger equation (remembering that $i\hbar\partial_t\ket{\alpha(t)}_I=i\hbar\partial_t(\exp(i\opr{\ham}_0t/\hbar)\ket{\alpha(t)}_S$)
+	\begin{equation}
+		i\hbar\pdv{t}\ket{\alpha(t)}_I=\opr{V}_I\ket{\alpha(t)}_I
+		\label{eq:interactiontdschr}
+	\end{equation}
+	Where the perturbation takes the place of the Hamiltonian in the time dependent equation.\\
+	It is also demonstrable that, for an observable $\opr{A}$, its interaction picture will satisfy the following differential equation
+	\begin{equation}
+		\derivative{\opr{A}_I}{t}=\frac{1}{i\hbar}\comm{\opr{A}_I}{\opr{\ham}_0}
+		\label{eq:intpicobsder}
+	\end{equation}
+	It's obvious that this Dirac Interaction picture is the halfway between a Schrödinger and a Heisenberg representation picture.\\
+	Going back to \eqref{eq:findthiskettdpt}, we hae that in interaction picture it will simply become this
+	\begin{equation}
+		\ket{\alpha(t)}_I=\sum_nc_n(t)\ket{n}
+		\label{eq:intpicbasis}
+	\end{equation}
+	We can now write a differential equation for $c_n(t)$.
+	\begin{equation}
+		i\hbar\pdv{t}\bra{n}\ket{\alpha(t)}_I=\sum_m\bra{n}\opr{V}_I\ket{m}\bra{m}\ket{\alpha(t)}_I
+		\label{eq:cteqdiff}
+	\end{equation}
+	By definition, we have $c_n(t)=\bra{n}\ket{\alpha(t)}_I$, henceforth
+	\begin{equation}
+		i\hbar\derivative{c_n}{t}=\sum_mV_{nm}e^{i\omega_{nm}t}c_m(t)
+		\label{eq:ctrealeqdiff}
+	\end{equation}
+	Where we have expanded the interaction-picture time dependence, and we have by definition of frequency
+	\begin{equation}
+		\omega_{nm}=\frac{E_n-E_m}{\hbar}=-\omega_{mn}
+		\label{eq:omeganmfreq}
+	\end{equation}
+	\subsection{Dyson Series}
+	Usually, exact solutions for $c_n(t)$ are not available, hence we must find a suitable approximation for our solution. One good way to start is to suppose that $c_n(t)$ can be expressed via the sum of different functions as follows
+	\begin{equation*}
+		c_n(t)=\sum_{i=0}^{\infty}c_n^{(i)}
+	\end{equation*}
+	Where $c_n^{(i)}$ indicates the $i-$th transition amplitude.\\
+	This problem can be attacked, using that $c_n^{(0)}=\kd{in}$ and then using it to define a differential equation for $c_n^{(1)}(t)$ and so on. Using operator theory, this problem can be solved even in a better way.\\
+	The time evolution operator in the Dirac picture is defined as follows
+	\begin{equation*}
+		\ket{\alpha(t)}=\Ut_I(t)\ket{\alpha}
+	\end{equation*}
+	For which, we know already that it's solution to the following ODE
+	\begin{equation*}
+		\left\{\begin{aligned}
+			i\hbar\derivative{\Ut_I}{t}&=\opr{V}_I\Ut_I\\
+			\Ut(t_0)&=\1
+		\end{aligned}\right.
+	\end{equation*}
+	This differential equation is equivalent to the following integral equation
+	\begin{equation*}
+		\Ut_I(t)=\1-\frac{i}{\hbar}\int_{t_0}^{t}\opr{V}_I(t_1)\Ut_I(t_1)\diff{t}_1
+	\end{equation*}
+	Iterating, we get
+	\begin{equation}
+		\Ut_I(t)=\sum_{n=0}^{\infty}\prod_{k=1}^{\infty}\left( \frac{-i\1}{\hbar} \right)^n\int_{t_0}^{t_{k-1}}V_I(t_k)\diff{t}_k
+		\label{eq:dysonseries}
+	\end{equation}
+	Which is equivalent to writing the following expression
+	\begin{equation*}
+		\begin{aligned}
+		\Ut_I(t)&\approx\1-\frac{i}{\hbar}\int_{t_0}^{t}V_I(t_1)\diff{t}_1\approx\\
+		&\1-\left( \frac{-i}{\hbar} \right)^2\int_{t_0}^{t}V_I(t_1)V_I(t_2)\ddiff{t_1}{t_2}+\cdots\\
+		&\cdots+\left( \frac{-i}{\hbar} \right)^n\int_{t_0}^{t}\int_{t_0}^{t_1}\cdots\int_{t_0}^{t_{n-1}}V_I(t_1)\cdots V_I(t_n)\diff{t_1}\cdots\diff{t_n}
+	\end{aligned}
+	\end{equation*}
+	Through this approximation, it's virtually possible to compute $\Ut_I(t)$ to any order, and therefore $c_n(t)$. This kind of computation is fundamental in fields like atomic physics, as we will see later.
+\end{document}

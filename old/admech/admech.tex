@@ -1,0 +1,115 @@
+\documentclass{book}
+\usepackage{physics}
+\usepackage{subfiles}
+\usepackage[]{csquotes}
+\usepackage{fontspec}
+\usepackage{mathtools}
+\usepackage{amsthm, amssymb, amsfonts}
+\usepackage{esint}
+\usepackage{xcolor}
+\usepackage[]{geometry}
+\usepackage[]{graphicx}
+\graphicspath{{./images/}}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{stmaryrd}
+\usepackage{dsfont}
+\usepackage{lipsum}
+\usepackage{etoolbox}
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{~/Dropbox/appunti/bibliografia/bib.bib}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=red,citecolor=blue]{hyperref}%
+\definecolor{sapienza}{cmyk}{.10,1.00,.61,.50}
+\setlength{\headheight}{13.6pt}
+\setmainfont[
+	Ligatures=TeX,
+	UprightFont=*_45_light,
+	ItalicFont=SALFrutiger-Italic,
+	BoldFont=*_bold,
+	BoldItalicFont=SALFrutiger-BoldItal,
+]{frutiger}
+%
+\usetikzlibrary{patterns}
+%
+\fancyhf{}
+\fancyhead[R]{\textbf{\textsf{\thepage}}}
+\fancyhead[LE]{\textbf{\textsf{\leftmark}}}
+\fancyhead[LO]{\textbf{\textsf{\rightmark}}}
+\pagestyle{fancy}
+\titleformat{\chapter}[block]{\bfseries}{\fontsize{40}{30}\selectfont\color{gray}\textsf\thechapter}{1.5em}{\fontsize{25}{25}\selectfont\scshape}[\vspace{-1ex}\hfill\rule{\textwidth}{0.5pt}]
+\titleformat{\section}[block]{}{\fontsize{14}{12}\textsf{\S\ \bfseries\thesection}}{0.5em}{\fontsize{14}{12}\bfseries\textsf}[\vspace{-1ex}\hfill\rule{\textwidth}{0.1pt}]
+\titleformat{\subsection}[block]{}{\textsf{\S\S\ \bfseries\thesubsection}}{0.5em}{\bfseries\textsf}
+% EN %
+% %
+\newtheorem{thm}{Theorem}[chapter]
+\theoremstyle{definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{dfn}{Definition}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{hyp}{Hypothesis}
+\newtheorem{exe}{Exercise}[section]
+\newtheorem{mtd}{Method}
+\newtheorem*{ntn}{Notation}
+\theoremstyle{remark}
+\newtheorem{eg}{Example}[section]
+\newtheorem*{rmk}{Remark}
+%% %%
+\AtBeginEnvironment{equation}{\color{sapienza}}
+\AtBeginEnvironment{equation*}{\color{sapienza}}
+\newcommand{\pot}{\mathcal{U}}
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\ham}{\mathcal{H}}
+\newcommand{\ray}{\mathcal{F}}
+\newcommand{\vpot}{\mathcal{V}}
+\newcommand{\act}{\mathcal{S}}
+\newcommand{\poisson}[2]{\left\{#1,#2\right\}}
+\DeclareMathOperator{\F}{\mathbb{F}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\Cf}{\mathbb{C}}
+\DeclareMathOperator{\V}{\mathbb{V}}
+\DeclareMathOperator{\W}{\mathbb{W}}
+\newcommand{\del}{\partial}
+\newcommand{\K}{\ensuremath{\mathcal{K}}}
+\renewcommand{\real}{\mathfrak{Re}}
+\renewcommand{\imaginary}{\mathfrak{Im}}
+\newcommand{\fto}[1][]{\overset{\longrightarrow}{#1}}
+\renewcommand{\emph}[1]{ <<{\color{sapienza}#1}>> }
+%\renewcommand{\textit}[1]{ <<{\color{sapienza}#1}>> }
+\begin{document}
+\subfile{./title/title}
+\tableofcontents
+\part{Lagrangian Mechanics}
+\chapter{Newtonian Mechanics}
+\subfile{./chapters/newton}
+\chapter{Lagrange Equations}
+\subfile{./chapters/lagrange}
+\chapter{Equations of Motion}
+\subfile{./chapters/eom}
+\chapter{Classical Collisions}
+\subfile{./chapters/ccol}
+\chapter{Small Oscillations}
+\subfile{./chapters/osc}
+\chapter{Rigid Bodies}
+\subfile{./chapters/rig}
+\part{Hamiltonian Mechanics}
+\chapter{Canonical Equations of Motion}
+\subfile{./chapters/heom}
+\chapter{Phase Space Formulation}
+\subfile{./chapters/psf}
+\part{Special Relativity}
+\chapter{Lorentz Transformations and Kinematics}
+\subfile{./chapters/lorentz}
+\chapter{Relativistic Mechanics}
+\subfile{./chapters/lep}
+\chapter{Relativistic Collisions}\footnote{NOTE: this chapter deals mostly with concepts useful in the study of particle physics}
+\subfile{./chapters/relc}
+\nocite{landau1,landau2,relativita,relativitat,goldsteincm,raducm}
+\printbibliography
+\end{document}

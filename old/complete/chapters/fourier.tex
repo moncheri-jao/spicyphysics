@@ -1,0 +1,1343 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Bessel Inequality and Fourier Coefficients}
+\begin{dfn}[Fourier Coefficients]
+	Suppose $(u_k)_{k\in\N}=\Us\subset\V$, with $(\V,\sprd)$ an euclidean space, taken $v\in\V$ we can define an operator $\fou_{\Us}:\V\fto\Cf^\N$ such that
+	\begin{equation*}
+		\forall v\in\V\quad\fou_{\Us}(v)=c\in\Cf^\N
+	\end{equation*}
+	Where
+	\begin{equation*}
+		c=(\spr{v}{u_1},\spr{v}{u_2},\cdots)\in\Cf^\N
+	\end{equation*}
+	The coefficients $\spr{v}{u_k}\in\Cf$ are called the \textit{Fourier coefficients} of the vector $v\in\V$
+\end{dfn}
+\begin{thm}[Bessel Inequality \& Parseval's Theorem]
+	Given $(u_k)_{k\in\N}=\Us\subset\V$ an orthonormal system and $\V$ an euclidean space with $v\in\V$. Taken $\alpha_1,\cdots,\alpha_k\in\Cf$ some coefficients and defined the two following sums
+	\begin{equation*}
+		\begin{aligned}
+			S_n&=\sum_{k=1}^{n}\spr{v}{u_k}u_k=\sum_{k=1}^{n}c_ku_k\\
+			S_n^\alpha&=\sum_{k=1}^{n}\alpha_ku_k
+		\end{aligned}
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\begin{aligned}
+			\norm{v-S_n}&\le\norm{v-S_n^\alpha}\\
+			\sum_{k=1}^{\infty}\norm{c_k}^2&\le\norm{v}^2\\
+		\end{aligned}
+	\end{equation*}
+	The last inequality is known as \textit{Bessel's inequality}\\
+	Lastly we also have \textit{Parseval's equality} or \textit{Parseval's theorem}, which states
+	\begin{equation*}
+		v=\sum_{k=1}^{\infty}\spr{v}{u_k}u_k=\sum_{k=1}^{\infty}c_ku_k\iff\sum_{k=1}^{\infty}\norm{c_k}^2=\norm{v}^2
+	\end{equation*}
+	Due to this the operator $\fou_{\Us}$ actually acts into $\ell^2(\Cf)$, i.e.
+	\begin{equation*}
+		\fou_{\Us}:\V\fto\ell^2(\Cf)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	By definition of euclidean norm and using the bilinearity of the scalar product we have
+	\begin{equation*}
+		\begin{aligned}
+			0\le\norm{v-S_n^\alpha}&=\norm{v}^2-2\real\left( \spr{v}{S_n^\alpha} \right)+\norm{S_n^\alpha}^2=\\
+			&=\norm{v}^2-2\real\left( \sum_{k=1}^n\spr{v}{u_k}\cc{\alpha_k} \right)+\sum_{k=1}^{n}\norm{\alpha_k}^2\\
+		\end{aligned}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		0\le\norm{v}^2-\sum_{k=1}^{n}\norm{c_k}^2+\sum_{k=1}^n\norm{\alpha_k-c_k}^2
+	\end{equation*}
+	The minimum on the left is given for $\alpha_k=c_k$ and therefore, since $S_n^c=S_n$ we have
+	\begin{equation*}
+		\norm{v-S_n}\le\norm{v-S_n^\alpha}
+	\end{equation*}
+	And, using the non-negativity of the norm operator, putting $n\to\infty$ we have
+	\begin{equation*}
+		0\le\norm{v-S_n}=\norm{v}^2-\sum_{k=1}^n\norm{c_k}^2\implies\sum_{k=1}^{n}\norm{c_k}^2\le\norm{v}^2
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\sum_{k=1}^{\infty}\norm{\spr{v}{u_k}}^2\le\norm{v}^2
+	\end{equation*}
+	Which means that the sum on the left converges uniformly, and therefore $c_k\in\ell^2(\Cf)$. This demonstrates that $\fou_{\Us}:\V\fto\ell^2(\Cf)$ and Bessel's inequality.\\
+	This also gives Parseval's equality, since, for $n\to\infty$
+	\begin{equation*}
+		\norm{v-\sum_{k=1}^{\infty}\spr{v}{u_k}u_k}^2=0\iff\norm{v}^2=\sum_{k=1}^{\infty}\norm{\spr{v}{u_k}}^2
+	\end{equation*}
+	Due to the uniform convergence in $\V$ we have therefore
+	\begin{equation*}
+		\fou_{\Us}(v)=\sum_{k=1}^\infty\spr{v}{u_k}u_k
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Closed System]
+	An system $(u_k)_{k\in\N}\in\V$ is said to be \textit{closed} iff $\forall v\in\V$
+	\begin{equation*}
+		\begin{aligned}
+			\norm{v}^2&=\sum_{k=1}^{\infty}\norm{\spr{v}{u_k}}^2\\
+			v&=\sum_{k=1}^{\infty}\spr{v}{u_k}u_k
+		\end{aligned}
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Closeness and Completeness]
+	Given an orthonormal system $\Us=(u_k)_{k\in\N}\in\V$ with $\V$ an euclidean space, we have that $\Us$ is a complete set if and only if $\Us$ is a closed system.\\
+	If $\Us$ is complete or closed, $\V$ is separable
+\end{thm}
+\begin{proof}
+	Defined $S_n$ the partial sums of the Fourier representation of $v$ (ndr the series that represents $v$ with respect to the system $(u_k)$), we have that for the theorem to be true the following two things must hold
+	\begin{equation*}
+		\lim_{n\to\infty}S_n=v\qquad\cc{\span{(u_k)}}=\V
+	\end{equation*}
+	I.e. $\forall\epsilon>0\ \exists N\in\N,\ \alpha_1,\cdots,\alpha_N\in\Cf$ such that $\norm{v-S_n^\alpha}<\epsilon$. Using Bessel-Parseval we have
+	\begin{equation*}
+		0\le\norm{v-S_N}\le\norm{v-S_N^\alpha}<\epsilon
+	\end{equation*}
+	Proving the closure of the system if the space $\V$ is complete.\\
+	Taken $(u_k)_{k\in\N}$ a closed system, we have that $S_n\to v$, therefore $v\in\ad\left( \span(\Us) \right)$, which implies
+	\begin{equation*}
+		v\in\cc{\span(\Us)}\implies\V=\cc{\span(\Us)}
+	\end{equation*}
+	The last implication is given by the fact that $v\in\V$ is arbitrary, and it implies the completeness of $\Us$ and the separability of $\V$
+\end{proof}
+\begin{thm}[Riesz-Fisher]
+	Given $\V$ a hilbert space and $\Us=(u_k)_{k\in\N}\in\V$ an orthonormal system, therefore $\forall c\in\ell^2\ \exists v\in\V\st\fou_{\Us}[v]=c$ and
+	\begin{equation*}
+		\begin{aligned}
+			c_k&=\spr{v}{u_k}\\
+			\norm{v}^2&=\norm{c}^2_2=\sum_{k=1}^{\infty}\norm{c_k}^2\\
+			v&=\sum_{k=1}^{\infty}\spr{v}{u_k}u_k
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken a sequence $(v_k)\in\V$ defined as follows
+	\begin{equation*}
+		v_n=\sum_{k=1}^{m}c_ku_k
+	\end{equation*}
+	This sequence is a Cauchy sequence, therefore it converges to $v\in\V$, since
+	\begin{equation*}
+		\begin{aligned}
+			\norm{v_n-v_m}^2&=\norm{\sum_{k=n+1}^{m}c_ku_k}^2=\spr{\sum_{k=n+1}^{m}c_ku_k}{\sum_{k=n+1}^{m}c_ku_k}=\\
+			&=\sum_{k=n+1}^{m}\sum_{i=n+1}^{m}c_k\cc{c_i}\spr{u_i}{u_k}=\sum^{m}_{k=n+1}\norm{c_k}^2
+		\end{aligned}
+	\end{equation*}
+	By definition, since $c\in\ell^2$, the sum on the right converges, therefore
+	\begin{equation*}
+		\norm{v_n-v_m}^2\le\sum_{k=n+1}^{\infty}\norm{c_k}^2<\infty
+	\end{equation*}
+	Which means, that $\forall\epsilon>0\ \exists N\in\N$ such that
+	\begin{equation*}
+		\norm{v_n-v_m}^2\le\sum_{k=n+1}^{\infty}\norm{c_k}^2<\epsilon\quad\forall n\ge N
+	\end{equation*}
+	Which implies that $v_n\to v$ and
+	\begin{equation*}
+		v=\sum_{k=1}^{\infty}c_ku_k
+	\end{equation*}
+	We can now write $\spr{v}{u_k}=\spr{v_n}{u_k}+\spr{v-v_n}{u_k}$.\\
+	We have
+	\begin{equation*}
+		\forall n\ge k\ \spr{v_n}{u_k}=\sum_{i=1}^{n}c_i\spr{u_i}{u_k}=c_k
+	\end{equation*}
+	For Cauchy-Schwartz we also have that
+	\begin{equation*}
+		\norm{\spr{v-v_n}{u_k}}\le\norm{v-v_n}\to0
+	\end{equation*}
+	Which implies that $c_k=\spr{v}{u_k}$ and therefore
+	\begin{equation*}
+		v=\sum_{k=1}^{\infty}\spr{v}{u_k}u_k=\sum_{k=1}^{\infty}c_ku_k
+	\end{equation*}
+\end{proof}
+\section{Fourier Series}
+\subsection{Fourier Series in $L^2[-\pi,\pi]$}
+\begin{dfn}[Fourier Series]
+	Given a function $f\in L^2[-\pi,\pi]$ we define the \textit{Fourier series expansion} of this function the following expression
+	\begin{equation}
+		f(x)\sim\frac{a_0}{2}+\sum_{k=1}^{\infty}a_k\cos(kx)+b_k\sin(kx)
+		\label{eq:fourierseries}
+	\end{equation}
+	Where
+	\begin{equation}
+		\left\{\begin{aligned}
+				a_k&=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos(kx)\diff x\\
+				b_k&=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin(kx)\diff x
+		\end{aligned}\right.
+		\label{eq:fouriercoeff}
+	\end{equation}
+	The notation $\sim$ indicates that the Fourier series of the function \textit{converges to} the function $f(x)$. Usually an abuse of notation is used, where the function is actually set as equal to the Fourier expansion.
+\end{dfn}
+\begin{dfn}[Trigonometric Polynomial]
+	A function $p\in L^2[-\pi,\pi]$ is said to be a \textit{trigonometric polynomial} if, for some coefficients $\alpha_k,\beta_k$ we have
+	\begin{equation}
+		p(x)=\frac{\alpha_0}{2}+\sum_{k=1}^{\infty}\alpha_k\cos(kx)+\beta_k\sin(kx)
+		\label{eq:trigpolyn}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Completeness of Trigonometric Functions]
+	Given $(u_k),(v_k)\in L^2[-\pi,\pi]$ two sequences of functions, where
+	\begin{equation*}
+		\left\{\begin{aligned}
+				u_k(x)&=\cos(kx)\\
+				v_k(x)&=\sin(kx)
+		\end{aligned}\right.
+	\end{equation*}
+	The set $\{u_k,v_k\}$ is orthogonal and complete, i.e. a basis in $L^2[-\pi,\pi]$
+\end{thm}
+\begin{rmk}
+	These trigonometric identities always hold, $\forall n,k\in\N$, $n\ne k$
+	\begin{equation}
+		\begin{aligned}
+			\cos(nx)\cos(kx)&=\frac{1}{2}\left( \cos[(n+k)x]+\cos[(n-k)x] \right)\\
+			\sin(nx)\sin(kx)&=\frac{1}{2}\left( \cos[(n-k)x]-\cos[(n+k)x] \right)\\
+			\cos(nx)\sin(kx)&=\frac{1}{2}\left( \sin[(n+k)x]-\sin[(n-k)x] \right)
+		\end{aligned}
+		\label{eq:trigidentities2rmk}
+	\end{equation}
+\end{rmk}
+\begin{proof}
+	We begin by demonstrating that the two function sequences $u_k,v_k$ are orthogonal in $L^2[-\pi,\pi]$.\\
+	Therefore, by explicitly writing the scalar product, we have, for $k\ne n$
+	\begin{equation*}
+		\spr{u_n}{u_k}=\int_{-\pi}^{\pi}\cos(nx)\sin(kx)\diff x=\frac{1}{2}\int_{-\pi}^{\pi}\cos[(n+k)x]+\cos[(n-k)x]\diff x
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\spr{u_n}{u_k}=\frac{1}{2}\left[ \frac{\sin[(n+k)x]}{n+k}+\frac{\sin[(n-k)x]}{n-k} \right]^\pi_{-\pi}=0
+	\end{equation*}
+	Analogously
+	\begin{equation*}
+		\spr{v_n}{v_k}=\frac{1}{2}\left[ \frac{\sin[(n-k)x]}{n-k}-\frac{\sin[(n+k)x]}{n+k} \right]^\pi_{-\pi}=0
+	\end{equation*}
+	And, finally
+	\begin{equation*}
+		\spr{u_n}{v_k}=\frac{1}{2}\left[ \frac{\cos[(n+k)x]}{n+k}-\frac{\cos[(n-k)x]}{n-k} \right]^{\pi}_{-\pi}=\frac{1}{2}-\frac{1}{2}=0
+	\end{equation*}
+	Which demonstrates that, for $k\ne n$ $u_k\perp u_n,\ v_k\perp v_n,\ u_k\perp v_k$.\\
+	Now, taken a trigonometric polynomial $p(x)\in L^2[-\pi,\pi]$ we need to prove that $\cc{\span\left\{ u_k,v_k \right\}}=L^2[-\pi,\pi]$, i.e.
+	\begin{equation*}
+		\forall\epsilon>0\ \forall f\in L^2[-\pi,\pi]\quad\pnorm[2]{p-f}<\epsilon
+	\end{equation*}
+	We have already that $\cc{C[-\pi,\pi]}=L^2[-\pi,\pi]$ and that for a Weierstrass theorem (without proof), every periodic function with period $2\pi$ is the uniform limit of a trigonometric polynomial.\\
+	Using these two results, given $f\in L^2[-\pi,\pi],\ \exists g\in C[-\pi,\pi]\st\pnorm[2]{f-g}<\epsilon/3$. Taken $\hat{g}(x)$ as the periodic extension of $g(x)$, for Weierstrass we have
+	\begin{equation*}
+		\pnorm[2]{g-\hat{g}}<\frac{\epsilon}{3}\quad\pnorm[2]{p-\hat{g}}<\frac{\epsilon}{3}\implies\unorm{p-\hat{g}}<\frac{\epsilon}{3\sqrt{2\pi}}
+	\end{equation*}
+	Therefore, finally $\pnorm[2]{f-p}<\epsilon$
+\end{proof}
+\begin{thm}[Parseval Identity]
+	Given $f\in L^2[-\pi,\pi]$ we have that
+	\begin{equation*}
+		\int_{-\pi}^{\pi}\abs{f(x)}^2\diff x=\frac{\abs{a_0}^2}{2}+\sum_{k=1}^{\infty}\abs{a_k}^2+\abs{b_k}^2
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	The proof is quite straightforward, since trigonometric polynomials form a basis for $L^2[-\pi,\pi]$ we have that this is simply the already known Parseval identity, since
+	\begin{equation*}
+		\pnorm[2]{f}^2=\sum_{k=0}^{\infty}\norm{c_k}^2
+	\end{equation*}
+	Writing $c_k=a_k+b_k$ we have
+	\begin{equation*}
+		\pnorm[2]{f}^2=\frac{\norm{a_0}^2}{2}+\sum_{k=1}^{\infty}\norm{a_k}^2+\norm{b_k}^2
+	\end{equation*}
+\end{proof}
+\subsection{Fourier Series in $L^2[a,b]$}
+\begin{dfn}[Basis of the Space]
+	In order to define a trigonometric basis in $L^2[a,b]$ with $a\ne b$, we can use a simple coordinate transformation onto the $\{(u_k),(v_k)\}$ basis of the space $L^2[-\pi,\pi]$.\\
+	Therefore, taken
+	\begin{equation*}
+		y(x)=\frac{\pi}{b-a}(2x-a-b)
+	\end{equation*}
+	The new basis on $L^2[a,b]$ will be
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				(u_k(y(x)))&=\cos(ky(x))=\cos\left(\frac{k\pi}{b-a}(2x-a-b)\right)\\
+				(v_k(y(x)))&=\sin(ky(x))=\sin\left( \frac{k\pi}{b-a}\left( 2x-a-b \right) \right)
+		\end{aligned}\right.
+	\end{equation*}
+	The completeness of this basis is given by the fact that, this change of coordinates is a smooth diffeomorphism between $L^2[-\pi,\pi],L^2[a,b]$.
+\end{dfn}
+\begin{dfn}[General Fourier Series]
+	With the previous definition, the Fourier series of a function $f\in L^2[a,b]$ is given as follows
+	\begin{equation}
+		f(x)\sim\frac{\tilde{a}_0}{2}+\sum_{k=1}^{\infty}\tilde{a}_k\cos\left( \frac{k\pi}{b-a}(2x-a-b) \right)+\tilde{b}_k\sin\left( \frac{k\pi}{b-a}(2x-b-a) \right)
+		\label{eq:fouserab}
+	\end{equation}
+	Where
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\tilde{a}_k&=\frac{1}{b-a}\int_{a}^{b}f(x)\cos\left( \frac{k\pi}{b-a}\left( 2x-b-a \right) \right)\diff x\\
+				\tilde{b}_k&=\frac{1}{b-a}\int_{a}^{b}f(x)\sin\left( \frac{k\pi}{b-a}\left( 2x-b-a \right) \right)\diff x
+		\end{aligned}\right.
+		\label{eq:fouserabcoef}
+	\end{equation}
+\end{dfn}
+\subsection{Fourier Series in Symmetric Intervals, Expansion in Only Sines and Cosines}
+\begin{dfn}
+	We firstly begin finding the Fourier series of a function in $L^2[-l,l]$. Using the previous general case in $L^2[a,b]$ and setting $a=-l,\ b=l$ we have $\forall f\in L^2[-l,l]$
+	\begin{equation}
+		f(x)\sim\frac{a_0}{2}+\sum_{k=1}^{\infty}a_k\cos\left( \frac{k\pi x}{l} \right)+b_k\sin\left( \frac{k\pi x}{l} \right)
+		\label{eq:fouserll}
+	\end{equation}
+	With coefficients
+	\begin{equation}
+		\left\{ \begin{aligned}
+				a_k&=\frac{1}{l}\int_{-l}^{l}f(x)\cos\left( \frac{k\pi x}{l} \right)\diff x\\
+				b_k&=\frac{1}{l}\int_{-l}^{l}f(x)\sin\left( \frac{k\pi x}{l} \right)\diff x
+		\end{aligned}\right.
+		\label{eq:fouserllcoef}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Taken the space $L^2[0,\pi]$ we have that both trigonometric sequences $(u_k(x))$ and $(v_k(x))$ are orthogonal bases in this space, and the following equalities hold.\\
+	$\forall f\in L^2[0,\pi]$
+	\begin{equation*}
+		\begin{aligned}
+			f(x)&\sim\frac{a'_0}{2}+\sum_{k=1}^{\infty}a'_k\cos(kx)\\
+			f(x)&\sim\sum_{k=1}^{\infty}b'_k\sin(kx)
+		\end{aligned}
+	\end{equation*}
+	Where
+	\begin{equation*}
+		\begin{aligned}
+			a'_k&=\frac{2}{\pi}\int_{0}^{\pi}f(x)\cos(kx)\diff x\\
+			b'_k&=\frac{2}{\pi}\int_{0}^{\pi}f(x)\sin(kx)\diff x
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	The proof of this theorem is straightforward, we firstly define the even and uneven extensions of the function $f(x)$ in $L^2[-\pi,\pi]$ as follows
+	\begin{equation*}
+		f^e(x)=\begin{dcases}f(x)&x\in[0,\pi]\\f(-x)&x\in[-\pi,0)\end{dcases}
+	\end{equation*}
+	And
+	\begin{equation*}
+		f^u(x)=\begin{dcases}f(x)&x\in[0,\pi]\\-f(-x)&x\in[-\pi,0)\end{dcases}
+	\end{equation*}
+	Expanding both these functions in $[-\pi,\pi]$ we have that, indicating the coefficients of each as $a_k^e,\ b_k^e,\ a_k^u,\ b_k^u$
+	\begin{equation*}
+		\begin{aligned}
+			a_k^e&=\frac{1}{\pi}\int_{-\pi}^{\pi}f^e(x)\cos(kx)\diff x=\frac{2}{\pi}\int_{0}^{\pi}f(x)\cos(kx)\diff x=a'_k\\
+			b_k^e&=0\\
+			a_k^u&=0\\
+			b_k^u&=\frac{1}{\pi}\int_{-\pi}^{\pi}f^u(x)\sin(kx)\diff x=\frac{2}{\pi}\int_{0}^{\pi}f(x)\sin(kx)\diff x=b'_k
+		\end{aligned}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\begin{aligned}
+			f^e(x)&\sim\frac{a'_0}{2}+\sum_{k=1}^{\infty}a'_k\cos(kx)\\
+			f^u(x)&\sim\sum_{k=1}^{\infty}b'_k\sin(kx)
+		\end{aligned}
+	\end{equation*}
+	Which implies that
+	\begin{equation*}
+		\pnorm[2]{f^e-S_n}^2=2\norm{f-S_n}^2_{[0,\pi]}\to0
+	\end{equation*}
+	And
+	\begin{equation*}
+		\pnorm[2]{f^u-S_n}^2=2\norm{f-S_n}^2_{[0,\pi]}\to0
+	\end{equation*}
+	Proving the theorem.
+\end{proof}
+\begin{eg}
+	Taken the function $f(x)=x^2\quad x\in[-l,l]$ we want to find the Fourier expansion of this function.\\
+	Since $x^2$ is even, thanks to the previous theorem we know that the coefficients $b_k=0$ in all the set of definition, therefore
+	\begin{equation*}
+		x^2\sim\frac{a_0}{2}+\sum_{k=1}^{\infty}a_k\cos\left( \frac{k\pi x}{l} \right)
+	\end{equation*}
+	We firstly calculate the coefficient $a_0$ of the expansion
+	\begin{equation*}
+		a_0=\frac{1}{l}\int_{-l}^{l}x^2\diff x=\frac{2l^2}{3}
+	\end{equation*}
+	The coefficients $a_k$ can be calculated using the fact that $x^2$ is even, and therefore we have
+	\begin{equation*}
+		\begin{aligned}
+			a_k&=\frac{1}{l}\int_{-l}^{l}x^2\cos\left( \frac{k\pi x}{l} \right)\diff x=\frac{1}{l}\left[ x^2\sin\left( \frac{k\pi x}{l} \right)\frac{l}{k\pi} \right]^l_{-l}-\frac{4}{k\pi}\int_{0}^{l}x\sin\left( \frac{k\pi x}{l} \right)\diff x=\\
+			&=\frac{4l}{(k\pi)^2}\left[ x\cos\left( \frac{k\pi x}{l} \right) \right]^l_{-l}-\frac{4l}{(k\pi)^2}\int_{0}^{l}\sin\left( \frac{k\pi x}{l} \right)\diff x
+		\end{aligned}
+	\end{equation*}
+	Since the last integral is $0$ we have
+	\begin{equation*}
+		a_k=\frac{4l}{(k\pi)^2}\left[ x\cos\left( \frac{k\pi x}{l} \right) \right]^l_{-l}=\frac{(-1)^kl^2}{(k\pi)^2}
+	\end{equation*}
+	The searched Fourier expansion is therefore
+	\begin{equation*}
+		x^2\sim\frac{l^2}{3}+\frac{4l^2}{\pi^2}\sum_{k=1}^{\infty}\frac{(-1)^k}{k^2}\cos\left( \frac{k\pi x}{l} \right)
+	\end{equation*}
+\end{eg}
+\begin{eg}[Parseval's Equality]
+	Having now found the Fourier expansion for $x^2$, we can use Parseval's equality in order to calculate the sum
+	\begin{equation*}
+		\sum_{k=1}^{\infty}\frac{1}{k^2}
+	\end{equation*}
+	Thanks to Parseval, we therefore have
+	\begin{equation*}
+		\pnorm[2]{x^2}^2=\frac{1}{l}\int_{-l}^{l}x^4\diff x=\frac{2l^4}{9}+\frac{16l^2}{\pi^4}\sum_{k=1}^{\infty}\frac{1}{k^4}
+	\end{equation*}
+	The integral on the left is obvious, and moving the terms around we finally have
+	\begin{equation*}
+		\sum_{k=1}^{\infty}\frac{1}{k^4}=\frac{\pi^4}{16l^5}\int_{-l}^{l}x^4\diff x-\frac{\pi^4}{36}=\frac{\pi^4}{16}\left( \frac{2}{5}-\frac{2}{9} \right)%=\frac{\pi^4}{90}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\sum_{k=1}^{\infty}\frac{1}{k^4}=\frac{\pi^4}{90}
+	\end{equation*}
+\end{eg}
+\subsection{Complex Fourier Series}
+\begin{thm}[Complex Exponential Basis]
+	Taken the space $L^2[-\pi,\pi]$, and defining a system $(e_k)_{k\in\Z}=e^{ikx}$, this system is an orthogonal basis for the space.
+\end{thm}
+\begin{proof}
+	Using Euler's formula for complex exponentials we have
+	\begin{equation*}
+		(e_k)_{k\in\Z}=e^{ikx}=\cos(kx)+i\sin(kx)=u_k(x)+iv_k(x)
+	\end{equation*}
+	Therefore, due to the linearity of the scalar product, these functions are orthogonal to each other, and due to linearity we also have
+	\begin{equation*}
+		\span\{e^{ikx}\}=\span\{\cos(kx),\sin(kx)\}
+	\end{equation*}
+	Which, implies
+	\begin{equation*}
+		\cc{\span\{e^{ikx}\}}=L^2[-\pi,\pi]
+	\end{equation*}
+	Note that
+	\begin{equation*}
+		\pnorm[2]{e^{ikx}}^2=2\pi
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Complex Fourier Series]
+	Given $f\in L^2[-\pi,\pi]$ we can now define a Fourier expansion in complex exponentials as follows
+	\begin{equation}
+		f(x)\sim\sum_{k=-\infty}^{\infty}\frac{\spr{f(x)}{e^{ikx}}}{\pnorm[2]{e^{ikx}}^2}e^{ikx}=\sum_{k\in\Z}^{}c_ke^{ikx}
+		\label{eq:complexfouser}
+	\end{equation}
+	Where, the coefficients will be
+	\begin{equation}
+		c_k=\frac{\spr{f(x)}{e^{ikx}}}{\pnorm[2]{e^{ikx}}^2}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{ikx}\diff x
+		\label{eq:complexfousercoef}
+	\end{equation}
+	Note that if $f(x):\R\fto\R$ we have
+	\begin{equation*}
+		c_k=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{ikx}\diff x=\frac{1}{2\pi}\int_{-\pi}^{\pi}\cc{f(x)e^{ikx}}\diff x=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{-ikx}\diff x=c_{-k}
+	\end{equation*}
+	Therefore, for a real valued function
+	\begin{equation}
+		f(x)\sim c_0+\sum_{k=1}^{\infty}c_ke^{ikx}+c_{-k}e^{-ikx}=c_0+2\sum_{k=1}^{\infty}\real\left\{ c_ke^{ikx} \right\}
+		\label{eq:rvfcompfouser}
+	\end{equation}
+\end{dfn}
+\begin{eg}
+	Taken the function $f(x)=e^x$, $x\in[-\pi,\pi]$, we want to find the Fourier series in terms of complex exponentials. Since $f(x)$ is a real valued function, we have
+	\begin{equation*}
+		e^x\sim c_0+2\sum_{k=1}^{\infty}\real\left\{ c_ke^{ikx} \right\}
+	\end{equation*}
+	The coefficients will be
+	\begin{equation*}
+		\begin{aligned}
+			c_0&=\frac{1}{2\pi}\int_{-\pi}^{\pi}e^x\diff x=\frac{1}{2\pi}\left( e^{\pi}-e^{-\pi} \right)=\frac{\sinh(\pi)}{\pi}\\
+			c_k&=\frac{1}{2\pi}\int_{-\pi}^{\pi}e^{(1-ik)x}\diff x=\frac{1}{2\pi}\left[ \frac{1}{1-ik}\left( e^{\pi(1-ik)}-e^{-\pi(1-ik)} \right) \right]
+		\end{aligned}
+	\end{equation*}
+	The second expression can be seen as follows
+	\begin{equation*}
+		c_k=\frac{1}{2\pi(1-ik)}\left( e^{ik\pi}e^\pi-e^{-ik\pi}e^{-\pi} \right)=\frac{(-1)^k}{\pi(1-ik)}\sinh(\pi)
+	\end{equation*}
+	The final expansion will then be given from finding the real part of this coefficient times the basis vector, i.e.
+	\begin{equation*}
+		\real\left\{ \frac{(-1)^k\sinh(\pi)}{\pi(1-ik)}e^{ikx} \right\}=\frac{(-1)^k\sinh(\pi)}{1+k^2}\real\left( (1+ik)(\cos(kx)+i\sin(kx)) \right)
+	\end{equation*}
+	The last calculation is obvious, and we therefore have
+	\begin{equation*}
+		\real\left\{ \frac{(-1)^k\sinh(\pi)}{\pi(1-ik)}e^{ikx} \right\}=\frac{(-1)^k\sinh(\pi)}{1+k^2}\left( \cos(kx)-k\sin(kx) \right)
+	\end{equation*}
+	And the final solution will be
+	\begin{equation*}
+		e^x\sim\frac{\sinh(\pi)}{\pi}+\frac{2\sinh(\pi)}{\pi}\sum_{k=1}^{\infty}\frac{(-1)^k}{1+k^2}\left( \cos(kx)-k\sin(kx) \right)
+	\end{equation*}
+\end{eg}
+\subsection{Piecewise Derivability, Pointwise and Uniform Convergence of Fourier Series}
+\begin{dfn}[One Sided Derivatives]
+	Let $f:[a,b]\fto\Cf$ be a piecewise continuous function and let $x\in[a,b)$. $f(x)$ is said to be \textit{right (or left) derivable}, if the following limits exist
+	\begin{equation*}
+		\begin{aligned}
+			f'_+(x)&=\lim_{\epsilon\to0^+}\frac{f(x+\epsilon)-f(x^+)}{\epsilon}\\
+			f'_-(x)&=\lim_{\epsilon\to0^-}-\frac{f(x+\epsilon)-f(x^+)}{\epsilon}
+		\end{aligned}
+	\end{equation*}
+	Where
+	\begin{equation*}
+		f(x^\pm)=\lim_{y\to x^{\pm}}f(y)
+	\end{equation*}
+\end{dfn}
+\begin{eg}
+	Take the following function
+	\begin{equation*}
+		f(x)=\begin{dcases}0&x<0\\\frac{1}{2}&x=0\\1-x&x>0\end{dcases}
+	\end{equation*}
+	We have
+	\begin{equation*}
+		\begin{aligned}
+			f'_+(0)&=\lim_{\epsilon\to0^+}\frac{f(\epsilon)-f(0^+)}{\epsilon}=\frac{1-\epsilon-1}{\epsilon}=-1\\
+			f'_{-}(0)&=\lim_{\epsilon\to0^+}\frac{f(\epsilon)-f(0^+)}{-\epsilon}=\frac{0}{\epsilon}=0
+		\end{aligned}
+	\end{equation*}
+	It's important to see how the right and left derivatives might not coincide with the right and left limits of the derivative, as explained in the following theorem
+\end{eg}
+\begin{thm}
+	Let $f(x):[a,b]\fto\Cf$ be a piecewise differentiable function, then given $x\in[a,b)$ we have
+	\begin{equation*}
+		\begin{aligned}
+			f_+'(x)&= f'(x^+)\\
+			f_-'(x)&= f'(x^-)
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Since $f(x)$ is piecewise differentiable, we have that $\exists\gamma>0$ such that $f(x)$ is differentiable $\forall x\in(x,x+\gamma)$ and we can define $f'\left( x^+ \right)$\\
+	Therefore $\forall\alpha>0,\ \exists\epsilon_1>0$ such that
+	\begin{equation*}
+		\forall y\in(x,x+\epsilon_1)\quad\abs{f'(y)-f'(x^+)}<\alpha
+	\end{equation*}
+	Thanks to the Lagrange theorem, and the definition of one sided limit, we have, given $0<\delta<\epsilon\le\epsilon_1$
+	\begin{equation*}
+		\abs{\frac{f(x+\epsilon)-f(x+\delta)}{\epsilon-\delta}-f'(x^+)}<\alpha
+	\end{equation*}
+	Which implies therefore
+	\begin{equation*}
+		\lim_{\epsilon\to0^+}\lim_{\delta\to0^+}\abs{\frac{f(x+\epsilon)-f(x^+)}{\epsilon}-f'(x^+)}=0
+	\end{equation*}
+	Which also implies, by definition
+	\begin{equation*}
+		f_+'(x)=\lim_{\epsilon\to0^+}\frac{f(x+\epsilon)-f(x^+)}{\epsilon}=f'(x^+)
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Periodic Extension]
+	Given a function $f:[-\pi,\pi]\fto\Cf$, non periodic, we define the periodic extension $\tilde{f}:\R\fto\Cf$ as
+	\begin{equation*}
+		\tilde{f}(x)=f(x+2k\pi)\quad k\in\Z,\ x+2k\pi\in(-\pi,\pi]
+	\end{equation*}
+	Note that it coincides with the same function, given that $x\in(-\pi,\pi]$ and therefore the periodic extension has discontinuities of the first kind at the points $x_k=(2k+1)\pi$, $k\in\Z$
+\end{dfn}
+\begin{lem}[Riemann-Lebesgue]
+	Let $f\in C[a,b]$ be a function such that $f'$ is piecewise continuous (also holds $\forall f\in L^1[a,b]$), then
+	\begin{equation*}
+		\lim_{s\to\infty}\int_{a}^{b}f(x)\sin(sx)\diff x=0
+	\end{equation*}
+\end{lem}
+\begin{proof}
+	The proof comes directly from the calculus of the integral
+	\begin{equation*}
+		\int_{a}^{b}f(x)\sin(sx)\diff x=-\frac{1}{s}\left[ f(x)\cos(sx) \right]^b_a+\frac{1}{s}\int_{a}^{b}f'(x)\sin(sx)\diff x
+	\end{equation*}
+	Since $\unorm{f}=M$ and $\unorm{f'}=M'$, we have
+	\begin{equation*}
+		\abs{\int_{a}^{b}f(x)\sin(sx)\diff x}\le\frac{1}{\abs{s}}\left( 2M+\abs{b-a}M' \right)\to0
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Dirichlet Kernel]
+	We define the \textit{Dirichlet kernel} as the following function
+	\begin{equation*}
+		D_n(z)=\frac{1}{2\pi}\left( \frac{\sin\left( \frac{2n+1}{2}z \right)}{\sin\left( \frac{z}{2} \right)} \right)=\frac{1}{2\pi}+\frac{1}{\pi}\sum_{k=1}^n\cos(kz)
+	\end{equation*}
+\end{dfn}
+\begin{lem}
+	Given $f:\R\fto\Cf$ a piecewise continuous function, and $x\in\R$ such that exists $f'_+(x)$ we have that
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				\lim_{n\to\infty}\int_{0}^{\pi}f(x+z)D_n(z)\diff z&=\frac{1}{2}f(x^+)\\
+				\lim_{n\to\infty}\int_{-\pi}^{0}f(x+z)D_n(z)\diff z&=\frac{1}{2}f(x^-)
+		\end{aligned}\right.
+	\end{equation*}
+\end{lem}
+\begin{thm}
+	Given $f:\R\fto\Cf$ a $2\pi-$periodic piecewise continuous function and letting $S_n$ be the $n$-th partial sum of the Fourier series expansion of $f$ and letting $x\in\R$ such that exist both the left and right derivative in the point, we have that
+	\begin{equation*}
+		\lim_{n\to\infty}S_n(x)=\begin{dcases}f(x)&f\text{ is continuous in }x\\\frac{1}{2}\left( f(x^+)+f(x^-) \right)&f\text{ is not continuous in}x\end{dcases}
+	\end{equation*}
+	Or also
+	\begin{equation*}
+		\lim_{n\to\infty}S_n(x)=\frac{1}{2}\left( f(x^+)+f(x^-) \right)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	By definition of the Fourier expansion, we have that, in the trigonometric basis
+	\begin{equation*}
+		S_n(x)=\frac{a_0}{2}+\sum_{k=1}^{n}a_k\cos(kx)+b_k\sin(kx)
+	\end{equation*}
+	Inserting the usual definitions of the Fourier coefficients and using the fact that the sum is finite, hence it converges, we have
+	\begin{equation*}
+		S_n(x)=\frac{1}{\pi}\left[ \int_{-\pi}^{\pi}f(s)\left( \frac{1}{2}+\sum_{k=1}^{n}\cos(kx)\cos(ks)+\sin(kx)\sin(ks) \right)\diff s \right]
+	\end{equation*}
+	Simplifying
+	\begin{equation*}
+		S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}f(s)\left( \frac{1}{2}+\sum_{k=1}^{n}\cos\left( k(s-x) \right) \right)\diff s
+	\end{equation*}
+	Rearranging the second term we see that it's the Dirichlet kernel, and using a transformation $z=s-x$, we have
+	\begin{equation*}
+		S_n(x)=\int_{-\pi}^{\pi}f(x+z)D_n(z)\diff z
+	\end{equation*}
+	Note that the extremes of integration are the same since both these functions are $2\pi-$periodic.\\
+	Using the definition of the integral between $f$ and the Dirichlet kernel, we have finally the statement of the theorem, in the case that the function has a discontinuity at the point $x$
+	\begin{equation*}
+		\lim_{n\to\infty}S_n(x)=\frac{1}{2}\left( f(x^+)+f(x^-) \right)
+	\end{equation*}
+\end{proof}
+\begin{thm}[Pointwise Convergence of the Fourier Series]
+	Given a piecewise continous $2\pi-$periodic function $f:\R\fto\Cf$, we have that the Fourier series converges pointwise to the following two cases, in case the function is continous or not in the point $x\in\R$
+\end{thm}
+\begin{thm}[Uniform Convergence of the Fourier Series]
+	Given a $2\pi-$periodic function $f\in C(\R)$, such that its derivative is piecewise continuous, we have that
+	\begin{equation*}
+		S_n\tto f
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Since $f(x)\in C(\R)$ for the previous theorem we have that $S_n(x)\to f(x)\quad\forall x\in\R$, therefore
+	\begin{equation*}
+		f(x)=\frac{a_0}{2}+\sum_{k=1}^{\infty}a_k\cos(kx)+b_k\sin(kx)\quad x\in\R
+	\end{equation*}
+	Using the Weierstrass M-test we have that, taken the following sequence
+	\begin{equation*}
+		c_k=a_k\cos(kx)+b_k\sin(kx)
+	\end{equation*}
+	The sequence is limited as follows
+	\begin{equation*}
+		\abs{c_k}\le\abs{a_k}\abs{\cos(kx)}+\abs{b_k}\abs{\sin(kx)}\le\abs{a_k}+\abs{b_k}=M_k
+	\end{equation*}
+	In order to check that the sum of this extremum is convergent we find the Fourier expansion of the derivative of $f$
+	\begin{equation*}
+		f'(x)\sim\frac{a_0'}{2}+\sum_{k=1}^{\infty}a_k'\cos(kx)+b_k'\sin(kx)
+	\end{equation*}
+	It's not hard to prove that
+	\begin{equation*}
+		\left\{ \begin{aligned}
+				a_k'&=-\frac{b_k}{k}\\
+				b_k'&=\frac{a_k}{k}
+		\end{aligned}\right.
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\sum_{k=1}^{\infty}\abs{a_k}+\abs{b_k}=\sum_{k=1}^{\infty}\frac{1}{k}\left( \abs{a_k'}+\abs{b_k'} \right)\le\frac{1}{2}\sum_{k=1}^{\infty}\abs{a_k'}^2+\abs{b_k'}^2+\frac{2}{k^2}<\infty
+	\end{equation*}
+	Since $a_k,a_k',b_k,b_k'\in\ell^2(\R)$
+	Therefore, the sum converges and for Weierstrass' M-test it converges uniformly
+\end{proof}
+\subsection{Solving the Heat Equation with Fourier Series}
+\begin{dfn}[Heat Equation]
+	In physics, the equation governing heat transfer is the \textit{heat equation} a partial differential equation of order $2$ in space and of order $1$ in time.\\
+	The equation is the following
+	\begin{equation}
+		\pdv{u}{t}=\lambda\pdv[2]{u}{x}
+		\label{eq:heateq}
+	\end{equation}
+\end{dfn}
+\begin{eg}[Heat Equation with Von Neumann Boundary Conditions]
+	We firstly write the heat equation with Von Neumann boundary conditions
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\del_tu&=\lambda\del^2_xu\\
+				\del_xu(0,t)&=\del_xu(l,t)=0\\
+				u(x,0)&=f(x)
+		\end{aligned}\right.
+		\label{eq:heateqvonneumann}
+	\end{equation}
+	Where $x\in[0,l],\ t>0$\\
+	We suppose that $u(x,t)$ is expressible as a uniformly convergent Fourier series of only sines or cosines.\\
+	Since we want the derivative on the $x$ to vanish in order to satisfy immediately the boundary conditions, we suppose the following expansion
+	\begin{equation*}
+		u(x,t)=\frac{a_0(t)}{2}+\sum_{k=1}^{\infty}a_k(t)\cos\left( \frac{k\pi x}{l} \right)
+	\end{equation*}
+	Deriving, we have
+	\begin{equation*}
+		\begin{aligned}
+			\del_tu&=\frac{a_0'(t)}{2}+\sum_{k=1}^{\infty}a_k'(t)\cos\left( \frac{k\pi x}{l} \right)\\
+			\del_xu&=-\frac{\pi}{l}\sum_{k=1}^\infty ka_k(t)\sin\left( \frac{k\pi x}{l} \right)\\
+			\del^2_xu&=-\frac{\pi^2}{l^2}\sum_{k=1}^{\infty}k^2a_k(t)\cos\left( \frac{k\pi x}{l} \right)
+		\end{aligned}
+	\end{equation*}
+	It's immediate to see that the boundary conditions are immediately satisfied, and therefore, reinserting it back into the differential equation, we get
+	\begin{equation*}
+		-\frac{\pi^2\lambda}{l^2}\sum_{k=1}^{\infty}k^2a_k(t)\cos\left( \frac{k\pi x}{l} \right)=\frac{a_0'(t)}{2}+\sum_{k=1}^{\infty}a_k'(t)\cos\left( \frac{k\pi x}{l} \right)
+	\end{equation*}
+	Therefore, we end up with the following \emph{infinite} system of ODEs of order $1$
+	\begin{equation*}
+		\begin{dcases}
+			a_0'(t)=0\\
+			a_k'(t)=-\lambda\left( \frac{k\pi}{l} \right)^2a_k(t)
+		\end{dcases}
+	\end{equation*}
+	With $k>1,\ k\in\N$. Therefore, integrating we get
+	\begin{equation*}
+		a_0=a_0\qquad a_k(t)=a_ke^{-\lambda\left( \frac{k\pi}{l} \right)^2t}
+	\end{equation*}
+	Reinserting into the second boundary condition $u(x,0)=f(x)$ we end up determining the coefficients as the cosine-Fourier coefficients of the function $f(x)$
+	\begin{equation*}
+		\begin{aligned}
+			a_k&=\frac{2}{l}\int_{0}^{l}f(x)\cos\left( \frac{k\pi x}{l} \right)\diff x\\
+			a_0&=\frac{1}{l}\int_{0}^{l}f(x)\diff x
+		\end{aligned}
+	\end{equation*}
+	Therefore, the complete solution to the PDE is
+	\begin{equation*}
+		u(x,t)=\frac{1}{2l}\int_{0}^{l}f(x)\diff x+\frac{2}{l}\sum_{k=1}^{\infty}e^{-\left( \frac{k\pi}{l} \right)^2\lambda t}\cos\left( \frac{k\pi x}{l} \right)\int_{0}^{l}f(s)\cos\left( \frac{k\pi s}{l} \right)\diff s
+	\end{equation*}
+\end{eg}
+\begin{eg}[Dirichlet Boundary Conditions]
+	Let's now take the heat equation with different boundary conditions, namely
+	\begin{equation*}
+		 \left\{\begin{aligned}
+				 \del_tu&=\lambda\del^2_{x}u\\
+				 u(x,0)&=f(x)\\
+				 u(0,t)&=u(l,t)=0
+		 \end{aligned}\right.
+	\end{equation*}
+	Where $(x,t)\in[0,l]\times\R^+\setminus\{0\}$
+	Since the first derivative doesn't appear in the boundary conditions we choose a particular form of $u(x,t)$ in terms of an only sine Fourier expansion (assuming uniform convergence). We have therefore
+	\begin{equation*}
+		u(x,t)=\sum_{k=1}^{\infty}b_k(t)\sin\left( \frac{k\pi x}{l} \right)
+	\end{equation*}
+	Deriving, we get therefore
+	\begin{equation*}
+		\begin{aligned}
+			\del_tu&=\sum_{k=1}^{\infty}b_k'(t)\sin\left( \frac{k\pi x}{l} \right)\\
+			\del^2_xu&=-\frac{\pi^2}{l^2}\sum_{k=1}^{\infty}k^2b_k(t)\sin\left( \frac{k\pi x}{l} \right)
+		\end{aligned}
+	\end{equation*}
+	Reinserting into the differential equation, we have
+	\begin{equation*}
+		\sum_{k=1}^{\infty}b_k'(t)\sin\left( \frac{k\pi x}{l} \right)+\frac{\lambda\pi^2k^2}{l^2}b_k(t)\sin\left( \frac{k\pi x}{l} \right)=0
+	\end{equation*}
+	Therefore, equating the coefficients for the infinite ODEs we get
+	\begin{equation*}
+		\begin{aligned}
+			b_k'(t)&=\left( \frac{k\pi}{l} \right)^2b_k(t)\\
+			b_k(t)&=b_ke^{-\lambda\left( \frac{k\pi}{l} \right)^2t}
+		\end{aligned}
+	\end{equation*}
+	And our particular solution will be, therefore
+	\begin{equation*}
+		u(x,t)=\sum_{k=1}^{\infty}b_ke^{-\frac{\lambda k^2\pi^2}{l^2}t}\sin\left( \frac{k\pi x}{l} \right)
+	\end{equation*}
+	Imposing the last condition we get
+	\begin{equation*}
+		u(x,t)=\sum_{k=1}^{\infty}e^{-\frac{\lambda k^2\pi^2}{l^2}t}\sin\left( \frac{k\pi x}{l} \right)\int_{0}^{l}f(x)\sin\left( \frac{k\pi s}{l} \right)\diff s
+	\end{equation*}
+\end{eg}
+\section{Fourier Transform}
+\subsection{Fourier Integrals, Translations, Dilations}
+\begin{prop}[Extending the Fourier Series]
+	Let $f:\R\fto\Cf$ be a non periodic function and $f_l:[-l,l]\subset\R\fto\Cf$ be a function with periodic extension that converges to $f(x)$ for $l\to\infty$.\\
+	We have, using the complex exponential basis that
+	\begin{equation*}
+		f_l(x)\sim\frac{1}{2l}\sum_{k\in\Z}e^{\frac{-ik\pi x}{l}}\int_{-l}^{l}f_l(s)e^{\frac{ik\pi s}{l}}\diff s
+	\end{equation*}
+	Sending $l\to\infty$ we have that the sum of coefficients behaves like a Riemann sum and converges to the following integral
+	\begin{equation*}
+		\int_{\R}^{}g(\lambda)e^{ikx}\diff x=f(x)
+	\end{equation*}
+	Where the last equality is given by the fact that $f_l(x)\to f(x)$.\\
+	We define the integral used for finding these ``coefficients'' the \textit{Fourier Integral Transform} of $f$
+	\begin{equation*}
+		g(\lambda)=\fou[f](\lambda)=\hat{f}(\lambda)\frac{1}{2\pi}\int_{\R}f(x)e^{-i\lambda x}\diff x
+	\end{equation*}
+\end{prop}
+\begin{dfn}[Parity, Translation and Dilation Operators]
+	Let $f:\R\fto\Cf$ be some function. We define the following operators
+	\begin{equation*}
+		\begin{aligned}
+			\hat{P}[f](x)&=f(-x)\qquad\text{Parity}\\
+			\hat{T}_a[f](x)&=f(x-a)\qquad\text{Translation}\\
+			\hat{\Phi}_a[f](x)&=f(ax)\qquad\text{Dilation}
+		\end{aligned}
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Fourier Operator]
+	Given a function $f\in L^1(\R)$ we define the \textit{Fourier operator} $\fou[f]$ as follows
+	\begin{equation*}
+		\fou[f]=\int_{\R}^{}f(x)e^{-i\lambda x}\diff x\quad\lambda\in\R
+	\end{equation*}
+	Which is basically the Fourier transform $\hat{f}$ of the function $f$.\\
+	Note that $\fou:L^1(\R)\to L^1(\R)$, since
+	\begin{equation*}
+		\norm{\fou[f]}=\int_{\R}^{}\abs{f(x)e^{-i\lambda x}}\diff x=\int_{\R}^{}\abs{f(x)}\diff x
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Properties of the Fourier Transform]
+	Given $f,g\in L^1(\R)$ and $a,b\in\Cf$ we hafe that
+	\begin{enumerate}
+	\item $\fou[af+bg]=a\fou[f]+b\fou[g]$
+	\item $\fou[\cc{f}](\lambda)=\cc{\fou[f]}(-\lambda)$
+	\item $\imaginary(f)=0\implies\fou[f](\lambda)=\cc{\fou[f](-\lambda)}$
+	\item $\imaginary(f)=0,\ f$ even$\implies\imaginary\left( \fou[f] \right)=0,\ \fou[f]$ even
+	\item $\imaginary(f)=0,\ f$ uneven$\implies\real\left(\fou[f]\right)=0,\ \fou[f]$ uneven
+	\end{enumerate}
+\end{thm}
+\begin{thm}[Action of the Dilation, Parity and Translation Operators on the Fourier Operator]
+	Given $f\in L^1(\R)$ and $a\in\R\setminus\{0\}$ we have
+	\begin{enumerate}
+	\item $\fou\opr{P}=\opr{P}\fou$
+	\item $\fou\opr{T}_a=e^{-i\lambda a}\fou$
+	\item $\opr{T}_a\fou=\fou[e^{iax}f(x)]$
+	\item $\fou\opr{\Phi}_a=\abs{a}^{-1}\opr{\Phi}_{a^{-1}}\fou$
+	\item $\fou\Phi_a\opr{T}_b=\abs{a}^{-1}e^{-i\lambda b}\opr{\Phi}_{a^{-1}}\fou$
+	\item $\fou\opr{T}_b\opr{\Phi}_a=\abs{a}^{-1}e^{-i\lambda b/a}\opr{\Phi}_{a^{-1}}\fou$
+	\item $\fou\opr{D}=i\lambda\fou$
+	\end{enumerate}
+\end{thm}
+\begin{eg}[Fourier Transform of the Set Index Function]
+	Let $f(x)=\1_{[-a,a]}(x)$ be the index function of $[-a,a]$, we have
+	\begin{equation*}
+		\fou[\1_{[-a,a]}](\lambda)=\int_{\R}^{}\1_{[-a,a]}(x)e^{-i\lambda x}\diff x=\int_{-a}^{a}e^{-i\lambda x}\diff x=\frac{i}{\lambda}[e^{-i\lambda x}]_{-a}^a=\frac{2}{\lambda}\sin(\lambda a)
+	\end{equation*}
+	For $a=1/2$ we have $\1_{-1/2,1/2}(x)=\mathrm{rect}(x)$ and therefore
+	\begin{equation*}
+		\fou[\mathrm{rect}(x)](\lambda)=\frac{\sin(\lambda/2)}{\lambda/2}=\mathrm{sinc}\left( \frac{\lambda}{2\pi} \right)
+	\end{equation*}
+\end{eg}
+\begin{eg}[Fourier Transform of the Triangle Function]
+	We define the triangle function $\mathrm{tri}(x)=\max\left\{ 1-\abs{x},0 \right\}=\mathrm{rect}(x/2)(1-\abs{x})$. We then have
+	\begin{equation*}
+		\fou[\max\left\{ 1-\abs{x},0 \right\}]=\int_{\R}^{}\max\left\{ 1-\abs{x},0 \right\}e^{-i\lambda x}\diff x=\int_{-1}^{1}(1-\abs{x})e^{-i\lambda x}\diff x
+	\end{equation*}
+	Using the properties of the absolute value and using a change in coordinayes we have
+	\begin{equation*}
+		\fou[\max\left\{ 1-\abs{x},0 \right\}]=\int_{0}^{1}(1-x)\left( e^{i\lambda x}+e^{-i\lambda x} \right)\diff x=2\int_{0}^{1}(1-x)\cos(\lambda x)\diff x
+	\end{equation*}
+	By direct integration, we therefore get
+	\begin{equation*}
+		\fou[\max\left\{ 1-\abs{x},0 \right\}]=\frac{2}{\lambda}\int_{0}^{1}\sin(\lambda x)\diff x=\frac{2}{\lambda^2}\left( 1-\cos(\lambda) \right)=\frac{4}{\lambda^2}\sin^2(\lambda/2)=\mathrm{sinc}^2\left( \frac{\lambda}{2\pi} \right)
+	\end{equation*}
+\end{eg}
+\begin{eg}[A Couple Fourier Transforms More]
+	1) $f(x)=H(x)e^{-ax}$ where $a\in\R,\ a>0$
+	This one is quite straightforward. We have
+	\begin{equation*}
+		\fou[H(x)e^{-ax}]=\int_{\R}^{}H(x)e^{-(a+i\lambda)x}\diff x=\int_{\R^+}e^{-(a+i\lambda)x}=-\left[ \frac{e^{-(a+i\lambda)x}}{a+i\lambda} \right]_0^{+\infty}=\frac{1}{a+i\lambda}
+	\end{equation*}
+	2) $f(x)=1/(1+x^2)$
+	For this we immediately choose to use the residue theorem, so, we firstly suppose that $\lambda<0$ and we choose a path enclosing the region $\imaginary(z)<0$, for which the only singularity is given by $\tilde{z}=-i$
+	\begin{equation*}
+		\fou\left[ \frac{1}{1+x^2} \right]=\lim_{R\to\infty}\int_{\gamma_R^-}^{}\frac{e^{-i\lambda z}}{1+z^2}\diff z=-2\pi i\res_{z=-i}\left( \frac{e^{-i\lambda z}}{1+z^2} \right)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\fou\left[ \frac{1}{1+x^2} \right]=-2\pi i\lim_{z\to-i}\left[ (z+i)\frac{e^{-i\lambda z}}{(z+i)(z-i)} \right]=\pi e^\lambda
+	\end{equation*}
+	Analogously, for $\lambda>0$ we choose a curve enclosing the region $\imaginary(z)>0$, and therefore, noting that the only encompassed singularity is $\tilde{z}=i$
+	\begin{equation*}
+		\fou\left[ \frac{1}{1+x^2} \right]=\lim_{R\to\infty}\int_{\gamma^+_R}^{}\frac{e^{-i\lambda z}}{1+z^2}\diff z=2\pi i\res_{z=i}\left( \frac{e^{-i\lambda z}}{1+z^2} \right)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\fou\left[ \frac{1}{1+x^2} \right]=2\pi i\lim_{z\to i}\left[ (z-i)\frac{e^{-i\lambda z}}{(z+i)(z-i)} \right]=\pi e^{-\lambda}
+	\end{equation*}
+	Uniting both cases, i.e. for $\lambda\in\R$, we have finally
+	\begin{equation*}
+		\fou\left[ \frac{1}{1+x^2} \right]=\pi e^{-\abs{\lambda}}
+	\end{equation*}
+	3) $f(x)=e^{-a\abs{x}}$
+	Last but not least, we can calculate this Fourier transform using the properties of the Fourier operator. Firstly
+	\begin{equation*}
+		e^{-a\abs{x}}=H(x)e^{-ax}+H(-x)e^{ax}
+	\end{equation*}
+	We can also write this as follows
+	\begin{equation*}
+		e^{-a\abs{x}}=H(x)e^{-ax}+\opr{P}[H(x)e^{-ax}]
+	\end{equation*}
+	Therefore, using the linearity of the Fourier transform and the behavior of it under parity transformations, we have
+	\begin{equation*}
+		\fou[e^{-a\abs{x}}]=\frac{1}{a+i\lambda}+\opr{P}\left[ \frac{1}{a+i\lambda} \right]=\frac{1}{a+i\lambda}+\frac{1}{a-i\lambda}=\frac{2a}{a^2+\lambda^2}
+	\end{equation*}
+\end{eg}
+\begin{eg}[A Particular Way of Solving a Fourier Integral]
+	Take now the function $f(x)=e^{-x^2}$, using the properties of this function under derivation we can build easily a differential equation
+	\begin{equation*}
+		\derivative{f}{x}=-2xf(x)
+	\end{equation*}
+	Applying the Fourier operator on both sides we get
+	\begin{equation*}
+		\begin{aligned}
+			\fou\left[ \derivative{f}{x} \right]&=-2\fou\left[ xf(x) \right]\\
+			i\lambda\fou[f(x)]&=-2i\derivative{\lambda}\fou[f(x)]
+		\end{aligned}
+	\end{equation*}
+	Therefore, we've built a differential equation in the Fourier domain, where the searched function is actually the Fourier transform of the initial equation. Solving, we get
+	\begin{equation*}
+		\frac{\mathrm{d}\log}{\mathrm{d}\lambda}\fou[f(x)]=-\frac{\lambda}{2}
+	\end{equation*}
+	Therefore, imposing the condition of integration on all $\R$ and remembering that $\int_\R e^{-x^2}\diff x=\sqrt{\pi}$, we have
+	\begin{equation*}
+		\fou[f(x)]=\sqrt{\pi}e^{-\frac{\lambda^2}{4}}=\fou[e^{-x^2}]
+	\end{equation*}
+\end{eg}
+\subsection{Behavior of Fourier Transforms}
+\begin{thm}
+	Let $f\in L^1(\R)$ be some function. Taken $\hat{f}(\lambda)=\fou[f](\lambda)$, we have that $\hat{f}\in C_0(\R)$
+\end{thm}
+\begin{proof}
+	Firstly, we need to demonstrate that $\hat{f}\in C(\R)$. Therefore, by definition of continuity we have
+	\begin{equation*}
+		\abs{\hat{f}(\lambda+\epsilon)-\hat{f}(\lambda)}=\abs{\int_{\R}^{}f(x)e^{-i\lambda x}(e^{-i\epsilon x}-1)\diff x}
+	\end{equation*}
+	Using the properties of the modulus operator, we have that
+	\begin{equation*}
+		\abs{\hat{f}(\lambda+\epsilon)-\hat{f}(\lambda)}\le\int_{\R}^{}\abs{f(x)}\abs{e^{-i\epsilon x}-1}\diff x
+	\end{equation*}
+	For some $a\in\R$, we also have that
+	\begin{equation*}
+		\int_{\R}^{}\abs{f(x)}\abs{e^{-i\epsilon x}-1}\diff x\le\int_{\abs{x}\le a}^{}\abs{f(x)}\abs{e^{-i\epsilon x}-1}\diff x+2\int_{\abs{x}>a}^{}\abs{f(x)}\abs{e^{-i\epsilon x}-1}\diff x
+	\end{equation*}
+	And for $x\le a$ we can also say
+	\begin{equation*}
+		\abs{e^{-i\epsilon x}-1}=\left( 1-\cos(\epsilon x) \right)^2-\sin^2(\epsilon x)=4\sin^2\left( \frac{\epsilon x}{2} \right)\le(\epsilon x)^2\le(\epsilon a)^2
+	\end{equation*}
+	Letting $\pnorm[1]{f}$ be the usual $p$ integral norm on $L^1(\R)$, we have therefore
+	\begin{equation*}
+		\int_{\abs{x}\le a}^{}\abs{f(x)}\abs{e^{-i\epsilon x}-1}\diff x+2\int_{\abs{x}>a}^{}\abs{f(x)}\abs{e^{-i\epsilon x}-1}\diff x\le\epsilon\abs{a}\pnorm[1]{f}+2\int_{\abs{x}>a}^{}\abs{f(x)}\abs{e^{-i\epsilon x}-1}\diff x
+	\end{equation*}
+	The last integral goes to $0$ for $a=\epsilon^{-1/2}$, therefore
+	\begin{equation*}
+		\abs{\hat{f}(\lambda+\epsilon)-\hat{f}(\lambda)}\le\epsilon\abs{a}\pnorm[1]{f}
+	\end{equation*}
+	Proving that $\hat{f}\in C(\R)$.\\
+	Instead, for proving that $\hat{f}(\lambda)\to0$ for $\lambda\to\infty$, we have
+	\begin{equation*}
+		\abs{\hat{f}(\lambda)}\le\abs{\int_{\abs{x}\le a}^{}f(x)e^{-i\lambda x}\diff x}+2\abs{\int_{\abs{x}>a}^{}f(x)e^{-i\lambda x}\diff x}
+	\end{equation*}
+	We have then
+	\begin{equation*}
+		\abs{\hat{f}(\lambda)}\le\abs{\int_{\abs{x}\le a}^{}f(x)e^{-i\lambda x}\diff x}+\epsilon
+	\end{equation*}
+	For the Riemann-Lebesgue lemma we therefore have
+	\begin{equation*}
+		\lim_{\lambda\to\infty}\abs{\hat{f}(\lambda)}=\lim_{\lambda\to\infty}\abs{\int_{\abs{x}\le a}^{}f(x)e^{-i\lambda x}\diff x}=0
+	\end{equation*}
+\end{proof}
+\begin{thm}
+	Given $f\in C^{p-1}(\R)$ a function, such that $\del^{p}f(x)$ is piecewise continuous, and $\del^k f(x)\in L^1(\R)$ for $k=1,\cdots,p$. If this holds, we have that
+	\begin{enumerate}
+		\item $\fou[\del^kf](\lambda)=(i\lambda)^k\fou[f]$, for $k=1,\cdots,p$
+		\item $\lim_{\lambda\to\pm\infty}\lambda^p\fou[f](\lambda)=0$
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Through integration by parts of the definition of the Fourier transform we have
+	\begin{equation*}
+		\fou[f'](\lambda)=[f(x)e^{-i\lambda x}]_\R +i\lambda\fou[f](\lambda)
+	\end{equation*}
+	If the evaluation of $f(x)e^{-i\lambda x}$ on all $\R$ gives back $0$ we have that the first part of the theorem is demonstrated through iteration.\\
+	Using that $f'\in L^1(\R)$ tho, we can define using the fundamental theorem of calculus
+	\begin{equation*}
+		f(x)=f(0)+\int_{0}^{x}f'(s)\diff s
+	\end{equation*}
+	Also, since $f'\in L^1(\R)$ we must have that the limits at $\pm\infty$ of $f(x)$ must be finite, therefore
+	\begin{equation*}
+		\lim_{x\to\pm\infty}f(x)e^{-i\lambda x}=0
+	\end{equation*}
+	And
+	\begin{equation*}
+		\fou[f'](\lambda)=i\lambda\fou[f](\lambda)
+	\end{equation*}
+	Through this, we therefore have by iteration that
+	\begin{equation*}
+		\lambda^p\fou[f](\lambda)=\frac{1}{i^p}\fou[f^{(p)}](\lambda)
+	\end{equation*}
+	Which, thanks to Riemann-Lebesgue, gives
+	\begin{equation*}
+		\lim_{\lambda\to\infty}\lambda^p\fou[f](\lambda)=\frac{1}{i^p}\lim_{\lambda\to\infty}\fou[f](\lambda)=0
+	\end{equation*}
+\end{proof}
+\begin{thm}
+	Given $f\in L^1(\R)$ such that $x^kf\in L^1(\R)$ for $k=1,\cdots,p$, we have that $\fou[f]\in C^p(\R)$, and
+	\begin{equation*}
+		\del^k\fou[f](\lambda)=\fou[(-ix)^kf(x)](\lambda)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	In order to see if it's true, we start for the first derivative and apply the definition. Therefore, given $\hat{f}(\lambda)=\fou[f](\lambda)$
+	\begin{equation*}
+		\abs{\frac{1}{\epsilon}(\hat{f}(\lambda+\epsilon)-\hat{f}(\lambda))-\int_{\R}^{}(-ix)f(x)e^{-i\lambda x}\diff x}
+	\end{equation*}
+	Using the triangle inequality and the definition of $\hat{f}(\lambda)$ we have
+	\begin{equation*}
+		\int_{\R}^{}\abs{f(x)}\abs{\frac{e^{-i\epsilon x}-1}{\epsilon}+ix}\diff x=\int_{\R}^{}\abs{xf(x)}\abs{\frac{e^{-i\epsilon x}-1}{\epsilon x}+i}\diff x
+	\end{equation*}
+	Dividing the improper integral around a point $a\in\R$ we have that everything is lesser or equal to the following quantity
+	\begin{equation*}
+		\int_{\abs{x}\le a}^{}\abs{xf(x)}\abs{\frac{e^{-i\epsilon x}-1}{\epsilon x}+i}\diff x+2\int_{\abs{x}>a}^{}\abs{xf(x)}\abs{\frac{e^{-i\epsilon x}-1}{\epsilon x}+i}\diff x
+	\end{equation*}
+	We also have that
+	\begin{equation*}
+		\abs{\frac{e^{-i\epsilon x}-1}{\epsilon x}+i}\le\abs{\frac{\cos(\epsilon x)-1}{\epsilon x}+i\frac{\epsilon x\sin(\epsilon x)}{\epsilon x}}\le\frac{\abs{\cos(\epsilon x)-1}}{\abs{\epsilon x}}+\frac{\abs{\epsilon x-\sin(\epsilon x)}}{\abs{\epsilon x}}
+	\end{equation*}
+	Using the Taylor expansions for the cosine and the sine we get, approximating, that
+	\begin{equation*}
+		\begin{aligned}
+			\abs{\cos{\theta}-1}\le\frac{1}{2}\theta^2\\
+			\abs{\sin(\theta)-\theta}=\frac{1}{3!}\abs{\theta}^3
+		\end{aligned}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\abs{\frac{e^{-i\epsilon x}-1}{\epsilon x}+i}\le\frac{1}{2}\abs{\epsilon x}^2+\frac{1}{6}\abs{\epsilon x}^3
+	\end{equation*}
+	Putting that back into the integral, we have that it must be smaller or equal to the following quantity
+	\begin{equation*}
+		\int_{\abs{x}\le a}^{}\abs{xf(x)}\left( \frac{\abs{\epsilon x}}{2}+\frac{\abs{\epsilon x}^2}{6} \right)\diff x+2\int_{\abs{x}>a}^{}\abs{xf(x)}\left( \frac{\epsilon x}{2}+\frac{\abs{\epsilon x}^2}{6} \right)\diff x
+	\end{equation*}
+	Using in the first integral that $\abs{\epsilon x}\le\epsilon\abs{a}$ we get, that all the quantity will be surely less than the supremum of such, and therefore
+	\begin{equation*}
+		\left( \frac{\abs{\epsilon a}}{2}+\frac{\abs{\epsilon a}}{6} \right)\pnorm[1]{xf(x)}+2\int_{\abs{x}>a}^{}\abs{xf(x)}\diff x
+	\end{equation*}
+	Therefore, imposing as before $a=\epsilon^{-1/2}$, we get
+	\begin{equation*}
+		\lim_{\epsilon\to0}\abs{\frac{\hat{f}(\lambda+\epsilon)-\hat{f}(\lambda)}{\epsilon}-\int_{\R}^{}(-ix)f(x)e^{-i\lambda x}\diff x}=0
+	\end{equation*}
+	Proving the thesis of the theorem
+\end{proof}
+\begin{thm}[Invariance of the Schwartz Space under Fourier Transforms]
+	Given $f\in\Sp(\R)\subset L^1(\R)$, then $\fou[f]\in\Sp(\R)$.
+\end{thm}
+\begin{proof}
+	We will prove a weaker assumption. Since $\Sp(\R)=\left(C^\infty(\R),\norm{\cdot}_{j,k}\right)$ where the seminorm $\norm{\cdot}_{j,k}$ is defined as follows
+	\begin{equation*}
+		\norm{f}_{j,k}=\unorm{x^j\del^kf}<\infty\qquad j,k\in\N
+	\end{equation*}
+	We have, $\forall f\in\Sp(\R)$ that for a given constant $C_{a,k}\in\R$
+	\begin{equation*}
+		\abs{\del^kf}\le\frac{C_{a,k}}{(x^2+1)^{\frac{a}{2}}}\qquad a,k\in\N,\ x\in\R
+	\end{equation*}
+	Therefore, taken $a=j+2$
+	\begin{equation*}
+		\int_{\R}^{}\abs{x^j\del^kf(x)}\diff x\le C_{j+2,k}\int_{\R}^{}\frac{\abs{x}^j}{(x^2+1)^{\frac{j}{2}+1}}\diff x\le C_{j+2,k}\int_{\R}^{}\frac{1}{x^2+1}\diff x<\infty
+	\end{equation*}
+	Therefore, we have that $x^j\del^kf\in L^1(\R)$ $\forall j,k\in\N$. But we can also write the following result using Leibniz's rule
+	\begin{equation*}
+		\del^j\left( x^kf(x) \right)=\sum_{m=0}^{j}\binom{j}{m}\del^mx^j\del^{j-m}f(x)\in L^1(\R)
+	\end{equation*}
+	Therefore, applying the Fourier transform and using the previous property, we have
+	\begin{equation*}
+		(i\lambda)^j(\del^k\hat{f}(\lambda))=(i\lambda)^j(-i)^k\fou[x^kf](\lambda)=(-i)^k\fou[\del^j(x^kf)](\lambda)\in C_0(\R)
+	\end{equation*}
+	Which finally gives
+	\begin{equation*}
+		\norm{\hat{f}}_{j,k}=\norm{\fou[\del^j(x^kf)](\lambda)}_{j,k}<\infty\qquad\forall j,k\in\N
+	\end{equation*}
+	Which finally gives
+	\begin{equation*}
+		f\in\Sp(\R)\implies\fou[f]\in\Sp(\R)
+	\end{equation*}
+\end{proof}
+\subsection{Inverse Fourier Transform}
+\begin{dfn}[Fourier Antitransform]
+	Let $f\in L^1(\R)$, we define the \textit{Fourier Antitransform} as $\fou^a[f](x)$ the following computation
+	\begin{equation}
+		\fou^a[f](x)=\frac{1}{2\pi}\int_{\R}^{}f(\lambda)e^{i\lambda x}\diff\lambda
+		\label{eq:fouantitransform}
+	\end{equation}
+	Note that, taken the transformation $\lambda=-u$ we get
+	\begin{equation*}
+		\fou^a[f](x)=\frac{1}{2\pi}\int_{\R}^{}f(-u)e^{-iux}\diff u=\frac{1}{2\pi}\fou\circ\opr{P}[f]
+		\label{eq:antitrasfopform}
+	\end{equation*}
+	This brings to the definition of the following theorem
+\end{dfn}
+\begin{thm}[Inversion Formula]
+	Given $f\in\Sp(\R)$, we have that $\fou^a\fou[f]=\fou\fou^a[f]=\opr{\1}[f]=f$, therefore $\fou^a=\fou^{-1}$ and the Fourier transform is a bijective map in $\Sp(\R)$
+	\begin{equation*}
+		\fou:\Sp(\R)\fto[\sim]\Sp(\R)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Weakening the statement, we can say that taken $f\in\K$ such that $f(x)=0$ for $\abs{x}>a\in\R$, and taken $\epsilon\in(0,1/a)$, we have that, Fourier expanding the function in $[-\epsilon^{-1},\epsilon]$, we get
+	\begin{equation*}
+		f(x)=\sum_{k\in\Z}^{}c_ke^{ik\pi\epsilon x},\quad c_k=\frac{2}{\epsilon}\int_{-\frac{1}{\epsilon}}^{\frac{1}{\epsilon}}f(x)e^{-ik\pi\epsilon x}\diff x\to\frac{\epsilon}{2}\fou[f](k\pi\epsilon)
+	\end{equation*}
+	Therefore, we can immediately write
+	\begin{equation*}
+		f(x)=\sum_{k\in\Z}\fou[f](k\pi\epsilon)e^{ik\pi\epsilon x}
+	\end{equation*}
+	Letting $\lambda_{k,\epsilon}=k\pi\epsilon$ we have
+	\begin{equation*}
+		f(x)=\frac{1}{2\pi}\sum_{k\in\Z}^{}\fou[f](\lambda_{k,\epsilon})e^{i\lambda_{k,\epsilon}}\Delta\lambda_{k,\epsilon}\to\frac{1}{2\pi}\int_{\R}^{}\fou[f](\lambda)e^{i\lambda x}\diff x=\fou^a\fou[f]
+	\end{equation*}
+	Where we let $\epsilon\to0^+$ in the Fourier series, which written in that way gives a Riemann-Lebesgue sum converging to the integral of the antitransform, therefore proving that in $\Sp(\R)$ $\fou^a=\fou^{-1}$
+\end{proof}
+\begin{thm}[Plancherel]
+	Given $f,g\in\Sp(\R)$, and let $\sprd$ be the usual scalar product defined as follows
+	\begin{equation*}
+		\spr{f}{g}=\int_{\R}^{}f(x)g(x)\diff x
+	\end{equation*}
+	Then, we have
+	\begin{equation}
+		\begin{aligned}
+			\pnorm[2]{\fou[f]}&=\sqrt{2\pi}\pnorm[2]{f}\\
+			\spr{\fou[f]}{\fou[g]}&=2\pi\spr{f}{g}
+		\end{aligned}
+		\label{eq:planchthm}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	For Parseval we have
+	\begin{equation*}
+		\int_{\R}^{}\norm{f(x)}^2\diff x=\frac{\epsilon}{2}\sum_{k\in\Z}^{}\abs{c_k}^2=\frac{1}{2\pi}\sum_{k\in\Z}^{}\abs{\fou[f](\lambda_{k,\epsilon})}\Delta\lambda_{k,\epsilon}
+	\end{equation*}
+	Taking the limit $\epsilon\to0^+$ the sum on the right converges to the following value
+	\begin{equation*}
+		\int_{\R}^{}\abs{f(x)}^2\diff x=\frac{1}{2\pi}\int_{\R}^{}\abs{\fou[f]}^2\diff\lambda\implies\pnorm[2]{f}=\sqrt{2\pi}\pnorm[2]{f}
+	\end{equation*}
+	Then for the polarization identity, and this result, we get the final proof of the theorem
+\end{proof}
+\begin{thm}[Continuity Expansion]
+	Let $p,q\in C(\R)$, then if $p(x)=q(x)\quad\forall x\in\Q$ we have that
+	\begin{equation*}
+		p(x)=q(x)\quad\forall x\in\R
+	\end{equation*}
+	This holds for any dense subset of $\R$
+\end{thm}
+\begin{proof}
+	Since $\Q$ is dense in $\R$ we can take a sequence $(x_n)_{n\in\N}\in\Q$ such that $x_n\to x\in\R$. Therefore, using the continuity of $p,q$ we have
+	\begin{equation*}
+		p(x)=p\left( \lim_{n\to\infty}x_n \right)=\lim_{n\to\infty}p(x_n)=\lim_{n\to\infty}q(x_n)=q\left( \lim_{n\to\infty}x_n \right)=q(x)
+	\end{equation*}
+\end{proof}
+\begin{thm}[Extension of the Inversion Formula]
+	Let $f,g\in\Sp(\R)$. Taken a metric $d_{\Sp}(\cdot,\cdot):\Sp(\R)\times\Sp(\R)\to\R$ defined as follows
+	\begin{equation*}
+		d_{\Sp}(f,g)=\sum_{j=0}^{\infty}\sum_{k=0}^{\infty}\frac{1}{2^{j+k}}\frac{\norm{f-g}_{j,k}}{1+\norm{f-g}_{j,k}}\quad j,k\in\N
+	\end{equation*}
+	Where $\norm{\cdot}_{j,k}$ is the Schwartz seminorm.\\
+	Since $\K\subset\Sp(\R)$ is dense with this norm, we have that we can extend continuously the Fourier inversion formula $\forall f\in\Sp(\R)$, we have
+	\begin{equation*}
+		\fou^a\fou=\fou\fou^a=\hat{\1}\implies\fou^a=\fou^{-1}\quad\forall f\in\Sp(\R)
+	\end{equation*}
+\end{thm}
+\begin{thm}
+	Given $f\in L^1(\R)$, then, since we might have that $\fou[f]\notin L^1(\R)$, using the Cauchy principal value
+	\begin{equation}
+		\frac{1}{2\pi}\cpv\int_{\R}^{}\fou[f](\lambda)e^{i\lambda x}\diff\lambda=\frac{1}{2}\left( f(x^-)+f(x^+) \right)\quad\forall x\in\R
+		\label{eq:antitrasf}
+	\end{equation}
+	And, if $f$ is continuous in $x$, we have that
+	\begin{equation*}
+		\frac{1}{2\pi}\cpv\int_{\R}^{}\fou[f](\lambda)e^{i\lambda x}\diff\lambda=\fou^{-1}\fou[f]=\hat{\1}[f(x)]=f(x)
+	\end{equation*}
+\end{thm}
+\begin{thm}[New Calculation Rules]
+	With what we added so far, in operatorial form, we can write down two new calculation rules. Supposing the inversion formula holds, and therefore $\fou^a=\fou^{-1}$
+	\begin{equation}
+		\begin{aligned}
+			\fou^{-1}&=\frac{1}{2\pi}\left( \fou\opr{P} \right)\\
+			\fou^{-1}\fou&=2\pi\opr{\1}
+		\end{aligned}
+		\label{eq:invtransrules}
+	\end{equation}
+\end{thm}
+\begin{eg}
+	Let's calculate the Fourier transform of the following function $f:\R\fto\Cf$
+	\begin{equation*}
+		f(x)=\frac{1}{(x+i)^3}
+	\end{equation*}
+	Acting symbolically on this we know already that $\fou\left[ H(x)e^{-x} \right]=(1+i\lambda)^{-1}$, therefore
+	\begin{equation*}
+		\fou^{-1}\left[ \frac{1}{1+ix} \right](\lambda)=2\pi H(-\lambda)e^{\lambda}
+	\end{equation*}
+	Applying the parity operator and multiplying the inverse-transformed function by $-i$ we obtain
+	\begin{equation*}
+		\fou^{-1}\left[ \frac{1}{x+i} \right]=-2i\pi H(\lambda)e^{-\lambda}
+	\end{equation*}
+	Lastly, we can derive it twice and divide the result by two, obtaining
+	\begin{equation*}
+		\fou^{-1}\left[ \frac{1}{(x+i)^3} \right]=i\pi\lambda^2H(\lambda)e^{-\lambda}
+	\end{equation*}
+\end{eg}
+\subsection{Convolution Product}
+\begin{dfn}[Convolution Product]
+	Given $f,g\in L^1$ two bounded functions, we define the \textit{convolution} of these two functions as follows
+	\begin{equation}
+		(f*g)(x)=\int_{\R}^{}f(y)g(x-y)\diff y
+		\label{eq:convolution}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Defined the convolution product of two bounded functions, we have that
+	\begin{equation*}
+		*:L^1(\R)\times L^1(\R)\fto L^1(\R)
+	\end{equation*}
+	And
+	\begin{equation*}
+		\begin{aligned}
+			\unorm{f*g}&\le\unorm{f}\pnorm[1]{g}\\
+			\pnorm[1]{f*g}&\le\pnorm[1]{f}\pnorm[1]{g}
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	The proof of the first result is direct
+	\begin{equation*}
+		\abs{\int_{\R}^{}f(y)g(x-y)\diff x}\le\unorm{f}\int_{\R}^{}\abs{g(x-y)}\diff y=\unorm{f}\pnorm[1]{g}
+	\end{equation*}
+	For the second proof, we begin taking a compact set $[a,b]\subset\R$ and we move forward sending $a\to-\infty$ and $b\to\infty$. Therefore
+	\begin{equation*}
+		\int_{a}^{b}\abs{(f*g)(x)}\diff x\le\int_{\R}^{}\abs{f(y)}\int_{a-y}^{b-y}\abs{g(u)}\diff u\le\iint_{\R^2}\abs{f(y)}\abs{g(u)}\diff y\diff u=\pnorm[1]{f}\pnorm[1]{g}
+	\end{equation*}
+	Therefore we have that
+	\begin{equation*}
+		*:L^1(\R)\times L^1(\R)\fto L^1(\R)
+	\end{equation*}
+	And that the convolution product is bounded
+\end{proof}
+\begin{thm}[Properties of the Convolution Product]
+	Given $f,g,h\in L^1(\R)$ three bounded functions, then
+	\begin{equation}
+		\begin{aligned}
+			f*g&=g*f\\
+			(f*g)*h&=f*(g*h)=f*g*h
+		\end{aligned}
+		\label{eq:propertiesconv}
+	\end{equation}
+	These properties are easily demonstrable using the properties of the integral
+\end{thm}
+\begin{thm}[Derivation of a Convolution]
+	Given $f\in L^1(\R)$ a bounded function, and $g\in L^1(\R)\cap C^1(\R)$ a bounded function, we have that
+	\begin{equation}
+		\derivative{f*g}{x}=f*\derivative{g}{x}=f*g'
+		\label{eq:convderiv}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Written $A(x,t)=f(t)g(x-t)$ we have that
+	\begin{equation*}
+		(f*g)(x)=\int_{\R}^{}A(x,t)\diff t
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\derivative{f*g}{x}=\pdv{x}\int_{\R}^{}A(x,t)\diff t
+	\end{equation*}
+	Since we also have that, due to the boundedness of $g'$, that
+	\begin{equation*}
+		\abs{\pdv{A}{x}}=\abs{f(t)g'(x-t)}\le M\abs{f(t)}
+	\end{equation*}
+	Due to the fact that $f(t)\in L^1(\R)$ the integral is well defined, and using Leibniz's derivation rule, we have
+	\begin{equation*}
+		\derivative{f*g}{x}=\int_\R\pdv{A}{x}\diff t=\int_{\R}^{}f(t)g'(x-t)\diff t=(f*g')(x)
+	\end{equation*}
+\end{proof}
+\begin{thm}[Fourier Transform of a Convolution]
+	Given $f,g\in L^1(\R)$ two bounded functions, we have that
+	\begin{equation}
+		\fou[f*g]=\fou[f]\fou[g]
+		\label{eq:convprodfou}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	The proof of this is quite direct, we have that
+	\begin{equation*}
+		\begin{aligned}
+			\fou[f*g](\lambda)&=\int_{\R}^{}(f*g)(x)e^{-i\lambda x}\diff x=\int_{\R}^{}e^{-i\lambda x}\int_{\R}^{}f(y)g(x-y)\diff y\diff x=\\
+			&=\int_{\R}^{}f(y)e^{-i\lambda y}\int_{\R}^{}g(x-y)e^{-i\lambda(x-y)}\diff x\diff y=\fou[f]\fou[g]
+		\end{aligned}
+	\end{equation*}
+	Where on the last equality we used the Fubini-Tonelli theorem
+\end{proof}
+\begin{eg}[Convolution of Two Set Functions]
+	Given a set $A=[-a,a]$ and a set $B=[-b,b]$, we know that
+	\begin{equation*}
+		\begin{aligned}
+			\1_A(x)\1_B(x)&=\1_{A\cap B}(x)\\
+			\1_{[-a,a]}(x+y)&=\1_{[-a+y,a+y]}(x)
+		\end{aligned}
+	\end{equation*}
+	Suppose we need to calculate the convolution product $\1_A*\1_A$. The calculation is quite easy with those properties
+	\begin{equation*}
+		(\1_A*\1_A)(x)=\int_{\R}^{}\1_A(y)\1_A(x-y)\diff y
+	\end{equation*}
+	Taken $C=[-a+x,a+x]$, we have
+	\begin{equation*}
+		(\1_A*\1_A)(x)=\int_{\R}^{}\1_{A\cap C}(y)\diff y=\mu\left( A\cap C \right)
+	\end{equation*}
+	Where, we know already that
+	\begin{equation*}
+		\mu\left( A\cap C \right)=\begin{dcases}0&x<2a,\ x>2a\\2a-x&x\in[0,2a]\\2a+x&x\in[2a,0]\end{dcases}
+	\end{equation*}
+	Summarized
+	\begin{equation*}
+		\mu\left( A\cap C \right)=\max\left\{ 2a-\abs{x},0 \right\}=(\1_A*\1_A)(x)
+	\end{equation*}
+	Remembering the definition of the $\rect(x),\ \tri(x)$ functions, we get that
+	\begin{equation*}
+		(\rect*\rect)(x)=\max\left\{ 1-\abs{x},0 \right\}=\tri(x)
+	\end{equation*}
+\end{eg}
+\begin{eg}[Two Gaussians]
+	Taken $\alpha,\beta\in\R$ we might want to calculate the following convolution product
+	\begin{equation*}
+		e^{-\alpha x^2}*e^{-\beta x^2}=\int_{\R}^{}e^{-\alpha y^2}e^{-\beta(x-y)^2}\diff x
+	\end{equation*}
+	The direct calculation of the integral is immediate, but we might want to test here the power of the last theorem that was stated. Hence we have
+	\begin{equation*}
+		\fou^{-1}\left[ \fou[e^{-\alpha x^2}*e^{-\beta x^2}] \right]=\fou^{-1}\left[ \fou[e^{-\alpha x^2}]\fou[e^{-\beta x^2}] \right]
+	\end{equation*}
+	Using that
+	\begin{equation*}
+		\fou[e^{ax^2}](\lambda)=\sqrt{\frac{\pi}{a}}e^{-\frac{\lambda^2}{4a}}
+	\end{equation*}
+	We have immediately that the searched convolution will be
+	\begin{equation*}
+		e^{-\alpha x^2}*e^{-\beta x^2}=\frac{\pi}{\sqrt{\alpha\beta}}\fou^{-1}\left[ e^{-\frac{\lambda^4}{4}\left(\frac{\alpha+\beta}{\alpha\beta}\right)} \right](x)
+	\end{equation*}
+	Which gives
+	\begin{equation*}
+		\frac{\pi}{\sqrt{\alpha\beta}}\fou^{-1}\left[ e^{-\frac{\lambda^2}{4}\left( \frac{\alpha+\beta}{\alpha\beta} \right)} \right](x)=\frac{\pi}{\sqrt{\alpha\beta}}\frac{1}{\sqrt{\pi}}\sqrt{\frac{\alpha\beta}{\alpha+\beta}}e^{-\left( \frac{\alpha\beta}{\alpha+\beta} \right)x^2}
+	\end{equation*}
+	With some rearrangement of the constant terms, we get finally the expected result
+	\begin{equation*}
+		e^{-\alpha x^2}*e^{-\beta x^2}=\sqrt{\frac{\pi}{\alpha+\beta}}e^{-\left( \frac{\alpha\beta}{\alpha+\beta} \right)x^2}
+	\end{equation*}
+\end{eg}
+\subsection{Solving the Heat Equation with Fourier Transforms}
+The power of Fourier Calculus, as we seen in the Fourier series section, also comes when dealing with differential equations. In this section, we will consider once again the heat equation, but instead of considering a finite rod, we will suppose that the rod is actually infinite. We therefore get the following partial differential equation
+\begin{equation*}
+	\begin{dcases}
+		\pdv{u}{t}=k\pdv[2]{u}{x}&x\in\R,\ t\in\R^+\setminus\{0\}\\
+		u(x,0)=u_0(x)&x\in\R
+	\end{dcases}
+\end{equation*}
+We begin by applying the Fourier transform on the solution as follows. The transformed variable will be indicated as an index
+\begin{equation}
+	v(\lambda,t)=\fou_x[u(x,t)](\lambda)=\int_{\R}^{}u(x,t)e^{-i\lambda x}\diff x
+	\label{eq:vlambdef}
+\end{equation}
+Using the properties of the Fourier transform, we have
+\begin{equation*}
+	\fou_x[\del^2_xu](\lambda)=(i\lambda)^2\fou_x[u(x,t)](\lambda)=-\lambda^2v(\lambda,t)
+\end{equation*}
+Supposing also that $v(x,t)$ is derivable with respect to $t$ (i.e. Leibniz's rule holds), we have
+\begin{equation*}
+	\pdv{v}{t}=\fou[\del_tu(x,t)](\lambda)=\int_{\R}^{}\pdv{u}{t}e^{-i\lambda x}\diff x
+\end{equation*}
+And the heat equation, becomes after the Fourier transformation
+\begin{equation}
+	\begin{dcases}
+		\pdv{v}{t}=-k\lambda^2v(\lambda,t)&\lambda\in\R,\ t\in\R^+\setminus\{0\}\\
+		v(\lambda,0)=\fou[u_0(x)](\lambda)&\lambda\in\R
+	\end{dcases}
+	\label{eq:transformedheat}
+\end{equation}
+The solution is almost immediate, and we therefore get
+\begin{equation*}
+	v(\lambda,t)=v(\lambda,0)e^{-k\lambda^2t}=\fou[u_0(x)](\lambda)e^{-k\lambda^2t}
+\end{equation*}
+Note that
+\begin{equation*}
+	e^{-k\lambda^2t}=\frac{1}{2\sqrt{\pi kt}}\fou_x\left[ e^{-\frac{x^2}{4kt}} \right](\lambda)
+\end{equation*}
+Therefore, remembering that the product of transforms gives the transform of the convolution
+\begin{equation*}
+	v(\lambda,t)=\fou_x[u(x,t)]=\frac{1}{2\sqrt{\pi kt}}\fou_x\left[ u_0*e^{-\frac{x^2}{4kt}} \right](\lambda)
+\end{equation*}
+And, the searched solution will therefore be the following
+\begin{equation*}
+	u(x,t)=\frac{1}{2\sqrt{\pi kt}}u_0*e^{-\frac{x^2}{4kt}}
+\end{equation*}
+\end{document}

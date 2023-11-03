@@ -1,0 +1,28 @@
+\documentclass{book}
+\usepackage{fancypages}
+\usepackage{sapienza}
+\begin{document}
+\subfile{./title/title}
+\subfile{./title/frontispice}
+\tableofcontents
+\part{Atomic Physics}
+	\chapter{One Electron Atoms}
+		\subfile{./chapters/8-oneelectron}
+	\chapter{Two Electron Atoms}
+		\subfile{./chapters/9-twoelectrons}
+	\chapter{Many Electron Atoms}
+		\subfile{./chapters/10-manyelectrons}
+	\chapter{Electromagnetic Interactions}
+		\subfile{./chapters/11-eminteractions}
+\part{Quantum Chemistry}
+	\chapter{Basic Chemistry}
+		\subfile{./chapters/chem}
+	\chapter{Molecular Structure}
+		\subfile{./chapters/12-molecules}
+	\chapter{Molecular Spectra}
+		\subfile{./chapters/14-spectra}
+	\chapter{Molecular Electronic Structure}
+		\subfile{./chapters/13-electronsmolecules}
+	\chapter{Introduction to Solid State Physics}
+		\subfile{./chapters/solids}
+\end{document}

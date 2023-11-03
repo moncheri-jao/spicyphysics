@@ -1,0 +1,1491 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Linear Functionals}
+\subsection{Dual Spaces and Functionals}
+\begin{dfn}[Dual Space II]
+	Given $(\V,\norm{\cdot})$ a normed vector space over a field $\F$, we define the following set
+	\begin{equation*}
+		\V^\star:=\left\{ \derin{f:\V\fto\F}v\mapsto f(v) \right\}
+	\end{equation*}
+	An element $f\in\V^\star$ is called a \textit{continuous linear functional}, with the following properties, $\forall f,g\in\V^\star,\ u,v\in\V,\ \lambda,\lambda_1,\lambda\in\F$
+	\begin{equation}
+		\begin{aligned}
+			f(\lambda_1u+\lambda_2v)&=\lambda_1f(u)+\lambda_2f(v)\\
+			(f+g)(u)&=f(u)+g(v)\\
+			(\lambda f)(u)&=f(\lambda u)=\lambda f(u)
+		\end{aligned}
+		\label{eq:dualprop}
+	\end{equation}
+	With these properties the set $\V^\star$ has a vector space structure, and it's called the \textit{dual space}
+\end{dfn}
+\begin{dfn}[Bounded Linear Functional]
+	Given $f\in\V^\star$, we call $f$ a \textit{bounded linear functional} if, $\forall x\in\V$
+	\begin{equation}
+		\sup_{\norm{x}\le1}\abs{f(x)}<\infty
+		\label{eq:boundfunc}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Dual Norm]
+	Given a normed vector space $(\V,\norm{\cdot})$ we can give a structure of normed vector space to its dual with the couple $(\V^\star,\dnorm{\cdot})$, where the application $\dnorm{\cdot}$ is called the \textit{dual norm}
+	\begin{equation*}
+		\dnorm{\cdot}:\V^\star\fto\F
+	\end{equation*}
+	The dual norm is defined in two ways. $\forall f\in\V^\star,\ v\in\V$
+\begin{subequations}
+	\begin{equation}
+		\norm{f}_{\star_1}=\sup_{v\ne0}\frac{\abs{f(v)}}{\norm{v}}
+		\label{eq:dnorm1}
+	\end{equation}
+	\begin{equation}
+		\norm{f}_{\star_2}=\sup_{\norm{v}\le1}\abs{f(x)}
+		\label{eq:dnorm2}
+	\end{equation}
+	Where $f\in\V^\star$ is a bounded linear functional.\\
+\end{subequations}
+\end{dfn}
+\begin{thm}
+	For a bounded linear functional $f\in\V^\star$ the two definitions of the dual norm coincide, i.e.
+	\begin{equation*}
+		\norm{f}_{\star_1}=\norm{f}_{\star_2}=\dnorm{f}
+	\end{equation*}
+	And we can define the following inequality
+	\begin{equation}
+		\abs{f(v)}\le\dnorm{f}\norm{v}\quad\forall v\in\V
+		\label{eq:ineqdnorm}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Since $f\in\V^\star$ is bounded we have that both norms exist and must be finite. We can therefore write, thanks to the homogeneity of $f$, taken $v\in\V$
+	\begin{equation*}
+		\norm{f}_{\star_1}=\sup_{v\ne0}\abs{f\left( \frac{v}{\norm{v}} \right)}=\sup_{\norm{v}=1}\abs{f(v)}\le\sup_{\norm{v}\le1}\abs{f(v)}=\norm{f}_{\star_2}
+	\end{equation*}
+	I.e. $\norm{f}_{\star_1}\le\norm{f}_{\star_2}$, analogously
+	\begin{equation*}
+		\norm{f}_{\star_2}=\sup_{\norm{v}\le1}\abs{f(v)}\le\sup_{0<\norm{v}\le1}\frac{\abs{f(v)}}{\norm{v}}\le\sup_{v\ne0}\frac{\abs{f(v)}}{\norm{v}}=\norm{f}_{\star_2}
+	\end{equation*}
+	I.e. $\norm{f}_{\star_1}\ge\norm{f}_{\star_2}$, therefore we have
+	\begin{equation*}
+		\norm{f}_{\star_1}=\norm{f}_{\star_2}=\dnorm{f}
+	\end{equation*}
+	The inequality is obvious taken the definition of supremum
+\end{proof}
+\begin{thm}
+	Given $f\in\V^\star$ with $\V$ normed vector space, we have that the following assumptions are equivalent
+	\begin{enumerate}
+	\item $f$ is continuous
+	\item $f$ is continuous at the origin
+	\item $f$ is bounded
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	$1)\implies2)$\\
+	Since $f\in\V^\star$ is linear by definition, we have that it's also continuous and injective, therefore
+	\begin{equation*}
+		\lim_{v\to0}f(v)=f(0)=0
+	\end{equation*}
+	$2)\implies3)$\\
+	Since $f$ is continuous at the origin, we have by definition of continuity and limit
+	\begin{equation*}
+		\forall\epsilon>0\ \exists\delta>0\st\norm{x}<\delta\implies\abs{f(x)}<\epsilon\quad x\in\V
+	\end{equation*}
+	Taken $u=\delta x\in\V$, we have $\norm{u}=\abs{\delta}\norm{x}$ and
+	\begin{equation*}
+		\abs{f(x)}=\abs{f\left( \frac{u}{\delta} \right)}=\frac{1}{\delta}\abs{f(u)}\le\epsilon
+	\end{equation*}
+	Therefore, if $\norm{x}\le1$ we have that $\abs{f(u)}\le\delta\epsilon$, therefore
+	\begin{equation*}
+		\abs{f(u)}\le\dnorm{f}\norm{u}\implies\dnorm{f}\norm{x}\le\dnorm{f}\le\epsilon
+	\end{equation*}
+	$3)\implies1)$
+	By definition of continuity and boundedness we have
+	\begin{equation*}
+		\forall v,w\in\V,\forall\epsilon>0\ \exists\delta>0\st\norm{u-w}<\delta\implies\abs{f(u)-f(w)}<\epsilon
+	\end{equation*}
+	Through the linearity of $f$ we have
+	\begin{equation*}
+		\abs{f(u)-f(w)}=\abs{f(u-w)}\le\dnorm{f}\norm{u-w}\le\delta\dnorm{f}
+	\end{equation*}
+	Taken $\delta=\epsilon\dnorm{f}^{-1}$, we have
+	\begin{equation*}
+		\abs{f(u)-f(v)}\le\delta\dnorm{f}=\epsilon
+	\end{equation*}
+\end{proof}
+\begin{cor}
+	Given $f\in\V^\star$, we have that, given $C\in\F$ a constant
+	\begin{equation*}
+		\dnorm{f}=C\iff\begin{dcases}\forall x\in\V\quad\abs{f(x)}\le C\norm{x}\\\forall\epsilon>0\ \exists x\in\V\st\abs{f(x)}\ge(C-\epsilon)\norm{x}\end{dcases}
+	\end{equation*}
+\end{cor}
+\begin{proof}
+	We have, by definition of $\dnorm{f}$
+	\begin{equation*}
+		\dnorm{f}=\sup_{\norm{x}\le1}\abs{f(x)}\le\sup_{\norm{x}\le1}\abs{c\norm{x}}=C
+	\end{equation*}
+	In the second case, supposing $\dnorm{f}<C$ and taken $\epsilon=1/2(C-\dnorm{f})$
+	\begin{equation*}
+		\exists x\in\V\st\abs{f(x)}\ge(C-\dnorm{f})\norm{x}\quad\lightning
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Kernel]
+	Given a linear functional $f\in\V^\star$ we define the \textit{kernel} of $f$ as the set of zeros of $f$, i.e.
+	\begin{equation}
+		\ker f=\left\{ \derin{v\in\V}f(v)=0 \right\}
+		\label{eq:kernel}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Riesz Representation Theorem]
+	Given $(\V,\sprd)$ a Hilbert space, we can uniquely define its dual $\V^\star$ through the isomorphism $\phi_v:\V\fto[\sim]\F$ defined as follows
+	\begin{equation*}
+		\forall u,v\in\V\quad\phi_v(u)=\spr{u}{v}
+	\end{equation*}
+	I.e. $v\mapsto\spr{\cdot}{v}$.\\
+	This isomorphism has the following properties
+	\begin{equation}
+		\begin{aligned}
+			1)&\ \forall v\in\V\ \phi_v\in\V^\star,\quad\dnorm{\phi_v}=\norm{v}\\
+			2)&\ \forall c_1,c_2\in\F,\ v_1,v_2\in\V\quad\phi_{c_1v_1+c_2v_2}=\cc{c_1}\phi_{v_1}+\cc{c_2}\phi_{v_2}\\
+			3)&\ f\in\V^\star\implies\exists v\in\V\st f=\phi_v
+		\end{aligned}
+		\label{eq:rieszthm}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $w,v,z\in\V$ and $c,s\in\F$ we have by definition
+	\begin{equation*}
+		\begin{aligned}
+			\phi_v(w+z)&=\spr{w+z}{v}=\spr{w}{v}+\spr{z}{v}=\phi_v(w)+\phi_v(z)\\
+			\phi_v(cw)&=\spr{cw}{v}=c\spr{w}{v}=c\phi_v(w)\\
+			\phi_{cw+sz}(v)&=\spr{v}{cw+sz}=\cc{c}\spr{v}{w}+\cc{s}\spr{v}{z}=\cc{c}\phi_w(v)+\cc{s}\phi_z(v)
+		\end{aligned}
+	\end{equation*}
+	We also have, thanks to Cauchy-Schwartz
+	\begin{equation*}
+		\begin{aligned}
+			\abs{\phi_v(z)}&=\abs{\spr{z}{v}}\le\norm{z}\norm{v}\\
+			\abs{\phi_v(v)}&=\abs{\spr{v}{v}}\le\norm{v}^2\quad\therefore\dnorm{\phi_v}=\norm{v}
+		\end{aligned}
+	\end{equation*}
+	For the last one we take $f\in\V^\star$. If $\ker f=\V$ we have by definition that
+	\begin{equation*}
+		f(v)=0\quad\forall v\in\V\quad\therefore f=0
+	\end{equation*}
+	Taken $v=0$ we then have
+	\begin{equation*}
+		\phi_0(v)=\spr{0}{v}=0=f(v)\quad\forall v\in\V
+	\end{equation*}
+	Supposing now $\ker f\ne\V$ there must be $w\in\ker f^\perp\st w\ne0$. Taken $u\in\V$ we can write
+	\begin{equation*}
+		u=u_1+\frac{f(u)}{f(w)}w=u-\frac{f(u)}{f(w)}w+\frac{f(u)}{f(w)}w
+	\end{equation*}
+	Therefore, through the linearity of $f$
+	\begin{equation*}
+		f(u_1)=f\left( u-\frac{f(u)}{f(w)}w \right)=f(u)-f(w)=f(u-v)=0\quad\therefore u_1\in\ker f
+	\end{equation*}
+	Since $w\in\ker f^\perp$, we have that
+	\begin{equation*}
+		\spr{u_1}{w}=0
+	\end{equation*}
+	By definition of $\phi_v$, then
+	\begin{equation*}
+		\phi_v(u)=\spr{v}{u_1}+\spr{v}{\frac{f(u)}{f(w)}w}=\spr{\frac{f(w)}{\norm{w}^2}w}{u_1}+\spr{\frac{f(w)}{\norm{w}^2}w}{\frac{f(u)}{f(w)}w}
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\phi_v(u)=\frac{f(w)}{\norm{w}^2}\spr{w}{u_1}+\frac{f(w)}{\norm{w}^2}\frac{f(u)}{f(w)}\spr{w}{w}=f(u)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\phi_v(u)=f(u)\quad\forall f\in\V^\star,\ \forall u\in\V
+	\end{equation*}
+\end{proof}
+\section{Distributions}
+\subsection{Local Integrability}
+\begin{dfn}[Weak Convergence]
+	Given a normed vector space $(\V,\norm{\cdot})$, a sequence $(v)_{k\in\N}\in\V$ is said to be \textit{weakly convergent} to $v\in\V$ and it's indicated as $v_k\wto v$ if
+	\begin{equation*}
+		\forall f\in\V^\star\quad\lim_{k\to\infty}f(v_k)=f(v)
+	\end{equation*}
+\end{dfn}
+\begin{thm}
+	Given a normed vector space $\V$ and a sequence $(v)_{k\in\N}\in\V$ such that $v_k\to v\in\V$ (i.e. converges strongly), we have that
+	\begin{equation*}
+		v_k\to v\implies v_k\wto v
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Given $v_k\to v$, we have by definition that
+	\begin{equation*}
+		v_k\to v\iff\lim_{k\to\infty}\norm{v_k-v}=0
+	\end{equation*}
+	Now, writing the definition of weak convergence and applying the linearity of the limit
+	\begin{equation*}
+		v_k\wto v\iff\forall f\in\V^\star\quad\lim_{k\to\infty}\left( f(v_k)-f(v) \right)=0
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\forall f\in\V^\star\quad\lim_{k\to\infty}\left( f(v_k-v) \right)\le\dnorm{f}\lim_{k\to\infty}\norm{v_k-v}
+	\end{equation*}
+	Therefore we have that, since $f$ is bounded
+	\begin{equation*}
+		\exists C\in\F\st\lim_{k\to\infty}\left( f(v_k-v) \right)\le C\lim_{k\to\infty}\norm{v_k-v}\quad\forall f\in\V^\star
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		v_k\to v\implies v_k\wto v
+	\end{equation*}
+\end{proof}
+\begin{rmk}
+	The opposite isn't necessarily true.
+\end{rmk}
+\begin{proof}
+	Take $(\V,\norm{\cdot})=(\ell^2,\pnorm[2]{\cdot})$ and take the standard sequence $(e_i)_j$ where
+	\begin{equation*}
+		(e_i)_j=(0,0,\cdots,0,\underbrace{(1)_j}_{i-\text{th}},0,\cdots)
+	\end{equation*}
+	And $(1)_j$ is the identity sequence.\\
+	We have that $(e_i)_j\not\to(a)_i$ since
+	\begin{equation*}
+		\pnorm[2]{(e_i)_j-(e_i)_k}=\sqrt{2}\quad\forall j\ne k
+	\end{equation*}
+	Now, considering that $(\ell^2,\pnorm[2]{\cdot})$ is a Hilbert space, we have that, due to Riesz representation theorem
+	\begin{equation*}
+		\forall f\in\ell^{2\star}\quad f=\spr{\cdot}{a}=\phi_a\quad a\in\ell^2
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		f(e_{ij})=\spr{e_{ij}}{a_i}=\sum_{i=1}^\infty a_ie_{ij}=a_j\to0
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\forall(a)_j\in\ell^2\ \forall f\in\ell^{2\star}\quad\lim_{j\to\infty}f(e_{ij})=0
+	\end{equation*}
+	Hence, by definition $e_{ij}\wto0$
+\end{proof}
+\begin{dfn}[Isolated Singularities II]
+	Given a function $f:\R\fto\Cf$, it's said to have \textit{isolated singularities} if
+	\begin{equation*}
+		S_f:=\left\{ \derin{x\in\R}\lim_{y\to x}f(y)\ne f(x) \right\}
+	\end{equation*}
+	Doesn't have accumulation points, i.e. if $\abs{S_f}<\infty$
+\end{dfn}
+\begin{dfn}[Piecewise Continuity]
+	A function $f:[a,b]\subset\R\fto\Cf$ is said to be \textit{piecewise continuous} if
+	\begin{enumerate}
+	\item $S_f\ne\{\}$ and $\abs{S_f}<\infty$
+	\item $\forall u\in S_f$
+		\begin{equation}
+			\begin{aligned}
+				\exists\lim_{x\to u^+}f(x)&=f(u^+)\\
+				\exists\lim_{x\to u^-}f(x)&=f(u^-)
+			\end{aligned}
+			\label{eq:pwcont1}
+		\end{equation}
+	\item \begin{equation}
+			\begin{aligned}
+				\exists\lim_{x\to a^+}f(x)&=f(a^+)\\
+				\exists\lim_{x\to b^-}f(x)&=f(b^-)
+			\end{aligned}
+			\label{eq:pwcont2}
+		\end{equation}
+	\end{enumerate}
+\end{dfn}
+\begin{dfn}[Jump]
+	Given a piecewise continuous function $f$ we define the \textit{jump} of the function at a discontinuity $x\in S_f$ as follows
+	\begin{equation*}
+		\Delta f(x)=f(x^+)-f(x^-)
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Piecewise Differentiability]
+	A piecewise continuous function $f:[a,b]\fto\Cf$ is said to be \textit{piecewise differentiable} if and only if
+	\begin{enumerate}
+	\item $f$ is piecewise continuous in $[a,b]$
+	\item $f'$ is piecewise continuous in $[a,b]$
+	\end{enumerate}
+\end{dfn}
+\begin{dfn}[Local Integrability]
+	A function $f:\R\fto\Cf$ is said to be \textit{locally integrable} if
+	\begin{enumerate}
+	\item $S_f\ne\{\}$ and $\abs{S_f}<\infty$
+	\item $\forall a,b\in\R,\ a<b$ we have that
+		\begin{equation*}
+			\int_{a}^{b}\abs{f(x)}\diff x<\infty
+		\end{equation*}
+	\end{enumerate}
+	The set of locally integrable functions forms a subspace of $L^1(\R)$ and it's indicated as $L^1_{loc}(\R)$
+\end{dfn}
+\begin{thm}
+	Let $f:\R\fto\Cf$ be a piecewise continuous function, then $f\in L^1_{loc}(\R)$
+\end{thm}
+\begin{proof}
+	Take $f(x)$ a piecewise continuous function, then $\forall a,b\in\R$ $\exists(u)_{0\le k\le n}\in\R\st u_0=a,\ u_n=b$ for which we have $f\in C( (u_{k-1},u_k) )$ $\forall 0\le k\le n$. I can therefore define $\tilde{f}_k:[u_{k-1},u_k]\fto\Cf$, where
+	\begin{equation*}
+		\tilde{f}_k(x)=\begin{dcases}
+			f(x)&x\in(u_{k-1},u_k)\\
+			f(u_{k-1}^+)&x=u_{k-1}\\
+			f(u_k^-)&x=u_k
+		\end{dcases}
+	\end{equation*}
+	We have that
+	\begin{equation*}
+		f(x)=\sum_{k=0}^\infty\tilde{f}_k(x)
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\int_{a}^{b}\abs{f(x)}\diff x=\sum_{k=0}^n\int_{u_{k-1}}^{u_k}\abs{f(x)}\diff x=\sum_{k=0}^n\int_{u_{k-1}}^{u_k}\abs{\tilde{f}_k(x)}\diff x
+	\end{equation*}
+	Therefore $f(x)\in L^1_{loc}(\R)$ and the theorem is proved
+\end{proof}
+\begin{thm}[Integration by Parts in $L^1_{loc}(\R)$]
+	Let $f,g\in L^1_{loc}([a,b])$, then indicating the evaluation of a function at two points as $[f(x)]_z^w$ we have
+	\begin{equation}
+		\begin{aligned}
+			[fg]_{a^+}^{b^-}&=\int_{a}^{b}\left( f'(x)g(x)+f(x)g'(x) \right)\diff x+\\
+			&+\sum_{x\in S_{f}\cup S_{g}}\left( f(x^-)\Delta g(x)+ g(x^-)\Delta f(x)+\Delta f(x)\Delta g(x) \right)
+		\end{aligned}
+		\label{eq:localpartint}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Take $H:[a,b]\fto\Cf$, then for the fundamental theorem of calculus
+	\begin{equation*}
+		H(b^-)-H(a^+)=\int_{a}^{b}\derivative{H}{x}\diff x+\sum_{x\in S_H}\Delta H(x)
+	\end{equation*}
+	Taken $H(x)=f(x)g(x)$ we have
+	\begin{equation*}
+		\Delta(fg)(x)=f(x^+)g(x^+)-f(x^-)g(x^-)
+	\end{equation*}
+	With some manipulation we have
+	\begin{equation*}
+		\begin{aligned}
+			\Delta(fg)(x)&=f(x^+)g(x^+)-f(x^+)g(x^-)+f(x^+)g(x^-)-f(x^-)g(x^-)=f(x^+)\Delta g(x)+g(x^-)\Delta f(x)=\\
+			&=\left( f(x^-)+\Delta f(x) \right)\Delta g(x)+g(x^-)\Delta f(x)=f(x^-)\Delta g(x)+g(x^-)\Delta f(x)+\Delta f(x)\Delta g(x)
+		\end{aligned}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		(fg)(b^-)-(fg)(a^+)=\int_{a}^{b}(fg)'(x)\diff x+\sum_{x\in S_f\cup S_g}\left( f(x^-)\Delta g(x)+g(x^-)\Delta f(x)+\Delta f(x)\Delta g(x) \right)
+	\end{equation*}
+\end{proof}
+\subsection{Regular and Singular Distributions}
+\begin{dfn}[Test Functions]
+	A function $f:\R\fto\Cf$ is said to be a \textit{test function} if $\cc{\supp\{f\}}$ is compact and $f\in C^\infty(\R)$, i.e. $f\in C_c^\infty(\R)$\\
+	This space is usually denoted as follows $C^\infty_c(\R)=\K$
+\end{dfn}
+\begin{dfn}[$\K$-convergence]
+	Given a sequence $(f)_{n\in\N}\in\K$, it's said to be $\K-$convergent if
+	\begin{enumerate}
+	\item $\exists I\subset\R\st\forall x\in\comp{I}\ f_n(x)=0$
+	\item $\forall k\in\N\ f^{(k)}_n(x)\tto f^{(n)}(x) $
+	\end{enumerate}
+	Then, it's indicated as $f_n\kto f$
+\end{dfn}
+\begin{dfn}[Distribution]
+	A \textit{distribution} is  a continuous linear functional $\varphi:\K\fto\Cf$, i.e.
+	\begin{equation*}
+		\forall(f)_n\in\K,\ f_n\kto f\implies\varphi(f_n)=\varphi(f)
+	\end{equation*}
+	By definition of dual space, we have that $\varphi\in\K^\star$
+\end{dfn}
+\begin{thm}
+	Given $g\in L^1_{loc}(\R)$ and $\varphi_g:\K\fto\Cf$, if we have
+	\begin{equation*}
+		\varphi_g(f)=\int_{\R}^{}g(x)f(x)\diff x\quad\forall f\in\K
+	\end{equation*}
+	Then $\varphi_g\in\K^\star$
+\end{thm}
+\begin{proof}
+	Using the fact that $f\in\K$ we can immediately say that $\abs{f(x)}\le M\ \forall x\in[-a,a]\subset\R$, therefore
+	\begin{equation*}
+		\int_{\R}^{}\abs{g(x)f(x})\diff x=\int_{-a}^{a}\abs{g(x)f(x)}\diff x\le M\int_{-a}^{a}\abs{g(x)}\diff x<\infty
+	\end{equation*}
+	Alternatively, using the defintion of integral we can say that
+	\begin{equation*}
+		\varphi_g(\alpha f+\beta h)=\alpha\varphi_g(f)+\beta\varphi_g(h)\quad\forall\alpha,\beta\in\Cf,\ \forall f,h\in\K
+	\end{equation*}
+	We only need to show that this application is $\K-$continuous. I take $f_n\kto f$, with $f_n\in\K$.\\
+	It's obvious that $f_n\tto f$, and using the linearity and that $g\in L^1_{loc}(\R)$, calling $A=\norm{g}$, we have
+	\begin{equation*}
+		\abs{\varphi_g(f)-\varphi_g(f_n)}\le A\unorm{f-f_n}\to0
+	\end{equation*}
+	Therefore $\varphi_g(f_n)\to\varphi_g(f)\ \forall f_n\in\K,\ f_n\kto f$
+\end{proof}
+\begin{dfn}[Regular Distribution]
+	A distribution $f\in\K^\star$ is said to be \textit{regular} if $\exists g\in L^1_{loc}(\R)$ such that
+	\begin{equation*}
+		f=\spr{\cdot}{g}=\varphi_g
+	\end{equation*}
+	I.e.
+	\begin{equation*}
+		f(h)=\varphi_g(h)=\spr{h}{g}=\int_{\R}^{}h(x)g(x)\diff x
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Ceiling and Floor Functions]
+	We define the \textit{ceiling function} $\lceil\cdot\rceil:\R\fto\Z$ and the \textit{floor functions} $\lfloor\cdot\rfloor:\R\fto\Z$ as follows
+	\begin{equation}
+		\begin{aligned}
+			\floor{x}&=\max\left\{ \derin{m\in\Z}m\le x \right\}\\
+			\ceiling{x}&=\min\left\{ \derin{n\in\Z}n\ge x \right\}
+		\end{aligned}
+		\label{eq:floorceil}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Heaviside Function]
+	We define the \textit{Heaviside function} as a function $H:\R\fto\R$ as follows
+	\begin{equation*}
+		H(x)=\begin{dcases}1&x\ge0\\0&x<0\end{dcases}
+	\end{equation*}
+	It's obviously piecewise continuous and therefore $H\in L^1_{loc}(\R)$\\
+	A secondary definition is the one that follows $\tilde{H}:\R\fto\R$
+	\begin{equation*}
+		\tilde{H}(x)=\begin{dcases}1&x>0\\0&x\le0\end{dcases}
+	\end{equation*}
+\end{dfn}
+\begin{eg}[Floor and Ceiling Distributions]
+	Since both the floor and ceiling distributions are locally integrable, we can build a regular distribution $\varphi\in\K^\star$ as follows
+	\begin{equation*}
+		\begin{aligned}
+			\varphi_{\floor{x}}(f)&=\int_{\R}^{}f(x)\floor{x}\diff x=\sum_{k\in\Z}\int_{k}^{k+1}kf(x)\diff x\\
+			\varphi_{\ceiling{x}}(f)&=\int_{\R}^{}f(x)\ceiling{x}\diff x=\sum_{k\in\Z}\int_{k}^{k+1}(k+1)f(x)\diff x
+		\end{aligned}
+	\end{equation*}
+\end{eg}
+\begin{eg}[Theta Distribution]
+	Given $H\in L^1_{loc}(\R)$ we can define the associated \textit{theta distribution} $\varphi_H=\vartheta\in\K$, as follows
+	\begin{equation*}
+		\vartheta(f)=\int_{\R}^{}f(x)H(x)\diff x=\int_{\R^+}^{}f(x)\diff x
+	\end{equation*}
+	It's already obvious that $\varphi_{\tilde{H}}=\varphi_H$, but it's better to formalize it in the following theorem
+\end{eg}
+\begin{thm}
+	Let $f,g\in L^1_{loc}(\R)$ such that $\left\{ \derin{x\in\R}f(x)\ne g(x) \right\}=\left\{ u_1,\cdots,u_n \right\}$. Then we have $\varphi_g=\varphi_f\in\K^\star$
+\end{thm}
+\begin{proof}
+	We have by Riesz theorem that
+	\begin{equation*}
+		\varphi_g(f)=\int_{\R}^{}g(x)f(x)\diff x=\int_{-\infty}^{u_1}f(x)g(x)\diff x+\sum_{k=2}^{n-1}\int_{u_k}^{u_{k+1}}f(x)g(x)+\int_{u_n}^\infty f(x)\diff x
+	\end{equation*}
+	But, since $f(x)=g(x),\quad\forall x\in(u_k,u_{k+1})$ we have
+	\begin{equation*}
+		\begin{aligned}
+			\int_{\R}f(x)g(x)\diff x&=\int_{-\infty}^{u_1}f(x)g(x)\diff x+\sum_{k=2}^{n-1}\int_{u_k}^{u_{k+1}}f(x)g(x)\diff x+\int_{u_n}^{\infty}f(x)g(x)\diff x=\\
+			&=\int_{-\infty}^{u_1}f(x)h(x)\diff x+\sum_{k=2}^{n-1}\int_{u_k}^{u_{k+1}}f(x)h(x)\diff x+\int_{u_n}^{\infty}f(x)h(x)\diff x=\int_{\R}^{}f(x)h(x)\diff x
+		\end{aligned}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\varphi_g=\varphi_h
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Singular Distribution]
+	A \textit{singular distribution} is a distribution $f\in\K^\star$ for which, given $g\in L^1_{loc}(\R)$, $f\ne\varphi_g$, where
+	\begin{equation*}
+		\varphi_g(h)=\int_{\R}^{}h(x)g(x)\diff x
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Dirac Delta Distribution]
+	An example of singular distribution is the \textit{Dirac delta distribution} $\delta_a\in\K^\star$. This distribution is defined as follows
+	\begin{equation*}
+		\delta_a(f)=f(a)\quad\forall f\in\K,\ a\in\R
+	\end{equation*}
+\end{dfn}
+\begin{thm}
+	Given the Dirac delta distribution $\delta_a$, $\nexists\delta(x)\in L^1_{loc}(\R)$ such that (taken $a=0$ without loss of generality)
+	\begin{equation*}
+		\delta_0(f)=\int_{\R}^{}f(x)\delta(x)\diff x
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Let's say that $\exists\delta(x)\in L^1_{loc}(\R)$, therefore, we could define $\delta_0=\spr{\cdot}{\delta(x)}$. This function therefore must have these properties
+	\begin{equation*}
+		\delta(x)\ne0\iff x=0,\ x\in S_\delta
+	\end{equation*}
+	But, since for $b\in\R$, $b\ne0$, we have that $\delta(x)\to\delta(b)$ continuously, i.e. $\delta(b)=A>0$, therefore
+	\begin{equation*}
+		\exists\epsilon>0\st\delta(x)\ge\frac{A}{2}\quad\forall x\in[b-\epsilon,b+\epsilon]
+	\end{equation*}
+	But, then $\exists f\in\K$ such that $f(x)\to f(b)$ continuously, $f>0,\ f(b)=1$. Taken $\epsilon<b$ we can say
+	\begin{equation*}
+		\exists\tilde{\epsilon}\in(0,\epsilon)\st f(x)\ge\frac{1}{2}\quad\forall x\in[b-\epsilon',b+\epsilon']
+	\end{equation*}
+	Therefore, we have that
+	\begin{equation*}
+		\int_{\R}^{}f(x)\delta(x)\diff x=\int_{-\epsilon}^{\epsilon}f(x)\delta(x)\diff x\ge\int_{-\epsilon}^{\epsilon}\frac{A}{2}\frac{1}{2}\diff x=\frac{\epsilon'A}{2}
+	\end{equation*}
+	But, by definition $f(0)=0$, therefore
+	\begin{equation*}
+		\int_{\R}^{}f(x)\delta(x)\diff x=0\implies\varphi_\delta(f)=\varphi_0(f)\quad\lightning
+	\end{equation*}
+	Therefore, the distribution $\delta_0\ne\spr{\cdot}{\delta(x)}$
+\end{proof}
+\begin{ntn}[Common Abuse of Notation]
+	A common abuse of notation in the usage of the Dirac delta distribution, is supposing that it's writable like a regular distribution, i.e. supposing that $\exists\delta(x)\in L^1_{loc}(\R)$, the ``Dirac delta function'' such that
+	\begin{equation*}
+		\delta_a(f)=\int_{\R}^{}f(x)\delta(x-a)\diff x=f(a)\quad\forall f\in\K
+	\end{equation*}
+	This is obtainable only if the ``delta function'' is defined as follows
+	\begin{equation}
+		\delta(x)=\begin{dcases}
+			+\infty&x=0\\
+			0&x\ne0
+		\end{dcases}
+		\label{eq:deltafunction}
+	\end{equation}
+	Note that
+	\begin{equation*}
+		\delta_0(1)=\int_{\R}^{}\delta(x)\diff x=1
+	\end{equation*}
+\end{ntn}
+\begin{thm}
+	Given $g_n\in L^1_{loc}(\R)$ such that $g_n\in C[-a_n,a_n]$ with $a_n\to0$, $a_n>0\quad\forall n\in\N$, we have that, if
+	\begin{equation*}
+		\int_{\R}^{}g_n(x)\diff x=1
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\lim_{n\to\infty}\varphi_{g_n}(f)=\delta_0(f)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	We use the definition of limit, therefore we have
+	\begin{equation*}
+		\abs{\int_{\R}^{}f(x)g_n(x)\diff x-\delta_0(f)}\le\int_{-a_n}^{a_n}\abs{f(x)-f(0)}g_n(x)\diff x
+	\end{equation*}
+	Using that the integral over the real axis of $g_n$ is unitary
+	\begin{equation*}
+		\abs{\int_\R f(x)g_n(x)\diff x-\delta_0(f)}\le\sup_{\abs{x}\le a_n}\abs{f(x)-f(0)}\to0
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\lim_{n\to\infty}\varphi_{g_n}(f)=\delta_0(f)
+	\end{equation*}
+\end{proof}
+\begin{cor}
+	Given $g\in C_1(\R)$ a non-negative function $g\ge0$ such that
+	\begin{equation*}
+		\int_{\R}^{}g(x)\diff x=1
+	\end{equation*}
+	Then, if we put $g_n(x)=ng(nx)$ we have that
+	\begin{equation*}
+		\lim_{n\to\infty}\varphi_{g_n}(f)=\delta_0(f)
+	\end{equation*}
+\end{cor}
+\begin{proof}
+	As before, we use the definition, and therefore we have
+	\begin{equation*}
+		\abs{\int_{\R}^{}f(x)g_n(x)\diff x-\delta_0(f)}\le\int_{\R}^{}\abs{f(x)-f(0)}g_n(x)\diff x=n\int_{\R}^{}\abs{f(x)-f(0)}g(nx)\diff x
+	\end{equation*}
+	Using the substitution $u=nx$ we therefore get
+	\begin{equation*}
+		\int_{\R}^{}\abs{f(x)-f(0)}g(nx)n\diff x=\int_{\R}^{}\abs{f\left( \frac{u}{n} \right)-f(0)}g(u)\diff u
+	\end{equation*}
+	But, by definition of $g(x)$, we have that $\exists L>0\st\exists\epsilon>0$ for which
+	\begin{equation*}
+		1-\epsilon\le\int_{-L}^{L}g(u)\diff u\le1\quad\wedge\quad\int_{\abs{u}\ge L}^{}g(u)\diff u\le\epsilon
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\int_{\R}^{}\abs{f\left( \frac{u}{n} \right)-f(0)}g(u)\diff u=\int_{-L}^{L}\abs{f\left( \frac{u}{n} \right)-f(0)}g(u)\diff u+\int_{\abs{u}\ge L}^{}\abs{f\left( \frac{u}{n} \right)-f(0)}g(u)\diff u
+	\end{equation*}
+	By using the properties of the integral, we know that
+	\begin{equation*}
+		\int_{\R}^{}\abs{f\left( \frac{u}{n} \right)-f(0)}g(u)\diff u\le\sup_{x\le\frac{L}{n}}\abs{f(x)-f(0)}+\epsilon\left( \sup_{u\in\R}\abs{f\left( \frac{u}{n} \right)}-\abs{f(0)} \right)
+	\end{equation*}
+	Since $f(x)\to f(0)$ continuously, due to the fact that $f\in\K$, we have that
+	\begin{equation*}
+		\int_{\R}^{}\abs{f(x)-f(0)}g(nx)n\diff x\le2\epsilon\unorm{f}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\lim_{n\to\infty}\abs{\int_{\R}^{}f(x)g_n(x)\diff x-\delta_0(f)}=0
+	\end{equation*}
+\end{proof}
+\begin{dfn}[$\cpv\left( x^{-n} \right)-$Distribution]
+	Taken $n>0$, $n\in\N$, we have that $x^{-n}\notin L^1_{loc}(x)$ and therefore there is no associated distribution $\varphi_{x^{-n}}\in\K^\star$.\\
+	A useful thing we could do is utilizing the definition of the Cauchy principal value of the function. Therefore, we define the following singular distribution
+	\begin{equation}
+		\cpv\left( \frac{1}{x^n} \right)[f]=\lim_{a\to\infty}\int_{-a}^{a}\frac{1}{x^n}\left( f(x)-\sum_{k=0}^{n-1}\frac{f^{(k)}(0)}{k!}x^k \right)\diff x
+		\label{eq:cpvdist}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	The application $\cpv(x^{-n}):\K\fto\R$ defined as before is a distribution, hence $\cpv(x^{-n })\in\K^\star$
+\end{thm}
+\begin{proof}
+	We already know that this distribution is linear, since $\forall f,g\in\K$, $\forall c,d\in\R$
+	\begin{equation*}
+		\begin{aligned}
+			\cpv\left( \frac{1}{x^n} \right)[cf+dg]&=\lim_{a\to\infty}\int_{-a}^{a}\frac{1}{x^n}\left( cf(x)+dg(x)+\sum_{k=0}^{n-1}\frac{1}{k!}\left( cf^{(k)}(0)+dg^{(k)}(0) \right)x^k \right)\diff x=\\
+			&=c\cpv\left( \frac{1}{x^n} \right)[f]+d\cpv\left( \frac{1}{x^n} \right)[g]
+		\end{aligned}
+	\end{equation*}
+	Secondly we must show that the integral is well defined.\\
+	Let $f\in\K$, then
+	\begin{equation*}
+		I_R^n(f)=\int_{-R}^{R}\frac{1}{x^n}\left( f(x)-\sum_{k=0}^{n-1}\frac{1}{k!}f^{(k)}(0)x^k \right)\diff x,\quad n\in\N,\ R>0
+	\end{equation*}
+	Using the Lagrange formulation for the remainder of the McLaurin expansion, we have
+	\begin{equation*}
+		R_{n-1}(x)=f(x)-\sum_{k=0}^{n-1}\frac{f^{(k)}(0)}{k!}x^k=x^nr_{n-1}(x)
+	\end{equation*}
+	And therefore we have
+	\begin{equation*}
+		I_R^n(x)=\int_{-R}^{R}r_{n-1}(x)\diff x
+	\end{equation*}
+	Since $r_{n-1}(x)\in C^\infty(\R)$ (it's a polynomial) and $\supp f\subset[-b,b]$ for some $b\in\R,\ b>0$, we have that for $R>b$
+	\begin{equation*}
+		I_R^n(f)=I_b^n(f)-\sum_{k=0}^{n-1}\frac{f^{(k)}(0)}{k!}\int_{b\le\abs{x}\le R}^{}\frac{1}{x^{n-k}}\diff x
+	\end{equation*}
+	The last integral evaluates to
+	\begin{equation*}
+		\int_{b\le\abs{x}\le R}^{}\frac{1}{x^{n-k}}\diff x=\begin{dcases}
+			\frac{2}{n-k-1}\left[ \frac{1}{b^{n-k-1}}-\frac{1}{R^{n-k-1}} \right]&n-k\mod 2=0,\ n-k>2\\
+			0&\text{else}
+		\end{dcases}
+	\end{equation*}
+	Therefore, introducing the following dummy index $j=n-k$ where $j\mod2=0$, we have
+	\begin{equation*}
+		\cpv\left( \frac{1}{x^n} \right)(f)=I_b^n(f)-\sum_{j=0}^{n-1}\frac{f^{(j)}(0)}{j!}\frac{2}{(j-1)b^{j-1}}
+	\end{equation*}
+	Therefore the integral defining the distribution is well defined.\\
+	Lastly we need to prove that $\cpvdistl(f_n)\kto\cpvdistl(f)$, $\forall(f)_n\in\K\st f_n\to f$, i.e. that it's a continuous functional.\\
+	Going back to the previous definition we have that
+	\begin{equation*}
+		r_{n-1}(x)=\frac{R_{n-1}(x)}{x^n}=\frac{1}{x^n}\derivative[n-1]{f}{x}{(\xi(x))}\quad\xi(x)\in(0,x)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\abs{I^n_R(f)}\le2\sup_{x\in[-R,R]}\abs{r_{n-1}(x)}\le\frac{2R}{n!}\unorm{f}
+	\end{equation*}
+	Which means
+	\begin{equation*}
+		\abs{\cpvdist(f)}\le\frac{2b}{n!}\unorm{f^{(n)}}+\sum_{j=0}^{n-1}\frac{\abs{f^{(j)}(0)}}{j!}\frac{2}{(j-1)b^{j-1}}
+	\end{equation*}
+	Taken $b_1=\max\left\{ b,1 \right\}$ we have that $\supp f\subset[-b_1,b_1]$ and whenever $j-1>1,\ b_1\ge1$
+	\begin{equation*}
+		\frac{2}{(j-1)b_1^{j-1}}\le2
+	\end{equation*}
+	Therefore, finally
+	\begin{equation*}
+		\abs{\cpvdist(f)}\le\frac{2}{n!}\max\left\{ b,1 \right\}\unorm{f^{(n)}}+2\sum_{j=0}^{n-1}\frac{\abs{f^{(j)}(0)}}{j!}
+	\end{equation*}
+	Now, defined $f_j\in\K$ and $h_j(x)=f(x)-f_j(x)$ with $f_j\to f$ we have that $\supp h_j\subset[-b,b],\ \forall j\in\N$.\\
+	By definition we have that $h_j\tto0$ and $h^{(n)}_j\tto0$ $\forall n\in\N$
+	\begin{equation*}
+		\cpvdist(h_j)\le\frac{2}{n!}\max\left\{ b,1 \right\}\unorm{h_j^{(n)}}+2\sum_{j=0}^{n-1}\frac{\abs{h_j^{(j)}(0)}}{j!}
+	\end{equation*}
+	This means
+	\begin{equation*}
+		\forall k\in\N,\forall\epsilon>0,\ \exists N_R\in\N\st\forall k\ge N_j\ \abs{h_j^{(k)}(x)}\le\frac{\epsilon}{2(b+1+\epsilon)}
+	\end{equation*}
+	Chosen $N=\max_{0\le k\le n-1}N_k$ we have that $\forall j\ge N$
+	\begin{equation*}
+		\abs{\cpvdist(h_j)}\le\frac{2\epsilon}{2(b+1+\epsilon)}\left[ \max\left\{ b,1 \right\}+\sum_{j=0}^{n-1}\frac{1}{j!} \right]\le\epsilon\to0
+	\end{equation*}
+	Therefore, $\cpvdistl\in\K^\star$
+\end{proof}
+\subsection{Operations with Distributions}
+\begin{dfn}[Weak Derivative]
+	Given $u\in L^1([a,b])$, we define the weak derivative $v\in L^1([a,b])$ if, $\forall h\in C_c^\infty([a,b])$ we have
+	\begin{equation*}
+		\int_{a}^{b}u(x)h'(x)\diff x=-\int_{a}^{b}v(x)h(x)\diff x
+	\end{equation*}
+	The function $v(x)$ will then be identified as follows
+	\begin{equation*}
+		v(x)=\D u(x)
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Operations with Distributions]
+	Given $\varphi,\gamma\in\K^\star$, $f\in\K$, $h\in C^\infty(\R)$ and $c\in\Cf$ we define the following operations in $\K^\star$
+	\begin{equation}
+		\begin{aligned}
+			+&:\K^\star\times\K^\star\fto\K^\star\\
+			\cdot&:\Cf\times\K^\star\fto\K^\star\\
+			\circ&:C^\infty\times\K^\star\fto\K^\star\\
+			\D&:\K^\star\fto\K^\star
+		\end{aligned}
+		\label{eq:operationsdef}
+	\end{equation}
+	Where, they act as follows
+	\begin{equation*}
+		\begin{aligned}
+			+(\varphi(f),\gamma(f))&=(\varphi+\gamma)(f)=\varphi(f)+\gamma(f)\\
+			\cdot(c,\varphi(f))&=(c\varphi)(f)=c\varphi(f)\\
+			\circ(h,\varphi(f))&=(h\varphi)(f)=\varphi(hf)\\
+			\D\varphi(f)&=-\varphi(f')
+		\end{aligned}
+	\end{equation*}
+	The last operation is the distributional derivative.\\
+\end{thm}
+\begin{thm}
+	Given $g(x)\in L^1_{loc}(\R)$ and $\varphi_g\in\K^\star$ its associated distribution. Then, $\forall h\in C^\infty,\ f\in\K$
+	\begin{equation}
+		(h\varphi_g)(f)=\varphi_g(hf)=\varphi_{hg}(f)
+		\label{eq:cinftyprod}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	The proof is quite straightforward
+	\begin{equation*}
+		(h\varphi_g)(f)=\varphi_g(hf)=\int_{\R}^{}g(x)\left( h(x)f(x) \right)\diff x=\int_{\R}^{}f(x)\left( g(x)h(x) \right)\diff x=\varphi_{hg}(f)
+	\end{equation*}
+\end{proof}
+\begin{thm}
+	Taken $g\in L^1_{loc}(\R)$ and $g\mapsto\varphi_g\in\K^\star$ its associated distribution, we have that
+	\begin{equation*}
+		\D\varphi_g=\varphi_{\D g}
+	\end{equation*}
+	Where $\D g$ is the weak derivative of $g$
+\end{thm}
+\begin{proof}
+	$\forall f\in\K$ we have that
+	\begin{equation*}
+		\D\varphi_g(f)=-\varphi_g(f')=-\int_{\R}^{}f'(x)g(x)\diff x=\int_{\R}^{}f(x)\D g(x)\diff x=\varphi_{\D g}(f)
+	\end{equation*}
+\end{proof}
+\begin{thm}
+	$\forall g,f\in L^1_{loc}(\R)$ and given $\varphi_g,\gamma_f\in\K^\star,\ c\in\Cf$ their associated distributions, we have that
+	\begin{equation*}
+		\begin{aligned}
+			\varphi_g+\varphi_f&=\varphi_{g+f}\\
+			\varphi_{cf}&=c\varphi_f
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	The proof is obvious using the linearity of the integral operator
+\end{proof}
+\begin{thm}[Useful Identities]
+	Here is a list of some useful identities
+	\begin{equation}
+		\begin{aligned}
+			x\delta_0&=0\\
+			x\cpvdist[]&=\varphi_1\\
+			x\D\delta_0&=-\delta_0
+		\end{aligned}
+		\label{eq:distitent}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	$1)$ $x\delta_0=0$.\\
+	Taken $f\in\K$
+	\begin{equation*}
+		x\delta_0(f)=\delta_0(xf)=0f(0)=0
+	\end{equation*}
+	$2)$ $x\cpvdist=\varphi_1$\\
+	Again, taken $g\in\K$
+	\begin{equation*}
+		x\cpv\left( \frac{1}{x} \right)(g)=\cpv\left( \frac{1}{x} \right)(xg)=\lim_{\epsilon\to0}\int_{\abs{x}\ge0}^{}f(x)\diff x=\varphi_1
+	\end{equation*}
+	For the last one, taken $h\in\K$
+	\begin{equation*}
+		x\D\delta_0(f)=\D\delta_0(xf)=-\delta_0\left( f+xf' \right)=-f(0)-0f(0)=-f(0)=-\delta_0(f)
+	\end{equation*}
+\end{proof}
+\begin{ntn}[Abuse of Notation]
+	Given $g\in L^1_{loc}(\R)$ and its associated distribution $g\mapsto\varphi_g$, is quite common to use the original function to indicate actually the distribution. Together with this, the distributional derivative $\D$ gets indicated as an usual derivative, therefore
+	\begin{equation*}
+		\begin{aligned}
+			\varphi_g&\to g(x)\\
+			\D\varphi_g&\to g'(x)=\derivative{g}{x}
+		\end{aligned}
+	\end{equation*}
+	Therefore it isn't uncommon to see identities like this
+	\begin{equation*}
+		x\cpvdist[]=1
+	\end{equation*}
+	Where actually $1\to\varphi_1$ is the identity distribution.\\
+	Or
+	\begin{equation*}
+		\delta_0'=-\delta_0
+	\end{equation*}
+	This makes an easy notation for calculating distributional derivatives and have some calculations, but one should watch out to this common abuse of notation
+\end{ntn}
+\begin{dfn}[$\K^\star$ Convergence]
+	Given $(\sigma)_{n\in\N}\in\K^\star$ a sequence of distributions, it's say to $\K^\star-$\textit{converge} if
+	\begin{equation*}
+		(\sigma)_n(f)\to\sigma(f)\in\K^\star
+	\end{equation*}
+	It's indicated as follows
+	\begin{equation*}
+		(\sigma)_n\sto\sigma
+	\end{equation*}
+\end{dfn}
+\begin{thm}
+	Given $\kappa\in\K^\star$ a distribution, we have that $f\in C^{\infty}(\K)$ in the sense of distributional derivatives, where the $n-$th derivative is defined as follows
+	\begin{equation*}
+		\D^n\kappa(f)=(-1)^n\kappa(f^{(n)})\quad\forall f\in\K
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken $f\in\K$ we have that $f\in C_c^\infty(\R)\subset C^\infty(\R)$ hence $f$ is smooth, therefore we have, for $\kappa\in\K^\star$
+	\begin{equation*}
+		\D\kappa(f)=-\kappa(f')
+	\end{equation*}
+	Iterating, we get for $n=2$
+	\begin{equation*}
+		\D^2\kappa(f)=-\D\kappa(f')=\kappa(f'')
+	\end{equation*}
+	Iterating till $n$ we get finally
+	\begin{equation*}
+		\D^n\kappa(f)=(-1)^n\kappa(f^{(n)})
+	\end{equation*}
+	Hence the derivability depends only on the test function $f$, and since it's smooth, the distributional derivatives can be defined $\forall n\in\N$
+\end{proof}
+\begin{eg}
+	Take for example the delta distribution $\delta_0\in\K^\star$, given $f\in\K$ we want to calculate the following value
+	\begin{equation*}
+		\D^n\delta_0(f)
+	\end{equation*}
+	Using the previous identity, we have that
+	\begin{equation*}
+		\D^n\delta_0(f)=(-1)^n\delta_0[f^{(n)}]=(-1)^nf^{(n)}(0)
+	\end{equation*}
+\end{eg}
+\begin{thm}[Chain Rule]
+	Given $h\in C^\infty(\R)$ and $\eta\in\K^\star$, we have that
+	\begin{equation*}
+		\D(h\eta)=h'\eta+h\D\eta
+	\end{equation*}
+	Where the distributional derivative is identical to the usual derivative for $h$ and it's the usual distributional derivative for $\eta$
+\end{thm}
+\begin{proof}
+	Taken $h\in C^\infty$, $\eta\in\K^\star$ and $f\in\K$ we have
+	\begin{equation*}
+		(h\eta)(f)=\eta(fh)
+	\end{equation*}
+	Therefore, using the identity for derivating a distribution we have that
+	\begin{equation*}
+		\begin{aligned}
+			\D(h\eta)[f]&=-(h\eta)[f']=\\
+			&=-\eta[hf']=-\eta[(hf)'-h'f]=-\eta[(hf)']+\eta[h'f]=\\
+			&=(h\D\eta)[f]+(h'\eta)[f]
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{thm}
+	Given $g_n(x):\R\fto\Cf$ a continuous sequence of functions such that $g_n\tto g\in C(\R)$. Then, taken $g_n\mapsto\varphi_{g_n}\in\K^\star$ the associated distribution, we have that
+	\begin{equation*}
+		\varphi_{g_n}\sto\varphi_g\in\K^\star
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	By definition of convergence, we have that, given $f\in\K$, where $\supp f\subset[-a,a]$
+	\begin{equation*}
+		\abs{\varphi_{g_n}(f)-\varphi_g(f)}\le\varphi_{\abs{g_n-g}}(\abs{f})\le2a\unorm{g_n-g}\unorm{f}\to0
+	\end{equation*}
+	Therefore, $\varphi_{g_n}\sto\varphi_g$
+\end{proof}
+\begin{thm}
+	Given $(\eta)_n\in\K^\star$ a sequence of distribution, then if $(\eta)_n\sto\eta$ we have that
+	\begin{equation*}
+		\D\eta_n\sto\D\eta
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	By definition, we have
+	\begin{equation*}
+		\lim_{n\to\infty}\D\eta_n(f)=-\lim_{n\to\infty}\eta_n(f')=-\eta(f')=\D\eta(f)
+	\end{equation*}
+\end{proof}
+\begin{eg}[The Absolute Value Distribution]
+	Taken $g(x)=\abs{x}$ we have that (obviously) $\abs{x}\in L^1_{loc}(\R)$, therefore there exists a distribution $\varphi_{\abs{x}}\in\K^\star$ defined as follows
+	\begin{equation*}
+		\varphi_{\abs{x}}(f)=\int_{\R}^{}\abs{x}f(x)\diff x
+	\end{equation*}
+	We have that the distributional derivative it's actually the function $\sgn{(x)}$, (in this case, since it's a locally integrable function it coincides with its weak derivative), therefore it's not unusual to see expressions like this
+	\begin{equation*}
+		\derivative{x}\abs{x}=\sgn(x)\quad\text{weakly/distributionally}
+	\end{equation*}
+	The proof of this is quite easy. Taken $f\in\K$
+	\begin{equation*}
+		\begin{aligned}
+			\D\varphi_{\abs{x}}(f)&=-\varphi_{\abs{x}}(f')=-\int_{\R}^{}\abs{x}f'(x)\diff x=\\
+			&=[xf(x)]_{\R^-}-[xf(x)]_{\R^+}+\int_{\R^+}^{}f(x)\diff x-\int_{\R^-}^{}f(x)\diff x=\\
+			&=\int_{\R}^{}\sgn(x)f(x)\diff x=\varphi_{\sgn(x)}(f)
+		\end{aligned}
+	\end{equation*}
+	Since we have that
+	\begin{equation*}
+		\D\varphi_{g}=\varphi_{\D g}
+	\end{equation*}
+	Where $\D g$ is intended as the weak derivative of $g$, we have that
+	\begin{equation*}
+		\D\abs{x}=\sgn(x)
+	\end{equation*}
+	Where in order to emphasize tha this is a weak derivative, one could use the notation
+	\begin{equation*}
+		\D_{\mathrm{w}}\abs{x}=\sgn(x)
+	\end{equation*}
+	Note that in literature it's common to use the abuse of notation written beforehand in general and in this particular case.\\
+	Also note that if the function we had used would have been an ordinarily derivable function, the weak derivative would have coincided with the ordinary derivative.
+\end{eg}
+\begin{thm}
+	In general, given $g\in C^1(\R)$, we can say that $g(\abs{x})$ has the following weak derivative
+	\begin{equation*}
+		\D g(\abs{x})=\D g(\abs{x})\sgn(x)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Since $g(\abs{x})\in L^1_{loc}(\R)$ we can say that exists $g\mapsto\varphi_g\in\K^\star$ such that
+	\begin{equation*}
+		\D\varphi_{g(\abs{x})}=\varphi_{\D g(\abs{x})}
+	\end{equation*}
+	Where $\D g$ is the weak derivative of $g(\abs{x})$. Since it's a derivative (and it's also demonstrable) we can use the rules for composite derivation, and knowing that $\D\abs{x}=\sgn(x)$ we have
+	\begin{equation*}
+		\D\varphi_{g(\abs{x})}=\varphi_{\D g(\abs{x})}=\varphi_{\D g\D\abs{x}}=\varphi_{\sgn\D g}
+	\end{equation*}
+\end{proof}
+\begin{thm}[Derivative of the $\vartheta$ Distribution]
+	Given $\vartheta\in\K^\star$ the theta distribution, we define
+	\begin{equation*}
+		\vartheta(f)=\int_\R f(x)H(x)\diff x=\int_{\R^+}^{}f(x)\diff x
+	\end{equation*}
+	The derivative of this distribution is
+	\begin{equation*}
+		\D\vartheta=\delta_0
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	We have $\forall f\in\K$
+	\begin{equation*}
+		\D\vartheta(f)=-\vartheta(f')=-\int_{\R}^{}f'(x)H(x)\diff x=-\int_{\R^+}f'(x)\diff x=f(0)=\delta_0(f)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\D\vartheta=\delta_0
+	\end{equation*}
+	Or, using a common abuse of notation
+	\begin{equation*}
+		\vartheta=\vartheta(x)=H(x),\qquad \D H(x)=\delta(x)
+	\end{equation*}
+\end{proof}
+\begin{ntn}[Piecewise Derivative]
+	Given $g:\R\fto\Cf$ a piecewise differentiable function, we define the differential operator $\Do$ as follows
+	\begin{equation}
+		\Do g(x)=\begin{dcases}
+			g'(x)&\exists g'(x)\\
+			0&\nexists g'(x)
+		\end{dcases}
+		\label{eq:dodoperator}
+	\end{equation}
+\end{ntn}
+\begin{thm}
+	Given $f:\R\fto\Cf$ a piecewise differentiable function and $S_f:=\left\{ u_1,\cdots,u_k \right\}$ isolated singularities, then
+	\begin{equation*}
+		\D f(x)=\Do f(x)+\sum_{i=1}^\infty\Delta f(u_i)\delta(u_i)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken $S_f:=\{u\}$ without loss of generality, we have that
+	\begin{equation*}
+		\begin{aligned}
+			\lim_{x\to u^+}f(x)&=f(u^+)\\
+			\lim_{x\to u^-}f(x)&=f(u^-)\\
+			\Delta f(u)&=f(u^+)-f(u^-)
+		\end{aligned}
+	\end{equation*}
+	And, $\forall g\in\K$, taken $f\mapsto\varphi_f\in\K^\star$
+	\begin{equation*}
+		\D\varphi_f(g)=-\varphi_f(g')=-\int_{-\infty}^{u}g'(x)f(x)\diff x-\int_{u}^{\infty}g(x)f(x)\diff x
+	\end{equation*}
+	Integrating by parts and rebuilding the definition of $\Delta f(u)$ we have
+	\begin{equation*}
+		\D\varphi_f(g)=g(u)\Delta f(u)+\int_{\R}^{}g(x)\Do f(x)\diff x=\varphi_{\Do g}(f)+\Delta f(u)\delta_u(f)
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\D f(x)=\Do f+\Delta f(u)\delta(u)
+	\end{equation*}
+\end{proof}
+\begin{eg}[Deriving the Sign Function]
+	Take $a\in\R$ and the function $\sgn(x-a)$, using the previous formula we have that $S_{\sgn(x-a)}=\{a\}$ and $\Delta\sgn(a)=2$, therefore
+	\begin{equation*}
+		\D\sgn(x-a)=\Do\sgn(x-a)+2\delta(x-a)
+	\end{equation*}
+	Since $\Do\sgn(x-a)=0$ we have finally
+	\begin{equation*}
+		\D\sgn(x-a)=2\delta(x-a)
+	\end{equation*}
+	And equivalently
+	\begin{equation*}
+		\D\sgn(a-x)=-2\delta(x-a)
+	\end{equation*}
+\end{eg}
+\begin{eg}[A General Piecewise Differentiable Function]
+	Take the function $g:\R\fto\R$ defined as follows
+	\begin{equation*}
+		g(x)=\begin{dcases}
+			1&x<0\\
+			x-2&x\ge0
+		\end{dcases}
+	\end{equation*}
+	We have that
+	\begin{equation*}
+		\Do g(x)=H(x)=\begin{dcases}
+			0&x\le0\\
+			1&x>0\\
+		\end{dcases}
+	\end{equation*}
+	Since the discontinuity is in the origin and we have $\Delta g(0)=-3$ we have
+	\begin{equation*}
+		\D g(x)=H(x)-3\delta(x)
+	\end{equation*}
+\end{eg}
+\begin{eg}[Derivative of the Floor Function]
+	Given the floor function $\floor{x}:\R\fto\Z$ we have that $S_{\floor{x}}=\Z$, $\Delta\floor{x}=1$ and $\Do\floor{x}=0$ therefore
+	\begin{equation*}
+		\D\floor{x}=\sum_{k\in\Z}\delta(x-k)=\sum_{k=-\infty}^\infty\delta(x-k)
+	\end{equation*}
+	Given instead a different function, $\floor{x^2}$ we have that $\Do\floor{x^2}=0$ and $S_{\floor{x^2}}=\left\{\derin{k\in\Z} \pm\sqrt{k} \right\}\subset\R$ with $\Delta\floor{\pm\sqrt{k}}=\pm1$, therefore
+	\begin{equation*}
+		\D\floor{x^2}=\sum_{k\ge1}\delta(x-\sqrt{k})-\delta(x-\sqrt{-k})=\sum_{k=1}^{\infty}\delta(x-\sqrt{k})-\delta(x-\sqrt{-k})
+	\end{equation*}
+\end{eg}
+\begin{thm}
+	Given $h\in C^\infty(\R)$ a smooth function and $a\in\R$, we have that
+	\begin{equation*}
+		h(x)\D^n\delta(x-a)=\sum_{k=0}^{n}(-1)^k\begin{pmatrix}n\\k\end{pmatrix}h^{(k)}(a)\D^{n-k}\delta(x-a)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken $f\in\K$ we have that
+	\begin{equation*}
+		(h(x)\D^{n}\delta_a)(f)=\D^n\delta_a(hf)=\delta_a\left( (hf)^{(n)} \right)
+	\end{equation*}
+	Using now Leibnitz's composite derivation rule, we have
+	\begin{equation*}
+		\derivative[n]{x}h(x)f(x)=\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}\derivative[k]{h}{x}\derivative[n-k]{f}{x}
+	\end{equation*}
+	We have that
+	\begin{equation*}
+		\begin{aligned}
+			(h(x)\D^n\delta_a)(f)&=\delta_a\left[ (-1)^n\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}h^{(k)}(x)f^{(n-k)}(x) \right]=\\
+			&=\sum_{k=0}^n\begin{pmatrix}n\\k\end{pmatrix}(-1)^kh^{(k)}(x)\D^{n-k}\delta_a(f)
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{eg}
+	Take as an example the following distributional derivative
+	\begin{equation*}
+		\D^7\left( xe^x\D^2\delta_0 \right)
+	\end{equation*}
+	We have from that formula that
+	\begin{equation*}
+		xe^x\D^2\delta_0=\derivative[2]{x}(xe^x)\delta_0=\derivative{x}(e^x+xe^x)\delta_0=(2+x)e^x\delta_0
+	\end{equation*}
+	And therefore $h'(0)=1$, $h''(0)=2$\\
+	Which means that
+	\begin{equation*}
+		xe^x\D^2\delta_0=\begin{pmatrix}2\\2\end{pmatrix}h(0)\D^2\delta_0-\begin{pmatrix}2\\1\end{pmatrix}h'(0)\D\delta_0+\begin{pmatrix}2\\0\end{pmatrix}h''(0)\delta_0
+	\end{equation*}
+	Inserting the values, we get
+	\begin{equation*}
+		xe^x\D^2\delta_0=2\D\delta_0-2\delta_0
+	\end{equation*}
+	The derivative is now trivial, and we get
+	\begin{equation*}
+		\D^7\left( xe^x\D^2\delta_0 \right)=2\D^7\left( \delta_0-\D\delta_0 \right)=2\left( \D^7\delta_0-\D^8\delta_0 \right)
+	\end{equation*}
+\end{eg}
+\begin{thm}
+	Given $k,m\in\N$ and a function $f\in C^k(\R)$ we have that
+	\begin{equation*}
+		\D^k\left( x^mf \right)(0)=\begin{dcases}
+			0&k<m\\
+			\begin{pmatrix}
+				k\\m
+			\end{pmatrix}m!f^(k-m)(0)&k\ge m
+		\end{dcases}
+	\end{equation*}
+	And
+	\begin{equation*}
+		\D^i(x^m)(0)=m!\delta_m^i
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	We apply immediately the Leibnitz chain rule and we have
+	\begin{equation*}
+		\D^k\left( x^mf \right)(0)=\sum_{j=0}^m\begin{pmatrix}
+			k\\j
+		\end{pmatrix}f^{(k-j)}(0)m!\delta_{jm}=m!\begin{pmatrix}
+			k\\m
+		\end{pmatrix}f^{(k-m)}(0)\quad\forall k\ge m
+	\end{equation*}
+\end{proof}
+\begin{thm}[Properties of the $\cpvdistl$ Distribution]
+	Here there will be listed some properties of the $\cpvdistl$ distribution
+	\begin{enumerate}
+	\item $\D\log\abs{x}=\cpvdistl$
+	\item Given $n,m\in\N$, then
+		\begin{equation*}
+			x^m\cpvdist=\begin{dcases}
+				x^{m-n}&m\ge n\\
+				\cpvdist[n-m]&m<n
+			\end{dcases}
+		\end{equation*}
+	\item  $\D^m\cpvdistl=(-m)!\cpvdistl[n-m]$
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	$1)$ Taken $\log\abs{x}\in L^1_{loc}(\R)$ we know that $\exists\varphi_{\log\abs{x}}\in\K^\star$ such that $\log\abs{x}\mapsto\varphi_{\log\abs{x}}$ and therefore we can write as follows the previous derivative, that $\forall f\in\K$
+	\begin{equation*}
+		\D\varphi_{\log\abs{x}}(f)=-\varphi_{\log\abs{x}}(f')=-\lim_{\epsilon\to0^-}\int_{-\infty}^{\epsilon}f'(x)\log(-x)\diff x-\lim_{\epsilon\to0^+}\int_{\epsilon}^{\infty}f(x)\log(x)\diff x
+	\end{equation*}
+	Integrating by parts we get
+	\begin{equation*}
+		\D\varphi_{\log\abs{x}}(f)=\lim_{\epsilon\to0^+}\log\epsilon\left( f(\epsilon)-f(-\epsilon) \right)+\lim_{\epsilon\to0^+}\int_{\abs{x}\ge\epsilon}^{}\frac{f(x)}{x}\diff x=\cpvdist(f)
+	\end{equation*}
+	Or
+	\begin{equation*}
+		\D\log\abs{x}=\cpvdist
+	\end{equation*}
+	$2)$ Taken $f\in\K$
+	\begin{equation*}
+		\left( x^m\cpvdist \right)(f)=\cpvdist(x^mf)=\lim_{R\to\infty}\int_{-R}^{R}\frac{1}{x^n}\left( x^mf(x)-\sum_{k=0}^{n-1}\frac{\D^k(x^mf)(0)}{k!}x^k \right)\diff x
+	\end{equation*}
+	Taken $m\ge n$ we have that the sum is null $\forall k\le m$, therefore since $k\le n-1<m$ it sums to $0$\\
+	Therefore
+	\begin{equation*}
+		\lim_{R\to\infty}I_R^n(x^mf)=\cpvdist(x^mf)=\int_{\R}^{}x^{m-n}f(x)\diff x=\varphi_{x^{m-n}}(f)
+	\end{equation*}
+	Taken $m<n$ we have that
+	\begin{equation*}
+		\sum_{k=0}^{n-1}\frac{x^k}{k!}\D^k(x^mf)(0)=\sum_{k=m}^{n-1}\begin{pmatrix}k\\m\end{pmatrix}\frac{m!}{k!}f^{(k-m)}(0)=\sum_{k=0}^{n-m-1}\frac{f^{(k)}(0)}{k!}x^k
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\lim_{R\to\infty}I_R^n(x^mf)=\lim_{R\to\infty}\lim_{\epsilon\to0}\int_{-R}^{R}\frac{1}{x^{n-m}}\left( f(x)-\sum_{k=0}^{n-m-1}\frac{f^{k}(0)}{k!}x^k \right)\diff x=\cpvdist[n-m](f)
+	\end{equation*}
+	$3)$ Taken $n\in\N$, $n>0,\ m=1$ we have
+	\begin{equation*}
+		\D\cpvdist(f)=-\cpvdist(f')=-\lim_{R\to\infty}I_R^n(f')
+	\end{equation*}
+	Integrating by parts we have
+	\begin{equation*}
+		\begin{aligned}
+			I_R^n(f')&=\left[ \frac{1}{x^n}\left( f(x)-f(0)-\sum_{k=0}^{n-1}\frac{f^{(k+1)}(0)}{(k+1)!}x^{k+1} \right) \right]^R_{-R}+\\
+			&+\int_{-R}^{R}\frac{n}{x^{n+1}}\left( f(x)-f(0)-\sum_{k=0}^{n-1}\frac{f^{(k+1)}(0)}{(k+1)!}x^k \right)\diff x=\\
+			&=\frac{1}{R^n}\left( f(R)-\sum_{k=0}^{n}\frac{f^{(k)}(0)}{k!}R^k \right)-\frac{1}{(-R)^n}\left( f(-R)-\sum_{k=0}^{n}\frac{f^{(k)}(0)}{k!}(-R)^k \right)+nI_R^{n+1}(f)
+		\end{aligned}
+	\end{equation*}
+	Since $\supp f\subset[-b,b]$ we have two cases, $R>b$ and $R<b$.\\
+	Supposing $R>b$ we have
+	\begin{equation*}
+		I^n_R(f')=nI^{n+1}_R(f)-\sum_{k=0}^{n}\frac{f^{(k)}(0)}{k!}\left( \frac{1}{(-R)^{n-k}}-\frac{1}{R^{n-k}} \right)
+	\end{equation*}
+	Taken a new index $j=n-k$ such that $j\mod 2=0$ we have
+	\begin{equation*}
+		I_R^n(f')=nI_R^{n+1}-2\sum_{j=0}^{n}\frac{f^{(j)}(0)}{j!}\frac{1}{R^{n-k}}\fto-n\cpvdist[n+1](f)
+	\end{equation*}
+	In case that $m>1$, by iteration we get
+	\begin{equation*}
+		\D^m\cpvdist=(-m)!\cpvdist[n+m]
+	\end{equation*}
+\end{proof}
+\subsection{A Physicist's Trick, The Dirac $\delta$ ``Function''}
+\begin{dfn}[Composite Delta]
+	Supposing that a Dirac $\delta$ exists also as a function, we can imagine describing it as a composite function $(\delta\circ f)(x)=\delta(f(x))$.\\
+	Watch out, since $\delta(f(x))\ne\delta_0(f)$
+\end{dfn}
+\begin{dfn}[Giving it Some Meaning]
+	Taken $g_n\in L^1_{loc}(\R)$ a sequence of functions such that $g_n\in C[-a_n,a_n]$ with $a_n>0$, $a_n\to0$, we have that $\exists!g_n\mapsto\varphi_{g_n}$ such that $\varphi_{g_n}\sto\delta_0$\\
+	A good choice for this sequence would be the Gaussian function $\gamma_n$ defined as follows
+	\begin{equation}
+		\gamma_n(x)=\frac{n}{\sqrt{\pi}}e^{-n^2x^2}
+		\label{eq:gaussianfunc}
+	\end{equation}
+	Then, we have that $\varphi_{\gamma_n}\sto\delta_0$, or written in a clear abuse of notation with non-existing functions
+	\begin{equation*}
+		\lim_{n\to\infty}\gamma_n(x)=\delta(x)
+	\end{equation*}
+	Which, actually means that
+	\begin{equation*}
+		\lim_{n\to\infty}\int_{\R}^{}\gamma_n(x)f(x)\diff x=f(0)=\delta_0(f)\quad\forall f\in\K
+	\end{equation*}
+	Then, letting $b(x)\in C^1(\R)$ we can define the following quantity
+	\begin{equation*}
+		\int_{\R}^{}f(x)\delta(b(x))\diff x=\lim_{n\to\infty}\int_{\R}^{}\gamma_n(b(x))f(x)\diff x\quad\forall f\in\K
+	\end{equation*}
+\end{dfn}
+\begin{thm}
+	Let $g\in C^1(\R)$ be a function with isolated and simple zeros $Z_g:=\left\{ x_1,x_2,x_3,\cdots \right\}$, then $\forall f\in\K$ we have
+	\begin{equation}
+		\lim_{n\to\infty}\int_{\R}^{}\gamma_n(g(x))f(x)\diff x=\int_{\R}^{}f(x)\delta(g(x))\diff x=\sum_{x_k\in Z_g}\frac{\delta_{x_k}(f)}{\abs{g'(x_k)}}
+		\label{eq:compdelta}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $g(x)\in C^1(\R)$ such that $g(x)\ge g(y)\ \forall x\ge y$, supposing that $Z_g=\{x_0\}$ we have, since it's a simple zero, that $g'(x_0)\ne0$\\
+	Taking in the previous integral the substitution $y=g(x)$, we have that $x=g^{-1}(y)$ and $\diff x=\D g^{-1}(y)\diff y$, therefore
+	\begin{equation*}
+		I=\lim_{n\to\infty}\int_{\R}^{}\gamma_n(g(x))f(x)\diff x=\lim_{n\to\infty}\int_{\inf(g)}^{\sup(g)}\gamma_n(y)\frac{f(g^{-1}(y))}{g'(g(y))}\diff y
+	\end{equation*}
+	Evaluating the integral we have
+	\begin{equation*}
+		I=\frac{f(g^{-1}(0))}{g'(g^{-1}(0))}=\frac{f(x_0)}{g'(x_0)}=\frac{1}{\abs{g'(x_0)}}\delta_{x_0}
+	\end{equation*}
+	This is easily generalizable if there is more than one zero
+\end{proof}
+\begin{eg}[Composition with a Constant]
+	Take $\delta(ax)$ with $g(x)=ax$ and $a\ne0$. Since $Z_g=\{0\}$ using the previous formula we have $g'(0)=a$ and therefore
+	\begin{equation*}
+		\delta(ax)=\frac{1}{\abs{a}}\delta(x)
+	\end{equation*}
+\end{eg}
+\begin{eg}
+	Taken $g(x)=\atan(x)$ we have that $Z_g:=\{0\}$ and
+	\begin{equation*}
+		g'(x)=\frac{1}{1+x^2}\quad g'(0)=1
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\delta(\atan(x))=\delta(x)
+	\end{equation*}
+\end{eg}
+\begin{eg}[Composition with a Polynomial]
+	Take $g(x)=(x^2-a^2)$, then $Z_g:=\{-a,a\}$ and $g'(\pm a)=\pm2a$, therefore, if $a\ne0$
+	\begin{equation*}
+		\delta(x^2-a^2)=\frac{1}{2\abs{a}}\left(\delta(x-a)+\delta(x+a)\right)
+	\end{equation*}
+\end{eg}
+\begin{eg}[Composition with an Exponential]
+	Taken $g(x)=e^x$ we have that $Z_g=\{\}$ therefore $\delta(e^x)=0$
+\end{eg}
+\begin{eg}[Composition with a Trigonometric Function]
+	Taken now $g(x)=\cos(x)$ we have that $Z_g=\left\{ \derin{k\in\Z} k\pi/2 \right\}$ and $g'(x)=-\sin(x)$, therefore
+	\begin{equation*}
+		g'(x_k)=-\sin(\frac{k\pi}{2})=(-1)^{k+1}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\delta(\cos(x))=\sum_{k\in\Z}\delta\left(x-\frac{k\pi}{2}\right)=\sum_{k=-\infty}^{\infty}\delta\left( x-\frac{k\pi}{2} \right)
+	\end{equation*}
+\end{eg}
+\begin{eg}[Calculating an Integral with the Composite Delta]
+	Take the following integral
+	\begin{equation*}
+		\int_{\R}^{}e^{-\abs{x}}\delta(\sin(2x))\diff x
+	\end{equation*}
+	In order for solving it we expand the composite delta. We have that $Z_g=\left\{\derin{k\in\Z} k\pi/2 \right\}$ and $g'(x_k)=(-1)^k2$, therefore
+	\begin{equation*}
+		\int_{\R}^{}e^{-\abs{x}}\delta(\sin(2x))\diff x=\frac{1}{2}\sum_{k=-\infty}^\infty e^{-\abs{x}}\delta\left( x-\frac{k\pi}{2} \right)=\frac{1}{2}\sum_{k=-\infty}^{\infty}e^{-\abs{\frac{k\pi}{2}}}
+	\end{equation*}
+	Fixing the sum and summing, we have
+	\begin{equation*}
+		\int_{\R}^{}e^{-\abs{x}}\delta(\sin(2x))\diff x=\sum_{k\in\N}^{}e^{-\frac{k\pi}{2}}-\frac{1}{2}=\frac{1}{1-e^{\frac{\pi}{2}}}-\frac{1}{2}
+	\end{equation*}
+\end{eg}
+%thm with complex distribution moved before
+\section{Integral Representation of Distributions}
+\subsection{Dirac Delta and Heaviside Theta}
+\begin{thm}[Integral Representation of the Delta Distribution]
+	Taken the non-existent $\delta(x)$ function, we can represent it as follows
+	\begin{equation}
+		\delta(x-y)=\frac{1}{2\pi}\iint_{\R^2}^{}e^{ik(x-y)}f(x)\diff k\diff x
+		\label{eq:deltafunction}
+	\end{equation}
+	Which means
+	\begin{equation*}
+		\delta_y(f)=\frac{1}{2\pi}\iint_{\R^2}e^{ik(x-y)}f(x)\diff k\diff x
+	\end{equation*}
+\end{thm}
+\begin{thm}[Integral Representation of the Theta Distribution]
+	Taken $\vartheta(x)$ the Heaviside regular distribution we can write $\forall x\in\R\setminus\{0\}$
+	\begin{equation}
+		\vartheta(x)=\frac{1}{2\pi i}\cpv\int_{\R}^{}\frac{e^{ikx}}{k-i\epsilon}\diff k
+		\label{eq:varthetaintegral}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	This equation has two cases, one with $x>0$ and one with $x<0$. Therefore taking $x>0$ we have
+	\begin{equation*}
+		I(x)=\cpv\int_{\R}^{}\frac{e^{ikx}}{k-i\epsilon}\diff k
+	\end{equation*}
+	This integral can be evaluated using the residue theorem. We have defining the function $f(k)$ as follows
+	\begin{equation*}
+		f(k)=\frac{1}{k-i\epsilon}
+	\end{equation*}
+	The integral can be seen as follows
+	\begin{equation*}
+		I(x)=\cpv\int_{\R}^{}e^{ikx}f(k)\diff k
+	\end{equation*}
+	This can be written as a complex integral, writing the transformation $x\to z$ with $z\in\Cf$
+	\begin{equation*}
+		I(x)\to J(x)=\lim_{R\to\infty}\oint_{\gamma_R}\frac{e^{izx}}{z-i\epsilon}\diff z
+	\end{equation*}
+	Where the path is the following
+	\begin{equation*}
+		\{\gamma_R\}=C_R^+\cup[-R,R]
+	\end{equation*}
+	Writing it all out explicitly we have that
+	\begin{equation*}
+		J(x)=\lim_{R\to\infty}\int_{C_R}\frac{e^{izx}}{z-i\epsilon}\diff z+\lim_{R\to\infty}\int_{-R}^{R}\frac{e^{izx}}{z-i\epsilon}\diff z=J_R+I(\real{z})
+	\end{equation*}
+	Due to the Jordan lemma we know for sure that $J_R=0$ therefore we have that, writing $\real(z)=x$, thanks to the residue theorem
+	\begin{equation*}
+		J(x)=I(x)=2\pi i\sum_{z_k\in S_f}\res_{z=z_k}\frac{e^{izx}}{z-i\epsilon}
+	\end{equation*}
+	The set of singularities of $f$ is formed by a single point $S_f=\{i\epsilon\}$ which is a simple pole, and therefore, since $i\epsilon\in\intr{\{\gamma_R\}}$ we have
+	\begin{equation*}
+		J(x)=2\pi i\res_{z=i\epsilon}\frac{e^{izx}}{z-i\epsilon}=2\pi i\lim_{z\to i\epsilon}(z-i\epsilon)\frac{e^{izx}}{z-i\epsilon}=e^{-\epsilon x}
+	\end{equation*}
+	Therefore, we get
+	\begin{equation*}
+		J(x)=2\pi ie^{-\epsilon x}
+	\end{equation*}
+	For getting back to the first integral, we have
+	\begin{equation*}
+		\frac{1}{2\pi i}I(x)=\lim_{\epsilon\to0^+}e^{-\epsilon x}=1=\vartheta(x)\quad x>0
+	\end{equation*}
+	In the second case, for $x<0$ we have that the new curve will be
+	\begin{equation*}
+		\{\gamma_R^-\}=C_R^-\cup[-R,R]
+	\end{equation*}
+	Since $S_f\not\subset\intr{\{\gamma_R^-\}}$ we have thanks to Cauchy-Goursat that
+	\begin{equation*}
+		\frac{1}{2\pi i}I(x)=\frac{1}{2\pi i}J^-(z)=0=\vartheta(x)\quad x<0
+	\end{equation*}
+	Proving our assumption
+\end{proof}
+\subsection{Distributions in $\R^n$}
+%\begin{dfn}[Multi-index Notation]
+%	In order to ease the notation in this part we're going to introduce the multi-index notation.\\
+%	A \textit{multi-index} $\alpha$ is defined as $\alpha\in\N^n$ where
+%	\begin{equation*}
+%		\alpha=(a_1,a_2,\cdots,a_n)\quad a_i\in\N
+%	\end{equation*}
+%	One can define operations on multi-indexes as follows
+%	\begin{equation*}
+%		\begin{aligned}
+%			\abs{\alpha}&=\sum_{i=1}^na_i\\
+%			\alpha!&=\prod_{i=1}^na_i!
+%		\end{aligned}
+%	\end{equation*}
+%	Given $x\in\R^n$ and the del operator $\del$ one can also write
+%	\begin{equation*}
+%		\begin{aligned}
+%			x^\alpha&=\prod_{i=1}^nx_i^{a_i}\\
+%			\del^\alpha&=\prod_{i=1}^n\del_i^{a_i}=\frac{\del^{\abs{\alpha}}}{\del x_1^{a_1}\cdots\del x_n^{a_n}}=\frac{\del^{\abs{\alpha}}}{\del x^\alpha}
+%		\end{aligned}
+%	\end{equation*}
+%\end{dfn}
+%\begin{dfn}[Taylor Series in $\R^n$ in Multi-Index Notation]
+%	Given a function $f(x)\in C^m(\R)$ and a multi-index $\alpha$ one can write the Taylor series of the function as follows, where $x,x_0\in\R^n$
+%	\begin{equation*}
+%		f(x)=\sum_{\abs{\alpha}\le m}^{}\frac{1}{\alpha!}\del^\alpha f(x-x_0)^\alpha+R_m(x)
+%	\end{equation*}
+%	Where
+%	\begin{equation*}
+%		R_m(x)=(m+1)\sum_{\abs{\alpha}=m+1}^{}\frac{(x-x_0)^\alpha}{\alpha!}\int_{0}^{1}(1-t)^m\del^\alpha f(x_0+t(x-x_0))\diff t
+%	\end{equation*}
+%\end{dfn}
+\begin{dfn}[Scalar Test Fields]
+	Given a scalar field $f:\R^n\fto\Cf$ one can define the space of scalar test fields $\K(\R^n)$ as follows
+	\begin{equation}
+		\K(\R^n)=C_c^\infty(\R^n)
+		\label{eq:scalartestfields}
+	\end{equation}
+	A function $f\in C_c^\infty(\R^n)$ is a function such that $\supp f\subset A\subset\R^n$ with $A$ a compact set and $\exists\del^\alpha f\quad\forall\abs{\alpha}\in\N$
+\end{dfn}
+\begin{dfn}[$\K(\R^n)-$Convergence]
+	Given $f_n\in\K(\R^n)$ a sequence of scalar fields. $f_n$ converges to $f\in\K(\R^n)$ if
+	\begin{enumerate}
+	\item $\exists A\subset\R^n$ compact set such that $f_n\left( \comp{A} \right)=\{0\}$
+	\item $\forall\alpha\in\N^n$ multi-index $\del^\alpha f_n\tto\del^\alpha f$, $\forall x\in A$
+	\end{enumerate}
+	It's indicated as
+	\begin{equation*}
+		f_n\knto f
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Multidimensional Distribution]
+	A $n-$\textit{dimensional distribution} is a continuous functional $\varphi:\K(\R^n)\fto\Cf$ such that
+	\begin{equation}
+		\forall g_n\knto g\quad \varphi(g_n)\to\varphi(g)
+		\label{eq:ndimdist}
+	\end{equation}
+	Then $\varphi\in\K^\star(\R^n)$
+\end{dfn}
+\begin{thm}[Operations in $\K^\star(\R^n)$]
+	We can define the usual distributional operations in $\K(\R^n)$. The usual operations defined for $\K^\star$ are defined in the same way, the only difference is given by the definition of the derivative
+	Given $\alpha\in\N^n$, $f\in\K(\R^n)$, $\varphi\in\K^\star(\R^n)$
+	\begin{equation}
+		\del^\alpha\varphi(f)=(-1)^{\abs{\alpha}}\varphi(\del^\alpha f)
+		\label{eq:distderrn}
+	\end{equation}
+\end{thm}
+\begin{eg}[Laplacian of a Distribution]
+	Taken $\del^\alpha=\del^2=\del_\mu\del^\mu$
+	\begin{equation*}
+		\del_\mu\del^\mu\varphi(f)=\varphi(\del_\mu\del^\mu f)
+	\end{equation*}
+\end{eg}
+\begin{rmk}[Local Integrability]
+	The local integrability of some functions is different in $\R^n$. In fact taken the spherical $(n-1)$-dimensional coordinate transformation we have
+	\begin{equation*}
+		d^nx=r^{n-1}\diff r\diff S_{n-1}
+	\end{equation*}
+	And taken the function $g(x^\nu)=\norm{x^\mu}_\mu^{-a}$ we get
+	\begin{equation*}
+		\int_{\R^n}^{}\frac{f(x)}{\norm{x^\mu}_\mu^a}\diff^nx=\int_{\R}^{}\int_{S_{n-1}}f(x)\diff S_{n-1}\frac{r^{n-1}}{r^a}\diff r
+	\end{equation*}
+	Which means that $\norm{x^\mu}_\mu^{-a}\in L^1_{loc}(\R^n)\quad\forall a<n$
+\end{rmk}
+\section{Some Applications in Physics}
+\subsection{Electrostatics}
+\begin{eg}[Point Charge]
+	Taken $q$ a point charge in the origin $(0,0,0)$ we define the potential generated by this charge as follows (in cgs)
+	\begin{equation*}
+		\del_\mu\del^\mu V(x^\nu)=-4\pi\rho(x)
+	\end{equation*}
+	Where $\rho(x)$ is the charge density, defined as
+	\begin{equation*}
+		\rho(x)=q\delta^3(x^\nu)
+	\end{equation*}
+	With $\delta^3$ being the $3-$d Dirac delta\\
+	Therefore
+	\begin{equation*}
+		\del_\mu\del^\mu\left( \frac{1}{\norm{x^\mu}_\mu} \right)=-4\pi\delta^3(x^\nu)
+	\end{equation*}
+	Which means actually, that $\forall f\in\K(\R^3)$
+	\begin{equation*}
+		\iiint_{\R^3}\frac{\del_\mu\del^\mu f}{\norm{x^\mu}_\mu}\diff^3x=-4\pi f(0)
+	\end{equation*}
+\end{eg}
+\begin{proof}
+	Since $f\in\K(\R^3)$ we have that $\exists R>0\st f(x^\mu)=0\forall x\notin B_{\frac{R}{2}}(0)$\\
+	Therefore we get that
+	\begin{equation*}
+		\iiint_{\R^3}\frac{\del_\mu\del^\mu f}{\norm{x^\mu}_\mu}\diff^3x=\lim_{\epsilon\to0}\int_{\epsilon\le\norm{x^\mu}_\mu\le R}\frac{\del_\mu\del^\mu f}{\norm{x^\mu}_\mu}\diff^3x
+	\end{equation*}
+	Taken $A_{\epsilon R}(0)=\left\{ \derin{x^\mu\in\R^3}\epsilon\le\norm{x^\mu}_\mu\le R \right\}$ We have that the second integral becomes, using Stokes' theorem
+	\begin{equation*}
+		\iiint_{A_{\epsilon R}}f(x)\del_\mu\del^\mu\left( \frac{1}{\norm{x^\mu}_\mu} \right)f(x)\diff^3x+\iint_{\del A_{\epsilon R}}\left[ \frac{1}{\norm{x^\mu}_\mu}\del_\mu f-f\del_\mu\left( \frac{1}{\norm{x^\mu}_\mu} \right) \right]n^\mu\diff\sigma
+	\end{equation*}
+	Changing to spherical coordinates we have that
+	\begin{equation*}
+		\del_\mu\del^\mu\left( \frac{1}{\norm{x^\mu}_\mu} \right)=\frac{1}{r^2}\pdv{r}\left( r^2\pdv{r}\left( \frac{1}{r} \right) \right)=0
+	\end{equation*}
+	Therefore we get
+	\begin{equation*}
+		\iiint_{A_{\epsilon R}}\frac{1}{\norm{x^\mu}_\mu}\del_\mu\del^\mu f\diff^3x=-\iint_{\norm{x^\mu}_\mu=\epsilon}\left( \frac{1}{r}\del_\mu f-f\del_\mu\left( \frac{1}{r} \right) \right)r^\mu\diff S_2
+	\end{equation*}
+	Which, taken $\del_{\mu}r^{-1}=-\hat{r}^\mu r^{-2}$ we have
+	\begin{equation*}
+		\iiint_{A_{\epsilon R}}\frac{1}{\norm{x^\mu}_\mu}\del_\mu\del^\mu f\diff^3x=-\iint_{\norm{x^\mu}_\mu=\epsilon}\hat{r}^\mu\del_\mu fr\diff S_2-\iint_{\norm{x^\mu}_\mu=\epsilon}f(x)\diff S_2
+	\end{equation*}
+	We have for the first integral that
+	\begin{equation*}
+		\norm{\iint_{\norm{x^\mu}_\mu=\epsilon}\hat{r}^\mu\del_\mu fr\diff S_2}\le4\pi\epsilon\sup_{\R^3}\norm{\del_\mu f}
+	\end{equation*}
+	And for the second
+	\begin{equation*}
+		\norm{\iint_{\norm{x^\mu}_\mu=\epsilon}f(x)\diff S_2-4\pi f(0)}\le4\pi\sup_{\norm{x^\mu}_\mu=\epsilon}\abs{f(x^\nu)-f(0)}
+	\end{equation*}
+	Since $\epsilon\to0^+$ and since $f\in\K(\R^3)$ we have that the first and second integral converge to $0$, and therefore
+	\begin{equation*}
+		\iiint_{\R^3}\frac{1}{\norm{x^\mu}_\mu}\del_\mu\del^\mu f\diff^3x=-\lim_{\epsilon\to0}\iint_{\norm{x^\mu}_\mu=\epsilon}f(x)\diff S_2=-4\pi f(0)
+	\end{equation*}
+\end{proof}
+%\subsection{Electrodynamics}
+\end{document}

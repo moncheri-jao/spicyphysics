@@ -1,0 +1,342 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	\section{Central Field Approximation}
+	In order to treat properly many-electron atoms we need to introduce an approximation, known as \textit{central field approximation or Hartree's method}, in which the Coulomb potential is substituted with a new spherically symmetrical \textit{effective} potential.\\
+	Firstly, we consider an atom with $N$ electrons and a nucleus with charge $q_N=Ze$ and infinite nuclear mass. In our Hamiltonian we (at first) neglect all small effects (Spin-Orbit coupling, relativistic effects, etc\ldots). Having considered this, putting $r_{ij}=\norm{\vec{r}_i-\vec{r}_j}$ our many-electron Hamiltonian is
+	\begin{equation}
+		\opr{\ham}=\sum_{i=1}^N\left( -\frac{\hbar^2}{2m}\nabla^2_i-\frac{Ze^2}{4\pi\epsilon_0r_i} \right)+\sum_{i<j=1}^N\frac{e^2}{4\pi\epsilon_0r_{ij}}
+		\label{eq:manyelectronhamiltonianatomic}
+	\end{equation}
+	In this case, the term $r_{ij}^{-1}$ is too big to be treated as a perturbation, hence, we must use what's called a central field approximation. In this approximation we map our potential $V(r)$ to a new potential defined as follows
+	\begin{equation}
+		V_{cf}(r)=-\frac{Z}{r}+S(r)
+		\label{eq:newpotential}
+	\end{equation}
+	Where $S(r)$ is a spherically symmetric \textit{screening} function.\\
+	Our Hamiltonian then becomes
+	\begin{equation}
+		\opr{\ham}=\opr{\ham}_e+\opr{\ham}_1=\sum_{i=1}^n\opr{h}_i+\sum_{i<j=1}^N\frac{1}{r_{ij}}-\sum_{i=1}^NS(r_i)
+		\label{eq:hartreehamiltonian}
+	\end{equation}
+	This way, we can divide our calculus in two. Solving for the single electron Hamiltonian $\opr{h}_i$, we have
+	\begin{equation}
+		\begin{aligned}
+			\sum_{i=1}^N\opr{h}_i\ket{\psi_e}&=E_e\ket{\psi_e}\\
+			\ket{\psi_e}&=\bigotimes_{i=1}^N\ket{nlm_l}_i\\
+			\opr{h}_i\ket{nlm_l}_i&=E_{nl}\ket{nlm_l}_i
+		\end{aligned}
+		\label{eq:hartreeapprox}
+	\end{equation}
+	Where $\ket{nlm_i}$ is our single-electron orbital. It's important to remember that these orbitals are \emph{not} the usual Hydrogenic orbitals, since the chosen potential is quite different.\\
+	Now there is only one simple thing missing, Spin. Our complete electronic wavefunction will then be the direct product between a spinor and the electronic wavefunction, as follows
+	\begin{equation}
+		u_{nlm_lm_s}(q_i)=u_{nlm_l}(r_i)\chi_{\frac{1}{2},m_s}\leftrightarrow\ket{nlm_l}_i\otimes\ket{\frac{1}{2},\up\down}
+		\label{eq:spinelectronwfmanyelectrons}
+	\end{equation}
+	Now, we're ready to determine $\ket{\psi_e}$. In order to make sure that Pauli exclusion principle's requirements are solved, we know already that the total wavefunction must be zero if an electron is in the same state of another one. This is perfectly described through a determinant, called Slater determinant, which is defined as follows (let $\mu,\nu,\delta$ be generic states)
+	\begin{equation}
+		\psi_e(q_1,\cdots,q_N)=\frac{1}{\sqrt{N!}}\left|\begin{matrix}u_{\mu}(q_1)&u_{\nu}(q_1)&\cdots&u_{\delta}(q_1)\\u_\mu(q_2)&u_\nu(q_2)&\cdots&u_\delta(q_2)\\\vdots&\vdots&\vdots&\vdots\\u_\mu(q_N)&u_\nu(q_N)&\cdots&u_\delta(q_N)\end{matrix}\right|
+		\label{eq:slaterdeterminantatomic}
+	\end{equation}
+	It's worth noting that $(N!)^{-1/2}$ is a normalizing factor for our final wavefunction.\\
+	A notable example comes for $He$ ground state wavefunction. We will have then
+	\begin{equation}
+		\begin{aligned}
+			\ket{1,2}&=\frac{1}{\sqrt{2}}\left|\begin{matrix}\ket{100}\otimes\ket{\up}_1&\ket{100}\otimes\ket{\down}_1\\\ket{100}\otimes\ket{\up}_2&\ket{100}\otimes\ket{\down}_2\end{matrix}\right|\\
+			\ket{1,2}&=\frac{1}{\sqrt{2}}\ket{100}_1\otimes\ket{100}_2\otimes\Big( \ket{\up}_1\otimes\ket{\down}_2-\ket{\down}_1\otimes\ket{\up}_2 \Big)
+		\end{aligned}
+		\label{eq:slaterhelium}
+	\end{equation}
+	The parity of the wavefunction $\psi_e$ will then be $(-1)^{\sum_il_i}$ as it should be.\\
+	Now, it's time to define new vector operators for angular momentum $\vecopr{L},\vecopr{S}$ in the many-electron case, and defining both as the sum of the single electron operators we can easily demonstrate that
+	\begin{equation}
+		\comm{\opr{\ham}_e}{\vecopr{S}}=\comm{\opr{\ham}_e}{\vecopr{L}}=0
+		\label{eq:totaangularmommanyelec}
+	\end{equation}
+	Therefore, we can define a new common basis between the Hamiltonian and these operator as $\ket{LSM_lM_s}$, where
+	\begin{equation}
+		\begin{aligned}
+			\opr{S}^2\ket{LSM_lM_s}&=\hbar^2S(S+1)\ket{LSM_lM_s}\\
+			\opr{L}^2\ket{LSM_lM_s}&=\hbar^2L(L+1)\ket{LSM_lM_s}\\
+			\opr{S}_z\ket{LSM_lM_s}&=\hbar M_s\ket{LSM_lM_s}\\
+			\opr{L}_z\ket{LSM_lM_s}&=\hbar M_l\ket{LSM_lM_s}\\
+			\opr{\ham}_e\ket{LSM_lM_s}&=E_{nl}\ket{LSM_lM_s}
+		\end{aligned}
+		\label{eq:eigenvalueselectronmanyham}
+	\end{equation}
+	It's of great importance to know that in order to find the wavefunctions $\bra{r_i}\ket{LSM_lM_s}$, we need to find linear combinations of Slater determinants. In the case of Helium, it was fine to use a Slater determinant, since $L=S=0$, since we were searching for $^1S_0$ wavefunctions for an electronic configuration of $1s^2$.
+	\subsection{Shells and Subshells}
+	As we have seen before, the total energy of atoms is directly determined by the electron configuration. We have already seen that the single electron energy grows with $n+l$, and since the spherical harmonics and spinors are already known from previous calculations, the problem is only to find a new radial function, where the potential is central but not coulombian.\\
+	Due to this dependency with $n$ and $l$ we can characterize electronic \textit{shells} and \textit{subshells}. A shell is composed of atoms with the same value of $n$ and subshells are composed by atoms with the same value of $n$ and $l$.\\
+	As in orbital spectroscopic nomenclature, we assign a letter to each shell, as follows
+	\begin{equation}
+		\begin{aligned}
+			n=0,\ l=0&\longrightarrow K\\
+			n=1,\ l=0&\longrightarrow L_I\\
+			n=1,\ l=1&\longrightarrow L_{II}\\
+			&\vdots
+		\end{aligned}
+		\label{eq:shellsandsubshells}
+	\end{equation}
+	The maximum number of electrons in a subshell is $2(2l+1)$, and if the number of electrons exactly matches it, the subshell in question is called \textit{closed} or \textit{filled}.\\
+	Instead, there can be maximum $2n^2$ electrons in a shell, and the ``closed'' or ``filled'' names of complete subshells transfers directly to shells.\\
+	In general, the degeneracy of a configuration ($g$), can be determined from the degeneracy of the shells. Let $\delta_i=2(2l_i+1)$ be the degeneracy of the subshell, and $\nu_i$ the number of electron occupying the same subshell with energy $E_{n_il_i}$. Henceforth, there will be $d_i$ ways of distributing electrons in this $i$-th subshell, this number is
+	\begin{equation}
+		d_i=\frac{\delta_i!}{\nu_i!\left( \delta_i-\nu_i \right)!}
+		\label{eq:subshelldegeneracy}
+	\end{equation}
+	And, therefore, for an electronic configuration we will have that
+	\begin{equation*}
+		g=\prod_{i=1}^nd_i
+	\end{equation*}
+	Where the index goes through all the $n$ subshells. It's worth noting that for a closed subshell $d=1$, easing the calculus. Taking Carbon as an example, we will have an electronic configuration of $[He]2s^22p^2$, hence
+	\begin{equation}
+		\begin{aligned}
+			K&\rightarrow\nu=2,\ \delta=2,\ d=1\\
+			L_I&\rightarrow\nu=2,\ \delta=2,\ d=1\\
+			L_{II}&\rightarrow\nu=2,\ \delta=6,\ d=15
+		\end{aligned}
+		\label{eq:carbondegeneracy}
+	\end{equation}
+	Hence $g=15$.
+	\subsection{Aufbau Rule and the Periodic Table}
+	Having defined properly the electronic structure of many electron atoms, we're able to discuss the Aufbau (building up) of atoms.\\
+	The ``building up'' of atoms is given by the $Z$ electrons, that fill the shells in accordance with the Pauli exclusion principle. The \textit{ground state configuration} of an atom is then given by distributing the electrons into $n$ subshells. The first $n-1$ (or $n$ if the shell is complete) subshells are filled completely, and the last subshell, if incomplete, houses the so called \textit{valence electrons}.\\
+	The screening given by the complete shells is what makes sure that the ionization potential doesn't grow with $Z$, but has peaks for atoms with complete shells, that always have a ground state $^1S_0$. These atoms form the set of \textit{noble gases}, which are chemically inert. Seeing the ionization potential tables is also evident that the ionization potential of noble gases lowers with $Z$, since the nucleus is bigger, and the last electrons feel less attraction from the nucleus.\\
+	The stableness given by having a complete valence shell, is the reason that the \textit{alkalis} (Li, Na, K, Rb, Cs) and the \textit{halogens} (F, Cl, Br, I) are extremely reactive chemically, since the first ones have one weakly bound electron more, and the last ones have a ``hole'', which is only a missing electron which is needed to complete the shell. The recurrence of this property is what brought chemists to build the \textit{periodic table}, which is a table of all the known elements, ordered in base to their value of $Z$.
+	\section{Hartree-Fock Metod and Self-Consistent Fields}
+	The basic starting point of Hartree-Fock theory is the independent particle model. The complete Hartree-Fock method accounts for the Pauli exclusion principle too, whereas the Hartree method alone doesn't.\\
+	The first thing assumed for the Hartree-Fock wavefunction is that the final $N$-electron wavefunction is a Slater determinant, or an antisymmetric product of electron spin-orbitals. This Slater determinant is given through the variational calculus of every single electron orbital.\\
+	Seeing this in a broader way, we can see our final wavefunction being an infinite linear combination of Slater determinants, which lets this metod to be well suited for calculus of even more complex systems like molecular orbitals and solid state physics. In order to keep things simple, we will treat only with the discussion of the ground state of a multi-electron atom, where the considered Hamiltonian is not relativistic.\\
+	Now, supposing we have a total Hamiltonian $\opr{\ham}=\opr{\ham}_1+\opr{\ham}_2$, where
+	\begin{equation}
+		\begin{aligned}
+			\opr{\ham}_1&=\sum_{i=1}^N\opr{h}_i=\sum_{i=1}^N\left( -\frac{1}{2}\nabla_i-\frac{Z}{r_i} \right)\\
+			\opr{\ham}_2&=\sum_{i<j=1}^N\frac{1}{r_{ij}}
+		\end{aligned}
+		\label{eq:hartreefockbaseham}
+	\end{equation}
+	We have that the first Hamiltonian describes the sum of $N$ electronic Hamiltonians which include nucleus-electron attraction, and the second describes $N(N-1)/2$ terms which describe the two body interaction of electrons..\\
+	According to the variational method, if we suppose that the trial wavefunction is $\phi$, we have that
+	\begin{equation*}
+		E_0\le E[\phi]=\bra{\phi}\opr{\ham}\ket{\phi}
+	\end{equation*}
+	Where we suppose $\bra{\phi}\ket{\phi}$, and $\ket{\phi}$ is determined through a Slater determinant of orthonormal single electron wavefunctions.\\
+	Another way to interpret this wavefunction is defining the \textit{antisymmetrization operator} $\opr{A}$. We have
+	\begin{equation}
+		\begin{aligned}
+			\opr{A}&=\frac{1}{N!}\sum_{P}(-1)^P\opr{P}\\
+			\ket{\phi}&=\sqrt{N!}\opr{A}\ket{\phi_H}\\
+			\ket{\phi_H}&=\bigotimes_{i=1}^N\ket{u_i}
+		\end{aligned}
+		\label{eq:hartreeantisymmket}
+	\end{equation}
+	It's obvious that since $\opr{A}$ is a linear combination of exchange operators $\opr{P}$, that it's also a projection operator.\\
+	The wavefunction $\ket{\phi_H}$ is what's called a \textit{Hartree wavefunction}, which is simply the direct product of every single electron wavefunctions.\\
+	Since both Hamiltonians are invariant under permutation of electronic coordinates, we have that $\comm{\opr{\ham}_i}{\opr{A}}=0$, and therefore the calculation of the expectation values of the first Hamiltonian reduces to the following calculus, thanks to our definition of $\ket{\phi}$
+	\begin{equation}
+		\bra{\phi}\opr{\ham}_1\ket{\phi}=N!\bra{\phi_H}\opr{\ham}_1\opr{A}\ket{\phi_H}
+		\label{eq:ham1expvalhftheory}
+	\end{equation}
+	Thanks to the definition of $\opr{A}$ and $\opr{\ham}_1$ we can reduce the calculus to the following expectation value
+	\begin{equation}
+		\bra{\phi}\opr{\ham}_1\ket{\phi}=\sum_{i=1}^N\sum_P(-1)^P\bra{\phi_H}\opr{h}_i\opr{P}\ket{\phi_H}=\sum_{\lambda}\bra{u_\lambda}\opr{h}_i\ket{u_\lambda}
+		\label{eq:ham1hftheorysinglelec}
+	\end{equation}
+	Where the index $\lambda$ runs on all possible quantum states of the single electron wavefunction
+	Defining $I_\lambda=\bra{u_\lambda}\opr{h}_i\braket{u_\lambda}$ we have that $\bra{\phi}\opr{\ham}_1\ket{\phi}=\sum_\lambda I_\lambda$. Analoguosly with $\opr{\ham}_2$ we get
+	\begin{equation}
+		\bra{\phi}\opr{\ham}_2\ket{\phi}=N!\bra{\phi_H}\opr{\ham}_2\opr{A}\ket{\phi_H}
+		\label{eq:ham2}
+	\end{equation}
+	Expliciting both operators, we get
+	\begin{equation}
+		\bra{\phi}\opr{\ham}_2\ket{\phi}=\sum_{i<j=1}^N\sum_P(-1)^P\bra{\phi_H}\frac{1}{r_{ij}}\opr{P}\ket{\phi_H}=\sum_{i<j=1}^N\bra{\phi_H}\frac{1}{r_{ij}}\left( 1-\opr{P}_{ij} \right)\ket{\phi_H}
+		\label{eq:ham2hftheory}
+	\end{equation}
+	Since the exchange operator in this case exchanges spin and spatial coordinates of electrons $i,j$, we can also write the previous equation as follows
+	\begin{equation}
+		\bra{\phi}\opr{\ham}_2\ket{\phi}=\frac{1}{2}\sum_{\lambda}\sum_{\mu}\left( \bra{u_\lambda u_\mu}\frac{1}{r_{ij}}\ket{u_\lambda u_\mu}-\bra{u_\lambda u_\mu}\frac{1}{r_{ij}}\ket{u_\mu u_\lambda} \right)
+		\label{eq:eqecxchangeintegralhftheory}
+	\end{equation}
+	We can now define two new terms, the \textit{direct term} $J_{\lambda \mu}$ and the exchange term $K_{\lambda \mu}$, where they're defined as follows
+	\begin{equation}
+		\begin{aligned}
+			J_{\lambda \mu}&=\bra{u_\lambda u_\mu}\frac{1}{r_{ij}}\ket{u_\lambda u_\mu}\\
+			K_{\lambda \mu}&=\bra{u_\lambda u_\mu}\frac{1}{r_{ij}}\ket{u_\mu u_\lambda}
+		\end{aligned}
+		\label{eq:exchangedirectoperatormatrices}
+	\end{equation}
+	It's also obvious that these two matrices are real and symmetric on both indices.\\
+	This final calculus brings the following result
+	\begin{equation}
+		\bra{\phi}\opr{\ham}_2\ket{\phi}=\frac{1}{2}\sum_{\lambda}\sum_{\mu}\left( J_{\lambda \mu}-\ket{\lambda \mu} \right)
+		\label{eq:hfintegralsham2}
+	\end{equation}
+	The total energy functional is then the following
+	\begin{equation}
+		E[\phi]=\sum_{\lambda}I_\lambda+\frac{1}{2}\sum_{\lambda}\sum_{\mu}\left( J_{\lambda \mu}-K_{\lambda \mu} \right)
+		\label{eq:energyfunctionalhftheory}
+	\end{equation}
+	Introducing the $N^2$ Lagrange multipliers $c_{\lambda\mu}$, we have that the variational equation that we need to solve is the following
+	\begin{equation}
+		\delta E-\sum_{\lambda}\sum_{\mu}c_{\lambda\mu}\delta\bra{u_\lambda}\ket{u_\mu}
+		\label{eq:hfvariationalenergy}
+	\end{equation}
+	Diagonalizing the matrix $c_{\lambda\mu}$ with an unitary transformation, we get
+	\begin{equation}
+		\delta E-\sum_{\lambda}\sum_{\mu}E_{\lambda}\kd{\lambda\mu}\delta\bra{u_\lambda}\ket{u_\mu}=\delta E-\sum_{\lambda}E_{\lambda}\delta\bra{u_{\lambda}}\ket{u_{\lambda}}
+		\label{eq:diagonalizedlagrangematrix}
+	\end{equation}
+	Projecting the previous equation in $L^2(\mathbb{R}^3\otimes\hilbert_s)$, and variating the spin-orbital electronic wavefunction we have a set of integro-differential equations, known as the \textit{Hartree-Fock equations}
+	\begin{equation}
+		\begin{aligned}
+			&\left( -\frac{1}{2}\nabla_i^2-\frac{Z}{r_i} \right)u_{\lambda}(q_i)+\left( \sum_{\mu}\int \cc{u}_{\mu}(q_j)\frac{1}{r_{ij}}u_{\mu}(q_j)\diff{q_j} \right)u_{\lambda}(q_i)-\\
+			&-\sum_{\mu}\left( \int \cc{u}_{\mu}(q_j)\frac{1}{r_{ij}}u_{\lambda}(q_j)\diff{q_j} \right)u_{\mu}(q_i)-E_{\lambda}u_{\lambda}(q_i)=0
+		\end{aligned}
+		\label{eq:hartreefockequation}
+	\end{equation}
+	We can build a more compact version of the Hartree-Fock equation defining two new operators as follows
+	\begin{equation}
+		\begin{aligned}
+			\opr{V}^d_{\mu}&=\int\cc{u}_{\mu}(q_j)\frac{1}{r_{ij}}u_{\mu}(q_j)\diff{q_j}=\bra{\mu}\frac{1}{r_{ij}}\ket{\mu}\\
+			\opr{V}^{ex}_{\mu}f(q_i)&=\left(\int\cc{u}_{\mu}(q_j)\frac{1}{r_{ij}}f(q_j)\diff{q_j}\right)u_{\mu}(q_i)=\left( \ket{\mu}\bra{\mu}\frac{1}{r_{ij}} \right)\ket{f}\\
+		\end{aligned}
+		\label{eq:exchangedirectoperatorhf}
+	\end{equation}
+	Called respectively the \textit{direct operator} and \textit{exchange operator}. Otherwise we can define the \textit{direct potential} and the \textit{exchange potential} as follows
+	\begin{equation}
+		\begin{aligned}
+			\opr{\mathcal{V}}^d&=\sum_{\mu}\opr{V}^d_{\mu}=\sum_{\mu}\bra{\mu}\frac{1}{r_{ij}}\ket{\mu}\\
+			\opr{\mathcal{V}}^{ex}&=\sum_{\mu}\opr{V}^{ex}_{\mu}=\sum_{\mu}\ket{\mu}\bra{\mu}\frac{1}{r_{ij}}
+		\end{aligned}
+		\label{eq:exchangedirectpotentialhf}
+	\end{equation}
+	With this new addition, the Hartree-Fock equation becomes the following
+	\begin{equation}
+		\begin{aligned}
+			-\frac{1}{2}\nabla_i^2u_{\lambda}(q_i)-\frac{Z}{r_i}u_{\lambda}(q_i)+\opr{\mathcal{V}}^du_{\lambda}(q_i)-\opr{\mathcal{V}}^{ex}u_{\lambda}(q_i)&=E_{\lambda}u_{\lambda}(q_i)\\
+			\frac{1}{2}\opr{p}_i^2\ket{\lambda}-\frac{Z}{r_i}\ket{\lambda}+\opr{\mathcal{V}}^d\ket{\lambda}-\opr{\mathcal{V}}^{ex}\ket{\lambda}&=E_{\lambda}\ket{\lambda}
+		\end{aligned}
+		\label{eq:hartreefockeqpotentials}
+	\end{equation}
+	Or, defining the Hartree-Fock potential as follows
+	\begin{equation}
+		\opr{\mathcal{V}}=-\frac{Z}{r_i}+\opr{\mathcal{V}}^d-\opr{\mathcal{V}}^{ex}
+		\label{eq:hfpotential}
+	\end{equation}
+	We can rewrite the previous equation as follows
+	\begin{equation}
+		\begin{aligned}
+			-\frac{1}{2}\nabla_i^2u_{\lambda}(q_i)+\opr{\mathcal{V}}u_{\lambda}(q_i)&=E_{\lambda}u_{\lambda}(q_i)\\
+			\frac{1}{2}\opr{p}^2\ket{\lambda}+\opr{\mathcal{V}}\ket{\lambda}&=E_{\lambda}\ket{\lambda}
+		\end{aligned}
+		\label{eq:hartreefockequationpotentialhf}
+	\end{equation}
+	\subsection{Beryllium Ground State}
+	A particular example of what can be calculated with the Hartree-Fock approximation is the ground state $^1S$ of Beryllium. The Hartree-Fock potential operator, in this case is
+	\begin{equation}
+		\opr{\mathcal{V}}=-\frac{4}{r_i}+\opr{V}^d_{1s\up}+\opr{V}^d_{1s\down}+\opr{V}^d_{2s\up}+\opr{V}^d_{2s\down}-\left( \opr{V}^{ex}_{1s\up}+\opr{V}^{ex}_{1s\down}+\opr{V}^{ex}_{2s\up}+\opr{V}^{ex}_{2s\down} \right)
+		\label{eq:BeHFop}
+	\end{equation}
+	The Hartree-Fock equations, since the spatial part of the two $s$ electrons is be identical, separate into two coupled integro-differential equations, and we get then that $E_{1s}=E_{1s\up}=E_{1s\down}$ and $E_{2s}=E_{2s\up}=E_{2s\down}$. The general solution for these equation is given through a basis change to the basis of \textit{Slater orbitals}, which have the following form
+	\begin{equation}
+		s_{nlm}(\vec{r})=\frac{(2\alpha)^{n+\frac{1}{2}}}{\sqrt{(2n)!}}r^{n-1}e^{-\alpha r}Y_{l}^m(\theta,\phi)
+		\label{eq:slaterorbitals}
+	\end{equation}
+	The equations are then solved numerically.\\
+	Due to electronic dispositions it's obvious that the total Be wavefunction will be symmetric ($S$ state), the total spin will be $0$, and therefore we have a $^1S_0$ state
+	\section{Spin-Orbit Interactions and Fine Structure of Many-Electron Atoms}
+	As treated before with single-electron atoms, we define an electronic Hamiltonian ($\opr{\ham}_e$) and a perturbative Hamiltonian ($\opr{\ham}_2$), where the first will be the sum of all the single electron Hamiltonians, and the second will be our spin-orbit perturbative Hamiltonian.\\
+	The total Hamiltonian will then be
+	\begin{equation}
+		\opr{\ham}=\opr{\ham}_e+\opr{\ham}_1+\opr{\ham}_2
+		\label{eq:socouplingmanyelec}
+	\end{equation}
+	Where $\opr{\ham}_1$ is the electrostatic correction, and
+	\begin{equation}
+		\begin{aligned}
+			\opr{\ham}_2&=\sum_i\xi(r_i)\vecopr{L}_i\cdot\vecopr{S}_i=\sum_i\frac{1}{2m^2c^2}\frac{1}{r_i}\pdv{V}{r_i}\vecopr{L}_i\cdot\vecopr{S}_i\\
+			\opr{\ham}_e&=\sum_i\opr{h}_i=\sum_i\left( -\frac{1}{2}\nabla_i^2+\opr{\mathcal{V}} \right)
+		\end{aligned}
+		\label{eq:definitionssomultielec}
+	\end{equation}
+	Since this atom described by $\opr{\ham}$ is isolated, the \textit{total parity} and $\vecopr{J}$ are conserved.\\
+	We shall utilize the usual perturbation theory on the energy levels obtained from the Hartree-Fock approximation, henceforth taking the Hartree-Fock energy as our ``true'' energy.\\
+	As we saw before, since the Hamiltonian commutes with $\vecopr{J}$ (and $\vecopr{L},\vecopr{S}$), hence we can say that $M_L,M_S$ are good quantum numbers. Hence, every level will be $(2L+1)(2S+1)$ times degenerate. As usual, every level will be indicated with the usual spectroscopic notation.
+	\subsection{Determination of Possible Terms in Spin-Orbit Coupling}
+	Using the usual angular momenta addition rules, it's possible to determine straight away that, for filled subshells $L=S=0$. Hence, an atom with its last subshell filled must have a state $^1S_0$. In the case of ions, we toss out all filled subshells, and consider only the \textit{optically active} electrons in order to determine the possible states of the atom. We have three main cases\\
+	\begin{enumerate}
+	\item Non-equivalent electrons (in different subshells)\\
+		In this case, there can't be couples of optically active electrons that have the same set of quantum numbers, hence Pauli's exclusion principle is automatically satisfied.\\
+		We find the value of $L$ and $S$ by summing all optically active electrons' single values. It can be illustrated with two simple examples
+		\begin{enumerate}
+		\item \textit{Configuration $np\ n'p$}\\
+			In this configuration we have $l_1=l_2=1$ and $s_1=s_2=1/2$, hence $L=0,1,2$ and $S=0,1$. We therefore can have the following terms for the configuration
+			\begin{equation*}
+				^1S,\ ^1P,\ ^1D,\ ^3S,\ ^3P,\ ^3D
+			\end{equation*}
+		\item \textit{Configuration $np\ n'd$}\\
+			Here instead we have $l_1=1,l_2=2$ and $s_1=s_2=1/2$, thus $L=1,2,3$ and $S=0,1$. The possible term values are
+			\begin{equation*}
+				^1P,\ ^1D,\ ^1F,\ ^3P,\ ^3D,\ ^3F
+			\end{equation*}
+		\end{enumerate}
+		For more than 2 optically active electrons this calculation is repeated up until all the electrons' angular momenta are summed.
+	\item Equivalent electrons (in the same subshell)\\
+		This case is slightly more complicated, since Pauli's exclusion principle isn't immediately satisfied.\\
+		The most simple case that might be encountered is the case $ns^2$, which forces us with a $^1S_0$ state. A slightly more complicated case is given by $np^2$ configurations, where the degeneracy is $g=15$. Due to the exclusion principle, we must immediately exclude all possible states where $m_l$ or the $m_s$ values of two different electrons are the same. Evaluating all the $15$ states, we end up with these possible quantum number couples
+		\begin{equation*}
+			\begin{aligned}
+				&(M_L=\pm2,M_S=0)\\
+				&(M_L=\pm1,M_S=\pm1),\ (M_L=\pm1,M_S=0),\ (M_L=0,M_S=0),\ (M_L=0,M_S=\pm1)
+			\end{aligned}
+		\end{equation*}
+		We see immediately that we can only have $L=2,1,0$, hence the terms will be $S,P,D$. From the configuration, and the absence of a $(2,1)$ set of $(M_L,M_S)$, we can immediately say that all the possible $15$ states must have one of these three terms
+		\begin{equation*}
+			^1S,\ ^1D,\ ^3P
+		\end{equation*}
+	\item Equivalent and non-equivalent electrons\\
+		If an electronic configuration contains a group of equivalent electrons together with a group of non-equivalent electrons one must firstly determine the possible equivalent electron states, and then sum these states with the non-equivalent electron states. Then all the possible states can be determined. % see bransden pp.345 table 7.7 %
+	\end{enumerate}
+	\paragraph{Hund's Rules}
+	A set of two empirical rules determined by Hund is fundamental in the research of the ground state configuration. According to these rules we have that
+	\begin{enumerate}
+	\item The term with the largest value of $S$ has the lowest energy
+	\item For a given value of $S$, the term with the maximum possible value of $L$ has the lowest energy
+	\end{enumerate}
+	\subsection{Fine Structure Terms and Landé's Interval Rule}
+	Having obtained the energy level of the previous Hamiltonian, we proceed now to the second step of the calculation, and indeed add a new perturbation $\opr{\ham}_2$ to the previous Hamiltonian. The new total Hamiltonian $\opr{\ham}$ will not commute with $\vecopr{L},\vecopr{S}$ singularly, but it will commute with $\vecopr{J}=\vecopr{L}\otimes\1_S+\1_L\otimes\vecopr{S}$. Since the energy of an isolated atom cannot depend on the direction of the total angular momentum, it will have degeneracy $g=(2L+1)(2S+1)$ associated with $^{2S+1}L$ term, and an additional \textit{fine structure splitting} characterized by the possible values of $J$. The new term will then be $^{2S+1}L_J$, which is $2J+1$-fold degenerate with respect to the eigenvalues of $\opr{J}_z$. The degeneracy in $M_J$ can be removed choosing a preferred direction in space, such as applying an external magnetic field in the Zeeman effect.\\
+	In this case, the possible values of $M_J$ are $\abs{L-S}\le M_J\le L+S$.\\
+	Let's take again the configuration $np\ n'p$. In this case, we have already seen that the possible values of the quantum numbers are the following
+	\begin{equation}
+		\begin{aligned}
+			L&=0,1,2\\
+			S&=0,1\\
+			J&=0,1,2,3
+		\end{aligned}
+		\label{eq:npnprimepconf}
+	\end{equation}
+	Without calculating the spin-orbit coupling splitting, we can have the following terms
+	\begin{equation*}
+		^1S,\ ^1P,\ ^1D,\ ^3S,\ ^3P,\ ^3D
+	\end{equation*}
+	Applying the spin-orbit coupling we now have a additional splitting of the previous states:
+	\begin{equation*}
+		\term[0]{S}{1},\ \term[1]{P}{1},\ \term[2]{D}{1},\term[1]{S}{3},\ \term[0]{P}{3},\ \term[1]{P}{3},\ \term[2]{P}{3},\ \term[1]{D}{3},\ \term[2]{D}{3},\ \term[3]{D}{3}
+	\end{equation*}
+	Another example comes from Carbon, which has a configuration [He]$2s^22p^2$. The two optically active electrons give rise to the following fine structure terms
+	\begin{equation*}
+		\term[0]{S}{1},\ \term[2]{D}{1},\ \term[0]{P}{3},\ \term[1]{P}{3},\ \term[2]{P}{3}
+	\end{equation*}
+	Using Hund's Rules, we see immediately that the ground state of Carbon is $\term[0]{P}{3}$.\\
+	Rewriting our wavefunctions as $\ket{LSM_LM_S}$ and our spin-orbit Hamiltonian as $A\vecopr{L}\cdot\vecopr{S}$, we have that it's non-diagonal in this base, but we can change basis into the new basis $\ket{LSJM_J}$, where we have
+	\begin{equation}
+		\begin{aligned}
+			\bra{LSJM_J}\opr{\ham}_2\ket{LSJM_J}&=\frac{1}{2}A\bra{LSJM_J}\opr{J}^2-\opr{L}^2-\opr{S}^2\ket{LSJM_J}\\
+			&=\frac{1}{2}A\left( J(J+1)-L(L+1)-S(S+1) \right)
+		\end{aligned}
+		\label{eq:neweigenvaluesham2so}
+	\end{equation}
+	Hence, it's diagonal. From this we see that the unperturbed level splits into $2S+1$ or $2L+1$ if respectively we have $S\le L$ or $S>L$. It also can be seen that $E_{J}-E_{J-1}=AJ$. This last result is known as the \textit{Landé interval rule}, which holds only in L-S coupling regimes, i.e. when $\abs{\opr{\ham}_2}<<\abs{\opr{\ham}_1}$. Evaluating $A$, we get that if $A>0$ the lowest energy is given by the term with the lowest value of $J$, and when $A<0$ the lowest value of energy is given by the term with the highest level of $J$. These kinds of multiplet splitting are respectively called \textit{regular multiplet splitting} and \textit{inverted multiplet splitting}. Empirically, it has been established that regular multiplets occur in subshells that are less than half filled, while inverted multiplets appear in more than half filled subshells. In half filled subshells there is no multiplet splitting.
+\end{document}

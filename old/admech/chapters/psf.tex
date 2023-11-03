@@ -1,0 +1,313 @@
+\documentclass[../admech.tex]{subfiles}
+\begin{document}
+\section{Canonical Transformations}
+Given a physical system that solves Hamilton's canonical equation, since the canonical variables $(p_\mu,q^\nu)$ don't hold any intrinsic meaning, it's possible to find a new canonical coordinate set $(P_\mu,Q^\nu)$ that represent the same state (we take $t$ as a parameter during the coordinate transformation).\\
+By definition, we must have a diffeomorphism between these two coordinate systems, therefore
+\begin{equation}
+	\det\abs{\pdv{(P_\mu,Q^\nu)}{(p_\mu,q^\nu)}}\ne0
+	\label{eq:detjac}
+\end{equation}
+Where the reversibility condition must be satisfied. Note that in general, the system in the new coordinates $(P_\mu,Q^\nu)$ is not Hamiltonian.\\
+\begin{dfn}[Canonical Transformation]
+	A canonical transformation is a coordinate transformation such that
+	\begin{equation}
+		\ham(p_\mu,q^\nu,t)\to\tilde{\ham}(P_\mu,Q^\nu,t)
+		\label{eq:cantr}
+	\end{equation}
+	Where
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\pdv{\tilde{\ham}}{P_\mu}&=\dot{Q}^\mu\\
+				\pdv{\tilde{\ham}}{Q^\mu}&=-\dot{P}_\mu
+		\end{aligned}\right.
+		\label{eq:caneom}
+	\end{equation}
+	In general $\ham\ne\tilde{\ham}$, but if $\ham=\tilde{\ham}$ the transformation is said to be \emph{fully canonical}
+\end{dfn}
+%\begin{proof}
+%	Without loss of generality we can set $\lambda=1$, and, by definition of Hamiltonian we must have $\tilde{\ham}=\ham-\psi$. Imposing the least action principle we must have
+%	\begin{equation}
+%		\delta\act[Q^\mu]=\delta\int_{}^{}\left(P_\mu\dot{Q}^\mu-\tilde{\ham}\right)\dd t+\delta\int_{}^{}\dd F
+%		\label{eq:canleap}
+%	\end{equation}
+%	Since $\dd F$ is an exact differential, it doesn't contribute to the variation of the action and variating the other quantity gives back Hamilton's equation in the new system. Note that it corresponds to satisfying Lie's condition, proving the theorem
+%\end{proof}
+\subsection{Generating Functions of Canonical Transformation}
+\begin{thm}[Lie Condition]
+	Given an invertible transformation $(p_\mu,q^\nu)\to(P_\mu,Q^\nu)$, the transformation is canonical if and only if, given $\lambda\in\R,\ F,\psi:\Gamma^{2n}\to\R$, then it also maps $p_\mu\dd q^\mu$ as follows
+	\begin{equation}
+		p_\mu\dd q^\mu\to\lambda P_\mu\dd Q^\mu+\psi(P_\mu,Q^\nu,t)\dd t+\dd F
+		\label{eq:canmapping}
+	\end{equation}
+	Or, in other words, it's necessary to verify that the following differential form is exact
+	\begin{equation}
+		p_\mu\dd q^\mu-\lambda P_\mu\dd Q^\mu=\psi\dd t+\dd F
+		\label{eq:liecond}
+	\end{equation}
+\end{thm}
+Using Lie's condition, it's possible to define 4 different generating functions of canonical transformations, $F_1,F_2,F_3,F_4$, tied between themselves via Legendre transforms.
+\begin{enumerate}
+\item Generator of the 1st kind $F_1(q^\mu,Q^\nu,t)$. Lie's conditions becomes
+	\begin{equation}
+		p_\mu\dd q^\mu-P_\mu\dd Q^\mu=\psi\dd t+\pdv{F_1}{q^\mu}\dd q^\mu+\pdv{F_1}{Q^\mu}\dd Q^\mu+\pdv{F_1}{t}\dd t
+		\label{eq:1lie}
+	\end{equation}
+	In order to satisfy the theorem, it must hold that
+	\begin{equation}
+		\pdv{F_1}{q^\mu}=p_\mu,\quad\pdv{F_1}{Q^\mu}=-P_\mu,\quad\pdv{F_1}{t}=-\psi
+		\label{eq:gender1}
+	\end{equation}
+\item Generator of the 2nd kind $F_2(q^\mu,P_\nu,t)$
+	\begin{equation}
+		p_\mu\dd q^\mu+Q^\mu\dd P_\mu=\psi\dd t+\pdv{F_2}{q^\mu}\dd q^\mu+\pdv{F_2}{P_\mu}\dd P_\mu+\pdv{F_2}{t}\dd t
+		\label{eq:lie2}
+	\end{equation}
+	I.e.
+	\begin{equation}
+		\pdv{F_2}{q^\mu}=p_\mu,\quad\pdv{F_2}{P_\mu}=Q^\mu,\quad\pdv{F_2}{t}=-\psi
+		\label{eq:gender2}
+	\end{equation}
+\item Generator of the 3rd kind $F_3(p_\mu,Q^\nu,t)$
+	\begin{equation}
+		q^\mu\dd p_\mu+P_\mu\dd Q^\mu=-\psi\dd t-\pdv{F_3}{p_\mu}\dd p_\mu-\pdv{F_3}{Q^\mu}\dd Q^\mu-\pdv{F_3}{t}\dd t
+		\label{eq:lie3}
+	\end{equation}
+	Therefore
+	\begin{equation}
+		\pdv{F_3}{p_\mu}=-q^\mu,\quad\pdv{F_3}{Q^\mu}=-P_\mu,\quad\pdv{F_3}{t}=-\psi
+		\label{eq:gender3}
+	\end{equation}
+\item Generator of the 4th kind $F_4(p_\mu,P_\nu,t)$
+	\begin{equation}
+		q^\mu\dd p_\mu-Q^\mu\dd P_\mu=-\psi\dd t-\pdv{F_4}{p_\mu}\dd p_\mu-\pdv{F_4}{P_\mu}\dd P_\mu-\pdv{F_4}{t}\dd t
+		\label{eq:lie4}
+	\end{equation}
+	Which means
+	\begin{equation}
+		\pdv{F_4}{p_\mu}=-q^\mu,\quad\pdv{F_4}{P_\mu}=-Q^\mu,\quad\pdv{F_4}{t}=-\psi
+		\label{eq:gender4}
+	\end{equation}
+\end{enumerate}
+Since $\tilde{\ham}=\ham-\psi$, it's obvious that if the generator function is stationary $\del_tF_i=0$, then the transformation is fully canonical.\\
+A better way to see the previous list is as a series of Legendre transforms from $(p_\mu,q^\nu)$ till $(P_\mu,Q^\mu)$. In fact, we can write
+\begin{equation}
+	\begin{aligned}
+		F_2&=F_1+P_\mu Q^\mu\\
+		F_3&=F_1-p_\mu q^\mu\\
+		F_4&=F_1+P_\mu Q^\mu-p_\mu q^\mu
+	\end{aligned}
+	\label{eq:genfunleg}
+\end{equation}
+\section{Poisson Brackets and Liouville's Theorem}
+\begin{dfn}[Poisson Brackets]
+The space $\Gamma^{2n}$ comes equipped with a bilinear transformation called the \emph{Poisson brackets}.\\
+Consider a function $f:\Gamma^{2n}\to\R$, then its total derivative with respect to time will be
+\begin{equation}
+	\dv{f}{t}=\pdv{f}{t}+\pdv{f}{p_\mu}\dot{p}_\mu+\pdv{f}{q^\mu}\dot{q}^\mu
+	\label{eq:totderphs}
+\end{equation}
+Substituting Hamilton's equations we have
+\begin{equation}
+	\dv{f}{t}=\pdv{f}{t}+\pdv{f}{q^\mu}\pdv{\ham}{p_\mu}-\pdv{f}{q^\mu}\pdv{\ham}{p_\mu}=\pdv{f}{t}+\poisson{\ham}{f}
+	\label{eq:poissontd}
+\end{equation}
+Where we defined the poisson brackets as
+\begin{equation}
+	\poisson{\ham}{f}=\pdv{\ham}{p_\mu}\pdv{f}{q^\mu}-\pdv{\ham}{q^\mu}\pdv{f}{p_\mu}
+	\label{eq:poissondef}
+\end{equation}
+This operator is obviously bilinear and antisymmetric, in fact
+\begin{equation*}
+	\poisson{f}{\ham}=\pdv{f}{p_\mu}\pdv{\ham}{q^\mu}-\pdv{f}{q^\mu}\pdv{\ham}{p_\mu}=-\left( \pdv{\ham}{p_\mu}\pdv{f}{q^\mu}-\pdv{\ham}{q^\mu}\pdv{f}{p_\mu} \right)=-\poisson{\ham}{f}
+\end{equation*}
+Through this quick definition of this operator, one can immediately say, that if $f$ is an integral of motion, one must have
+\begin{equation}
+	\pdv{f}{t}+\poisson{\ham}{f}=0
+	\label{eq:iompoisson}
+\end{equation}
+This operator can be directly generalized to two functions $g,h:\Gamma^{2n}\to\R$ as follows
+\begin{equation}
+	\poisson{g}{h}=\pdv{g}{p_\mu}\pdv{h}{q^\mu}-\pdv{g}{q^\mu}\pdv{h}{p_\mu}
+	\label{eq:poisson2f}
+\end{equation}
+Note that applying this operator to the canonical coordinates we obtain the two main properties of such
+\begin{equation}
+	\left\{ \begin{aligned}
+			\poisson{q^\mu}{q^\nu}&=\poisson{p_\mu}{p_\nu}=0\\
+			\poisson{p_\mu}{q^\nu}&=\delta^\nu_\mu
+	\end{aligned}\right.
+	\label{eq:poissonccord}
+\end{equation}
+It's also possible to derive the following identity through iteration, called the Jacobi identity
+\begin{equation}
+	\poisson{f}{\poisson{g}{h}}+\poisson{g}{\poisson{h}{f}}+\poisson{h}{\poisson{f}{g}}=0
+	\label{eq:jacobiid}
+\end{equation}
+\end{dfn}
+Applying canonical transformations to the definition of Poisson brackets it's possible to find more direct approaches for determining whether a transformation is canonical or not, using the following theorems
+\begin{thm}[Invariance of Poisson Brackets]
+	Given two stationary functions $f,g:\Gamma^{2n}\to\R$ and a canonical transformation $(p_\mu,q^\nu)\to(P_\mu,Q^\nu)$, such that
+	\begin{equation*}
+		\begin{aligned}
+			\tilde{f}(P_\mu,Q^\nu)&=f\left( p_\mu(P,Q),q^\mu(P,Q) \right)\\
+			\tilde{g}(P_\mu,Q^\nu)&=q\left( p_\mu(P,Q),q^\mu(P,Q) \right)
+		\end{aligned}
+	\end{equation*}
+	Then, if we define $\poisson{\cdot}{\cdot}_{PQ}$ as the Poisson brackets in the new coordinate system, then
+	\begin{equation}
+		\poisson{\tilde{f}}{\tilde{g}}_{PQ}=\poisson{f}{g}
+		\label{eq:canpoisson}
+	\end{equation}
+	I.e. Poisson brackets are invariant to canonical transformations.
+\end{thm}
+\begin{proof}
+	Supposing that $g$ is the Hamiltonian of some system, we can write
+	\begin{equation*}
+		\poisson{f}{g}=\dv{f}{t}
+	\end{equation*}
+	This implies that $\tilde{g}$ is the transformed Hamiltonian, therefore
+	\begin{equation*}
+		\poisson{\tilde{f}}{\tilde{g}}_{PQ}=\dv{\tilde{f}}{t}
+	\end{equation*}
+	Since canonical transformation preserve Hamilton's equations we must have
+	\begin{equation*}
+		\dv{\tilde{f}}{t}=\dv{f}{t}
+	\end{equation*}
+	Which implies the statement of the theorem
+	\begin{equation*}
+		\poisson{\tilde{f}}{\tilde{g}}_{PQ}=\poisson{f}{g}
+	\end{equation*}
+	This also proves that
+	\begin{equation*}
+		\poisson{Q^\mu}{Q^\nu}_{PQ}=\poisson{P_\mu}{P_\nu}_{PQ}=0
+	\end{equation*}
+	And
+	\begin{equation*}
+		\poisson{P_\nu}{Q^\mu}_{PQ}=\delta^\mu_\nu
+	\end{equation*}
+\end{proof}
+\begin{thm}[Lie Condition on Poisson Brackets]
+	Given a transformation $(p_\mu,q^\nu)\to(P_\mu,Q^\nu)$, it is canonical if and only if
+	\begin{equation}
+		\left\{ \begin{aligned}
+				\poisson{Q^\mu}{Q^\nu}&=\poisson{P_\mu}{P_\nu}=0\\
+				\poisson{P_\nu}{Q^\mu}&=\delta^\mu_\nu
+		\end{aligned}\right.
+		\label{eq:liecondpoi}
+	\end{equation}
+\end{thm}
+Another theorem that can be inferred is the so-called Liouville theorem, which states that an infinitesimal volume in the phase space is invariant to canonical transformations
+\begin{thm}[Liouville]
+	Given an infinitesimal volume in $\Gamma^{2n}$, $\dd\Gamma=\dd[n]{p}\dd[n]{q}$, then applying a canonical transformation we must have
+	\begin{equation*}
+		\dd\tilde{\Gamma}=\dd[n]{P}\dd[n]{Q}=\dd[n]{p}\dd[n]{q}=\dd\Gamma
+	\end{equation*}
+	Where if $J$ is the determinant of the Jacobian, we must have $J=1$
+\end{thm}
+\begin{proof}
+	In order for the theorem to be demonstrated we must prove that
+	\begin{equation*}
+		\int_{}^{}\dd\tilde{\Gamma}=\int_{}^{}J\dd\Gamma,\quad J=1
+	\end{equation*}
+	By definition, we can write the determinant of the Jacobian as follows
+	\begin{equation*}
+		J=\det\abs{\pdv{(P_\mu,Q^\nu)}{(p_\mu,q^\nu)}}
+	\end{equation*}
+	From here we write two intermediate canonical transformations and write the new Jacobian matrix as the product of the two matrices of the intermediate transformations.\\
+	We have, choosing the transformations $(p_\mu,q^\nu)\to(P_\mu,q^\nu)\to(P_\mu,Q^\nu)$, that our Jacobian can be written as follows
+	\begin{equation*}
+		J=\det\abs{\pdv{(P_\mu,Q^\nu)}{(P_\mu,q^\nu)}\pdv{(P_\mu,q^\nu)}{(p_\nu,q^\mu)}}
+	\end{equation*}
+	Simplifying the equal rows we have that
+	\begin{equation*}
+		J=\det\abs{\pdv{Q^\mu}{q^\nu}\pdv{P_\nu}{p_\mu}}
+	\end{equation*}
+	Imposing that the transformation is canonical we must have that it comes from a $F_2$ generating function, so that, using \eqref{eq:gender2}
+	\begin{equation*}
+		\pdv{Q^\mu}{q^\nu}=\pdv{F_2}{q^\mu}{P_\nu},\quad\pdv{p_\mu}{P_\nu}=\pdv{F_2}{P_\nu}{q^\mu}
+	\end{equation*}
+	Imposing that the determinant of the Hessian of the generating function is some number $d$, we have
+	\begin{equation*}
+		J=d/d=1
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\int_{}^{}\dd\tilde{\Gamma}=\int_{}^{}J\dd\Gamma=\int_{}^{}\dd\Gamma
+	\end{equation*}
+\end{proof}
+\subsection{Poincaré Recurrence}
+This theorem gives rise to a paradox known as \textit{Poincaré's recurrence theorem}. Basically this theorem states, against common sense, that an autonomous (time-independent) Hamiltonian system with some initial conditions $(p_\mu^0,q^\nu_0)$ will evolve till returning to the initial conditions at some finite time $t$. Technically we have
+\begin{thm}[Poincaré Recurrence Theorem]
+	Given an autonomous Hamiltonian system confined in a subset $\Lambda\subset\Gamma^{2n}$ with some initial condition $x_0^\mu\in\Lambda$, if we evolve $x_0^\mu\to x^\mu(t)$ then
+	\begin{equation*}
+		\forall\tau\in\R\ \exists t^{\star}>\tau\ :\ \forall\epsilon>0\ B_\epsilon(x^\mu(t^\star))\cap B_\epsilon(x_0^\mu)\ne\{\}
+	\end{equation*}
+	I.e.
+	\begin{equation*}
+		\forall\epsilon>0\ x(t^\star)\in B_\epsilon(x_0)
+	\end{equation*}
+	Where $B_\epsilon(x^\mu)$ is the open ball centered in $x^\mu$ with radius $\epsilon$
+\end{thm}
+\begin{proof}
+	Begin by defining a sequence of times $t_n$ such that $x^\mu(t_n)=x^\mu_n$, then
+	\begin{equation*}
+		\exists n_1\ne n_2\in\N\ :\ B_\epsilon(x^\mu_{n_1})\cap B_\epsilon(x^\mu_{n_2})=\{\}
+	\end{equation*}
+	Defining a measure $\mu$ on the phase space we must have, that after $n$ iterations, the total path measure will be
+	\begin{equation*}
+		\mu\left( \bigsqcup_{i=1}^nB_\epsilon(x^\mu_i) \right)=\sum_{i=1}^n\mu\left( B_\epsilon(x^\mu_i) \right)
+	\end{equation*}
+	Considering time as a completely canonical transformation, we have for Liouville's theorem that
+	\begin{equation*}
+		\forall i\ne j=1,\cdots,n\quad\mu\left( B_\epsilon(x^\mu_i) \right)=\mu\left( B_\epsilon(x^\mu_j) \right)
+	\end{equation*}
+	Which implies that for $n\to\infty$
+	\begin{equation*}
+		\mu\left( \bigsqcup_{i=1}^\infty B_\epsilon(x^\mu_i) \right)=\sum_{i=1}^\infty\mu\left(B_\epsilon(x^\mu_i)\right)\to\infty
+	\end{equation*}
+	This cannot be true, since by hypothesis we have that the motion of the system is confined in a set $\Lambda\subset\Gamma^{2n}$, therefore
+	\begin{equation*}
+		\bigsqcup_{i=1}^\infty B_\epsilon(x^\mu_i)\subseteq\Lambda
+	\end{equation*}
+	In terms of measures this means
+	\begin{equation*}
+		\mu\left( \bigsqcup_{i=1}^\infty B_\epsilon(x^\mu_i) \right)=\sum_{i=1}^\infty\mu\left( B_\epsilon(x^\mu_i) \right)\le\mu\left( \Lambda \right)<\infty
+	\end{equation*}
+	Which implies that there must exists some set such that the intersection is not null, therefore there must exist, for some $n_1,n_2,k\in\N$
+	\begin{equation*}
+		\mu\left( B_\epsilon(x^\mu_{n_1})\cap B_\epsilon(x^\mu_{n_2}) \right)=\mu\left( B_\epsilon(x^\mu_{n_1-k})\cap B_\epsilon(x^\mu_{n_2-k}) \right)\ne 0
+	\end{equation*}
+	Choosing $k=\min\left\{  n_1,n_2\right\}=n_2$, where we supposed $n_2<n_1$ we have
+	\begin{equation*}
+		\mu\left( B_\epsilon(x^\mu_{n_1})\cap B_\epsilon(x^\mu_{n_2}) \right)=\mu\left( B_{\epsilon}(x^\mu_{n_1-n_2})\cap B_\epsilon(x^\mu_0) \right)\ne\{\}
+	\end{equation*}
+	Since $x^\mu_{n_1-n_2}=x^\mu(t_{n_1-n_2})$ and choosing $t^\star=t_{n_1-n_2}$ we have that for $t=t^\star$ the system will find itself in a ball of radius $\epsilon>0$ from the initial value $x_0^\mu$
+	\begin{equation*}
+		B_\epsilon(x^\mu(t^\star))\cap B_\epsilon(x^\mu_0)\ne\{\}
+	\end{equation*}
+\end{proof}
+\section{Hamilton-Jacobi Method}
+A really good use for the canonical transformation is to find a quick and trivial solution to Hamilton-Jacobi's equation.\\
+The differential equation we intend to solve is the following
+\begin{equation}
+	\pdv{\act}{t}+\ham\left( \pdv{\act}{q^\mu},q^\mu,t \right)=0
+	\label{eq:hjctr}
+\end{equation}
+The complete solution of this equation can be inferred to be a function of the coordinates and $n+1$ parameters corresponding to the independent variables of the system, including time. Therefore we might write
+\begin{equation}
+	\act(q^\mu,t)=f\left( q^\mu,t;\alpha_1,\cdots,\alpha_n \right)+A
+	\label{eq:hjsolution}
+\end{equation}
+Where $t,\alpha_1,\cdots,\alpha_n,A\in\R$ are our parameters.\\
+We can choose now a canonical transformation to a new set of variables $(\alpha_\mu,\beta^\mu)$ that give the following relations
+\begin{equation}
+	\pdv{f}{q^\mu}=p_\mu,\quad\pdv{f}{\alpha_\mu}=\beta^\mu,\quad\tilde{\ham}=\ham+\pdv{f}{t}
+	\label{eq:cantrasf}
+\end{equation}
+Note that for our hypothesis $f$ is a complete solution of Hamilton-Jacobi, therefore the last relation gives
+\begin{equation*}
+	\tilde{\ham}=0
+\end{equation*}
+Basically, with this canonical transformation, we mapped our Hamiltonian to a null Hamiltonian, for which the equations of motion are trivial, giving in the new variables $\alpha_\mu,\beta^\mu=$constant.\\
+Using the definition of $\beta^\mu$ via the transformation, and using the reversibility of such, we can determine the $q^\mu$ and the analytical form of our complete solutions.
+\end{document}

@@ -1,0 +1,180 @@
+\documentclass[../admech.tex]{subfiles}
+\begin{document}
+\section{Relativistic Least Action Principle}
+In order to use a relativistic version of the least action principle, we need to impose the principle of relativity into its formulation. This is done via imposing that $\act$ must be a relativistic invariant.\\
+It's already obvious that the simplest invariant differential in special relativity is $\dd s$ therefore we must have that $\dd\act\propto\dd s$, and we can rewrite our action as follows
+\begin{equation}
+	\act=-\alpha\int_{a}^{b}\dd s
+	\label{eq:relact}
+\end{equation}
+Where $\alpha\in\R$ is a parameter that depends directly on the properties of the particle. The minus sign added there is needed in order to make sure that $\act$ as an extremal in $[s(a),s(b)]$.\\
+We now proceed to find a Lagrangian as per usual, therefore we need to transform the wordline integral into a time integral. Since time is NOT a relativistic invariant we can only choose one ``time'', which is the proper time of the reference frame, which is also proportional to the interval differential.\\
+Using $\dd s=\frac{c}{\gamma}\dd t$ we have
+\begin{equation}
+	\act=-\alpha c\int_{\tau_1}^{\tau_0}\frac{1}{\gamma}\dd t=\int_{\tau_0}^{\tau_1}-\alpha c\sqrt{1-\frac{v^2}{c^2}}\dd t
+	\label{eq:actpropt}
+\end{equation}
+What we have inside the integral symbol on the RHS is the Lagrangian of the system, which depends on the parameter $\alpha$.\\
+In order to determine this parameter we need to have that for $v/c<<1$ our relativistic Lagrangian must become our known classical Lagrangian. We have for $\beta\to0$
+\begin{equation}
+	\lag=-\frac{\alpha c}{\gamma}=-\alpha c\sqrt{1-\beta^2}\approx-\alpha c+\frac{\alpha v^2}{2c}=\frac{mv^2}{2}
+	\label{eq:lagapprox}
+\end{equation}
+Comparing the terms with $v^2$ we have that $\alpha=mc$, and therefore we have
+\begin{equation}
+	\act=-mc\int_{\tau_0}^{\tau_1}\frac{1}{\gamma}\dd t\implies\lag=-\frac{mc}{\gamma}
+	\label{eq:relaction}
+\end{equation}
+Where $\gamma$ is the already known Lorentz factor.
+
+\subsection{Relativistic Energy and Momentum}
+The easiest way possible to define relativistic energy and relativistic momentum is by using our well known identities in Lagrangian mechanics. We must have therefore, for the 3-momentum
+\begin{equation}
+	p_i=\pdv{\lag}{v^i}
+	\label{eq:relmom}
+\end{equation}
+Since we know that $\lag=-mc/\gamma$ the calculation is straightforward. We have
+\begin{equation*}
+	\pdv{\lag}{v^i}=-mc\pdv{v^i}\sqrt{1-\frac{v^2}{c^2}}=\frac{mv^i}{\sqrt{1-\frac{v^2}{c^2}}}=\gamma mv^i
+\end{equation*}
+As usual, using the Lagrangian for defining our energy we have that $p^iv_i-\lag=E$, i.e.
+\begin{equation}
+	E=\gamma mv^2+\frac{mc^2}{\gamma}=\gamma\left( mv^2+\frac{mc^2}{\gamma^2} \right)=\gamma\left( mv^2+mc^2-mv^2 \right)=\gamma mc^2=\frac{mc^2}{\sqrt{1-\frac{v^2}{c^2}}}
+	\label{eq:relen}
+\end{equation}
+Note that due for this definition, if $v=0$, $E\ne0$. We have $E_0=mc^2$, and this is known as the \emph{rest energy} of the given particle.\\
+This shape for our energy also demonstrates that mass is not conserved anymore in relativity. In fact, given a body comprised of multiple particles we have that $E_0^{b}$ will be, if the mass of the body is $M$
+\begin{equation}
+	E_0^b=Mc^2
+	\label{eq:restmassbigb}
+\end{equation}
+But, since in the rest energy of the single particles composing the body we also have to add all the interaction energies between the body, we will therefore have
+\begin{equation}
+	E_0^b=Mc^2\ne\sum_im_ic^2
+	\label{eq:mnoteq}
+\end{equation}
+Therefore, finally $M\ne\sum_im_i$, which makes our previous point.\\
+After defining Lagrangian and energy, the next step we can make is to find the Hamiltonian of a relativistic particle. From the definition of energy and momentum we can write the following system
+\begin{equation}
+	\left\{ \begin{aligned}
+		E&=\gamma mc^2\\
+		p^i&=\gamma mv^i
+\end{aligned}\right.
+	\label{eq:invertlor}
+\end{equation}
+Manipulating $\gamma$ and the whole system, we have
+\begin{equation}
+	\gamma(p)=\sqrt{1+\frac{p^2}{m^2c^2}}
+	\label{eq:gammaplor}
+\end{equation}
+Plugging it into the definition of $E$ we have
+\begin{equation}
+	E=\gamma(p)mc^2=mc^2\sqrt{1+\frac{p^2}{m^2c^2}}
+	\label{eq:relhamiltonian}
+\end{equation}
+By definition of Hamiltonian function this is our $\ham$. Rewriting in a different way we have
+\begin{equation}
+	\ham=\gamma(p)mc^2=mc^2\sqrt{1+\frac{p^2}{m^2c^2}}=\sqrt{m^2c^4+p^2c^2}=c\sqrt{m^2c^2+p^2}
+	\label{eq:hamiltonianrel}
+\end{equation}
+Again, for $\frac{o^2}{m^2c^2}=\beta(p)<<1$ we get the classical counterpart, plus the relativistic rest energy.\\
+%%%CHECK CHECK CHECK CHECK CHECK CHECK
+%
+%%%MOMENTUM-ENERGY-VELOCITY COMPARISON
+Note how, using the previous equations we have that for $v\to c$ $E\to\infty$ if $m\ne0$, and defining the existence of massless particles is not obvious. Using the Hamiltonian formulation we immediately see that if $m=0$ we have
+\begin{equation}
+	\ham=E=pc
+	\label{eq:relen}
+\end{equation}
+It's also obvious from this that the only velocity such particle can have is $v=c$. These kinds of particles are known as ultrarelativistic particles, and photons are one example of such.\\
+Note that it's possible to approximate the energy of massive particles with their ultrarelativistic counterparts in case where the rate between the rest energy and the total energy of the particle is small enough for the needs. I.e.
+\begin{equation}
+	mc^2<<E\implies E\approx pc
+	\label{eq:relapprox}
+\end{equation}
+\section{Relativistic Hamilton Jacobi Equation and 4-Vector Formulation}
+It's possible to rewrite the relativistic least action principle using 4-vector notation. For what we wrote in the previous section in the part on 4-vectors, we can imagine to define the infinitesimal interval as a 4-scalar via the definition of the infinitesimal 4-radius vector $\dd x^\mu=(c\dd t,\dd r^i)$. We have
+\begin{equation}
+	\dd s^2=g_{\mu\nu}\dd x^\mu\dd x^\nu\implies\dd s=\sqrt{g_{\mu\nu}\dd x^\mu\dd x^\nu}
+	\label{eq:dsact}
+\end{equation}
+We add to this the boundary conditions for the action in spacetime, as $\delta x^\mu(a)=\delta x^\mu(b)=0$, and we get, for our least action principle
+\begin{equation}
+	\act=-mc\int_{a}^{b}\dd s=-mc\int_{a}^{b}\sqrt{g_{\mu\nu}\dd x^\mu\dd x^\nu}
+	\label{eq:relact}
+\end{equation}
+Variating the action we have, firstly
+\begin{equation*}
+	\delta\sqrt{g_{\mu\nu}\dd x^\mu\dd x^\nu}=\frac{g_{\mu\nu}\dd x^\mu\dd\delta x^\nu}{\sqrt{g_{\mu\nu}\dd x^\mu\dd x^\nu}}=\frac{\dd x^\mu}{\dd s}\delta\dd x^\nu=u_\mu\delta\dd x^\mu
+\end{equation*}
+Then
+\begin{equation*}
+	\delta\act=-mc\int_{a}^{b}u_\mu\delta\dd x^\mu
+\end{equation*}
+Using as usual integration by parts in order to move the differentials we have, implicitly using the boundary conditions
+\begin{equation}
+	\delta\act=mc\int_{a}^{b}\dv{u_\mu}{s}\delta x^\mu\dd s
+	\label{eq:actvarrel}
+\end{equation}
+Imposing lastly the least action principle we get the relativistic equation of motion for a free particle
+\begin{equation}
+	\dv{u^\mu}{s}=0
+	\label{eq:eqmrel}
+\end{equation}
+Considering instead the second condition $\delta x^\mu(b)=\delta x^\mu$ nonzero we get the usual definition of action as a function of (spacetime) coordinates
+\begin{equation*}
+	\delta\act=-mcu_\mu\delta x^\mu\implies\pdv{\act}{x^\mu}=-mcu_\mu
+\end{equation*}
+By comparation with the classical definition, the derivative of the action with respect to the coordinates is defined as the generalized momentum of the system. Since in this case we're using 4-vectors and the derivative of the action with respect to the 4-position is a 4-vector itself (not really in general relativity, but in SR it's true) we have a new definition for the momentum, the \emph{4-momentum} of a relativistic system
+\begin{equation}
+	p_\mu=\del_\mu\act=mcu_\mu
+	\label{eq:4momentumrel}
+\end{equation}
+Using the definition of 4-velocity as $u_\mu=\gamma\left(1,-\frac{1}{c}v^i\right)$ we have, remembering that $E=\gamma mc^2$
+\begin{equation}
+	p_\mu=\left( \frac{E}{c},-\gamma mv^i \right)=\left( \gamma mc,-p^i \right)
+	\label{eq:4momentum2}
+\end{equation}
+Using instead that $\del_0=c^{-1}\del_t$ we have
+\begin{equation}
+	p_0=\del_0\act=\frac{1}{c}\pdv{\act}{t}=\frac{E}{c}
+	\label{eq:0comp4mom}
+\end{equation}
+Where we used the classical conclusion that $\del_t\act=E$. Using the already known Lorentz transformations we have that energy and momentum, since they're tied by a 4-vector, they aren't invariants and transform as follows
+\begin{equation}
+	\left\{ \begin{aligned}
+			E&=\gamma\left( E'+\beta cp_x' \right)\\
+			p_x&=\gamma\left( p_x'+\frac{\beta}{c}E' \right)\\
+			p_y&=p_y'\\
+			p_z&=p_z'
+	\end{aligned}\right.
+	\label{eq:energymomtrans}
+\end{equation}
+Using that $u^\mu u_\mu=1$ we can define a relativistic invariant for 4-momentum, as follows
+\begin{equation}
+	p^\mu p_\mu=m^2c^2u^\mu u_\mu=m^2c^2
+	\label{eq:relinv4mom}
+\end{equation}
+We can also find a 4-force definition by deriving with respect to proper time.
+\begin{equation}
+	f^\mu=\dv{p^\mu}{\tau}=\frac{\gamma}{c}\dv{p^\mu}{t}=\frac{\gamma}{c}\left( \dot{\gamma}mc,\dv{p^i}{t} \right)
+	\label{eq:4-force}
+\end{equation}
+Using the already known derivative of the Lorentz factor we have, finally
+\begin{equation}
+	f^\mu=\frac{\gamma}{c}\left( \frac{\gamma^3}{c}mv^ia_i,f^i \right)=\left( \frac{\gamma}{c^2}f^iv_i,\frac{\gamma}{c}f^i \right)=\left( \frac{\gamma}{c^2}W,\frac{\gamma}{c}f^i \right)
+	\label{eq:4force}
+\end{equation}
+Where $W$ is the already well known work of the force.\\
+The Hamilton-Jacobi equation can be defined from \eqref{eq:relinv4mom}, and it simply becomes
+\begin{equation}
+	\del_\mu\act\del^\mu\act=m^2c^2
+	\label{eq:hjrel}
+\end{equation}
+Or, in explicit form
+\begin{equation}
+	\frac{1}{c^2}\left( \pdv{\act}{t} \right)^2-\left( \nabla\act \right)^2=m^2c^2
+	\label{eq:hjrelexpl}
+\end{equation}
+\end{document}
+%%%CHECK FOR DUPLICATE REFS

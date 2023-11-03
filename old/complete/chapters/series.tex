@@ -1,0 +1,1151 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Sequences of Functions}
+\begin{dfn}[Sequence of Functions]
+	Let $S$ be a set and $(X,d)$ a metric space, a \textit{sequence of functions} is defined as follows
+	\begin{equation}
+		\begin{aligned}
+			f_n:&S\fto(X,d)\\
+			&s\to f_n(s)
+		\end{aligned}
+		\label{eq:seqfunc}
+	\end{equation}
+	Where, $\forall n\in\N$ a function $f_{(n)}:S\fto(X,d)$ is defined
+\end{dfn}
+\begin{dfn}[Pointwise Convergence]
+	A sequence of functions $(f_n)_{n\ge0}$ is said to converge pointwise to a function $f:S\fto(X,d)$, and it's indicated as $f_n\to f$, if
+	\begin{equation}
+		\forall\epsilon>0,\ \forall x\in S\ \exists N_\epsilon(x)\in\N\st d(f_n(x),f(x))<\epsilon\ \forall n\ge N_\epsilon(x)
+		\label{eq:pointwiseconv}
+	\end{equation}
+	It can be indicated also as follows
+	\begin{equation}
+		\lim_{n\to\infty}(f_n(x))=f(x)
+		\label{eq:pointwiseconv2}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Uniform Convergence]
+	Defining an $\norm{\cdot}_\infty=\sup_{i\le n}\abs{\cdot}$ we have that the convergence of a sequence of functions is uniform, and it's indicated as $f_n\tto f$, iff
+	\begin{equation}
+		\forall\epsilon>0\ \exists N_\epsilon\in\N\st d(f_n(x),f(x))<\epsilon\ \forall n\ge N_\epsilon\ \forall x\in S
+		\label{eq:uniformconv}
+	\end{equation}
+	Or, using the norm $\norm{\cdot}_{\infty}$
+	\begin{equation}
+		\forall\epsilon>0\ \exists N_\epsilon\in\N\st\norm{f_n-f}_{\infty}<\epsilon
+		\label{eq:uniformconv2}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Continuity of Uniformly Convergent Sequences]
+	Let $(f_n)_{n\ge0}:(S,d_S)\fto(X,d)$ be a sequence of continuous functions. Then if $f_n\tto f$, we have that $f\in C(S)$, where $C(S)$ is the space of continuous functions
+\end{thm}
+\begin{proof}
+	\begin{equation}
+		\begin{aligned}
+			&\forall x\in S,\ \exists\epsilon>0\st f_n\tto f,\ \therefore\forall n\ge N_\epsilon\in\N\st d(f_n(x),f(x))<\frac{\epsilon}{3}\\
+			&f_n\in C(S)\implies\ \exists\delta_\epsilon>0\st d(f_n(x),f_n(y))<\frac{\epsilon}{3},\ \forall x,y\in S\st d_S(x,y)<\delta\\
+			&\therefore d(f(x),f(y))\le d(f(x),f_n(x))+d(f_n(x),f_n(y))+d(f_n(y),f(y))<\epsilon\iff d_S(x,y)<\delta_\epsilon
+		\end{aligned}
+		\label{eq:proofustopwc}
+	\end{equation}
+\end{proof}
+\begin{thm}[Integration of Sequences of Functions]
+	Let $(f_n)_{n\ge0}$ be a sequence of functions such that $f_n\tto f$
+	Then we can define the following equality
+	\begin{equation}
+		\lim_{n\to\infty}\int_a^bf_n(x)\diff x=\int_a^b\lim_{n\to\infty}f_n(x)\diff x=\int_a^bf(x)\diff x
+		\label{eq:seqint}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	We already know that in the closed set $[a,b]$ we can say, since $f_n\tto f$, that
+	\begin{equation}
+		\forall\epsilon>0\ \exists N_\epsilon\in\N\st\forall n\ge N_\epsilon\ \norm{f_n-f}_{\infty}<\frac{\epsilon}{b-a}
+		\label{eq:seqint1}
+	\end{equation}
+	Then, we have that
+	\begin{equation}
+		\forall n\ge N_\epsilon\ \abs{\int_{a}^{b}f_n(x)\diff x-\int_{a}^{b}f(x)\diff x}\le\norm{f_n-f}_\infty(b-a)<\epsilon
+		\label{eq:seqint2}
+	\end{equation}
+\end{proof}
+\begin{thm}[Differentiation of a Sequence of Functions]
+	Define a sequence of functions as $f_n:I\fto\R$, with $f_n(x)\in C^1(I)$. If
+	\begin{enumerate}
+	\item $\exists x_0\in I\st f_n(x_0)\to l$
+	\item $f_n'\tto g\ \forall x\in I$
+	\end{enumerate}
+	Then
+	\begin{equation}
+		f_n(x)\tto f\implies\forall x\in I,\ f'(x)=\lim_{n\to\infty}f_n'(x)=g(x)
+		\label{eq:seqder1}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	For the fundamental theorem of integral calculus, we can write, using the regularity of the $f_n(x)$ that
+	\begin{equation*}
+		f_n(x)=f_n(x_0)+\int_{x_0}^{x}f_n(t)\diff t
+	\end{equation*}
+	Taking the limit we have
+	\begin{equation*}
+		\begin{aligned}
+			\lim_{n\to\infty}f_n(x)&=l+\int_{x_0}^{x}g(t)\diff t=f(x)\\
+			\therefore f'(t)&=g(t)
+		\end{aligned}
+	\end{equation*}
+	But, we also have that
+	\begin{equation*}
+		\begin{aligned}
+			\forall\epsilon>0\ \norm{f_n'-f'}_\infty&\le\abs{f_n(x_0)-l}+\norm{f_n'-g}_\infty(b-a)<\epsilon\\
+			&\therefore f_n\tto f,\ f_n'\tto f'
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\section{Series of Functions}
+Let now, for the rest of the section, $(X,d)=\Cf$.
+\begin{dfn}[Series of Functions]
+	Let $(f_n)_{n\ge0}\in\Cf$ be a sequence of functions, such that $f_n:S\to\Cf$. We can define the \textit{series of functions} as follows
+	\begin{equation}
+		s_n(x)=\sum_{k=1}^nf_k(x)
+		\label{eq:seriesdef}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Convergent Series]
+	A series of functions $s_n(x):S\to\Cf$ is said to be \textit{convergent} or \textit{pointwise convergent} if
+	\begin{equation}
+		s_n(x)=\sum_{k=0}^nf_k(x)\fto s(x)
+		\label{eq:serconv}
+	\end{equation}
+	Where $s(x):S\to\Cf$ is the \textit{sum} of the series.\\
+	This means that
+	\begin{equation}
+		\forall x\in S,\ \lim_{k\to\infty}s_k(x)=\sum_{k=0}^\infty f_k(x)=s(x)
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Necessary Condition for the convergence of a series of functions:\\
+	Let $(f_n)\in\Cf$ be a succession, then the series $s_n(x)$ defined as follows, converges to the function $s(x)$
+	\begin{equation*}
+		s_n(x)=\sum_{k=0}^nf_k(x)=s(x)=\sum_{k=0}^\infty f_k(x)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	\begin{equation*}
+		\begin{aligned}
+			\forall x\in S\ \lim_{k\to\infty}f_k(x)=\lim_{n\to\infty}\left( s_n(x)-s_{n+1}(x) \right)=0
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Uniform Convergence]
+	A series of functions is said to be \textit{uniformly convergent} if and only if
+	\begin{equation}
+		\sum_{k=0}^\infty f_k(x)\tto s(x)\iff s_n(x)=\sum_{k=0}^nf_k(x)\tto s(x)
+		\label{eq:uniformconvser}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Absolute Convergence]
+	A series of functions is said to be \textit{absolutely convergent} if and only if
+	\begin{equation}
+		\sum_{k=0}^\infty f_k(x)\ato s(x)\implies\sum_{k=0}^\infty\abs{f_k(x)}\to s(x)
+		\label{eq:absoluteconvser}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Let $\sum_{k=0}^\infty f_k(x)\ato s(x)$, then
+	\begin{equation}
+		\sum_{k=0}^\infty f_k(x)\ato s(x)\implies\sum_{k=0}^\infty f_k(x)\to s(x)
+		\label{eq:abstounif}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let
+	\begin{equation*}
+		\begin{aligned}
+			s_n(x)&=\sum_{k=0}^nf_k(x)\ \therefore\exists g(x):(S,d)\fto\Cf,\ \exists N_\epsilon(x)\in\N\st\abs{g(x)-\sum_{k=0}^\infty f_k(x)}=\\
+			&=\sum_{k=n+1}^{\infty}\abs{f_k(x)}<\epsilon\ \forall n\ge N_\epsilon(x)\\
+			&\therefore\forall n,m\in\N, m>n\\
+			&\abs{s_m(x)-s_n(x)}=\abs{\sum_{k=n+1}^mf_k(x)}\le\sum_{k=n+1}^{\infty}\abs{f_k(x)}<\epsilon\ \forall x\in S\\
+			&\therefore(s_n(x))\text{ is a Cauchy series in }\Cf\implies s_k(x)\to s(x)
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Total Convergence]
+	A series of functions $s_k(x)$ is said to be \textit{totally convergent} if
+	\begin{enumerate}
+	\item $\exists M_k\st\sup_{S}\abs{f_k(x)}\le M_k\ \forall k\ge 1$
+	\item $\sum_{k=0}^\infty M_k\to M$
+	\end{enumerate}
+	The total convergence is then indicated as $s_k(x)\Tto s(x)$
+\end{dfn}
+\begin{prop}
+	Let
+	\begin{equation*}
+		s_n(x)=\sum_{k=0}^{n}f_n(x)
+	\end{equation*}
+	Then
+	\begin{enumerate}
+	\item $f_n(x)\in C(S)\wedge s_k(x)\tto s(x)\implies s(x)\in C(S)$
+	\item $f_n(x)\in C(S),\ s_k(x)\tto s(x)\implies\int s(x)\diff x=\lim_{k\to\infty}\int s_k(x)\diff x$
+	\item $s_k(x)\ato s(x)\implies s_k(x)\to s(x)$
+	\item $s_k(x)\tto s(x)\implies s_k(x)\ato s(x)$
+	\item $s_k(x)\Tto s(x)\implies s_k(x)\tto s(x)$
+	\end{enumerate}
+\end{prop}
+\subsection{Power Series and Convergence Tests}
+\begin{thm}[Weierstrass Test]
+	Let $(f_n):(S,d)\to\Cf$ a sequence of functions.\\
+	If we have that
+	\begin{equation*}
+		\begin{aligned}
+			&\forall n>N_\epsilon\in\N\ \exists M_n>0\st\abs{f_n(x)}\le M_n\\
+			&\therefore\forall x\in S\ \sum_{k=0}^nf_k(x)\le\sum_{k=1}^{\infty}M_k\to M\therefore\sum_{k=0}f_k(x)^n\tto s(x)
+		\end{aligned}
+	\end{equation*}
+\end{thm}
+\begin{dfn}[Power Series]
+	Let $z,z_0,(a_n)\in\Cf$. A \textit{power series centered in} $z_0$ is defined as follows
+	\begin{equation}
+		\sum_{k=0}^\infty a_k(z-z_0)^k
+		\label{eq:powerseries}
+	\end{equation}
+\end{dfn}
+\begin{eg}
+	Take the \textit{geometric series}. This is the best example of a power series centered in $z_0=0$, and it has the following form
+	\begin{equation}
+		\sum_{k=0}^\infty z^k
+		\label{eq:geometricpw}
+	\end{equation}
+	We can expand it as follows
+	\begin{equation}
+		\sum_{k=0}^{m}z^k=(1-z)\left( 1+z+z^2+\cdots+z^m \right)=1-z^{n+1}=\frac{1+z^{n+1}}{1-z}\ \forall\abs{z}\ne1
+		\label{eq:geometricseries}
+	\end{equation}
+	Taking the limit, we have, therefore
+	\begin{equation}
+		\sum_{k=0}^{\infty}z^k=\frac{1}{1-z}\ \forall\abs{z}<1
+		\label{eq:geometricseriessum}
+	\end{equation}
+\end{eg}
+\begin{thm}[Cauchy-Hadamard Criteria]
+	Let $\sum_{k=0}^{\infty}a_k(z-z_0)^k$ be a power series, with $a_n,z,z_0\in\Cf$. We define the \textit{Radius of convergence} $R\in\R^{\star}=\R\cup\{\pm\infty\}$, with the \textit{Cauchy-Hadamard} criteria
+	\begin{equation}
+		\frac{1}{R}=\limsup_{n\to\infty}\abs{a_n}^{\frac{1}{n}}=\begin{dcases}+\infty&\frac{1}{R}=0\\l&0<\frac{1}{R}=l<\infty\\0&\frac{1}{R}=+\infty\end{dcases}
+		\label{eq:cauchyhadamard}
+	\end{equation}
+	Then $s_k(z)\tto s(z)\ \forall\abs{z}\in(-R,R)$
+\end{thm}
+\begin{thm}[D'Alambert Criteria]
+	From the power series we have defined before, we can write the \textit{D'Alambert criteria} for convergence as follows
+	\begin{equation}
+		\frac{1}{R}=\lim_{k\to\infty}\abs{\frac{a_{k+1}}{a_k}}\implies R=\lim_{k\to\infty}\abs{\frac{a_k}{a_{k+1}}}
+		\label{eq:dalambertcriteria}
+	\end{equation}
+	Where $R$ is the previously defined radius of convergence
+\end{thm}
+\begin{thm}[Abel]
+	Let $R>0$, then if a power series converges for $\abs{z}=R$, it converges uniformly $\forall\abs{z}\in[r,R]\subset(-R,R]$. It is valid analogously for $x=-R$
+\end{thm}
+\begin{rmk}[Power Series Integration]
+	If the series has $R>0$ and it converges in $\abs{z}=R$, calling $s(x)$ the sum of the series, with $x=\abs{z}$ we can say that
+	\begin{equation}
+		\int_{0}^{R}s(x)\diff x=\sum_{k=0}^{\infty}\int_{0}^{R}a_kx^k\diff x=\int_0^R\sum_{k=1}^{\infty}a_kx^k\diff z=\sum_{k=0}^{\infty}a_k\frac{R^{k+1}}{k+1}
+		\label{eq:abelint}
+	\end{equation}
+\end{rmk}
+\begin{rmk}[Power Series Derivation]
+	If Abel's theorem holds, we have also that, if we have $s(x)$ our power series sum, we can define the $n-$th derivative of this series as follows
+	\begin{equation}
+		\derivative[n]{s}{x}=\sum_{k=n}^{\infty}k(k-1)\cdots(k-n+1)a_kx^{k-n}
+		\label{eq:nthderpowerseries}
+	\end{equation}
+\end{rmk}
+\section{Series Representation of Functions}
+\subsection{Taylor Series}
+\begin{thm}[Taylor Series Expansion]
+	Let $f:D\fto\Cf$ be a function such that $f\in H(B_R(z_0))$, with $B_r(z_0)\subseteq D$. Then
+	\begin{equation}
+		f(z)=\sum_{n=0}^n\frac{1}{n!}\left.\derivative[n]{f}{z}\right|_{z_0}(z-z_0)^n\quad\norm{z-z_0}<r
+		\label{eq:taylor}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $z\in B_r(z_0)$ and $\gamma(t)=z_0+re^{it}\ t\in[0,2\pi]$ and $\norm{z-z_0}<r<R$ we can write, using the integral representation of $f$
+	\begin{equation*}
+		f(z)=\frac{1}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z)}\diff w=\frac{1}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z_0)-(z-z_0)}\diff w
+	\end{equation*}
+	From basic calculus we know already that if $z\ne w$
+	\begin{equation*}
+		\begin{aligned}
+			\frac{1}{w-z}&=\frac{1}{w}\left( \frac{1-(z/w)^n}{1-z/w}+\frac{1}{1-z/w}\left( \frac{z}{w} \right)^n \right)=\\
+			&=\frac{1}{w-z}\left( \frac{z}{w} \right)^n+\sum_{k=0}^{n-1}\frac{1}{w}\left( \frac{z}{w} \right)^n
+		\end{aligned}
+	\end{equation*}
+	Therefore, inserting it back into the integral representation, we have
+	\begin{equation*}
+		f(z)=\sum_{k=0}\frac{(z-z_0)^k}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z_0)^{k+1}}\diff w+\frac{(z-z_0)^n}{2\pi i}\ointccw_\gamma\frac{f(w)}{\left[ (w-z_0)-(z-z_0) \right](w-z_0)^n}\diff w
+	\end{equation*}
+	On the RHS as first term we have the $k-$th derivative of $f$ and on the right there is the so called \textit{remainder} $R_n(z)$. Therefore
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{n}\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z_0}(z-z_0)^k+R_n(z)
+	\end{equation*}
+	It's easy to demonstrate that $R_n(z)\fto[n\to\infty]0$, and therefore
+	\begin{equation*}
+		f(z)=\sum_{k=0}^\infty\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z_0}(z-z_0)^k
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Taylor Series for Scalar Fields]
+	Given a function $f:A\subset\R^n\fto\R$ $f\in C^m(A)$, given a multi-index $\alpha$ one can define the Taylor series of the scalar field as follows
+	\begin{equation*}
+		f(x)=\sum_{\abs{\alpha}\le m}\frac{1}{\alpha!}\del^\alpha f(x_0)(x-x_0)^\alpha+R_m(x)
+	\end{equation*}
+	Where, the remainder is defined in integral form as follows
+	\begin{equation*}
+		R_m(x)=(m+1)\sum_{\abs{\alpha}=m+1}^{}\frac{(x-x_0)^\alpha}{\alpha!}\int_{0}^{1}(1-t)^m\del^\alpha f(x_0+tx-tx_0)\diff t
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[MacLaurin Series]
+	Taken a Taylor series, such that $z_0=0$, we obtain a MacLaurin series.
+	\begin{equation}
+		f(z)=\sum_{k=0}^\infty\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z=0}z^k
+		\label{eq:maclaurinseries}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Remainders]
+	We can have two kinds of remainder functions while calculating series:
+	\begin{enumerate}
+	\item Peano Remainders, $R_n(z)=\order{\norm{z-z_0}^n}$
+	\item Lagrange Remainders, $R_n(x)=(n+1)!^{-1}f^{(n+1)}(\xi)(x-x_0)^{n+1},\ x,x_0\in\R\ \xi\in(x,x_0)$
+	\end{enumerate}
+	What we saw before as $R_n(z)$ is the remainder function for functions $f:D\subset\Cf\fto\Cf$.\\
+	A particularity of remainder function is that $R_n(z)\to0$ always, if $f$ is holomorphic
+\end{dfn}
+\begin{thm}[Integration of Power Series II]
+	Let $f,g:B_R(z_0)\fto\Cf$ and $\{\gamma\}\subset B_R(z_0)$ a piecewise smooth path. Taken
+	\begin{equation*}
+		f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n\quad g\in C(\{\gamma\})
+	\end{equation*}
+	We have that
+	\begin{equation}
+		\sum_{n=0}^{\infty}a_n\int_{\gamma}^{}g(z)(z-z_0)^n\diff z=\int_{\gamma}^{}g(z)f(z)\diff z
+		\label{eq:integralps2}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Since $f,g\in C(\{\gamma\})$ by definition, and $f\in H(\cc{B_r}(z_0))$ with $r<R$, we have that $\exists\opr{K}_\gamma[fg]$.\\
+	Firstly we can write that $\forall z\in B_R(z_0)$
+	\begin{equation*}
+		g(z)f(z)=\sum_{k=0}^{n-1}a_kg(z)(z-z_0)^k+g(z)R_n(z)=\sum_{k=0}^{n-1}a_kg(z)(z-z_0)^k+g(z)\sum_{k=n}^\infty a_k(z-z_0)^k
+	\end{equation*}
+	Then we can write
+	\begin{equation*}
+		\int_{\gamma}^{}g(z)f(z)\diff z=\sum_{k=0}^{n-1}a_k\ointccw_\gamma g(z)(z-z_0)^k\diff z+\int_{\gamma}^{}g(z)R_n(z)\diff z
+	\end{equation*}
+	Letting $M=\sup_{z\in\{\gamma\}}\norm{g(z)}$, and noting that $\norm{R_n(z)}<\epsilon$ for $\forall\epsilon>0$ and for some $n\ge N_\epsilon\in\N,\ z\in\{\gamma\}$ we have, using the Darboux inequality
+	\begin{equation*}
+		\norm{\int_{\gamma}^{}g(z)R_n(z)\diff z}\le ML_\gamma\epsilon\to0
+	\end{equation*}
+\end{proof}
+\begin{thm}[Holomorphy of Power Series]
+	If a function $f(z)$ is expressable as a power series $f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k,\ \norm{z-z_0}<R$ we have that $f\in H(B_R(z_0))$
+\end{thm}
+\begin{proof}
+	Take the previous theorem on the integration of power series, and choose $g(z)=1$. Since $g(z)\in H(\Cf)$ we also have that it'll be continuous on all paths $\{\gamma\}\subset\Cf$ piecewise smooth.\\
+	Take now a closed piecewise smooth path $\{\gamma\}$, then we can write
+	\begin{equation*}
+		\ointccw_\gamma f(z)g(z)\diff z=\ointccw_\gamma\sum_{k=0}^\infty a_k(z-z_0)^k=\sum_{k=0}^\infty a_k\ointccw_\gamma(z-z_0)^k\diff z
+	\end{equation*}
+	Since the function $h(z)=(z-z_0)^k\in H(\Cf)\ \forall k\ne1$, we have, thanks to the Morera and Cauchy theorems
+	\begin{equation*}
+		\ointccw_\gamma f(z)\diff z=0\implies f(z)\in H(B_R(\cc{\{\gamma\}}))
+	\end{equation*}
+\end{proof}
+\begin{cor}[Derivative of a Power Series II]
+	Take $f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k\ \norm{z-z_0}<R$. Then, $\forall z\in B_R(z_0)$ we have that
+	\begin{equation}
+		\derivative{f}{z}=\sum_{k=1}^\infty a_kk(z-z_0)^{k-1}
+		\label{eq:derivativeps2}
+	\end{equation}
+\end{cor}
+\begin{proof}
+	Taken $z\in B_R(z_0)$ and a continuous function $g(w)\in C(\{\gamma\})$, with $\{\gamma\}\subset B_R(z_0)$ a closed simple piecewise smooth path. If $z\in\intr{\{\gamma\}}$ and
+	\begin{equation*}
+		g(w)=\frac{1}{2\pi i}\left( \frac{1}{(w-z)^2} \right)
+	\end{equation*}
+	We have, using the integral representation for holomorphic functions
+	\begin{equation*}
+		\frac{1}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z)^2}\diff w=\sum_{k=0}^\infty\frac{a_k}{2\pi i}\ointccw_{\gamma}\frac{(w-z_0)^k}{(w-z_0)^2}\diff w
+	\end{equation*}
+	Since $h(w)=(w-z_0)^k\in H(\Cf)\ \forall k\ne1$ we have, using again the integral representation for holomorphic functions
+	\begin{equation*}
+		\begin{aligned}
+			\frac{1}{2\pi i}\ointccw_\gamma\frac{f(w)}{(w-z)^2}\diff w&=\derivative{f}{z}\\
+			\frac{1}{2\pi i}\ointccw_\gamma\frac{(w-z_0)^k}{(w-z)^2}\diff w&=k(z-z_0)^{k-1}
+		\end{aligned}
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\frac{1}{2\pi i}\ointccw_\gamma\frac{f(w)}{(w-z)^2}\diff{w}=\sum_{k=0}^\infty a_kk(z-z_0)^k=\derivative{f}{z}
+	\end{equation*}
+\end{proof}
+\begin{cor}[Uniqueness of the Taylor Series]
+	Taken an holomorphic function $f\in H(D)$ with $D\subset\Cf$ some connected open set, we have that
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{\infty}a_k(z-z_0)^k\quad a_k=\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z_0}\ \forall\norm{z-z_0}<R
+	\end{equation*}
+\end{cor}
+\begin{proof}
+	Taken $g(z)$ a continuous function over a closed piecewise simple path $\{\gamma\}\subset\Cf$, where
+	\begin{equation*}
+		g(z)=\frac{1}{2\pi i}\left( \frac{1}{(z-z_0)^{k+1}} \right)
+	\end{equation*}
+	We have that
+	\begin{equation*}
+		\frac{1}{2\pi i}\ointccw_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\diff z=\sum_{k=1}^{\infty}\frac{a_k}{2\pi i}\ointccw_\gamma(z-z_0)^{k-n-1}\diff z
+	\end{equation*}
+	The integral on the RHS evaluates to $\delta^k_n$, and thanks to the integral representation of $f(z)$ we can write
+	\begin{equation*}
+		\frac{1}{2\pi i}\ointccw_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\diff z=\frac{1}{n!}\left.\derivative[n]{f}{z}\right|_{z_0}=n!a_n
+	\end{equation*}
+\end{proof}
+\subsection{Laurent Series}
+\begin{dfn}[Annulus Domain]
+	Let $0\le r<R\le\infty$ and $z_0\in\Cf$, we define the \textit{annulus set} as follows
+	\begin{equation}
+		A_{rR}(z_0):=\left\{ \derin{z\in\Cf}r<\norm{z-z_0}<R \right\}
+		\label{eq:annulusdom}
+	\end{equation}
+	Special cases of this are the ones where $r=0$, $R=\infty$ and $r=0,\ R=\infty$
+	\begin{equation*}
+		\begin{aligned}
+			A_{0,R}(z_0)&=B_R(z_0)\setminus\{z_0\}\\
+			A_{r,\infty}(z_0)&=\Cf\setminus\cc{B}_r(z_0)\\
+			A_{0,\infty}(z_0)&=\Cf\setminus\{z_0\}
+		\end{aligned}
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Laurent Series Expansion]
+	Let $f:A_{R_1R_2}(z_0)\fto\Cf$ be a function such that $f\in H\left(A_{R_1R_2}(z_0)\right)$, and $\{\gamma\}\subset A_{R_1R_2}(z_0)$ a closed simple piecewise smooth curve.\\
+	Then $f$ is expandable in a \textit{generalized power series} or a \textit{Laurent series} as follows
+	\begin{equation}
+		f(z)=\sum_{n=0}^{\infty}c_n^+(z-z_0)^n+\sum_{n=1}^{\infty}\frac{c_n^-}{(z-z_0)^n}=\sum_{k=-\infty}^{\infty}c_k(z-z_0)^k
+		\label{eq:laurentseries}
+	\end{equation}
+	Where the coefficients are the following
+	\begin{equation}
+		\begin{aligned}
+			c_n^-&=\frac{1}{2\pi i}\ointccw_\gamma f(z)(z-z_0)^{n-1}\diff z\quad n\ge0\\
+			c_n^+&=\frac{1}{2\pi i}\ointccw_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\diff z\quad n>0\\
+			c_k&=\frac{1}{2\pi i}\ointccw_\gamma\frac{f(z)}{(z-z_0)^{k+1}}\diff z\quad k\in\Z
+		\end{aligned}
+		\label{eq:coefficientlaurent}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken a random point $z\in A_{R_1R_2}(z_0)$, a closed simple piecewise smooth curve $\{\gamma\}\subset A_{R_1R_2}(z_0)$ and two circular smooth paths $\{\gamma_2\},\{\gamma_3\}\st \{\gamma_2\}\cup\{\gamma_3\}=\del A_{r_1r_2}(z_0)\subset A_{R_1R_2}(z_0)\ \wedge \{\gamma\}\subset A_{r_1r_2}(z_0)$ and a third circular path $\{\gamma_3\}\subset A_{r_1r_2}(z_0)$, we can write immediately, using the omotopy between all the paths
+	\begin{equation*}
+		\ointccw_{\gamma_2}\frac{f(w)}{w-z}\diff w=\ointccw_{\gamma_1}\frac{f(w)}{w-z}\diff w+\ointccw_{\gamma_3}\frac{f(w)}{w-z}\diff w
+	\end{equation*}
+	Using the Cauchy integral representation we have that the integral on $\gamma_3$ yields immediately $2\pi if(z)$, hence we can write
+	\begin{equation*}
+		f(z)=\frac{1}{2\pi i}\ointccw_{\gamma_2}\frac{f(w)}{(w-z_0)-(z-z_0)}\diff w+\frac{1}{2\pi i}\ointccw_{\gamma_1}\frac{f(w)}{(z_0-z)-(w-z_0)}\diff w
+	\end{equation*}
+	Using the two following identities for $z\ne w$
+	\begin{equation*}
+		\begin{aligned}
+			\frac{1}{w-z}&=\frac{1}{w-z}\left( \frac{z}{w} \right)^n+\sum_{k=0}^{n-1}\frac{1}{w}\left( \frac{z}{w} \right)^k\\
+			\frac{1}{z-w}&=\frac{1}{z-w}\left( \frac{w}{z} \right)^n+\sum_{k=1}^{n}\frac{1}{w}\left( \frac{w}{z} \right)^k
+		\end{aligned}
+	\end{equation*}
+	We obtain that
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{n-1}\frac{(z-z_0)^k}{2\pi i}\ointccw_{\gamma_2}\frac{f(w)}{(w-z_0)^{k+1}}\diff w+\rho_n(z)+\sum_{k=1}^{n}\frac{1}{2\pi i(z-z_0)^k}\ointccw_{\gamma_1}f(w)(w-z_0)^{k-1}\diff w+\sigma_n(z)
+	\end{equation*}
+	Where, after choosing appropriate substitutions with some coefficients $c_k^+,c_k^-$ we have
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{n-1}c_k^+(z-z_0)^k+\rho_n(z)+\sum_{k=1}^{n}\frac{c_k^-}{(z-z_0)^k}+\sigma_n(z)
+	\end{equation*}
+	Where $\rho_n,\sigma_n$ are the two remainders of the series expansion, and are
+	\begin{equation*}
+		\begin{aligned}
+			\rho_n(z)&=\frac{(z-z_0)^n}{2\pi i}\ointccw_{\gamma_2}\frac{f(w)}{\left[ (w-z_0)-(z-z_0) \right](w-z_0)^n}\diff w\\
+			\sigma_n(z)&=\frac{1}{2\pi i(z-z_0)^n}\ointccw_{\gamma_1}\frac{f(w)}{(w-z_0)-(z-z_0)}\diff w
+		\end{aligned}
+	\end{equation*}
+	In order to prove the theorem we now need to demonstrate that $\rho_n,\sigma_n\fto[n\to\infty]0$. Taken $M_1=\sup_{z\in\{\gamma_1\}}\norm{f(z)},\ M_2=\sup_{z\in\{\gamma_2\}}\norm{f(z)}$, we have, using the fact that both $\gamma_1,\gamma_2$ are circular
+	\begin{equation*}
+		\begin{aligned}
+			\norm{\rho_n(z)}&\le\frac{M_2}{1-\frac{1}{r_2}\norm{z-z_0}}\left( \frac{\norm{z-z_0}}{r_2} \right)^n\fto[n\to\infty]0\quad\norm{z-z_0}<r_2\\
+			\norm{\sigma_n(z)}&\le\frac{M_1}{\frac{1}{r_1}\norm{z-z_0}-1}\left( \frac{r_1}{\norm{z-z_0}} \right)^n\fto[n\to\infty]0\quad r_1<\norm{z-z_0}
+		\end{aligned}
+	\end{equation*}
+	And the theorem is proved.
+\end{proof}
+%\begin{proof}
+%	Take a function $f:D\fto\Cf$ where $D\sim A_{rR}(z_0)$, i.e. $D$ is continuously deformable into an annulus domain.\\
+%	Take $\del \tilde{A}_{rR}(z_0)=\{\gamma\}\cup\{\Gamma\}$ where $\{\gamma\}$ is a \emph{clockwise} circumference around $z_0$ with radius $r/k$ and $\{\Gamma\}$ a \emph{counterclockwise} circumference around $z_0$ with radius $R/k$, with $\tilde{A}_{rR}(z_0)\subset A_{rR}(z_0)$. Since $f$ is holomorphic in this domain, we can write
+%	\begin{equation*}
+%		f(z)=\frac{1}{2\pi i}\ointccw_\Gamma \frac{f(w)}{w-z}\diff w-\frac{1}{2\pi i}\ointcw_\gamma\frac{f(w)}{w-z}\diff w=\frac{1}{2\pi i}\left(\opr{K}_\Gamma[f]-\opr{K}_\gamma[f]\right)
+%	\end{equation*}
+%	Note that in the first integral we have $\norm{w-z_0}>\norm{z-z_0}$ and in the second the opposite holds, we have that
+%	\begin{equation*}
+%		\ointccw_\Gamma\frac{f(w)}{w-z}\diff w=\ointccw_\Gamma \frac{f(w)}{z-z_0}\frac{1}{1-\frac{z-z_0}{w-z_0}}\diff w\quad\norm{\frac{z-z_0}{w-z_0}}<1
+%	\end{equation*}
+%	And
+%	\begin{equation*}
+%		\ointcw_\gamma\frac{f(w)}{w-z}\diff w=-\frac{1}{z-z_0}\ointcw_\gamma \frac{f(w)}{1-\frac{w-z_0}{z-z_0}}\diff w\quad\norm{\frac{w-z_0}{z-z_0}}<1
+%	\end{equation*}
+%	Since in both cases the geometric series converges uniformly, we can therefore write
+%	\begin{equation*}
+%		\begin{aligned}
+%			\opr{K}_\Gamma[f]&=\sum_{n\ge0}(z-z_0)^n\ointccw_\Gamma\frac{f(w)}{(w-z_0)^{n+1}}\diff w\\
+%			\opr{K}_\gamma[f]&=-\sum_{n\ge0}^{}\frac{1}{(z-z_0)^{n+1}}\ointcw_\gamma f(w)(w-z_0)^n\diff w
+%		\end{aligned}
+%	\end{equation*}
+%	Summing the contributes, we obtain
+%	\begin{equation*}
+%		f(z)=\frac{1}{2\pi i}\left( \opr{K}_\Gamma[f]-\opr{K}_\gamma[f] \right)=\sum_{k\in\Z}c_k(z-z_0)^k
+%	\end{equation*}
+%	Where, dividing the parts where $k<0$ as $c_k^-$ and the parts where $k\ge0$ as $c_k^+$, we have
+%	\begin{equation*}
+%		\begin{aligned}
+%			c_k^+&=\frac{1}{2\pi i}\ointccw_\Gamma\frac{f(w)}{(w-z_0)^{n+1}}\diff w\\
+%			c_k^-&=\frac{1}{2\pi i}\ointcw_\gamma\frac{f(w)}{(w-z_0)^{n+1}}\diff w
+%		\end{aligned}
+%	\end{equation*}
+%	Note that the coefficients don't correspond to the $n-$th derivative of $f$ in $z_0$ since the function \emph{is not derivable in} $z_0$\\
+%	The coefficients of shown in the statement of the theorem are reobtainable through a slight modification of the proof, where the omotopy of curves is utilized and all curves are taken counterclockwise.
+%\end{proof}
+\begin{thm}[Convergence of a Laurent Series]
+	Being defined on an annulus set, the Laurent series of a function must have \emph{two} radii of convergence. Given a function $f$ holomorphic on a set $A_{R_1R_2}(z_0)$ we have
+	\begin{equation}
+		\begin{aligned}
+			\frac{1}{R_2}&=\limsup_{n\to\infty}\sqrt[n]{\norm{c_n}}\\
+			R_1&=\limsup_{n\to\infty}\sqrt[n]{\norm{c_{-n}}}
+		\end{aligned}
+		\label{eq:laurentconvergence}
+	\end{equation}
+	It's equivalent of showing the convergence of the two series
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{\infty}c_k^+(z-z_0)^k+\sum_{k=1}^{\infty}\frac{c_k^-}{(z-z_0)^k}
+	\end{equation*}
+\end{thm}
+\begin{thm}[Integral of a Laurent Series]
+	Let $f(z)\in H\left(A_{R_1R_2}(z_0)\right)$ and take $\{\gamma\}\subset A_{R_1R_2}(z_0)$ a piecewise smooth curve, and $g\in C(\{\gamma\})$, then we have
+	\begin{equation*}
+		\sum_{n=-\infty}^\infty c_n\oint_\gamma g(z)(z-z_0)^n\diff z=\oint_\gamma g(z)f(z)\diff z
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	We begin by separating the sum in two parts, ending up with the following
+	\begin{equation*}
+		\begin{aligned}
+			\sum_{n=0}^\infty c_n^+\oint_\gamma g(z)(z-z_0)^n\diff z&=\oint_\gamma g(z)f_+(z)\diff z\\
+			\sum_{n=1}^\infty c_n^-\oint_\gamma \frac{g(z)}{(z-z_0)^n}\diff z&=\oint_\gamma g(z)f_-(z)\diff z
+		\end{aligned}
+	\end{equation*}
+	Which is analogous to the integration of Taylor series. The same could be obtained keeping the bounds of the sum in all $\Z$
+\end{proof}
+As for Taylor series, in a completely analogous fashion, a Laurent series is holomorphic and unique.\\
+The derivative of a Laurent series, is then obviously the following
+\begin{equation*}
+	\derivative{f}{z}=\sum_{n=-\infty}^{\infty}c_nn(z-z_0)^{n-1}
+\end{equation*}
+\subsection{Multiplication and Division of Power Series}
+\begin{thm}[Product of Power Series]
+	Take $f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n,\ z\in B_{R_1}(z_0)$ and $g(z)=\sum_{n=0}^\infty b_n(z-z_0)^n,\ z\in B_{R_2}(z_0)$. Then
+	\begin{equation*}
+		f(z)g(z)=\sum_{n=0}^\infty c_n(z-z_0)^n,\quad c_n=\sum_{k=0}^na_kb_{n-k}\quad \norm{z-z_0}<\min\left( R_1,R_2 \right)=R
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Due to the holomorphy of both $f$ and $g$, we have that the function $fg$ has a Taylor series expansion
+	\begin{equation*}
+		f(z)g(z)=\sum_{n=0}^\infty c_n(z-z_0)\quad\norm{z-z_0}<R
+	\end{equation*}
+	We have then, using Leibniz's derivation rule
+	\begin{equation*}
+		\begin{aligned}
+			c_n&=\frac{1}{n!}\derivative[n]{z}f(z)g(z)=\frac{1}{n!}\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}\left.\derivative[k]{f}{z}\right|_{z_0}\left.\derivative[n-k]{g}{z}\right|_{z_0}=\\
+			&=\sum_{k=0}^{n}\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z_0}\frac{1}{(n-k)!}\left.\derivative[n-k]{g}{z}\right|_{z_0}=\\
+			&=\sum_{k=0}^na_kb_{n-k}
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{thm}[Division of Power Series]
+	Taken the two functions as before, with the added necessity that $g(z)\ne0$, we have that
+	\begin{equation*}
+		\frac{f(z)}{g(z)}=\sum_{n=0}^{\infty}d_n(z-z_0)^n\quad d_n=\frac{1}{b_0}\left( a_n-\sum_{k=0}^{n-1}d_kb_{n-k} \right)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Everything hold as in the previous proof. Remembering that $(f/g)g=f$ and using the previous theorem, we obtain
+	\begin{equation*}
+		a_n=\sum_{k=0}^{n}d_kb_{k-n}
+	\end{equation*}
+	And therefore, inverting
+	\begin{equation*}
+		d_n=\frac{a_n}{b_0}-\frac{1}{b_0}\sum_{k=0}^{n-1}d_kb_{n-k}
+	\end{equation*}
+\end{proof}
+\subsection{Useful Expansions}
+\begin{equation}
+	e^z=\sum_{n=0}^\infty\frac{z^n}{n!}\quad\norm{z}<\infty
+	\label{eq:expser}
+\end{equation}
+\begin{equation}
+	\sin(z)=\frac{1}{2i}\left( e^{iz}-e^{-iz} \right)=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)!}z^{2n+1}\quad\norm{z}<\infty
+	\label{eq:sinser}
+\end{equation}
+\begin{equation}
+	\cos(z)=\derivative{z}\sin(z)=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!}z^{2n}\quad\norm{z}<\infty
+	\label{eq:cosser}
+\end{equation}
+\begin{equation}
+	\cosh(z)=\cos(iz)=\sum_{n=0}^{\infty}\frac{z^{2n}}{(2n)!}\quad\norm{z}<\infty
+	\label{eq:coshser}
+\end{equation}
+\begin{equation}
+	\sinh(z)=\derivative{z}\cosh(z)=\sum_{n=0}^{\infty}\frac{z^{2n+1}}{(2n+1)!}\quad\norm{z}<\infty
+	\label{eq:sinhser}
+\end{equation}
+\begin{equation}
+	\frac{1}{1-z}=\sum_{n=0}^{\infty}z^n\quad\norm{z}<1
+	\label{eq:geomser}
+\end{equation}
+\begin{equation}
+	\frac{1}{1+z}=\sum_{n=0}^{\infty}(-1)^nz^n\quad\norm{z}<1
+	\label{eq:geomminoneser}
+\end{equation}
+\begin{equation}
+	\frac{1}{z}=\sum_{n=0}^{\infty}(-1)^n(z-1)^n\quad\norm{z-1}<1
+	\label{eq:zminoneser}
+\end{equation}
+\begin{equation}
+	(1+z)^s=\sum_{n=0}^{\infty}\begin{pmatrix}s\\n\end{pmatrix}z^n\quad s\in\Cf,\ \norm{z}<1
+	\label{eq:binomser}
+\end{equation}
+\begin{equation}
+	e^{\frac{1}{z}}=\sum_{n=0}^{\infty}\frac{1}{n!z^n}\quad0<\norm{z}<\infty
+	\label{eq:explaur}
+\end{equation}
+\section{Residues}
+\subsection{Singularities and Residues}
+\begin{dfn}[Singularity]
+	Given a function $f:G\fto\Cf$ we define a \textit{singularity} a point $z_0\in G$ such that
+	\begin{equation}
+		\forall\epsilon>0\ \exists z\in B_\epsilon(z_0)\st f(z)\text{ is holomorphic}
+		\label{eq:singularity1}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Isolated Singularity]
+	Given a function $f:G\fto\Cf$ we define an \textit{isolated singularity} a point $z_0\in G$ such that
+	\begin{equation}
+		\exists r>0\st f\in H\left( A_{0r}(z_0) \right)
+		\label{eq:isolatedsing}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Residue]
+	Let $z_0\in G$ be an isolated singularity of $f:G\fto\Cf$, then $\exists r>0\st\forall z\in A_{0r}(z_0)$ the following Laurent series expansion holds
+	\begin{equation*}
+		f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n+\sum_{n=1}^{\infty}\frac{b_n}{(z-z_0)^n}=\sum_{n=-\infty}^{\infty}c_n(z-z_0)^n
+	\end{equation*}
+	The \textit{residue} of the function $f$ in $z_0$ is defined as follows
+	\begin{equation}
+		\res_{z=z_0}f(z)=b_1=c_{-1}
+		\label{eq:residue}
+	\end{equation}
+	A second definitiion is given by the following contour integral
+	\begin{equation*}
+		\res_{z=z_0}f(z)=\frac{1}{2\pi i}\ointccw_\gamma f(z)\diff z
+	\end{equation*}
+	Where $\gamma$ is a simple closed path around $z_0$
+\end{dfn}
+\begin{dfn}[Winding Number]
+	Given a closed curve $\{\gamma\}$ we define the \textit{winding number} or \textit{index} of the curve around a point $z_0$ the following integral
+	\begin{equation}
+		n(\gamma,z_0)=\frac{1}{2\pi i}\oint_\gamma\frac{\diff z}{z-z_0}
+		\label{eq:windingnumber}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Residue Theorem]
+	Given a function $f:G\fto\Cf$ such that $f\in H(D)$ where $D=G\setminus\{z_1,\cdots,z_n\}$ and $z_k$ are isolated singularities, we have, taken a closed piecewise smooth curve $\{\gamma\}$, such that $\{z_1,\cdots,z_n\}\subset\intr{\{\gamma\}}$
+	\begin{equation}
+		\oint_\gamma f(z)\diff z=2\pi i\sum_{k=0}^{\infty}n(\gamma,z_k)\res_{z=z_k}f(z)
+		\label{eq:residuetheorem}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Firstly we can say that $\gamma\sim\sum_k\gamma_k$ where $\gamma_k$ are simple curves around each $z_k$, then since the function is holomorphic in the regions $A_{0r}(z_k)$ with $k=1,\cdots,n$ we can write
+	\begin{equation*}
+		f(z)=\sum_{n=-\infty}^{\infty}c_n(z-z_k)^n
+	\end{equation*}
+	Therefore, we have
+	\begin{equation*}
+		\oint_\gamma f(z)\diff z=\sum_{k=0}^{n}\oint_{\gamma_k}f(z)\diff z=\sum_{k=0}^n\sum_{j=-\infty}^\infty c_j\oint_{\gamma_k}(z-z_k)^j\diff z
+	\end{equation*}
+	We can then use the linearity of the integral operator and write
+	\begin{equation*}
+		\oint_\gamma f(z)\diff z=\sum_{k=0}^n\sum_{j=-\infty}^{-2}c_{j}\oint_{\gamma_k}(z-z_k)^j\diff z+c_{-1}\oint_{\gamma_k}\frac{\diff z}{z-z_k}+\sum_{j=0}^\infty c_j\oint_{\gamma_k}(z-z_k)^j\diff z
+	\end{equation*}
+	Thanks to the Cauchy theorem we already know that the first and last integrals on the RHS must be null, therefore
+	\begin{equation*}
+		\oint_\gamma f(z)\diff z=\sum_{k=0}^nc_{-1}\oint_{\gamma_k}\frac{\diff z}{z-z_k}
+	\end{equation*}
+	Recognizing the definition of residue and the winding number of the curve, we have the assert
+	\begin{equation*}
+		\oint_\gamma f(z)\diff z=2\pi i\sum_{k=0}n(\gamma,z_k)\res_{z=z_k}f(z)
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Residue at Infinity]
+	Given a function $f:G\fto\Cf$ and a piecewise smooth closed curve $\gamma$. If $f\in H(\{\gamma\}\cup\extr{\{\gamma\}})$ we have
+	\begin{equation}
+		\ointccw_\gamma f(z)\diff z=-2\pi i\res_{z=\infty}f(z)=2\pi i\res_{z=0}\frac{1}{z^2}f\left( \frac{1}{z} \right)
+		\label{eq:infresidue}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Given a function $f:G\fto\Cf$ as before, if the function has $z_k$ singularities with $k=1,\cdots,n$
+	\begin{equation}
+		\res_{z=\infty}f(z)=\sum_{k=1}^n\res_{z=z_k}f(z)
+		\label{eq:residueformula}
+	\end{equation}
+\end{thm}
+\subsection{Classification of Singularities, Zeros and Poles}
+\begin{dfn}[Pole]
+	Given a function $f(z)$ with an isolated singular point in $z_0\in\Cf$, we have that in $A_{0r}(z_0)$ the function can be expanded with a Laurent series
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{\infty}a_k(z-z_0)^k+\sum_{k=1}^{\infty}\frac{b_k}{(z-z_0)^k}
+	\end{equation*}
+	The point $z_0$ is called a \textit{pole of order} $m$ if $b_k=0\ \forall k>m$
+\end{dfn}
+\begin{dfn}[Removable Singularity]
+	Given $f(z),z_0$ as before, we have that $z_0$ is a \textit{removable singularity} if $b_k=0\ \forall k\ge1$
+\end{dfn}
+\begin{dfn}[Essential Singularity]
+	Given $f(z),z_0$ as before, we have that $z_0$ is an \textit{essential singularity} if $b_k\ne0$ for infinite values of $k$
+\end{dfn}
+\begin{dfn}[Meromorphic Function]
+	Let $f:G\subset\Cf\fto\Cf$ be a function. $f$ is said to be \textit{meromorphic} if $f\in H(\tilde{G})$ where $\tilde{G}=G\setminus\left\{ z_1,\cdots,z_n \right\}$ where $z_k\in G$ are poles of the function
+\end{dfn}
+\begin{thm}
+	Let $z_0$ be an isolated singularity of a function $f(z)$. $z_0$ is a pole of order $m$ if and only if
+	\begin{equation}
+		f(z)=\frac{1}{(m-1)!}\left.\derivative[m-1]{g}{z}\right|_{z_0}\quad g\in H(B_\epsilon(z_0))\ \epsilon>0
+		\label{eq:pole m}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let $f:G\fto\Cf$ be a meromorphic function and $g:G\fto\Cf$, $g\in H(G)$ where $f(z)$ has a pole in $z_0\in G$ and $g(z_0)\ne0$
+	\begin{equation*}
+		f(z)=\frac{g(z)}{(z-z_0)^m}
+	\end{equation*}
+	Since $g(z)$ is holomorphic in $z_0$ we have that, for some $r$
+	\begin{equation*}
+		g(z)=\sum_{k=0}^{\infty}\frac{1}{k!}\derivative[k]{g}{z_0}{(z-z_0)^k}\quad z\in B_r(z_0)
+	\end{equation*}
+	And therefore, $\forall z\in A_{0r}(z_0)$
+	\begin{equation*}
+		f(z)=\frac{1}{(z-z_0)^m}g(z)=\sum_{k=0}^{\infty}\frac{1}{k!}\derivative[k]{g}{z_0}{(z-z_0)^{k-m}}
+	\end{equation*}
+	Since $g(z_0)\ne0$ we have the assert.\\
+	Alternatively we start by hypothesizing that $z_0$ is already a pole of order $m$ for $f$, and therefore we can write the following Laurent expansion for some $r>0$
+	\begin{equation*}
+		f(z)=\sum_{k=-m}^\infty c_k(z-z_0)^k\quad\forall z\in A_{0r}(z_0)
+	\end{equation*}
+	Where $c_{-m}\ne0$. Therefore, we write
+	\begin{equation*}
+		g(z)=\begin{dcases}(z-z_0)^mf(z)&z\in A_{0r}(z_0)\\c_{-m}&z=z_0\end{dcases}
+	\end{equation*}
+	And, expanding $g(z)$ for $z\in B_r(z_0)$ we obtain
+	\begin{equation*}
+		g(z)=c_{-m}+c_{-m+1}(z-z_0)+\cdots+c_{-1}(z-z_0)^{m-1}+\sum_{k=0}^{\infty}c_k(z-z_0)^{k+m}
+	\end{equation*}
+	$g(z)$ is holomorphic in the previous domain of expansion, and therefore we have, since the Taylor expansion is unique
+	\begin{equation*}
+		c_{-1}=\frac{1}{(m-1)!}\derivative[m-1]{g}{z_0}=\res_{z=z_0}f(z)
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Zero]
+	Let $f:G\fto\Cf$ be a holomorphic function. Taken $z_0\in G$, it's said to be a \textit{zero of order} $m$ if
+	\begin{equation*}
+		\begin{dcases}\derivative[k]{f}{z_0}=0&k=1,\cdots,m-1\\\derivative[m]{f}{z_0}\ne0\end{dcases}
+	\end{equation*}
+\end{dfn}
+\begin{thm}
+	The point $z_0\in G$ is a zero of order $m$ for $f$ if and only if
+	\begin{equation*}
+		f(z)=\frac{g(z)}{(z-z_0)^m}\quad g(z_0)\ne0,\ g\in H(G)
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	Taken $f(z)=(z-z_0)^mg(z)$ such that $g(z_0)\ne0$ we can expand $g(z)$ with Taylor and at the end obtain
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{\infty}\frac{1}{k!}\derivative[k]{g}{z_0}{(z-z_0)^{k+m}}
+	\end{equation*}
+	Since this is a Taylor expansion also for $f(z)$ we have that, for $j=1,\cdots,m-1$
+	\begin{equation*}
+		\derivative[j]{f}{z_0}=0\qquad\derivative[m]{f}{z_0}=m!g(z_0)\ne0
+	\end{equation*}
+	The same is obtainable with the vice versa demonstrating the theorem
+\end{proof}
+\begin{ntn}
+	Let $f$ be a meromorphic function. We will define the following sets of points accordingly
+	\begin{enumerate}
+	\item $Z_f^m$ as the set of zeros of order $m$
+	\item $S_f$ as the set of isolated singularities of $f$
+	\item $P_f^m$ as the set of poles of order $m$
+	\end{enumerate}
+	We immediately see some special cases
+	\begin{enumerate}
+	\item $P_f^\infty$ is the set of essential singularities of $f$
+	\item $P_f^1$ is the set of removable singularities of $f$
+	\end{enumerate}
+\end{ntn}
+\begin{thm}
+	Let $f:D\fto\Cf$ be a function such that $f\in H(D)$, with $D$ an open set, then
+	\begin{enumerate}
+	\item $f(z)=0\ \forall z\in D$
+	\item $\exists z_0\st f^{(k)}(z_0)=0\ \forall k\ge0$
+	\item $Z_f\subset D$ has a limit point
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	$3)\implies 2)$\\
+	Take $z_0\in D$ as the limit point of $Z_f$. Since $f\in C(D)$ we have that $z_0\in Z_f^m$. therefore
+	\begin{equation*}
+		f(z)=(z-z_0)^mg(z)\quad g(z_0)\ne0,\ g\in H(D)\implies\exists\delta>0\st g(z)\ne0\quad\forall z\in B_\delta(z_0)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		f(z)\ne0\quad\forall z\in A_{0\delta}(z_0)\ \lightning
+	\end{equation*}
+	$2)\implies1)$\\
+	Suppose that $Z_{f^{(k)}}:=\left\{ \derin{z\in D}f^{(k)}(z)=0 \right\}\ne\{\}$. We have to demonstrate that this set is clopen in $D$.\\
+	Take $z\in\cc{Z_{f^{(k)}}}$ and a sequence $(z)_k\in Z_{f^{(k)}}$ such that $z_k\to z$. We have then
+	\begin{equation*}
+		f^{(k)}(z)=\lim_{k\to\infty}f^{(k)}(z_k)=0
+	\end{equation*}
+	Therefore $Z_{f^{(k)}}=\cc{Z_{f^{(k)}}}$ and the set is closed.\\
+	Take then $z\in Z_{f^{(k)}}\subset D$, since $D$ is open we have that $\exists r>0\st B_r(z)\subset D$, therefore
+	\begin{equation*}
+		\forall w\in B_r(z),\ z\ne w\quad f(w)=\sum_{k=0}^\infty a_k(w-z)^k=0\implies\begin{dcases}z=w\\a_k=0&\forall k\ge0\end{dcases}
+	\end{equation*}
+	Since $w\ne z$ we have that $B_r(z)\subset Z_{f^{(k)}}$ and the set is open. Taking both results we have that the set is clopen and $D=Z_{f^{(k)}}$
+\end{proof}
+\begin{cor}
+	Let $f,g:D\fto\Cf$ and $f,g\in  H(D)$. We have that $f=g$ iff the set $\left\{ f(z)=g(z) \right\}$ has a limit point in $D$
+\end{cor}
+\begin{cor}[Zeros of Holomorphic Functions]
+	Let $f:D\fto\Cf$ be a non-constant function $f\in H(D)$ with $D$ an open connected set. Then
+	\begin{equation*}
+		\forall z\in Z_f^m\quad m<\infty
+	\end{equation*}
+\end{cor}
+\begin{proof}
+	Take $z_0\in Z_f$, then since $f$ is non-constant we have that $Z_f$ has no limit points in $D$, therefore
+	\begin{equation*}
+		\exists\delta>0\st f(z)\ne0\quad\forall z\in A_{0\delta}(z_0)\ \wedge\ \exists m\ge1\st\derivative[k]{f}{z_0}=0\ k\in[0,m),\ \derivative[m]{f}{z_0}\ne0
+	\end{equation*}
+	Therefore $z_0\in Z_f^m$
+\end{proof}
+\begin{thm}
+	Let $f:D\fto\Cf$ be a meromorphic function, such that
+	\begin{equation*}
+		f(z)=\frac{p(z)}{q(z)}\quad p,q\in H(D)
+	\end{equation*}
+	If $z_0\in Z_q^m$ such that $p(z_0)\ne0$, then $z_0\in P^m_f$
+\end{thm}
+\begin{proof}
+	$z_0\in Z_q^m$ is an isolated singularity of $q$, therefore
+	\begin{equation*}
+		\exists\delta>0\st q(z)\ne0\quad\forall z\in A_{0\delta}(z_0)\ \therefore z_0\in S_{p/q}
+	\end{equation*}
+	We therefore can take $q(z)=(z-z_0)^mg(z)$ and we have
+	\begin{equation*}
+		f(z)=\frac{p(z)}{g(z)(z-z_0)^m}=\frac{h(z)}{(z-z_0)^m}
+	\end{equation*}
+	Where $h(z)$ is a holomorphic function such that $h(z_0)\ne0$. By definition of pole we have $z_0\in P^m_f$
+\end{proof}
+\begin{thm}[Quick Calculus of Residues for Rational Functions]
+	If $f(z)=p(z)/q(z)$ as before, there is a quick rule of thumb for calculating the residue in $z_0$. We can write
+	\begin{equation*}
+		\res_{z=z_0}f(z)=\frac{1}{(m-1)!}\derivative[m-1]{h}{z_0}
+	\end{equation*}
+	If the pole is a removable singularity, we have $z_0\in P^1_f$ and
+	\begin{equation*}
+		\res_{z=z_0}f(z)=\frac{p(z_0)}{q'(z_0)}
+	\end{equation*}
+\end{thm}
+\begin{thm}
+	Let $f$ be a meromorphic function. If $z_0\in P^m_f$ we have
+	\begin{equation*}
+		\lim_{z\to z_0}f(z)=\infty
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	\begin{equation*}
+		z_0\in P^m_f\implies f(z)=\frac{g(z)}{(z-z_0)^m},\ z_0\notin Z_g
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\lim_{z\to z_0}\frac{1}{f(z)}=\lim_{z\to z_0}\frac{(z-z_0)}{g(z)}=0
+	\end{equation*}
+\end{proof}
+\begin{thm}
+	If $z_0\in P^1_f$, $\exists\epsilon>0$ such that $f\in A_{0\epsilon}(z_0)$ and $\norm{f(z)}\le M$, $\forall z\in A_{0\epsilon}(z_0)$
+\end{thm}
+\begin{proof}
+	By definition we have that
+	\begin{equation*}
+		\exists r>0\st f\in H(A_{0\epsilon}(z_0))
+	\end{equation*}
+	And therefore the function is Laurent representable in this set as follows
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{\infty}c_k(z-z_0)^k\quad0<\norm{z-z_0}<\epsilon
+	\end{equation*}
+	Taken the following holomorphic function
+	\begin{equation*}
+		g(z)=\begin{dcases}f(z)&z\in A_{0\epsilon}(z_0)\\\sum_{z=0}^{\infty}c_k(z-z_0)&z=z_0\end{dcases}
+	\end{equation*}
+	We have that $g\in H\left( \cc{B_\epsilon}(z_0) \right)$ and therefore $\norm{f(z)}\le M\quad\forall z\in A_{0\epsilon}(z_0)$
+\end{proof}
+\begin{lem}[Riemann]
+	Take a function $f\in H\left( A_{0\epsilon}(z_0) \right)$ for some $\epsilon>0$, then if $\norm{f(z)}\le M\ \forall z\in A_{0\epsilon}(z_0)$\\
+	The point $z_0$ is a removable singularity for $f$
+\end{lem}
+\begin{proof}
+	In the set of holomorphy the function is representable with Laurent, therefore
+	\begin{equation*}
+		f(z)=\sum_{k=0}^{\infty}c_k^+(z-z_0)^k+\sum_{k=1}^{\infty}\frac{c_k^-}{(z-z_0)^k}
+	\end{equation*}
+	We have that the coefficients $c_k^-$ are the following, where we integrate over a curve $\{\gamma\}:=\left\{ \derin{z\in\Cf}\norm{z-z_0}=\rho<\epsilon \right\}$
+	\begin{equation*}
+		c_k^-=\frac{1}{2\pi i}\ointccw_\gamma f(z)(z-z_0)^{k-1}\diff z
+	\end{equation*}
+	The function is limited, and therefore for Darboux
+	\begin{equation*}
+		c_k^-\le\rho^k M\to0\quad\forall k\ge1
+	\end{equation*}
+	Therefore $z_0\in P^1_f$
+\end{proof}
+\begin{thm}[Quick Calculus Methods for Residues]
+	Let $f$ be a meromorphic function, then
+	\begin{enumerate}
+	\item $z_0\in P^n_f$ then
+		\begin{equation}
+			\res_{z=z_0}f(z)=\frac{1}{(n-1)!}\lim_{z\to z_0}\derivative[n-1]{z}(z-z_0)^nf(z)
+			\label{eq:respolen}
+		\end{equation}
+	\item $z_0\in P^m_f$ and $f(z)=p(z)/(z-z_0)^m$, where $p\in\Cf_k\left[ z \right]$ with $k\le m-2$ and $p(z_0)\ne0$, then
+		\begin{equation*}
+			\res_{z=z_0}f(z)=\res_{z=z_0}\frac{p(z)}{(z-z_0)^m}=0
+		\end{equation*}
+	\end{enumerate}
+\end{thm}
+\section{Applications of Residue Calculus}
+\subsection{Improper Integrals}
+\begin{dfn}[Improper Integral]
+	An \textit{improper integral} is defined as the integral of a function in a domain where such function has a divergence, or where the interval is infinite.
+	Some examples of such integrals, given a function $f(x)$ with divergences at $a,b\in\R$ are the following
+	\begin{equation*}
+		\begin{aligned}
+			\int_{c}^{\infty}f(x)\diff x&=\lim_{R\to\infty}\int_{c}^{R}f(x)\diff x\\
+			\int_{-\infty}^{d}f(x)\diff x&=\lim_{R\to\infty}\int_{-R}^{d}f(x)\diff x\\
+			\int_{-\infty}^{\infty}f(x)\diff x&=\int_{\R}^{}f(x)\diff x=\lim_{R\to\infty}\int_{-R}^{R}f(x)\diff x\\
+			\int_{a}^{b}f(x)\diff x&=\lim_{\epsilon\to0^+}\int_{a+\epsilon}^{b-\epsilon}f(x)\diff x\\
+			\int_{e}^h f(x)\diff x&=\lim_{\epsilon\to0^+}\left( \int_{e}^{a-\epsilon}f(x)\diff x+\int_{a+\epsilon}^{h}f(x)\diff x \right)\quad a\in(e,h)
+		\end{aligned}
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Cauchy Principal Value]
+	The previous definitions give rise to the following definition, the \textit{Cauchy principal value}. Given an improper integral we define the Cauchy principal value as follows\\
+	Let $f(x)$ be a function with a singularity $c\in(a,b)$, and $g(x)$ another function then
+	\begin{equation*}
+		\begin{aligned}
+			\cpv\int_{-\infty}^{\infty}g(x)\diff x&=\cpv\int_{\R}^{}g(x)\diff x=\lim_{R\to\infty}\int_{-R}^{R}g(x)\diff x\\
+			\cpv\int_{a}^{b}f(x)\diff x&=\lim_{\epsilon\to0^+}\left(\int_{a}^{c-\epsilon}f(x)\diff x+\int_{c+\epsilon}^{b}f(x)\diff x\right)
+		\end{aligned}
+	\end{equation*}
+	In the first case. $\cpv$ is usually omitted.\\
+	For a complex integral, if $\gamma_R(t)=Re^{it}$ is a circumference, we have
+	\begin{equation*}
+		\cpv\int_{\gamma_R}^{}f(z)\diff z=\lim_{R\to\infty}\int_{\gamma_R}f(z)\diff z
+	\end{equation*}
+\end{dfn}
+\begin{ntn}[Circumferences and Parts of Circumference]
+	For a quick writing of the integrals in this section, we will use this notation for the following circumferences
+	\begin{equation*}
+		\begin{aligned}
+			C_R(t)&=Re^{it}\quad t\in[0,2\pi]\\
+			C_{R\alpha\beta}&=Re^{it}\quad t\in[\alpha,\beta]\\
+			C_R^+(t)&=Re^{it}\quad t\in[0,\pi]\\
+			C_R^-(t)&=Re^{-it}\quad t\in[0,\pi]\\
+			\tilde{C^{\pm}}_R&=C_R^{\pm}\times[-R,R]
+		\end{aligned}
+	\end{equation*}
+\end{ntn}
+\begin{hyp}
+	Let $R_0>0$ and $f\in C(D)$, where $D:=\left\{ \derin{z\in\Cf}\norm{z}\ge R_0 \right\}\cup\R$ and
+	\begin{equation*}
+		\lim_{z\to\infty}zf(z)=0
+	\end{equation*}
+	\label{h1}
+\end{hyp}
+\begin{hyp}
+	Let $R_0>0$ and $f\in C(D)$, where $D:=\left\{ \derin{z\in\Cf}\norm{z}\ge R_0 \right\}\cup\R$ and
+	\begin{equation*}
+		\lim_{z\to\infty}f(z)=0
+	\end{equation*}
+	\label{h2}
+\end{hyp}
+\begin{thm}
+	If \eqref{h1} holds true, then
+	\begin{equation}
+		\cpv\int_{\gamma_R}^{}f(z)\diff z=0\quad\gamma_R= C_R,C_R^+,C_R^-
+		\label{eq:h11}
+	\end{equation}
+	Also, if $f(x)$ is a real function
+	\begin{equation}
+		\int_{\R}^{}f(x)\diff x=\cpv\int_{\tilde{C}_R^+}f(z)\diff z=\cpv\int_{\tilde{C}_R^-}^{}f(z)\diff z
+		\label{eq:h12}
+	\end{equation}
+\end{thm}
+\begin{thm}
+	Let $f(z)$ be an even function, if \eqref{h1} holds we have
+	\begin{equation}
+		\int_{0}^{\infty}f(x)\diff x=\frac{1}{2}\cpv\int_{\tilde{C}^+_R}^{}f(z)\diff z=\frac{1}{2}\cpv\int_{\tilde{C}^-_R}^{}f(z)\diff z
+		\label{eq:creven}
+	\end{equation}
+\end{thm}
+\begin{thm}
+	Let $f(z)=g(z^k),\ k\ge2$. If \eqref{h1} holds
+	\begin{equation}
+		\int_{0}^{\infty}f(x)\diff x=\frac{1}{1-e^{\frac{2i\pi}{k}}}\cpv\int_{\tilde{C}_{R0,2\pi/k}}^{}f(z)\diff z
+		\label{eq:powerint}
+	\end{equation}
+\end{thm}
+\begin{thm}
+	If \eqref{h2} holds
+	\begin{equation}
+		\begin{aligned}
+			\int_{\R}^{}f(x)e^{i\lambda x}\diff x&=\cpv\int_{\tilde{C}_R^+}f(z)e^{i\lambda z}\diff z\quad\lambda>0\\
+			\int_{\R}^{}f(x)e^{i\lambda x}\diff x&=\cpv\int_{\tilde{C}_R^-}f(z)e^{i\lambda z}\diff z\quad\lambda>0
+		\end{aligned}
+		\label{eq:fourierint}
+	\end{equation}
+	From this, we can write then, for $\lambda>0$
+	\begin{equation}
+		\begin{aligned}
+			\int_{\R}^{}f(x)\cos(i\lambda x)\diff x&=\real\left(\cpv\int_{\tilde{C}_R^+}f(z)e^{i\lambda z}\diff z\right)\quad\lambda>0\\
+			\int_{\R}^{}f(x)\sin(i\lambda x)\diff x&=\imaginary\left(\cpv\int_{\tilde{C}_R^+}f(z)e^{i\lambda z}\diff z\right)\quad\lambda>0\\
+		\end{aligned}
+		\label{eq:trigpos}
+	\end{equation}
+\end{thm}
+\begin{hyp}
+	Let $f(z)=g(z)h(z)$ with $g(z)$ a meromorphic function such that $S_g\not\subset\R^+$ and
+	\begin{enumerate}
+	\item $h\in H(\Cf\setminus\R^+)$
+	\item $\lim_{z\to\infty}zf(z)=0$
+	\item $\lim_{z\to0}zf(z)=0$
+	\end{enumerate}
+	\label{h3}
+\end{hyp}
+\begin{dfn}[Pacman Path]
+	Let $\Gamma_{Rr\epsilon}$ be what we will call as the \textit{pacman path}, this path is formed by $4$ different paths\\
+	\begin{equation}
+		\begin{aligned}
+			\gamma_1(t)&=re^{it}\quad t\in[\epsilon,2\pi-\epsilon]\\
+			\gamma_2&=[-R,R]\\
+			\gamma_3(t)&=Re^{it}\quad t\in[\epsilon,2\pi-\epsilon]\\
+			\gamma_4&=[-R,R]
+		\end{aligned}
+		\label{eq:pacmanpath}
+	\end{equation}
+	We will abbreviate this as $\Gamma$
+\end{dfn}
+\begin{thm}
+	Given $f(x)$ a function such that \eqref{h3} holds, we have that
+	\begin{equation}
+		\int_{0}^{\infty}g(x)\Delta h(x)\diff x=\cpv\int_{\Gamma}^{}g(z)h(z)\diff z
+		\label{eq:intpac}
+	\end{equation}
+	Where
+	\begin{equation}
+		\Delta h(x)=\lim_{\epsilon\to0^+}\left( h(x+i\epsilon)-h(x-i\epsilon) \right)
+		\label{eq:deltahdefcesi}
+	\end{equation}
+	In general, we have the following conversion table
+	\begin{equation}
+		\begin{matrix}
+			\hline
+			h(z)&\Delta h(x)\\
+			\hline\\
+			-\frac{1}{2\pi i}\log_+(z)&1\\\\
+			\log_+(z)&-2\pi i\\\\
+			\log_+^2(z)&-2\pi i\log(x)+4\pi^2\\\\
+			\log_+(z)-2\pi i\log_+(z)&-4\pi i\log(x)\\\\
+			\frac{i}{4\pi}\log_+^2(z)+\frac{1}{2}\log_+(z)&\log(x)\\\\
+			[z^\alpha]^+&x^\alpha\left( 1-e^{2\pi i\alpha} \right)\\\\
+			\hline
+		\end{matrix}
+		\label{eq:tableconv}
+	\end{equation}
+\end{thm}
+All the previous integrals are solved through a direct application of the residue theorem.
+\subsection{General Rules}
+\begin{thm}[Integrals of Trigonometric Functions]
+	Let $f(\cos\theta,\sin\theta)$ be some rational function of cosines and sines. Then we have that
+	\begin{equation}
+		\int_{0}^{2\pi}f(\cos\theta,\sin\theta)\diff\theta=\int_{\norm{z}=1}^{}f\left( \frac{z+z^{-1}}{2},\frac{z-z^{-1}}{2i} \right)\frac{\diff z}{iz}
+		\label{eq:trigint}
+	\end{equation}
+\end{thm}
+\begin{thm}[Integrals of Rational Functions]
+	Let $f(x)=p_n(x)/q_m(x)$ with $m\ge n+2$ and $q_m(x)\ne0\quad\forall x\in\R$, then
+	\begin{equation}
+		\int_{\R}^{}\frac{p_n(x)}{q_m(x)}\diff x=2\pi i\sum_{k}\res_{z=z_k}\frac{p_n(z)}{q_m(z)}
+		\label{eq:rationalfunc}
+	\end{equation}
+\end{thm}
+\begin{lem}[Jordan's Lemma]
+	Let $f(z)$ be a holomorphic function in $A:=\left\{ \derin{z\in\Cf}\norm{z}>R_0,\ \imaginary(z)\ge0 \right\}$. Taken $\gamma(t)=Re^{it}\ 0\le t\le\pi$ with $R>R_0$.\\
+	If $\exists M_R>0\st\norm{f(z)}\le M_R\ \forall z\in\{\gamma\}$ and $M_R\to0$, we have that
+	\begin{equation}
+		\cpv\int_{\gamma}^{}f(z)e^{iaz}\diff z=0\quad a>0
+		\label{eq:jordanlemma}
+	\end{equation}
+\end{lem}
+\begin{thm}
+	Let $f(x)=p_n(x)/q_m(x)$ and $m\ge n+1$ with $q_m(x)\ne0\ \forall x\in\R$, then $\forall a>0$ we have that
+	\begin{equation}
+		\int_{\R}^{}\frac{p_n(x)}{q_m(x)}e^{iax}\diff x=2\pi i\sum_k\res_{z=z_k}\frac{p_n(z)}{q_m(z)}e^{iaz}
+		\label{eq:fracfourierint}
+	\end{equation}
+\end{thm}
+\begin{lem}
+	Let $f(z)$ be a meromorphic function such that $z_0\in P^1_f$ and $\gamma_r^{\pm}$ are semi circumferences parametrized as follows
+	\begin{equation*}
+		\gamma_r^{\pm}(t)=z_0+re^{\pm i\theta}\quad\theta\in[-\pi,0]
+	\end{equation*}
+	Then
+	\begin{equation}
+		\cpv\int_{\gamma_r^\pm}^{}f(z)\diff z=\pm\pi i\res_{z=z_0}f(z)
+		\label{eq:singlesimplepole}
+	\end{equation}
+\end{lem}
+\begin{thm}
+	Let $f(x)=p_n(x)/q_m(x)$ with $m\ge n+2$ and $q_m(x)$ has $x_j\in \left.Z_g^1\right|_\R$ then
+	\begin{equation}
+		\int_{\R}^{}\frac{p_n(x)}{q_m(x)}\diff x=2\pi i\sum_k\res_{z=z_k}\frac{p_n(z)}{q_m(z)}+\pi i\sum_j\res_{z=x_j}\frac{p_n(z)}{q_m(z)}
+		\label{eq:ratintsimple}
+	\end{equation}
+	If $g(x)=r_\alpha(x)/s_\beta(x)e^{iax}$ and $\beta\ge\alpha+1$ with $x_j\in\left.Z_g^1\right|_\R$, then $\forall a>0$
+	\begin{equation}
+		\int_{\R}^{}\frac{r_\alpha(x)}{s_\beta(x)}e^{iax}\diff x=2\pi i\sum_k\res_{z=z_k}\frac{r_\alpha(z)}{s_\beta(z)}e^{iaz}+\pi i\sum_j\res_{z=x_j}\frac{r_\alpha(z)}{s_\beta(z)}e^{iaz}
+		\label{eq:fourierratintsimp}
+	\end{equation}
+	$z_k$ are all the zeros of $q,s$ contained in the plane $\{\imaginary(z)>0\}$
+\end{thm}
+
+\end{document}

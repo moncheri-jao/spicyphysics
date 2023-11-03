@@ -1,0 +1,469 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\section{Particle Detection}
+We have described nuclear physics with three main interactions: Electromagnetic, Strong (Nuclear) and Weak (Fermi's Theory).\\
+All experimental results consisted in measuring the impulse of decay products, the energy of photons produced and the detection of neutrons. All these measures obviously need the existence of a particle detector, i.e. a device for a quantitative measure of some information or trace of particles.\\
+The usual trace detected is the energy released by the particles, although ideally a particle shouldn't lose energy for being detected.\\
+Suppose that a particle has and energy $E$ and loses a $\Delta E$. There are three possible scenarios
+\begin{enumerate}
+\item The particle loses a small $\Delta E/E$ fraction, this loss can be ignored and the particle can be detected using a charged particle tracker
+\item The particle loses a considerable fraction of energy, in this case it's possible to study the process and find the correct value of $E$
+\item $\Delta E/E=1$ and the particle loses \textit{all} energy. In this case we use \emph{calorimetry}
+\end{enumerate}
+Consider now the detector. The detector itself, being made of matter, interacts with a projectile particle. Depending on the interaction type there are three important considerations to make
+\begin{enumerate}
+\item EM interactions have an infinite radius of interaction
+\item Strong interactions need a $b\approx1\unit{fm}$
+\item Weak interactions have an infinitesimally small radius of interaction and therefore they're \textit{almost} negligible
+\end{enumerate}
+From these three considerations we can say without doubt $\sigma_{EM}>>\sigma_S>>\sigma_W$. Note that for $q=0$ and $q\ne0$ require different detection strategies
+\subsection{Charged Particles and Ionization}
+Charged particles with $q\ne0$ it\sigma possible to define a clear distinction
+\begin{itemize}
+\item Hadrons, which interact strongly
+\item Leptons, which interact weakly
+\end{itemize}
+Leptons include quarks $q$, muons $\mu$, tauons $\tau$ and electrons $e$. The detection strategy for these particles is using elastic collisions as in Rutherford's experiment.\\
+The two kinds of collisions we can consider are collision with nuclei and nuclear collisions with electrons.\\
+In the first collision the nucleus behaves like a wall for the electron, therefore $\Delta E_e<<1$, where
+\begin{equation*}
+	\Delta E=\frac{\Delta p^2}{2m_N}
+\end{equation*}
+The second collision we have the nucleus as a projectile, for which $m_p=M>>m_e$ and the electron ricochets with a really big energy variation
+\begin{equation*}
+	\Delta E_e>>1
+\end{equation*}
+Here the interaction with the electron is dominant.\\
+The two main results of this collision are the following
+\begin{enumerate}
+\item The electron collects energy and the atom or molecule excites, when de-exciting it emits a photon
+\item If $M>>m_e$ and therefore $\Delta E_p>>1$ and the atom can be ionized and it's then possible to measure the charge $q$, for which $q\propto\Delta E_p\propto E_p$
+\end{enumerate}
+The main loss of energy for charged particles is ionization.\\
+The loss of energy for ionization can be described as a function of density $\rho$, momentum $\vec{p}$, Energy $E$, charge $q$, electron momenta $\vec{p}_e$ and average ionization charge $\expval{I}$, all depending on the traveled space $\Delta x$ made by the charged particle inside the target.\\
+The ionization loss per unit length was studied in depth by Bethe Bloch et al. using QED in 1930, but a non relativistic limit can be studied using Bohr's atom.\\
+Considering that collisions are a stochastic process depending on $\Delta x$, for the central limit theorem we can expect that the loss of energy follows a Gaussian distribution.\\
+For small targets this distribution becomes the Landau distribution and it follows closely a Poisson statistics.
+\subsection{Bohr Formula}
+Considering a non relativistic case for an atom with charge $Ze$ we have that energy transitions are the usual
+\begin{equation*}
+	\Delta E=\hbar(\omega_2-\omega_1)
+\end{equation*}
+Where the energy levels are
+\begin{equation*}
+	E_n=-\frac{\alpha Ze}{2n^2}
+\end{equation*}
+Using a semiclassical approximation we can say that the classical radius of the electron is, from $m_ec^2=\pot_{EM}$ $r_e=\alpha/m_e$.\\
+Putting ourselves in the reference frame of the projectile we have that the transferred momentum to the electron is
+\begin{equation*}
+	\Delta\vec{p}=\int_{}^{}\vec{F}\dd t=\int_{}^{}\frac{\vec{F}}{v}\dd x
+\end{equation*}
+Dividing the force into the parallel and orthogonal components we have that the parallel component is zero due to symmetry evaluations, and therefore
+\begin{equation}
+	\Delta p_{\perp}=\frac{1}{v}\int_{}^{}\vec{F}_{\perp}\dd x=\frac{e}{v}\int_{}^{}\vec{E}_{\perp}\dd x
+	\label{eq:orthmomvar}
+\end{equation}
+Considering a cylinder long $L$ with radius $b$ where $b$ is the impact parameter will then be the surface integral of the perpendicular component of the electric field, which will then be divided into the sum of the top and bottom circles of the cylinders and the boundary of such
+The flux of the field is then
+\begin{equation*}
+	\phi(\vec{E}_\perp)=\int_{\Sigma_1}^{}\vec{E}_\perp\dd\vec{S}+\int_{\Sigma_2}^{}\vec{E}_\perp\dd\vec{S}=2\pi b\int_{}^{}E_\perp\dd x
+\end{equation*}
+Solvin the integral we have that
+\begin{equation*}
+	\Delta p_\perp=\frac{2Ze^2}{4\pi\epsilon_0 bv}=Z\frac{e^2}{4\pi\epsilon_0 b^2}\frac{2b}{v}
+\end{equation*}
+The parameter $2b/v$ is known as the \emph{collision time}.\\
+In the non-relativistic approximation we have that the energy variation $T$ is
+\begin{equation*}
+	T=\frac{\Delta p* 2}{2m_e}=\left( \frac{e^2}{4\pi\epsilon_0} \right)^2\frac{4}{b^2v^2}\frac{Z^2}{2m_e}
+\end{equation*}
+Using $r_e=\frac{e^2}{4\pi\epsilon_0}\frac{1}{m_ec^2}$ we get
+\begin{equation}
+	T=2m_ec^2\frac{Z^2r_e^2}{b^2\beta^2}
+	\label{eq:energyvarelectron}
+\end{equation}
+This equation gives the relation between the impact parameter $b$ and the transferred energy $T$.\\
+For a fact we know that this transferred energy is equal to $-\Delta E_p$ which is the lost energy by the projectile, in our case the nucleus.\\
+Inverting for the impact parameter we get
+\begin{equation}
+	b^2=2m_ec^2v_e^2\frac{Z^2}{\beta^2T}
+	\label{eq:impactparam}
+\end{equation}
+Since $\dd\sigma=2\pi b\dd b$ we have
+\begin{equation}
+	\dd\sigma=2\pi m_ec^2r_e^2\frac{Z^2}{\beta^2T^2}\dd T
+	\label{eq:classicalemcs}
+\end{equation}
+Which is the cross section for the process in study.\\
+It's obvious that $\sigma'(T)\propto T^{-2}$ and therefore processes with small $T$ are more probable. Note that $T\propto b^{-2}$.\\
+Since $T$ is the lost energy in a single collision, the total lost energy will be $\Delta E_t=\Delta EN$ where $N$ is the total number of collisions, and
+\begin{equation*}
+	N=2\pi bn_e\dd b\dd x
+\end{equation*}
+And therefore
+\begin{equation}
+	\frac{\dd^2E}{\dd b\dd x}=2\pi n_3b\Delta E=4\pi m_ec^2r_e^2n_e\frac{Z^2}{\beta^2b}
+	\label{eq:energylossddb}
+\end{equation}
+In the end, the searched energy loss is
+\begin{equation*}
+	\dv{E}{x}=A\log\left( \frac{b_{max}}{b_{min}} \right)
+\end{equation*}
+Therefore, we have
+\begin{equation*}
+	\dv{E}{x}\propto\frac{Z^2}{\beta^2}\log\left( \frac{b_{min}}{b_{max}} \right)
+\end{equation*}
+Bohr continued this calculation evaluating this in the quantum mechanical case of the atom considering that $b/v\propto t_{ion}$, i.e. the $b/v$ is proportional to the ionization time of the electron.\\
+Considering therefore the electron as if it was free we have
+\begin{equation*}
+	\frac{b}{v}\approx\gamma t_{det}=\frac{\gamma}{\expval{\omega}}=\gamma\frac{\hbar}{I}
+\end{equation*}
+Where $t_{det}$ is the detection time, with $I$ being the average ionization energy.\\
+Therefore
+\begin{equation*}
+	b_{max}=\gamma\frac{\hbar v}{I}=\frac{\hbar\gamma\beta c}{I}
+\end{equation*}
+For the indetermination principle we can say that $\Delta x\approx\hbar/p_e$ and therefore
+\begin{equation*}
+	b_{min}\approx\Delta x=\frac{\hbar}{p_e}=\frac{\hbar}{\gamma\beta mc}
+\end{equation*}
+Substituting it into \eqref{eq:energylossddb} we have
+\begin{equation*}
+	-\dv{E}{x}=4\pi m_ec^2r_e^2n_e\frac{Z^2}{\beta^2}\log\frac{\gamma^2\beta^2m_ec^2}{I}
+\end{equation*}
+Using $n_e=\rho AN_AZ/A$ we get
+\begin{equation}
+	-\dv{E}{x}=4\pi m_ec^2r_e^2N_A\rho\frac{Z^3}{\beta^2A}\log\frac{\gamma^2\beta^2m_ec^2}{I}
+	\label{eq:energylosscomplete}
+\end{equation}
+Note that the minus sign is there since the energy gained comes from the loss of energy of the projectile, due to conservation of energy.\\
+Approximating the constants to $0.9\unit{MeV}$ and dividing $-\dv{E}{x}$ by the density of the material we get \emph{Bohr's formula}
+\begin{equation}
+	-\frac{1}{\rho}\dv{E}{x}=\frac{0.3}{2}\unit{MeV}\frac{Z^2}{\beta^2}\log\frac{\beta^2\gamma^2m_ec^2}{I}
+	\label{eq:bohrformula}
+\end{equation}
+This formula has major problems, since it doesn't account for quantum mechanics and relativity and isn't universal for all materials.\\
+Bethe and Bloch, then reevaluated the calculation using Quantum Electrodynamics, finding that
+\begin{equation}
+	-\frac{1}{\rho}\dv{E_{QFD}}{x}=(0.3\unit{MeV})\frac{Z^3}{A\beta^2}\left( \log\frac{2m_e\beta^2\gamma^2c^2\omega_{max}}{I^2}-\beta^2-\frac{\delta}{2} \right)
+	\label{eq:betheblock}
+\end{equation}
+Where $\omega_{max}\propto\max{E_e^{\star}}$, i.e. $\omega_{max}=2m_ec^2\beta^2\gamma^2$.\\
+We immediately notice $-\beta^2$ as a relativistic correction and $\frac{\delta}{2}$ as a correction for density and polarization effects of the object, all together corrected by an electric screening factor.\\ %bruh
+This formula, permits us with a measurement of $\dv{E}{x}$ and $p$ permits to identify the projectile particle, with a formula that holds up for $\beta\gamma$ from $0.1\to1000$
+\subsection{Residual Path}
+Roche proceeded to use the Bethe-Bloch equation for evaluating the so called \emph{residual path}, i.e. the path for which the projectile loses all its energy. This is given by
+\begin{equation}
+	R(E)=\int_{E}^{0}\dd x=\int_{E}^{0}\frac{\dd E}{-\dv{E_{QED}}{x}}=\int_{0}^{E}\frac{\dd E}{\dv{E_{QED}}{x}}
+	\label{eq:rochepath}
+\end{equation}
+From Bethe-Bloch's equation it's quick to deduce that $\beta\gamma$ small include heavy losses of energy.\\
+It's of note that before the actual stopping of the projectile particle, the Bethe-Bloch formula finds its maximum in what's known the \emph{Bragg peak}.\\
+This spike in energy is quite useful in tumor treating in what's known as Hadrontherapy, where hadrons, usually $p$ or $\nuc{C}{12}{}$, are shot in a localized region and by energy dissipation releases a sharp amount of energy where shot.\\
+In general, considering an elastic collision with nuclei, $\dv{E}{x}\approx0$ due to collisions being elastic, but this leads to a big $\Delta\vec{p}$, which implies an angular deviation as in Rutherford's experiment. The angular deviations are random, and it makes this a stochastic process.\\
+Consider a thick target, for the theorem of the central limit we can say that the distribution of angular deviation is proportional to a Gaussian distribution
+\begin{equation*}
+	f(\Delta\theta)\propto G(\expval{\theta}=0,\sigma=\sqrt{\expval{\theta^2}})
+\end{equation*}
+The $n-$th moment of the distribution will be
+\begin{equation*}
+	\expval{\theta^n}=\frac{\int_{}^{}\theta^n\dv{\sigma}{\Omega}\dd\Omega}{\int_{}^{}\dv{\sigma}{\Omega}}
+\end{equation*}
+Where $\sigma$ is the Rutherford cross section, which is proportional to $\csc^2(\theta/2)$. Using $\dd\Omega\approx2\pi\theta\dd\theta$ we can say without many doubts that
+\begin{equation*}
+	\dv{\sigma}{\Omega}\propto\dv{\sigma}{\theta}
+\end{equation*}
+Calculating the second momenta we get the expected value for a multiple coulombian scattering, which is
+\begin{equation*}
+	\expval{\theta^2}=21\unit{MeV}\frac{Z}{\beta cp}\sqrt{\frac{x}{\chi_0}}
+\end{equation*}
+Where $x$ is the depth traveled in the medium (in $\unit{cm}$), and $\chi_0$ is the \emph{radiation length}, which is
+\begin{equation}
+	\frac{1}{\chi_0}=4r_e^2\alpha\rho\frac{N_AZ^2}{A}\log\left( 183Z^{-1/3} \right)
+	\label{eq:radlength}
+\end{equation}
+\section{Cherenkov Effect}
+The Cherenkov effect is an effect similar to a sonic boom, for which a massive particle passes through a medium at a velocity higher than the speed of light in that medium $c_n=c/n$. This effect is due to polarization effects.\\
+Consider a projectile moving at $v_x>c_n$ in some medium. The Cherenkov radiation is accompanied by the emission of photons perpendicular to the light cone at some angle $\theta_c$.\\
+Consider now the process after a time $t$. The radius of the boom circle created by this ``superluminal'' particle is $L=v_yt=ct/n$, supposing the particle has traveled some space $\Delta x=\beta c\Delta t$ we have
+\begin{equation}
+	L=\Delta x\cos\theta_c\implies\cos\theta_c=\frac{1}{\beta n}
+	\label{eq:cherenkovangle}
+\end{equation}
+The angle $\theta_c$ can be experimentally measured, and a measure of $\theta_c$ and $p$.\\
+Note that the constraint $\cos\theta_c<1$ we get that this process exists if and only if $\beta\ge1/n$\\
+Tying this angle to the momentum of the particle we begin by noting that
+\begin{equation*}
+	\beta\gamma=\frac{\beta}{\sqrt{1-\beta^2}}=\frac{p}{m}
+\end{equation*}
+We have
+\begin{equation*}
+	\frac{1}{\beta}=\sqrt{1+\frac{m^2}{p^2}}
+\end{equation*}
+Substituting what we found before for $\cos\theta_c$ we have
+\begin{equation}
+	\cos\theta_c=\frac{1}{\beta n}=\frac{1}{n}\sqrt{1+\frac{m^2}{p^2}}>1
+	\label{eq:cherenkovmom}
+\end{equation}
+Which implies that the second constraint on Cherenkov radiation is that $p\ge p_{th}$. In the limit case of $o_c=p+m$, $\beta_{th}=n^{-1}$ we get
+\begin{equation*}
+	\frac{1}{n}=\sqrt{1+\frac{m^2}{p_{th}^2}}
+\end{equation*}
+Which, since $n>1$ gives
+\begin{equation}
+	p_{th}=\frac{m}{\sqrt{n^2-1}}
+	\label{eq:ptreshcherenkov}
+\end{equation}
+For $p>>p_{th}$ it's clear from formulas and experimental measurements that it's not possible to distinguish between different particles from their Cherenkov angle.\\
+In order to find the number of Cherenkov photons emitted in the process we can use classical electrodynamics, getting
+\begin{equation}
+	\frac{\dd^2N}{\dd x\dd E}=\frac{\alpha Z^2}{\hbar c}\left( 1-\frac{1}{\beta^2n^2(E)} \right)=\frac{\alpha Z^2}{\hbar c}\sin^2\theta_c
+	\label{eq:cherenkovphotonnumber}
+\end{equation}
+Where $n(E)=n(\lambda)$ is the refraction index of the medium.\\
+Using $E=2\pi\hbar c/\lambda$ we have changing variables
+\begin{equation}
+	\frac{\dd^2N}{\dd x\dd\lambda}=\frac{2\pi\hbar c}{\lambda^2}\frac{\dd^2N}{\dd x\dd E}=\frac{2\pi\alpha Z^2}{\lambda^2}\sin^2\left( \theta_c(\lambda) \right)
+	\label{eq:numberphotonwlcherenkov}
+\end{equation}
+In the visible spectrum we have $E\approx2\unit{eV}$ ($1.8\to3.1\unit{eV}$)
+\section{Loss of Energy for Electrons and Positrons}
+Since we're dealing with the loss of energy of charged particles we have to use the Bethe-Bloch loss of energy equation.\\
+We have that tat the minimum of the functon $\beta\gamma\approx3$ and therefore $p\approx1.5\unit{MeV}$ for electrons.\\
+This impilies that the relativistic climb of the electrons is really slow.\\
+Considering heavy projectiles like nuclei. The electrons will get strongly accelerated and will emit radiation, as for the Larmor formula we have that the radiated power is
+\begin{equation}
+	P_L=\frac{2}{3}\frac{e^2}{m^2c^3}\abs{\dot{\vec{v}}}^2
+	\label{eq:larmorpower}
+\end{equation}
+Extending it to a Lorentz invariant formulation we have
+\begin{equation*}
+	P_L=-\frac{2}{3}\frac{e^2}{m^2c^3}\dv{p_\mu}{\tau}\dv{p^\mu}{\tau}
+\end{equation*}
+Using
+\begin{equation*}
+	\dv{p_\mu}{\tau}\dv{p^\mu}{\tau}=\frac{1}{c^2}\abs{\dv{E}{\tau}}^2-\abs{\dv{\vec{p}}{\tau}}^2
+\end{equation*}
+And substituting $E=\gamma mc^2$, $\vec{p}=\gamma mc\underline{\beta}$ we have
+\begin{equation}
+	P_L=\frac{2e^2}{3c}\gamma^6\left( \left( \dv{\vec{\beta}}{t} \right)^2-\left( \vec{\beta}\times\dv{\vec{\beta}}{\tau} \right)^2 \right)
+	\label{eq:relativisticlarmor}
+\end{equation}
+Which, $\beta,\gamma$ are the relativistic parameters of a charged particle.\\
+There are two limit cases, one of linear acceleration, and one of perpendicular acceleration of the particles.\\
+For linear acceleration we have
+\begin{equation*}
+	\begin{aligned}
+		\vec{\dot{\beta}}&||\vec{\beta}\\
+		\vec{\dot{\beta}}\times\vec{\beta}&=0\\
+		P_L&=\frac{2e^2}{3c}\gamma^6\dot{\beta}^2
+	\end{aligned}
+\end{equation*}
+And for perpendicular acceleration
+\begin{equation*}
+	\begin{aligned}
+		\vec{\dot{\beta}}&\perp\vec{\beta}\\
+		P_L&=\frac{2e^2}{c}\gamma^6\left( \dot{\beta}^2-\beta^2\dot{\beta}^ 2 \right)
+	\end{aligned}
+\end{equation*}
+Writing the addition on the parentheses as $\beta\dot{\beta}^2/\gamma$ we get that the Larmor radiation power of the electron on a perpendicular acceleration motion (circular motion, ndr.) is proportional to the energy of the particle divided by its mass
+\begin{equation*}
+	P_L\propto\gamma^4=\frac{E^4}{m^4}
+\end{equation*}
+This is important for the determination of the particle emitting this Larmor radiation.\\
+Suppose you have two charged projectiles with $m_1\ne m_2$ and $E_1=E_2$, since $P_L\propto m^{-4}$ we have a huge increase in the Larmor power for the lighter (charged) particle.\\
+As an example take $E$ fixed and evaluate the radiated power of protons and electrons, we have
+\begin{equation*}
+	\frac{P_L^e}{P_L^p}=\frac{m_e^4}{m_p^4}\approx1.6\cdot10^{13}
+\end{equation*}
+I.e. electrons emit radiation 13 orders of magnitude more powerful than the one emitted by protons
+\section{Bremsstrahlung}
+Bremsstrahlung, or \emph{braking radiation} translated from German, is an effect dominant in electrons, and approximately $0$ for $m>m_e$ as long as $E$ isn't big enough.\\
+From Bethe-Bloch's formula we have that the lost energy is
+\begin{equation*}
+	-\dv{E}{x}\propto\frac{E}{\chi_0}
+\end{equation*}
+Where $\chi_0$ is defined in \eqref{eq:radlength} and it's a property of the medium. Solving the approximate ODE we have
+\begin{equation}
+	E(x)=E_0e^{-\frac{x}{\chi_0}}
+	\label{eq:bremmstrahlungenergyloss}
+\end{equation}
+At $x=\chi_0$ we have $E_0/e$ which implies that energy decreases by about $30\%$. In a standard length $\chi_0$ there therefore around $63\%$ of loss of energy. This loss of energy is known as \emph{Bremmstrahlung}.\\
+Confronting it with the ionization energy loss for electrons and positrons we have
+\begin{equation*}
+	\begin{aligned}
+		-\dv{E_{tot}}{x}=-\left( \dv{E_{ion}}{x}+\dv{E_{Brem}}{x} \right)
+	\end{aligned}
+\end{equation*}
+Inserting the Bethe-Bloch formula we have
+\begin{equation*}
+	R_{B/i}=\frac{\dv{E_{Brem}}{x}}{\dv{E_{ion}}{x}}\approx\frac{K_eZ}{1200m_e}
+\end{equation*}
+Where $K_e=E_e-m_e\approx E_e$. It's defined as \emph{critical energy of the medium} the value of energy such that $R_{B/i}=1$. For electrons we have
+\begin{equation*}
+	E_c=\frac{600}{Z}\unit{MeV}
+\end{equation*}
+This is useful for evaluating the ionization minimum for materials, as
+\begin{equation*}
+	I_{min}=\frac{E_c}{\chi_0}\approx(3.5\unit{MeV})\frac{Z}{A}
+\end{equation*}
+\section{Photons in Matter}
+There are three major processes for photons that depend directly on the energy of the photon $\gamma$
+\begin{enumerate}
+\item At low energy, the photoelectric effect dominates, with reaction
+	\begin{equation}
+		\gamma+\nuc{X}{A}{Z}\to\nuc{X}{A}{Z-1}+e^-
+		\label{eq:photoelectriceffectreac}
+	\end{equation}
+\item At a higher energy, the Compton scattering process dominates, with reaction
+	\begin{equation}
+		\gamma+e^-\to\gamma+e^-
+		\label{eq:comptonscattergee}
+	\end{equation}
+\item At high energies, the pair production effect dominates, with reaction
+	\begin{equation}
+		\gamma+\nuc{X}{A}{Z}\to e^++e^-+\nuc{X}{A}{Z}
+		\label{eq:pairproduction}
+	\end{equation}
+\end{enumerate}
+The total cross-section for photon interaction will obviously be a function depending on $E_\gamma$ and $Z$ of the interacting nucleus, since at different energies (and also at different $Z$) different processes can happen
+\subsection{Photoelectric Effect}
+Considering the photoelectric effect we have a reaction of the kind
+\begin{equation*}
+	\gamma+\nuc{X}{A}{Z}\to\nuc{X}{A}{Z-1}+e^-
+\end{equation*}
+In this effect we have
+\begin{equation*}
+	\sqrt{s}=\sqrt{m_e^2+m_X^2+2\left( E_eE_X-\vec{p}_e\vec{p}_X \right)}
+\end{equation*}
+The second part $m_X^2+2\left( E_eE_X-\vec{p}_e\vec{p}_X \right)$ is the impulse absorbed by the nucleus. Since $m_X>>m_e$ we have $\Delta E_X=0$ and all the impulse of $\gamma$ gets transferred to the electron.\\
+The quantum effect to take note in this case is the ionization energy of the electron, which gets absorbed by $e^-$ in order to escape the atomic bound state, therefore the gained energy is
+\begin{equation*}
+	E_e=E_\gamma-I
+\end{equation*}
+Inverting the relation in terms of $E_\gamma$ and noting that $E_e=K_e$ we have
+\begin{equation*}
+	E_\gamma=K_e+I
+\end{equation*}
+This effect is dominant for $E_\gamma<m_e\approx100\unit{keV}$, and the cross section is
+\begin{equation}
+	\sigma_{\gamma X}\propto\begin{dcases}
+		\frac{Z^5}{E_\gamma^3}&E_\gamma<m_e\\
+		\frac{Z^5}{E_\gamma}&E_\gamma>m_e
+	\end{dcases}
+	\label{eq:photoelectriccs}
+\end{equation}
+\subsection{Compton Effect}
+For photon energies $E_\gamma>>I$ we have that $\sigma_{\gamma X}$ gets particularly small and the Compton effect becomes the dominant EM process.
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw[decoration={complete sines,amplitude=2},decorate] (-2,0) -- (-0.2,0);
+		\draw[fill=black] (0,0) circle (1pt);
+		\node[below] at (0,0) (e) {$e^-$};
+		\draw[decoration={complete sines,amplitude=2},decorate] (0.2,0) -- (2,-1) node[right] (g) {$\gamma$};
+		\draw[->] (0.2,0) -- (2,1) node[right] (e2) {$e^-$};
+		\node[below] at (-0.8,0) (g1) {$\gamma$};
+	\end{tikzpicture}
+	\caption{Sketch of the Compton scattering, the photon and the electron get scattered by an angle $\theta$}
+	\label{fig:comptonscat}
+\end{figure}
+Using the transformations of angle equation in special relativity we have that the new energy of the photon after the scattering is
+\begin{equation}
+	E_\gamma'=\frac{E_\gamma}{1+\frac{E_\gamma}{m_e}\left( 1-\cos\theta \right)}
+	\label{eq:comptonscaten}
+\end{equation}
+The maximum energy transfer will happen at $\theta_{max}=\pi$, for which
+\begin{equation}
+	E_\gamma(\theta=\pi)=\frac{E_\gamma}{1+\frac{2E_\gamma}{m_e}}
+	\label{eq:maxanglecompton}
+\end{equation}
+And when $E_\gamma\approx m_e$, where solving we have
+\begin{equation}
+	E_\gamma'\approx\frac{E_\gamma}{3}=\frac{m_e}{3}
+	\label{eq:maxcompton}
+\end{equation}
+In this last case, for $\theta=\pi,E_\gamma\approx m_e$, the photon loses around $66\%$ of its initial energy, transferring it all to the electron.\\
+This effect is dominant for $E_\gamma>m_e$ and its cross section is
+\begin{equation}
+	\sigma_{\gamma e^-}\propto\frac{Z}{E_\gamma}
+	\label{eq:comptoncs}
+\end{equation}
+\subsection{Pair Production}
+Considering the pair production process we might think to write it as a process where a photon decays into an electron and a positron
+\begin{equation*}
+	\gamma\to e^-+e^+
+\end{equation*}
+Evaluating $\sqrt{s}$ for the LHS and RHS of the process we see clearly that this is impossible, since
+\begin{equation*}
+	\sqrt{s}=m_\gamma=0\ne m_{e^-}^2+m_{e^+}+2\left( E_{e^-}E_{e^+}-\vec{p}_{e^-}\vec{p}_{e^+} \right)
+\end{equation*}
+Adding a nucleus $\nuc{X}{A}{Z}$ on both sides we instead get
+\begin{equation*}
+	\sqrt{s}=m_X^2+2E_\gamma m_X
+\end{equation*}
+Where $2E_\gamma m_X$ is a recoil term of the nucleus given by the conservation of momentum.\\
+It's obvious that there is a threshold energy for this process, for which
+\begin{equation}
+	E_\gamma\ge m_{e^-}+m_{e^+}\approx1.022\unit{MeV}
+	\label{eq:thresholdpairprod}
+\end{equation}
+Taken all these process at once we have that for $10\unit{eV}\le E_\gamma\le100\unit{keV}$ the photoelectric effect is dominant, for $100\unit{keV}<E_\gamma\le10\unit{MeV}$ the Compton effect is dominant with a maximum for $E_\gamma=m_e$. And lastly for $E_\gamma>10\unit{MeV}$ the pair production effect is the most predominant effect, starting from $E_\gamma=1.022\unit{MeV}$
+\subsection{Attenuation Length for Photons}
+Consider now a beam of photons going through some medium. We have that the intensity of the beam will depend on the distance traveled inside the medium as for the equation
+\begin{equation}
+	I(x)=I_0e^{-\frac{x}{\lambda}}=I_0e^{-\mu x}
+	\label{eq:gammaintmed}
+\end{equation}
+Where $\mu$ is the well known attenuation coefficient. Considering the relation between the cross section and the attenuation coefficient we have that
+\begin{equation}
+	\mu=\mu_{e^+e^-}+\mu_{\gamma e^-}+\mu_{\gamma X}=\sigma n=\left( \sum_i\sigma_i \right)n
+	\label{eq:attlengthphoton}
+\end{equation}
+Where $\sigma$ is the total cross section of the photon interaction. We have that for $E>100\unit{MeV}$ $\sigma$ is mostly constant, and therefore
+\begin{equation}
+	\frac{1}{x_\gamma}=\sigma n\approx\frac{7}{9}\frac{1}{\chi_0}
+	\label{eq:gammaattenuation}
+\end{equation}
+Where $1/x_\gamma$ is the attenuation length of the photon, which is deeply tied to the radiation length of the medium. Note that $n$ is the refraction coefficient.\\
+Since we're in the range of $E_\gamma>10\unit{MeV}$ the dominant process is pair production, and from this we can calculate the cross section for pair production as
+\begin{equation}
+	\sigma_{e^+e^-}=\frac{7A}{9\rho\chi_0N_A}\propto Z^2\log(183Z^{-1/3})
+	\label{eq:pairprodcs}
+\end{equation}
+Note that positrons have the exact same parameters of electrons, excluding the charge which is opposite.
+\subsection{Electromagnetic Showers in Mediums}
+Consider a beam of high energy $e^+,e^-$ in some medium, these particles will produce high energy photons through Bremsstrahlung radiation. These high energy photons will then produce pairs of $e^+,e^-$ creating a shower.\\
+Note that the positron-electron pair will lose $30\%$ of their initial energy due to Bremsstrahlung and the photons lose around $60\%$ of their initial energy due to the previous listed scattering processes.\\
+This process is a stochastic shower which continues up until $E_i>E_c$. This process is determined by $\chi_0$, which gives the average distance traveled before the doubling of particles, which cause $E$ to half, and it will continue up until there is no more Bremsstrahlung effect ($E_i$ reaches the level of Compton scattering).\\
+This process is studied in function of the depth $t=x/\chi_0$ and $-E_0^{-1}\dv{E}{x}$. The profile recovered for this stochastic process is
+\begin{equation}
+	F(t)\propto\frac{E_0}{E_c}t^ae^{-bt}
+	\label{eq:emshowerprofile}
+\end{equation}
+And from this we have that the maximum depth the shower will reach is
+\begin{equation}
+	t_{max}=\log\left( \frac{E_0}{E_c} \right)+c
+	\label{eq:maxdepthshower}
+\end{equation}
+Where $a,b,c$ are parameters given by energetic corrections and fitting of data.\\
+The cone created by the shower is given by multiple coulomb scattering, which gives no energy loss (elastic scattering) but only an angular reaction. The radius of the cylinder containing $90\%$ of the particles interacting in the shower is
+\begin{equation}
+	R_M=\frac{21}{E_c}\chi_0
+	\label{eq:moliereradius}
+\end{equation}
+Which is known as \emph{Moliere radius}.
+\subsection{Hadronic Interactions}
+Consider now the case of hadrons, particles that interact both electromagnetically and strongly, like $p,\pi^{\pm},K^{\pm},n$ (protons, pions, kaons, neutrons). These particles can interact strongly with the nuclei in the medium. In general
+\begin{enumerate}
+\item For low energies ($2\unit{GeV}\le E\le5\unit{GeV}$) the scattering is elastic and there is no energy loss
+\item For intermediate energies ($5\unit{GeV}\le E\le100\unit{GeV}$) there is an EM interaction with the medium which transfers around $100\unit{MeV}$ of energy
+\item For high energies ($E>100\unit{GeV}$) the hadrons interact strongly with the nucleus, and similarly to the EM case, a shower happens
+\end{enumerate}
+For the intermediate energy levels we have that $\sigma_n\approx\pi R_N^2\approx\pi\unit{fm^2}\approx30\unit{mb}$ and the cross section is inelastic, since the collision is inelastic. $\sigma$ grows with energy, $\sigma\approx\sigma_0A^{2/3}$.\\
+For the high energy case, considering a beam of hadrons with intensity $I(x)=I_0\exp(-x/\lambda)$ we can say that
+\begin{equation*}
+	\frac{1}{A}=\sigma_hn=\sigma\rho\frac{N_A}{A}
+\end{equation*}
+Where $\lambda$ is the nuclear interaction length, also known as the usual mean free path between the inelastic collisions. In general $\sigma_n\approx1\unit{b}<\sigma_{EM}$ therefore $\lambda>\chi_0$
+\end{document}

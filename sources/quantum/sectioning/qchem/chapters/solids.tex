@@ -1,0 +1,209 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+\section{Infinite Linear Chain}
+The first idea of solid we can imagine is the direct generalization of an ideal cyclic molecule with $N$ atoms, where $N$ is a pretty big number but not infinite, in general $N\sim10^7-10^8$.\\
+This regular polygon with so many vertices can be approximated without problems to a chain long $2\pi R\simeq Na$ where $a$ is the distance between two atoms. Taking a single atom of the chain as our coordinate origin we see easily that a finite rotation of $2\pi N^{-1}$, for $N\to\infty$ is almost indistinguishable from a discrete translation of $a$ along an infinite chain.\\
+From this symmetry we can immediately say, that if we define a translation operator $\opr{T}_{a}$ that moves this chain, if we write the Hamiltonian of the system as $\opr{\ham}$, we have that $\comm{\opr{\ham}}{\opr{T}_a}=0$. Since we're generalizing the ideal polyatomic cyclic molecule for $N$ univalent atoms, we take our usual minimal LCAO basis. We will have $\ket{\alpha_m}$ orbitals, where $m=0,\cdots,N$, and our translation operator on our basis kets will act as follows
+\begin{equation}
+	\opr{T}_a\ket{\alpha_m}=e^{\frac{2i\pi m}{N}}\ket{\alpha_m}
+	\label{eq:translationop}
+\end{equation}
+The induced phase, which depends on $m$, can now be redefined with a new quantum number, due to the properties of this chain.\\
+We must have, for the electronic wavefunction
+\begin{equation}
+	\psi_{e^-}(x)=\psi_{e^-}(x+L),\quad L=Na
+	\label{eq:chainelectron}
+\end{equation}
+Supposing the electron completely free we have that the wavefunction must be of the form $\psi\propto e^{ikx}$. Imposing the previous condition in order to constrain the electron wavefunction to the chain we must have
+\begin{equation}
+	Ae^{ikx}=Ae^{ik(x+Na)}\implies k=\frac{2\pi m}{Na},\ m=0,\cdots,N
+	\label{eq:chainquantization}
+\end{equation}
+This is the quantization relation for the chain, which gives us a new quantum number $k_m$, that due to its definition is called the \emph{wavenumber} of the chain, where
+\begin{equation}
+	k_m=\begin{dcases}
+		\frac{2\pi m}{Na}=0,\cdots,\pm\left( \frac{N-1}{N} \right)\frac{\pi}{a}&N=2k+1,\ k\in\mathbb{N}\\
+		\frac{2\pi m}{Na}=0,\cdots,\pm\frac{\pi}{a}&N=2k
+		\end{dcases}
+	\label{eq:kmquantumnumb}
+\end{equation}
+It's easy to see from its definition that $k_m\in[-\pi/a,\pi/a]$, which is called the \emph{1st Brillouin zone}. It's also obvious that for $N\to\infty$, $k_m\to k$, where $k$ is a continuous variable defined in the same Brillouin interval.\\
+With this definition, we will have that applying $\hat{T}_a$ on our basis states, we have
+\begin{equation}
+	\opr{T}_a\ket{\alpha_k}=e^{ik_ma}\ket{\alpha_k}
+	\label{eq:brillouintrans}
+\end{equation}
+Where we substituted $m\to k_m$, our new quantum (wave)number. As we said before the Hamiltonian commutes with the translation operator, therefore, since $\ket{\alpha_k}$ are eigenstates of $\opr{T_a}$, they must also be eigenstates of the Hamiltonian, such that
+\begin{equation}
+	\begin{aligned}
+		\bra{k}\ket{k'}&=\delta_{kk'}\\
+		\bra{k}\opr{\ham}\ket{k'}&=\epsilon_{k}\delta_{kk'}
+	\end{aligned}
+	\label{eq:hamonbrill}
+\end{equation}
+Where $\ket{\alpha_k}=\ket{k}$.\\
+Since basically everything is equal to the case of the $N$-atomic cyclic molecule, supposing that $\ket{\alpha_m}=\ket{1s}_m$ (i.e. $\ket{\alpha}$ is a minimal LCAO base for every single atom) we can say, imposing the tight binding approximation, that
+\begin{equation}
+	\begin{aligned}
+		\ket{k}&=\frac{1}{\sqrt{N}}\sum_{n=1}^Ne^{ikna}\ket{1s}_n\\
+		\epsilon_k&=\epsilon_0-2t\cos(ka)
+	\end{aligned}
+	\label{eq:chainenwf}
+\end{equation}
+All of this is generalizable to 2 and 3 dimensions, with the definition of a Bravais lattice
+\begin{defn}[Bravais Lattice]
+	A Bravais lattice is defined as a set of discrete points which can be described with a lattice vector $\vec{R}=n_1\vec{a}_1+n_2\vec{a}_2+n_3\vec{a}_3$, where $n_1,n_2,n_3\in\Z$ and $\vec{a}_i$ are linearly independent basis vectors. Therefore
+	\begin{equation}
+		\begin{aligned}
+			R&=na\qquad\text{in 1D}\\
+			\vec{R}&=n_1\vec{a}_1+n_2\vec{a}_2\qquad\text{in 2D}\\
+			\vec{R}&=n_1\vec{a}_1+n_2\vec{a}_2+n_3\vec{a}_3\qquad\text{in 3D}
+		\end{aligned}
+		\label{eq:bravaisvector}
+	\end{equation}
+\end{defn}
+And with the usage of the Bloch theorem, which states
+\begin{thm}[Bloch Theorem]
+	Given a Hamiltonian with a lattice-periodic potential $V(\vec{r})=V(\vec{r}+\vec{R})$, where $\vec{R}$ is a lattice vector, the eigenfunctions of the system will be of the following shape
+	\begin{equation}
+		\psi_{\vec{k}}(\vec{r})=e^{i\vec{k}\vec{r}}u_{\vec{k}}(\vec{r})
+		\label{eq:blochwave}
+	\end{equation}
+	Where $u_{\vec{k}}$ is a lattice-periodic function. The wavefunction $\psi_{\vec{k}}$ is known as a Bloch wave.
+\end{thm}
+All this summed up, for a 3D lattice, we will have
+\begin{equation}
+	\begin{aligned}
+		\ket{\vec{k}}&=\frac{1}{\sqrt{N_1N_2N_3}}\sum_{n_1=1}^{N_1}\sum_{n_2=1}^{N_2}\sum_{n_3=1}^{N_3}e^{ia(k_xn_1+k_yn_2+k_zn_3)}\ket{n_1n_2n_3}\\
+		\epsilon_{\vec{k}}&=\epsilon_0-2t\cos(k_xa)-2t\cos(k_ya)-2t\cos(k_za)
+	\end{aligned}
+	\label{eq:cubiclattice}
+\end{equation}
+\section{Fermi Level}
+As seen in Statistical Mechanics, the electrons, being fermions with $s=1/2$ must obey the Fermi-Dirac statistic, where the density of states is some function $g(\epsilon)$. The number of states will be given by the integral of this probability density function $g(\epsilon)$, remembering that if $\dd N$ is the number of states between $\epsilon,\epsilon+\dd\epsilon$ and $g$ is the degeneracy of the levels, we have
+\begin{equation*}
+	\int_{-\infty}^\infty g(\epsilon)\dd\epsilon=\frac{N}{g}
+\end{equation*}
+Since for electrons we have a degeneracy of $2$, since $m_s=\pm1/2$ we can say that in general, the number of states possible is $2g(\epsilon)\dd\epsilon$. It's obvious that the Fermi-Dirac distribution must be a Dirac delta for discrete spectra (like the QHO), where
+\begin{equation*}
+	g(\epsilon)=\sum_i\delta(\epsilon-\epsilon_i)
+\end{equation*}
+Where $i$ is a quantum number.\\
+In general, for solids we will search the density of states in a certain energy interval, given by $g(\epsilon)/V$ where $V$ is either the length, surface or volume (in 1D, 2D or 3D) of the lattice.\\
+Due to the high number of atoms in the crystals we treat it's common to employ the following approximation, where we will move everything from the discrete sums to a continuous integral, where in 3 dimensions, we have
+\begin{equation*}
+	\frac{1}{V}\sum_i\to\frac{1}{(2\pi)^3}\int_B\dd^3k
+\end{equation*}
+Where we also approximated $\vec{k}_m\to\vec{k}$, considering it as a continuous quantum number. Note that $B$ is Brillouin's first zone.\\
+Using the definition of $\epsilon_{\vec{k}}$ given in \eqref{eq:cubiclattice} the integral is solvable in 1D, and therefore, we get
+\begin{equation}
+	g(\epsilon)=\begin{dcases}
+		\frac{1}{\pi a}\frac{1}{\sqrt{4t^2-(\epsilon-\epsilon_0)}}&\abs{\epsilon-\epsilon_0}<2t\\
+		0&\abs{\epsilon-\epsilon_0}>2t
+	\end{dcases}
+	\label{eq:1dlatticedensity}
+\end{equation}
+The Fermi level of a crystal, is defined as the level with energy $\epsilon_F$ such that the highest possible state is occupied by fermions at $T=0$. For electrons we have, supposing a univalent crystal with only one basis orbital (a one level system) for $N$ atoms, we have that
+\begin{equation}
+	N_{e^-}(\epsilon_F)=N=2\int_{-\infty}^{\epsilon_F}g(\epsilon)\dd\epsilon
+	\label{eq:fermilevelcrystal}
+\end{equation}
+Note that the integral must be equal to the number of atoms, since that's the number of electrons in the system, since each atom is univalent.\\
+By sheer logic, since each cell of the crystal can be occupied by two electrons, we have that $N/2$ cells are occupied and $N/2$ are unoccupied, therefore at $T=0\ K$, noting that the energy band is symmetric with respect to $\epsilon_0$ ($\abs{\cos(x)}\le1$), we can immediately say that having the first $N/2$ cells occupied, it implies that the Fermi level must lay at the center of the band, giving $\epsilon_F=\epsilon_0$.\\
+If this is generalized to two or three dimensional lattices, we can define a Fermi surface, i.e. a surface $\Sigma_F$ defined as follows
+\begin{equation*}
+	\Sigma_F:=\left\{\vec{k}\in\R^3\left|\right. \epsilon_{\vec{k}}=\epsilon_F \right\}
+\end{equation*}
+I.e. it's the set of all wavevectors $\vec{k}$ such that $\epsilon_{\vec{k}}=\epsilon_0$.\\
+For a tight-binding Hamiltonian in 3D, where all the atoms are in an univalent lattice, we can immediately say that since $\epsilon_0=\epsilon_F$, the Fermi surface will be the solution of the following equation
+\begin{equation}
+	\cos(k_xa)+\cos(k_ya)+\cos(k_za)=0
+	\label{eq:3dlatticefermilevel}
+\end{equation}
+\section{Free Electron Approach to Metals}
+\subsection{Drude Theory of Conduction}
+The idea of conduction theorized by Drude is a completely classical idea.\\
+Suppose having a metal with $Z$ valence electrons and $N$ atoms with charge $+Z_ae$. These electrons move almost freely on the surface of the metal, where their only interaction is through collisions with the ions.\\
+Supposing these collisions as ``conduction collisions'' we can write Newton's equation of motion for this system
+\begin{equation}
+	m\vec{a}=e\vec{E}\ \implies\ \vec{a} = -\frac{e\vec{E}}{m}
+	\label{eq:drudecond}
+\end{equation}
+By integrating on $t$ and including $\expval{\vec{v}_0}=0$ by hypothesis, we have that on average, for each electron
+\begin{equation}
+	\expval{\vec{v}_{e^-}}=\expval{\frac{e\vec{E}}{m}t}=\frac{e\vec{E}}{m}\tau
+	\label{eq:reltime}
+\end{equation}
+Where $\tau$ is the ``relaxation time'' of the metal, i.e. the average time between the collisions of the electrons.\\
+By definition of current we can see that it will be proportional to the average velocity of the electrons times the number density of electrons in the metal, therefore, writing Ohm's law
+\begin{equation}
+	\vec{J}=-ne\expval{\vec{v}_{e^-}}=\sigma\vec{E}\ \implies\ \sigma=\frac{ne^2}{m}\tau
+	\label{eq:conductivity}
+\end{equation}
+Where $\sigma$ is the conductivity of the metal.\\
+Since the system is completely classical, we have that the electrons will follow a Maxwell-Boltzmann distribution of velocities, and since $\expval{E}=3k_BT/2$ we also have that the electron speed is tied to the temperature of the metal with the following formula
+\begin{equation}
+	\expval{\vec{v}_{e^-}}(T)=\sqrt{\frac{3k_BT}{m}}
+	\label{eq:drudevel}
+\end{equation}
+The mean free path of the electrons on the metal will obviously be given by the formula $\lambda=\abs{\expval{\vec{v}_{e^-}}}\tau$.
+\subsection{Sommerfeld Theory of Metals and Conduction}
+The Sommerfeld theory is basically a quantum approach to Drude's classical theory.\\
+The first idea behind this is to evaluate the free electrons of the solid inside a box of volume $V=L^3$. The Schrödinger equation for such system will be
+\begin{equation}
+	\begin{aligned}
+		\frac{\hbar^2}{2m}\nabla^2\psi&=\epsilon_{\vec{k}}\psi\\
+		\psi(\vec{r}+\vec{L})&=\psi(\vec{r})
+	\end{aligned}
+	\label{eq:sommerfeldfreeel}
+\end{equation}
+This equation has a solution a plane wave with normalization $V^{-1/2}$, and a quantization of the wavenumber $\vec{k}_n=2\pi L^{-1}(n_x,n_y,n_z)$. Note that since we didn't consider a lattice structure the electrons are completely free and $\vec{k}$ isn't confined to Brillouin's first zone.\\
+From this we can say that since the particles considered must obey Fermi-Dirac's statistic, we have that a $T=0$ the density of states will be confined inside a minimal volume $V_F$ in $k$ space it, where
+\begin{equation*}
+	V_F=\frac{4}{3}\pi k_F^3
+\end{equation*}
+The Fermi momentum is implicitly defines Fermi's momentum $k_F$, where
+\begin{equation*}
+	\epsilon_F=\frac{\hbar^2k_F}{2m}\implies k_F=\sqrt{\frac{2m}{\hbar^2}\epsilon_F}
+\end{equation*}
+The density of states will be $\rho(k)=2V/8\pi^3$ for electrons ($g=2$) and the total number of states will therefore be
+\begin{equation*}
+	N_s=\rho(k)V_F=\frac{V}{3\pi^2}k_F^3
+\end{equation*}
+Which, if we write $n=N_s/V$ as the number density of states gives
+\begin{equation}
+	k_F=\sqrt[3]{3n\pi^2}
+	\label{eq:fermimomsolid}
+\end{equation}
+Rearranging everything using $\eqref{eq:fermimomsolid}$ we end up having the following expressions for the Fermi energy in terms of the density of electrons
+\begin{equation}
+	\begin{aligned}
+		\epsilon_F(n)&=\frac{\hbar^2}{2m}(3n\pi^2)^{\frac{2}{3}}\\
+		n(\epsilon_F)&=\frac{1}{3\pi^2}\left( \frac{2m\epsilon_F}{\hbar^2} \right)^{\frac{3}{2}}\\
+		n(k_F)&=\frac{k_F^3}{3\pi^2}
+	\end{aligned}
+	\label{eq:densityelectronssomm}
+\end{equation}
+Another intrinsic characteristic of the metal is the Fermi temperature $T_F$ of such, which is simply $T_F=k_B^{-1}\epsilon_F$.\\
+Using statistical mechanics we can approximate the energy distribution for electrons, and expanding around $\epsilon_F$ we get
+\begin{equation*}
+	g(\epsilon)=\frac{4}{3}\frac{n}{\epsilon_F}\sqrt{\frac{\epsilon}{\epsilon_F}}\qquad\epsilon\ge0
+\end{equation*}
+Inserting this into the Fermi-Dirac distribution we have that
+\begin{equation*}
+	\mu\approx\epsilon_F-\frac{\pi^2}{6}\frac{g'(\epsilon_F)}{g(\epsilon_F)}=\epsilon_F\left[ 1-\frac{1}{3}\left( \frac{\pi}{2}\frac{T}{T_F} \right) \right]
+\end{equation*}
+Indicating that since $T/T_F<<1$ at room temperature, Sommerfeld's free electron approach is a good approximation for what happens in a metal, since $\epsilon\approx\epsilon_F$\\
+Suppose now that we want to calculate another property of the metal itself, the specific heat at constant volume.\\
+Using statistical mechanics again we have that the energy per single electron is given by
+\begin{equation*}
+	\frac{E}{N}=\frac{u}{n}=\frac{u_0}{n}+\frac{\pi^2}{6}\frac{2g(\epsilon_F)}{n}\left(k_BT\right)^2
+\end{equation*}
+Where $g(\epsilon_F)$ is our well known Fermi-Dirac distribution evaluated at the Fermi energy.\\
+Using the well known formula for calculating the specific heat we get
+\begin{equation*}
+	c_V=\pdv{u}{T}=\frac{\pi^2}{2}\left( \frac{k_BT}{\epsilon_F} \right)k_BT=\frac{\pi^2}{2}\left( \frac{T}{T_F} \right)nk_B
+\end{equation*}
+\section{blah blah}
+hi this is a test <++>
+\end{document}

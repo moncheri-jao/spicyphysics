@@ -1,0 +1,550 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Metric Spaces}
+\subsection{Topology}
+\begin{dfn}[Metric Space]
+	Let $X$ be a non-empty set equipped with an application $d$, defined as follows
+	\begin{equation}
+		\begin{aligned}
+			d\st&X\times X\fto\F\\
+			&(x,y)\to d(x,y)
+		\end{aligned}
+		\label{eq:distdef}
+	\end{equation}
+	Where $\F$ is an ordered field.\\
+	The couple $(X,d)$ is said to be a \textit{metric space}, if and only if $\forall x,y,z\in X$ the application $d$ satisfies the following properties
+	\begin{enumerate}
+	\item $d(x,y)\ge0$
+	\item $d(x,x)=0$
+	\item $d(x,y)=d(y,x)$
+	\item $d(x,y)\le  d(x,z)+d(z,y)$
+	\end{enumerate}
+\end{dfn}
+\begin{dfn}[Ball]
+	Let $(X,d)$ be a metric space. We then define the \textit{open ball of radius} $r$, centered in $x$ in $X$ ($B_r^X$), and the \textit{closed ball of radius} $r$ centered in $x$ ($\cc{B_r^X}$) as follows
+	\begin{equation}
+		\begin{aligned}
+			B_r^X(x):&=\{\derin{u\in X}d(u,x)<r\}\\
+			\cc{B_r^X}(x):&=\{\derin{u\in X}d(u,x)\le r\}
+		\end{aligned}
+		\label{eq:openclosedball}
+	\end{equation}
+	When there won't be doubts on on where the ball is defined, the superscript indicating the set of reference will be omitted.
+\end{dfn}
+We're now ready to define the \textit{topology} on a metric space
+\begin{dfn}[Open Set]
+	Let $(X,d)$ be a metric space, and $A\subseteq X$ a subset. $A$ is said to be an \textit{open set} if and only if
+	\begin{equation}
+		\forall x\in X\ \exists B_r^X(x)\subset A
+		\label{eq:opensetdef}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Complementary Set]
+	Let $A$ be a generic set, then the set $\comp{A}$ is defined as follows
+	\begin{equation}
+		\comp{A}:=\{a\notin A\}
+		\label{eq:compsetdef}
+	\end{equation}
+	This set is said to be the \textit{complementary set} of $A$.\\
+	It's also obvious that $A\cap\comp{A}=\{\}$
+\end{dfn}
+\begin{dfn}[Closed Set]
+	Alternatively to the notion of open set, we can say that $E\subseteq X$ is a \textit{closed set}, if and only if
+	\begin{equation}
+		\forall x\in\comp{E}\cap X\ \exists B_r^X(x)\subset\comp{E}\cap X
+		\label{eq:closedsetdef}
+	\end{equation}
+\end{dfn}
+\begin{rmk}
+	A set isn't necessarily open nor closed!
+\end{rmk}
+\begin{prop}
+	\begin{enumerate}
+	\item The set $B_r^X(x)$ is open
+	\item The set $\cc{B_r^X}(x)$ is closed
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Let $A=B_r^X(x)$. If $A$ is open, we have therefore, applying the definition of open set, that
+	\begin{equation*}
+		\forall x\in A\ \exists\epsilon>0\st B^X_\epsilon(x)\subset A
+	\end{equation*}
+	So
+	\begin{equation*}
+		\begin{aligned}
+			&x_0\in A\implies d(x,x_0)<r\\
+			&\therefore\epsilon=r-d(x,x_0)>0
+		\end{aligned}
+	\end{equation*}
+	Then, by definition of open ball we have
+	\begin{equation*}
+		y\in B^X_\epsilon(x)\implies d(x,y)<\epsilon
+	\end{equation*}
+	Then, we can say that
+	\begin{equation*}
+		\begin{aligned}
+			&d(y,x_0)\le d(y,x)+d(x,x_0)<\epsilon+d(x,x_0)=r\\
+			&\therefore y\in B^X_\epsilon(x)\implies y\in B^X_r(x_0)\subset A
+		\end{aligned}
+	\end{equation*}
+	The demonstration of the second point is exactly the same, whereby we take $E$ as our closed ball and $A=\comp{E}$
+\end{proof}
+\begin{prop}
+	Let $(X,d)$
+	\begin{enumerate}
+	\item The sets $\{\},X$ are open
+	\item The sets $\{\},X$ are closed
+	\item If $\{A_i\}_{i=1}^n$ is a collection of open sets, then $A=\bigcap_{i=1}^nA_i$ is open
+	\item If $\{C_i\}_{i=1}^n$ is a collection of closed sets, then $C=\bigcup_{i=1}^nC_i$ is closed
+	\item Let $I\subset\N$ be an index set, then
+		\begin{enumerate}
+		\item If $\{A_\alpha\}_{\alpha\in I}$ is a collection of open sets, then $B=\bigcup_{\alpha\in I}A_\alpha$ is open
+		\item If $\{C_\alpha\}_{\alpha\in I}$ is a collection of closed sets, then $D=\bigcap_{\alpha\in I}C_{\alpha}$ is closed
+		\end{enumerate}
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	The first two statements are of easy proof. Let $B^X_\epsilon\subset\{\}$. This means that $B^X_\epsilon$ is empty and therefore $B^X_\epsilon=\{\}$, which makes it open by definition. Therefore we have that $\comp{\{\}}=X$, and $X$ must be closed, but if we reason a bit, we can say that $\forall x\in X\ B_\epsilon^X(x)\subset X$, which means that $X$ is open, thus $\comp{X}=\{\}$ must be closed.\\
+	Since we gave a proof for $\{\}$ and $X$ being open, we have that these two sets are both open and closed. These two sets are said to be \textit{clopen}.\\
+	For the other statements we use the De Morgan laws on set calculus, therefore we have
+	\begin{equation*}
+		\begin{aligned}
+			&x\in\bigcap_{i=1}^nA_i\implies x\in A_i\\
+			&\therefore\exists\epsilon_i\st B^X_{\epsilon_i}(x)\subset A_i\\
+		\end{aligned}
+	\end{equation*}
+	Taking $\epsilon=\min_{i\in I}\epsilon_i$ we have
+	\begin{equation*}
+		B_\epsilon^X(x)\subset B_\epsilon^X(x)\implies B_\epsilon^X(x)\subset\bigcap_{i=1}^nA_i=A
+	\end{equation*}
+	And $A$ is open\\
+	If we let $C=\comp{A}$ we have that\\
+	\begin{equation*}
+		\begin{aligned}
+			&C=\comp{A}=\comp{\left( \bigcap_{i=1}^nA_i \right)}=\bigcup_{i=1}^n\comp{A}_i\\
+			&\therefore{C}\text{ is closed}
+		\end{aligned}
+	\end{equation*}
+	For the last two we proceed as follows
+	\begin{equation*}
+		\begin{aligned}
+			&x\in A_\alpha\implies\exists\alpha_0\in I\st x\in A_{\alpha_0}\\
+			&\therefore\exists\epsilon>0\st B_{\epsilon}^X(x)\subset A_{\alpha_0}\subset\bigcup_{\alpha\in I}=B
+		\end{aligned}
+	\end{equation*}
+	For the last one, we use the De Morgan laws and the proposition is demonstrated
+\end{proof}
+\begin{dfn}[Internal Points, Closure, Border]
+	Let $(X,d)$ be a metric space and $A\subset X$ a subset.\\
+	We define the following sets from $A$
+	\begin{enumerate}
+	\item $\intr{A}=\bigcup_{\alpha\in I}G_\alpha$ is the set of internal points of $A$, where $I$ is an index set and $G_{\alpha}\subset A$ are open
+	\item $\cc{A}=\bigcap_{\beta\in J}F_\beta$ is the closure of $A$, where $J$ is another index set and $F_\beta\subset A$ are closed
+	\item $\partial{A}=\cc{A}\setminus\intr{A}=\cc{A}\cup\comp{\left(\intr{A}\right)}$ is the border of $A$
+	\end{enumerate}
+\end{dfn}
+\begin{prop}
+	\begin{enumerate}
+	\item $A$ is an open set iff $A=\intr{A}$
+	\item $A$ is closed iff $A=\cc{A}$
+	\item $\intr{A}=\comp{\cc{\left( \intr{A} \right)}}$
+	\item $\cc{A}=\comp{\left[ \intr{\left( \comp{A} \right)} \right]}$
+	\item $\intr{\left( A\cap B \right)}=\intr{A}\cap\intr{B}$
+	\item $\cc{A\cap B}=\cc{A}\cup\cc{B}$
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Let $\mathcal{O}(A)$ be a collection of open sets, such that $\forall{G}\in\mathcal{O}(A)\implies G\subset A$, then
+	\begin{equation*}
+		A=\intr{A}\implies A=\bigcup_{G\in\mathcal{O}(A)}G
+	\end{equation*}
+	Therefore, being a union of a finite number of open sets, $A$ is open.\\
+	For the same reason as before and the previous proposition, we have that $\cc{A}$ is closed\\
+	For the third proposition, we have
+	\begin{equation*}
+		\comp{\left( \cc{\comp{A}} \right)}=\comp{\left( \bigcap_{\comp{A}\subset F}F \right)}=\bigcup_{\comp{A}\subset F}\comp{F}=\bigcup_{G\in\mathcal{O}(A)}G=\intr{A}
+	\end{equation*}
+	The others are easily demonstrated throw this process, iteratively
+\end{proof}
+\begin{prop}
+	Let $(X,d)$ be a metric space, and $A\subset X$, $x\in X$
+	\begin{enumerate}
+	\item $x\in A\iff\exists\epsilon>0\st B_\epsilon(x)\subset A$
+	\item $x\in\cc{A}\iff\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}$
+	\item $x\in\partial A\iff\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}\wedge B_\epsilon(x)\cap\cc{A}\ne\{\}$
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+		$\boxed{1}$ Let $I(A):=\{\derin{x\in X}\exists\epsilon>0\st B_\epsilon(x)\subset A$.\\
+		\begin{equation*}
+			x\in I(A)\implies\exists\epsilon>0\st B_\epsilon(x)\subset A,\ \therefore x\in\bigcup_{G\subset A}G
+		\end{equation*}
+		But
+		\begin{equation*}
+			\begin{aligned}
+				&x\in\intr{A}\implies\exists G\subset X\text{ open}\st x\in G\implies\exists\epsilon>0\st B_\epsilon(x)\subset G\subset A\\
+				&\therefore\intr{A}\subset I(A)\ni x,\ I(A)\subset A\text{ by definition, }\therefore I(A)=\intr{A}
+			\end{aligned}
+		\end{equation*}
+		$\boxed{2}$ For the second proposition, we have
+		\begin{equation*}
+			\begin{aligned}
+				&\cc{A}=\comp{\left[ \intr{\left( \comp{A} \right)} \right]}\implies x\in A\iff x\in\intr{\left( \comp{A} \right)}\implies\forall\epsilon>0\ B_\epsilon(x)\not\subset\comp{A}\\
+				&\therefore\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}
+			\end{aligned}
+		\end{equation*}
+		$\boxed{3}$ For the last one, we have, taking into account the first two proofs
+		\begin{equation*}
+			\begin{aligned}
+				&x\in\partial A\iff x\in\cc{A}\setminus\intr{A}\implies x\in\cc{A}\wedge x\notin\intr{A}\\
+				&\boxed{1}\wedge\boxed{2}\implies x\in\cc{A}\iff\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}\\
+				&\therefore x\notin\intr{A}\iff\forall\epsilon>0\ B_\epsilon(x)\cap\comp{A}\ne\{\}
+			\end{aligned}
+		\end{equation*}
+\end{proof}
+\begin{dfn}[Isometry]
+	Let $(X,d),(Y,\rho)$ be two metric spaces and $f$ an application, defined as follows
+	\begin{equation*}
+		f:(X,d)\to(Y,d)
+	\end{equation*}
+	$f$ is said to be an \textit{isometry} iff
+	\begin{equation*}
+		\forall x_1,x_2\in X,\ \rho(f(x_1),f(x_2))=d(x_1,x_2)
+	\end{equation*}
+\end{dfn}
+\begin{rmk}
+	If $f$ is an isometry, then $f$ is injective, but it's not necessarily surjective
+\end{rmk}
+\begin{eg}
+	Let $X=[0,1]$ and $Y=[0,2]$, therefore
+	\begin{equation*}
+		\begin{aligned}
+			f:&[0,1]\to[0,2]\\
+			&x\to f(x)=x
+		\end{aligned}
+	\end{equation*}
+	$f$ is obviously an isometry, since, for $x,y\in[0,1]$
+	\begin{equation*}
+		d(f(x),f(y))=d(x,y)
+	\end{equation*}
+	But it's obviously not surjective.
+\end{eg}
+\begin{dfn}[Diameter of a Set]
+	Let $A$ be a set and the couple $(A,d)$ be a metric space. We define the \textit{diameter} of $A$ as follows
+	\begin{equation*}
+		\diam{(A)}=\sup_{x,y\in A}(d(x,y))
+	\end{equation*}
+\end{dfn}
+\section{Convergence and Compactness}
+\begin{dfn}[Convergence]
+	Let $(X,d)$ be a metric space and $x\in X$. A sequence $(x_k)_{k\ge0}$ in $X$ is said to converge in $X$ and it's indicated as $x_k\to x\in X$, iff
+	\begin{equation*}
+		\forall\epsilon>0\ \exists N>0\st\forall k\ge N,\ d(x_k,x)<\epsilon\ \therefore\lim_{k\to\infty}x_k=x
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Unicity of the Limit]
+	Let $(X,d)$ be a metric space and $(x_k)_{k\ge0}$ a sequence in $X$. If $x_k\to x\wedge x_k\to y$, then $x=y$
+\end{thm}
+\begin{dfn}[Adherent point]
+	Let $(X,d)$ be a metric space and $A\subset X$. $x\in X$ is said to be an \textit{adherent point} of $A$ if $\exists(x_k)_{k\ge0}\in A\st x_k\to x\in X$. The set of all adherent points of $A$ is called $\ad(A)$
+\end{dfn}
+\begin{dfn}[Accumulation point]
+	Let $(X,d)$ be a metric space and $A\subset X$. $x\in X$ is an \textit{accumulation point} of $A$, or also \textit{limit point} of $A$ if $\exists(x_k)_{k\ge0}\st x_k\ne x\wedge x_k\to x\in\ad(A)$
+\end{dfn}
+\begin{prop}
+	Let $(X,d)$ be a metric space and $A\subset X$, then $\cc{A}=\ad(A)$
+\end{prop}
+\begin{proof}
+	Let $Y=\ad(A)$, then
+	\begin{equation*}
+		\begin{aligned}
+			&x\in\cc{A}\implies\forall\epsilon>0\ B_\epsilon(x)\cap A\ne\{\}\\
+			&\therefore\forall n\in\N\ B_{\frac{1}{n}}(x)\cap A\ne\{\}\implies\forall n\in\N\ \exists x_n\in B_{\frac{1}{n}}(x)
+		\end{aligned}
+	\end{equation*}
+	But $d(x,x_n)<n^{-1}$, therefore $x\in Y\implies x\in\ad(A)$, and by definition
+	\begin{equation*}
+		\begin{aligned}
+			&\exists(x_n)_{n\ge0}\st\forall\epsilon>0\ \exists N\in\N\st\forall k\ge N\ d(x_k,x)<\epsilon\implies x_N\in B_\epsilon(x)\ \therefore x_N\in A\\
+			&\therefore\forall\epsilon>0\ x_N\in B_\epsilon(x)\cap A\ne\{\}\implies x\in\cc{A}\implies Y\subset\cc{A},\ \therefore Y=\ad(A)=\cc{A}
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{prop}
+	Let $(X,d)$ be a metric space and $A\subset X$. Then $A$ is closed iff $\exists(x_k)_{k\ge0}\in A\st x_k\to x\in\cc{A}\implies\ad(A)\subset A$
+\end{prop}
+\begin{dfn}[Dense Set]
+	Let $(X,d)$ be a metric space and $A,B\subset X$. $A$ is said to be dense in $B$ iff $B\subset\cc{A}$, therefore $\forall\epsilon>0\ \exists y\in A\st d(x,y)<\epsilon$. One example for this is $\Q\subset\R$, with the usual euclidean distance defined through the modulus.
+\end{dfn}
+\begin{dfn}
+	Let $(X,d)$ be a metric space and $(x_k)_{k\ge0}\in X$. The sequence $x_k$ is said to be a \textit{Cauchy sequence} iff
+	\begin{equation*}
+		\forall\epsilon>0\ \exists N>0\st\forall k,n\ge N\ d(x_k,x_n)<\epsilon
+	\end{equation*}
+\end{dfn}
+\begin{prop}
+	Let $(X,d)$ be a metric space and $(x_k)_{k\ge0}\in X$ a sequence. Then, if $x_k\to x$, $x_k$ is a Cauchy sequence
+\end{prop}
+\begin{dfn}[Complete Space]
+	Let $(X,d)$ be a metric space. $(X,d)$ is said to be \textit{complete} iff $\forall(x_k)_{k\ge0}\in X$ Cauchy sequences, we have $x_k\to x\in X$
+\end{dfn}
+\begin{thm}[Completeness]
+	Let $(X,d)$ be a metric space and $Y\subset X$. $(Y,d)$ is complete iff $Y=\cc{Y}$ in $X$
+\end{thm}
+\begin{proof}
+	Let $(Y,d)$ be a complete space, then
+	\begin{equation*}
+		(x_k)\in Y\text{ Cauchy sequence }\implies\exists y\in Y\st x_k\to y
+	\end{equation*}
+	Let $z\in\ad(A)$ and $\eta_k$ a subsequence of $x_k$, then
+	\begin{equation*}
+		\exists(\eta_k)\in Y\st\eta_k\to z\implies\exists y\in Y\st\eta_k\to y\ \therefore z=y\implies \ad(Y)\subset Y
+	\end{equation*}
+	Going the opposite way we have that $\ad(Y)=Y$ and therefore $Y=\cc{Y}$
+\end{proof}
+\begin{dfn}[Compact Space]
+	A metric space $(X,d)$ is said to be \textit{compact} or \textit{sequentially compact} if
+	\begin{equation*}
+		\forall(x_k)\in X\ x_k\to x\in X, \exists(y_k)\text{ Subsequence}\st y_k\to y\in X
+	\end{equation*}
+\end{dfn}
+\begin{thm}
+	Let $(X,d)$ be a compact space. Then $(X,d)$ is also complete
+\end{thm}
+\begin{proof}
+	$(X,d)$ is compact, therefore
+	\begin{equation*}
+		\forall(x_k)\in X\text{ Cauchy sequence}\implies x_k\to x\in X
+	\end{equation*}
+	Taken $(x_{n_k})_k\in X$ a subsequence, we have
+	\begin{equation*}
+		x_{k}\to x\implies x_{n_k}\to x\in X
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Completely Bounded]
+	Let $(X,d)$ be a metric space. $X$ is \textit{totally bounded} iff
+	\begin{equation*}
+		\exists Y\subset X\st\forall\epsilon>0,\forall x\in Y\ X=\bigcup_{i=1}^nB_\epsilon(x)
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Poligonal Chain]
+	Let $z,w\in\Cf$. We define a \textit{polygonal} $[z,w]$ as follows
+	\begin{equation*}
+		[z,w]:=\{\derin{z,w\in\Cf}z+t(w-z),\ t\in[0,1]\subset\R\}
+	\end{equation*}
+	A \textit{polygonal chain} will be indicated as follows $P_{z,w}$ and it's defined as follows
+	\begin{equation*}
+		P_{z,w}=\bigcup_{k=1}^{n-1}[z_k,z_{k+1}]=[z,z_1,\cdots,z_{n-1},w]
+	\end{equation*}
+	It can also be defined analoguously for every metric space $(X,d)\ne(\Cf,\norm{\cdot})$, where $\norm{\cdot}:\Cf\to\R$ is the usual complex norm $\norm{z}=\sqrt{z\cc{z}}=\sqrt{\Re(z)^2+\Im(z)^2}$
+\end{dfn}
+\begin{dfn}[Connected Space]
+	Let $(G,d)$ be a metric space, $G$ is \textit{connected} if
+	\begin{equation*}
+		\forall z,w\in G\ \exists P_{z,w}\subset G
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Contraction Mapping]
+	Let $(X,d)$ be a complete metric space. Let $T:X\fto X$. $T$ is said to be a \textit{contraction mapping} or \textit{contractor} if
+	\begin{equation}
+		\forall x,y\in X\ \exists q\in[0,1)\st d(T(x),T(y))\le qd(x,y)
+		\label{eq:contractor}
+	\end{equation}
+	Note that a contractor is necessarily continuous.
+\end{dfn}
+\begin{thm}[Banach Fixed Point]
+	Let $(X,d)$ be a complete metric space, with $X\ne\{\}$ and equipped with a contractor $T:X\fto X$. Then
+	\begin{equation}
+		\exists!x^{\star}\in X\st T(x^\star)=x^\star
+		\label{eq:fixedpointbanach}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Take $x_0\in X$ and a sequence $x_n:\N\fto X$, where
+	\begin{equation*}
+		x_n=T(x_{n-1}),\quad\forall n\in\N
+	\end{equation*}
+	It's obvious that
+	\begin{equation*}
+		d(x_{n+1},x_{n})=d(T(x_{n}),T(x_{n-1}))\le qd(x_n,x_{n-1})\le q^nd(x_1,x_0)
+	\end{equation*}
+	We need to prove that $x_n$ is a Cauchy sequence. Let $m,n\in\N\st m>n$, then
+	\begin{equation*}
+		d(x_m,x_n)\le d(x_m,x_{m-1})+\cdots+d(x_{n+1},x_n)\le q^{m-1}d(x_1,x_0)+\cdots+q^nd(x_1,x_0)
+	\end{equation*}
+	Regrouping, we have
+	\begin{equation*}
+		\begin{aligned}
+			d(x_m,x_n)&\le q^nd(x_1,x_0)\sum_{k=0}^{m-n-1}q^k\le q^nd(x_1,x_0)\sum_{k=0}^{\infty}q^k=q^nd(x_1,x_0)\left( \frac{1}{1-q} \right)
+		\end{aligned}
+	\end{equation*}
+	By definition of convergence, we have then
+	\begin{equation*}
+		\forall\epsilon>0,\ \exists N\in\N\st\forall n>N\ d(s_n,s)<\epsilon
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\frac{q^nd(x_1,x_0)}{1-q}<\epsilon\implies q^n<\frac{\epsilon(1-q)}{d(x_1,x_0)},\quad\forall n>N
+	\end{equation*}
+	Therefore, after taking $m>n>N$, we have
+	\begin{equation*}
+		d(x_m,x_n)<\epsilon
+	\end{equation*}
+	Therefore $x_n$ is a Cauchy sequence. Since $(X,d)$ is a complete metric space, this sequence must have a limit $x_n\to x^\star\in X$, but, by definition of convergence and limit, we have that by continuity
+	\begin{equation*}
+		x^\star=\lim_{n\to\infty}x_n=\lim_{n\to\infty}T(x_{n-1})=T\left( \lim_{n\to\infty}x_{n-1} \right)=T(x^\star)
+	\end{equation*}
+	This point is unique. Take $y^\star\in X$ such that $T(y^\star)=y^\star\ne x^\star$, then
+	\begin{equation*}
+		0<d(T(x^\star),T(y^\star))=d(x^\star,y^\star)>qd(x^\star,y^\star)\quad\lightning
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\exists!x^\star\in X\st T(x^\star)=x^\star
+	\end{equation*}
+	And $x^\star$ is the fixed point of the contractor $T$
+\end{proof}
+\section{Vector Spaces}
+\begin{dfn}[Vector Space]
+	A vector space $\V$ over a field $\F$ is a set, where $\V\ne\{\}$ and it satisfies the following properties, $\forall u,v,w\in\V$ and $a,b\in\F$
+	\begin{enumerate}
+	\item $u+v\in\V$ sum closure
+	\item $av\in\V$ scalar closure
+	\item $u+v=v+u$
+	\item $(u+v)+w=u+(v+w)$
+	\item $\exists!0\in\V\st u+0=0+u=u$
+	\item $\exists!v\in\V\st u+v=0\implies v=-u$
+	\item $\exists!1\in\V\st 1\cdot u=u$
+	\item $(ab)u=a(bu)=b(au)=abu$
+	\item $(a+b)u=au+bu$
+	\item $a(u+v)=au+av$
+	\end{enumerate}
+\end{dfn}
+\begin{dfn}[Norm]
+	Let $\V$ be a vector space over a field $\F$, then the \textit{norm} is an application defined as follows
+	\begin{equation*}
+		\norm{\cdot}:\V\fto\F
+	\end{equation*}
+	Where it satisfies the following properties
+	\begin{enumerate}
+	\item $\norm{u}\ge0\ \forall u\in\V$
+	\item $\norm{u}=0\iff u=0$
+	\item $\norm{cu}=\abs{c}\norm{u}\ \forall u\in\V\ c\in\F$
+	\item $\norm{u+v}\le\norm{u}+\norm{v}\ \forall u,v\in\V$
+	\end{enumerate}
+\end{dfn}
+\begin{dfn}[Normed Vector Space]
+	A \textit{normed vector space} is defined as a couple $(\V,\norm{\cdot})$, where $\V$ is a vector space over a field $\F$.
+\end{dfn}
+\begin{prop}
+	A normed vector space (NVS), is also a metric vector space (MVS) if we define our distance as follows
+	\begin{equation*}
+		d(u,v)=\norm{u-v}\ \forall u,v\in\V
+	\end{equation*}
+\end{prop}
+\begin{dfn}[Vector Subspace]
+	Let $\V$ be a vector space and $\Us\subset\V$. $\Us$ is a \textit{vector subspace} of $\V$ iff
+	\begin{enumerate}
+	\item $u,v\in\Us\implies u+v\in\Us$
+	\item $u\in\Us,\ a\in\F\implies au\in\Us$
+	\end{enumerate}
+\end{dfn}
+\begin{prop}
+	If $(\V,\norm{\cdot})$ is an normed vector space and $\W\subset\V$ is a subspace of $\V$, then $(\W,\norm{\cdot})$ is a normed vector space
+\end{prop}
+\begin{dfn}[p-norm]
+	Let $(\V,\norm{\cdot}_p)$ be a normed vector space. The norm $\norm{\cdot}_p$ is said to be a \textit{p-norm} if it's defined as follows
+	\begin{equation}
+		\norm{v}_p:=\left( \sum_{i=1}^{\dim(\V)}(v_i)^p \right)^{\frac{1}{p}},\ \forall v\in\V,\ \forall p\in\N^{\star}:=\N\cup\{\pm\infty\}
+		\label{eq:pnorm}
+	\end{equation}
+	Setting $p=\infty$ we have that
+	\begin{equation}
+		\norm{v}_{\infty}=\max_{i\le\dim(\V)}\abs{v_i}
+		\label{eq:inftynorm}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Dual Space]
+	Let $\V$ be a vector space over the field $\F$, we define a \textit{linear functional} as an application $\varphi:\V\fto\F$ such that $\forall u,v\in\V$ and $c\in\F$
+	\begin{equation}
+		\begin{aligned}
+			\varphi(u+v)&=\gamma(u)+\varphi(v)\\
+			\varphi(\lambda u)&=\lambda\varphi(u)
+		\end{aligned}
+		\label{eq:linearfunctional}
+	\end{equation}
+	Defining the sum of two linear functionals as $(\varphi_1+\varphi_2)(v)=\varphi_1(v)+\varphi_2(v)$ we immediately see that the set of all linear functionals forms a vector space over $\V$, which will be called the \textit{dual space} $\V^\star$.
+\end{dfn}
+
+\subsection{Hölder and Minkowski Inequalities}
+Having defined p-norms, we can prove two inequalities that work with these norms, the \textit{Minkowski inequality} and the \textit{Hölder Inequality}
+\begin{thm}[Hölder Inequality]
+	Let $p_q\in\N^\star$, where
+	\begin{equation*}
+		\frac{1}{p}+\frac{1}{q}=1
+	\end{equation*}
+	Then
+	\begin{equation}
+		\forall x,y\in\R^n\ \norm{x}_p\norm{y}_q\ge\sum_{k=1}^n\abs{x_ky_k}
+		\label{eq:holderineq}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taking $p=1$, we have $q=\infty$, and the demonstration is obvious
+	\begin{equation*}
+		\norm{x}_p\norm{y}_q=\norm{x}_1\norm{p}_\infty=\max_{k\le n}\abs{y_k}\sum_{k=1}^n\abs{x_k}\ge\sum_{k=1}^n\abs{x_ky_k}
+	\end{equation*}
+	Else, if $p>1$, we ave that
+	\begin{equation*}
+		ab\le\frac{a^p}{p}+\frac{b^q}{q}\ \forall a,b\ge0
+	\end{equation*}
+	Let
+	\begin{equation*}
+		s=\frac{x}{\norm{x}_p},\ t=\frac{y}{\norm{y}_q}
+	\end{equation*}
+	We have
+	\begin{equation*}
+		\sum_{k=1}^n\norm{s}^p=\frac{1}{\norm{x}_p^p}\sum_{k=1}^n\abs{x_k}^p=1=\sum_{k=1}^n\abs{t}^q=\frac{1}{\norm{y}_q^q}\sum_{k=1}^n\abs{y}^p
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\sum_{k=1}^n\abs{s_kt_k}\le\frac{1}{p}\sum_{k=1}^n\abs{s_k}^p+\frac{1}{q}\sum_{k=1}^n\abs{t_k}^q
+	\end{equation*}
+	Substituting again the definitions of $s,t$ we have
+	\begin{equation*}
+		\sum_{i=1}^n\abs{y_kx_k}=\norm{x}_p\norm{y}_q\sum_{k=1}^n\abs{s_kt_k}\le\norm{x}_p\norm{y}_q
+	\end{equation*}
+\end{proof}
+\begin{thm}[Minkowski Inequality]
+	Let $p\ge1$, therefore $\forall x,y\in\R^n$ we have
+	\begin{equation}
+		\norm{x+y}_p\le\norm{x}_p+\norm{y}_p
+		\label{eq:minkowskiineq}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	We begin by writing explicitly the p-norm
+	\begin{equation*}
+		\norm{x+y}_p^p=\sum_{k=1}^n\left( \abs{x_k}+\abs{y_k} \right)^p=\sum_{k=1}^n\left( \abs{x_k}+\abs{y}_k \right)\left( \abs{x_k}+\abs{y_k} \right)^{p-1}
+	\end{equation*}
+	Letting $u_k=\left( \abs{x_k}+\abs{y_k} \right)^{p-1}$ we have, after imposing the condition on $q$ of the p-norm as $q(p+1)=p$ and using that the sum is Abelian, we have
+	\begin{equation*}
+		\left\{\begin{aligned}
+				\sum_{k=1}^n\abs{x_k}u_k&\le\norm{x}_p\norm{u}_q=\norm{x}_p\left(\sum_{k=1}^n(\abs{x_k}+\abs{y_k})^p\right)^{\frac{1}{q}}\\
+				\sum_{k=1}^n\abs{y_k}u_k&\le\norm{y}_p\norm{u}_q=\norm{y}_p\left( \sum_{k=1}^n\left( \abs{x_k}+\abs{y_k} \right)^p \right)^{\frac{1}{q}}
+		\end{aligned}\right.
+	\end{equation*}
+	Therefore, summing and imposing that $1-q^{-1}=p$ we have that
+	\begin{equation*}
+		\norm{x+y}_p\le\norm{x}_p+\norm{y}_q
+	\end{equation*}
+\end{proof}
+%\subsection{Topology of Normed Vector Spaces}
+%\begin{dfn}[Convergence]
+%	Let $(\V,\norm{\cdot})$ be a normed vector space, and $(v_n)_{n\ge0}\in\V$ a sequence. The sequence converges to the point $v\in\V$ iff
+%	\begin{equation*}
+%		v_n\fto v\in\V\iff\forall\epsilon>0\ \exists N\in\N\st\forall n\ge N\norm{v_n-v}<\epsilon
+%	\end{equation*}
+%	Similarly to metric spaces, if a sequence converges, it's a Cauchy sequence
+%\end{dfn}
+\end{document}

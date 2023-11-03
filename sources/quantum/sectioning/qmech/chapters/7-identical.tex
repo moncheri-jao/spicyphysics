@@ -1,0 +1,130 @@
+\documentclass[../qm.tex]{subfiles}
+\begin{document}
+	While in classical physics, two identical particles can be distinguished, in quantum mechanics they're truly indistinguishable. Let's suppose that we have two particles, for which you have a configuration (Hilbert) space $\hilbert_1$ for the first particle, and $\hilbert_2$ for the second particle. The general state of the system will then be described by a ket in $\hilbert_1\otimes\hilbert_2$. Hence, labeling particle 1 as $\alpha$ and the second as $\beta$, we then will write that a state $\ket{s}$ can be written as
+	\begin{equation}
+		\ket{s}=\ket{\alpha}\otimes\ket{\beta}=\ket{\alpha}\ket{\beta}
+		\label{eq:generalstate2part}
+	\end{equation}
+	It's obvious that, since the particles in study are impossible to distinguish, that the state $\ket{s}$ can also be written also as $\ket{\beta}\otimes\ket{\alpha}$, hence, for the principle of quantum superposition, we must have that the most general state will be the following, for a two particle system
+	\begin{equation}
+		\ket{s}=c_1\ket{\alpha}\otimes\ket{\beta}+c_2\ket{\beta}\otimes\ket{\alpha}
+		\label{eq:mostgeneral2partstate}
+	\end{equation}
+	This definition brings us what's known as \textit{exchange degeneracy}. This degeneracy brings us a huge problem, since in this case, the eigenvalue of the complete basis doesn't completely define the state ket.\\
+	Before diving into the nature of exchange degeneracy, we define a new operator, called \textit{exchange operator}, or just $\opr{P}_{ij}$. It will act as follows:\\
+	Let $\ket{a_i}\in\hilbert_1$ and $\ket{a_j}\in\hilbert_2$, and consider the new state $\ket{a_i}\otimes\ket{a_j}\in\hilbert_1\otimes\hilbert_2$. We will have
+	\begin{equation*}
+		\begin{aligned}
+			\opr{P}_{ij}\ket{a_i}\otimes\ket{a_j}&=\lambda\ket{a_j}\otimes\ket{a_i}\\
+			\opr{P}_{ij}&=\opr{P}_{ji}\\
+			\opr{P}_{ij}^2&=\1\to\lambda=\pm1
+		\end{aligned}
+	\end{equation*}
+	In general, if we have an observable $\opr{a}$, such that
+	\begin{equation*}
+		\begin{aligned}
+			\opr{a}_i\ket{a_i}&=a\ket{a_i}\\
+			\opr{a}_j\ket{a_j}&=b\ket{a_j}
+		\end{aligned}
+	\end{equation*}
+	We get, after applying an exchange transformation
+	\begin{equation*}
+		\begin{aligned}
+			\opr{P}_{ij}\opr{a}_i\opr{P}_{ij}^{-1}\ket{a_i}\ket{a_j}&=a\ket{a_i}\ket{a_j}\\
+			\opr{P}_{ij}\opr{a}_i\opr{P}_{ij}^{-1}\ket{a_j}\ket{a_i}&=a\ket{a_j}\ket{a_i}
+		\end{aligned}
+	\end{equation*}
+	This is valid only if $\opr{P}_{ij}\opr{a}_i\opr{P}_{ij}^{-1}=\opr{a}_j$, hence, this exchange operator, applied on a system observable, changes its label, hence basically in which space of the two of the tensor space $\hilbert_1\otimes\hilbert_2$ the operator $\opr{a}_i$ will act.\\
+	Let's now consider a general two-particle Hamiltonian. It will be the following
+	\begin{equation}
+		\opr{\ham}=\frac{\opr{p}^2_1}{2m}+\frac{\opr{p}^2_2}{2m}+V\left(\abs{x^i_1-x^i_2}\right)+V_e(x_1^i)+V_e(x_2^i)
+		\label{eq:2parthamiltonian}
+	\end{equation}
+	This Hamiltonian is obviously invariant to exchange of particles, hence $\comm{\opr{\ham}}{\opr{P}_{12}}=0$ and $\opr{P}_{12}$ is a constant of motion\\
+	If we call the Hamiltonian's eigenket $\ket{a_1}\ket{a_2}$, we can select two main common basis eigenkets as follows
+	\begin{equation*}
+		\begin{aligned}
+			\ket{s}&=\frac{1}{\sqrt{2}}\left( \ket{a_1}\ket{a_2}+\ket{a_2}\ket{a_1} \right)\\
+			\ket{a}&=\frac{1}{\sqrt{2}}\left( \ket{a_1}\ket{a_2}-\ket{a_2}\ket{a_1} \right)
+		\end{aligned}
+	\end{equation*}
+	Where they are tied through two operators, the \textit{symmetrization} operator and the \textit{antisymmetrization} operator, defined as follows
+	\begin{equation}
+		\begin{aligned}
+			\ladopru{T}&=\frac{1}{2}\left( \1+\opr{P}_{12} \right)\\
+			\ladoprd{T}&=\frac{1}{2}\left( \1-\opr{P}_{12} \right)
+		\end{aligned}
+		\label{eq:antisimmsimmopr}
+	\end{equation}
+	Hence, applied to a ket $\ket{a_1}\otimes\ket{a_2}$, we have
+	\begin{equation*}
+		\ladoprpm{T}\left( c_1\ket{a_1}\otimes\ket{a_2}+c_2\ket{a_2}\otimes\ket{a_1} \right)=\frac{c_1\pm c_2}{2}\left( \ket{a_1}\otimes\ket{a_2}\pm\ket{a_2}\otimes\ket{a_1} \right)
+	\end{equation*}
+	This finally gives the final symmetry of the system.
+	\section{Symmetrization Postulate}
+	We will now delve shortly into quantum statistical mechanics. Here we have two statistics, \textit{Fermi-Dirac statistics} and \textit{Bose-Einstein statistics}. Particles that satisfy Fermi-Dirac statistics are said to be \textit{fermions} and those who satisfy Bose-Einstein statistics are said to be \textit{bosons}. Under exchange of two particles, we have that, if we indicate with $\ket{b}$ bosons and with $\ket{f}$ fermions, that for a system of $N$ identical particles
+	\begin{equation}
+		\begin{aligned}
+			\opr{P}_{ij}\bigotimes_{i=1}^N\ket{b}_i&=\opr{P}_{ij}\ket{B}_{i}=\ket{B}_j=\bigotimes_{j=1}^N\ket{b}_j\\
+			\opr{P}_{ij}\bigotimes_{i=1}^N\ket{f}_i&=\opr{P}_{ij}\ket{F}_i=-\ket{F}_j=-\bigotimes_{j=1}^N\ket{f}_j
+		\end{aligned}
+		\label{eq:bosonfermionexchange}
+	\end{equation}
+	This change of sign is dependent from the spin-wavefunction, determining that antisymmetric particle wavefunctions have half-integer spin, and symmetric particle wavefunctions have integer spin.\\
+	Empirically for fermions (half-integer spin particles), it's known that they must obey the \textit{Pauli exclusion principle}, which states that two identical fermions cannot share the same quantum state.\\
+	For only two fermions, if we want to write the ground state wavefunction, we know that due to its antisymmetry, it must be the following
+	\begin{equation}
+		\ket{GS}_f=\frac{1}{\sqrt{2}}\left( \ket{f_1}\ket{f_2}-\ket{f_2}\ket{f_1} \right)
+		\label{eq:fermiongswave}
+	\end{equation}
+	This is the only possible configuration. For bosons, instead, we have three possible configurations
+	\begin{equation}
+		\ket{GS}_b=\ket{b_1}\ket{b_1},\quad\ket{b_2}\ket{b_2},\quad\frac{1}{\sqrt{2}}\left( \ket{b_1}\ket{b_2}+\ket{b_2}\ket{b_1} \right)
+		\label{eq:bosongswave}
+	\end{equation}
+	\subsection{Two Electron System}
+	The most simple system composed by two fermions is the two-electron system. Since it's fermionic, we already know that the eigenvalue of the exchange operator must be $-1$.\\
+	Let's say that our base kets are specified by $\ket{i,m_{s_i}}$ where $i=1,2$ indicates the electron and $m_{s_i}$ indicates the particle's spin magnetic quantum number. The most general state will then be given by a linear combination of these basis kets as follow
+	\begin{equation*}
+		\ket{\psi}=\sum_{m_{s_1}}\sum_{m_{s_2}}\ket{s_1,s_2,m_{s_1},m_{s_2}}\bra{s_1,s_2,m_{s_1},m_{s_2}}\ket{\psi}
+	\end{equation*}
+	Or, in terms of wavefunctions
+	\begin{equation*}
+		\psi_{jm}(x^i_1,x^i_2)=\sum_{m_{s_2}}\sum_{m_{s_1}}C(m_{s_1},m_{s_2})\psi_{m_{s_1}m_{s_2}}(x^i_1,x^i_2)
+	\end{equation*}
+	Where with $C(m_{s_1},m_{s_2})$ we indicated the Clebsch-Gordan coefficients for the sum of two spin $1/2$ systems.\\
+	Analogously, if $\comm{\opr{\ham}}{\opr{S}^2_{tot}}=0$, we have that the eigenvalues (and hence eigenfunctions) of the system will be given by the tensor product $\ket{E}\otimes\ket{sm}$. Since the wavefunction associated with $\ket{sm}$ is a spinor, we will have that our wavefunction will be given by
+	\begin{equation*}
+		\psi_{jm}(x^i_1,x^i_2)=\phi(x_1^i,x_2^i)\chi_{\pm}
+	\end{equation*}
+	With $\chi_{\pm}$ as our basis spinor.\\
+	Due to the properties requested by the fermion statistics, we must have that, if $\chi_{\pm}=\ket{\pm}$, it \emph{must} be one of these four
+	\begin{equation}
+		\begin{aligned}
+			\ket{\pm}=\left\{ \begin{aligned}
+					&\ket{+}\ket{+}\\
+					&\frac{1}{\sqrt{2}}\left( \ket{+}\ket{-}+\ket{-}\ket{+} \right)\\
+					&\ket{-}\ket{-}\\
+					&\frac{1}{\sqrt{2}}\left( \ket{+}\ket{-}-\ket{-}\ket{+} \right)
+				\end{aligned}
+				\right.
+		\end{aligned}
+		\label{eq:tripletsingletstates}
+	\end{equation}
+	Applying our exchange operator we have that the first three are symmetric, which are commonly called triplet states, and the last one is antisymmetric with respect to exchange of particles, and it's called a singlet state.\\
+	Another particular relation of the particle exchange operator is obvious if we see how it acts on our kets.\\
+	We have that $\bra{s_1s_2m_{s_1}m_{s_2}}\opr{P}_{12}\ket{\alpha}=\bra{s_2s_1m_{s_1}m_{s_2}}\ket{\alpha}$, and we also know that $\bra{s_1s_2m_{s_1}m_{s_2}}\ket{\alpha}=-\bra{s_2s_1m_{s_2}m_{s_1}}\ket{\alpha}$ from the Fermi-Dirac statistic, followed by electrons.\\
+	Hence, a full exchange operator $\opr{P}_{12}$ will be given instead by the tensor product of the spatial particle exchange operator and the spin exchange operator, as
+	\begin{equation*}
+		\opr{P}_{12}=\opr{P}_{12}^p\otimes\opr{P}_{12}^s
+	\end{equation*}
+	A thorough application of this theory for $s=1/2$ systems will be treated in a further section where it will be studied together with atomic physics.
+	\section{Multiparticle States}
+	As we've already seen previously, multiparticle states can be defined as a multiple tensor product of single particle states. As we've already seen, the particle exchange operator is idempotent, i.e. $\opr{P}_{ij}^2=\1$, thus the possible eigenvalues are $\pm1$. It must be noted tho, that in general
+	\begin{equation}
+		\comm{\opr{P}_{ij}}{\opr{P}_{kl}}=\opr{P}_{ij}\opr{P}_{kl}-\opr{P}_{kl}\opr{P}_{ij}\ne0
+		\label{eq:exchangeopnoncomm}
+	\end{equation}
+	Let's now consider a 3 particle state. We have that there are $3!$ possible combinations of the single particle states $\ket{p_1}\ket{p_2}\ket{p_3}$. If we insist on our symmetrization postulate, we have that we can either have a single completely antisymmetric state or a single fully symmetric state. This states must hence be a linear combination of 6 equally probable states, formed by the tensor product of the different particles. This state is an eigenstate for $\opr{P}_{12}, \opr{P}_{23}, \opr{P}_{13}$. Defining a new exchange operator $\opr{P}_{123}=\opr{P}_{12}\otimes\opr{P}_{13}$, we have that a completely symmetrical state can be written, (remember that if two indices are equal then there can't be a completely antisymmetric state)
+%	\subsection{Second Quantization}
+\end{document}

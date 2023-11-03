@@ -1,0 +1,2372 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Measure Theory}
+\begin{dfn}[Lower and Upper Sums]
+	We define the \textit{upper} and \textit{lower Riemann sums} as follows.\\
+	Let $f(x)$ be a function, then
+	\begin{equation}
+		\left\{\begin{aligned}
+				\Us(f,x):&=\sum_{i=1}^n\sup_{t\in[x_k,x_{k+1}]}(f(t))\\
+				\Ls(f,x):&=\sum_{i=1}^n\inf_{t\in[x_k,x_{k+1}]}(f(t))
+		\end{aligned}\right.
+		\label{eq:upperlowersums}
+	\end{equation}
+	A function is said to be Riemann integrable if $\lim_{n\to\infty}(\Ls(f,x)-\Us(f,x))=0$
+\end{dfn}
+\begin{dfn}[Set Function]
+	Let $A$ be a set. We define the following function $\1_A(x)$ as follows
+	\begin{equation}
+		\1_A(x)=\begin{dcases}1&x\in A\\0&x\notin A\end{dcases}
+		\label{eq:setfunc}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	The function $\1_\Q$ is not integrable over the set $[0,1]$ with the usual definition of the integral (Riemann sums)
+\end{thm}
+\begin{proof}
+	Indicating the integral $I$ as usual
+	\begin{equation*}
+		I=\int_{0}^{1}\1_\Q(x)\diff x
+	\end{equation*}
+	We see immediately that
+	\begin{equation*}
+		\begin{aligned}
+			\Us(\1_\Q,x)&=1\\
+			\Ls(\1_\Q,x)&=0
+		\end{aligned}
+	\end{equation*}
+	Therefore $\1_\Q(x)$ is not integrable in $[0,1]$ (with the Riemann integral)
+\end{proof}
+\begin{dfn}[Measure]
+	Let $A\subset X$ be a subset of a metric space. We define the measure of the set $A$, $\mu(A)$ as follows
+	\begin{equation}
+		\mu(A)=\int_{X}^{}\1_A(x)\diff x
+		\label{eq:measureset}
+	\end{equation}
+	Basically, what we did before, was demonstrating that the set $\Q\cap[0,1]$ is not measurable in the Riemann integration theory. This is commonly indicated with saying that the set $\Q\cap[0,1]$ \textit{is not Jordan measurable}.\\
+	For clarity, let $K$ be some measure theory. We will say that a set is $K$-\textit{measurable} if the following calculation exists
+	\begin{equation}
+		\mu_K(A)=\int_{X}^{}\1_A(x)\diff x
+		\label{eq:kmeasureset}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Algebra]
+	Let $X\ne\{\}$ be a set. An \textit{algebra} $\mathcal{A}$ over $X$ is a collection of subsets of $X$ such that
+	\begin{enumerate}
+	\item $\{\}\in\mathcal{A}$
+	\item $X\in\mathcal{A}$
+	\item $A\in\mathcal{A}\implies\comp{A}\in\mathcal{A}$
+	\item $A_1,\cdots,A_n\in\mathcal{A}\implies\bigcup_{i=1}^nA_i,\bigcap_{i_1}^nA_i\in\mathcal{A}$
+	\end{enumerate}
+\end{dfn}
+\begin{eg}[Simple Set Algebra]
+	Let $X=\R^2$ and call $R$ the set of all rectangles $I_i\subset\R^{\star}\times\R^\star$, where $\R^\star=\R\cup\{\pm\infty\}$. It's easy to see that this is not an algebra, since, by taking $[0,1]\in R$, we have that $\comp{[0,1]}\notin R$, hence it cannot be an algebra.\\
+	But, taken $\mathcal{S}$ as follows
+	\begin{equation*}
+		\mathcal{S}:=\left\{\derin{A\subset\R^2}A=\bigcup_{i=1}^nI_i\quad I_i\in R\right\}
+	\end{equation*}
+	We can see easily, using De Morgan law, that $\mathcal{S}$ is an algebra.
+\end{eg}
+\subsection{Jordan Measure}
+\begin{dfn}[Disjoint Union]
+	Taken two sets $A,B$, we define their \textit{disjoint union} the binary operation $A\sqcup B$ as follows
+	\begin{equation}
+		A\sqcup B:=A\cup B\setminus A\cap B
+		\label{eq:disjointunion}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Simple Set]
+	A set $A$ is a \textit{simple set} iff, for some $R_i\in\mathcal{S}$, we have
+	\begin{equation*}
+		A=\bigsqcup_{i=1}^nR_i
+	\end{equation*}
+\end{dfn}
+\begin{dfn}[Measure of a Simple Set]
+	Let $A$ be a simple set, the \textit{Jordan measure} of a simple set is given by the sum of the measure of the rectangles, i.e. the ``area'' of $A$ is given by the sum of the area of each rectangle $R_i$
+	\begin{equation}
+		\mu_J(A)=\sum_{i=1}^n\mu_J(R_i)
+		\label{eq:simplesetmeas}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[External and Internal Measure]
+	We define the external measure $\cc{\mu}_J$ and the internal measure $\underline{\mu}_J$ as follows.\\
+	Taken a limited set $B$ and a simple set $A$ we have
+	\begin{equation}
+		\begin{aligned}
+			\cc{\mu}_J(B)&=\inf\{\derin{\mu_J(A)}B\subset A\}\\
+			\underline{\mu}_J(B)&=\sup\{\derin{\mu_J(A)}A\subset B\}
+		\end{aligned}
+		\label{eq:extintmeas}
+	\end{equation}
+	A set is said to be \textit{Jordan measurable} iff
+	\begin{equation*}
+		\cc{\mu}_J(B)=\underline{\mu}_J(B)=\mu_J(B)
+	\end{equation*}
+\end{dfn}
+\begin{rmk}[A Non Measurable Set]
+	A good example for showing that the Jordan measure is the set we were trying to measure, the set $\Q\cap[0,1]$. We can easily see that
+	\begin{equation*}
+		\begin{aligned}
+			\cc{\mu}_J(\Q\cap[0,1])&=1\\
+			\underline{\mu}_J(\Q\cap[0,1])&=0
+		\end{aligned}
+	\end{equation*}
+	Therefore it's not Jordan measurable.\\
+	From this we can jump to a new definition of measure, which is the \textit{Lebesgue measure} where instead of covering $\Q\cap[0,1]$ with a \textit{finite} number of simple sets, we use sets which are formed from the union of \textit{countable infinite} simple sets.\\
+	We can define
+	\begin{equation*}
+		\Q\cap[0,1]:=\{q_1,q_2,\cdots\}
+	\end{equation*}
+	We then take $\epsilon>0$ and define the following set
+	\begin{equation*}
+		A=\bigcup_{n=1}^\infty\left[ q_n-\frac{\epsilon}{2^n},q_n+\frac{\epsilon}{2^n} \right]
+	\end{equation*}
+	We have that
+	\begin{equation*}
+		\mu(A)\le\sum_{n=1}^\infty\frac{\epsilon}{2^{n-1}}=2\epsilon
+	\end{equation*}
+	But $\cc{\mu}(\Q\cap[0,1])\le\mu(A)\le2\epsilon\to0$, therefore $\Q\cap[0,1]$ is measurable with $\mu(\Q\cap[0,1])=0$
+\end{rmk}
+\subsection{Lebesgue Measure}
+\begin{dfn}[$\sigma-$Algebras and Borel Spaces]
+	Given a non empty set $X$ a $\sigma-$\textit{algebra} on $X$ is a collection of subsets $\mathcal{F}$ such that
+	\begin{enumerate}
+	\item $\forall A\in\mathcal{F},\ A\subset X$
+	\item Let $A_i\in\mathcal{F},\ i\in\mathcal{I}\st\abs{\mathcal{I}}=\aleph_0\quad$ then $\quad\bigcup_{i=1}^\infty A_i\in\mathcal{F}$
+	\end{enumerate}
+	The couple $(X,\mathcal{F})$ is called a \textit{Borel space} or also a \textit{measurable space}
+\end{dfn}
+\begin{dfn}[Measure]
+	Given a Borel space $(X,\mathcal{F})$, we can define an application
+	\begin{equation}
+		\mu\st\mathcal{F}\fto[][0,\infty]=\R^\star_+
+		\label{eq:measure}
+	\end{equation}
+	Which satisfies the following properties
+	\begin{enumerate}
+	\item $\sigma$-additivity, given $A_i\in\mathcal{F}$ with $i\in I\subset\N,\ \abs{I}\le\aleph_0$, such that $A_n\cap A_k=\{\}$ for $n\ne k$
+		\begin{equation*}
+			\mu\left( \bigsqcup_{i\in I}A_i \right)=\sum_{i\in I}\mu(A_i)
+		\end{equation*}
+	\item If $Y_j\subset X$, with $j\in J\subseteq\N,\ \mu(Y_j)<\infty$ then $X=\bigcup_{j=1}^\infty Y_j$
+	\end{enumerate}
+\end{dfn}
+\begin{dfn}[Measure Space]
+	A \textit{measure space} is a triplet $(X,\mathcal{F},\mu)$ with $\mathcal{F}$ a $\sigma-$algebra and $\mu$ a measure.
+\end{dfn}
+\begin{rmk}
+	The empty set has null measure.
+\end{rmk}
+\begin{proof}
+	Due to $\sigma-$additivity we have that
+	\begin{equation*}
+		\mu(\{\})=\mu(\{\}\cup\{\})=\mu(\{\})+\mu(\{\})
+	\end{equation*}
+	Therefore, $\mu(\{\})=0$ necessarily.
+\end{proof}
+\begin{dfn}[Lebesgue Measure]
+	Consider again $X=\R^2$ and $\mathcal{S}$ the algebra of simple sets.\\
+	The \textit{external Lebesgue measure} of a set $B\subset\R^2$ is then defined as follows
+	\begin{equation}
+		\cc{\mu}_L(B):=\inf\left\{ \derin{\sum_{i=1}^\infty\mathrm{Area}(R_i)} R_i\in\mathcal{S},\ B\subset\bigcup_{i=1}^\infty R_i \right\}
+		\label{eq:upperlebmeas}
+	\end{equation}
+	The set $B$ is said to be \textit{Lebesgue measurable} iff, $\forall C\subset\R^2$
+	\begin{equation}
+		\cc{\mu}_L(C)=\cc{\mu}_L(C\cap B)+\cc{\mu}_L(C\setminus B)
+		\label{eq:lebmeasset}
+	\end{equation}
+	If it's measurable, then, $\cc{\mu}_L(B)=\mu_L(B)$ and it's called the \textit{Lebesgue measure} of the set.\\
+	In other words $\exists\epsilon>0\st\exists A,C\subset\R^2$, with $A=\intr{A},\ C=\cc{C}$ such that
+	\begin{equation}
+		C\subset B\subset A\ \vee\ \cc{\mu}_L(A\setminus C)<\epsilon
+		\label{eq:formlebmeas}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Borel Algebra]
+	Let $R$ be the set of all rectangles. The smallest $\sigma-$algebra containing $R$ is called the \textit{Borel algebra} and it's indicated as $\mathcal{B}$
+\end{dfn}
+\begin{dfn}[Lebesgue Algebra]
+	The set of (Lebesgue) measurable sets is a $\sigma-$algebra, which we will indicate as $\mathcal{L}$. In particular, we have that, if $I$ is a rectangle, $I\in\mathcal{L}$.\\
+	If we add the fact that in $\mathcal{B}$ there are null measure sets which have subsets which aren't part of $\mathcal{B}$, we end up with the conclusion that $\mathcal{B}\subset\mathcal{L}$
+\end{dfn}
+\begin{dfn}[Null Measure Sets]
+	A set with null measure is a set $X\subset\mathcal{F}$ such that
+	\begin{equation}
+		\mu(X)=0
+		\label{eq:nullmeas}
+	\end{equation}
+	Where $\mu$ is a measure function.\\
+	It's obvious that sets formed by a single point have null measure.\\
+	I.e take a set $A=\{a\}$, then it can be seen as a rectangle with $0$ area, and therefore
+	\begin{equation}
+		\mu\left( \{a\} \right)=0
+		\label{eq:singlepointmeas}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Every set such that $\abs{A}=\aleph_0$ has null measure
+\end{thm}
+\begin{cor}
+	Every line in $\R^2$ has null measure
+\end{cor}
+\begin{proof}
+	Take the set $A=\{a_1,a_2,a_3,\cdots\}$. Then, due to $\sigma-$additivity, we have
+	\begin{equation}
+		\mu\left( \{a_1,a_2,a_3,\cdots\} \right)=\mu\left( \bigsqcup_{k=1}^\infty\{a_k\} \right)=\sum_{k=1}^\infty\mu\left( \{a_k\} \right)=0
+		\label{eq:sigmaddproof}
+	\end{equation}
+	For the corollary, it's obvious if the line is thought as a rectangle in $\R^2$ with null area
+\end{proof}
+\section{Integration}
+\begin{dfn}[Measurable Function]
+	Given a Borel space $(X,\mathcal{F})$ a \textit{measurable function} is a function $f:X\fto\F$ such that, $\forall k\in\F$ the following set is measurable
+	\begin{equation}
+		I_f:=\left\{\derin{k\in\F}f(x)<k \right\}
+		\label{eq:fmesset}
+	\end{equation}
+	Or, in other words $I_f\in\mathcal{F}$, with $\mathcal{F}$ the given $\sigma-$algebra of the Borel space.\\
+	The space of all measurable functions on $X$ will be identified as $\mathcal{M}(X)$
+\end{dfn}
+\begin{thm}
+	Given a set $A\in\mathcal{F}$ with $\mathcal{F}$ a $\sigma-$algebra, the function $\1_A(x)$ is measurable
+\end{thm}
+\begin{proof}
+	We have that
+	\begin{equation*}
+		I_{\1_A}=\begin{dcases}A&k>1\\ \{\}&t\le1\end{dcases}
+	\end{equation*}
+	Therefore $I_{\1_A}\in\mathcal{F}$ and $\1_A(x)$ is measurable
+\end{proof}
+\begin{dfn}[Simple Measurable Function]
+	Given a Borel space $(X,\mathcal{F})$, a \textit{simple measurable function} is a function $f:X\fto\F$ which can be written as follows
+	\begin{equation}
+		f(x)=\sum_{k=1}^nc_k\1_{A_k}(x)
+		\label{eq:simplemef}
+	\end{equation}
+	Where $A_k\in\mathcal{F},\ c_k\in\F\quad 0\le k\le n$
+\end{dfn}
+\begin{dfn}[Integral]
+	Given a measure space $(X,\mathcal{F},\mu)$ and a simple function $f(x)$, we can define the \textit{integral} of the function $f$ with respect to the measure $\mu$ over the set $X$ as follows
+	\begin{equation}
+		\int_{X}^{}f(x)\mu\left( \diff x \right)=\sum_{k=1}^nc_k\mu(A_k)
+		\label{eq:integral}
+	\end{equation}
+	For non negative functions we define the integral as follows
+	\begin{equation}
+		\int_{X}^{}f(x)\mu\left( \diff x \right)=\sup\left\{ \int_{X}^{}g(x)\mu\left( \diff x \right) \right\}
+		\label{eq:integralnonneg}
+	\end{equation}
+	Where $g(x)$ is a simple measurable function such that $0\le g\le f$.\\
+	If $f$ assumes both negative and positive values we can write
+	\begin{equation}
+		f=f^+-f^-
+		\label{eq:negposfunc}
+	\end{equation}
+	Where
+	\begin{equation}
+		\left\{ \begin{aligned}
+				f^+&=\max\left\{f,0\right\}\\
+				f^-&=\max\left\{-f,0\right\}
+		\end{aligned}\right.
+		\label{eq:f+f-lebesgue}
+	\end{equation}
+	The integral, due to linearity, then will be
+	\begin{equation}
+		\int_{X}^{}f(x)\mu\left( \diff x \right)=\int_{X}^{}f^+(x)\mu\left( \diff x \right)-\int_{X}^{}f^-(x)\mu\left( \diff x \right)
+		\label{eq:f+f-int}
+	\end{equation}
+	With the only constraint that the function $f(x)$ must be misurable in the $\sigma$-algebra $\mathcal{F}$
+\end{dfn}
+\subsection{Lebesgue Spaces}
+%to be updated
+\begin{dfn}[$\mathcal{L}^p$ spaces]
+	With the previous definitions, we can define an \textit{infinite dimensional function space} with the following properties\\
+	Given a measure space $(X,\mathcal{F},\mu)$ we have the following definition
+	\begin{equation}
+		\mathcal{L}^p\left( X,\mathcal{F},\mu \right)=\mathcal{L}^p(\mu):=\left\{\derin{f: X\fto\F}I_f\in\mathcal{F}\wedge\int_{X}^{}\abs{f}^p\mu\left( \diff x \right)<\infty \right\}
+		\label{eq:mcLpspaces}
+	\end{equation}
+	Defining the integral as an \textit{operator} $\opr{K}_\mu[f]$ we can see easily that this is a vector spaces due to the properties of $\opr{K}_\mu$.\\
+	It's easy to note that if the chosen $\sigma-$algebra and measure are the Lebesgue ones, then this integral is simply an extension of the usual Riemann integral.\\
+	It's important to note that a norm in $\mathcal{L}^p(\mu)$ can't be defined as an usual integral $p-$norm, since there are nonzero functions which have actually measure zero.
+\end{dfn}
+\begin{dfn}[Almost Everywhere Equality]
+	Taken two functions $f,g\in\mathcal{L}^p(\mu)$ we say that these two function are \textit{almost everywhere equal} if, given a set $A:=\{\derin{x\in X}f(x)\ne g(x)\}$ has null measure. Therefore
+	\begin{equation}
+		f\sim g\iff\mu(A)=0
+		\label{eq:almosteverywhereeq}
+	\end{equation}
+	This equivalence relation creates equivalence classes of functions compatible with the vector space properties of $\mathcal{L}^p(\mu)$.
+\end{dfn}
+\begin{dfn}[$L^p$-Spaces]
+	With the definition of the almost everywhere equality we can then define a quotient space as follows
+	\begin{equation}
+		L^p(\mu)=\mathcal{L}^p(\mu)\setminus\sim
+		\label{eq:lspace}
+	\end{equation}
+	This is a vector space, obviously, where the elements are the equivalence classes of functions $f\in\mathcal{L}^p(\mu)$, indicated as $[f]$.\\
+	If we define our $\sigma-$algebra and measure as the Lebesgue ones, this space is called the \textit{Lebesgue space} $L^p(X)$, where an integral $p-$norm can be defined.
+\end{dfn}
+\subsection{Lebesgue Integration}
+\textit{\textbf{Note:}}\\
+In this section the differential $\diff x$ will actually indicate the Lebesgue measure $\mu\left( \diff x \right)$ used previously, unless stated otherwise.
+\begin{thm}
+	Let $f:E\fto\F$ be a measurable function over $E$.\\
+	Given
+	\begin{equation*}
+		F_{+\infty}={\derin{x\in E}f(x)=+\infty}\ \wedge\ F_{-\infty}={\derin{x\in E}f(x)=-\infty}
+	\end{equation*}
+	Assuming $E\subset X$, with $(X,\mathcal{L},\mu)$ a Lebesgue measure space, we have that
+	\begin{equation*}
+		\mu\left( F_{+\infty} \right)=\mu\left( F_{-\infty} \right)=0
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	We can immediately say that
+	\begin{equation*}
+		F_{+\infty}=\bigcap_{k\ge0}F_k\in\mathcal{L}
+	\end{equation*}
+	Letting $r>0$ we will indicate with $\1_r(x)$ the set function of the set $F_{+\infty}\cap B_r(0)$, therefore we have that
+	\begin{equation*}
+		f^+(x)\ge k\1_r(x)\quad\forall k\in\N
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\mu\left( F_{+\infty}\cap B_r(0) \right)=\int_{}^{}\1_r(x)\diff x\le\frac{1}{k}\int_{E}f^+(x)\diff x\fto0
+	\end{equation*}
+	The proof is analogous for $F_{-\infty}$
+\end{proof}
+\begin{thm}
+	Let $(X,\mathcal{L},\mu)$ be a measure space, where $\mathcal{L}$ is the Lebesgue $\sigma-$algebra and $\mu$ is the Lebesgue measure. Given a function $f\in L^1(X)$ we have that
+	\begin{equation}
+		\int_{X}f(x)\diff x=0\iff f\sim 0
+		\label{eq:nullintegral}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let $F_0={\derin{x\in X}f(x)>0}=\bigcap_{k\ge0}F_{1/k}$.\\
+	Since $f(x)>1/k,\ \forall x\in F_{1/k}$, we have that, $\forall k\in\N$
+	\begin{equation*}
+		\mu(F_{1/k})\le\int_{X}^{}f(x)\diff x=0
+	\end{equation*}
+	Through induction, we obtain that $\mu(F_0)=0$
+\end{proof}
+\begin{thm}[Monotone Convergence (B. Levi)]
+	Let $(f)_k$ be a sequence of measurable functions over a Borel space $E$, such that
+	\begin{equation*}
+		0\le f_1(x)\le\cdots\le f_k(x)\le\cdots\quad\forall x\in F\subset E,\ \mu(F)=0
+	\end{equation*}
+	If $f_k(x)\to f(x)$, we have that
+	\begin{equation}
+		\int_{E}^{}f(x)\diff x=\lim_{k\to\infty}\int_{E}^{}f_k(x)\diff x
+		\label{eq:intconv}
+	\end{equation}
+	Or, in another notation
+	\begin{equation}
+		\int_{E}^{}f_k(x)\diff x\to\int_{E}^{}f(x)\diff x
+		\label{eq:intconv2}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let $F_{0k}={0<y<f_k(x)}$ and $F_{0}={0<y<f(x)}$ be two sets defined as seen. They are all measurable since $f_k(x),f(x)$ are measurable, and due to the monotony of $f_k(x)$ we have that
+	\begin{equation*}
+		F_{01}\subset F_{02}\subset\cdots\subset F_{0k}\subset\cdots\ \wedge\ F_0=\bigsqcup_{k=1}^\infty F_{0k}
+	\end{equation*}
+	Due to $\sigma-$additivity of the measure function, we have that $F_0$ is measurable, and that
+	\begin{equation*}
+		\mu\left( F_0 \right)=\sum_{k=1}^{\infty}\mu\left( F_{0k} \right)\quad\therefore\mu\left( F_0 \right)=\lim_{k\fto\infty}\mu\left( F_{0k} \right)
+	\end{equation*}
+\end{proof}
+\begin{ntn}[For Almost All]
+	We now introduce a new (unconventional) symbol in order to avoid writing too much, which would complicate the already difficult to understand theorems.\\
+	In order to indicate that we're picking \textit{almost all} elements of a set we will use a new quantifier, which means that we're picking all elements of a null measure subset of the set in question. The quantifier in question will be the following
+	\begin{equation}
+		\foraall
+		\label{ntn:foralmostall}
+	\end{equation}
+\end{ntn}
+\begin{cor}
+	Let $f_k(x)$ be a sequence of non-negative measurable functions over a measurable set $E$, then $\foraall x\in E$
+	\begin{equation}
+		\int_{E}^{}\sum_{k\ge0}f_k(x)\diff x=\sum_{k\ge0}^{}\int_{E}^{}f_k(x)\diff x
+		\label{eq:sumintleb}
+	\end{equation}
+\end{cor}
+\begin{thm}[Fatou]
+	Let $f_k(x)$ be a sequence of measurable functions over a measurable set $E$, such that $\foraall x\in E\ \exists\Phi(x)$ measurable$\st f_k(x)>\Phi(x)$, then
+	\begin{equation*}
+		\int_{E}^{}\liminf_{k\to\infty}f_k(x)\diff x\le\liminf_{k\to\infty}\int_{E}^{}f_k(x)\diff x
+	\end{equation*}
+	Analogously happens with the $\limsup$ of the sequence
+\end{thm}
+\begin{proof}
+	Let $h_k(x)=f_k(x)-\Phi(x)\ge0\ \foraall x\in E$ and $g_j(x)=\inf_{k\ge k}h_k(x)$, then $\forall k\ge j$ we have
+	\begin{equation*}
+		\int_{E}^{}g_j(x)\diff x\le\int_{E}^{}h_k(x)\diff x
+	\end{equation*}
+	It's also (obviously) true taking the $\limsup$ of the RHS, and for the theorem on the monotone convergence, we have that
+	\begin{equation*}
+		\begin{aligned}
+			\int_{E}^{}\lim_{j\to\infty}g_j(x)\diff x&=\lim_{j\to\infty}\int_{E}^{}g_j(x)\diff x\le\int_{E}^{}h_k(x)\diff x\\
+			\therefore\lim_{j\to\infty}g_j(x)&= \sup_jg_j(x)=\sup_j\inf_{k\ge j}h_k(x)=\liminf_{k\to\infty}h_k(x)
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\begin{thm}[Dominated Convergence (Lebesgue)]
+	Let $h(x)\ge0$ be a measurable function on the measurable set $E$ such that for a sequence of measurable functions $f_k(x)$ we have that
+	\begin{equation*}
+		\abs{f_k(x)}\le h(x)\quad\foraall x\in E
+	\end{equation*}
+	And
+	\begin{equation*}
+		f(x)=\lim_{k\to\infty}f_k(x)\quad\foraall x\in E
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\int_{E}^{}f(x)\diff x=\lim_{k\to\infty}\int_{E}^{}f_k(x)\diff x
+	\end{equation*}
+	\label{thm:domcon}
+\end{thm}
+\begin{proof}
+	By definition we have that $-h(x)\le f_k(x)\le h(x)\ \foraall x\in E$, and we can apply Fatou's theorem
+	\begin{equation*}
+		\int_{E}^{}f(x)\diff x\le\liminf_{k\to\infty}\int_{E}^{}f_k(x)\diff x\le\limsup_{k\to\infty}\int_{E}^{}f_k(x)\diff x\le\int_{E}^{}f(x)\diff x
+	\end{equation*}
+\end{proof}
+\begin{cor}
+	Let $E$ be a measurable set such that $\mu\left( E \right)<\infty$ and let $f_k(x)$ be a sequence of functions in $E$ such that $\abs{f_k(x)}\le M\ \foraall x\in E$ and $f_k(x)\to f(x),\ \foraall x\in E$. Then the theorem \eqref{thm:domcon} is valid.
+\end{cor}
+\begin{eg}
+	Take the sequence of functions $f_k(x)=kxe^{-kx}$ over $E=[0,1]$. We already know that $f_k(x)\fto f(x)=0$ for $x\in E$, but $f_k(x)\not\tto f(x)$ in $E$.\\
+	We have that
+	\begin{equation*}
+		\sup_Ef_k(x)=e^{-1}=h(x)\ne f(x)
+	\end{equation*}
+	We have that $h(x)$ is measurable in $E$ and we can apply the theorem \eqref{thm:domcon}
+\end{eg}
+\begin{dfn}[Carathéodory Function]
+	Let $(X,\mathcal{L},\mu)$ be a measure space and $A\subset\R^n$. $f:X\times A\fto\R$ is a \textit{Carathéodory function} iff $f(x^\mu,a^\nu)\in C(A)\ \forall a^\nu\in A$ and $f(x^\mu,a^\nu)\in\mathcal{M}(X)\ \foraall x^\mu\in X$
+\end{dfn}
+\begin{dfn}[Locally Uniformly Integrably Bounded]
+	Let $f:X\times A\fto\R$ be a Carathéodory function. It's said to be \textit{locally uniformly integrably bounded} if $\forall a^\nu\in A\ \exists h_{a^\nu}:X\fto\R$ measurable, and $\exists B_\epsilon(a^\nu)\subset A$, such that
+	\begin{equation*}
+		\forall y^\nu\in B_\epsilon(x^\mu)\ \abs{f(x^\mu,y^\nu)}\le h_{a^\nu}(x^\mu)
+	\end{equation*}
+	Note that if $\mu$ is a finite measure, then $f$ bounded $\implies f$ locally uniformly integrably bounded or LUIB.
+\end{dfn}
+\begin{thm}[Leibniz's Derivation Rule]
+	Let $(X,\mathcal{F},\mu)$ be a measure space and $A\subset\R^n$ an open set. If $f:X\times A\fto\R$ is a LUIB Carathéodory function we can define
+	\begin{equation*}
+		g(a^\mu)=\int_{X}^{}f(x^\nu,a^\mu)\diff\mu\left( x^\sigma \right)\in C(A)
+	\end{equation*}
+	Then
+	\begin{equation*}
+		\del_{x^\mu}f(x^\nu,a^\sigma)\in C(A)
+	\end{equation*}
+	Is LUIB, and therefore
+	\begin{equation*}
+		g(a^\mu)\in C^1(A)
+	\end{equation*}
+	And
+	\begin{equation*}
+		\del_\mu g=\int_{X}^{}\del_{a^\mu}f(a^\nu,x^\sigma)\diff\mu\left( x^\gamma \right)
+	\end{equation*}
+	In other terms
+	\begin{equation}
+		\del_{a^\mu}\int_{X}^{}f(a^\nu,x^\sigma)\diff\mu(x^\gamma)=\int_{X}^{}\del_{a^\mu}f(a^\nu,x^\sigma)\diff\mu(x^\gamma)
+		\label{eq:leibnizrule}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Since $f$ is a LUIB Carathéodory function we have that $\exists h_{a^\mu}(x^\nu):X\fto\R$ and $B_\epsilon(a^\mu)\subset A\st\forall y^\mu\in B_\epsilon(a^\nu)$
+	\begin{equation*}
+		\abs{f(y^\mu,x^\nu)}\le h_{a^\mu}(x^\nu)
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\abs{g(a^\mu)}\le\int_{X}^{}h_{a^\mu}(x^\nu)\diff\mu(x^\sigma)<\infty
+	\end{equation*}
+	Now take a sequence $(a^\mu)_n\st (a^\mu)_n\to a^\mu$, then $f\in C(A)\implies f(a^\mu_n,x^\nu)\to f(a^\mu,x^\nu)\ \foraall x^\mu\in X,\forall a^\mu_n\in B_\epsilon(a^\mu)$
+	\begin{equation*}
+		\therefore\exists N\in\N\st\forall n\ge N\ \abs{f(a^\mu_n,x^\nu)}\le h_{a^\mu}(x^\nu)
+	\end{equation*}
+	Then
+	\begin{equation*}
+		g(a^\mu_n)=\int_{X}^{}f(a^\mu_n,x^\nu)\diff\mu(x^\sigma)\to\int_{X}^{}f(a^\mu,x^\nu)\diff\mu(x^\sigma)=g(a^\mu)
+	\end{equation*}
+	Since $f$ is differentiable and its derivative is measurable, we have for the mean value theorem
+	\begin{equation*}
+		f(a^\mu+te^\mu,x^\nu)-f(a^\mu,x^\nu)=t\del_\mu f(\xi^\nu(t,x^\sigma),x^\gamma)
+	\end{equation*}
+	If $\xi^\mu(t,x^\nu)\in B_\epsilon(a^\mu)$ we have that
+	\begin{equation*}
+		\abs{t\del_\mu f(\xi^\nu(t,x^\sigma),x^\gamma)}\le h_{a^\mu}(x^\nu)
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\frac{g(a^\mu+te^\mu)-g(a^\mu)}{t}=\frac{1}{t}\int_{X}^{}t\del_\mu f(\xi^\nu(t,x^\sigma),x^\gamma)\diff\mu(x^\delta)
+	\end{equation*}
+	For $t\to0\ \del_\mu f(\xi^\nu,x^\sigma)\to\del_\mu f(a^\nu,x^\sigma)$, and the LHS is simply the gradient of $g$. Therefore for theorem $\eqref{thm:domcon}$
+	\begin{equation*}
+		\del_\mu g(a^\nu)=\pdv{a^\mu}\int_{X}f(a^\nu,x^\sigma)\diff\mu(x^\gamma)=\int_{X}^{}\del_{\mu}f(a^\nu,x^\sigma)\diff\mu(x^\gamma)
+	\end{equation*}
+\end{proof}
+\section{Calculus of Integrals in $\R^2$ and $\R^3$}
+\subsection{Double Integration}
+\begin{thm}
+	Let $E\subset\R^2$ and $F\subset\R^3$. Define $E_x:=\left\{ \derin{y\in\R}(x,y)\in E \right\}$ the sections of $E$ parallel to the $y$ axis, then
+	\begin{equation}
+		\mu(E)=\int_{\R}^{}\mu_1(E_x)\diff y
+		\label{eq:doubleint1}
+	\end{equation}
+	Where with $\mu_i$ we indicate the $i-$dimensional measure on $\R^n$.\\
+	Analogously, we define $F_z:=\left\{ \derin{(x,y)\in\R^2}(x,y,z)\in F \right\}$ then
+	\begin{equation}
+		\mu(F)=\int_{\R}^{}\mu_2(F_z)\diff z
+		\label{eq:tripleint1}
+	\end{equation}
+	If we define $F_{xy}:=\left\{ \derin{z\in\R}(x,y,z)\in F \right\}$ we have
+	\begin{equation}
+		\mu(F)=\iint_{\R^2}\mu_1(F_{xy})\diff x\diff y
+		\label{eq:tripleint2}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Let $A\subset\R^2$ open, and let $Y_k\subset\R^2$ be rectangles such that
+	\begin{equation*}
+		\begin{aligned}
+			Y_1&\subset Y_2\subset Y_3\subset\cdots\\
+			A&=\bigsqcup_{k=1}^\infty Y_k
+		\end{aligned}
+	\end{equation*}
+	Then, due to $\sigma-$additivity, we have
+	\begin{equation*}
+		\mu_2(A)=\lim_{k\to\infty}\mu_2(Y_k)=\lim_{k\to\infty}\int_{\R}^{}\mu_1(Y_{kx})\diff x
+	\end{equation*}
+	But
+	\begin{equation*}
+		\begin{aligned}
+			Y_{1x}&\subset Y_{2x}\subset\cdots\\
+			A_x&=\bigsqcup_{k=1}^\infty Y_{kx}
+		\end{aligned}
+	\end{equation*}
+	Due to $\sigma-$additivity and the Beppo-Levi theorem we have that
+	\begin{equation*}
+		\int_{\R}^{}\mu_1(A_x)\diff x=\lim_{k\to\infty}\int_{\R}^{}\mu_1(Y_{kx})\diff x
+	\end{equation*}
+	Let $E\subset\R^2$ be a measurable set. Define a sequence of compact sets $K_i$ and a sequence of open sets $A_j$ such that
+	\begin{equation*}
+		K_1\subset\cdots\subset K_j\subset E\subset A_j\subset\cdots\subset A_1
+	\end{equation*}
+	We have that $\lim_{j\to\infty}\mu_2(A_j)=\lim_{j\to\infty}\mu_2(K_j)=\mu_2(E)$ and that $K_{jx}\subset E\subset A_{jx}$.\\
+	From the previous derivation we can write that
+	\begin{equation*}
+		\lim_{j\to\infty}\int_{\R}\left( \mu_1(A_{jx})-\mu_1(K_{jx}) \right)\diff x=0
+	\end{equation*}
+	Building a sequence of non-negative functions $f_j(x)=\mu_1(A_{jx})-\mu_1(K_{jx})$ we have that $f_j(x)\le f_{j-1}(x)$ and due to Beppo-Levi we have that
+	\begin{equation*}
+		\lim_{j\to\infty}\int_{\R}f_j(x)\diff x=\int_{\R}^{}\lim_{j\to\infty}f_{j}(x)\diff x
+	\end{equation*}
+	And therefore $\mu_1(K_{jx})=\mu_1(A_{jx})$, and
+	\begin{equation*}
+		\foraall x\in\R\quad\mu_2(K_j)=\int_{\R}^{}\mu_1(K_{jx})\diff x\le\int_{\R}^{}\cc{\mu_1}(E_x)\diff x\le\int_{\R}^{}\mu_1(A_{jx})=\mu_2(A_j)
+	\end{equation*}
+\end{proof}
+\begin{thm}[Fubini]
+	Let $f(x,y)$ be a measurable function in $\R^2$, then
+	\begin{enumerate}
+	\item $\foraall x\in\R\quad y\mapsto f(x,y)$ is measurable in $\R$
+	\item $g(x)=\int_{\R}^{}f(x,y)\diff y$ is measurable in $\R$
+	\item $\iint_{\R^2}f(x,y)\diff x\diff y=\int_{\R}^{}\int_{\R}^{}f(x,y)\diff x\diff y$
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Let $f(x,y)\ge0$. Defining $F_0:=\left\{ \derin{(x,y)\in E\times\R}0<z<f(x,y) \right\}\subset\R^3$, we have that $F_0$ is measurable, and
+	\begin{equation*}
+		\mu_3(F_0)=\iint_{\R^2}f(x,y)\diff x\diff y
+	\end{equation*}
+	But $F_{0x}$ is also measurable $\foraall x\in\R$ and therefore
+	\begin{equation*}
+		\mu_3(F_0)=\int_\R\mu_2(F_{0x})\diff x=\int_\R\int_\R f(x,y)\diff x\diff y
+	\end{equation*}
+\end{proof}
+\begin{thm}[Tonelli]
+	Let $f(x,y)$ be a measurable function and $E\subset\R^2$ be a measurable set. If one of these integrals exists, the others also exist and have the same value
+	\begin{equation*}
+		\iint_{\R^2}^{}f(x,y)\diff x\diff y\quad\int_{\R}^{}\left( \int_{\R}^{}f(x,y)\diff x \right)\diff y\quad\int_{\R}^{}\left( \int_{\R}^{}f(x,y)\diff y \right)\diff x
+	\end{equation*}
+\end{thm}
+\begin{thm}[Integration Over Rectangles]
+	Let $R=[a,b]\times[c,d]\subset\R^2$ be a rectangle, and $f(x,y)$ a measurable function over $R$. Then\\
+	\begin{enumerate}
+	\item If $\foraall x\in[a,b]\ \exists G(x)=\int_{c}^{d}f(x,y)\diff y$, the function $G(x)$ is measurable in $[a,b]$ and
+		\begin{equation*}
+			\iint_Rf(x,y)\diff x\diff y=\int_{a}^{b}G(x)\diff x=\int_{a}^{b}\int_{c}^{d}f(x,y)\diff y\diff x
+		\end{equation*}
+	\item If $\foraall y\in[c,d]\ \exists F(y)=\int_{a}^{b}f(x,y)\diff x$, the function $F(y)$ is measurable in $[c,d]$ and
+		\begin{equation*}
+			\int_{\R^2}^{}f(x,y)\diff x\diff y=\int_{c}^{d}F(y)\diff y=\int_{c}^{d}\int_{a}^{b}f(x,y)\diff x\diff y
+		\end{equation*}
+	\end{enumerate}
+	If both are true, then
+	\begin{equation}
+		\int_{R}^{}f(x,y)\diff x\diff y=\int_{a}^{b}\diff x\int_{c}^{d}f(x,y)\diff y=\int_{c}^{d}\diff y\int_{a}^{b}f(x,y)\diff x
+		\label{eq:rectintegration}
+	\end{equation}
+\end{thm}
+\begin{dfn}[Normal Set]
+	A set $E\subset\R^2$ is said to be \textit{normal} with respect to the $x$ axis if
+	\begin{equation*}
+		E=\left\{ \derin{(x,y)\in\R^2}a\le x\le b\ \alpha(x)\le y\le\beta(x) \right\}
+	\end{equation*}
+	The definition is analogous for the other axes.
+\end{dfn}
+\begin{thm}[Integration over Normal Sets]
+	Let $E\subset\R^2$ be a normal set with respect to the $x$ axis, and $f(x,y)$ is a measurable function over $E$. Then
+	\begin{equation}
+		\int_{E}^{}f(x,y)\diff x\diff y=\int_{a}^{b}\diff x\int_{\alpha(x)}^{\beta(x)}f(x,y)\diff y
+		\label{eq:normalintegration}
+	\end{equation}
+\end{thm}
+\begin{thm}[Dirichlet Inversion Formula]
+	Take the triangle $T:=\left\{ \derin{(x,y)\in\R^2}a\le y\le x\le b \right\}$. It can be considered normal with respect to both axes, and we can use the \textit{inversion formula}
+	\begin{equation}
+		\iint_Tf(x,y)\diff x\diff y=\int_{a}^{b}\diff x\int_{a}^{x}f(x,y)\diff y=\int_{a}^{b}\diff y\int_{y}^{b}f(x,y)\diff x
+		\label{eq:dirinversionformula}
+	\end{equation}
+\end{thm}
+\subsection{Triple Integration}
+\begin{thm}[Wire Integration]
+	Let $E\subset\R^3$ be a normal set with respect to the $z$ axis. If $f(x,y,z)$ is measurable in $E$ we have
+	\begin{equation}
+		\iiint_Ef(x,y,z)\diff x\diff y\diff z=\iint_D\diff x\diff y\int_{h(x,y)}^{g(x,y)}f(x,y,z)\diff z
+		\label{eq:wireint}
+	\end{equation}
+	This is called the \textit{wire integration formula}
+\end{thm}
+\begin{thm}[Section Integration]
+	Let $F\subset\R^3$ be a measurable set bounded by the planes $z=a$ and $z=b$ with $a<b$. Taken $z\in[a,b]$ we can define $F_z$ and we have
+	\begin{equation}
+		\iiint_Ff(x,y,z)\diff x\diff y\diff z=\int_{a}^{b}\diff z\iint_{F_z}f(x,y,z)\diff x\diff y
+		\label{eq:sectionint}
+	\end{equation}
+	This is called the \textit{section integration formula}
+\end{thm}
+\begin{thm}[Center of Mass]
+	Take a plane $E\subseteq\R^2$ with surface density $\rho(x,y)>0$. We define the \textit{total mass} $M$ as follows
+	\begin{equation}
+		M=\iint_E\rho(x,y)\diff x\diff y
+		\label{eq:totmass}
+	\end{equation}
+	The coordinates of the \textit{center of mass} will be the following
+	\begin{equation}
+		\begin{aligned}
+			x_G&=\frac{1}{M}\iint_E\rho(x,y)x\diff x\diff y\\
+			y_G&=\frac{1}{M}\iint_E\rho(x,y)y\diff x\diff y
+		\end{aligned}
+		\label{eq:cmcoord}
+	\end{equation}
+\end{thm}
+\begin{thm}[Moment of Inertia]
+	Taken the same plane $E$, we define the \textit{moment of inertia with respect to a line} $r$ as the following integral
+	\begin{equation}
+		I_r=\iint_E\rho(x,y)\left( d(p^\mu,r) \right)^2\diff x\diff y
+		\label{eq:momentinertia}
+	\end{equation}
+	Where $d(p^\mu,r)$ is the distance function between the point $(x,y)$ and the \textit{rotation axis} $r$.\\
+	Both formulas are easily generalizable in $\R^3$
+\end{thm}
+\subsection{Change of Variables}
+\begin{dfn}[Diffeomorphism]
+	Let $M,N\subset X$ be two subsets of a metric space $X$. The two sets are said to be \textit{diffeomorphic} if $\exists f:M\fto[\sim]N$ an isomorphism such that $f\in C^1(M)$ and $f^{-1}\in C^1(N)$. The application $f$ is called a \textit{diffeomorphism}.\\
+	Two diffeomorphic sets are indicated as follows
+	\begin{equation*}
+		M\simeq N
+	\end{equation*}
+\end{dfn}
+\begin{thm}
+	Let $A,B\subset\R^n$ be two open sets and $\varphi^\mu:A\fto[\sim]B$ a diffeomorphism, such that
+	\begin{equation*}
+		\varphi^\mu(E)=F
+	\end{equation*}
+	If $f:E\subset B\fto\R$ is measurable, we have that
+	\begin{equation*}
+		\int_{E}^{}f(y^\mu)\diff y^\mu=\int_{\varphi^{-1}(E)}^{}f(\varphi^\mu(x^\nu))\abs{\det_{\mu\nu}\del_\mu\varphi^\nu}\diff x^\mu=\int_{F}^{}f(\varphi^\mu)\abs{\det_{\mu\nu}\del_\mu\varphi^\nu}\diff x^\mu
+	\end{equation*}
+\end{thm}
+\begin{thm}[Change of Variables]
+	Let $\varphi^\mu:\R^n\fto[\sim]\R^n$ be a diffeomorphism such that
+	\begin{equation*}
+		\varphi^\mu(x^\nu)=x^\mu\quad\forall\norm{x^\mu}_\mu>1
+	\end{equation*}
+	And $f:\R^n\fto\R$ a function such that $\supp{f}=K\subset\R^n$ is a compact set. If $f$ is measurable, we have that
+	\begin{equation}
+		\int_{\R^n}^{}f(y^\mu)\diff y^\mu=\int_{\R^n}^{}f(\varphi^\mu(x^\nu))\abs{\det_{\mu\nu}\del_\mu\varphi^\nu}\diff x^\mu
+		\label{eq:changevar}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Take $n=2$ without loss of generality. We can immediately write that
+	\begin{equation*}
+		g(y^1,y^2)=\int_{-\infty}^{y^1}f(\eta,y^2)\diff\eta
+	\end{equation*}
+	Then, for the fundamental theorem of integral calculus
+	\begin{equation*}
+		\del_1g(y^1,y^2)=f(y^1,y^2)
+	\end{equation*}
+	Taken $c\in\R,\ c>1\st K\subset Q=[-c,c]\times[-c,c]$, we have that $\varphi^\mu(x^\nu)=\delta^\mu_\nu\ \forall\norm{x^\mu}_\mu>1\ \wedge\ f(x^\mu)=0\ \forall x^\mu\notin Q$.\\
+	Therefore $f(\varphi^\mu)=0$ also and we have
+	\begin{equation*}
+		\int_{\R^n}^{}f(\varphi^\mu)\det_{\mu\nu}\del_\mu\varphi^\nu\diff x^\gamma=\int_{Q}^{}f(\varphi^\mu)\det_{\mu\nu}\del_\mu\varphi^\nu\diff x^\gamma=\int_{Q}^{}\del_1g(\varphi^\mu)\det_{\mu\nu}\del_\mu\varphi^\nu\diff x^\gamma
+	\end{equation*}
+	But we have that
+	\begin{equation*}
+		g(y^\mu)=0\quad\forall\abs{y^1}\ge c\ \vee\ \abs{y^1}<-c
+	\end{equation*}
+	Define the following matrix $H_{\mu\nu}$
+	\begin{equation*}
+		H_{\mu\nu}=\begin{pmatrix}\del_\mu g(\phi^\gamma)\\\del_\mu\varphi^2\end{pmatrix}
+	\end{equation*}
+	Then we have that
+	\begin{equation*}
+		\det_{\mu\nu}H_{\mu\nu}=\del_1g(\varphi^\mu)\det_{\mu\nu}\del_{\mu}\varphi^\nu
+	\end{equation*}
+	Writing $g(\varphi^\mu)=G(x^\mu)$ we have
+	\begin{equation*}
+		\det_{\mu\nu}H_{\mu\nu}=\del_1G\del_2\varphi^2-\del_2G\del_1\varphi^2
+	\end{equation*}
+	Thanks to the integration formula \eqref{eq:rectintegration} we can then write
+	\begin{equation*}
+		\int_{Q}^{}\det_{\mu\nu}H_{\mu\nu}\diff x^\gamma=\int_{-c}^{c}\diff x^2\int_{-c}^{c}\del_1G\del_2\varphi^2\diff x^\nu
+	\end{equation*}
+	Integrating by parts we get
+	\begin{equation*}
+		\int_{Q}^{}\det_{\mu\nu}H_{\mu\nu}\diff x^\gamma=\left.G\del_2\varphi^2\right|^c_{-c}-\int_{-c}^{c}G\del_{21}^2\varphi^2\diff x^1-\left.G\del_1\varphi^2\right|^c_{-c}-\int_{-c}^{c}G\del_{12}^2\varphi^2\diff x^2
+	\end{equation*}
+	But $\forall x^\mu\in\del Q\quad\varphi^\mu(x^\nu)=x^\mu\implies G(-c,x^2)=g(-c,x^2)=0\ \wedge\ G(c,x^2)=g(c,x^2)$
+	\begin{equation*}
+		\therefore\int_{Q}^{}\det_{\mu\nu}H_{\mu\nu}\diff x^\gamma=\int_{Q}^{}f(x^\mu)\diff x^\gamma
+	\end{equation*}
+\end{proof}
+\begin{thm}[Common Coordinate Transformation in $\R^2$ and $\R^3$]
+	\begin{enumerate}
+	\item Polar Coordinates
+		\begin{subequations}
+			\begin{equation}
+				\varphi^\mu(x^\nu)=\begin{dcases}x(\rho,\theta)=\rho\cos\theta&\rho\in\R^+\\y(\rho,\theta)=\rho\sin\theta&\theta\in[0,2\pi)\end{dcases}
+				\label{eq:coordtranspol}
+			\end{equation}
+			\begin{equation}
+				\begin{aligned}
+					\del_\mu\varphi^\nu&=\begin{pmatrix}\cos\theta&-\rho\sin\theta\\\sin\theta&\rho\cos\theta\end{pmatrix}\\
+					\det_{\mu\nu}\del_\mu\varphi^\nu&=\rho
+				\end{aligned}
+				\label{eq:polcoordjac}
+			\end{equation}
+			\label{polarcoord}
+		\end{subequations}
+	\item Spherical Coordinates
+		\begin{subequations}
+			\begin{equation}
+				\varphi^\mu(x^\nu)=\begin{dcases}x(\rho,\theta,\phi)=\rho\sin\phi\cos\theta&\rho\in\R^+\\y(\rho,\theta,\phi)=\rho\sin\phi\sin\theta&\theta\in[0,2\pi)\\z(\rho,\theta,\phi)=\rho\cos\phi&\phi\in[0,\pi]\end{dcases}
+				\label{eq:coordtranssph}
+			\end{equation}
+			\begin{equation}
+				\begin{aligned}
+					\del_\mu\varphi^\nu&=\begin{pmatrix}\sin\phi\cos\theta&-\rho\sin\phi\sin\theta&\rho\cos\phi\cos\theta\\
+						\sin\phi\sin\theta&\rho\sin\phi\cos\theta&\rho\cos\phi\sin\theta\\
+					\cos\phi&0&-\rho\sin\phi\end{pmatrix}\\
+					\det_{\mu\nu}\del_\mu\varphi^\nu&=\rho^2\sin\phi
+				\end{aligned}
+				\label{eq:sphcoordjac}
+			\end{equation}
+			\label{sphcoord}
+		\end{subequations}
+	\item Cylindrical Coordinates
+		\begin{subequations}
+			\begin{equation}
+				\varphi^\mu(x^\nu)=\begin{dcases}x(\rho,\theta,z)=\rho\cos\theta&\rho\in\R^+\\y(\rho,\theta,z)=\rho\sin\theta&\theta\in[0,2\pi)\\z(\rho,\theta,z)=z&z\in\R\end{dcases}
+				\label{eq:coordtranscyl}
+			\end{equation}
+			\begin{equation}
+				\det_{\mu\nu}\del_\mu\varphi^\nu=\rho
+				\label{eq:cylcoordjac}
+			\end{equation}
+			\label{cylcoord}
+		\end{subequations}
+	\end{enumerate}
+\end{thm}
+\begin{dfn}[Rotation Solids]
+	Let $D\subset\R^2$ be a bounded measurable set contained in the half-plane $y=0,x>0$. Suppose we let $D$ ``pop up'' into $\R^3$ through a rotation by an angle $\theta_0$ around the $z$ axis. What has been obtained is a \textit{rotation solid} $E\subset\R^3$. We have that
+	\begin{equation}
+		\mu(E)=\iiint_E\diff x\diff y\diff z=\iint_D\int_0^{\theta_0}\rho\diff\rho\diff\theta\diff z=\theta_0\iint_D\rho\diff\rho\diff z=\theta_0\iint_{D}^{}x\diff x\diff y
+		\label{eq:rotationsolidcalc}
+	\end{equation}
+	Or
+	\begin{equation*}
+		\mu(E)=\theta_0x_{G}\mu_2(D)
+	\end{equation*}
+\end{dfn}
+\begin{thm}[Guldino]
+	The measure of a rotation solid is given by the measure of the rotated figure times the circumference described by the center of mass of the solid.\\
+	This is exactly the previous formula.
+\end{thm}
+\subsection{Line Integrals}
+\begin{dfn}[Line Integral of the First Kind]
+	Given a scalar field $f:A\subset\R^3\fto\R$ and a smooth curve $\{\gamma\}\subset\R^3$, we define the \textit{line integral of the first kind} as follows
+	\begin{equation}
+		\int_{\gamma}^{}f\diff s=\int_{a}^{b}f(\gamma^\mu)\norm{\derivative{\gamma^\mu}{t}}_\mu\diff t
+		\label{eq:lineint1R}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Center of Mass of a Curve]
+	Given a curve $\gamma^\mu:[a,b]\fto\R^3$ with linear mass density $m:\{\gamma\}\fto\R$, we define the \textit{total mass} of $\gamma$ as follows
+	\begin{equation}
+		M=\int_{\gamma}^{}m\diff s=\int_{a}^{b}m(\gamma^\mu)\norm{\derivative{\gamma^\mu}{t}}_\mu\diff t
+		\label{eq:totalmasscurve}
+	\end{equation}
+	The \textit{center of mass} is then defined as follows
+	\begin{equation}
+		x_G^\mu=\frac{1}{M}\int_{\gamma}^{}x^\mu m(x^\nu)\diff s
+		\label{eq:centerofmasscurve}
+	\end{equation}
+\end{thm}
+\begin{dfn}[Line Integral of the Second Kind]
+	Given a vector field $f^\mu:A\fto\R^3$ and a smooth curve $\gamma^\mu:[a,b]\fto A\subset\R^3$ we define the \textit{line integral of the second kind} as follows
+	\begin{equation}
+		\int_{\gamma}^{}f^\mu T_\mu\diff s=\int_{a}^{b}f^\mu(\gamma^\nu)\derivative{\gamma_\mu}{t}\diff t
+		\label{eq:lineint2R}
+	\end{equation}
+	Defining a differential form $\omega=f^\mu\diff x_\mu$ we can also see this integral as follows
+	\begin{equation}
+		\int_{\gamma}^{}\omega=\int_{\gamma}^{}f^\mu T_\mu\diff s
+		\label{eq:lineintdiffform}
+	\end{equation}
+	Where $T^\mu$ is the tangent vector of the curve
+\end{dfn}
+\begin{dfn}[Conservative Field]
+	Let $f^\mu:A\fto\R^3$ be a vector field such that $f^\mu\in C^1(A)$ and $A$ is open and connected. This field is said to be \textit{conservative}, if $\forall x^\mu\in A$
+	\begin{equation}
+		\exists U(x^\mu)\in C^2(A)\st f^\mu=-\del^\mu U
+		\label{eq:conservativefield}
+	\end{equation}
+	The function $U(x^\mu)$ is called the \textit{potential} of the field.\\
+\end{dfn}
+\begin{thm}[Line Integral of a Conservative Field]
+	Given a conservative field $f^\mu:A\fto\R^3$ and a smooth curve $\{\gamma\}\subset A,\ \gamma^\mu:[a,b]\fto\R^3$ with $A$ open and connected, we have that
+	\begin{equation}
+		\int_{\gamma}^{}f^\mu T_\mu\diff s=U(\gamma(a))-U(\gamma(b))
+		\label{eq:consfieldint}
+	\end{equation}
+	Where $U(x^\mu)$ is the potential of the vector field.
+\end{thm}
+\begin{dfn}[Rotor]
+	Given a vector field $f^\mu:A\fto\R^3$ with $f^\mu\in C^1(A)$, we define the \textit{rotor} of the vector field as follows
+	\begin{equation}
+		\rot(f^\mu)=\epsilon^\mu_{\nu\gamma}\del^\nu f^\gamma
+		\label{eq:rotor}
+	\end{equation}
+\end{dfn}
+\begin{thm}
+	Given $f^\mu$ a conservative vector field on an open connected set $A$, we have that
+	\begin{equation}
+		\epsilon^{\mu}_{\nu\gamma}\del^\nu f^\gamma=0
+		\label{eq:nullrotor}
+	\end{equation}
+	Alternatively, if $\gamma^\mu:[a,b]\fto\R^3$ is the parameterization of a smooth closed curve, we have that
+	\begin{equation}
+		\oint_\gamma f^\mu T_\mu\diff s=0
+		\label{eq:lineintcloscons}
+	\end{equation}
+\end{thm}
+\subsection{Surface Integrals}
+\begin{dfn}[Area of a Surface]
+	Given $r^\mu:K\subset\R^2\fto\Sigma\subset\R^3$ a smooth surface, we have that given its metric tensor $g_{\mu\nu}(u,v)$ we have that
+	\begin{equation}
+		\mu\left( \Sigma \right)=\int_{\Sigma}^{}\diff\sigma=\iint_K\sqrt{\det_{\mu\nu}g_{\mu\nu}}\diff u\diff v=\iint_K\sqrt{EG-F^2}\diff u\diff v
+		\label{eq:measuresurface}
+	\end{equation}
+	For a cartesian surface $S$ we have that
+	\begin{equation}
+		\mu\left( S \right)=\int_{S}^{}\diff s=\iint_K\sqrt{1+\left(\norm{\del_\mu f}_\mu\right)^2}\diff x\diff y
+		\label{eq:cartesiansurf}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Rotation Surface]
+	Given a smooth curve $\gamma^\mu:[a,b]\fto\R^3$, the rotation of this curve around the $z-$axis generates a smooth surface $\Sigma$ with the following parameterization
+	\begin{equation}
+		r^\mu(t,\theta)=\begin{dcases}\gamma^1(t)\cos\theta\\\gamma^2(t)\sin\theta\\\gamma^3(t)\end{dcases}\quad(t,\theta)\in[a,b]\times[0,\theta_0]
+		\label{eq:rotationsurf}
+	\end{equation}
+	The area of a rotation surface is calculated as follows
+	\begin{equation}
+		\mu\left( \Sigma \right)=\theta_0\int_a^b\gamma^1(t)\sqrt{\left( \derivative{\gamma^1}{t} \right)^2+\left( \derivative{\gamma^2}{t} \right)^2}\diff t
+		\label{eq:rotationsurfarea}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Guldino II]
+	Given $\Sigma$ a smooth rotation surface defined as before, we have that its area will be
+	\begin{equation}
+		\mu\left( \Sigma \right)=\theta_0\int_\gamma x^1\diff s=\theta_0 x_G^1L_\gamma
+		\label{eq:rotationsurfguldino}
+	\end{equation}
+	Where $x_G^1$ is the first coordinate of the center of mass of the curve, calculated as follows
+	\begin{equation*}
+		x_G^1=\frac{1}{L_\gamma}\int_\gamma x^1\diff s
+	\end{equation*}
+\end{thm}
+\begin{dfn}[Surface Integral]
+	Given a smooth surface $\Sigma\subset\R^3$ with parameterization $r^\mu:K\fto\Sigma$ and a scalar field $h:\R^3\fto\R$, we define the \textit{surface integral} of $h$ as follows
+	\begin{equation}
+		\int_\Sigma h(x^\mu)\diff\sigma=\iint_Kh(r^\mu)\sqrt{\det_{\mu\nu}g_{\mu\nu}}\diff u\diff v
+		\label{eq:surfaceint}
+	\end{equation}
+	If $\Sigma$ is a cartesian surface, we have
+	\begin{equation}
+		\int_{\Sigma}^{}h(x^\mu)\diff\sigma=\iint_Kh(x^1,x^2,f)\sqrt{1+\left( \norm{\del_\mu f}^\mu \right)^2}\diff x\diff y
+		\label{eq:cartesiansurfaceint}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Center of Mass of a Surface]
+	Given a smooth surface $\Sigma$ with parameterization $r^\mu(u,v)$ and mass density $\delta$, we define its total mass as follows
+	\begin{equation}
+		M=\int_\Sigma\delta\diff\sigma
+		\label{eq:totalmasssurf}
+	\end{equation}
+	Its center of mass $x_G^\mu$ will be calculated as follows
+	\begin{equation}
+		x_G^\mu=\frac{1}{M}\int_\Sigma x^\mu\delta(x^\nu)\diff\sigma
+		\label{eq:centerofmasssurf}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Moment of Inertia of a Surface]
+	Given a smooth surface $\Sigma$ with parameterization $r^\mu(u,v)$ and mass density $\delta$ we define its moment of inertia around an axis $r$, $I$, as the following integral
+	\begin{equation}
+		I=\int_\Sigma\delta(x^\mu)\left( d(p^\mu,r) \right)^2\diff\sigma\quad p^\mu\in\Sigma
+		\label{eq:momentofinertia}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Orientable Surface]
+	A smooth surface with parameterization $r^\mu:K\subset\R^2\fto\Sigma\subset\R^3$ is said to be \textit{orientable} if $\forall\gamma:[a,b]\fto\Sigma$ smooth closed curve, we have, given $n^\mu$ the normal vector of the surface
+	\begin{equation}
+		n^\mu(\gamma^\nu(a))=n^\mu(\gamma^\nu(b))
+		\label{eq:orientabilitysurf}
+	\end{equation}
+	Another way of formulating it is
+	\begin{equation}
+		n^\mu(x^\nu)\in C(K)
+		\label{eq:orientability2}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Boundary of a Surface]
+	Given a smooth surface as before, we define the \textit{boundary} $\del\Sigma$ as follows
+	\begin{equation}
+		\del\Sigma=\cc{\Sigma}\setminus\Sigma
+		\label{eq:boundarysurf}
+	\end{equation}
+	Note how, given the parameterization $r^\mu$, we have $r^\mu(\del K)=\del\Sigma$
+\end{dfn}
+\begin{dfn}[Closed Surface]
+	A surface $\Sigma\subset\R^3$ is said to be \textit{closed} iff $\del\Sigma=\{\}$
+\end{dfn}
+\begin{dfn}[Flux]
+	Given a vector field $f^\mu:A\subset\R^3\fto\R^3$ and a smooth orientable surface $\Sigma\subset A$, we define the \textit{flux} of the vector field $f^\mu$ on the surface as follows
+	\begin{equation}
+		\Phi_\Sigma(f^\mu)=\int_\Sigma f^\mu n_\mu\diff\sigma=\iint_Kf^\mu(r^\nu)\epsilon_{\mu\gamma\sigma}\del_1r^\gamma\del_2r^\sigma\diff u\diff v
+		\label{eq:flux}
+	\end{equation}
+\end{dfn}
+\section{Integration in $\Cf$}
+\begin{dfn}[Piecewise Continuous Function]
+	Let $\gamma:[a,b]\fto\Cf$ be a piecewise continuous curve such that $\{\gamma\}\subset D\subset\Cf$, and $f:D\fto\Cf,\quad f\in C(D)$. Then the function $\left( f\circ\gamma \right)\gamma'(t):[a,b]\fto\Cf$ is a \textit{piecewise continuous function}
+\end{dfn}
+\begin{dfn}[Line Integral in $\Cf$]
+	Let $\gamma:[a,b]\fto D\subset\Cf$ be a piecewise continuous curve and $f:D\fto\Cf$ a measurable function $f\in C(D)$.\\
+	We define the \textit{line integral over }$\gamma$ the result of the application of the integral operator $\opr{K}_\gamma[f]$, where
+	\begin{equation}
+		\opr{K}_\gamma[f]=\int_{\gamma}^{}f(z)\diff z=\int_{a}^{b}\left( f\circ\gamma \right)\gamma'(t)\diff t
+		\label{eq:lineintcf}
+	\end{equation}
+	Where $\foraall z\in\{\gamma\}\ f(z)$ is defined
+\end{dfn}
+\begin{thm}[Properties of the Line Integral]
+	Let $z,w,t\in\Cf$, $f,g\in\mathcal{M}(\Cf)$ and $\{\gamma\},\{\eta\},\{\kappa\}$ three smooth curves, then
+	\begin{enumerate}
+	\item $\opr{K}_\gamma[zf+wg]=z\opr{K}_\gamma[f]+w\opr{K}_\gamma[g]$
+	\item $\gamma\sim\eta\implies\opr{K}_\gamma[f]=\opr{K}_\eta[f]$
+	\item $\gamma=\eta+\kappa\implies\opr{K}_{\gamma}[f]=\opr{K}_{\eta+\kappa}[f]=\opr{K}_\eta[f]+\opr{K}_\kappa[f]$
+	\item $\opr{K}_{\gamma+w}[f(z)]=\opr{K}_\gamma[f(z+w)]$
+	\end{enumerate}
+\end{thm}
+\begin{ntn}
+	If a measurable function $f(z)$ has the same value of the integral for different curves between two points $z_1,z_2\in\Cf$, we will write directly
+	\begin{equation*}
+		\int_{\gamma}^{}f(z)\diff z=\int_{z_1}^{z_2}f(z)\diff z
+	\end{equation*}
+\end{ntn}
+\begin{thm}[Darboux Inequality]
+	Let $f:D\fto\Cf$ be a measurable function and $\gamma:[a,b]\fto\{\gamma\}\subset D\subseteq\Cf$ piecewise smooth. Then
+	\begin{equation*}
+		\norm{\int_{\gamma}^{}f(z)\diff z}\le L_\gamma\sup_{z\in\{\gamma\}}\norm{f(z)}
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	The proof is quite straightforward using the definition given for the line integral
+	\begin{equation*}
+		\begin{aligned}
+			\norm{\int_{\gamma}^{}f(z)\diff z}&=\norm{\int_{a}^{b}\left( f\circ\gamma \right)\gamma'(t)\diff t}\le\int_{a}^{b}\norm{\left( f\circ\gamma \right)\gamma'(t)}\diff t\le\\
+			&\le\sup_{z\in\{\gamma\}}\norm{f(z)}\int_{a}^{b}\norm{\gamma'(t)}\diff t=L_\gamma\sup_{z\in\{\gamma\}}\norm{f(z)}
+		\end{aligned}
+	\end{equation*}
+\end{proof}
+\subsection{Integration of Holomorphic Functions}
+\begin{dfn}[Primitive]
+	Let $f:D\fto\Cf$ and $F:D\fto\Cf$ be two functions and $D\subset\Cf$ an open and connected set. $F(z)$ is said to be the \textit{primitive function} or \textit{antiderivative} of $f$ in $D$ if
+	\begin{equation}
+		\derivative{F}{z}=f(z)\quad\forall z\in D
+		\label{eq:primitive}
+	\end{equation}
+\end{dfn}
+\begin{ntn}
+	Given a closed curve $\gamma$ and a measurable function $f(z)$ we define the following notation
+	\begin{equation*}
+		\int_\gamma f(z)\diff z=\oint_\gamma f(z)\diff z
+	\end{equation*}
+\end{ntn}
+\begin{thm}[Existence of the Primitive Function]
+	Let $f:D\fto\Cf\quad f\in C(D)$ with $D\subset\Cf$ open and connected. Then these statements are equivalent
+	\begin{enumerate}
+	\item $\exists F:D\fto\Cf\st F'(z)=f(z)$
+	\item $\forall z_1,z_2\in D,\ \forall\{\gamma\}\subset D$ piecewise smooth $\int_{\gamma}^{}f(z)\diff z=\int_{z_1}^{z_2}f(z)\diff z$
+	\item $\forall\gamma:[a,b]\fto\{\gamma\}\subset D$ closed piecewise smooth $\oint_\gamma f(z)\diff z=0$
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	$1\implies2$. As with the hypothesis we have that $\exists F:D\fto\Cf\st F'(z)=f(z)\ \forall z\in D$. Given two points $z_1,z_2\in D$ and taken a smooth curve $\gamma:[a,b]\fto D\st\gamma(a)=z_1\ \wedge\ \gamma(b)=z_2$. Therefore
+	\begin{equation*}
+		\int_{\gamma}^{}f(z)\diff z=\int_{a}^{b}\left( f\circ\gamma \right)\gamma'(t)\diff t=\int_{a}^{b}\left( F'\circ\gamma \right)\gamma'(t)\diff t
+	\end{equation*}
+	The result of the integral is obviously $F(z_2)-F(z_1)$, therefore we can immediately write that, if
+	\begin{equation*}
+		\exists F:D\fto\Cf\st F'(z)=f(z)\implies\int_{\gamma}^{}f(z)\diff z=\int_{z_1}^{z_2}f(z)\diff z
+	\end{equation*}
+	$2\implies1$ Taken a point $z_0\in D$, any point $z\in D$ can be connected with a polygonal to $z_0$ since $D$ is connected. The integral of $f$ over this polygonal is obviously path-independent, hence we can define the following function
+	\begin{equation*}
+		F(z)=\int_{z_0}^{z}f(w)\diff w
+	\end{equation*}
+	Since $D$ is open we can define $\delta_z\in\R,\ \delta_z>0\ \wedge\ \exists B_{\delta_1}(z)\subset D$. Taken $\Delta z\in\Cf\st\norm{\Delta z}<\delta_1$ we have that
+	\begin{equation*}
+		F(z+\Delta z)-F(z)=\int_{z}^{z+\Delta z}f(w)\diff w
+	\end{equation*}
+	Dividing by $\Delta z$ and taking the limit as $\Delta z\to 0$ we have that using the Darboux inequality we get that
+	\begin{equation*}
+		\norm{\frac{F(z+\Delta z)-F(z)}{\Delta z}-f(z)}=\frac{1}{\norm{\Delta z}}\norm{\int_{z}^{z+\Delta z}f(w)\diff w}\le\epsilon
+	\end{equation*}
+	$2\implies3$. Taken an arbitrary piecewise smooth curve $\gamma$ and $z_1\ne z_2\in\{\gamma\}$. We can now find two curves such that $\gamma(t)=\gamma_1(t)-\gamma_2(t)$. Since the integral of $f$ is path independent, we get
+	\begin{equation*}
+		\int_{\gamma}^{}f(z)\diff z=\int_{\gamma_1}^{}f(z)\diff z-\int_{\gamma_2}^{}f(z)\diff z=0
+	\end{equation*}
+	$3\implies2$ is exactly as before but with the opposite reasoning.
+\end{proof}
+\begin{eg}
+	Let's calculate the integral of functions $f_n(x)=z^{-n}\quad n\in\N$ for a closed simple piecewise smooth curve $\gamma$ such that $0\notin\{\gamma\}$.\\
+	For $n>1$ we have that $f\in C(D)$ where $D=\Cf\setminus\{0\}$, and we have that
+	\begin{equation*}
+		\int_{}^{}\frac{1}{z^n}\diff z=-\frac{z^{-(n-1)}}{n-1}+w\quad w\in\Cf
+	\end{equation*}
+	Therefore, for every closed simple piecewise smooth curve $\gamma\st0\notin\{\gamma\}$ we have
+	\begin{equation*}
+		\oint_\gamma\frac{1}{z^n}\diff z=0
+	\end{equation*}
+	For $n=1$ we still have that $f\in C(D)$ but $\nexists F(z):D\fto\Cf$ primitive of $f_1(z)$, but there exists one in the domain $G$ of holomorphy of the logarithm.\\
+	Although we have that $G\subset D$, and we can take a curve $\gamma\st0\in\extr{\gamma}$, and therefore $\{\gamma\}\subset G$ and we have that
+	\begin{equation*}
+		\oint_{\gamma}\frac{1}{z}\diff z=0
+	\end{equation*}
+	If we otherwise have $0\in\intr{\gamma}$ the integral is non-zero.\\
+	Take a branch of the logarithm $\sigma$ and a curve $\eta$ has only one point of intersection with such branch at $z_i=u_0e^{i\alpha}$. Taken $\eta(a)=\eta(b)=u_0e^{i\alpha}$, we define
+	$\eta_\epsilon:[a+\epsilon,b+\epsilon]\fto\Cf$ with $\epsilon>0\st\eta_\epsilon(t)=\eta(t)\ \forall t\in[a+\epsilon,b+\epsilon]$, then
+	\begin{equation*}
+		\oint_\eta\frac{1}{z}\diff z=\lim_{\epsilon\to0}\oint_{\eta_\epsilon}\frac{1}{z}\diff z
+	\end{equation*}
+	Therefore, $\forall z\in\Cf\setminus\{\sigma\}$ we have that
+	\begin{equation*}
+		\derivative{\log{z}}{z}=\frac{1}{z}
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\oint_{\eta_\epsilon}\frac{1}{z}\diff z=\log\left( \eta(b-\epsilon) \right)-\log\left( \eta\left( a+\epsilon \right) \right)
+	\end{equation*}
+	For $\epsilon\to0$ we have
+	\begin{equation*}
+		\int_{\eta}^{}\frac{1}{z}\diff z=\left( \log(u_0)+i(\alpha+2\pi) \right)-\left( \log(u_0)+i\alpha \right)=2\pi i
+	\end{equation*}
+\end{eg}
+\begin{eg}
+	Let's calculate the integral of $f(z)=\sqrt{z}$ along a closed simple piecewise smooth curve $\gamma:[a,b]\fto\Cf\st0\in\intr{\gamma}$ and it intersects the line $\sigma_\alpha=u_0e^{i\alpha}$, where
+	\begin{equation*}
+		\sqrt{z}=\sqrt{r}e^{i\frac{\theta}{2}}\quad r\in\R^+,\ \theta\in(\alpha,\alpha+2\pi],\ \alpha\in\R
+	\end{equation*}
+	Taken a parametrization $\gamma(t)\st\gamma(a)=\gamma(b)=u_0e^{i\alpha}$ we have that $f(z)\in H(D)$ where $D=\Cf\setminus\{\sigma_\alpha\}$. Proceding as before, we have
+	\begin{equation*}
+		\oint_{\gamma}^{}\sqrt{z}\diff z=\lim_{\epsilon\to0}\oint_{\gamma_\epsilon}^{}\sqrt{z}\diff z
+	\end{equation*}
+	Since it has a primitive in $D$ we can write
+	\begin{equation*}
+		\lim_{\epsilon\to0}\oint_{\gamma_\epsilon}\sqrt{z}\diff z=\frac{2}{3}\left.\lim_{\epsilon\to0}z\sqrt{z}\right|^{\gamma_\epsilon(b-\epsilon)}_{\gamma_\epsilon(a+\epsilon)}=\frac{2}{3}u_0\sqrt{u_0}e^{\frac{3}{2}i(\alpha+2\pi)}-\frac{2}{3}u_0\sqrt{u_0}e^{\frac{3}{2}i\alpha}=-\frac{4}{3}u_0\sqrt{u_0}e^{\frac{3}{2}i\alpha}
+	\end{equation*}
+\end{eg}
+\begin{lem}
+	Taken a closed simple pointwise smooth curve $\gamma:[a,b]\fto\Cf$ and taken $D=\intr{\{\gamma\}}\cup\gamma=\cc{\intr{\{\gamma\}}}$ and a function $f\in H(D)$, for a finite cover of $D,\ \mathcal{Q}$ composed by squares $Q_j\in\mathcal{Q}\ \forall j\in[1,N]\subset\N$, we have that
+	\begin{equation*}
+		\exists z_j\in Q_j\cap\cc{\intr{\{\gamma\}}}\st\norm{\frac{f(z)-f(z_j)}{z-z_j}-\left.\derivative{f}{z}\right|_{z_j}}<\epsilon\ \forall z\in Q_j\cap\cc{\intr{\{\gamma\}}}\setminus\{z_j\}
+	\end{equation*}
+\end{lem}
+\begin{proof}
+	Going by contradiction, let's say that
+	\begin{equation*}
+		\exists\epsilon>0\st\nexists z_j\in Q_j\cap\cc{\intr{\{\gamma\}}}
+	\end{equation*}
+	Taken a finite subcover $\mathcal{Q}_n$ where $\diam(Q^n_j)=\frac{d}{2^n}\ \forall Q_j\in\mathcal{Q}$ we can define for some $k\in K\subset\N$
+	\begin{equation*}
+		A_n=\bigcup_{k\in K}Q^n_{k}\cap\cc{\intr{\{\gamma\}}}\quad\forall n\in\N
+	\end{equation*}
+	We have that $A_{n+1}\subset A_n$, and taking a sequence $(w)_n\in\cc{\intr{\{\gamma\}}}$ we have due to the compactness of $\cc{\intr{\{\gamma\}}}$ that $\exists(w)_{n_j}\to w\in\cc{\intr{\{\gamma\}}}$. Since $f\in H(\cc{\intr{\{\gamma\}}})$ we have that $f$ is holomorphic in $w$, therefore
+	\begin{equation*}
+		\forall\epsilon>0\ \exists\delta_\epsilon>0\st\norm{\frac{f(z)-f(w)}{z-w}-\left.\derivative{f}{z}\right|_w}<\epsilon\ \forall z\in B_{\delta_\epsilon}(w)\setminus\{w\}
+	\end{equation*}
+	Taken an $\tilde{n}$ such that $\diam(Q^{\tilde{n}}_j)=\frac{\sqrt{2}}{2^{\tilde{n}}}d<\delta$ we have that still $w\in A_n\ \forall n\in\N$, and due to its closedness we can also say
+	\begin{equation*}
+		\exists N_j\in\N\st\forall n_j>N_j\ (w)_{n_j}\in A_n
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\exists k_0\in\N\st w\in Q^{\tilde{n}}_{k_0}\cap\cc{\intr{\{\gamma\}}}\subset A_{\tilde{n}}\ \lightning
+	\end{equation*}
+\end{proof}
+\begin{thm}[Cauchy-Goursat]
+	Taken $\gamma:[a,b]\fto\Cf$ a closed simple piecewise smooth curve and $D=\{\gamma\}\cup\intr{\{\gamma\}}$ and a function $f\in H(D)$, we have
+	\begin{equation}
+		\oint_{\gamma}f(z)\diff z=0
+		\label{eq:cauchygoursat}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Using the previous lemma we can say that for a finite cover $\{\gamma\},Q_j\in\mathcal{Q}\ \exists z_j\in Q_j\cap\cc{\intr{\{\gamma\}}}$ and a function
+	\begin{equation*}
+		\delta_j(z)=\begin{dcases}\frac{f(z)-f(z_j)}{z-z_j}-f'(z_j)&z\ne z_j\\0&z=z_j\end{dcases}
+	\end{equation*}
+	Which is countinuous and $\delta_j(z)<\epsilon\ \forall z\in Q_j\cap\cc{\intr{\{\gamma\}}}$.\\
+	Taken a curve $\{\eta_j\}=\del\left( Q_j\cap\cc{\intr{\{\gamma\}}} \right)$, and the expansion of $f(z)$ in the region, we have that
+	\begin{equation*}
+		\begin{aligned}
+			f(z)&=f(z_j)+f'(z_j)(z-z_j)+\delta_j(z)(z-z_j)\\
+			\oint_{\eta_j}f(z)\diff z&=\left( f(z_j)-z_jf'(z_j) \right)\oint_{\eta_j}\diff z+f'(z_j)\oint_{\eta_j}z\diff z+\oint_{\eta_j}\delta_j(z)(z-z_j)\diff z
+		\end{aligned}
+	\end{equation*}
+	The first two integrals on the second line are null, and we have therefore
+	\begin{equation*}
+		\oint_{\eta_j}f(z)\diff z=\oint_{\eta_j}\delta_j(z)(z-z_j)\diff z
+	\end{equation*}
+	By definition $\{\gamma\}=\bigcup_{j=1}^N\{\eta_j\}$ and therefore
+	\begin{equation*}
+		\oint_{\gamma}f(z)\diff z=\sum_{j=1}^N\oint_{\eta_j}\delta_j(z)(z-z_j)\diff z
+	\end{equation*}
+	Using the Darboux inequality we have immediately that
+	\begin{equation*}
+		\norm{\oint_{\gamma}f(z)\diff z}\le\sum_{j=1}^N\norm{\oint_{\eta_j}\delta_j(z)(z-z_j)\diff z}\le\sum_{j=1}^N\epsilon\sqrt{2}d(4d+L_j)
+	\end{equation*}
+	Using the theorem on the Jordan curve, we have that $\exists Q_n\in\mathcal{Q}$ such that $\{\gamma\}\subset Q_n$. Taken $\diam(Q_n)=D$
+	\begin{equation*}
+		\norm{\oint_{\gamma}f(z)\diff z}\le\sum_{j=1}^N\epsilon\sqrt{2}D(4D+L)\to0
+	\end{equation*}
+\end{proof}
+\begin{dfn}[Simple Connected Set]
+	An open set $G\subset X$ with $X$ some metric space, is said to be \textit{simply connected} iff $\forall \{\gamma_j\}\subset G$ simple curves we have that $\gamma_j\sim0$.\\
+	$\gamma\sim0$ implies that the curve is homotopic to a point
+\end{dfn}
+\begin{thm}[Cauchy-Goursat II]
+	Let $G\subset\Cf$ open and simply connected. Then, $\forall f\in H(G), \{\gamma\}\subset G$ with $\gamma$ simple closed and smooth
+	\begin{equation*}
+		\oint_{\gamma}f(z)\diff z=0
+	\end{equation*}
+\end{thm}
+\begin{proof}
+	\begin{enumerate}
+	\item The curve $\gamma$ doesn't intersect itself.
+		\begin{equation*}
+			\oint_\gamma f(z)\diff z=\oint_0 f(z)\diff z=0
+		\end{equation*}
+	\item The curve $\gamma$ intersects itself $n-1$ times.\\
+		Then $\{\gamma\}=\bigcup_{k=1}^n\{\gamma_k\}$ with $\gamma_k$ simple smooth non intersecting curves. Since $\{\gamma_k\}\subset G\ \forall k=1,\cdots,n,\ \{\gamma_k\}\sim0$, we have
+		\begin{equation*}
+			\oint_\gamma f(z)\diff z=\sum_{k=1}^n\oint_{\gamma_k}f(z)\diff z=0
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+\begin{thm}
+	Let $G\subset\Cf$ be a simply connected open set. If $f\in H(G)$, then there exists a primitive for $f(z)$
+\end{thm}
+\subsection{Integral Representation of Holomorphic Functions}
+\begin{dfn}[Positively Oriented Curve]
+	The parametrization of a curve in $\Cf$ is said to be \textit{positively oriented} if its parametrization is taken such the path taken results counterclockwise.
+\end{dfn}
+\begin{ntn}
+	The integral over a closed positively oriented parametrization of a curve $\gamma$ is indicated as follows
+	\begin{equation*}
+		\ointccw_\gamma
+	\end{equation*}
+\end{ntn}
+\begin{thm}[Cauchy Integral Representation]
+	Taken a positively oriented closed simple piecewise smooth curve $\gamma:[a,b]\fto\Cf$ and a function $f:G\subset\Cf\fto\Cf$ such that if $D=\{\gamma\}\cup\intr{\{\gamma\}}\subset G,\ f\in H(D)$, we have that
+	\begin{equation}
+		f(z)=\frac{1}{2\pi i}\ointccw_\gamma\frac{f(w)}{w-z}\diff w\quad\forall w\in\intr{\{\gamma\}}
+		\label{eq:cauchyintegral}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken $\gamma_\rho(\theta)=z+\rho e^{i\theta}$ such that $\gamma_\rho\sim\gamma,\ \{\gamma_\rho\}\subset\intr{\{\gamma\}}$ is a simple curve, we have
+	\begin{equation*}
+		\ointccw_{\gamma}\frac{f(w)}{w-z}\diff w=\ointccw_{\gamma_\rho}\frac{f(w)}{w-z}\diff w
+	\end{equation*}
+	Then, using that
+	\begin{equation*}
+		\ointccw_{\gamma}\frac{1}{w-z}\diff w=2\pi i
+	\end{equation*}
+	We get
+	\begin{equation*}
+		\ointccw_{\gamma}\frac{f(z)}{w-z}\diff w-2\pi if(z)=\ointccw_{\gamma_\rho}\frac{f(w)-f(z)}{w-z}\diff w
+	\end{equation*}
+	Since $f\in H(\intr{\{\gamma\}})$ we have that
+	\begin{equation*}
+		\forall\epsilon>0\ \exists\delta_\epsilon>0\st\norm{z-w}<\delta_\epsilon\implies\norm{f(z)-f(w)}<\epsilon
+	\end{equation*}
+	Taken $\rho<\delta_\epsilon$ we get, using the Darboux inequality
+	\begin{equation*}
+		\norm{\ointccw_{\gamma_\rho}\frac{f(w)-f(z)}{w-z}\diff w}\le 2\pi\epsilon\implies\ointccw_{\gamma}\frac{f(w)-f(z)}{w-z}\diff w=0
+	\end{equation*}
+\end{proof}
+\begin{thm}[Derivatives of a Holomorphic Function]
+	Let $D\subset\Cf$ be an open set and $f:D\fto\Cf$ a function $f\in H(D)$, then $f\in C^{\infty}(D)$ and
+	\begin{equation}
+		\derivative[n]{f}{z}=\frac{n!}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z)^{n+1}}\diff w
+		\label{eq:derivativeintrep}
+	\end{equation}
+	Where $\gamma$ is a closed simple piecewise smooth curve such that $z\in\intr{\{\gamma\}}$ and $\cc{\{\gamma\}}\subset D$
+\end{thm}
+\begin{cor}
+	Let $f\in H(D)$, then
+	\begin{equation*}
+		\forall n\in\N\quad\derivative[n]{f}{z}\in H(D)
+	\end{equation*}
+\end{cor}
+\begin{thm}[Morera]
+	Let $D\subset\Cf$ be an open and connected set. Take $f:D\fto\Cf\st f\in C(D)$. Then, if $\forall\{\gamma\}\subset D$ closed piecewise smooth
+	\begin{equation}
+		\oint_\gamma f(z)\diff z=0\implies f\in H(D)
+		\label{eq:morera}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Since $f\in C(D)\ \exists F(z)\in C^1(D)\st f(z)=F'(z)$. Since $C^1(\Cf)\simeq H(\Cf)$ we have that, due to the previous corollary
+	\begin{equation*}
+		\derivative{F}{z}=f(z)\in H(D)
+	\end{equation*}
+\end{proof}
+\begin{thm}[Cauchy Inequality]
+	Let $f\in H(B_R(z_0))$ with $z_0\in\Cf$. If $\norm{f(z)}\le M\ \forall z\in B_R(z_0)$
+	\begin{equation}
+		\norm{\left.\derivative{f}{z}\right|_{z_0}}\le\frac{n!M}{R^n}
+			\label{eq:cauchyineq}
+		\end{equation}
+	\end{thm}
+	\begin{proof}
+		Take $\gamma_r(\theta)=z_0+re^{i\theta}$ with $\theta\in[0,2\pi],\ r>R$, then the derivative $\left.\derivative[n]{f}{z}\right|_{z_0}$ can be written using the Cauchy integral representation, since $f\in H(B_r(z_0))$
+			\begin{equation*}
+				\left.\derivative[n]{f}{z}\right|_{z_0}=\frac{n!}{2\pi i}\ointccw_{\gamma_r}\frac{f(w)}{(w-z_0)^{n+1}}\diff w
+				\end{equation*}
+				Using the Darboux inequality we have then
+				\begin{equation*}
+					\norm{\left.\derivative[n]{f}{z}\right|_{z_0}}\le\frac{n!}{r^n}\sup_{z\in\{\gamma_r\}}\norm{f(z)}\le\frac{n!M}{r^n}
+					\end{equation*}
+					Since $r<R$ we therefore have
+					\begin{equation*}
+						\norm{\left.\derivative[n]{f}{z}\right|_{z_0}}\le\frac{n!M}{R^n}
+						\end{equation*}
+					\end{proof}
+					\begin{thm}[Liouville]
+						Let $f:\Cf\fto\Cf$ a function such that $f\in H(\Cf)$, i.e. whole. If $\exists M>0\st\norm{f(z)}\le M\ \forall z\in\Cf$ the function $f(z)$ is constant
+					\end{thm}
+					\begin{proof}
+						$f\in H(\Cf),\ \norm{f(z)}\le M$ and we can write, taken $\gamma_R(\theta)=z+Re^{i\theta}$ with $\theta\in[0,2\pi]$
+	\begin{equation*}
+		f'(z)=\frac{1}{2\pi i}\ointccw_{\gamma_R}\frac{f(w)}{(w-z)^2}\diff z
+	\end{equation*}
+	For Darboux
+	\begin{equation*}
+		\norm{f'(z)}\le\frac{1}{2\pi}\norm{\ointccw_{\gamma_R}\frac{f(w)}{(w-z)^2}}\diff z\le\frac{\sup_{z\in\{\gamma_R\}}\norm{f(z)}}{R}\le\frac{M}{R}
+	\end{equation*}
+	Since $R>0$ is arbitrary, we can say directly that $\norm{f'(z)}=0$ and therefore $f(z)$ is constant $\forall z\in\Cf$.
+\end{proof}
+\begin{thm}[Fundamental Theorem of Algebra]
+	Take a polynomial $P_n(z)\in\Cf_n[z]$, where $\Cf_n[z]$ is the space of complex polynomials with variable $z$ and degree $n$. If we have
+	\begin{equation*}
+		P_n(z)=\sum_{k=0}^na_kz^k,\quad z,a_k\in\Cf,\ a_n\ne0
+	\end{equation*}
+	We can say that $\exists z_0\in\Cf\st P_n(z_0)=0$
+\end{thm}
+\begin{proof}
+	As an absurd, say that $\forall z\in\Cf,\ P_n(z)\ne0$. Then $f(z)=1/P_n(z)\in H(\Cf)$.\\
+	Since $\lim_{z\to\infty}P_n(z)=\infty$, we have that $\norm{f(z)}\le M\ \forall z\in\Cf$, and $\lim_{z\to\infty}f(z)=0$.\\
+	Therefore $\exists R>0\st\forall\norm{z}>R,\ \norm{f(z)}<1$. Since $f\in H(\Cf)$, we have that $f\in C(\cc{B}_R(z))$. Due to the Liouville theorem we have that $f(z)$ is constant $\lightning$
+\end{proof}
+%\section{Series Representation of Functions}
+%\subsection{Taylor Series}
+%\begin{thm}[Taylor Series Expansion]
+%	Let $f:D\fto\Cf$ be a function such that $f\in H(B_R(z_0))$, with $B_r(z_0)\subseteq D$. Then
+%	\begin{equation}
+%		f(z)=\sum_{n=0}^n\frac{1}{n!}\left.\derivative[n]{f}{z}\right|_{z_0}(z-z_0)^n\quad\norm{z-z_0}<r
+%		\label{eq:taylor}
+%	\end{equation}
+%\end{thm}
+%\begin{proof}
+%	Taken $z\in B_r(z_0)$ and $\gamma(t)=z_0+re^{it}\ t\in[0,2\pi]$ and $\norm{z-z_0}<r<R$ we can write, using the integral representation of $f$
+%	\begin{equation*}
+%		f(z)=\frac{1}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z)}\diff w=\frac{1}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z_0)-(z-z_0)}\diff w
+%	\end{equation*}
+%	From basic calculus we know already that if $z\ne w$
+%	\begin{equation*}
+%		\begin{aligned}
+%			\frac{1}{w-z}&=\frac{1}{w}\left( \frac{1-(z/w)^n}{1-z/w}+\frac{1}{1-z/w}\left( \frac{z}{w} \right)^n \right)=\\
+%			&=\frac{1}{w-z}\left( \frac{z}{w} \right)^n+\sum_{k=0}^{n-1}\frac{1}{w}\left( \frac{z}{w} \right)^n
+%		\end{aligned}
+%	\end{equation*}
+%	Therefore, inserting it back into the integral representation, we have
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}\frac{(z-z_0)^k}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z_0)^{k+1}}\diff w+\frac{(z-z_0)^n}{2\pi i}\ointccw_\gamma\frac{f(w)}{\left[ (w-z_0)-(z-z_0) \right](w-z_0)^n}\diff w
+%	\end{equation*}
+%	On the RHS as first term we have the $k-$th derivative of $f$ and on the right there is the so called \textit{remainder} $R_n(z)$. Therefore
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{n}\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z_0}(z-z_0)^k+R_n(z)
+%	\end{equation*}
+%	It's easy to demonstrate that $R_n(z)\fto[n\to\infty]0$, and therefore
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^\infty\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z_0}(z-z_0)^k
+%	\end{equation*}
+%\end{proof}
+%\begin{dfn}[MacLaurin Series]
+%	Taken a Taylor series, such that $z_0=0$, we obtain a MacLaurin series.
+%	\begin{equation}
+%		f(z)=\sum_{k=0}^\infty\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z=0}z^k
+%		\label{eq:maclaurinseries}
+%	\end{equation}
+%\end{dfn}
+%\begin{dfn}[Remainders]
+%	We can have two kinds of remainder functions while calculating series:
+%	\begin{enumerate}
+%	\item Peano Reminders, $R_n(z)=\order{\norm{z-z_0}^n}$
+%	\item Lagrange Reminders, $R_n(x)=(n+1)!^{-1}f^(n+1)(\xi)(x-x_0)^{n+1},\ x,x_0\in\R\ \xi\in(x,x_0)$
+%	\end{enumerate}
+%	What we saw before as $R_n(z)$ is the remainder function for functions $f:D\subset\Cf\fto\Cf$.\\
+%	A particularity of remainder function is that $R_n(z)\to0$ always, if $f$ is holomorphic
+%\end{dfn}
+%\begin{thm}[Integration of Power Series II]
+%	Let $f,g:B_R(z_0)\fto\Cf$ and $\{\gamma\}\subset B_R(z_0)$ a piecewise smooth path. Taken
+%	\begin{equation*}
+%		f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n\quad g\in C(\{\gamma\})
+%	\end{equation*}
+%	We have that
+%	\begin{equation}
+%		\sum_{n=0}^{\infty}a_n\int_{\gamma}^{}g(z)(z-z_0)^n\diff z=\int_{\gamma}^{}g(z)f(z)\diff z
+%		\label{eq:integralps2}
+%	\end{equation}
+%\end{thm}
+%\begin{proof}
+%	Since $f,g\in C(\{\gamma\})$ by definition, and $f\in H(\cc{B_r}(z_0))$ with $r<R$, we have that $\exists\opr{K}_\gamma[fg]$.\\
+%	Firstly we can write that $\forall z\in B_R(z_0)$
+%	\begin{equation*}
+%		g(z)f(z)=\sum_{k=0}^{n-1}a_kg(z)(z-z_0)^k+g(z)R_n(z)=\sum_{k=0}^{n-1}a_kg(z)(z-z_0)^k+g(z)\sum_{k=n}^\infty a_k(z-z_0)^k
+%	\end{equation*}
+%	Then we can write
+%	\begin{equation*}
+%		\int_{\gamma}^{}g(z)f(z)\diff z=\sum_{k=0}^{n-1}a_k\ointccw_\gamma g(z)(z-z_0)^k\diff z+\int_{\gamma}^{}g(z)R_n(z)\diff z
+%	\end{equation*}
+%	Letting $M=\sup_{z\in\{\gamma\}}\norm{g(z)}$, and noting that $\norm{R_n(z)}<\epsilon$ for $\forall\epsilon>0$ and for some $n\ge N_\epsilon\in\N,\ z\in\{\gamma\}$ we have, using the Darboux inequality
+%	\begin{equation*}
+%		\norm{\int_{\gamma}^{}g(z)R_n(z)\diff z}\le ML_\gamma\epsilon\to0
+%	\end{equation*}
+%\end{proof}
+%\begin{thm}[Holomorphy of Power Series]
+%	If a function $f(z)$ is expressable as a power series $f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k,\ \norm{z-z_0}<R$ we have that $f\in H(B_R(z_0))$
+%\end{thm}
+%\begin{proof}
+%	Take the previous theorem on the integration of power series, and choose $g(z)=1$. Since $g(z)\in H(\Cf)$ we also have that it'll be continuous on all paths $\{\gamma\}\subset\Cf$ piecewise smooth.\\
+%	Take now a closed piecewise smooth path $\{\gamma\}$, then we can write
+%	\begin{equation*}
+%		\ointccw_\gamma f(z)g(z)\diff z=\ointccw_\gamma\sum_{k=0}^\infty a_k(z-z_0)^k=\sum_{k=0}^\infty a_k\ointccw_\gamma(z-z_0)^k\diff z
+%	\end{equation*}
+%	Since the function $h(z)=(z-z_0)^k\in H(\Cf)\ \forall k\ne1$, we have, thanks to the Morera and Cauchy theorems
+%	\begin{equation*}
+%		\ointccw_\gamma f(z)\diff z=0\implies f(z)\in H(B_R(\cc{\{\gamma\}}))
+%	\end{equation*}
+%\end{proof}
+%\begin{cor}[Derivative of a Power Series II]
+%	Take $f(z)=\sum_{k=0}^\infty a_k(z-z_0)^k\ \norm{z-z_0}<R$. Then, $\forall z\in B_R(z_0)$ we have that
+%	\begin{equation}
+%		\derivative{f}{z}=\sum_{k=1}^\infty a_kk(z-z_0)^{k-1}
+%		\label{eq:derivativeps2}
+%	\end{equation}
+%\end{cor}
+%\begin{proof}
+%	Taken $z\in B_R(z_0)$ and a continuous function $g(w)\in C(\{\gamma\})$, with $\{\gamma\}\subset B_R(z_0)$ a closed simple piecewise smooth path. If $z\in\intr{\{\gamma\}}$ and
+%	\begin{equation*}
+%		g(w)=\frac{1}{2\pi i}\left( \frac{1}{(w-z)^2} \right)
+%	\end{equation*}
+%	We have, using the integral representation for holomorphic functions
+%	\begin{equation*}
+%		\frac{1}{2\pi i}\ointccw_{\gamma}\frac{f(w)}{(w-z)^2}\diff w=\sum_{k=0}^\infty\frac{a_k}{2\pi i}\ointccw_{\gamma}\frac{(w-z_0)^k}{(w-z_0)^2}\diff w
+%	\end{equation*}
+%	Since $h(w)=(w-z_0)^k\in H(\Cf)\ \forall k\ne1$ we have, using again the integral representation for holomorphic functions
+%	\begin{equation*}
+%		\begin{aligned}
+%			\frac{1}{2\pi i}\ointccw_\gamma\frac{f(w)}{(w-z)^2}\diff w&=\derivative{f}{z}\\
+%			\frac{1}{2\pi i}\ointccw_\gamma\frac{(w-z_0)^k}{(w-z)^2}\diff w&=k(z-z_0)^{k-1}
+%		\end{aligned}
+%	\end{equation*}
+%	Therefore
+%	\begin{equation*}
+%		\frac{1}{2\pi i}\ointccw_\gamma\frac{f(w)}{(w-z)^2}\diff{w}=\sum_{k=0}^\infty a_kk(z-z_0)^k=\derivative{f}{z}
+%	\end{equation*}
+%\end{proof}
+%\begin{cor}[Uniqueness of the Taylor Series]
+%	Taken an holomorphic function $f\in H(D)$ with $D\subset\Cf$ some connected open set, we have that
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{\infty}a_k(z-z_0)^k\quad a_k=\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z_0}\ \forall\norm{z-z_0}<R
+%	\end{equation*}
+%\end{cor}
+%\begin{proof}
+%	Taken $g(z)$ a continuous function over a closed piecewise simple path $\{\gamma\}\subset\Cf$, where
+%	\begin{equation*}
+%		g(z)=\frac{1}{2\pi i}\left( \frac{1}{(z-z_0)^{k+1}} \right)
+%	\end{equation*}
+%	We have that
+%	\begin{equation*}
+%		\frac{1}{2\pi i}\ointccw_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\diff z=\sum_{k=1}^{\infty}\frac{a_k}{2\pi i}\ointccw_\gamma(z-z_0)^{k-n-1}\diff z
+%	\end{equation*}
+%	The integral on the RHS evaluates to $\delta^k_n$, and thanks to the integral representation of $f(z)$ we can write
+%	\begin{equation*}
+%		\frac{1}{2\pi i}\ointccw_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\diff z=\frac{1}{n!}\left.\derivative[n]{f}{z}\right|_{z_0}=n!a_n
+%	\end{equation*}
+%\end{proof}
+%\subsection{Laurent Series}
+%\begin{dfn}[Annulus Domain]
+%	Let $0\le r<R\le\infty$ and $z_0\in\Cf$, we define the \textit{annulus set} as follows
+%	\begin{equation}
+%		A_{rR}(z_0):=\left\{ \derin{z\in\Cf}r<\norm{z-z_0}<R \right\}
+%		\label{eq:annulusdom}
+%	\end{equation}
+%	Special cases of this are the ones where $r=0$, $R=\infty$ and $r=0,\ R=\infty$
+%	\begin{equation*}
+%		\begin{aligned}
+%			A_{0,R}(z_0)&=B_R(z_0)\setminus\{z_0\}\\
+%			A_{r,\infty}(z_0)&=\Cf\setminus\cc{B}_r(z_0)\\
+%			A_{0,\infty}(z_0)&=\Cf\setminus\{z_0\}
+%		\end{aligned}
+%	\end{equation*}
+%\end{dfn}
+%\begin{thm}[Laurent Series Expansion]
+%	Let $f:A_{R_1R_2}(z_0)\fto\Cf$ be a function such that $f\in H\left(A_{R_1R_2}(z_0)\right)$, and $\{\gamma\}\subset A_{R_1R_2}(z_0)$ a closed simple piecewise smooth curve.\\
+%	Then $f$ is expandable in a \textit{generalized power series} or a \textit{Laurent series} as follows
+%	\begin{equation}
+%		f(z)=\sum_{n=0}^{\infty}c_n^+(z-z_0)^n+\sum_{n=1}^{\infty}\frac{c_n^-}{(z-z_0)^n}=\sum_{k=-\infty}^{\infty}c_k(z-z_0)^k
+%		\label{eq:laurentseries}
+%	\end{equation}
+%	Where the coefficients are the following
+%	\begin{equation}
+%		\begin{aligned}
+%			c_n^-&=\frac{1}{2\pi i}\ointccw_\gamma f(z)(z-z_0)^{n-1}\diff z\quad n\ge0\\
+%			c_n^+&=\frac{1}{2\pi i}\ointccw_\gamma\frac{f(z)}{(z-z_0)^{n+1}}\diff z\quad n>0\\
+%			c_k&=\frac{1}{2\pi i}\ointccw_\gamma\frac{f(z)}{(z-z_0)^{k+1}}\diff z\quad k\in\Z
+%		\end{aligned}
+%		\label{eq:coefficientlaurent}
+%	\end{equation}
+%\end{thm}
+%\begin{proof}
+%	Taken a random point $z\in A_{R_1R_2}(z_0)$, a closed simple piecewise smooth curve $\{\gamma\}\subset A_{R_1R_2}(z_0)$ and two circular smooth paths $\{\gamma_2\},\{\gamma_3\}\st \{\gamma_2\}\cup\{\gamma_3\}=\del A_{r_1r_2}(z_0)\subset A_{R_1R_2}(z_0)\ \wedge \{\gamma\}\subset A_{r_1r_2}(z_0)$ and a third circular path $\{\gamma_3\}\subset A_{r_1r_2}(z_0)$, we can write immediately, using the omotopy between all the paths
+%	\begin{equation*}
+%		\ointccw_{\gamma_2}\frac{f(w)}{w-z}\diff w=\ointccw_{\gamma_1}\frac{f(w)}{w-z}\diff w+\ointccw_{\gamma_3}\frac{f(w)}{w-z}\diff w
+%	\end{equation*}
+%	Using the Cauchy integral representation we have that the integral on $\gamma_3$ yields immediately $2\pi if(z)$, hence we can write
+%	\begin{equation*}
+%		f(z)=\frac{1}{2\pi i}\ointccw_{\gamma_2}\frac{f(w)}{(w-z_0)-(z-z_0)}\diff w+\frac{1}{2\pi i}\ointccw_{\gamma_1}\frac{f(w)}{(z_0-z)-(w-z_0)}\diff w
+%	\end{equation*}
+%	Using the two following identities for $z\ne w$
+%	\begin{equation*}
+%		\begin{aligned}
+%			\frac{1}{w-z}&=\frac{1}{w-z}\left( \frac{z}{w} \right)^n+\sum_{k=0}^{n-1}\frac{1}{w}\left( \frac{z}{w} \right)^k\\
+%			\frac{1}{z-w}&=\frac{1}{z-w}\left( \frac{w}{z} \right)^n+\sum_{k=1}^{n}\frac{1}{w}\left( \frac{w}{z} \right)^k
+%		\end{aligned}
+%	\end{equation*}
+%	We obtain that
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{n-1}\frac{(z-z_0)^k}{2\pi i}\ointccw_{\gamma_2}\frac{f(w)}{(w-z_0)^{k+1}}\diff w+\rho_n(z)+\sum_{k=1}^{n}\frac{1}{2\pi i(z-z_0)^k}\ointccw_{\gamma_1}f(w)(w-z_0)^{k-1}\diff w+\sigma_n(z)
+%	\end{equation*}
+%	Where, after choosing appropriate substitutions with some coefficients $c_k^+,c_k^-$ we have
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{n-1}c_k^+(z-z_0)^k+\rho_n(z)+\sum_{k=1}^{n}\frac{c_k^-}{(z-z_0)^k}+\sigma_n(z)
+%	\end{equation*}
+%	Where $\rho_n,\sigma_n$ are the two remainders of the series expansion, and are
+%	\begin{equation*}
+%		\begin{aligned}
+%			\rho_n(z)&=\frac{(z-z_0)^n}{2\pi i}\ointccw_{\gamma_2}\frac{f(w)}{\left[ (w-z_0)-(z-z_0) \right](w-z_0)^n}\diff w\\
+%			\sigma_n(z)&=\frac{1}{2\pi i(z-z_0)^n}\ointccw_{\gamma_1}\frac{f(w)}{(w-z_0)-(z-z_0)}\diff w
+%		\end{aligned}
+%	\end{equation*}
+%	In order to prove the theorem we now need to demonstrate that $\rho_n,\sigma_n\fto[n\to\infty]0$. Taken $M_1=\sup_{z\in\{\gamma_1\}}\norm{f(z)},\ M_2=\sup_{z\in\{\gamma_2\}}\norm{f(z)}$, we have, using the fact that both $\gamma_1,\gamma_2$ are circular
+%	\begin{equation*}
+%		\begin{aligned}
+%			\norm{\rho_n(z)}&\le\frac{M_2}{1-\frac{1}{r_2}\norm{z-z_0}}\left( \frac{\norm{z-z_0}}{r_2} \right)^n\fto[n\to\infty]0\quad\norm{z-z_0}<r_2\\
+%			\norm{\sigma_n(z)}&\le\frac{M_1}{\frac{1}{r_1}\norm{z-z_0}-1}\left( \frac{r_1}{\norm{z-z_0}} \right)^n\fto[n\to\infty]0\quad r_1<\norm{z-z_0}
+%		\end{aligned}
+%	\end{equation*}
+%	And the theorem is proved.
+%\end{proof}
+%%\begin{proof}
+%%	Take a function $f:D\fto\Cf$ where $D\sim A_{rR}(z_0)$, i.e. $D$ is continuously deformable into an annulus domain.\\
+%%	Take $\del \tilde{A}_{rR}(z_0)=\{\gamma\}\cup\{\Gamma\}$ where $\{\gamma\}$ is a \emph{clockwise} circumference around $z_0$ with radius $r/k$ and $\{\Gamma\}$ a \emph{counterclockwise} circumference around $z_0$ with radius $R/k$, with $\tilde{A}_{rR}(z_0)\subset A_{rR}(z_0)$. Since $f$ is holomorphic in this domain, we can write
+%%	\begin{equation*}
+%%		f(z)=\frac{1}{2\pi i}\ointccw_\Gamma \frac{f(w)}{w-z}\diff w-\frac{1}{2\pi i}\ointcw_\gamma\frac{f(w)}{w-z}\diff w=\frac{1}{2\pi i}\left(\opr{K}_\Gamma[f]-\opr{K}_\gamma[f]\right)
+%%	\end{equation*}
+%%	Note that in the first integral we have $\norm{w-z_0}>\norm{z-z_0}$ and in the second the opposite holds, we have that
+%%	\begin{equation*}
+%%		\ointccw_\Gamma\frac{f(w)}{w-z}\diff w=\ointccw_\Gamma \frac{f(w)}{z-z_0}\frac{1}{1-\frac{z-z_0}{w-z_0}}\diff w\quad\norm{\frac{z-z_0}{w-z_0}}<1
+%%	\end{equation*}
+%%	And
+%%	\begin{equation*}
+%%		\ointcw_\gamma\frac{f(w)}{w-z}\diff w=-\frac{1}{z-z_0}\ointcw_\gamma \frac{f(w)}{1-\frac{w-z_0}{z-z_0}}\diff w\quad\norm{\frac{w-z_0}{z-z_0}}<1
+%%	\end{equation*}
+%%	Since in both cases the geometric series converges uniformly, we can therefore write
+%%	\begin{equation*}
+%%		\begin{aligned}
+%%			\opr{K}_\Gamma[f]&=\sum_{n\ge0}(z-z_0)^n\ointccw_\Gamma\frac{f(w)}{(w-z_0)^{n+1}}\diff w\\
+%%			\opr{K}_\gamma[f]&=-\sum_{n\ge0}^{}\frac{1}{(z-z_0)^{n+1}}\ointcw_\gamma f(w)(w-z_0)^n\diff w
+%%		\end{aligned}
+%%	\end{equation*}
+%%	Summing the contributes, we obtain
+%%	\begin{equation*}
+%%		f(z)=\frac{1}{2\pi i}\left( \opr{K}_\Gamma[f]-\opr{K}_\gamma[f] \right)=\sum_{k\in\Z}c_k(z-z_0)^k
+%%	\end{equation*}
+%%	Where, dividing the parts where $k<0$ as $c_k^-$ and the parts where $k\ge0$ as $c_k^+$, we have
+%%	\begin{equation*}
+%%		\begin{aligned}
+%%			c_k^+&=\frac{1}{2\pi i}\ointccw_\Gamma\frac{f(w)}{(w-z_0)^{n+1}}\diff w\\
+%%			c_k^-&=\frac{1}{2\pi i}\ointcw_\gamma\frac{f(w)}{(w-z_0)^{n+1}}\diff w
+%%		\end{aligned}
+%%	\end{equation*}
+%%	Note that the coefficients don't correspond to the $n-$th derivative of $f$ in $z_0$ since the function \emph{is not derivable in} $z_0$\\
+%%	The coefficients of shown in the statement of the theorem are reobtainable through a slight modification of the proof, where the omotopy of curves is utilized and all curves are taken counterclockwise.
+%%\end{proof}
+%\begin{thm}[Convergence of a Laurent Series]
+%	Being defined on an annulus set, the Laurent series of a function must have \emph{two} radii of convergence. Given a function $f$ holomorphic on a set $A_{R_1R_2}(z_0)$ we have
+%	\begin{equation}
+%		\begin{aligned}
+%			\frac{1}{R_2}&=\limsup_{n\to\infty}\sqrt[n]{\norm{c_n}}\\
+%			R_1&=\limsup_{n\to\infty}\sqrt[n]{\norm{c_{-n}}}
+%		\end{aligned}
+%		\label{eq:laurentconvergence}
+%	\end{equation}
+%	It's equivalent of showing the convergence of the two series
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{\infty}c_k^+(z-z_0)^k+\sum_{k=1}^{\infty}\frac{c_k^-}{(z-z_0)^k}
+%	\end{equation*}
+%\end{thm}
+%\begin{thm}[Integral of a Laurent Series]
+%	Let $f(z)\in H\left(A_{R_1R_2}(z_0)\right)$ and take $\{\gamma\}\subset A_{R_1R_2}(z_0)$ a piecewise smooth curve, and $g\in C(\{\gamma\})$, then we have
+%	\begin{equation*}
+%		\sum_{n=-\infty}^\infty c_n\oint_\gamma g(z)(z-z_0)^n\diff z=\oint_\gamma g(z)f(z)\diff z
+%	\end{equation*}
+%\end{thm}
+%\begin{proof}
+%	We begin by separating the sum in two parts, ending up with the following
+%	\begin{equation*}
+%		\begin{aligned}
+%			\sum_{n=0}^\infty c_n^+\oint_\gamma g(z)(z-z_0)^n\diff z&=\oint_\gamma g(z)f_+(z)\diff z\\
+%			\sum_{n=1}^\infty c_n^-\oint_\gamma \frac{g(z)}{(z-z_0)^n}\diff z&=\oint_\gamma g(z)f_-(z)\diff z
+%		\end{aligned}
+%	\end{equation*}
+%	Which is analogous to the integration of Taylor series. The same could be obtained keeping the bounds of the sum in all $\Z$
+%\end{proof}
+%As for Taylor series, in a completely analogous fashion, a Laurent series is holomorphic and unique.\\
+%The derivative of a Laurent series, is then obviously the following
+%\begin{equation*}
+%	\derivative{f}{z}=\sum_{n=-\infty}^{\infty}c_nn(z-z_0)^{n-1}
+%\end{equation*}
+%\subsection{Multiplication and Division of Power Series}
+%\begin{thm}[Product of Power Series]
+%	Take $f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n,\ z\in B_{R_1}(z_0)$ and $g(z)=\sum_{n=0}^\infty b_n(z-z_0)^n,\ z\in B_{R_2}(z_0)$. Then
+%	\begin{equation*}
+%		f(z)g(z)=\sum_{n=0}^\infty c_n(z-z_0)^n,\quad c_n=\sum_{k=0}^na_kb_{n-k}\quad \norm{z-z_0}<\min\left( R_1,R_2 \right)=R
+%	\end{equation*}
+%\end{thm}
+%\begin{proof}
+%	Due to the holomorphy of both $f$ and $g$, we have that the function $fg$ has a Taylor series expansion
+%	\begin{equation*}
+%		f(z)g(z)=\sum_{n=0}^\infty c_n(z-z_0)\quad\norm{z-z_0}<R
+%	\end{equation*}
+%	We have then, using Leibniz's derivation rule
+%	\begin{equation*}
+%		\begin{aligned}
+%			c_n&=\frac{1}{n!}\derivative[n]{z}f(z)g(z)=\frac{1}{n!}\sum_{k=0}^{n}\begin{pmatrix}n\\k\end{pmatrix}\left.\derivative[k]{f}{z}\right|_{z_0}\left.\derivative[n-k]{g}{z}\right|_{z_0}=\\
+%			&=\sum_{k=0}^{n}\frac{1}{k!}\left.\derivative[k]{f}{z}\right|_{z_0}\frac{1}{(n-k)!}\left.\derivative[n-k]{g}{z}\right|_{z_0}=\\
+%			&=\sum_{k=0}^na_kb_{n-k}
+%		\end{aligned}
+%	\end{equation*}
+%\end{proof}
+%\begin{thm}[Division of Power Series]
+%	Taken the two functions as before, with the added necessity that $g(z)\ne0$, we have that
+%	\begin{equation*}
+%		\frac{f(z)}{g(z)}=\sum_{n=0}^{\infty}d_n(z-z_0)^n\quad d_n=\frac{1}{b_0}\left( a_n-\sum_{k=0}^{n-1}d_kb_{n-k} \right)
+%	\end{equation*}
+%\end{thm}
+%\begin{proof}
+%	Everything hold as in the previous proof. Remembering that $(f/g)g=f$ and using the previous theorem, we obtain
+%	\begin{equation*}
+%		a_n=\sum_{k=0}^{n}d_kb_{k-n}
+%	\end{equation*}
+%	And therefore, inverting
+%	\begin{equation*}
+%		d_n=\frac{a_n}{b_0}-\frac{1}{b_0}\sum_{k=0}^{n-1}d_kb_{n-k}
+%	\end{equation*}
+%\end{proof}
+%\subsection{Useful Expansions}
+%\begin{equation}
+%	e^z=\sum_{n=0}^\infty\frac{z^n}{n!}\quad\norm{z}<\infty
+%	\label{eq:expser}
+%\end{equation}
+%\begin{equation}
+%	\sin(z)=\frac{1}{2i}\left( e^{iz}-e^{-iz} \right)=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)!}z^{2n+1}\quad\norm{z}<\infty
+%	\label{eq:sinser}
+%\end{equation}
+%\begin{equation}
+%	\cos(z)=\derivative{z}\sin(z)=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!}z^{2n}\quad\norm{z}<\infty
+%	\label{eq:cosser}
+%\end{equation}
+%\begin{equation}
+%	\cosh(z)=\cos(iz)=\sum_{n=0}^{\infty}\frac{z^{2n}}{(2n)!}\quad\norm{z}<\infty
+%	\label{eq:coshser}
+%\end{equation}
+%\begin{equation}
+%	\sinh(z)=\derivative{z}\cosh(z)=\sum_{n=0}^{\infty}\frac{z^{2n+1}}{(2n+1)!}\quad\norm{z}<\infty
+%	\label{eq:sinhser}
+%\end{equation}
+%\begin{equation}
+%	\frac{1}{1-z}=\sum_{n=0}^{\infty}z^n\quad\norm{z}<1
+%	\label{eq:geomser}
+%\end{equation}
+%\begin{equation}
+%	\frac{1}{1+z}=\sum_{n=0}^{\infty}(-1)^nz^n\quad\norm{z}<1
+%	\label{eq:geomminoneser}
+%\end{equation}
+%\begin{equation}
+%	\frac{1}{z}=\sum_{n=0}^{\infty}(-1)^n(z-1)^n\quad\norm{z-1}<1
+%	\label{eq:zminoneser}
+%\end{equation}
+%\begin{equation}
+%	(1+z)^s=\sum_{n=0}^{\infty}\begin{pmatrix}s\\n\end{pmatrix}z^n\quad s\in\Cf,\ \norm{z}<1
+%	\label{eq:binomser}
+%\end{equation}
+%\begin{equation}
+%	e^{\frac{1}{z}}=\sum_{n=0}^{\infty}\frac{1}{n!z^n}\quad0<\norm{z}<\infty
+%	\label{eq:explaur}
+%\end{equation}
+%\section{Residues}
+%\subsection{Singularities and Residues}
+%\begin{dfn}[Singularity]
+%	Given a function $f:G\fto\Cf$ we define a \textit{singularity} a point $z_0\in G$ such that
+%	\begin{equation}
+%		\forall\epsilon>0\ \exists z\in B_\epsilon(z_0)\st f(z)\text{ is holomorphic}
+%		\label{eq:singularity1}
+%	\end{equation}
+%\end{dfn}
+%\begin{dfn}[Isolated Singularity]
+%	Given a function $f:G\fto\Cf$ we define an \textit{isolated singularity} a point $z_0\in G$ such that
+%	\begin{equation}
+%		\exists r>0\st f\in H\left( A_{0r}(z_0) \right)
+%		\label{eq:isolatedsing}
+%	\end{equation}
+%\end{dfn}
+%\begin{dfn}[Residue]
+%	Let $z_0\in G$ be an isolated singularity of $f:G\fto\Cf$, then $\exists r>0\st\forall z\in A_{0r}(z_0)$ the following Laurent series expansion holds
+%	\begin{equation*}
+%		f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n+\sum_{n=1}^{\infty}\frac{b_n}{(z-z_0)^n}=\sum_{n=-\infty}^{\infty}c_n(z-z_0)^n
+%	\end{equation*}
+%	The \textit{residue} of the function $f$ in $z_0$ is defined as follows
+%	\begin{equation}
+%		\res_{z=z_0}f(z)=b_1=c_{-1}
+%		\label{eq:residue}
+%	\end{equation}
+%	A second definitiion is given by the following contour integral
+%	\begin{equation*}
+%		\res_{z=z_0}f(z)=\frac{1}{2\pi i}\ointccw_\gamma f(z)\diff z
+%	\end{equation*}
+%	Where $\gamma$ is a simple closed path around $z_0$
+%\end{dfn}
+%\begin{dfn}[Winding Number]
+%	Given a closed curve $\{\gamma\}$ we define the \textit{winding number} or \textit{index} of the curve around a point $z_0$ the following integral
+%	\begin{equation}
+%		n(\gamma,z_0)=\frac{1}{2\pi i}\oint_\gamma\frac{\diff z}{z-z_0}
+%		\label{eq:windingnumber}
+%	\end{equation}
+%\end{dfn}
+%\begin{thm}[Residue Theorem]
+%	Given a function $f:G\fto\Cf$ such that $f\in H(D)$ where $D=G\setminus\{z_1,\cdots,z_n\}$ and $z_k$ are isolated singularities, we have, taken a closed piecewise smooth curve $\{\gamma\}$, such that $\{z_1,\cdots,z_n\}\subset\intr{\{\gamma\}}$
+%	\begin{equation}
+%		\oint_\gamma f(z)\diff z=2\pi i\sum_{k=0}^{\infty}n(\gamma,z_k)\res_{z=z_k}f(z)
+%		\label{eq:residuetheorem}
+%	\end{equation}
+%\end{thm}
+%\begin{proof}
+%	Firstly we can say that $\gamma\sim\sum_k\gamma_k$ where $\gamma_k$ are simple curves around each $z_k$, then since the function is holomorphic in the regions $A_{0r}(z_k)$ with $k=1,\cdots,n$ we can write
+%	\begin{equation*}
+%		f(z)=\sum_{n=-\infty}^{\infty}c_n(z-z_k)^n
+%	\end{equation*}
+%	Therefore, we have
+%	\begin{equation*}
+%		\oint_\gamma f(z)\diff z=\sum_{k=0}^{n}\oint_{\gamma_k}f(z)\diff z=\sum_{k=0}^n\sum_{j=-\infty}^\infty c_j\oint_{\gamma_k}(z-z_k)^j\diff z
+%	\end{equation*}
+%	We can then use the linearity of the integral operator and write
+%	\begin{equation*}
+%		\oint_\gamma f(z)\diff z=\sum_{k=0}^n\sum_{j=-\infty}^{-2}c_{j}\oint_{\gamma_k}(z-z_k)^j\diff z+c_{-1}\oint_{\gamma_k}\frac{\diff z}{z-z_k}+\sum_{j=0}^\infty c_j\oint_{\gamma_k}(z-z_k)^j\diff z
+%	\end{equation*}
+%	Thanks to the Cauchy theorem we already know that the first and last integrals on the RHS must be null, therefore
+%	\begin{equation*}
+%		\oint_\gamma f(z)\diff z=\sum_{k=0}^nc_{-1}\oint_{\gamma_k}\frac{\diff z}{z-z_k}
+%	\end{equation*}
+%	Recognizing the definition of residue and the winding number of the curve, we have the assert
+%	\begin{equation*}
+%		\oint_\gamma f(z)\diff z=2\pi i\sum_{k=0}n(\gamma,z_k)\res_{z=z_k}f(z)
+%	\end{equation*}
+%\end{proof}
+%\begin{dfn}[Residue at Infinity]
+%	Given a function $f:G\fto\Cf$ and a piecewise smooth closed curve $\gamma$. If $f\in H(\{\gamma\}\cup\extr{\{\gamma\}})$ we have
+%	\begin{equation}
+%		\ointccw_\gamma f(z)\diff z=-2\pi i\res_{z=\infty}f(z)=2\pi i\res_{z=0}\frac{1}{z^2}f\left( \frac{1}{z} \right)
+%		\label{eq:infresidue}
+%	\end{equation}
+%\end{dfn}
+%\begin{thm}
+%	Given a function $f:G\fto\Cf$ as before, if the function has $z_k$ singularities with $k=1,\cdots,n$
+%	\begin{equation}
+%		\res_{z=\infty}f(z)=\sum_{k=1}^n\res_{z=z_k}f(z)
+%		\label{eq:residueformula}
+%	\end{equation}
+%\end{thm}
+%\subsection{Classification of Singularities, Zeros and Poles}
+%\begin{dfn}[Pole]
+%	Given a function $f(z)$ with an isolated singular point in $z_0\in\Cf$, we have that in $A_{0r}(z_0)$ the function can be expanded with a Laurent series
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{\infty}a_k(z-z_0)^k+\sum_{k=1}^{\infty}\frac{b_k}{(z-z_0)^k}
+%	\end{equation*}
+%	The point $z_0$ is called a \textit{pole of order} $m$ if $b_k=0\ \forall k>m$
+%\end{dfn}
+%\begin{dfn}[Removable Singularity]
+%	Given $f(z),z_0$ as before, we have that $z_0$ is a \textit{removable singularity} if $b_k=0\ \forall k\ge1$
+%\end{dfn}
+%\begin{dfn}[Essential Singularity]
+%	Given $f(z),z_0$ as before, we have that $z_0$ is an \textit{essential singularity} if $b_k\ne0$ for infinite values of $k$
+%\end{dfn}
+%\begin{dfn}[Meromorphic Function]
+%	Let $f:G\subset\Cf\fto\Cf$ be a function. $f$ is said to be \textit{meromorphic} if $f\in H(\tilde{G})$ where $\tilde{G}=G\setminus\left\{ z_1,\cdots,z_n \right\}$ where $z_k\in G$ are poles of the function
+%\end{dfn}
+%\begin{thm}
+%	Let $z_0$ be an isolated singularity of a function $f(z)$. $z_0$ is a pole of order $m$ if and only if
+%	\begin{equation}
+%		f(z)=\frac{1}{(m-1)!}\left.\derivative[m-1]{g}{z}\right|_{z_0}\quad g\in H(B_\epsilon(z_0))\ \epsilon>0
+%		\label{eq:pole m}
+%	\end{equation}
+%\end{thm}
+%\begin{proof}
+%	Let $f:G\fto\Cf$ be a meromorphic function and $g:G\fto\Cf$, $g\in H(G)$ where $f(z)$ has a pole in $z_0\in G$ and $g(z_0)\ne0$
+%	\begin{equation*}
+%		f(z)=\frac{g(z)}{(z-z_0)^m}
+%	\end{equation*}
+%	Since $g(z)$ is holomorphic in $z_0$ we have that, for some $r$
+%	\begin{equation*}
+%		g(z)=\sum_{k=0}^{\infty}\frac{1}{k!}\derivative[k]{g}{z_0}{(z-z_0)^k}\quad z\in B_r(z_0)
+%	\end{equation*}
+%	And therefore, $\forall z\in A_{0r}(z_0)$
+%	\begin{equation*}
+%		f(z)=\frac{1}{(z-z_0)^m}g(z)=\sum_{k=0}^{\infty}\frac{1}{k!}\derivative[k]{g}{z_0}{(z-z_0)^{k-m}}
+%	\end{equation*}
+%	Since $g(z_0)\ne0$ we have the assert.\\
+%	Alternatively we start by hypothesizing that $z_0$ is already a pole of order $m$ for $f$, and therefore we can write the following Laurent expansion for some $r>0$
+%	\begin{equation*}
+%		f(z)=\sum_{k=-m}^\infty c_k(z-z_0)^k\quad\forall z\in A_{0r}(z_0)
+%	\end{equation*}
+%	Where $c_{-m}\ne0$. Therefore, we write
+%	\begin{equation*}
+%		g(z)=\begin{dcases}(z-z_0)^mf(z)&z\in A_{0r}(z_0)\\c_{-m}&z=z_0\end{dcases}
+%	\end{equation*}
+%	And, expanding $g(z)$ for $z\in B_r(z_0)$ we obtain
+%	\begin{equation*}
+%		g(z)=c_{-m}+c_{-m+1}(z-z_0)+\cdots+c_{-1}(z-z_0)^{m-1}+\sum_{k=0}^{\infty}c_k(z-z_0)^{k+m}
+%	\end{equation*}
+%	$g(z)$ is holomorphic in the previous domain of expansion, and therefore we have, since the Taylor expansion is unique
+%	\begin{equation*}
+%		c_{-1}=\frac{1}{(m-1)!}\derivative[m-1]{g}{z_0}=\res_{z=z_0}f(z)
+%	\end{equation*}
+%\end{proof}
+%\begin{dfn}[Zero]
+%	Let $f:G\fto\Cf$ be a holomorphic function. Taken $z_0\in G$, it's said to be a \textit{zero of order} $m$ if
+%	\begin{equation*}
+%		\begin{dcases}\derivative[k]{f}{z_0}=0&k=1,\cdots,m-1\\\derivative[m]{f}{z_0}\ne0\end{dcases}
+%	\end{equation*}
+%\end{dfn}
+%\begin{thm}
+%	The point $z_0\in G$ is a zero of order $m$ for $f$ if and only if
+%	\begin{equation*}
+%		f(z)=\frac{g(z)}{(z-z_0)^m}\quad g(z_0)\ne0,\ g\in H(G)
+%	\end{equation*}
+%\end{thm}
+%\begin{proof}
+%	Taken $f(z)=(z-z_0)^mg(z)$ such that $g(z_0)\ne0$ we can expand $g(z)$ with Taylor and at the end obtain
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{\infty}\frac{1}{k!}\derivative[k]{g}{z_0}{(z-z_0)^{k+m}}
+%	\end{equation*}
+%	Since this is a Taylor expansion also for $f(z)$ we have that, for $j=1,\cdots,m-1$
+%	\begin{equation*}
+%		\derivative[j]{f}{z_0}=0\qquad\derivative[m]{f}{z_0}=m!g(z_0)\ne0
+%	\end{equation*}
+%	The same is obtainable with the vice versa demonstrating the theorem
+%\end{proof}
+%\begin{ntn}
+%	Let $f$ be a meromorphic function. We will define the following sets of points accordingly
+%	\begin{enumerate}
+%	\item $Z_f^m$ as the set of zeros of order $m$
+%	\item $S_f$ as the set of isolated singularities of $f$
+%	\item $P_f^m$ as the set of poles of order $m$
+%	\end{enumerate}
+%	We immediately see some special cases
+%	\begin{enumerate}
+%	\item $P_f^\infty$ is the set of essential singularities of $f$
+%	\item $P_f^1$ is the set of removable singularities of $f$
+%	\end{enumerate}
+%\end{ntn}
+%\begin{thm}
+%	Let $f:D\fto\Cf$ be a function such that $f\in H(D)$, with $D$ an open set, then
+%	\begin{enumerate}
+%	\item $f(z)=0\ \forall z\in D$
+%	\item $\exists z_0\st f^{(k)}(z_0)=0\ \forall k\ge0$
+%	\item $Z_f\subset D$ has a limit point
+%	\end{enumerate}
+%\end{thm}
+%\begin{proof}
+%	$3)\implies 2)$\\
+%	Take $z_0\in D$ as the limit point of $Z_f$. Since $f\in C(D)$ we have that $z_0\in Z_f^m$. therefore
+%	\begin{equation*}
+%		f(z)=(z-z_0)^mg(z)\quad g(z_0)\ne0,\ g\in H(D)\implies\exists\delta>0\st g(z)\ne0\quad\forall z\in B_\delta(z_0)
+%	\end{equation*}
+%	Therefore
+%	\begin{equation*}
+%		f(z)\ne0\quad\forall z\in A_{0\delta}(z_0)\ \lightning
+%	\end{equation*}
+%	$2)\implies1)$\\
+%	Suppose that $Z_{f^{(k)}}:=\left\{ \derin{z\in D}f^{(k)}(z)=0 \right\}\ne\{\}$. We have to demonstrate that this set is clopen in $D$.\\
+%	Take $z\in\cc{Z_{f^{(k)}}}$ and a sequence $(z)_k\in Z_{f^{(k)}}$ such that $z_k\to z$. We have then
+%	\begin{equation*}
+%		f^{(k)}(z)=\lim_{k\to\infty}f^{(k)}(z_k)=0
+%	\end{equation*}
+%	Therefore $Z_{f^{(k)}}=\cc{Z_{f^{(k)}}}$ and the set is closed.\\
+%	Take then $z\in Z_{f^{(k)}}\subset D$, since $D$ is open we have that $\exists r>0\st B_r(z)\subset D$, therefore
+%	\begin{equation*}
+%		\forall w\in B_r(z),\ z\ne w\quad f(w)=\sum_{k=0}^\infty a_k(w-z)^k=0\implies\begin{dcases}z=w\\a_k=0&\forall k\ge0\end{dcases}
+%	\end{equation*}
+%	Since $w\ne z$ we have that $B_r(z)\subset Z_{f^{(k)}}$ and the set is open. Taking both results we have that the set is clopen and $D=Z_{f^{(k)}}$
+%\end{proof}
+%\begin{cor}
+%	Let $f,g:D\fto\Cf$ and $f,g\in  H(D)$. We have that $f=g$ iff the set $\left\{ f(z)=g(z) \right\}$ has a limit point in $D$
+%\end{cor}
+%\begin{cor}[Zeros of Holomorphic Functions]
+%	Let $f:D\fto\Cf$ be a non-constant function $f\in H(D)$ with $D$ an open connected set. Then
+%	\begin{equation*}
+%		\forall z\in Z_f^m\quad m<\infty
+%	\end{equation*}
+%\end{cor}
+%\begin{proof}
+%	Take $z_0\in Z_f$, then since $f$ is non-constant we have that $Z_f$ has no limit points in $D$, therefore
+%	\begin{equation*}
+%		\exists\delta>0\st f(z)\ne0\quad\forall z\in A_{0\delta}(z_0)\ \wedge\ \exists m\ge1\st\derivative[k]{f}{z_0}=0\ k\in[0,m),\ \derivative[m]{f}{z_0}\ne0
+%	\end{equation*}
+%	Therefore $z_0\in Z_f^m$
+%\end{proof}
+%\begin{thm}
+%	Let $f:D\fto\Cf$ be a meromorphic function, such that
+%	\begin{equation*}
+%		f(z)=\frac{p(z)}{q(z)}\quad p,q\in H(D)
+%	\end{equation*}
+%	If $z_0\in Z_q^m$ such that $p(z_0)\ne0$, then $z_0\in P^m_f$
+%\end{thm}
+%\begin{proof}
+%	$z_0\in Z_q^m$ is an isolated singularity of $q$, therefore
+%	\begin{equation*}
+%		\exists\delta>0\st q(z)\ne0\quad\forall z\in A_{0\delta}(z_0)\ \therefore z_0\in S_{p/q}
+%	\end{equation*}
+%	We therefore can take $q(z)=(z-z_0)^mg(z)$ and we have
+%	\begin{equation*}
+%		f(z)=\frac{p(z)}{g(z)(z-z_0)^m}=\frac{h(z)}{(z-z_0)^m}
+%	\end{equation*}
+%	Where $h(z)$ is a holomorphic function such that $h(z_0)\ne0$. By definition of pole we have $z_0\in P^m_f$
+%\end{proof}
+%\begin{thm}[Quick Calculus of Residues for Rational Functions]
+%	If $f(z)=p(z)/q(z)$ as before, there is a quick rule of thumb for calculating the residue in $z_0$. We can write
+%	\begin{equation*}
+%		\res_{z=z_0}f(z)=\frac{1}{(m-1)!}\derivative[m-1]{h}{z_0}
+%	\end{equation*}
+%	If the pole is a removable singularity, we have $z_0\in P^1_f$ and
+%	\begin{equation*}
+%		\res_{z=z_0}f(z)=\frac{p(z_0)}{q'(z_0)}
+%	\end{equation*}
+%\end{thm}
+%\begin{thm}
+%	Let $f$ be a meromorphic function. If $z_0\in P^m_f$ we have
+%	\begin{equation*}
+%		\lim_{z\to z_0}f(z)=\infty
+%	\end{equation*}
+%\end{thm}
+%\begin{proof}
+%	\begin{equation*}
+%		z_0\in P^m_f\implies f(z)=\frac{g(z)}{(z-z_0)^m},\ z_0\notin Z_g
+%	\end{equation*}
+%	Then
+%	\begin{equation*}
+%		\lim_{z\to z_0}\frac{1}{f(z)}=\lim_{z\to z_0}\frac{(z-z_0)}{g(z)}=0
+%	\end{equation*}
+%\end{proof}
+%\begin{thm}
+%	If $z_0\in P^1_f$, $\exists\epsilon>0$ such that $f\in A_{0\epsilon}(z_0)$ and $\norm{f(z)}\le M$, $\forall z\in A_{0\epsilon}(z_0)$
+%\end{thm}
+%\begin{proof}
+%	By definition we have that
+%	\begin{equation*}
+%		\exists r>0\st f\in H(A_{0\epsilon}(z_0))
+%	\end{equation*}
+%	And therefore the function is Laurent representable in this set as follows
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{\infty}c_k(z-z_0)^k\quad0<\norm{z-z_0}<\epsilon
+%	\end{equation*}
+%	Taken the following holomorphic function
+%	\begin{equation*}
+%		g(z)=\begin{dcases}f(z)&z\in A_{0\epsilon}(z_0)\\\sum_{z=0}^{\infty}c_k(z-z_0)&z=z_0\end{dcases}
+%	\end{equation*}
+%	We have that $g\in H\left( \cc{B_\epsilon}(z_0) \right)$ and therefore $\norm{f(z)}\le M\quad\forall z\in A_{0\epsilon}(z_0)$
+%\end{proof}
+%\begin{lem}[Riemann]
+%	Take a function $f\in H\left( A_{0\epsilon}(z_0) \right)$ for some $\epsilon>0$, then if $\norm{f(z)}\le M\ \forall z\in A_{0\epsilon}(z_0)$\\
+%	The point $z_0$ is a removable singularity for $f$
+%\end{lem}
+%\begin{proof}
+%	In the set of holomorphy the function is representable with Laurent, therefore
+%	\begin{equation*}
+%		f(z)=\sum_{k=0}^{\infty}c_k^+(z-z_0)^k+\sum_{k=1}^{\infty}\frac{c_k^-}{(z-z_0)^k}
+%	\end{equation*}
+%	We have that the coefficients $c_k^-$ are the following, where we integrate over a curve $\{\gamma\}:=\left\{ \derin{z\in\Cf}\norm{z-z_0}=\rho<\epsilon \right\}$
+%	\begin{equation*}
+%		c_k^-=\frac{1}{2\pi i}\ointccw_\gamma f(z)(z-z_0)^{k-1}\diff z
+%	\end{equation*}
+%	The function is limited, and therefore for Darboux
+%	\begin{equation*}
+%		c_k^-\le\rho^k M\to0\quad\forall k\ge1
+%	\end{equation*}
+%	Therefore $z_0\in P^1_f$
+%\end{proof}
+%\begin{thm}[Quick Calculus Methods for Residues]
+%	Let $f$ be a meromorphic function, then
+%	\begin{enumerate}
+%	\item $z_0\in P^n_f$ then
+%		\begin{equation}
+%			\res_{z=z_0}f(z)=\frac{1}{(n-1)!}\lim_{z\to z_0}\derivative[n-1]{z}(z-z_0)^nf(z)
+%			\label{eq:respolen}
+%		\end{equation}
+%	\item $z_0\in P^m_f$ and $f(z)=p(z)/(z-z_0)^m$, where $p\in\Cf_k\left[ z \right]$ with $k\le m-2$ and $p(z_0)\ne0$, then
+%		\begin{equation*}
+%			\res_{z=z_0}f(z)=\res_{z=z_0}\frac{p(z)}{(z-z_0)^m}=0
+%		\end{equation*}
+%	\end{enumerate}
+%\end{thm}
+%\section{Applications of Residue Calculus}
+%\subsection{Improper Integrals}
+%\begin{dfn}[Improper Integral]
+%	An \textit{improper integral} is defined as the integral of a function in a domain where such function has a divergence, or where the interval is infinite.
+%	Some examples of such integrals, given a function $f(x)$ with divergences at $a,b\in\R$ are the following
+%	\begin{equation*}
+%		\begin{aligned}
+%			\int_{c}^{\infty}f(x)\diff x&=\lim_{R\to\infty}\int_{c}^{R}f(x)\diff x\\
+%			\int_{-\infty}^{d}f(x)\diff x&=\lim_{R\to\infty}\int_{-R}^{d}f(x)\diff x\\
+%			\int_{-\infty}^{\infty}f(x)\diff x&=\int_{\R}^{}f(x)\diff x=\lim_{R\to\infty}\int_{-R}^{R}f(x)\diff x\\
+%			\int_{a}^{b}f(x)\diff x&=\lim_{\epsilon\to0^+}\int_{a+\epsilon}^{b-\epsilon}f(x)\diff x\\
+%			\int_{e}^h f(x)\diff x&=\lim_{\epsilon\to0^+}\left( \int_{e}^{a-\epsilon}f(x)\diff x+\int_{a+\epsilon}^{h}f(x)\diff x \right)\quad a\in(e,h)
+%		\end{aligned}
+%	\end{equation*}
+%\end{dfn}
+%\begin{dfn}[Cauchy Principal Value]
+%	The previous definitions give rise to the following definition, the \textit{Cauchy principal value}. Given an improper integral we define the Cauchy principal value as follows\\
+%	Let $f(x)$ be a function with a singularity $c\in(a,b)$, and $g(x)$ another function then
+%	\begin{equation*}
+%		\begin{aligned}
+%			\cpv\int_{-\infty}^{\infty}g(x)\diff x&=\cpv\int_{\R}^{}g(x)\diff x=\lim_{R\to\infty}\int_{-R}^{R}g(x)\diff x\\
+%			\cpv\int_{a}^{b}f(x)\diff x&=\lim_{\epsilon\to0^+}\left(\int_{a}^{c-\epsilon}f(x)\diff x+\int_{c+\epsilon}^{b}f(x)\diff x\right)
+%		\end{aligned}
+%	\end{equation*}
+%	In the first case. $\cpv$ is usually omitted.\\
+%	For a complex integral, if $\gamma_R(t)=Re^{it}$ is a circumference, we have
+%	\begin{equation*}
+%		\cpv\int_{\gamma_R}^{}f(z)\diff z=\lim_{R\to\infty}\int_{\gamma_R}f(z)\diff z
+%	\end{equation*}
+%\end{dfn}
+%\begin{ntn}[Circumferences and Parts of Circumference]
+%	For a quick writing of the integrals in this section, we will use this notation for the following circumferences
+%	\begin{equation*}
+%		\begin{aligned}
+%			C_R(t)&=Re^{it}\quad t\in[0,2\pi]\\
+%			C_{R\alpha\beta}&=Re^{it}\quad t\in[\alpha,\beta]\\
+%			C_R^+(t)&=Re^{it}\quad t\in[0,\pi]\\
+%			C_R^-(t)&=Re^{-it}\quad t\in[0,\pi]\\
+%			\tilde{C^{\pm}}_R&=C_R^{\pm}\times[-R,R]
+%		\end{aligned}
+%	\end{equation*}
+%\end{ntn}
+%\begin{hyp}
+%	Let $R_0>0$ and $f\in C(D)$, where $D:=\left\{ \derin{z\in\Cf}\norm{z}\ge R_0 \right\}\cup\R$ and
+%	\begin{equation*}
+%		\lim_{z\to\infty}zf(z)=0
+%	\end{equation*}
+%	\label{h1}
+%\end{hyp}
+%\begin{hyp}
+%	Let $R_0>0$ and $f\in C(D)$, where $D:=\left\{ \derin{z\in\Cf}\norm{z}\ge R_0 \right\}\cup\R$ and
+%	\begin{equation*}
+%		\lim_{z\to\infty}f(z)=0
+%	\end{equation*}
+%	\label{h2}
+%\end{hyp}
+%\begin{thm}
+%	If \eqref{h1} holds true, then
+%	\begin{equation}
+%		\cpv\int_{\gamma_R}^{}f(z)\diff z=0\quad\gamma_R= C_R,C_R^+,C_R^-
+%		\label{eq:h11}
+%	\end{equation}
+%	Also, if $f(x)$ is a real function
+%	\begin{equation}
+%		\int_{\R}^{}f(x)\diff x=\cpv\int_{\tilde{C}_R^+}f(z)\diff z=\cpv\int_{\tilde{C}_R^-}^{}f(z)\diff z
+%		\label{eq:h12}
+%	\end{equation}
+%\end{thm}
+%\begin{thm}
+%	Let $f(z)$ be an even function, if \eqref{h1} holds we have
+%	\begin{equation}
+%		\int_{0}^{\infty}f(x)\diff x=\frac{1}{2}\cpv\int_{\tilde{C}^+_R}^{}f(z)\diff z=\frac{1}{2}\cpv\int_{\tilde{C}^-_R}^{}f(z)\diff z
+%		\label{eq:creven}
+%	\end{equation}
+%\end{thm}
+%\begin{thm}
+%	Let $f(z)=g(z^k),\ k\ge2$. If \eqref{h1} holds
+%	\begin{equation}
+%		\int_{0}^{\infty}f(x)\diff x=\frac{1}{1-e^{\frac{2i\pi}{k}}}\cpv\int_{\tilde{C}_{R0,2\pi/k}}^{}f(z)\diff z
+%		\label{eq:powerint}
+%	\end{equation}
+%\end{thm}
+%\begin{thm}
+%	If \eqref{h2} holds
+%	\begin{equation}
+%		\begin{aligned}
+%			\int_{\R}^{}f(x)e^{i\lambda x}\diff x&=\cpv\int_{\tilde{C}_R^+}f(z)e^{i\lambda z}\diff z\quad\lambda>0\\
+%			\int_{\R}^{}f(x)e^{i\lambda x}\diff x&=\cpv\int_{\tilde{C}_R^-}f(z)e^{i\lambda z}\diff z\quad\lambda>0
+%		\end{aligned}
+%		\label{eq:fourierint}
+%	\end{equation}
+%	From this, we can write then, for $\lambda>0$
+%	\begin{equation}
+%		\begin{aligned}
+%			\int_{\R}^{}f(x)\cos(i\lambda x)\diff x&=\real\left(\cpv\int_{\tilde{C}_R^+}f(z)e^{i\lambda z}\diff z\right)\quad\lambda>0\\
+%			\int_{\R}^{}f(x)\sin(i\lambda x)\diff x&=\imaginary\left(\cpv\int_{\tilde{C}_R^+}f(z)e^{i\lambda z}\diff z\right)\quad\lambda>0\\
+%		\end{aligned}
+%		\label{eq:trigpos}
+%	\end{equation}
+%\end{thm}
+%\begin{hyp}
+%	Let $f(z)=g(z)h(z)$ with $g(z)$ a meromorphic function such that $S_g\not\subset\R^+$ and
+%	\begin{enumerate}
+%	\item $h\in H(\Cf\setminus\R^+)$
+%	\item $\lim_{z\to\infty}zf(z)=0$
+%	\item $\lim_{z\to0}zf(z)=0$
+%	\end{enumerate}
+%	\label{h3}
+%\end{hyp}
+%\begin{dfn}[Pacman Path]
+%	Let $\Gamma_{Rr\epsilon}$ be what we will call as the \textit{pacman path}, this path is formed by $4$ different paths\\
+%	\begin{equation}
+%		\begin{aligned}
+%			\gamma_1(t)&=re^{it}\quad t\in[\epsilon,2\pi-\epsilon]\\
+%			\gamma_2&=[-R,R]\\
+%			\gamma_3(t)&=Re^{it}\quad t\in[\epsilon,2\pi-\epsilon]\\
+%			\gamma_4&=[-R,R]
+%		\end{aligned}
+%		\label{eq:pacmanpath}
+%	\end{equation}
+%	We will abbreviate this as $\Gamma$
+%\end{dfn}
+%\begin{thm}
+%	Given $f(x)$ a function such that \eqref{h3} holds, we have that
+%	\begin{equation}
+%		\int_{0}^{\infty}g(x)\Delta h(x)\diff x=\cpv\int_{\Gamma}^{}g(z)h(z)\diff z
+%		\label{eq:intpac}
+%	\end{equation}
+%	Where
+%	\begin{equation}
+%		\Delta h(x)=\lim_{\epsilon\to0^+}\left( h(x+i\epsilon)-h(x-i\epsilon) \right)
+%		\label{eq:deltahdefcesi}
+%	\end{equation}
+%	In general, we have the following conversion table
+%	\begin{equation}
+%		\begin{matrix}
+%			\hline
+%			h(z)&\Delta h(x)\\
+%			\hline\\
+%			-\frac{1}{2\pi i}\log_+(z)&1\\\\
+%			\log_+(z)&-2\pi i\\\\
+%			\log_+^2(z)&-2\pi i\log(x)+4\pi^2\\\\
+%			\log_+(z)-2\pi i\log_+(z)&-4\pi i\log(x)\\\\
+%			\frac{i}{4\pi}\log_+^2(z)+\frac{1}{2}\log_+(z)&\log(x)\\\\
+%			[z^\alpha]^+&x^\alpha\left( 1-e^{2\pi i\alpha} \right)\\\\
+%			\hline
+%		\end{matrix}
+%		\label{eq:tableconv}
+%	\end{equation}
+%\end{thm}
+%All the previous integrals are solved through a direct application of the residue theorem.
+%\subsection{General Rules}
+%\begin{thm}[Integrals of Trigonometric Functions]
+%	Let $f(\cos\theta,\sin\theta)$ be some rational function of cosines and sines. Then we have that
+%	\begin{equation}
+%		\int_{0}^{2\pi}f(\cos\theta,\sin\theta)\diff\theta=\int_{\norm{z}=1}^{}f\left( \frac{z+z^{-1}}{2},\frac{z-z^{-1}}{2i} \right)\frac{\diff z}{iz}
+%		\label{eq:trigint}
+%	\end{equation}
+%\end{thm}
+%\begin{thm}[Integrals of Rational Functions]
+%	Let $f(x)=p_n(x)/q_m(x)$ with $m\ge n+2$ and $q_m(x)\ne0\quad\forall x\in\R$, then
+%	\begin{equation}
+%		\int_{\R}^{}\frac{p_n(x)}{q_m(x)}\diff x=2\pi i\sum_{k}\res_{z=z_k}\frac{p_n(z)}{q_m(z)}
+%		\label{eq:rationalfunc}
+%	\end{equation}
+%\end{thm}
+%\begin{lem}[Jordan's Lemma]
+%	Let $f(z)$ be a holomorphic function in $A:=\left\{ \derin{z\in\Cf}\norm{z}>R_0,\ \imaginary(z)\ge0 \right\}$. Taken $\gamma(t)=Re^{it}\ 0\le t\le\pi$ with $R>R_0$.\\
+%	If $\exists M_R>0\st\norm{f(z)}\le M_R\ \forall z\in\{\gamma\}$ and $M_R\to0$, we have that
+%	\begin{equation}
+%		\cpv\int_{\gamma}^{}f(z)e^{iaz}\diff z=0\quad a>0
+%		\label{eq:jordanlemma}
+%	\end{equation}
+%\end{lem}
+%\begin{thm}
+%	Let $f(x)=p_n(x)/q_m(x)$ and $m\ge n+1$ with $q_m(x)\ne0\ \forall x\in\R$, then $\forall a>0$ we have that
+%	\begin{equation}
+%		\int_{\R}^{}\frac{p_n(x)}{q_m(x)}e^{iax}\diff x=2\pi i\sum_k\res_{z=z_k}\frac{p_n(z)}{q_m(z)}e^{iaz}
+%		\label{eq:fracfourierint}
+%	\end{equation}
+%\end{thm}
+%\begin{lem}
+%	Let $f(z)$ be a meromorphic function such that $z_0\in P^1_f$ and $\gamma_r^{\pm}$ are semi circumferences parametrized as follows
+%	\begin{equation*}
+%		\gamma_r^{\pm}(t)=z_0+re^{\pm i\theta}\quad\theta\in[-\pi,0]
+%	\end{equation*}
+%	Then
+%	\begin{equation}
+%		\cpv\int_{\gamma_r^\pm}^{}f(z)\diff z=\pm\pi i\res_{z=z_0}f(z)
+%		\label{eq:singlesimplepole}
+%	\end{equation}
+%\end{lem}
+%\begin{thm}
+%	Let $f(x)=p_n(x)/q_m(x)$ with $m\ge n+2$ and $q_m(x)$ has $x_j\in \left.Z_g^1\right|_\R$ then
+%	\begin{equation}
+%		\int_{\R}^{}\frac{p_n(x)}{q_m(x)}\diff x=2\pi i\sum_k\res_{z=z_k}\frac{p_n(z)}{q_m(z)}+\pi i\sum_j\res_{z=x_j}\frac{p_n(z)}{q_m(z)}
+%		\label{eq:ratintsimple}
+%	\end{equation}
+%	If $g(x)=r_\alpha(x)/s_\beta(x)e^{iax}$ and $\beta\ge\alpha+1$ with $x_j\in\left.Z_g^1\right|_\R$, then $\forall a>0$
+%	\begin{equation}
+%		\int_{\R}^{}\frac{r_\alpha(x)}{s_\beta(x)}e^{iax}\diff x=2\pi i\sum_k\res_{z=z_k}\frac{r_\alpha(z)}{s_\beta(z)}e^{iaz}+\pi i\sum_j\res_{z=x_j}\frac{r_\alpha(z)}{s_\beta(z)}e^{iaz}
+%		\label{eq:fourierratintsimp}
+%	\end{equation}
+%	$z_k$ are all the zeros of $q,s$ contained in the plane $\{\imaginary(z)>0\}$
+%\end{thm}
+\section{Integral Theorems in $\R^2$ and $\R^3$}
+\begin{thm}[Gauss-Green]
+	Given $D\subset\R^2$ a set with a piecewise smooth parameterization of $\del D$ and two functions $\alpha,\beta:A\subseteq\R^2\fto\R$ and $\cc{D}\subset A$
+	\begin{equation}
+		\iint_{D}^{}\del_x\beta\diff x\diff y=\int_{\del^+D}^{}\beta(x,y)\diff y,\quad\iint_D\del_y\alpha\diff x\diff y=-\int_{\del^D}\alpha(x,y)\diff x\diff y
+		\label{eq:gaussgreen1}
+	\end{equation}
+\end{thm}
+\begin{thm}[Stokes]
+	Given $D\subset\R^2$ an open set with $\del D$ piecewise smooth and a vector field $f^\mu:A\fto\R^2$ with $D\subset A$
+	\begin{equation}
+		\int_{D}^{}\epsilon_{3\mu\nu}\del^\mu f^\nu\diff x\diff y=\int_{\del^+D}f^\mu t_\mu\diff s
+		\label{eq:stokes}
+	\end{equation}
+	Where $t^\mu$ is the vector tangent to $\del^+D$
+\end{thm}
+\begin{thm}[Gauss 1]
+	Given $D\subset\R^n$ open set with $\del D$ piecewise smooth and a vector field $f^\mu:A\fto\R^n$ with $D\subset A$
+	\begin{equation}
+		\iint_D\del_\mu f^\mu\diff x\diff y=\int_{\del^+D}f^\mu n_\mu\diff s
+		\label{eq:gaussthm}
+	\end{equation}
+	Where $n^\mu$ is the normal vector to $\del^+D$
+\end{thm}
+\begin{thm}[Stokes for Surfaces]
+	Given a smooth surface $\Sigma\subset\R^3$ with parameterization $r^\mu$ and a vector field $f^\mu:A\fto\R^3$ with $\Sigma\subseteq A$
+	\begin{equation}
+		\int_\Sigma n^\mu\epsilon_{\mu\nu\gamma}\del^\nu f^\gamma\diff\sigma=\int_{\del^+\Sigma}f^\mu t_\mu\diff s
+		\label{eq:stokessurf}
+	\end{equation}
+	Where $t^\mu$ is the tangent vector to the border of the surface
+\end{thm}
+\begin{thm}[Useful Identities]
+	Given $u,v\in C^2(\Omega)$ and a vector field $f^\mu\in C^2(\Omega,\R^3)$
+	\begin{equation}
+		\begin{aligned}
+			\int_{\Omega}\del_\mu\del^\mu v\diff x\diff y\diff z&=\int_{\del\Omega}n^\mu\del_\mu v\diff\sigma\\
+			\int_\Omega u\del_\mu f^\mu\diff x\diff y\diff z&=-\int_\Omega f^\mu\del_\mu w\diff x\diff y\diff z+\int_{\del\Omega}uf^\mu n_\mu\diff\sigma\\
+			\int_\Omega u\del_\mu\del^\mu v\diff x\diff y\diff z&=-\int_\Omega \del_\mu u\del^\mu v\diff x\diff y\diff z+\int_{\del\Omega}un^\mu\del_\mu v\diff\sigma\\
+			\int_{\Omega}\left( u\del_\mu\del^\mu v-w\del_\mu\del^\mu u \right)\diff x\diff y\diff z&=\int_{\del\Omega}\left( un^\mu\del_\mu v-wn^\mu\del_\mu u \right)\diff\sigma
+		\end{aligned}
+		\label{eq:usefulidinthm}
+	\end{equation}
+\end{thm}
+We can analogously write these theorems in the language of differential forms and manifolds, after giving a couple of definitions
+\begin{dfn}[Volume Element]
+	Given a $k-$dimensional compact oriented manifold $M$ with boundary and $\omega\in\Lambda^k(M)$ a $k-$differential form on $M$, we define the \textit{volume} of $M$ as follows
+	\begin{equation}
+		V(M)=\int_M\diff V=\int_M\omega
+		\label{eq:volumemanifold}
+	\end{equation}
+	Where $\diff V$ is the \textit{volume element} of the manifold, given by the unique $\omega\in\Lambda^k(M)$, defined as follows
+	\begin{equation}
+		\omega=f\diff x^{\mu_1}\wedge\cdots\wedge\diff x^{\mu_k}
+		\label{eq:kdiffformm}
+	\end{equation}
+	With $f$ an unique function.\\
+	For $M\subset\R^3$ with $n^\mu$ as outer normal and $\omega\in\Lambda^2(M)$ we can write immediately, by definition
+	\begin{equation*}
+		\omega_{\mu\nu}v^\mu w^\nu=n^\mu\epsilon_{\mu\nu\gamma}v^\nu w^\gamma=\diff A
+	\end{equation*}
+	Therefore
+	\begin{equation}
+		\diff A=\norm{\epsilon_{\mu\nu\gamma}v^\nu w^\gamma}^\mu
+		\label{eq:diffar2}
+	\end{equation}
+	Which is the already known formula.\\
+	For a $2-$manifold we can write immediately the following formulas
+	\begin{equation}
+		\diff A=n^1\diff y\wedge\diff z+n^2\diff z\wedge\diff x+n^3\diff x\wedge\diff y
+		\label{eq:diffar3}
+	\end{equation}
+	And, on $M$
+	\begin{equation}
+		\left\{\begin{aligned}
+				n^1\diff A&=\diff y\wedge\diff z\\
+				n^2\diff A&=\diff z\wedge\diff x\\
+				n^3\diff A&=\diff x\wedge\diff y
+		\end{aligned}\right.
+		\label{eq:formulasfordiffa}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Gauss-Green-Stokes-Ostogradskij]
+	Given $M$ a smooth manifold with boundary, $c$ a $p-$cube in $M$ and $\omega\in\Lambda(M)$ we have
+	\begin{equation}
+		\int_{c}^{}\diff\omega=\int_{[0,1]^p}c^\star\diff\omega=\int_{\del c}\omega
+		\label{eq:stokestheorem}
+	\end{equation}
+	In general, we can write
+	\begin{equation}
+		\int_M\diff\omega=\int_{\del M}\omega
+		\label{eq:ggso}
+	\end{equation}
+\end{thm}
+\begin{dfn}[Gauss-Green, Differential Forms]
+	Given $M\subset\R^2$ a compact $2-$manifold with boundary and two functions $\alpha,\beta:M\fto\R$ with $\alpha,\beta\in C^1(M)$ defining
+	\begin{equation}
+		\omega=\alpha\diff x+\beta\diff y
+		\label{eq:ggman}
+	\end{equation}
+	We have
+	\begin{equation}
+		\int_{\del M}\alpha\diff x+\beta\diff y=\int_{\del M}\omega=\int_M\diff\omega=\iint_M\left( \pdv{\beta}{x}-\pdv{\alpha}{y} \right)\diff x\wedge\diff y
+		\label{eq:gaussgreendf}
+	\end{equation}
+\end{dfn}
+\begin{proof}
+	Take $\omega=\alpha\diff x+\beta\diff y$, then
+	\begin{equation*}
+		\diff\omega=\diff\left( \alpha\diff x+\beta\diff y \right)=\left( \pdv{\beta}{x}-\pdv{\alpha}{y} \right)\diff x\wedge\diff y
+	\end{equation*}
+\end{proof}
+\begin{thm}[Gauss, Differential Forms]
+	Given $M$ a $3-$manifold smooth with boundary and compact with outer normal $n^\mu$ and a vector field $f^\mu\in C^1(M)$, we have
+	\begin{equation}
+		\int_M\del_\mu f^\mu\diff V=\int_{\del M}f^\mu n_\mu\diff A
+		\label{eq:gaussdf}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taken the following differential form
+	\begin{equation*}
+		\omega=f^1\diff y\wedge\diff z+f^2\diff z\wedge\diff x+f^3\diff x\wedge\diff y
+	\end{equation*}
+	We have, using the formulas \eqref{eq:formulasfordiffa}
+	\begin{equation*}
+		\omega=f^\mu n_\mu\diff A
+	\end{equation*}
+	And
+	\begin{equation*}
+		\diff\omega=\del_\mu f^\mu\diff V
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\int_M\del_\mu f^\mu\diff V=\int_M\diff\omega=\int_{\del M}\omega=\int_{\del M}f^\mu n_\mu\diff A
+	\end{equation*}
+\end{proof}
+\begin{thm}[Stokes, Differential Forms]
+	Given $M\subset\R^3$ a compact oriented smooth $2-$manifold with boundary with $n^\mu$ as outer normal and $t^\mu$ as tangent vector in $\del M$, given a vector field $f^\mu\in C^1(A)$ where $M\subset A$, we have
+	\begin{equation}
+		\int_Mn^\mu\epsilon_{\mu\nu\gamma}\del^\nu f^\gamma\diff A=\int_{\del M}f^\mu t_\mu\diff s
+		\label{eq:stokesrotordf}
+	\end{equation}
+\end{thm}
+\begin{proof}
+	Taking the following differential form
+	\begin{equation*}
+		\omega=f^\mu\diff x_\mu
+	\end{equation*}
+	We have that
+	\begin{equation*}
+		\diff\omega=(\del_2f^3-\del_3f^2)\diff y\wedge\diff z+(\del_3f^1-\del_1f^3)\diff z\wedge\diff x+(\del_1f^2-\del_2f^1)\diff x\wedge\diff y
+	\end{equation*}
+	Using the formulas \eqref{eq:formulasfordiffa} we have
+	\begin{equation*}
+		\diff\omega=n^\mu\epsilon_{\mu\nu\gamma}\del^\nu f^\gamma\diff A
+	\end{equation*}
+	Since in $\R^2$ we have $t^\mu\diff s=\diff x^\mu$ we therefore have
+	\begin{equation*}
+		f^\mu t_\mu\diff s=f^\mu\diff x_\mu=\omega
+	\end{equation*}
+	And therefore
+	\begin{equation*}
+		\int_Mn^\mu\epsilon_{\mu\nu\gamma}\del^\nu f^\gamma\diff A=\int_M\diff\omega=\int_{\del M}\omega=\int_{\del M}f^\mu t_\mu\diff s
+	\end{equation*}
+\end{proof}
+These last formulas are a good example on how they can be generalized through the use of differential forms, bringing an easy way of calculus in $\R^n$ of the various integral theorems, all condensed in one formula, the \textit{Gauss-Green-Stokes-Ostogradskij theorem}
+%\section{Integrals of Differential Forms
+%\subsection{Integration over Chain Complexes}
+%\subsection{Integration over Smooth Manifolds}
+\end{document}

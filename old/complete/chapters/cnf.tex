@@ -1,0 +1,280 @@
+\documentclass[../complete.tex]{subfiles}
+\begin{document}
+\section{Complex Numbers}
+\begin{dfn}[Complex Numbers]
+	Define with $\Cf$ the set of \textit{complex numbers}, i.e. the set of numbers $z\in\Cf\st z=(x,y)$ and $x,y\in\R$.\\
+	We define the \textit{real and imaginary parts} of $z$ as follows
+	\begin{equation}
+		\begin{aligned}
+			\real{(z)}&=x\\
+			\imaginary{(z)}&=y
+		\end{aligned}
+		\label{eq:realimaginarypart}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Operations in $\Cf$]
+	Take $z_1,z_2\in\Cf$, then we define
+	\begin{equation*}
+		\begin{aligned}
+			z_1=z_2&\iff \real{(z_1)}=\real{(z_2)},\ \imaginary{(z_1)}=\imaginary{(z_2)}\\
+			z_1+z_2&=(\real{(z_1)}+\real{(z_2)},\imaginary{(z_1)}+\imaginary{(z_2)})\\
+			z_1z_2&=(\real{(z_1)}\real{(z_2)}-\imaginary{(z_1)}\imaginary{(z_2)},\real{(z_1)}\imaginary{(z_2)}+\imaginary{(z_1)}\real{(z_2)})
+		\end{aligned}
+	\end{equation*}
+\end{dfn}
+\begin{thm}
+	With the previous definitions the set $\Cf$ forms a field.
+\end{thm}
+\begin{dfn}[Imaginary Unit]
+	We define the imaginary unit $i=(0,1)\in\Cf$. From this definition and the definition of product of two complex numbers, we have that $i^2=-1$\\
+	With this definition, we have
+	\begin{equation}
+		\forall z\in\Cf\quad z=\real{(z)}+i\imaginary{(z)}
+		\label{eq:complex}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Complex Conjugate]
+	Taken $z\in\Cf$, we call the \textit{complex conjugate of} $z$ the number $w$ such that
+	\begin{equation}
+		w=\real{(z)}-i\imaginary{(z)}
+		\label{eq:complexcon}
+	\end{equation}
+	This number is denoted as $\cc{z}$
+\end{dfn}
+\begin{dfn}[Complex Module]
+	We define the \textit{module} or \textit{norm} of a complex number, the following operator.
+	\begin{equation}
+		\norm{z}=\sqrt{z\cc{z}}=\sqrt{\real^2{(z)}+\imaginary^2{(z)}}
+		\label{eq:normcomplexz}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Complex Inverse]
+	The inverse of a complex number $z\in\Cf$ is defined as $z^{-1}$ and it's calculated as follows
+	\begin{equation}
+		z^{-1}=\frac{\cc{z}}{\norm{z}^2}
+		\label{eq:inversez}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Polar Form]
+	Taken a complex number $z\in\Cf$ one can define it in polar form with its modulus $r$ and its \textit{argument} $\theta$. We have that, if $z=x+iy$
+	\begin{equation}
+		\begin{aligned}
+			r&=\sqrt{x^2+y^2}=\norm{z}^2\\
+			\tan(\theta)&=\frac{y}{x}
+		\end{aligned}
+		\label{eq:polar}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Principal Argument]
+	Taken $\arg(z)=\theta$ we can define two different arguments, due to the periodicity of the $\tan$ function.
+	\begin{enumerate}
+	\item $\Arg(z)\in(-\pi,\pi]$ called the \textit{principal argument}
+	\item $\arg(z)=\Arg(z)+2k\pi,\ k\in\Z$ called the \textit{argument}
+	\end{enumerate}
+	As a rule of thumb, using the previous definition of argument of a complex number $z=x+iy$, we have
+	\begin{equation}
+		\Arg(z)=\begin{dcases}\arctan(y/x)-\pi&x<0,\ y<0\\\arctan(y/x)&x\ge0,\ z\ne0\\\arctan(y/x)+\pi&x<0,\ y\ge0\end{dcases}
+		\label{eq:princargcalc}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[$\arg_+$]
+	Given $z\in\Cf$ we define the $\arg_+(z)$ as the only value of $\arg(z)$ such that $0\le\theta<2\pi$.\\
+	In case we have a polydromic function, in order to specify we're using this argument, there will be a $+$ as index.\\
+	I.e. $\log_+(z),[z^a]^+,\sqrt{z}^+,\cdots$ and so on.
+\end{dfn}
+\begin{thm}[De Moivre Formula]
+	A complex number $z\in\Cf$ in polar form can be written with complex exponential and sine and cosine function as follows.
+	\begin{equation}
+		z=\norm{z}^2e^{i\arg{z}}=\norm{z}^2\left( \cos(\arg{z})+i\sin(\arg{z}) \right)
+		\label{eq:demoivreformula}
+	\end{equation}
+	This formula easily generalizes the calculus of exponentials of complex numbers. With this definition, it's obvious that the $n-$th root of a complex number $\sqrt[n]{z}$ has actually $n-1$ results, given the $2\pi-$periodicity of the $\arg(z)$ function.
+\end{thm}
+\section{Regions in $\Cf$}
+\begin{dfn}[Line]
+	A line $\lambda$ in $\Cf$, from $z_1,z_2$ can be written as follows
+	\begin{equation}
+		\lambda(t)=z_1+t(z_2-z_1)\quad t\in[0,1]
+		\label{eq:linecomplex}
+	\end{equation}
+	If $t\in\R$ this defines the line lying between $z_1,z_2$. Its non-parametric representation is the following
+	\begin{equation}
+		\{\lambda\}:=\left\{ \derin{z\in\Cf}\imaginary{\left( \frac{z-z_1}{z_2-z_1} \right)}=0 \right\}
+		\label{eq:lineinfcompnp}
+	\end{equation}
+	Where $z=\lambda(t)$.
+\end{dfn}
+\begin{dfn}[Circumference]
+	A circumference $\gamma$ centered in a point $z_0\in\Cf$ with radius $R$ is defined as follows
+	\begin{equation}
+		\gamma(\theta)=z_0+Re^{i\theta}\quad\theta\in[0,2\pi]
+		\label{eq:circparam}
+	\end{equation}
+	Non parametrically, it can be defined as follows
+	\begin{equation}
+		\{\gamma\}:=\left\{ \derin{z\in\Cf}\norm{z-z_0}=R \right\}
+		\label{eq:circlecomplexnp}
+	\end{equation}
+\end{dfn}
+\subsection{Extended Complex Plane $\hat{\Cf}$}
+\begin{dfn}[Extended Complex Plane]
+	We define the \textit{extended complex plane} $\hat{\Cf}$ as follows
+	\begin{equation}
+		\hat{\Cf}=\Cf\cup\{\infty\}
+		\label{eq:extendedcf}
+	\end{equation}
+	This can be imagined by projecting $\Cf$ into the Riemann sphere centered in the origin.
+\end{dfn}
+\begin{dfn}[Points in $\hat{\Cf}$]
+	Given a point $z\in\Cf,\ z=x+iy$ we can find its coordinates with the following transformation
+	\begin{equation}
+		\hat{z}=(xt,yt,1-t)\in\hat{\Cf}
+		\label{eq:pointinhatcf}
+	\end{equation}
+	Where the condition $\norm{\hat{z}}=1$ must hold, defining the value of $t\in\R$
+	Inversely, given $\hat{z}=(x_1,x_2,x_3)\in\hat{\Cf}$ one finds
+	\begin{equation}
+		z=\frac{x_1+ix_2}{1-x_3}
+		\label{eq:hatcftocf}
+	\end{equation}
+\end{dfn}
+\section{Elementary Functions}
+\begin{dfn}[Exponential]
+	The exponential function $z\mapsto e^z$ with $z\in\Cf$ is defined as follows
+	\begin{equation}
+		e^z=e^{\real(z)+i\imaginary(z)}=e^{\real{z}}\left( \cos(\imaginary(z))+i\sin(\imaginary(z)) \right)
+		\label{eq:exponential}
+	\end{equation}
+	This gives
+	\begin{equation}
+		\begin{aligned}
+			\norm{e^z}&=\abs{e^{\real(z)}}\\
+			\arg(e^z)&=\imaginary(z)+2\pi k\quad k\in\Z
+		\end{aligned}
+		\label{eq:normexpz}
+	\end{equation}
+	We have therefore, for $z,w\in\Cf$
+	\begin{equation}
+		\begin{aligned}
+			e^{z}e^w&=e^{z+w}\\
+			\frac{e^z}{e^w}&=e^{z-w}
+		\end{aligned}
+		\label{eq:propexp}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Logarithm]
+	We define the logarithm function $z\mapsto\log{z}$ as follows
+	\begin{equation}
+		\log(z)=\log\norm{z}+i\arg(z)
+		\label{eq:complexlog}
+	\end{equation}
+	It's evident how this function has multiple values for the same $z$ value, and therefore is known as a \textit{polydromic function}, like the square root.
+	We also define the principal branch of the logarithm as $\Log(z)$
+	\begin{equation}
+		\Log(z)=\log\norm{z}+i\Arg(z)
+		\label{eq:princlog}
+	\end{equation}
+    Lastly we define the $\log_+(z)$ as follows
+\begin{equation}
+    \log_+(z)=\log(\norm{z})+i\arg_+(z)
+\end{equation}
+\end{dfn}
+\begin{dfn}[Branch of the Logarithm]
+	A general branch of the $\log$ function is defined as the function $f(z):D\subset\Cf\fto\Cf$ such that
+	\begin{equation}
+		e^{f(z)}=z
+		\label{eq:logbranchfunc}
+	\end{equation}
+\end{dfn}
+\subsection{Complex Exponentiation}
+\begin{dfn}[Complex Exponential]
+	Taken $s,z\in\Cf$, we define the complex exponential a follows, taken $z$ a variable
+	\begin{equation}
+		z^s=e^{s\log(z)}\quad z\ne0
+		\label{eq:complexexp}
+	\end{equation}
+	Its derivative has the following value
+	\begin{equation}
+		\derivative{z}z^s=se^{(s-1)\log(z)}=sz^{s-1}
+		\label{eq:complexexpder}
+	\end{equation}
+	Alternatively, we define
+	\begin{equation}
+		s^z=e^{z\log(s)}
+		\label{eq:revexpcf}
+	\end{equation}
+\end{dfn}
+\subsection{Properties of Trigonometric Functions}
+\begin{dfn}[Trigonometric Functions]
+	Using De Moivre's formula, we define
+	\begin{equation}
+		\begin{aligned}
+			\sin(z)&=\frac{1}{2i}\left( e^{iz}-e^{-iz} \right)\\
+			\cos(z)&=\frac{1}{2}\left( e^{iz}+e^{-iz} \right)
+		\end{aligned}
+		\label{eq:trigcompfunc}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Hyperbolic Functions]
+	We define the hyperbolic functions as follows, given $z=iy$
+	\begin{equation}
+		\begin{aligned}
+			\sinh(y)&=-i\sin(iy)\\
+			\cosh(y)&=\cos(iy)
+		\end{aligned}
+		\label{eq:hyperbolic}
+	\end{equation}
+	For a general value of $z$, we define
+	\begin{equation}
+		\begin{aligned}
+			\sinh(z)&=\frac{1}{2}\left( e^z-e^{-z} \right)\\
+			\cosh(z)&=\frac{1}{2}\left( e^{z}+e^{-z} \right)
+		\end{aligned}
+		\label{eq:exphyperbolic}
+	\end{equation}
+\end{dfn}
+\begin{thm}[Trigonometric Identities]
+	Given $z,z_1,z_2\in\Cf$ we have
+	\begin{equation}
+		\begin{aligned}
+			\sin^2(z)+\cos^2(z)&=1\\
+			\sin(z_1\pm z_2)&=\sin(z_1)\cos(z_2)\pm\cos(z_1)\sin(z_2)\\
+			\cos(z_1\pm z_2)&=\cos(z_1)\cos(z_2)\mp\sin(z_1)\sin(z_2)\\
+			\sin(z)&=\sin\left( \real(z) \right)\cosh\left( \imaginary(z) \right)+i\cos\left( \real(z) \right)\sinh\left( \imaginary(y) \right)\\
+			\cos(z)&=\cos\left( \real(z) \right)\cosh\left( \imaginary(z) \right)-i\sin\left( \real(z) \right)\sinh\left( \imaginary(y) \right)\\
+			\norm{\sin(z)}^2&=\sin^2\left( \real(x) \right)+\sinh^2\left( \imaginary(y) \right)\\
+			\norm{\cos(z)}^2&=\cos^2\left( \real(x) \right)+\sinh^2\left( \imaginary(y) \right)\\
+			\cosh^2(z)-\sinh^2(z)&=1\\
+			\sinh(z_1\pm z_2)&=\sinh(z_1)\cosh(z_2)\pm\cosh(z_1)\sinh(z_2)\\
+			\cos(z_1\pm z_2)&=\cosh(z_1)\cosh(z_2)\pm\sinh(z_1)\sinh(z_2)\\
+			\sinh(z)&=\sinh\left( \real(z) \right)\cos\left( \imaginary(z) \right)+i\cosh\left( \real(z) \right)\sin\left( \imaginary(y) \right)\\
+			\cos(z)&=\cosh\left( \real(z) \right)\cos\left( \imaginary(z) \right)+i\sinh\left( \real(z) \right)\sin\left( \imaginary(y) \right)\\
+			\norm{\sin(z)}^2&=\sinh^2\left( \real(x) \right)+\sin^2\left( \imaginary(y) \right)\\
+			\norm{\cos(z)}^2&=\cosh^2\left( \real(x) \right)+\sin^2\left( \imaginary(y) \right)\\
+		\end{aligned}
+		\label{eq:trigidentities}
+	\end{equation}
+\end{thm}
+\begin{dfn}[Inverse Trigonometric Functions]
+	Given $z\in\Cf$ we define
+	\begin{equation}
+		\begin{aligned}
+			\arcsin(z)&=-i\log\left( iz+\sqrt{1-z^2} \right)\\
+			\arccos(z)&=-i\log\left( z+i\sqrt{1-z^2} \right)\\
+			\arctan(z)&=-\frac{i}{2}\log\left( \frac{i-z}{i+z} \right)
+		\end{aligned}
+		\label{eq:inversetrig}
+	\end{equation}
+\end{dfn}
+\begin{dfn}[Inverse Hyperbolic Functions]
+	Given $z\in\Cf$ we define
+	\begin{equation}
+		\begin{aligned}
+			\arcsinh(z)&=\log\left( z+\sqrt{z^2+1} \right)\\
+			\arccos(z)&=\log\left( z+\sqrt{z^2-1} \right)\\
+			\arctanh(z)&=\frac{1}{2}\log\left( \frac{1+z}{1-z} \right)
+		\end{aligned}
+		\label{eq:inversehypfunc}
+	\end{equation}
+\end{dfn}
+\end{document}
