@@ -295,7 +295,53 @@ Therefore, the differential changes of volume can be described as follows
 	\label{eq:volchange.temp}
 \end{equation}
 \section{Work}
-\subsection{Hydrostatic Systems}
-<++>
+In general, we can define two kinds of work that can be made by a system, or that the system can be subjected to:
+\begin{itemize}
+\item External work, which is the one exerted from the system to the surroundings
+\item Internal work, which is the one exerted from one part of the system to another
+\end{itemize}
+In general, we are only interested in \textit{external work} in our macroscopic treatment.\\
+Consider now a hydrostatic system contained in a piston chamber with adiabatic walls. By definition, if the piston has surface $S$, we define the pressure as
+\begin{equation}
+	p=\frac{F}{S}
+	\label{eq:presshyd.work}
+\end{equation}
+We now consider an \textit{infinitesimal} displacement of the piston, with force $\vec{F}$. The amount of work is then, as usual
+\begin{equation}
+	\slashed{\dd} W = \vec{F}\cdot\dd\vec{r}
+	\label{eq:workinf.work}
+\end{equation}
+Thus, if the piston moves along the $x$ axis
+\begin{equation}
+	\slashed{\dd}W=pS\dd x=p\dd V
+	\label{eq:workthermo.work}
+\end{equation}
+This work is commonly known as \textit{thermodynamic work} and shouldn't be confused with \textit{other} kinds of work that might be done from external forces, aka \textit{mechanical work}.\\
+The main question that pops to mind is how is actually infinitesimal work defined in a thermodynamic system. The action of the piston itself creates instability, and thus even in an infinitesimal displacement the gas isn't anymore in mechanical equilibrium, even for a small amount of time. An approximation is made in order to make calculations possible, i.e. the \textit{quasi-static approximation}, defined as follows
+\begin{dfn}[Quasi Static Process]
+	A quasi static process is an infinitesimal thermodynamic transformation. Specifically, a quasi static process is one such that the system is always in a neighborhood of an equilibrium configuration, thus it can be thought as always being in an equilibrium state. This approximation thus renders our previous calculations valid.
+\end{dfn}
+The ``\textit{d slashed}'' differential operator is there to indicate one thing and one thing only: work is \textit{path dependent}, as already seen in any course in classical mechanics.\\
+Note that in literature, the previous definition of work tends to differ by a minus sign. It's just a convention which simply indicates the sign of work depending whether it's made \textit{on} or \textit{by} the system. In our case, if the system is making work \textit{on} the surroundings, like when it expands, we have $W>0$ and vice versa.\\
+The path dependence of work makes its calculation not always immediate. Thanks to the existence of the state equation, we can tho define a relationship $p(V)$ which basically makes the pressure an integrating factor for work.
 \subsection{Quasi-static Processes}
+Let's start to consider now quasi static processes in ideal gases. We already know that for an ideal gas the equation of state holds, which is 
+\begin{equation*}
+	pV=nRT
+\end{equation*}
+We can then define the implicit dependence $p(V, T)$ as
+\begin{equation*}
+	p(V, T)=\frac{nRT}{V}
+\end{equation*}
+In the special case of \textit{isothermal} processes (constant $T$), we can then integrate the work differential and obtain
+\begin{equation}
+	W_{T}=nR\int_{V_A}^{V_B}\frac{1}{V}\dd^{}{V}=nR\log\left( \frac{V_B}{V_A} \right)
+	\label{eq:isot.work}
+\end{equation}
+For an \textit{isobaric} process ($p$ is constant), the integration is trivial and gives
+\begin{equation}
+	W_p=p\left( V_B-V_A \right)
+	\label{eq:isob.work}
+\end{equation}
+Another special case to consider is when the case study is composed by multiple hydrostatic systems in thermal equilibrium, separated by a diathermal wall. In this general case, work is additive thanks to its definition, and the total work of the composite system is none other than the sum of the work of the single component systems
 \end{document}

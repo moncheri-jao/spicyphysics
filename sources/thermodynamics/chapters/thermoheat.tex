@@ -1,19 +1,389 @@
 \documentclass[../qm.tex]{subfiles}
 \begin{document}
 \chapter{Heat}
-<++>
-\section{Adiabatic Processes}
-\subsection{Internal Energy Function}
+As we might have understood, the main study of thermodynamics is \textit{changes of state} (duh). There are various ways to induce a change of state in a system:
+\begin{enumerate}
+\item External forces, thus when $W\ne 0$
+\item Changes in temperature $W=0$, \textit{something}$\ne0$
+\item Both at once
+\end{enumerate}
+That \textit{something} must be something special, since it's not mechanical nor an expansion of the system. This ``something'' is known as \textit{heat}.
+\begin{dfn}[Calorimetric Heat]
+	\emph{Heat} is that quantity that gets transferred between a system and its surroundings by virtue of \textit{temperature only}. An adiabatic wall is thus a heat insulator, while a diathermal wall is a heat conductor.
+\end{dfn}
 \section{First Law of Thermodynamics}
-\subsection{Concept of Heat}
+\subsection{Internal Energy Function}
+Consider now the last example system that we treated, a simple ideal gas inside an adiabatic cylinder chamber with a piston. As we saw before, in this special case work is \textit{path independent}. The mathematical result that we obtain is that a \textit{potential must exist and is unique}. This potential is known as the \textit{internal energy} of the gas, and for an adiabatic process gives
+\begin{equation}
+	W_{AB}=U(p_A, V_A, T_A)-U(p_B, V_B, T_B)
+	\label{eq:inten.1}
+\end{equation}
+In classical thermodynamics, thanks to this result, it's \textit{not needed} to know the exact functional shape of the internal energy, but only its difference between the equilibrium points.\\
+Now a little consideration on notation must be given. Thanks to the ideal gas equation of state, we can always write the internal energy differential with two of the three thermodynamic coordinates, thus, taking two of the three possible combinations
+\begin{equation*}
+	\begin{aligned}
+		\dd U_1&= \pdv{U}{p}\dd p+\pdv{U}{V}\dd V\\
+		\dd U_2&= \pdv{U}{V}\dd V+\pdv{U}{T}\dd T
+	\end{aligned}
+\end{equation*}
+One might mistakenly say that the derivatives with respect to the volume are equal in both cases, but this is \textit{absolutely} not true in general.\\
+For avoiding confusion, from now on, the following notation will be used
+\begin{equation}
+	\dd U = \left( \pdv{U}{p} \right)_T\dd p + \left( \pdv{U}{T} \right)_p\dd T
+	\label{eq:not.1}
+\end{equation}
+Where the subscript specifies \textit{which} of the remaining coordinates is being kept constant.\\
+We can now continue with trying to understand how heat fits in our thermodynamic calculations. Consider a generic system which undergoes two transformations, one adiabatic and one non-adiabatic.\\
+In the first transformation we already calculated that
+\begin{equation*}
+	W=\Delta U
+\end{equation*}
+In the second transformation this is not true. Since we're still working in the realm of physics, if there are no dissipative processes, as in our case, \textit{must} be conserved.\\
+As we defined before, there is a heat flow between the system and its surroundings, and we can write then the \textit{first law of thermodynamics}
+\begin{equation}
+	\boxed{\Delta U = Q - W}
+	\label{eq:firstlaw}
+\end{equation}
+This extremely important equation implies three fundamental things:
+\begin{enumerate}
+\item An internal energy function exists
+\item Energy is conserved
+\item Heat is energy in transit by means of temperature differences.
+\end{enumerate}
+Note that with this definition, we \textit{do not} and \textit{cannot} know heat during processes, but only its flow, specifically
+\begin{equation*}
+	Q=\int_{t_2}^{t_1}\dv{Q}{\tau}\dd^{}{\tau}
+\end{equation*}
+I.e. internal energy is \textit{not} separable in mechanical (work) and thermal (heat). As with work, saying that there's an amount of heat in a body doesn't make any sense.\\
+As with work, heat is path dependent, and its differential inexact.\\
+With what we have said before, the first law can be rewritten in differential form as
+\begin{equation}
+	\boxed{\dd U=\slashed\dd Q-\slashed\dd W}
+	\label{eq:1stdiff.1}
+\end{equation}
+Via integration of this equation, it's possible to easily determine how the coordinates of the system change.\\
+Note that for a hydrostatic system we have
+\begin{equation*}
+	\dd U = \slashed\dd Q-p\dd V
+\end{equation*}
 \section{Calorimetry}
 \subsection{Heat Capacity}
-\subsection{Calories}
+Consider a system which undergoes a change of state for which there's a variation of temperature, we can define a new quantity, the \textit{heat capacity}, as 
+\begin{equation}
+	C=\frac{\slashed\dd Q}{\dd T}
+	\label{eq:heatcap.cal}
+\end{equation}
+Since both heat capacity and internal energy are extensive, it's useful to define the specific versions of these quantities by dividing them by the number of moles of matter $n$. Specifically, said $N_A$ Avogadro's number, we have that
+\begin{equation}
+	n=\frac{N}{N_A}=\frac{m}{\mathcal{M}}
+	\label{eq:moles.cal}
+\end{equation}
+Where $\mathcal{M}$ is the \textit{molecular weight} and $N_A=6.022\times10^{23}\ \mathrm{mol^{-1}}$. Thus
+\begin{equation}
+	c=\frac{1}{n}\frac{\slashed\dd Q}{\dd T}
+	\label{eq:specheat.cal}
+\end{equation}
+Note that heat capacity can assume different values depending on the process!\\
+It's important to define then the specific heat capacity at constant pressure and constant volume for hydrostatic processes
+\begin{equation}
+	\begin{paligned}
+		c_p&= \frac{1}{n}\left( \frac{\slashed\dd Q}{\dd T} \right)_p\\
+		c_V&= \frac{1}{n}\left( \frac{\slashed\dd Q}{\dd T} \right)_V
+	\end{paligned}
+	\label{eq:sheat.cal}
+\end{equation}
+Heat capacity has units of $\mathrm{E/nT}$ and it's usually measured in non-standard units, like the \textit{calorie}
+\begin{dfn}[Calorie]
+	A \emph{calorie} indicates the amount of heat necessary to raise the temperature of water by one degree Celsius. By definition
+	\begin{equation}
+		1\ \mathrm{cal}=4.186\ \mathrm{J}
+		\label{eq:caldef.cal}
+	\end{equation}
+\end{dfn}
+\subsection{Calorimeters}
+A \textit{calorimeter} is an instrument used to measure heat variations and specific heats of substances. The simplest calorimeter is the \textit{mixture calorimeter}, basically an adiabatic container filled with a defined amount of water.\\
+Consider now the measuring phase. Suppose that we want to find the specific heat of some external body with mass $m_x$ and initial temperature $T_x$.\\
+If the water in the calorimeter is at a temperature $T_{H_2O}$ with $m_{H_2O}$ mass of water. After the immersion of the external body we will have a heat flow between the two, until the calorimeter and the body will be in thermal equilibrium at a temperature $T_{eq}$.\\
+For what we have written before, by definition of specific heat we can write
+\begin{equation}
+	\begin{aligned}
+		Q_{H_2O}&= m_{H_2O}C_{H_2O}\left( T_{eq}-T_{H_2O} \right)\\
+		Q_x&= m_xC_x\left( T_{eq}-T_{x} \right)
+	\end{aligned}
+	\label{eq:shmeasure.cal}
+\end{equation}
+By virtue of the first law, being the calorimeter adiabatic we must have that the increase in temperature of the water is only due to the heat flux from the external body, and thus 
+\begin{equation*}
+	Q_{H_2O}=-Q_x
+\end{equation*}
+Note the minus sign, we must have $Q=Q_{H_2O}+Q_x=0$, if this wasn't satisfied we would have an adiabatic calorimeter that by calculation is not adiabatic!\\
+Equating and solving for $C_x$, which is the specific heat that we want to find, we have
+\begin{equation}
+	C_x=\frac{m_{H_2O}C_{H_2O}\left( T_{eq}-T_{H_2O} \right)}{m_xC_x\left( T_x-T_{eq} \right)}
+	\label{eq:sheat.cal}
+\end{equation}
+The passages are omitted, it's really easy to rederive it, just watch out for the minus sign.\\
+One now might (rightfully) say: <<\textit{doesn't the calorimeter have mass, and therefore interfere with the previous calculation somehow?}>>\\
+The answer is \textit{yes}. We therefore must account for this problem by defining an \emph{equivalent mass} of the calorimeter, i.e. the equivalent mass in water of the calorimeter itself.\\
+For this problem we have that both the water and the calorimeter are always in thermal equilibrium, thus if we have $m_1$ masses of water with $C_{H_2O}$ specific heat, and our calorimeter with $C_c$ as specific heat with $m^\star$ as equivalent mass of it, we have
+\begin{equation*}
+	C=C_c+C_{1}=\left( m_1+m^\star \right)C_{H_2O}
+\end{equation*}
+Consider now adding $m_2$ mass of water to the calorimeter, at some temperature $T_2$, if the calorimeter is at temperature $T_1$ we have that there will be an exchange of heat between the new mass of water and itself, thus $Q_1=-Q_2$, which implies
+\begin{equation*}
+	\left( m_1+m^\star \right)C_{H_2O}\left( T_{eq}.T_{1} \right)=-m_2C_{H_2O}\left( T_{eq}-T_2 \right)
+\end{equation*}
+With some easy algebra, solving for $m^\star$, our equivalent mass, we have
+\begin{equation}
+	m^\star=\frac{m_1\left( T_{1}-T_{eq} \right)+m_2\left( T_2-T_{eq} \right)}{T_1-T_{eq}}=m_2\frac{T_2-T_{eq}}{T_{eq}-T_1}+m_1
+	\label{eq:equivalentmass.cal}
+\end{equation}
 \section{Heat Flow}
-\subsection{Heat Conduction}
+\subsection{Conduction and Convection}
+In order to treat heat flow between two bodies, we have to see (empirically) that if we take a square rod with cross-sectional surface $S$ and temperatures $T_1$ and $T_2$ at its two faces, that the heat flow between the two parts depends on
+\begin{itemize}
+\item Surface area
+\item Time
+\item Temperature differences
+\item The inverse of the distance between the two parts
+\end{itemize}
+If the two faces are distant $x$, then we can write that
+\begin{equation}
+	Q=\kappa\left( \frac{ST}{x} \right)\Delta T
+	\label{eq:heat.cond}
+\end{equation}
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw (0, 0) rectangle (7, 2);
+		\draw[dashed, gray] (0.5, 0.5) rectangle (7.5, 2.5);
+		\draw[dashed, gray] (0.5, 0.5) -- (0, 0);
+		\draw (0.5, 2.5) -- (0, 2);
+		\draw (0.5, 2.5) -- (7.5, 2.5);
+		\draw (7.5, 2.5) -- (7.5, 0.5);
+		\draw (7.5, 0.5) -- (7, 0);
+		\draw (7.5, 2.5) -- (7, 2);
+		\node[left] at (-0.5, 1) {$T_1, S$};
+		\node[right] at (8, 1) {$T_2, S$};
+		\draw[<->, dashed] (0, -0.2) -- (3.5, -0.2) node[below](lab){$x$} -- (7, -0.2);   
+	\end{tikzpicture}
+	\caption{The experimental rod we use to derive the empirical heat flow equation}
+	\label{fig:rod.heat}
+\end{figure}
+Where $\kappa$ is a proportionality constant known as the \emph{thermal conductivity}. If we make this rod infinitesimal (and why not, consider that not all things can be approximated with rods), we have, after defining a heat flow vector $\vec{q}$ as
+\begin{equation}
+	\vec{q}=\frac{1}{S}\frac{\slashed\dd Q}{\dd T}
+	\label{eq:heatflowvec.cond}
+\end{equation}
+That, being $x\to \dd^3 r$ in the general case, 
+\begin{equation}
+	\vec{q}=\frac{1}{S}\frac{\slashed\dd Q}{\dd t}=-\kappa\nabla T
+	\label{eq:fouriereq.cond}
+\end{equation}
+This is what's known as \textit{Fourier's heat equation}, which tells us that the heat flux depends directly on the properties of the medium, contained in $\kappa$, and its cross sectional surface.\\
+Note the specific case where the medium is isotropic. We will have that the heat will be proportional to the temperature at the point, and thus our heat conduction equation becomes
+\begin{equation}
+	\pdv{T}{t}=-\kappa\nabla T
+	\label{eq:fourieriso.cond}
+\end{equation}
+Another special case is that of convection. Consider two bodies with conductivity $\kappa_1$ and $\kappa_2$, each thick $d_i$. Defined the \textit{heat transfer coefficient} of the 2 bodies as 
+\begin{equation}
+	h_i=\frac{\kappa_i}{d_i}
+	\label{eq:heattransfer.cond}
+\end{equation}
+Which fits to the empirical \textit{heat convection equation} or \textit{Newton's law on convection}
+\begin{equation}
+	\frac{1}{S}\frac{\slashed\dd Q}{\dd t}=h\Delta T
+	\label{eq:newton.cond}
+\end{equation}
+The coefficient $h$ in this case is the total heat transfer coefficient of the system, and can be intended as an \textit{electrical conductance}, calculated as follows
+\begin{equation}
+	\frac{1}{h}=\frac{1}{h_1}+\frac{1}{h_2}
+	\label{eq:sumnewton.cond}
+\end{equation}
+This is clearly generalizable to the general case with $N$ bodies using a simple sum.
 \section{Ideal Gases}
-\subsection{Equation of State of an Ideal Gas}
-\subsection{Internal Energy of an Ideal Gas}
-\subsection{Heat Capacity of an Ideal Gas}
-\subsection{Quasi-static Adiabatic Processes}
+\subsection{Hydrostatic Systems}
+As we know from what we wrote before, for a hydrostatic system we have
+\begin{equation}
+	\slashed\dd Q=\dd U+p\dd V
+	\label{eq:1sthydro.ig}
+\end{equation}
+Chosen two thermodynamic coordinates, specifically $T, V$ for ease, we have
+\begin{equation}
+	\slashed\dd Q=\left( \pdv{U}{T} \right)_V\dd T+\left[ \left( \pdv{U}{V}\right)_T+p \right]
+	\label{eq:1stlawhydro.ig}
+\end{equation}
+This is the differential first law for hydrostatic systems.\\
+From this equation we have a new definition for the specific heat $C$ of a system.\\
+Considering an isochoric process ($V=const$) we have, after deriving with respect to $T$
+\begin{equation}
+	\left( \frac{\slashed\dd Q}{\dd T} \right)_V=\left( \pdv{U}{T} \right)_V=C_V
+	\label{eq:heatcapv.ig}
+\end{equation}
+I.e., the derivative of the internal energy function at constant volume is the heat capacity at constant volume.\\
+It's then possible to write, at constant pressure
+\begin{equation}
+	\left( \frac{\slashed\dd Q}{\dd T} \right)_p=C_V+\left[ \left( \pdv{U}{V} \right)_T+p \right]\left( \pdv{V}{T} \right)_p=C_p
+	\label{eq:cphydro.ig}
+\end{equation}
+Remembering that $\del_T V=\beta V$ we have, solving for the derivative of the internal energy
+\begin{equation}
+	\left( \pdv{U}{V} \right)_T=\frac{C_p-C_V}{\beta V}-p
+	\label{eq:heatcapp.ig}
+\end{equation}
+\subsection{Joule Expansions}
+Consider a thermally insulated vessel divided in two compartments with an ideal gas inside in one and the vacuum on the other compartment. If we remove the wall separating the gas from the vacuum the gas will rush to fill the vacuum. This kind of expansion is known as a \textit{Joule expansion} or a \textit{free expansion} of the gas.\\
+Since the vessel doesn't change volume during the expansion of the gas and cannot exchange heat with its surroundings, the complete process must have $W=Q=0$. If we insert this into the differential form of the 1st law of thermodynamics we have
+\begin{equation}
+	\dd U =\slashed\dd Q-\slashed\dd W=0\implies U=U_0
+	\label{eq:freeexp.ig}
+\end{equation}
+In general tho, the internal energy is a function of two variables, thus
+\begin{equation*}
+	\dd U = \left( \pdv{U}{T} \right)_V\dd T+\left( \pdv{U}{V} \right)_T\dd V=0
+\end{equation*}
+Since for having $\slashed\dd Q=0$ we must also have $\dd T=0$, we must have that $\partial_V U=0$ and thus the internal energy must be dependent only on temperature. For a \textit{free expansion} we must then have
+\begin{equation}
+	\dd U = \dv{U}{T}\dd T
+	\label{eq:freeexpinte.ig}
+\end{equation}
+it has been studied by Rossini and Frandsen, that for real gases the internal energy depends also on the pressure, and therefore we now have an idea on how to define \textit{ideal} gases
+\subsection{Thermodynamics of Ideal Gases}
+The previous experiment gives a framework to better define an ideal gas. In general an ideal gas is defined as a gas which, \textit{at the low pressure limit}, follows these two equations
+\begin{equation}
+	\begin{paligned}
+		pV&= nRT\\
+		\left( \pdv{U}{p} \right)_T&= 0
+	\end{paligned}
+	\label{eq:idealgas.ig}
+\end{equation}
+The second equation, together with the ideal gas equation of state, creates this ideal gas that when it expands, the internal energy behaves exactly like if it was a free expansion.\\
+In fact, it's easy to prove that since
+\begin{equation}
+	\left( \pdv{U}{V} \right)_T=\left( \pdv{U}{p} \right)_T\left( \pdv{p}{V} \right)_T=0
+\end{equation}
+Then, by definition
+\begin{equation}
+	\dd U = \dv{U}{T}\dd T
+	\label{eq:idealinten.ig}
+\end{equation}
+I.e. It depends only on temperature. Now from the first law we have
+\begin{equation}
+	\begin{paligned}
+		\slashed\dd Q&= \dd U + \slashed\dd W\\
+		\slashed\dd W&= p\dd V\\
+		\dd U&= \dv{U}{T}\dd T
+	\end{paligned}
+\end{equation}
+Noting that in an isochoric process $\dd U = C_V\dd T$, then we have the first law for ideal gases
+\begin{equation}
+	\boxed{\slashed\dd Q=C_V\dd T+p\dd V}
+	\label{eq:1stlawv.ig}
+\end{equation}
+Remembering that for every equilibrium state we have
+\begin{equation*}
+	pV=nRT
+\end{equation*}
+We can write
+\begin{equation*}
+	p\dd V=\dd\left( pV \right)-V\dd p= nR\dd T-V\dd p
+\end{equation*}
+Hence
+\begin{equation}
+	\boxed{\slashed\dd Q=\left( C_V+nR \right)\dd T-V\dd p}
+	\label{eq:1stlawp.ig}
+\end{equation}
+Deriving with respect to $T$ again, we have a mathematical relationship between $C_V$ and $C_p$, known as \emph{Mayer's relation}
+\begin{equation}
+	C_p=C_V+nR
+	\label{eq:mayers.ig}
+\end{equation}
+Thus, we get two ways of writing the first law for ideal gases
+\begin{equation}
+	\boxed{\begin{aligned}
+		\slashed\dd Q&= C_V\dd T+p\dd V\\
+		\slashed\dd Q&= C_p\dd T-V\dd p
+	\end{aligned}}
+	\label{eq:1stideal.ig}
+\end{equation}
+Note that \textit{in general}, the heat capacity depends strongly on the temperature $T$. This relationship will be better studied with statistical mechanics later.
+\subsubsection{Quasi-static Adiabatic and Polytropic Processes}
+Let's consider now quasi-static adiabatic processes, in the specific case of ideal gases. From the first law, we have that for an adiabatic process
+\begin{equation}
+	\begin{paligned}
+		p\dd V&= -C_V\dd T\\
+		V\dd p&= C_p\dd T
+	\end{paligned}
+	\label{eq:ad1stlaw.ig}
+\end{equation}
+we can solve the system quite easily by dividing the two equations, and after defining the \emph{adiabatic index} of a gas $\gamma$ as
+\begin{equation}
+	\gamma=\frac{C_p}{C_V}=\frac{c_p}{c_V}
+	\label{eq:adindex.ig}
+\end{equation}
+we have
+\begin{equation}
+	\frac{V}{p}\dv{p}{V}=-\gamma
+	\label{eq:eqtosolve.ig}
+\end{equation}
+Solving this simple differential equation we get
+\begin{equation}
+	pV^\gamma=\kappa
+	\label{eq:adiabaticproc.ig}
+\end{equation}
+Where $\kappa\in\R$ is a constant. Note that this relationship holds if and only if the process is quasi-static.\\
+We might want to see the functional definition of work in this process.\\
+We have, for a quasi-static adiabatic transformation between two equilibrium points $A$ and $B$
+\begin{equation}
+	W_{AB}=\int_{A}^B\kappa V^{-\gamma}\dd V=\frac{\kappa}{1-\gamma}\left( V_B^{1-\gamma}-V_A^{1-\gamma} \right)
+	\label{eq:workfunc.adig}
+\end{equation}
+Since $\kappa=p_AV_A^\gamma=p_BV_B^\gamma$, we have
+\begin{equation}
+	W_{AB}=\frac{1}{1-\gamma}\left( p_BV_B-p_AV_A \right)=\frac{nR}{1-\gamma}\left( T_B-T_A \right)
+	\label{eq:workad.ig}
+\end{equation}
+Recognizing from the first law that since $\slashed\dd Q=0$, then 
+\begin{equation*}
+	\slashed\dd W=-\dd U=-C_V\dd T
+\end{equation*}
+Which gives back a new form of Mayer's relation
+\begin{equation}
+	C_V=\frac{nR}{1-\gamma}
+	\label{eq:mayers2.ig}
+\end{equation}
+Let's consider now the most generic quasi-static transformation that we might have with an ideal gas.\\
+The transformation equation must be a tweak of the one we found before, specifically, instead of having $pV^\gamma$ with $\gamma$ being the adiabatic index, we might use a parameter $\alpha$ which can take different values.\\
+Thus
+\begin{equation}
+	pV^\alpha=\kappa\qquad
+	\begin{dcases}
+		\alpha = 1& pV=\kappa,\quad\kappa=nRT\\
+		\alpha = 0& p=\kappa\\
+		\alpha\to\infty& V=\kappa\\
+		\alpha = \gamma& pV^\gamma=\kappa\\
+		\alpha\in\R & \text{general case}
+	\end{dcases}
+	\label{eq:polytropic.ig}
+\end{equation}
+Note that we have managed to define the most generic transformation possible. Note that since it's always true that, for an ideal gas
+\begin{equation*}
+	\dd U = C_V\dd T
+\end{equation*}
+And that in general $\slashed\dd Q\ne0$, we have, noting that we simply substituted $\gamma$ with the parameter $\alpha$, that
+\begin{equation}
+	\slashed\dd Q=\left( C_V+\frac{nR}{1-\alpha} \right)\dd T
+	\label{eq:polyheat.ig}
+\end{equation}
+Defined the polytropic specific heat $C_\alpha$, we have by definition
+\begin{equation}
+	C_\alpha=C_V+\frac{nR}{1-\alpha}
+	\label{eq:polysheat.ig}
+\end{equation}
+Giving us this simple equation for polytropic processes
+\begin{equation}
+	\slashed\dd Q=C_\alpha\dd T
+	\label{eq:polyheat2.ig}
+\end{equation}
 \end{document}
