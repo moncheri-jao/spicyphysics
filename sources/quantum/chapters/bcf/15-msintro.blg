@@ -1,9 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[0] Config.pm:307> INFO - Logfile is '15-msintro.blg'
-[29] biber:315> INFO - === zo okt 13, 2019, 20:19:06
-[48] Biber.pm:371> INFO - Reading '15-msintro.bcf'
-[108] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
-[114] Utils.pm:193> WARN - The file '15-msintro.bcf' does not contain any citations!
-[121] bbl.pm:636> INFO - Writing '15-msintro.bbl' with encoding 'UTF-8'
-[121] bbl.pm:739> INFO - Output to 15-msintro.bbl
-[121] Biber.pm:110> INFO - WARNINGS: 1

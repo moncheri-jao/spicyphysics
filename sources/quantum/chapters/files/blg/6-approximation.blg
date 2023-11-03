@@ -1,9 +1,0 @@
-[1] Config.pm:312> INFO - This is Biber 2.15
-[1] Config.pm:315> INFO - Logfile is '6-approximation.blg'
-[250] biber:330> INFO - === lun dic  7, 2020, 22:19:37
-[290] Biber.pm:415> INFO - Reading '6-approximation.bcf'
-[513] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[527] Utils.pm:384> WARN - The file '6-approximation.bcf' does not contain any citations!
-[561] bbl.pm:651> INFO - Writing '6-approximation.bbl' with encoding 'UTF-8'
-[562] bbl.pm:754> INFO - Output to 6-approximation.bbl
-[562] Biber.pm:128> INFO - WARNINGS: 1

@@ -1,9 +1,0 @@
-[2] Config.pm:312> INFO - This is Biber 2.15
-[5] Config.pm:315> INFO - Logfile is 'idealquantumgas.blg'
-[302] biber:330> INFO - === lun dic  7, 2020, 22:21:26
-[349] Biber.pm:415> INFO - Reading 'idealquantumgas.bcf'
-[603] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[629] Utils.pm:384> WARN - The file 'idealquantumgas.bcf' does not contain any citations!
-[701] bbl.pm:651> INFO - Writing 'idealquantumgas.bbl' with encoding 'UTF-8'
-[711] bbl.pm:754> INFO - Output to idealquantumgas.bbl
-[713] Biber.pm:128> INFO - WARNINGS: 1

@@ -1,9 +1,0 @@
-[0] Config.pm:312> INFO - This is Biber 2.15
-[1] Config.pm:315> INFO - Logfile is '12-molecules.blg'
-[205] biber:330> INFO - === lun dic  7, 2020, 22:14:05
-[239] Biber.pm:415> INFO - Reading '12-molecules.bcf'
-[431] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[452] Utils.pm:384> WARN - The file '12-molecules.bcf' does not contain any citations!
-[483] bbl.pm:651> INFO - Writing '12-molecules.bbl' with encoding 'UTF-8'
-[484] bbl.pm:754> INFO - Output to 12-molecules.bbl
-[484] Biber.pm:128> INFO - WARNINGS: 1

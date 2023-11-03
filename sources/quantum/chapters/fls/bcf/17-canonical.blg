@@ -1,9 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[0] Config.pm:307> INFO - Logfile is '17-canonical.blg'
-[25] biber:315> INFO - === zo okt 13, 2019, 20:03:47
-[43] Biber.pm:371> INFO - Reading '17-canonical.bcf'
-[106] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
-[113] Utils.pm:193> WARN - The file '17-canonical.bcf' does not contain any citations!
-[122] bbl.pm:636> INFO - Writing '17-canonical.bbl' with encoding 'UTF-8'
-[123] bbl.pm:739> INFO - Output to 17-canonical.bbl
-[123] Biber.pm:110> INFO - WARNINGS: 1

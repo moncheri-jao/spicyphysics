@@ -1,9 +1,0 @@
-[0] Config.pm:312> INFO - This is Biber 2.15
-[1] Config.pm:315> INFO - Logfile is '2-fundamentals.blg'
-[210] biber:330> INFO - === lun dic  7, 2020, 22:17:45
-[240] Biber.pm:415> INFO - Reading '2-fundamentals.bcf'
-[395] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[413] Utils.pm:384> WARN - The file '2-fundamentals.bcf' does not contain any citations!
-[443] bbl.pm:651> INFO - Writing '2-fundamentals.bbl' with encoding 'UTF-8'
-[447] bbl.pm:754> INFO - Output to 2-fundamentals.bbl
-[448] Biber.pm:128> INFO - WARNINGS: 1

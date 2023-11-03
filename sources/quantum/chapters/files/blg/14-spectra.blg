@@ -1,9 +1,0 @@
-[1] Config.pm:312> INFO - This is Biber 2.15
-[1] Config.pm:315> INFO - Logfile is '14-spectra.blg'
-[274] biber:330> INFO - === lun dic  7, 2020, 22:15:14
-[321] Biber.pm:415> INFO - Reading '14-spectra.bcf'
-[551] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[569] Utils.pm:384> WARN - The file '14-spectra.bcf' does not contain any citations!
-[597] bbl.pm:651> INFO - Writing '14-spectra.bbl' with encoding 'UTF-8'
-[597] bbl.pm:754> INFO - Output to 14-spectra.bbl
-[598] Biber.pm:128> INFO - WARNINGS: 1

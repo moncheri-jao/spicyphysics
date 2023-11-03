@@ -1,9 +1,0 @@
-[0] Config.pm:312> INFO - This is Biber 2.15
-[1] Config.pm:315> INFO - Logfile is '11-eminteractions.blg'
-[248] biber:330> INFO - === lun dic  7, 2020, 22:13:39
-[294] Biber.pm:415> INFO - Reading '11-eminteractions.bcf'
-[531] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[555] Utils.pm:384> WARN - The file '11-eminteractions.bcf' does not contain any citations!
-[595] bbl.pm:651> INFO - Writing '11-eminteractions.bbl' with encoding 'UTF-8'
-[595] bbl.pm:754> INFO - Output to 11-eminteractions.bbl
-[596] Biber.pm:128> INFO - WARNINGS: 1

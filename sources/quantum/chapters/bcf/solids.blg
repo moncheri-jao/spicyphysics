@@ -1,9 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[0] Config.pm:307> INFO - Logfile is 'solids.blg'
-[23] biber:315> INFO - === zo okt 13, 2019, 20:21:41
-[43] Biber.pm:371> INFO - Reading 'solids.bcf'
-[103] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
-[109] Utils.pm:193> WARN - The file 'solids.bcf' does not contain any citations!
-[116] bbl.pm:636> INFO - Writing 'solids.bbl' with encoding 'UTF-8'
-[116] bbl.pm:739> INFO - Output to solids.bbl
-[116] Biber.pm:110> INFO - WARNINGS: 1
